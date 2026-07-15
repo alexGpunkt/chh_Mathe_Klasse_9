@@ -123,7 +123,7 @@ const Tracker = (() => {
     };
     delete row.task;
     try {
-      const q = new URLSearchParams({ on_conflict: 'device_id,session_id,unit,path' });
+const q = new URLSearchParams({on_conflict: 'device_id,unit,path'});
       const response = await fetch(base() + 'mathe9_progress?' + q, {
         method: 'POST', headers: headers('resolution=merge-duplicates,return=minimal'),
         body: JSON.stringify(row), keepalive: true
