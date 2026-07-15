@@ -419,7 +419,8 @@ function pruefe() {
 
   if (SP.versuche >= 2) {
     notiere(a.genId, false);
-    melde('tipp', `<b>Die Lösung:</b> ${fmt(a.answer)} ${a.unit_label}` +
+    const wert = a.unit_label === '€' ? fmtGeld(a.answer) : fmt(a.answer);
+    melde('tipp', `<b>Die Lösung:</b> ${wert} ${a.unit_label}` +
       (a.solution ? `<div class="rechenweg">${a.solution}</div>` : ''));
     weiterKnopf();
   }
