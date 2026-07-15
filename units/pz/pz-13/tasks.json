@@ -1,0 +1,512 @@
+{
+  "unit": "PZ-13",
+  "title": "Mehrjährige Anlage & Zinseszins",
+  "leitidee": "L1",
+  "standards": [
+    "K3"
+  ],
+  "wortspeicher": [
+    "das Kapital",
+    "der Zinssatz",
+    "die Zinsen",
+    "der Zinseszins",
+    "der Wachstumsfaktor"
+  ],
+  "can_do": {
+    "A": "Du füllst eine Zinstabelle Jahr für Jahr aus: Kapital plus Zinsen gleich neues Kapital.",
+    "B": "Du berechnest das Endkapital über die Tabelle und über K · q^n und vergleichst beide Wege.",
+    "C": "Du bestimmst die Laufzeit durch systematisches Probieren und stellst Zins und Zinseszins gegenüber."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Jahr für Jahr:   neues Kapital = altes Kapital + Zinsen",
+      "Kurzform:        K_n = K_0 · q^n",
+      "Wachstumsfaktor: q = 1 + p/100      5 % → q = 1,05",
+      "",
+      "Einfacher Zins:  Z = K · p : 100 · n   (Zinsen werden ausgezahlt)",
+      "Zinseszins:      Zinsen bleiben drauf und werden mitverzinst"
+    ],
+    "saetze": [
+      "Im zweiten Jahr werden auch die Zinsen aus dem ersten Jahr verzinst.",
+      "Der Wachstumsfaktor ist … , weil zu 100 % noch … Prozent dazukommen.",
+      "Nach … Jahren sind es … € — das ist mehr als beim einfachen Zins."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ13-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Du legst 1 000 € zu 5 % an. Fülle die erste Zeile der Zinstabelle aus.",
+      "fields": [
+        {
+          "label": "Zinsen im 1. Jahr",
+          "answer": 50,
+          "unit_label": "€",
+          "tolerance": 0.01
+        },
+        {
+          "label": "Kapital am Ende des 1. Jahres",
+          "answer": 1050,
+          "unit_label": "€",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "Zinsen: 1 000 · 5 : 100",
+        "Neues Kapital: altes Kapital + Zinsen"
+      ],
+      "solution": "Zinsen: 1 000 € · 5 : 100 = 50 €\nKapital: 1 000 € + 50 € = 1 050 €",
+      "tags": [
+        "zinstabelle"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "multi",
+      "prompt": "Weiter mit 1 050 € zu 5 %. Fülle die zweite Zeile aus. Achtung: Die Zinsen werden jetzt von 1 050 € berechnet.",
+      "fields": [
+        {
+          "label": "Zinsen im 2. Jahr",
+          "answer": 52.5,
+          "unit_label": "€",
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "alter_grundwert",
+              "value": 50,
+              "feedback": "Das wären die Zinsen von 1 000 €. Im zweiten Jahr liegen aber schon 1 050 € auf dem Konto — auch die 50 € Zinsen werden mitverzinst."
+            }
+          ]
+        },
+        {
+          "label": "Kapital am Ende des 2. Jahres",
+          "answer": 1102.5,
+          "unit_label": "€",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "Zinsen: 1 050 · 5 : 100 — nicht 1 000!",
+        "Kapital: 1 050 € + Zinsen"
+      ],
+      "solution": "Zinsen: 1 050 € · 5 : 100 = 52,50 €\nKapital: 1 050 € + 52,50 € = 1 102,50 €\n\nGenau das ist der Zinseszins: Im zweiten Jahr gibt es 2,50 € mehr, weil die 50 € aus dem ersten Jahr mitverzinst werden.",
+      "tags": [
+        "zinstabelle",
+        "zinseszins"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "multi",
+      "prompt": "Du legst 2 000 € zu 3 % an. Fülle die erste Zeile aus.",
+      "fields": [
+        {
+          "label": "Zinsen im 1. Jahr",
+          "answer": 60,
+          "unit_label": "€",
+          "tolerance": 0.01
+        },
+        {
+          "label": "Kapital am Ende des 1. Jahres",
+          "answer": 2060,
+          "unit_label": "€",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "Zinsen: 2 000 · 3 : 100"
+      ],
+      "solution": "Zinsen: 60 €\nKapital: 2 000 € + 60 € = 2 060 €",
+      "tags": [
+        "zinstabelle"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "multi",
+      "prompt": "Weiter mit 2 060 € zu 3 %. Fülle die zweite Zeile aus.",
+      "fields": [
+        {
+          "label": "Zinsen im 2. Jahr",
+          "answer": 61.8,
+          "unit_label": "€",
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "alter_grundwert",
+              "value": 60,
+              "feedback": "Das wären die Zinsen von 2 000 €. Es liegen aber 2 060 € auf dem Konto."
+            }
+          ]
+        },
+        {
+          "label": "Kapital am Ende des 2. Jahres",
+          "answer": 2121.8,
+          "unit_label": "€",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "Zinsen: 2 060 · 3 : 100",
+        "Kapital: 2 060 € + Zinsen"
+      ],
+      "solution": "Zinsen: 2 060 € · 3 : 100 = 61,80 €\nKapital: 2 060 € + 61,80 € = 2 121,80 €",
+      "tags": [
+        "zinstabelle",
+        "zinseszins"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "1 000 € werden 3 Jahre lang mit 5 % verzinst (Zinseszins). Wie hoch ist das Endkapital? Runde auf Cent.",
+      "answer": 1157.63,
+      "unit_label": "€",
+      "tolerance": 0.011,
+      "hints": [
+        "Wachstumsfaktor: q = 1,05",
+        "K_3 = 1 000 · 1,05³",
+        "Tabellenweg zur Kontrolle: 1 050 → 1 102,50 → ?"
+      ],
+      "solution": "q = 1,05\nK_3 = 1 000 € · 1,05³ = 1 000 · 1,157625 = 1 157,63 €\n\nTabellenweg:\n  nach 1 Jahr: 1 050,00 €\n  nach 2 Jahren: 1 102,50 €\n  nach 3 Jahren: 1 157,63 €\nBeide Wege führen zum selben Ergebnis.",
+      "misconceptions": [
+        {
+          "id": "einfacher_zins",
+          "value": 1150,
+          "feedback": "Du hast dreimal 50 € gerechnet — das ist der einfache Zins. Beim Zinseszins werden die Zinsen mitverzinst, deshalb sind es 7,63 € mehr."
+        },
+        {
+          "id": "faktor_mal_n",
+          "value": 3150,
+          "feedback": "Du hast 1 000 · 1,05 · 3 gerechnet. Der Faktor wird potenziert, nicht mit der Jahreszahl multipliziert: 1,05³ = 1,157625."
+        }
+      ],
+      "tags": [
+        "zinseszins",
+        "potenz"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "2 000 € werden 4 Jahre lang mit 3 % verzinst (Zinseszins). Wie hoch ist das Endkapital? Runde auf Cent.",
+      "answer": 2251.02,
+      "unit_label": "€",
+      "tolerance": 0.011,
+      "hints": [
+        "q = 1,03",
+        "K_4 = 2 000 · 1,03⁴"
+      ],
+      "solution": "q = 1,03\nK_4 = 2 000 € · 1,03⁴ = 2 000 · 1,12550881 = 2 251,02 €",
+      "misconceptions": [
+        {
+          "id": "einfacher_zins",
+          "value": 2240,
+          "feedback": "Du hast viermal 60 € gerechnet — einfacher Zins. Beim Zinseszins kommen 11,02 € mehr zusammen."
+        }
+      ],
+      "tags": [
+        "zinseszins",
+        "potenz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "500 € werden 2 Jahre lang mit 4 % verzinst (Zinseszins). Wie hoch ist das Endkapital?",
+      "answer": 540.8,
+      "unit_label": "€",
+      "tolerance": 0.011,
+      "hints": [
+        "q = 1,04",
+        "K_2 = 500 · 1,04²"
+      ],
+      "solution": "q = 1,04\nK_2 = 500 € · 1,04² = 500 · 1,0816 = 540,80 €\n\nTabellenprobe: 500 → 520 → 540,80 ✓",
+      "misconceptions": [
+        {
+          "id": "einfacher_zins",
+          "value": 540,
+          "feedback": "Fast — du hast zweimal 20 € gerechnet. Im zweiten Jahr werden aber 520 € verzinst, nicht 500 €. Das gibt 80 Cent mehr."
+        }
+      ],
+      "tags": [
+        "zinseszins",
+        "potenz"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "1 500 € werden 5 Jahre lang mit 2 % verzinst (Zinseszins). Wie hoch ist das Endkapital? Runde auf Cent.",
+      "answer": 1656.12,
+      "unit_label": "€",
+      "tolerance": 0.011,
+      "hints": [
+        "q = 1,02",
+        "K_5 = 1 500 · 1,02⁵"
+      ],
+      "solution": "q = 1,02\nK_5 = 1 500 € · 1,02⁵ = 1 500 · 1,1040808 = 1 656,12 €",
+      "misconceptions": [
+        {
+          "id": "einfacher_zins",
+          "value": 1650,
+          "feedback": "Du hast fünfmal 30 € gerechnet — einfacher Zins. Der Zinseszins bringt 6,12 € mehr."
+        }
+      ],
+      "tags": [
+        "zinseszins",
+        "potenz"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "1 000 € werden 3 Jahre mit 5 % verzinst. Wie viel Euro Zinsen sind insgesamt zusammengekommen? Runde auf Cent.",
+      "answer": 157.63,
+      "unit_label": "€",
+      "tolerance": 0.011,
+      "hints": [
+        "Berechne zuerst das Endkapital: 1 000 · 1,05³",
+        "Zinsen insgesamt = Endkapital − Startkapital"
+      ],
+      "solution": "Endkapital: 1 000 € · 1,05³ = 1 157,63 €\nZinsen: 1 157,63 € − 1 000 € = 157,63 €",
+      "misconceptions": [
+        {
+          "id": "falsche_groesse_angegeben",
+          "value": 1157.63,
+          "feedback": "Das ist das Endkapital. Gefragt sind nur die Zinsen — ziehe das Startkapital ab."
+        },
+        {
+          "id": "einfacher_zins",
+          "value": 150,
+          "feedback": "Das wäre der einfache Zins (3 · 50 €). Durch die Mitverzinsung sind es 7,63 € mehr."
+        }
+      ],
+      "tags": [
+        "zinseszins",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "choice",
+      "prompt": "1 000 € zu 5 % bringen in 3 Jahren 157,63 € Zinsen — nicht 150 €. Warum?",
+      "options": [
+        "Weil ab dem 2. Jahr auch die Zinsen aus den Vorjahren mitverzinst werden",
+        "Weil die Bank mehr zahlt, als sie versprochen hat",
+        "Weil man am Ende aufrunden muss"
+      ],
+      "answer": 0,
+      "hints": [
+        "Schau in die Zinstabelle: Wovon werden die Zinsen im 2. Jahr berechnet?"
+      ],
+      "solution": "1. Jahr: Zinsen von 1 000 € = 50,00 €\n2. Jahr: Zinsen von 1 050 € = 52,50 €  ← 2,50 € mehr\n3. Jahr: Zinsen von 1 102,50 € = 55,13 €  ← nochmal mehr\nSumme: 157,63 €\n\nDie 50 € aus dem 1. Jahr bleiben auf dem Konto und bringen selbst Zinsen. Das ist der Zinseszins.",
+      "misconceptions": [
+        {
+          "id": "bank_zahlt_mehr",
+          "value": 1,
+          "feedback": "Die Bank hält sich genau an die 5 %. Der Unterschied entsteht, weil die 5 % jedes Jahr von einem größeren Kapital berechnet werden."
+        },
+        {
+          "id": "rundung_missverstanden",
+          "value": 2,
+          "feedback": "Rundung erklärt keine 7,63 €. Der Grund ist die Mitverzinsung der Zinsen."
+        }
+      ],
+      "tags": [
+        "zinseszins",
+        "begruendung"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "In der Formel K_n = K_0 · q^n ist q der Wachstumsfaktor. Wie groß ist q bei einem Zinssatz von 3,5 %?",
+      "answer": 1.035,
+      "unit_label": "",
+      "tolerance": 0.0001,
+      "hints": [
+        "q = 1 + p/100",
+        "3,5 : 100 = 0,035"
+      ],
+      "solution": "q = 1 + 3,5 : 100 = 1 + 0,035 = 1,035",
+      "misconceptions": [
+        {
+          "id": "faktor_ohne_eins",
+          "value": 0.035,
+          "feedback": "Die 1 fehlt. Ohne sie würde das Kapital auf 3,5 % schrumpfen statt um 3,5 % zu wachsen."
+        },
+        {
+          "id": "komma_verschoben",
+          "value": 1.35,
+          "feedback": "Um Faktor 10 zu groß — das wären 35 %. Bei 3,5 % ist q = 1,035."
+        }
+      ],
+      "tags": [
+        "wachstumsfaktor"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "3 000 € werden mit 4 % Zinseszins angelegt. Nach wie vielen ganzen Jahren sind es zum ersten Mal mehr als 3 500 €?",
+      "answer": 4,
+      "unit_label": "Jahre",
+      "tolerance": 0.01,
+      "hints": [
+        "Probiere systematisch: 3 000 · 1,04¹, dann 1,04², 1,04³ …",
+        "Nach 3 Jahren: 3 000 · 1,04³ = 3 374,59 € — noch nicht genug."
+      ],
+      "solution": "n = 1:  3 000 · 1,04  = 3 120,00 €\nn = 2:  3 000 · 1,04² = 3 244,80 €\nn = 3:  3 000 · 1,04³ = 3 374,59 €\nn = 4:  3 000 · 1,04⁴ = 3 509,58 €  ← zum ersten Mal über 3 500 €\n\nAntwort: nach 4 Jahren.",
+      "misconceptions": [
+        {
+          "id": "zu_frueh_gestoppt",
+          "value": 3,
+          "feedback": "Nach 3 Jahren sind es erst 3 374,59 € — das ist noch unter 3 500 €. Probiere ein Jahr weiter."
+        },
+        {
+          "id": "einfacher_zins",
+          "value": 5,
+          "feedback": "Mit einfachem Zins (120 € pro Jahr) wären es tatsächlich erst nach 5 Jahren über 3 500 €. Beim Zinseszins geht es schneller."
+        }
+      ],
+      "tags": [
+        "laufzeit",
+        "probieren",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Nach wie vielen ganzen Jahren hat sich ein Kapital bei 7 % Zinseszins zum ersten Mal mehr als verdoppelt?",
+      "answer": 11,
+      "unit_label": "Jahre",
+      "tolerance": 0.01,
+      "hints": [
+        "Der Startwert ist egal — gesucht ist, wann 1,07ⁿ größer als 2 wird.",
+        "Probiere: 1,07¹⁰ = 1,967 — noch nicht ganz."
+      ],
+      "solution": "Gesucht: 1,07ⁿ > 2\n  n = 10:  1,07¹⁰ = 1,9672  → noch nicht verdoppelt\n  n = 11:  1,07¹¹ = 2,1049  → verdoppelt ✓\n\nAntwort: nach 11 Jahren.\nDas Startkapital spielt keine Rolle: 1 000 € oder 100 000 € brauchen gleich lang.",
+      "misconceptions": [
+        {
+          "id": "zu_frueh_gestoppt",
+          "value": 10,
+          "feedback": "Nach 10 Jahren ist der Faktor erst 1,967 — knapp unter 2. Ein Jahr fehlt noch."
+        },
+        {
+          "id": "einfacher_zins",
+          "value": 15,
+          "feedback": "Mit einfachem Zins bräuchte es rund 15 Jahre (100 : 7 ≈ 14,3). Der Zinseszins ist deutlich schneller."
+        }
+      ],
+      "tags": [
+        "verdopplung",
+        "probieren",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ13-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "1 000 € werden 10 Jahre mit 5 % angelegt. Wie viel Euro mehr bringt der Zinseszins gegenüber dem einfachen Zins? Runde auf Cent.",
+      "answer": 128.89,
+      "unit_label": "€",
+      "tolerance": 0.011,
+      "hints": [
+        "Einfacher Zins: 10 · 50 € = 500 € → Endkapital 1 500 €",
+        "Zinseszins: 1 000 · 1,05¹⁰",
+        "Differenz der beiden Endkapitalien bilden."
+      ],
+      "solution": "Einfacher Zins: 1 000 € + 10 · 50 € = 1 500,00 €\nZinseszins:     1 000 € · 1,05¹⁰ = 1 628,89 €\nDifferenz:      1 628,89 € − 1 500,00 € = 128,89 €\n\nNach 10 Jahren macht der Zinseszins fast 26 % der ursprünglichen Zinsen aus. Je länger die Laufzeit, desto stärker der Effekt — die eine Kurve ist eine Gerade, die andere wird immer steiler.",
+      "misconceptions": [
+        {
+          "id": "falsche_groesse_angegeben",
+          "value": 1628.89,
+          "feedback": "Das ist das Endkapital mit Zinseszins. Gefragt ist die Differenz zum einfachen Zins (1 500 €)."
+        },
+        {
+          "id": "falsche_groesse_angegeben",
+          "value": 628.89,
+          "feedback": "Das sind die gesamten Zinsen beim Zinseszins. Gefragt ist nur, wie viel MEHR das gegenüber 500 € einfachem Zins ist."
+        }
+      ],
+      "tags": [
+        "vergleich",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-FKT"
+      ]
+    }
+  ]
+}
