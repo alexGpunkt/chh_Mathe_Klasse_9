@@ -1,0 +1,463 @@
+{
+  "unit": "PZ-10",
+  "title": "Prozentuale Veränderung & Wachstumsfaktor",
+  "leitidee": "L1",
+  "standards": [
+    "K3"
+  ],
+  "wortspeicher": [
+    "die Zunahme",
+    "die Abnahme",
+    "der Grundwert",
+    "der Wachstumsfaktor",
+    "die Faktorkette"
+  ],
+  "can_do": {
+    "A": "Du erkennst, ob ein Wert gestiegen oder gefallen ist, und berechnest die Differenz.",
+    "B": "Du berechnest die prozentuale Veränderung und schreibst sie als Faktor.",
+    "C": "Du rechnest mit Faktorketten und zeigst, dass +10 % und −10 % sich nicht aufheben."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Veränderung in %:  p = (neu − alt) : alt · 100",
+      "Zunahme um p %:    Faktor = 1 + p/100    +5 %  → 1,05",
+      "Abnahme um p %:    Faktor = 1 − p/100    −5 %  → 0,95",
+      "Mehrere Schritte:  Faktoren MULTIPLIZIEREN, nicht addieren",
+      "                   +20 % dann −20 %  →  1,2 · 0,8 = 0,96"
+    ],
+    "saetze": [
+      "Der Wert ist von … auf … gestiegen, das sind … Prozent.",
+      "Der Grundwert ist der alte Wert, weil damit verglichen wird.",
+      "Die zweite Veränderung geht von … aus, nicht mehr vom Startwert."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ10-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Preis war 50 €, jetzt sind es 65 €. Um wie viel Euro ist er gestiegen?",
+      "answer": 15,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Rechne: neuer Preis minus alter Preis."
+      ],
+      "solution": "65 € − 50 € = 15 €",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": -15,
+          "feedback": "Fast — du hast alt minus neu gerechnet. Bei einer Zunahme: neu minus alt."
+        }
+      ],
+      "tags": [
+        "differenz"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ10-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Preis war 80 €, jetzt sind es 60 €. Um wie viel Euro ist er gefallen?",
+      "answer": 20,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Rechne: alter Preis minus neuer Preis."
+      ],
+      "solution": "80 € − 60 € = 20 €",
+      "tags": [
+        "differenz"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ10-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Die Zahl der Mitglieder ändert sich von 200 auf 250. Was ist passiert?",
+      "options": [
+        "Zunahme",
+        "Abnahme"
+      ],
+      "answer": 0,
+      "hints": [
+        "Ist der neue Wert größer oder kleiner als der alte?"
+      ],
+      "solution": "250 ist größer als 200 → Zunahme um 50 Mitglieder.",
+      "tags": [
+        "richtung"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ10-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Die Zahl der Mitglieder sinkt von 120 auf 96. Um wie viele Mitglieder ist sie gesunken?",
+      "answer": 24,
+      "unit_label": "Mitglieder",
+      "tolerance": 0.01,
+      "hints": [
+        "120 − 96 = ?"
+      ],
+      "solution": "120 − 96 = 24 Mitglieder",
+      "tags": [
+        "differenz"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ10-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Preis steigt von 40 € auf 42 €. Um wie viel Prozent ist er gestiegen?",
+      "answer": 5,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Zunahme in Euro: 42 − 40 = 2 €",
+        "Der Grundwert ist der ALTE Preis: 2 : 40 · 100"
+      ],
+      "solution": "Zunahme = 42 € − 40 € = 2 €\np = 2 : 40 · 100 = 5 %",
+      "misconceptions": [
+        {
+          "id": "neuer_als_grundwert",
+          "value": 4.76,
+          "feedback": "Du hast durch 42 geteilt. Der Grundwert ist immer der alte Wert: 2 : 40."
+        },
+        {
+          "id": "neuer_wert_in_prozent",
+          "value": 105,
+          "feedback": "105 % ist der neue Preis im Verhältnis zum alten. Gefragt ist nur die Zunahme: 5 %."
+        }
+      ],
+      "tags": [
+        "veraenderung",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Preis fällt von 200 € auf 150 €. Um wie viel Prozent ist er gefallen?",
+      "answer": 25,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Abnahme: 200 − 150 = 50 €",
+        "p = 50 : 200 · 100"
+      ],
+      "solution": "Abnahme = 50 €\np = 50 : 200 · 100 = 25 %",
+      "misconceptions": [
+        {
+          "id": "neuer_wert_in_prozent",
+          "value": 75,
+          "feedback": "75 % ist der neue Preis im Verhältnis zum alten. Die Abnahme sind 100 % − 75 % = 25 %."
+        },
+        {
+          "id": "neuer_als_grundwert",
+          "value": 33.33,
+          "feedback": "Du hast durch 150 geteilt. Der Grundwert ist der Preis vorher: 50 : 200."
+        }
+      ],
+      "tags": [
+        "veraenderung",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Welcher Faktor gehört zu einer Zunahme um 5 %?",
+      "options": [
+        "1,05",
+        "0,05",
+        "5"
+      ],
+      "answer": 0,
+      "hints": [
+        "Der Startwert ist 100 % = 1. Dazu kommen 5 % = 0,05."
+      ],
+      "solution": "100 % + 5 % = 105 %  →  Faktor 1,05\nProbe: 200 € · 1,05 = 210 € — das sind 10 € mehr, also 5 % von 200 €. ✓",
+      "misconceptions": [
+        {
+          "id": "faktor_ohne_eins",
+          "value": 1,
+          "feedback": "0,05 ist nur der Zuwachs. Der Startwert (die 1) fehlt: 1 + 0,05 = 1,05. Mit 0,05 würde der Wert auf 5 % schrumpfen."
+        },
+        {
+          "id": "satz_als_faktor",
+          "value": 2,
+          "feedback": "Mit dem Faktor 5 würde sich der Wert verfünffachen — das wären +400 %."
+        }
+      ],
+      "tags": [
+        "faktor"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welcher Faktor gehört zu einer Abnahme um 5 %?",
+      "options": [
+        "0,95",
+        "1,05",
+        "−5"
+      ],
+      "answer": 0,
+      "hints": [
+        "Nach einer Abnahme um 5 % bleiben 95 % übrig."
+      ],
+      "solution": "100 % − 5 % = 95 %  →  Faktor 0,95\nProbe: 200 € · 0,95 = 190 € — das sind 10 € weniger. ✓",
+      "misconceptions": [
+        {
+          "id": "vorzeichen_vertauscht",
+          "value": 1,
+          "feedback": "1,05 gehört zu einer Zunahme. Bei einer Abnahme muss der Faktor kleiner als 1 sein."
+        },
+        {
+          "id": "negativer_faktor",
+          "value": 2,
+          "feedback": "Ein negativer Faktor würde das Vorzeichen umdrehen. Ein Preis wird durch −5 nicht kleiner, sondern unsinnig."
+        }
+      ],
+      "tags": [
+        "faktor"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Die Einwohnerzahl steigt von 2 500 auf 2 700. Um wie viel Prozent ist sie gestiegen?",
+      "answer": 8,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Zunahme: 2 700 − 2 500 = 200",
+        "p = 200 : 2 500 · 100"
+      ],
+      "solution": "Zunahme = 200\np = 200 : 2 500 · 100 = 8 %",
+      "misconceptions": [
+        {
+          "id": "neuer_als_grundwert",
+          "value": 7.41,
+          "feedback": "Du hast durch 2 700 geteilt. Der Grundwert ist der alte Wert 2 500."
+        }
+      ],
+      "tags": [
+        "veraenderung",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Wert wird mit dem Faktor 1,12 multipliziert. Um wie viel Prozent nimmt er zu?",
+      "answer": 12,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "1,12 = 100 % + wie viel Prozent?",
+        "Ziehe die 1 ab: 1,12 − 1 = 0,12."
+      ],
+      "solution": "1,12 − 1 = 0,12  →  0,12 · 100 = 12 %\nDer Wert nimmt um 12 % zu.",
+      "misconceptions": [
+        {
+          "id": "faktor_als_prozent",
+          "value": 112,
+          "feedback": "112 % ist der neue Wert im Verhältnis zum alten. Die Zunahme sind 12 %."
+        },
+        {
+          "id": "faktor_als_prozent",
+          "value": 1.12,
+          "feedback": "Das ist der Faktor selbst. Ziehe erst die 1 ab und nimm dann mal 100."
+        }
+      ],
+      "tags": [
+        "faktor",
+        "rueckwaerts"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Preis von 200 € steigt um 10 % und fällt danach um 10 %. Wie hoch ist er am Ende?",
+      "answer": 198,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Schritt 1: 200 · 1,10 = 220 €",
+        "Schritt 2: 10 % von 220 € — nicht von 200 €!"
+      ],
+      "solution": "Schritt 1: 200 € · 1,10 = 220 €\nSchritt 2: 220 € · 0,90 = 198 €\nFaktorkette: 200 · 1,1 · 0,9 = 200 · 0,99 = 198 €\nDer Preis ist am Ende 2 € niedriger — weil die Senkung von 220 € berechnet wird, die Erhöhung aber nur von 200 €.",
+      "misconceptions": [
+        {
+          "id": "veraenderungen_heben_sich_auf",
+          "value": 200,
+          "feedback": "Der häufigste Gedanke — aber falsch. Die 10 % Senkung werden von 220 € berechnet, nicht von 200 €. Deshalb ist die Senkung größer als die Erhöhung."
+        },
+        {
+          "id": "bei_schritt_1_gestoppt",
+          "value": 220,
+          "feedback": "Das ist der Preis nach Schritt 1. Jetzt kommt die Senkung um 10 % — von 220 €."
+        }
+      ],
+      "tags": [
+        "faktorkette",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Preis von 100 € steigt zweimal hintereinander um je 20 %. Wie hoch ist er am Ende?",
+      "answer": 144,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Schritt 1: 100 · 1,2 = 120 €",
+        "Schritt 2: 120 · 1,2 — nicht 100 · 1,4!"
+      ],
+      "solution": "Schritt 1: 100 € · 1,20 = 120 €\nSchritt 2: 120 € · 1,20 = 144 €\nFaktorkette: 100 · 1,2 · 1,2 = 100 · 1,44 = 144 €\nZwei Erhöhungen um je 20 % ergeben insgesamt +44 %, nicht +40 %.",
+      "misconceptions": [
+        {
+          "id": "prozentsaetze_addiert",
+          "value": 140,
+          "feedback": "Du hast die Prozentsätze addiert (20 % + 20 % = 40 %). Faktoren werden aber multipliziert: 1,2 · 1,2 = 1,44 — also +44 %."
+        },
+        {
+          "id": "bei_schritt_1_gestoppt",
+          "value": 120,
+          "feedback": "Das ist der Preis nach der ersten Erhöhung. Es kommt noch eine zweite."
+        }
+      ],
+      "tags": [
+        "faktorkette",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Wert steigt um 10 % und fällt danach um 10 %. Gib den Gesamtfaktor an.",
+      "answer": 0.99,
+      "unit_label": "",
+      "tolerance": 0.001,
+      "hints": [
+        "Zunahme um 10 % → Faktor 1,1. Abnahme um 10 % → Faktor 0,9.",
+        "Der Gesamtfaktor ist das Produkt: 1,1 · 0,9"
+      ],
+      "solution": "1,1 · 0,9 = 0,99\nDer Gesamtfaktor ist 0,99 — der Wert sinkt insgesamt um 1 %.\nDas gilt unabhängig vom Startwert: ob 200 € oder 5 000 €, es sind immer 1 % Verlust.",
+      "misconceptions": [
+        {
+          "id": "veraenderungen_heben_sich_auf",
+          "value": 1,
+          "feedback": "Der Faktor 1 würde bedeuten, dass sich nichts ändert. Rechne nach: 1,1 · 0,9 = 0,99."
+        },
+        {
+          "id": "prozentsaetze_addiert",
+          "value": 2,
+          "feedback": "Faktoren werden multipliziert, nicht addiert: 1,1 · 0,9 = 0,99."
+        }
+      ],
+      "tags": [
+        "faktorkette",
+        "verallgemeinerung",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ10-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Preis fällt erst um 20 %, danach um weitere 25 %. Um wie viel Prozent ist er insgesamt gefallen?",
+      "answer": 40,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Faktoren: 0,80 und 0,75",
+        "Gesamtfaktor: 0,80 · 0,75 = 0,60. Was bedeutet 0,60?"
+      ],
+      "solution": "Faktorkette: 0,80 · 0,75 = 0,60\nAm Ende bleiben 60 % übrig  →  gefallen ist er um 100 % − 60 % = 40 %.\nProbe mit 100 €: 100 · 0,8 = 80;  80 · 0,75 = 60. Von 100 € auf 60 € — das sind 40 % Rückgang. ✓",
+      "misconceptions": [
+        {
+          "id": "prozentsaetze_addiert",
+          "value": 45,
+          "feedback": "Du hast 20 % + 25 % addiert. Faktoren werden multipliziert: 0,8 · 0,75 = 0,6 → 40 % Rückgang."
+        },
+        {
+          "id": "restfaktor_als_antwort",
+          "value": 60,
+          "feedback": "60 % ist der Rest, der übrig bleibt. Gefragt ist der Rückgang: 100 % − 60 % = 40 %."
+        }
+      ],
+      "tags": [
+        "faktorkette",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    }
+  ]
+}
