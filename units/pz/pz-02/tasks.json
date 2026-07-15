@@ -1,0 +1,442 @@
+{
+  "unit": "PZ-02",
+  "title": "Prozente schätzen",
+  "leitidee": "L1",
+  "standards": [
+    "K4",
+    "K6"
+  ],
+  "wortspeicher": [
+    "der Anteil",
+    "der Prozentsatz",
+    "das Ganze",
+    "der Ankerwert"
+  ],
+  "can_do": {
+    "A": "Du erkennst, ob ein Anteil größer oder kleiner als die Hälfte ist.",
+    "B": "Du schätzt einen Prozentsatz auf 5 % genau und stützt die Schätzung auf einen Ankerwert.",
+    "C": "Du benennst Schätzstrategien und wählst die für eine Aufgabe passendste aus."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Anker 50 %:  die Hälfte",
+      "Anker 25 %:  die Hälfte von der Hälfte",
+      "Anker 10 %:  Komma eine Stelle nach links   480 € → 48 €",
+      "Anker  1 %:  Komma zwei Stellen nach links  480 € → 4,80 €"
+    ],
+    "saetze": [
+      "Der Anteil liegt über/unter der Hälfte.",
+      "10 % wären … , also sind … Prozent ungefähr … .",
+      "Ich schätze … Prozent, weil der Anteil knapp über/unter dem Anker liegt."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ02-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Schau auf den Streifen. Der schwarze Strich markiert die Hälfte. Ist der gefärbte Teil größer oder kleiner als die Hälfte?",
+      "visual": {
+        "type": "streifen",
+        "fill": 30,
+        "alt": "Der Streifen ist etwa zu einem Drittel gefärbt, deutlich weniger als bis zur Mitte."
+      },
+      "options": [
+        "kleiner als die Hälfte",
+        "größer als die Hälfte"
+      ],
+      "answer": 0,
+      "hints": [
+        "Vergleiche: Endet die Farbe vor oder hinter dem Strich in der Mitte?"
+      ],
+      "solution": "Die Farbe endet vor der Mitte — also weniger als 50 %. (Es sind etwa 30 %.)",
+      "tags": [
+        "schaetzen",
+        "anker"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Ist der gefärbte Teil größer oder kleiner als die Hälfte?",
+      "visual": {
+        "type": "streifen",
+        "fill": 80,
+        "alt": "Der Streifen ist zum größten Teil gefärbt, deutlich über die Mitte hinaus."
+      },
+      "options": [
+        "kleiner als die Hälfte",
+        "größer als die Hälfte"
+      ],
+      "answer": 1,
+      "hints": [
+        "Die Farbe geht deutlich über den Strich hinaus."
+      ],
+      "solution": "Die Farbe endet hinter der Mitte — also mehr als 50 %. (Es sind etwa 80 %.)",
+      "tags": [
+        "schaetzen",
+        "anker"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Wie viel Prozent sind ungefähr gefärbt?",
+      "visual": {
+        "type": "streifen",
+        "fill": 10,
+        "alt": "Nur ein sehr schmaler Streifen am linken Rand ist gefärbt."
+      },
+      "options": [
+        "ungefähr 10 %",
+        "ungefähr 50 %",
+        "ungefähr 90 %"
+      ],
+      "answer": 0,
+      "hints": [
+        "Die kleinen Striche teilen den Streifen in 10 gleiche Teile. Jeder Abschnitt ist 10 %.",
+        "Wie viele Abschnitte sind gefärbt?"
+      ],
+      "solution": "Genau ein Abschnitt von zehn ist gefärbt — das sind 10 %.",
+      "misconceptions": [
+        {
+          "id": "anker_verwechselt",
+          "value": 1,
+          "feedback": "50 % wären bis zum schwarzen Strich in der Mitte. Die Farbe endet viel früher."
+        }
+      ],
+      "tags": [
+        "schaetzen",
+        "anker"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Wie viel Prozent sind gefärbt?",
+      "visual": {
+        "type": "streifen",
+        "fill": 50,
+        "alt": "Der Streifen ist bis genau zur Mitte gefärbt."
+      },
+      "options": [
+        "genau die Hälfte — 50 %",
+        "ein Viertel — 25 %",
+        "fast alles — 90 %"
+      ],
+      "answer": 0,
+      "hints": [
+        "Die Farbe endet genau am schwarzen Strich."
+      ],
+      "solution": "Die Farbe endet genau in der Mitte: 50 %. Das ist der wichtigste Anker zum Schätzen.",
+      "tags": [
+        "schaetzen",
+        "anker"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Schätze: Wie viel Prozent des Streifens sind gefärbt?",
+      "visual": {
+        "type": "streifen",
+        "fill": 35,
+        "alt": "Der Streifen ist etwa zu einem Drittel gefärbt."
+      },
+      "answer": 35,
+      "unit_label": "%",
+      "tolerance": 5,
+      "hints": [
+        "Jeder Abschnitt zwischen zwei Strichen ist 10 %.",
+        "Zähle die vollen Abschnitte und schätze den Rest."
+      ],
+      "solution": "Es sind 35 %. Drei volle Abschnitte (30 %) plus ein halber (5 %).",
+      "tags": [
+        "schaetzen"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Schätze: Wie viel Prozent sind gefärbt?",
+      "visual": {
+        "type": "streifen",
+        "fill": 65,
+        "alt": "Der Streifen ist über die Mitte hinaus gefärbt."
+      },
+      "answer": 65,
+      "unit_label": "%",
+      "tolerance": 5,
+      "hints": [
+        "Starte beim Anker 50 % — dem schwarzen Strich.",
+        "Wie viele Abschnitte kommen danach noch dazu?"
+      ],
+      "solution": "Es sind 65 %. Anker 50 % plus etwa anderthalb Abschnitte.",
+      "tags": [
+        "schaetzen",
+        "anker"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Schätze: Wie viel Prozent sind gefärbt?",
+      "visual": {
+        "type": "streifen",
+        "fill": 15,
+        "alt": "Ein schmaler Teil am linken Rand ist gefärbt."
+      },
+      "answer": 15,
+      "unit_label": "%",
+      "tolerance": 5,
+      "hints": [
+        "Ein Abschnitt ist 10 %.",
+        "Die Farbe geht etwas über den ersten Abschnitt hinaus."
+      ],
+      "solution": "Es sind 15 %. Ein voller Abschnitt (10 %) plus ein halber (5 %).",
+      "tags": [
+        "schaetzen"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Schätze: Wie viel Prozent sind gefärbt?",
+      "visual": {
+        "type": "streifen",
+        "fill": 90,
+        "alt": "Fast der ganze Streifen ist gefärbt, nur ein schmaler Rest bleibt rechts frei."
+      },
+      "answer": 90,
+      "unit_label": "%",
+      "tolerance": 5,
+      "hints": [
+        "Schau auf den Rest, nicht auf die Farbe: Wie viel bleibt frei?",
+        "Wenn 10 % frei sind, sind 90 % gefärbt."
+      ],
+      "solution": "Es sind 90 %. Der freie Rest ist ein Abschnitt = 10 %, also 100 % − 10 % = 90 %.\nTrick: Bei großen Anteilen ist es leichter, den Rest zu schätzen.",
+      "tags": [
+        "schaetzen",
+        "rest"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Schätze: Wie viel Prozent sind gefärbt?",
+      "visual": {
+        "type": "streifen",
+        "fill": 45,
+        "alt": "Der Streifen ist fast bis zur Mitte gefärbt."
+      },
+      "answer": 45,
+      "unit_label": "%",
+      "tolerance": 5,
+      "hints": [
+        "Die Farbe endet knapp vor dem Strich in der Mitte.",
+        "Etwas weniger als 50 % — aber wie viel?"
+      ],
+      "solution": "Es sind 45 %. Anker 50 % minus ein halber Abschnitt.",
+      "tags": [
+        "schaetzen",
+        "anker"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Schätze: Wie viel Prozent sind gefärbt?",
+      "visual": {
+        "type": "streifen",
+        "fill": 5,
+        "alt": "Nur ein ganz schmaler Rand links ist gefärbt."
+      },
+      "answer": 5,
+      "unit_label": "%",
+      "tolerance": 4,
+      "hints": [
+        "Weniger als ein voller Abschnitt.",
+        "Ein Abschnitt ist 10 % — die Farbe ist etwa halb so breit."
+      ],
+      "solution": "Es sind 5 % — ein halber Abschnitt.",
+      "tags": [
+        "schaetzen",
+        "klein"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ02-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Du sollst 19 % von 250 € im Kopf überschlagen. Welche Strategie ist am schnellsten?",
+      "options": [
+        "10 % nehmen (25 €) und verdoppeln — rund 50 €",
+        "1 % nehmen (2,50 €) und mal 19 nehmen",
+        "Genau ausrechnen: 250 · 0,19"
+      ],
+      "answer": 0,
+      "hints": [
+        "Überschlagen heißt: schnell und ungefähr — nicht genau.",
+        "19 % liegt sehr nah an 20 %."
+      ],
+      "solution": "19 % ≈ 20 % = 2 · 10 % = 2 · 25 € = 50 €\nGenau sind es 47,50 € — für einen Überschlag reicht „rund 50 €\" völlig.\nDie anderen Wege funktionieren auch, dauern aber deutlich länger.",
+      "misconceptions": [
+        {
+          "id": "genau_statt_ueberschlag",
+          "value": 2,
+          "feedback": "Das ist richtig gerechnet, aber es ist kein Überschlag. Gesucht war der schnellste Weg im Kopf."
+        },
+        {
+          "id": "umweg_ueber_1prozent",
+          "value": 1,
+          "feedback": "Das funktioniert, ist aber umständlich. 19 % liegt so nah an 20 %, dass der Anker 10 % schneller zum Ziel führt."
+        }
+      ],
+      "tags": [
+        "strategie",
+        "ueberschlag"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ02-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Überschlage im Kopf: 48 % von 620 €. Gib deinen Schätzwert in Euro an.",
+      "answer": 300,
+      "unit_label": "€",
+      "tolerance": 20,
+      "hints": [
+        "48 % liegt sehr nah an 50 %.",
+        "Die Hälfte von 620 € ist leicht zu rechnen."
+      ],
+      "solution": "Anker 50 %: 620 € : 2 = 310 €\n48 % ist etwas weniger → rund 300 €\nGenau: 620 · 0,48 = 297,60 €. Der Überschlag war also sehr gut.",
+      "tags": [
+        "strategie",
+        "ueberschlag",
+        "anker"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ02-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Überschlage im Kopf: 9 % von 480 €. Gib deinen Schätzwert in Euro an.",
+      "answer": 44,
+      "unit_label": "€",
+      "tolerance": 6,
+      "hints": [
+        "Der Anker 10 % ist hier ideal.",
+        "10 % von 480 € sind 48 €. 9 % ist etwas weniger."
+      ],
+      "solution": "Anker 10 %: 48 €\n9 % ist etwas weniger → rund 43 bis 44 €\nGenau: 480 · 0,09 = 43,20 €",
+      "tags": [
+        "strategie",
+        "ueberschlag",
+        "anker"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ02-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Eine Jacke kostet 39,90 € und wird um 24 % reduziert. Welcher Überschlag für den Rabatt passt?",
+      "options": [
+        "Rund 10 € — denn 25 % ist ein Viertel von rund 40 €",
+        "Rund 24 € — denn es sind 24 %",
+        "Rund 4 € — denn 10 % von 40 € sind 4 €"
+      ],
+      "answer": 0,
+      "hints": [
+        "Runde zuerst den Preis: 39,90 € ≈ 40 €.",
+        "24 % liegt sehr nah an 25 % — und 25 % ist ein Viertel."
+      ],
+      "solution": "39,90 € ≈ 40 €;  24 % ≈ 25 % = ein Viertel\nEin Viertel von 40 € = 10 €\nGenau: 39,90 · 0,24 = 9,58 €. Der Überschlag passt.",
+      "misconceptions": [
+        {
+          "id": "satz_als_wert",
+          "value": 1,
+          "feedback": "24 ist der Prozentsatz, kein Geldbetrag. 24 € wären fast der ganze Preis — bei 24 % Rabatt kann das nicht sein."
+        },
+        {
+          "id": "anker_verwechselt",
+          "value": 2,
+          "feedback": "4 € wären 10 % Rabatt. Hier sind es 24 % — also gut das Doppelte."
+        }
+      ],
+      "tags": [
+        "strategie",
+        "ueberschlag",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    }
+  ]
+}
