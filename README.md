@@ -4,7 +4,7 @@ Differenzierte Lernwege für Jahrgang 9, Campus Hannah Höch.
 Statische Website, keine Abhängigkeiten, kein Build-Step.
 
 **14 Einheiten à 60 Minuten · 196 Aufgaben · vollständiger Themenbereich.**
-**Plus Spiral-Pool: 45 Generatoren für das Warm-up „Altes Wissen".**
+**Plus Spiral-Pool: 75 Generatoren in 5 Kategorien für das Warm-up „Altes Wissen".**
 
 ## Einheiten
 
@@ -168,7 +168,7 @@ nach Fälligkeit.
 ### Generatoren statt Einzelaufgaben
 
 Warm-ups leben von Variation. Statt 60 Aufgaben pro Kategorie zu schreiben,
-stehen dort **45 Generatoren** (15 je Kategorie, 5 je Pfad), die jeweils
+stehen dort **75 Generatoren** (15 je Kategorie, 5 je Pfad), die jeweils
 hunderte Varianten erzeugen:
 
 ```jsonc
@@ -204,6 +204,10 @@ Ausgewertet wird mit einem eigenen kleinen Parser (`werteAus` in `spiral.js`),
 **nicht mit `eval`** — er kennt nur `+ - * / ( )`, Zahlen, Variablen und
 Vergleiche. Funktionsaufrufe lehnt er ab.
 
+Mit `:€` als Zusatz wird als Geldbetrag formatiert: `{pa:€}` → `3,60`, nicht
+`3,6`. Bei allem, was ein Kind als Preis liest, gehören zwei Nachkommastellen
+hin.
+
 Kollidiert eine Fehlvorstellung bei bestimmten Zufallswerten mit der Lösung
 (bei `p = 50` ist „Rest“ gleich „Teil“), wird sie für diese Variante
 automatisch verworfen.
@@ -217,7 +221,7 @@ zurück auf Box 1, kommt morgen wieder.
 **2. Fehlerprofil.** Jede Fehlvorstellung aus den Einheiten wird lokal
 notiert (`mathe9.fehler`, nur IDs — keine Namen, keine Aufgabentexte). Wer
 gestern `komma_verschoben` produziert hat, bekommt heute W-BRUCH.
-Die Zuordnung steht in `plan.json` unter `fehlerprofil` — alle 79 IDs aus
+Die Zuordnung steht in `plan.json` unter `fehlerprofil` — alle 87 IDs aus
 dem Pool sind zugeordnet.
 
 Dazu kommt die **Verzahnung**: `plan.json` → `verzahnung` sagt, welche
@@ -234,7 +238,21 @@ einseitig.
 | `W-PROZ` | Prozente | 15 Generatoren |
 | `W-BRUCH` | Brüche & Dezimalzahlen | 15 Generatoren |
 | `W-EINH` | Einheiten | 15 Generatoren |
-| `W-KOPF` `W-TERM` `W-GEO` `W-FKT` `W-SACH` | | geplant |
+| `W-KOPF` | Kopfrechnen | 15 Generatoren |
+| `W-SACH` | Sachrechnen (Dreisatz, Maßstab) | 15 Generatoren |
+| `W-TERM` | Terme & Gleichungen | geplant (trägt LF-11) |
+| `W-GEO` | Grundgeometrie, Pythagoras | geplant (trägt KP-08, SK-04) |
+| `W-FKT` | Funktionen | geplant (trägt LF) |
+
+Alle **87 Fehlvorstellungs-IDs** aus dem Pool zeigen auf eine gebaute
+Kategorie — es läuft keine ins Leere.
+
+Nicht jeder Generator hat Fehlvorstellungen. Ein Rechenfehler im Einmaleins
+ist ein Ausrutscher, kein Denkfehler; dafür eine Diagnose zu erfinden, wäre
+gelogen. Wo ein systematischer Fehler existiert, steht er drin —
+`potenz_als_mal` (7² als 7 · 2), `additives_denken` (beim Dreisatz die
+Differenz addieren statt über die Einheit zu rechnen), `rest_abgeschnitten`
+(23 : 2 = 11).
 
 Neue Kategorie: Datei `spiral/w-geo.json` anlegen, Code in `plan.json` unter
 `kategorien` eintragen. Fehlt eine Datei, überspringt `spiral.js` sie
@@ -251,7 +269,7 @@ hilft niemandem. Mit dem Feld sagt sie, **welcher Denkfehler** passiert ist,
 und das Dashboard kann auszählen, welcher Fehler in der Klasse gehäuft
 auftritt.
 
-Im Pool: **72 IDs, 277 Vorkommen.** Die häufigsten:
+Im Pool: **87 IDs.** Die häufigsten aus den Einheiten:
 
 | | ID | Bedeutung |
 |---|---|---|
