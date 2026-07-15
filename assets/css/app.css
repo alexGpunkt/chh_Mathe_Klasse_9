@@ -1,0 +1,395 @@
+/* ============================================================
+   Mathe 9 · Campus Hannah Höch
+   Designsystem: "Karo & Tinte"
+   Signature: Der Prozentstreifen ist gleichzeitig Fortschritt.
+   ============================================================ */
+
+:root {
+  /* Papier & Tinte */
+  --paper:      #F3F5F4;
+  --paper-hi:   #FFFFFF;
+  --karo:       #D9E2E6;
+  --ink:        #15233A;
+  --ink-soft:   #4A5A70;
+  --ink-faint:  #8C99A8;
+
+  /* Pfadfarben – semantisch, überall identisch */
+  --a:      #2E7D5B;   /* Basis */
+  --a-bg:   #E4F1EA;
+  --b:      #2563A8;   /* Standard */
+  --b-bg:   #E2EBF6;
+  --c:      #6B3FA0;   /* Vertiefung */
+  --c-bg:   #ECE4F5;
+
+  /* Korrektur */
+  --korr:     #C62F26;
+  --korr-bg:  #FBE7E5;
+  --ok:       #2E7D5B;
+  --ok-bg:    #E4F1EA;
+
+  /* aktiver Pfad – wird per JS gesetzt */
+  --pfad:     var(--b);
+  --pfad-bg:  var(--b-bg);
+
+  --r: 10px;
+  --shadow: 0 1px 0 rgba(21,35,58,.08), 0 6px 18px -10px rgba(21,35,58,.35);
+
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-num: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  /* Karopapier – nur angedeutet, 5 mm */
+  background-image:
+    linear-gradient(var(--karo) 1px, transparent 1px),
+    linear-gradient(90deg, var(--karo) 1px, transparent 1px);
+  background-size: 22px 22px;
+  padding-bottom: 92px; /* Platz für Formelkarte */
+}
+
+/* ---------- Kopf ---------- */
+
+.kopf {
+  background: var(--ink);
+  color: var(--paper-hi);
+  padding: 14px 16px 18px;
+}
+.kopf a { color: inherit; }
+
+.kopf-zeile {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+}
+.zurueck {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; margin-left: -10px;
+  border-radius: var(--r); text-decoration: none;
+  font-size: 22px; line-height: 1;
+}
+.zurueck:hover { background: rgba(255,255,255,.1); }
+
+.einheit-code {
+  font-family: var(--f-num);
+  font-size: 12px; letter-spacing: .12em;
+  color: var(--paper-hi); opacity: .6;
+}
+.einheit-titel {
+  font-family: var(--f-display);
+  font-weight: 700; font-size: 20px; line-height: 1.2;
+  margin: 0;
+}
+
+/* ---------- SIGNATURE: Prozentstreifen als Fortschritt ---------- */
+
+.streifen-wrap { margin-top: 14px; }
+
+.streifen {
+  position: relative;
+  height: 30px;
+  background: rgba(255,255,255,.13);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.streifen-fuell {
+  position: absolute; inset: 0 auto 0 0;
+  width: 0%;
+  background: var(--pfad);
+  transition: width .45s cubic-bezier(.22,1,.36,1);
+}
+/* Skala: Striche alle 10 %, längerer Strich bei 50 % */
+.streifen-skala {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,.55) 0 1px,
+    transparent 1px 10%
+  );
+  pointer-events: none;
+}
+.streifen-marke {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 1px; background: rgba(255,255,255,.9);
+}
+.streifen-legende {
+  display: flex; justify-content: space-between;
+  font-family: var(--f-num); font-size: 11px;
+  color: var(--paper-hi); opacity: .55;
+  margin-top: 5px;
+}
+.streifen-legende b {
+  font-weight: 700; opacity: 1; color: var(--paper-hi);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .streifen-fuell { transition: none; }
+}
+
+/* ---------- Pfadwahl ---------- */
+
+.pfadwahl {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 6px; margin-top: 14px;
+}
+.pfad-btn {
+  min-height: 52px; padding: 6px 4px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: transparent; color: var(--paper-hi);
+  border-radius: var(--r);
+  font-family: var(--f-body); font-size: 13px; line-height: 1.2;
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+}
+.pfad-btn .punkt {
+  width: 9px; height: 9px; border-radius: 50%; display: block;
+}
+.pfad-btn[data-p="A"] .punkt { background: var(--a); }
+.pfad-btn[data-p="B"] .punkt { background: var(--b); }
+.pfad-btn[data-p="C"] .punkt { background: var(--c); }
+.pfad-btn[aria-pressed="true"] {
+  background: var(--paper-hi); color: var(--ink);
+  border-color: var(--paper-hi); font-weight: 700;
+}
+
+/* ---------- Inhalt ---------- */
+
+main { padding: 16px; max-width: 720px; margin: 0 auto; }
+
+.stufe-zeile {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--f-num); font-size: 12px; letter-spacing: .08em;
+  color: var(--ink-soft); text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.stufe-pill {
+  background: var(--pfad-bg); color: var(--pfad);
+  padding: 3px 9px; border-radius: 999px; font-weight: 700;
+  letter-spacing: .06em;
+}
+
+.karte {
+  background: var(--paper-hi);
+  border: 1px solid #E1E6E9;
+  border-left: 4px solid var(--pfad);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.frage { font-size: 18px; margin: 0 0 14px; }
+.frage .zahl { font-family: var(--f-num); font-weight: 700; }
+
+/* ---------- Eingabe: numeric ---------- */
+
+.eingabe-zeile { display: flex; align-items: center; gap: 8px; }
+input.zahl-feld {
+  flex: 1 1 auto; min-width: 0;
+  height: 52px; padding: 0 12px;
+  font-family: var(--f-num); font-size: 20px;
+  border: 2px solid #C8D2D8; border-radius: var(--r);
+  background: var(--paper-hi); color: var(--ink);
+}
+input.zahl-feld:focus-visible {
+  outline: 3px solid var(--pfad); outline-offset: 1px; border-color: var(--pfad);
+}
+.einheit-label {
+  font-family: var(--f-num); font-size: 18px; color: var(--ink-soft);
+  flex: 0 0 auto; min-width: 28px;
+}
+
+/* ---------- Eingabe: choice / assign ---------- */
+
+.optionen { display: grid; gap: 8px; }
+.opt {
+  min-height: 52px; padding: 12px 14px;
+  text-align: left;
+  border: 2px solid #C8D2D8; border-radius: var(--r);
+  background: var(--paper-hi); color: var(--ink);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.35;
+  cursor: pointer;
+}
+.opt:focus-visible { outline: 3px solid var(--pfad); outline-offset: 1px; }
+.opt[aria-pressed="true"] { border-color: var(--pfad); background: var(--pfad-bg); font-weight: 700; }
+.opt.richtig { border-color: var(--ok); background: var(--ok-bg); }
+.opt.falsch  { border-color: var(--korr); background: var(--korr-bg); }
+
+.slot { margin-bottom: 12px; }
+.slot-name {
+  font-family: var(--f-num); font-size: 12px; letter-spacing: .08em;
+  color: var(--ink-soft); text-transform: uppercase; margin-bottom: 5px;
+}
+.slot .optionen { grid-auto-flow: column; grid-auto-columns: 1fr; }
+@media (max-width: 420px) {
+  .slot .optionen { grid-auto-flow: row; grid-auto-columns: auto; }
+}
+
+/* ---------- Aufgabenbild: Prozentstreifen ---------- */
+
+.bild { margin: 0 0 16px; }
+.aufg-streifen {
+  position: relative; height: 44px;
+  background: #E8EDF0; border: 1px solid #C8D2D8; border-radius: 4px;
+  overflow: hidden;
+}
+.aufg-fuell { position: absolute; inset: 0 auto 0 0; background: var(--pfad); }
+.aufg-skala {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(
+    90deg, rgba(21,35,58,.28) 0 1px, transparent 1px 10%);
+}
+.aufg-marke {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 2px; background: var(--ink); opacity: .75;
+}
+.aufg-legende {
+  display: flex; justify-content: space-between;
+  font-family: var(--f-num); font-size: 11px; color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+/* ---------- Mehrfachfelder ---------- */
+
+.felder { display: grid; gap: 12px; }
+.feld-name {
+  display: block; font-size: 15px; color: var(--ink-soft); margin-bottom: 4px;
+}
+input.zahl-feld.feld-richtig { border-color: var(--ok); background: var(--ok-bg); }
+input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr-bg); }
+
+/* ---------- Aktionen ---------- */
+
+.aktionen { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.btn {
+  min-height: 48px; padding: 0 18px;
+  border-radius: var(--r); border: 2px solid transparent;
+  font-family: var(--f-body); font-size: 16px; font-weight: 700;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+}
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.btn-haupt { background: var(--pfad); color: #fff; flex: 1 1 auto; justify-content: center; }
+.btn-neben { background: transparent; color: var(--ink-soft); border-color: #C8D2D8; }
+.btn:disabled { opacity: .45; cursor: default; }
+
+/* ---------- Rückmeldung ---------- */
+
+.rueck {
+  margin-top: 14px; padding: 13px 14px;
+  border-radius: var(--r); font-size: 16px;
+  border-left: 4px solid;
+}
+.rueck.ok    { background: var(--ok-bg);   border-color: var(--ok); }
+.rueck.nope  { background: var(--korr-bg); border-color: var(--korr); }
+.rueck.tipp  { background: #FFF6E0;        border-color: #C98A12; }
+.rueck b { font-weight: 700; }
+.rueck .rechenweg {
+  font-family: var(--f-num); font-size: 15px;
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(21,35,58,.2);
+  white-space: pre-wrap;
+}
+
+/* ---------- Wortspeicher ---------- */
+
+.wort {
+  border-bottom: 2px dotted var(--pfad);
+  cursor: help;
+}
+
+/* ---------- Formelkarte (Sticky-Schublade) ---------- */
+
+.formelkarte {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  background: var(--ink); color: var(--paper-hi);
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 -8px 24px -12px rgba(21,35,58,.6);
+  max-height: 70vh; overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.formelkarte summary {
+  list-style: none; cursor: pointer;
+  height: 56px; display: flex; align-items: center; gap: 8px;
+  padding: 0 16px; font-family: var(--f-display); font-weight: 700; font-size: 15px;
+}
+.formelkarte summary::-webkit-details-marker { display: none; }
+.formelkarte summary::after { content: "▲"; margin-left: auto; font-size: 11px; opacity: .6; }
+.formelkarte[open] summary::after { content: "▼"; }
+.formel-inhalt {
+  padding: 0 16px 24px; overflow-y: auto; max-height: calc(70vh - 56px);
+}
+.formel-inhalt h3 {
+  font-family: var(--f-num); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; opacity: .55; margin: 14px 0 6px;
+}
+.formel-inhalt .f {
+  font-family: var(--f-num); font-size: 16px;
+  background: rgba(255,255,255,.08); padding: 8px 10px;
+  border-radius: 6px; margin-bottom: 6px;
+}
+.formel-inhalt ul { margin: 0; padding-left: 18px; font-size: 15px; }
+.formel-inhalt li { margin-bottom: 4px; }
+
+/* ---------- Startseite ---------- */
+
+.hero { padding: 28px 16px 22px; background: var(--ink); color: var(--paper-hi); }
+.hero .schule {
+  font-family: var(--f-num); font-size: 11px; letter-spacing: .16em;
+  text-transform: uppercase; opacity: .55;
+}
+.hero h1 {
+  font-family: var(--f-display); font-weight: 800;
+  font-size: clamp(28px, 8vw, 40px); line-height: 1.05;
+  margin: 8px 0 0; letter-spacing: -.02em;
+}
+.hero p { color: rgba(255,255,255,.7); margin: 10px 0 0; font-size: 15px; max-width: 46ch; }
+
+.liste { display: grid; gap: 10px; }
+.eintrag {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--paper-hi); border: 1px solid #E1E6E9;
+  border-radius: var(--r); padding: 14px; min-height: 64px;
+  text-decoration: none; color: var(--ink); box-shadow: var(--shadow);
+}
+.eintrag:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.eintrag .nr {
+  font-family: var(--f-num); font-size: 12px; font-weight: 700;
+  color: var(--ink-faint); flex: 0 0 auto; width: 46px;
+}
+.eintrag .txt strong { display: block; font-size: 16px; }
+.eintrag .txt span { font-size: 13px; color: var(--ink-soft); }
+.eintrag .pfeil { margin-left: auto; color: var(--ink-faint); }
+
+.abschnitt-titel {
+  font-family: var(--f-display); font-weight: 700; font-size: 15px;
+  letter-spacing: .04em; text-transform: uppercase;
+  color: var(--ink-soft); margin: 24px 0 10px;
+}
+
+.hinweis {
+  font-size: 14px; color: var(--ink-soft);
+  background: #FFF6E0; border-left: 4px solid #C98A12;
+  padding: 12px 14px; border-radius: var(--r); margin-top: 18px;
+}
+
+.lade, .fehler { padding: 24px 16px; color: var(--ink-soft); }
+.fehler { background: var(--korr-bg); border-left: 4px solid var(--korr); border-radius: var(--r); }
+.fehler code {
+  font-family: var(--f-num); font-size: 14px;
+  background: rgba(21,35,58,.08); padding: 2px 5px; border-radius: 4px;
+}
+
+/* ---------- Druck ---------- */
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .kopf, .formelkarte, .aktionen, .pfadwahl, .streifen-wrap { display: none !important; }
+  .karte { box-shadow: none; page-break-inside: avoid; }
+}
