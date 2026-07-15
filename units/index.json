@@ -1,0 +1,95 @@
+{
+  "_hinweis": "Wird von pruefung.html, arbeitsblatt.html und matrix.html gelesen. Neue Einheit hier eintragen.",
+  "bereiche": [
+    {
+      "code": "pz",
+      "title": "Prozent & Zinsrechnung",
+      "einheiten": [
+        {
+          "id": "pz-01",
+          "title": "Anteile: Bruch, Dezimalzahl, Prozent",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-02",
+          "title": "Prozente schätzen",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-03",
+          "title": "Dreisatz bei proportionalen Zuordnungen",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-04",
+          "title": "Antiproportional – und der Unterschied",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-05",
+          "title": "G, W und p % benennen",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-06",
+          "title": "Prozentwert berechnen",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-07",
+          "title": "Prozentsatz berechnen",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-08",
+          "title": "Grundwert berechnen",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-09",
+          "title": "Vermehrter und verminderter Grundwert",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-10",
+          "title": "Prozentuale Veränderung & Wachstumsfaktor",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-11",
+          "title": "Zinsen für ein Jahr",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-12",
+          "title": "Monats- und Tageszinsen",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-13",
+          "title": "Mehrjährige Anlage & Zinseszins",
+          "leitidee": "L1",
+          "aufgaben": 14
+        },
+        {
+          "id": "pz-14",
+          "title": "Anwendung & Prüfungstraining",
+          "leitidee": "L1",
+          "aufgaben": 14
+        }
+      ]
+    }
+  ]
+}
