@@ -1,0 +1,77 @@
+{
+  "_hinweis": "Prüfungssets sind eine SICHT auf den vorhandenen Pool, kein eigener Aufgabenbestand. filter.tag oder filter.step_min bestimmen, was hineinkommt.",
+  "sets": [
+    {
+      "id": "sockel",
+      "title": "Sockel",
+      "untertitel": "Die Grundaufgaben, mit Formelkarte",
+      "pfad": "A",
+      "filter": {
+        "step_min": 3
+      },
+      "anzahl": 8,
+      "ziel": 5,
+      "hilfen": true
+    },
+    {
+      "id": "bbr",
+      "title": "BBR / eBBR",
+      "untertitel": "Gemischter Satz, ohne Tipps",
+      "pfad": "B",
+      "filter": {
+        "tag": "bbr"
+      },
+      "anzahl": 10,
+      "ziel": 7,
+      "hilfen": false
+    },
+    {
+      "id": "msa",
+      "title": "MSA",
+      "untertitel": "Mit Begründungs- und Bewertungsteil",
+      "pfad": "C",
+      "filter": {
+        "tag": "msa"
+      },
+      "anzahl": 10,
+      "ziel": 7,
+      "hilfen": false
+    },
+    {
+      "id": "gemischt",
+      "title": "Gemischt",
+      "untertitel": "Alles, was schon dran war — auf deinem Pfad",
+      "pfad": null,
+      "filter": {
+        "step_min": 3
+      },
+      "anzahl": 10,
+      "ziel": 7,
+      "hilfen": false
+    }
+  ],
+  "formelkarte": {
+    "formeln": [
+      "W = G · p : 100        Prozentwert gesucht",
+      "p = W · 100 : G        Prozentsatz gesucht",
+      "G = W · 100 : p        Grundwert gesucht",
+      "",
+      "Rabatt:   Endwert = G · (100 − p) : 100      20 % → · 0,80",
+      "Aufschlag: Endwert = G · (100 + p) : 100     19 % → · 1,19",
+      "Zurück:   G = Endwert : Faktor",
+      "",
+      "Z = K · p : 100              Zinsen für 1 Jahr",
+      "Z = K · p : 100 · m : 12     Monatszinsen",
+      "Z = K · p : 100 · t : 360    Tageszinsen (Bankjahr)",
+      "K_n = K_0 · q^n              Zinseszins,  q = 1 + p/100",
+      "",
+      "Dreisatz proportional:      erst : n, dann · m",
+      "Dreisatz antiproportional:  erst · n, dann : m"
+    ],
+    "saetze": [
+      "Zuerst fragen: Welche Größe ist gesucht?",
+      "Der Grundwert ist das Ganze — bei Veränderungen der ALTE Wert.",
+      "Kontrolle: Ist mein Ergebnis plausibel groß?"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15233A">
+<title>Kompetenzmatrix · Mathe 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body style="padding-bottom:24px">
+
+<header class="hero nicht-drucken">
+  <div class="schule">Campus Hannah Höch · Lehrkraft</div>
+  <h1>Kompetenzmatrix</h1>
+  <p>Die „Ich kann“-Sätze aus dem Aufgabenpool, abhakbar. Ausgabe als Text
+     für Zeugnis oder Förderplan.</p>
+</header>
+
+<main>
+  <div class="mx-leiste nicht-drucken">
+    <label class="feld-name" for="name">Kind (Name oder Kürzel)</label>
+    <input class="zahl-feld" id="name" list="namen" autocomplete="off"
+           style="font-family:var(--f-body);font-size:17px" placeholder="z. B. A. M.">
+    <datalist id="namen"></datalist>
+
+    <div class="mx-stand">
+      <span id="zaehler">0 von 0 erreicht</span>
+      <span id="verteilung"></span>
+    </div>
+
+    <div class="aktionen" id="kopfaktionen">
+      <button class="btn btn-haupt" id="kopieren">Als Text kopieren</button>
+      <button class="btn btn-neben" id="drucken">Drucken</button>
+      <button class="btn btn-neben" id="leeren">Häkchen löschen</button>
+    </div>
+
+    <p class="hinweis">
+      Die Häkchen bleiben <b>auf diesem Gerät</b> (localStorage) — es geht nichts
+      an einen Server. Auf einem Rechner, an dem mehrere arbeiten, lieber Kürzel
+      als Klarnamen verwenden.
+    </p>
+  </div>
+
+  <div class="blatt-kopf nur-drucken">
+    <div>
+      <div class="blatt-schule">Campus Hannah Höch · Mathematik 9</div>
+      <h2>Kompetenzstand: <span id="blattname">—</span></h2>
+      <div class="blatt-meta">Rahmenlehrplan 1–10 Berlin/Brandenburg, Teil C</div>
+    </div>
+  </div>
+
+  <div id="inhalt"><p class="lade">Wird geladen …</p></div>
+</main>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/matrix.js"></script>
+</body>
+</html>

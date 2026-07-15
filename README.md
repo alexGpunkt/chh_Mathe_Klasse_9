@@ -5,6 +5,7 @@ Statische Website, keine Abhängigkeiten, kein Build-Step.
 
 **14 Einheiten à 60 Minuten · 196 Aufgaben · vollständiger Themenbereich.**
 **Plus Spiral-Pool: 75 Generatoren in 5 Kategorien für das Warm-up „Altes Wissen".**
+**Plus Prüfungstrainer, Arbeitsblatt-Druck, Kompetenzmatrix und Offline-Betrieb.**
 
 ## Einheiten
 
@@ -46,17 +47,33 @@ Dann `http://localhost:8000` öffnen.
 ## Aufbau
 
 ```
-index.html                  Übersicht
-einheit.html                universelle Einheitenseite  → ?u=pz-08
-warmup.html                 Warm-up „Altes Wissen"      → ?u=pz-08 (optional)
-assets/css/app.css          ein Stylesheet
-assets/js/store.js          Speicher, Zahlenparser, Fehlerprofil  (zuerst laden)
-assets/js/engine.js         Aufgabenlogik der Einheiten
-assets/js/spiral.js         Warm-up: Generatoren, Leitner-Kartei, Auswahl
-assets/js/tracker.js        Supabase-Anbindung (aus)
-units/pz/pz-08/tasks.json   Inhalt einer Einheit
-spiral/plan.json            Intervalle, Verzahnung, Fehlerprofil-Zuordnung
-spiral/w-proz.json          Generatoren einer Wiederholungskategorie
+Für Schülerinnen und Schüler
+  index.html                Übersicht
+  einheit.html              Einheitenseite            → ?u=pz-08
+  warmup.html               Warm-up „Altes Wissen"    → ?u=pz-08 (optional)
+  pruefung.html             Prüfungstrainer           → ?set=bbr
+
+Für die Lehrkraft
+  arbeitsblatt.html         Arbeitsblatt mit Lösungsanhang
+  matrix.html               Kompetenzmatrix pro Kind
+
+Code
+  assets/css/app.css        ein Stylesheet, inkl. Druckansicht
+  assets/js/store.js        Speicher, Zahlenparser, Fehlerprofil, SW-Registrierung
+  assets/js/engine.js       Aufgabenlogik der Einheiten
+  assets/js/spiral.js       Warm-up: Generatoren, Leitner-Kartei, Auswahl
+  assets/js/pruefung.js     stellt Prüfungssets zusammen (nutzt engine.js)
+  assets/js/arbeitsblatt.js Druckfassung
+  assets/js/matrix.js       Kompetenzmatrix
+  assets/js/tracker.js      Supabase-Anbindung (aus)
+  sw.js                     Service Worker (Offline)
+
+Inhalt
+  units/index.json          Liste aller Einheiten — hier neue eintragen
+  units/pz/pz-08/tasks.json Inhalt einer Einheit
+  pruefung-sets.json        Definition der Prüfungssets + Formelsammlung
+  spiral/plan.json          Intervalle, Verzahnung, Fehlerprofil-Zuordnung
+  spiral/w-proz.json        Generatoren einer Wiederholungskategorie
 ```
 
 `store.js` muss vor `engine.js` und `spiral.js` geladen werden — dort stehen
@@ -66,9 +83,12 @@ der Speicher, der Zahlenparser und das Fehlerprofil, die sich beide teilen.
 
 1. Ordner `units/pz/pz-15/` anlegen
 2. `tasks.json` hineinlegen
-3. Link in `index.html` ergänzen
+3. In `units/index.json` eintragen
+4. Link in `index.html` ergänzen
+5. In `sw.js` bei `EINHEITEN` ergänzen und `VERSION` hochzählen
 
-Mehr ist es nicht. `einheit.html` und `engine.js` bleiben unangetastet.
+Schritt 3 genügt, damit Prüfungstrainer, Arbeitsblatt und Kompetenzmatrix
+die Einheit kennen — die drei lesen alle denselben Index. Mehr ist es nicht. `einheit.html` und `engine.js` bleiben unangetastet.
 Ein neuer Themenbereich braucht nur einen neuen Ordner: `units/lf/lf-01/…`
 funktioniert sofort, weil der Bereich aus dem Präfix der ID abgeleitet wird.
 
@@ -262,6 +282,75 @@ nicht gibt.
 **Gleiche Anzahl auf allen Pfaden.** Ein Kind auf Pfad A bekommt fünf
 A-Aufgaben, nicht drei. Gleiche Zeit, gleiche Würde.
 
+
+## Prüfungstrainer (`pruefung.html`)
+
+**Kein eigener Aufgabenbestand — eine Sicht auf den vorhandenen Pool.** Sonst
+pflegst du zwei Pools, und der zweite veraltet. Gerendert wird mit derselben
+`engine.js`; `pruefung.js` stellt nur zusammen und setzt `window.QUELLE`.
+
+| Set | Pfad | Filter | Umfang | Ziel | Tipps |
+|---|---|---|---|---|---|
+| Sockel | A | Stufe ≥ 3 | 8 | 5 | ja |
+| BBR / eBBR | B | Tag `bbr` | 10 | 7 | nein |
+| MSA | C | Tag `msa` | 10 | 7 | nein |
+| Gemischt | aktueller | Stufe ≥ 3 | 10 | 7 | nein |
+
+Die Sets stehen in `pruefung-sets.json` — Filter, Umfang und Ziel ändern, ohne
+Code anzufassen.
+
+**Warum kein `bbr`-Set für Pfad A?** Weil kein A-Aufgabe mit `bbr` getaggt ist,
+und das ist richtig so: Pfad A liegt auf Niveaustufe D–E, ein BBR-Satz auf E–F.
+A-Aufgaben nachträglich mit `bbr` zu taggen wäre eine Lüge über ihr Niveau.
+Deshalb heißt das A-Set **Sockel** und zieht über die Stufe (frei/Transfer) —
+genau die Dreiteilung Sockel / Aufbau / Vertiefung, die auch die Klassenarbeit
+hat.
+
+Es zählt, was **auf Anhieb** sitzt. Am Ende stehen die Denkfehler, die heute
+mehrfach auftraten — nicht nur eine Punktzahl.
+
+## Arbeitsblatt (`arbeitsblatt.html`)
+
+Der Pool muss auch funktionieren, wenn keine 28 Geräte im Raum sind. Einheiten
+und Pfad wählen → Blatt mit Schreibraum, Formelkarte auf Seite 1, Lösungen im
+Anhang (eigene Seite). Tipps optional mitdrucken.
+
+Direkt verlinkbar: `arbeitsblatt.html?u=pz-06,pz-07,pz-08&p=B`
+
+Alle vier Aufgabentypen werden gedruckt: `numeric` mit Rechenraum und
+Ergebnislinie, `choice` mit Ankreuzkästchen, `assign` mit Werteliste und
+Zuordnungslinien, `multi` mit beschrifteten Feldern. Prozentstreifen bleiben
+auch auf Papier Streifen (`print-color-adjust`).
+
+## Kompetenzmatrix (`matrix.html`)
+
+Die „Ich kann"-Sätze stehen längst in jeder `tasks.json` unter `can_do` — 42
+Stück. Diese Seite macht sie pro Kind abhakbar und gibt sie als Text aus, der
+direkt in ein Zeugnis oder einen Förderplan wandern kann. Die A-Spalte ist
+bereits als Förderplanziel formuliert.
+
+Der Textexport gruppiert nach Pfad, zählt und nennt den Schwerpunkt der
+selbstständigen Arbeit — damit ist eine E-Kurs-Zuweisung über ein
+Kompetenzprofil belegbar statt über ein Bauchgefühl.
+
+**Datenschutz:** Die Häkchen liegen unter `mathe9.matrix.<Name>` im
+localStorage — auf **diesem** Gerät, nichts geht an einen Server. Auf einem
+Rechner, an dem mehrere arbeiten, besser Kürzel als Klarnamen.
+
+## Offline (`sw.js`)
+
+Das Schul-WLAN fällt aus, der Unterricht nicht. Der Service Worker cached alle
+37 Dateien — der ganze Pool ist unter 100 KB.
+
+- **JSON:** erst Netz, dann Cache. Korrekturen kommen an; fällt das Netz aus,
+  merkt niemand etwas.
+- **Schale (HTML/CSS/JS):** erst Cache (schnell), Auffrischung im Hintergrund.
+- Fremde Hosts (Google Fonts, Supabase) werden nie aus dem Cache bedient.
+
+**Nach jeder inhaltlichen Änderung `VERSION` in `sw.js` hochzählen.** Sonst
+sehen die Geräte weiter die alte Fassung. Registriert wird nur über https
+(GitHub Pages) oder auf localhost — bei `file://` passiert nichts.
+
 ## Das wichtigste Feld
 
 `misconceptions`. Ohne dieses Feld sagt die App „noch nicht richtig" — das
@@ -332,31 +421,12 @@ ist bei Zahlenaufgaben und DaZ kein Luxus. Falls das Schulnetz Google Fonts
 blockiert, greifen die Fallbacks; besser ist, die Dateien nach
 `assets/fonts/` zu legen und lokal einzubinden.
 
-## Lehrerdashboard und Supabase-Tracking
 
-Die erweiterte Version erfasst drei Datenarten:
+## Lehrerdashboard und Supabase-Tracking (integrierter Stand)
 
-- **Aktivität:** Sitzungsstart, sichtbare Seite, Aufgabenaufruf und Heartbeat alle 20 Sekunden.
-- **Antworten:** richtig/falsch, Versuch, Dauer, Tipps und erkannte Fehlvorstellung.
-- **Fortschritt:** aktuelle Einheit, Pfad, Aufgabe, erledigte Aufgaben und Prozentwert.
-
-### Einrichtung
-
-1. In Supabase ein neues Projekt anlegen.
-2. Den Inhalt von `supabase/setup.sql` im **SQL Editor** ausführen.
-3. Unter **Project Settings → API** die Project URL und den öffentlichen `anon` key kopieren.
-4. In `assets/js/supabase-config.js` eintragen und `enabled: true` setzen.
-5. Die Website über GitHub Pages oder einen Webserver veröffentlichen.
-6. Das Dashboard über `dashboard/index.html` öffnen.
-
-Wichtig: Niemals den `service_role` key in HTML oder JavaScript eintragen. Die mitgelieferten
-Policies erlauben einer statischen App das Schreiben und Lesen mit dem anon key. Damit ist das
-Dashboard ohne Login einfach einsetzbar, aber jeder mit URL und Schlüssel kann die Daten lesen.
-Für einen öffentlichen Einsatz sollte das Dashboard später mit Supabase Auth für Lehrkräfte
-abgesichert und die beiden SELECT-Policies entsprechend eingeschränkt werden.
-
-### Schülernamen
-
-Der Tracker liest weiterhin `localStorage['mathe9.name']`. Ohne vorhandenes Namens-Modal wird
-`anonym` übertragen. Zusätzlich werden eine zufällige Geräte-ID und pro Browser-Tab eine neue
-Sitzungs-ID gespeichert, damit gleichnamige oder anonyme Geräte unterscheidbar bleiben.
+Die Dateien `assets/js/supabase-config.js`, `assets/js/tracker.js`, `dashboard/` und
+`supabase/setup.sql` bleiben Bestandteil des Projekts. Schülerseiten und der
+Prüfungstrainer laden die gemeinsame Konfiguration vor dem Tracker. Antworten,
+Heartbeats und Fortschrittsstände werden damit weiterhin an dieselbe Schnittstelle
+übergeben. Arbeitsblatt und Kompetenzmatrix arbeiten bewusst lokal und senden keine
+Schülerdaten.
