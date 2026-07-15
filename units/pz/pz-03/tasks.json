@@ -1,0 +1,495 @@
+{
+  "unit": "PZ-03",
+  "title": "Dreisatz bei proportionalen Zuordnungen",
+  "leitidee": "L4",
+  "standards": [
+    "K2"
+  ],
+  "wortspeicher": [
+    "die Zuordnung",
+    "proportional",
+    "der Dreisatz",
+    "die Einheit"
+  ],
+  "can_do": {
+    "A": "Du rechnest den Dreisatz im vorgegebenen Schema über die Einheit.",
+    "B": "Du schreibst das Dreisatz-Schema selbst auf und beschriftest die Pfeile.",
+    "C": "Du erklärst, warum der Dreisatz funktioniert, und ersetzt ihn durch den Faktor."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Schritt 1:  auf 1 herunterrechnen   → teilen",
+      "Schritt 2:  auf die gesuchte Anzahl → mal nehmen",
+      "Beispiel:  5 Stück → 2,50 €",
+      "           1 Stück → 2,50 : 5 = 0,50 €",
+      "           8 Stück → 0,50 · 8 = 4,00 €",
+      "Faktor: y = k · x   mit k = Preis pro Stück"
+    ],
+    "saetze": [
+      "Wenn … Stück … Euro kosten, dann kostet 1 Stück … Euro.",
+      "Also kosten … Stück … Euro.",
+      "Mehr Stück bedeutet mehr Geld — die Zuordnung ist proportional."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ03-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "multi",
+      "prompt": "5 Brötchen kosten 2,50 €. Was kosten 8 Brötchen? Fülle das Schema aus.",
+      "fields": [
+        {
+          "label": "1 Brötchen kostet",
+          "answer": 0.5,
+          "unit_label": "€",
+          "tolerance": 0.005
+        },
+        {
+          "label": "8 Brötchen kosten",
+          "answer": 4,
+          "unit_label": "€",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "Schritt 1: 2,50 € : 5 = ?",
+        "Schritt 2: Das Ergebnis mal 8."
+      ],
+      "solution": "5 Brötchen → 2,50 €\n1 Brötchen → 2,50 : 5 = 0,50 €\n8 Brötchen → 0,50 · 8 = 4,00 €",
+      "tags": [
+        "dreisatz",
+        "proportional"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "multi",
+      "prompt": "3 Hefte kosten 4,50 €. Was kosten 7 Hefte?",
+      "fields": [
+        {
+          "label": "1 Heft kostet",
+          "answer": 1.5,
+          "unit_label": "€",
+          "tolerance": 0.005
+        },
+        {
+          "label": "7 Hefte kosten",
+          "answer": 10.5,
+          "unit_label": "€",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "Erst durch 3 teilen.",
+        "Dann mal 7 nehmen."
+      ],
+      "solution": "1 Heft → 4,50 : 3 = 1,50 €\n7 Hefte → 1,50 · 7 = 10,50 €",
+      "tags": [
+        "dreisatz",
+        "proportional"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "multi",
+      "prompt": "4 Liter Farbe reichen für 20 m² Wand. Für wie viele Quadratmeter reichen 6 Liter?",
+      "fields": [
+        {
+          "label": "1 Liter reicht für",
+          "answer": 5,
+          "unit_label": "m²",
+          "tolerance": 0.01
+        },
+        {
+          "label": "6 Liter reichen für",
+          "answer": 30,
+          "unit_label": "m²",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "20 m² : 4 = ?",
+        "Das Ergebnis mal 6."
+      ],
+      "solution": "1 Liter → 20 : 4 = 5 m²\n6 Liter → 5 · 6 = 30 m²",
+      "tags": [
+        "dreisatz",
+        "proportional"
+      ],
+      "spiral": [
+        "W-SACH",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "PZ03-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "6 Eier kosten 1,80 €. Was kosten 10 Eier?",
+      "answer": 3,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Schritt 1: 1,80 € : 6 = 0,30 € (ein Ei).",
+        "Schritt 2: 0,30 € · 10."
+      ],
+      "solution": "1 Ei → 1,80 : 6 = 0,30 €\n10 Eier → 0,30 · 10 = 3,00 €",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 0.3,
+          "feedback": "Das ist der Preis für 1 Ei. Jetzt noch mal 10 nehmen."
+        },
+        {
+          "id": "einheitsschritt_uebersprungen",
+          "value": 18,
+          "feedback": "Du hast mit 10 multipliziert, ohne vorher durch 6 zu teilen. Erst auf 1 Ei herunterrechnen, dann hoch."
+        }
+      ],
+      "tags": [
+        "dreisatz",
+        "proportional"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "7 kg Äpfel kosten 12,60 €. Was kosten 4 kg?",
+      "answer": 7.2,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Rechne zuerst auf 1 kg herunter: 12,60 : 7",
+        "Dann auf 4 kg hoch."
+      ],
+      "solution": "1 kg → 12,60 : 7 = 1,80 €\n4 kg → 1,80 · 4 = 7,20 €\nProbe: 4 kg sind weniger als 7 kg, also muss der Preis kleiner sein. ✓",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 1.8,
+          "feedback": "Das ist der Preis für 1 kg. Gefragt sind 4 kg."
+        },
+        {
+          "id": "richtung_vertauscht",
+          "value": 22.05,
+          "feedback": "Dein Ergebnis ist größer als für 7 kg. Aber 4 kg sind weniger — der Preis muss sinken."
+        }
+      ],
+      "tags": [
+        "dreisatz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Auto fährt in 3 Stunden 240 km. Wie weit kommt es in 5 Stunden bei gleicher Geschwindigkeit?",
+      "answer": 400,
+      "unit_label": "km",
+      "tolerance": 0.01,
+      "hints": [
+        "In 1 Stunde: 240 : 3 = 80 km",
+        "In 5 Stunden: 80 · 5"
+      ],
+      "solution": "1 Stunde → 240 : 3 = 80 km\n5 Stunden → 80 · 5 = 400 km",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 80,
+          "feedback": "Das ist die Strecke in 1 Stunde. Gefragt sind 5 Stunden."
+        },
+        {
+          "id": "differenz_addiert",
+          "value": 320,
+          "feedback": "Du hast einfach 80 km draufgerechnet — das wären 4 Stunden. Gefragt sind 5."
+        }
+      ],
+      "tags": [
+        "dreisatz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "9 Pakete wiegen zusammen 22,5 kg. Wie viel wiegen 15 Pakete?",
+      "answer": 37.5,
+      "unit_label": "kg",
+      "tolerance": 0.01,
+      "hints": [
+        "1 Paket: 22,5 : 9 = 2,5 kg",
+        "15 Pakete: 2,5 · 15"
+      ],
+      "solution": "1 Paket → 22,5 : 9 = 2,5 kg\n15 Pakete → 2,5 · 15 = 37,5 kg",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 2.5,
+          "feedback": "Das ist das Gewicht von 1 Paket."
+        }
+      ],
+      "tags": [
+        "dreisatz"
+      ],
+      "spiral": [
+        "W-SACH",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "PZ03-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Für 8 Portionen braucht man 600 g Reis. Wie viel Gramm braucht man für 5 Portionen?",
+      "answer": 375,
+      "unit_label": "g",
+      "tolerance": 0.01,
+      "hints": [
+        "1 Portion: 600 : 8 = 75 g",
+        "5 Portionen: 75 · 5"
+      ],
+      "solution": "1 Portion → 600 : 8 = 75 g\n5 Portionen → 75 · 5 = 375 g\nProbe: 5 Portionen sind weniger als 8 — also weniger Reis. ✓",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": 960,
+          "feedback": "Dein Ergebnis ist größer als 600 g. Für weniger Portionen braucht man aber weniger Reis."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 75,
+          "feedback": "Das ist die Menge für 1 Portion."
+        }
+      ],
+      "tags": [
+        "dreisatz",
+        "rezept",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "PZ03-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Drucker druckt 45 Seiten in 3 Minuten. Wie viele Seiten schafft er in 8 Minuten?",
+      "answer": 120,
+      "unit_label": "Seiten",
+      "tolerance": 0.01,
+      "hints": [
+        "Pro Minute: 45 : 3 = 15 Seiten",
+        "In 8 Minuten: 15 · 8"
+      ],
+      "solution": "1 Minute → 45 : 3 = 15 Seiten\n8 Minuten → 15 · 8 = 120 Seiten",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 15,
+          "feedback": "Das sind die Seiten pro Minute. Gefragt sind 8 Minuten."
+        }
+      ],
+      "tags": [
+        "dreisatz"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "2,5 m Stoff kosten 17,50 €. Was kosten 4 m?",
+      "answer": 28,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Auch mit Kommazahlen funktioniert der Dreisatz: 17,50 : 2,5",
+        "1 m kostet 7,00 €."
+      ],
+      "solution": "1 m → 17,50 : 2,5 = 7,00 €\n4 m → 7,00 · 4 = 28,00 €",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 7,
+          "feedback": "Das ist der Preis für 1 m. Gefragt sind 4 m."
+        }
+      ],
+      "tags": [
+        "dreisatz",
+        "kommazahlen"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "6 Liter Benzin kosten 10,44 €. Was kosten 11 Liter?",
+      "answer": 19.14,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "1 Liter: 10,44 : 6 = 1,74 €",
+        "11 Liter: 1,74 · 11"
+      ],
+      "solution": "1 Liter → 10,44 : 6 = 1,74 €\n11 Liter → 1,74 · 11 = 19,14 €",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 1.74,
+          "feedback": "Das ist der Preis pro Liter."
+        }
+      ],
+      "tags": [
+        "dreisatz"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Warum funktioniert der Dreisatz bei proportionalen Zuordnungen?",
+      "options": [
+        "Weil der Quotient y : x immer gleich bleibt — der Preis pro Stück ändert sich nicht",
+        "Weil man immer durch 3 teilt",
+        "Weil beide Zahlen gleichzeitig größer werden"
+      ],
+      "answer": 0,
+      "hints": [
+        "Rechne bei 5 Stück → 2,50 € einmal 2,50 : 5 und bei 8 Stück → 4,00 € einmal 4,00 : 8. Was fällt auf?"
+      ],
+      "solution": "Bei einer proportionalen Zuordnung ist y : x konstant — das ist der Preis pro Stück (der Proportionalitätsfaktor k).\n2,50 : 5 = 0,50 und 4,00 : 8 = 0,50 — derselbe Wert.\nGenau deshalb darf man über die Einheit rechnen.",
+      "misconceptions": [
+        {
+          "id": "name_missverstanden",
+          "value": 1,
+          "feedback": "Der Name kommt von den drei Schritten (gegeben – Einheit – gesucht), nicht vom Teilen durch 3."
+        },
+        {
+          "id": "monotonie_reicht",
+          "value": 2,
+          "feedback": "Das reicht nicht. Auch bei „mehr Alter → mehr Körpergröße\" werden beide Werte größer — trotzdem gilt dort kein Dreisatz. Entscheidend ist der konstante Quotient."
+        }
+      ],
+      "tags": [
+        "begruendung",
+        "proportional",
+        "msa"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "multi",
+      "prompt": "4 kg Kaffee kosten 5,20 €. Bestimme zuerst den Faktor (Preis pro kg) und rechne damit direkt.",
+      "fields": [
+        {
+          "label": "Faktor k (Preis je kg)",
+          "answer": 1.3,
+          "unit_label": "€/kg",
+          "tolerance": 0.005
+        },
+        {
+          "label": "Preis für 9 kg",
+          "answer": 11.7,
+          "unit_label": "€",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "k = 5,20 : 4",
+        "Dann direkt: y = k · 9 — ohne Zwischenschritt."
+      ],
+      "solution": "k = 5,20 : 4 = 1,30 €/kg\ny = 1,30 · 9 = 11,70 €\nMit dem Faktor braucht man den Zwischenschritt über 1 nicht mehr aufzuschreiben — er steckt im Faktor drin.",
+      "tags": [
+        "faktor",
+        "proportional"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ03-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Rezept für 4 Personen braucht 250 ml Sahne. Wie viel Milliliter braucht man für 6 Personen?",
+      "answer": 375,
+      "unit_label": "ml",
+      "tolerance": 0.01,
+      "hints": [
+        "1 Person: 250 : 4 = 62,5 ml",
+        "6 Personen: 62,5 · 6",
+        "Oder mit dem Faktor 1,5: 6 Personen sind das Anderthalbfache von 4."
+      ],
+      "solution": "1 Person → 250 : 4 = 62,5 ml\n6 Personen → 62,5 · 6 = 375 ml\nKürzer: 6 : 4 = 1,5  →  250 · 1,5 = 375 ml",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": 166.67,
+          "feedback": "Du hast 250 : 6 · 4 gerechnet. Geteilt wird durch die gegebene Anzahl (4), mal genommen mit der gesuchten (6). Für mehr Personen braucht man mehr Sahne."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 62.5,
+          "feedback": "Das ist die Menge für 1 Person."
+        }
+      ],
+      "tags": [
+        "dreisatz",
+        "rezept",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH",
+        "W-EINH"
+      ]
+    }
+  ]
+}
