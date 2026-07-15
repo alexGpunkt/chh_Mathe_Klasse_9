@@ -1,0 +1,185 @@
+{
+  "category": "W-BRUCH",
+  "title": "Brüche & Dezimalzahlen",
+  "generators": [
+
+    {
+      "id": "WBRUCH-A-haelfte", "level": "A", "skill": "Halbieren",
+      "vars": { "n": { "von": 10, "bis": 200, "schritt": 2 } },
+      "template": "Die Hälfte von {n}", "answer": "n/2", "round": 2,
+      "hint": "Teile durch 2.",
+      "solution": "{n} : 2 = {ergebnis}"
+    },
+    {
+      "id": "WBRUCH-A-viertel", "level": "A", "skill": "Vierteln",
+      "vars": { "n": { "von": 8, "bis": 200, "schritt": 4 } },
+      "template": "Ein Viertel von {n}", "answer": "n/4", "round": 2,
+      "hint": "Ein Viertel ist die Hälfte von der Hälfte.",
+      "solution": "{n} : 2 = {n/2},  davon die Hälfte = {ergebnis}",
+      "misconceptions": [
+        { "id": "haelfte_verwechselt", "value": "n/2", "feedback": "Das ist die Hälfte. Ein Viertel ist noch einmal halb so viel." }
+      ]
+    },
+    {
+      "id": "WBRUCH-A-zehntel-dez", "level": "A", "skill": "Zehntel als Dezimalzahl",
+      "vars": { "z": { "von": 1, "bis": 9 } },
+      "template": "Schreibe {z}/10 als Dezimalzahl.", "answer": "z/10", "round": 2,
+      "hint": "Zehntel stehen an der ersten Stelle hinter dem Komma.",
+      "solution": "{z}/10 = {ergebnis}",
+      "misconceptions": [
+        { "id": "komma_verschoben", "value": "z/100", "feedback": "Das sind Hundertstel. Zehntel stehen direkt hinter dem Komma: 0,{z}." }
+      ]
+    },
+    {
+      "id": "WBRUCH-A-dez-zehntel", "level": "A", "skill": "Zehntel ablesen",
+      "vars": { "z": { "von": 1, "bis": 9 } },
+      "template": "0,{z} — wie viele Zehntel sind das?", "answer": "z", "round": 0,
+      "hint": "Die erste Stelle hinter dem Komma zählt die Zehntel.",
+      "solution": "0,{z} = {z}/10 — also {ergebnis} Zehntel"
+    },
+    {
+      "id": "WBRUCH-A-verdoppeln", "level": "A", "skill": "Verdoppeln",
+      "vars": { "n": { "von": 5, "bis": 250, "schritt": 5 } },
+      "template": "Verdopple {n}", "answer": "2*n", "round": 0,
+      "hint": "Nimm mal 2.",
+      "solution": "{n} · 2 = {ergebnis}"
+    },
+
+    {
+      "id": "WBRUCH-B-bruch-prozent", "level": "B", "skill": "Bruch als Prozent",
+      "vars": {
+        "n": { "aus": [2, 4, 5, 10, 20, 25, 50] },
+        "z": { "von": 1, "bis": 49 }
+      },
+      "bedingung": "z < n",
+      "template": "Schreibe {z}/{n} als Prozent.", "answer": "z/n*100",
+      "unit_label": "%", "round": 2,
+      "hint": "Zähler durch Nenner, dann mal 100.",
+      "solution": "{z} : {n} = {z/n}\n{z/n} · 100 = {ergebnis} %",
+      "misconceptions": [
+        { "id": "mal_100_vergessen", "value": "z/n", "feedback": "Das ist die Dezimalzahl. Für Prozent noch mal 100." },
+        { "id": "nenner_als_prozent", "value": "n", "feedback": "Die {n} ist der Nenner, kein Prozentsatz. Rechne {z} : {n} · 100." },
+        { "id": "geteilt_vertauscht", "value": "n/z*100", "feedback": "Du hast {n} : {z} gerechnet. Der Zähler steht vorn — und das Ergebnis muss unter 100 % liegen." }
+      ]
+    },
+    {
+      "id": "WBRUCH-B-dez-prozent", "level": "B", "skill": "Dezimalzahl als Prozent",
+      "vars": { "k": { "von": 1, "bis": 99 } },
+      "berechnet": { "d": "k/100" },
+      "template": "Schreibe {d} als Prozent.", "answer": "k", "unit_label": "%", "round": 2,
+      "hint": "Das Komma wandert zwei Stellen nach rechts.",
+      "solution": "{d} · 100 = {ergebnis} %",
+      "misconceptions": [
+        { "id": "komma_verschoben", "value": "k/10", "feedback": "Nur eine Stelle verschoben. Für Prozent sind es zwei: {d} → {ergebnis} %." },
+        { "id": "mal_100_vergessen", "value": "d", "feedback": "Das ist noch die Dezimalzahl. Nimm sie mal 100." }
+      ]
+    },
+    {
+      "id": "WBRUCH-B-bruch-dez", "level": "B", "skill": "Bruch als Dezimalzahl",
+      "vars": {
+        "n": { "aus": [2, 4, 5, 8, 10, 20, 25] },
+        "z": { "von": 1, "bis": 24 }
+      },
+      "bedingung": "z < n",
+      "template": "Schreibe {z}/{n} als Dezimalzahl.", "answer": "z/n", "round": 3,
+      "tolerance": 0.0005,
+      "hint": "Zähler durch Nenner teilen.",
+      "solution": "{z} : {n} = {ergebnis}",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": "n/z", "feedback": "Du hast {n} : {z} gerechnet. Weil {z} kleiner als {n} ist, muss das Ergebnis unter 1 liegen." }
+      ]
+    },
+    {
+      "id": "WBRUCH-B-erweitern", "level": "B", "skill": "Auf Hundertstel erweitern",
+      "vars": {
+        "n": { "aus": [2, 4, 5, 10, 20, 25, 50] },
+        "z": { "von": 1, "bis": 49 }
+      },
+      "bedingung": "z < n",
+      "template": "{z}/{n} = ? / 100 — gib den Zähler an.", "answer": "z*100/n", "round": 2,
+      "hint": "Womit muss {n} multipliziert werden, um 100 zu ergeben? Mit derselben Zahl auch den Zähler.",
+      "solution": "{n} · {100/n} = 100, also {z} · {100/n} = {ergebnis}",
+      "misconceptions": [
+        { "id": "nur_nenner_erweitert", "value": "z", "feedback": "Du hast nur den Nenner erweitert. Zähler und Nenner müssen mit derselben Zahl ({100/n}) multipliziert werden." }
+      ]
+    },
+    {
+      "id": "WBRUCH-B-prozent-dez", "level": "B", "skill": "Prozent als Dezimalzahl",
+      "vars": { "p": { "von": 1, "bis": 99 } },
+      "template": "Schreibe {p} % als Dezimalzahl.", "answer": "p/100", "round": 4,
+      "tolerance": 0.00005,
+      "hint": "Das Komma wandert zwei Stellen nach links.",
+      "solution": "{p} : 100 = {ergebnis}",
+      "misconceptions": [
+        { "id": "komma_verschoben", "value": "p/10", "feedback": "Nur eine Stelle verschoben. Von Prozent zur Dezimalzahl sind es zwei." }
+      ]
+    },
+
+    {
+      "id": "WBRUCH-C-unbequem-ganz", "level": "C", "skill": "Unbequemer Bruch, ganze Prozent",
+      "vars": {
+        "n": { "aus": [3, 6, 7, 9, 11, 12] },
+        "z": { "von": 1, "bis": 11 }
+      },
+      "bedingung": "z < n",
+      "template": "Schreibe {z}/{n} als Prozent. Runde auf ganze Prozent.",
+      "answer": "z/n*100", "unit_label": "%", "round": 0, "tolerance": 0.5,
+      "hint": "Erst {z} : {n} rechnen, dann mal 100 — und zuletzt runden.",
+      "solution": "{z} : {n} · 100 = {z/n*100} ≈ {ergebnis} %",
+      "misconceptions": [
+        { "id": "mal_100_vergessen", "value": "z/n", "feedback": "Das ist die Dezimalzahl. Noch mal 100." }
+      ]
+    },
+    {
+      "id": "WBRUCH-C-unbequem-eine", "level": "C", "skill": "Unbequemer Bruch, eine Nachkommastelle",
+      "vars": {
+        "n": { "aus": [6, 8, 16] },
+        "z": { "von": 1, "bis": 15 }
+      },
+      "bedingung": "z < n",
+      "template": "Schreibe {z}/{n} als Prozent. Runde auf eine Nachkommastelle.",
+      "answer": "z/n*100", "unit_label": "%", "round": 1, "tolerance": 0.05,
+      "hint": "{z} : {n} · 100 — dann auf eine Stelle hinter dem Komma runden.",
+      "solution": "{z} : {n} · 100 = {z/n*100} ≈ {ergebnis} %"
+    },
+    {
+      "id": "WBRUCH-C-klein-dez", "level": "C", "skill": "Kleine Dezimalzahl als Prozent",
+      "vars": { "k": { "von": 1, "bis": 99 } },
+      "berechnet": { "d": "k/1000" },
+      "template": "Schreibe {d} als Prozent.", "answer": "k/10", "unit_label": "%", "round": 2,
+      "hint": "Auch hier: Komma zwei Stellen nach rechts. Das Ergebnis liegt unter 10 %.",
+      "solution": "{d} · 100 = {ergebnis} %",
+      "misconceptions": [
+        { "id": "komma_verschoben", "value": "k", "feedback": "Um Faktor 10 zu groß. {d} · 100 = {ergebnis} %, nicht {k} %." },
+        { "id": "mal_100_vergessen", "value": "d", "feedback": "Das ist noch die Dezimalzahl." }
+      ]
+    },
+    {
+      "id": "WBRUCH-C-gross-dez", "level": "C", "skill": "Über 100 Prozent",
+      "vars": { "k": { "von": 1, "bis": 9 } },
+      "berechnet": { "d": "1+k/10" },
+      "template": "Schreibe {d} als Prozent.", "answer": "100+10*k", "unit_label": "%", "round": 2,
+      "hint": "1 sind 100 %. Was kommt noch dazu?",
+      "solution": "{d} · 100 = {ergebnis} %\nWerte über 1 ergeben mehr als 100 % — das ist erlaubt.",
+      "misconceptions": [
+        { "id": "ueber_100_unmoeglich", "value": "10*k", "feedback": "Du hast nur die Nachkommastelle umgerechnet. Die 1 davor sind 100 % — zusammen {ergebnis} %." }
+      ]
+    },
+    {
+      "id": "WBRUCH-C-anteil-unbequem", "level": "C", "skill": "Anteil in Prozent, zwei Stellen",
+      "vars": {
+        "n": { "aus": [7, 9, 11, 13, 17, 19, 23, 37 ] },
+        "z": { "von": 1, "bis": 36 }
+      },
+      "bedingung": "z < n",
+      "template": "Wie viel Prozent sind {z} von {n}? Runde auf zwei Nachkommastellen.",
+      "answer": "z/n*100", "unit_label": "%", "round": 2, "tolerance": 0.006,
+      "hint": "Teil durch Ganzes, mal 100.",
+      "solution": "{z} : {n} · 100 = {ergebnis} %",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": "n/z*100", "feedback": "Du hast {n} : {z} gerechnet. Das ergibt über 100 % — unmöglich, wenn {z} kleiner als {n} ist." },
+        { "id": "mal_100_vergessen", "value": "z/n", "feedback": "Das ist der Anteil als Dezimalzahl." }
+      ]
+    }
+  ]
+}
