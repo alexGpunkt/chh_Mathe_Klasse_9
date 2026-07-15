@@ -1,0 +1,493 @@
+{
+  "unit": "PZ-06",
+  "title": "Prozentwert berechnen",
+  "leitidee": "L1",
+  "standards": [
+    "K5"
+  ],
+  "wortspeicher": [
+    "der Grundwert",
+    "der Prozentwert",
+    "der Prozentsatz",
+    "der Rabatt",
+    "die Mehrwertsteuer"
+  ],
+  "can_do": {
+    "A": "Du berechnest den Prozentwert über den 1-%-Schritt.",
+    "B": "Du berechnest W = G · p : 100 und prüfst dein Ergebnis am Streifen.",
+    "C": "Du rechnest mit dem Faktor, überschlägst vorher und vergleichst zwei Wege."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Über 1 %:   1 % = G : 100   →   W = (G : 100) · p",
+      "Formel:     W = G · p : 100",
+      "Faktor:     W = G · 0,p       (17 % → · 0,17)"
+    ],
+    "saetze": [
+      "1 % von … sind … €.",
+      "Also sind … % gleich … €.",
+      "Mein Ergebnis muss kleiner als der Grundwert sein, weil … % weniger als 100 % sind."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ06-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Fahrrad kostet 200 €. Du bekommst 10 % Rabatt. Wie viel Euro Rabatt sind das?",
+      "answer": 20,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Rechne zuerst 1 %: 200 : 100 = 2 €.",
+        "Jetzt 10 % — also 2 € mal 10."
+      ],
+      "solution": "1 % = 200 : 100 = 2 €\n10 % = 2 € · 10 = 20 €",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 2,
+          "feedback": "Du hast bei 1 % aufgehört. 1 % = 2 €. Gesucht sind 10 % — also noch mal 10 nehmen."
+        },
+        {
+          "id": "endpreis_statt_teil",
+          "value": 180,
+          "feedback": "Du hast den Preis nach dem Rabatt berechnet. Gefragt ist der Rabatt selbst."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "rabatt"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ06-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "An einer Schule sind 400 Kinder. 25 % fahren mit dem Bus. Wie viele Kinder sind das?",
+      "answer": 100,
+      "unit_label": "Kinder",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 400 : 100 = 4 Kinder.",
+        "25 % = 4 · 25."
+      ],
+      "solution": "1 % = 400 : 100 = 4\n25 % = 4 · 25 = 100 Kinder",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 4,
+          "feedback": "Das ist 1 %. Gesucht sind 25 % — also noch mal 25 nehmen."
+        },
+        {
+          "id": "rest_statt_teil",
+          "value": 300,
+          "feedback": "Das sind die Kinder, die NICHT mit dem Bus fahren. Gefragt sind die 25 %."
+        }
+      ],
+      "tags": [
+        "prozentwert"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ06-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Handy kostet 600 €. Du zahlst 5 % Anzahlung. Wie viel Euro sind das?",
+      "answer": 30,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Erst 1 % rechnen, dann mal 5."
+      ],
+      "solution": "1 % = 600 : 100 = 6 €\n5 % = 6 € · 5 = 30 €",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 6,
+          "feedback": "Das ist 1 %. Gesucht sind 5 %."
+        },
+        {
+          "id": "geteilt_statt_mal",
+          "value": 120,
+          "feedback": "Du hast 600 : 5 gerechnet. Rechne über 1 %: 600 : 100 = 6, dann · 5."
+        }
+      ],
+      "tags": [
+        "prozentwert"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ06-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine Kiste wiegt 50 kg. 20 % davon ist die Verpackung. Wie viele Kilogramm wiegt die Verpackung?",
+      "answer": 10,
+      "unit_label": "kg",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 50 : 100 = 0,5 kg.",
+        "20 % = 0,5 · 20."
+      ],
+      "solution": "1 % = 50 : 100 = 0,5 kg\n20 % = 0,5 kg · 20 = 10 kg",
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 40,
+          "feedback": "Das ist das Gewicht ohne Verpackung. Gefragt ist die Verpackung selbst."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 0.5,
+          "feedback": "Das ist 1 %. Gesucht sind 20 %."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "groessen"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "PZ06-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Laptop kostet 850 €. Im Angebot sind 12 % Rabatt. Wie viel Euro sparst du?",
+      "answer": 102,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "W = G · p : 100",
+        "850 · 12 : 100"
+      ],
+      "solution": "W = 850 € · 12 : 100 = 102 €\nProbe am Streifen: 10 % wären 85 €, 12 % müssen etwas mehr sein. ✓",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 8.5,
+          "feedback": "Das ist 1 %. Noch mal 12 nehmen."
+        },
+        {
+          "id": "endpreis_statt_teil",
+          "value": 748,
+          "feedback": "Das ist der Preis nach dem Rabatt. Gefragt ist die Ersparnis."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "rabatt",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ06-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "In einem Ort leben 1 250 Menschen. 36 % sind unter 18 Jahre alt. Wie viele Menschen sind das?",
+      "answer": 450,
+      "unit_label": "Menschen",
+      "tolerance": 0.01,
+      "hints": [
+        "W = 1 250 · 36 : 100"
+      ],
+      "solution": "W = 1 250 · 36 : 100 = 450 Menschen\nProbe: 36 % ist gut ein Drittel — ein Drittel von 1 250 wäre rund 417. Passt. ✓",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 12.5,
+          "feedback": "Das ist 1 %. Noch mal 36 nehmen."
+        },
+        {
+          "id": "rest_statt_teil",
+          "value": 800,
+          "feedback": "Das sind die über 18-Jährigen (64 %). Gefragt sind die 36 %."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ06-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Trikot kostet 45 €. Es gibt 20 % Rabatt. Wie viel Euro sparst du?",
+      "answer": 9,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "20 % sind ein Fünftel. 45 : 5 geht auch im Kopf."
+      ],
+      "solution": "W = 45 € · 20 : 100 = 9 €\nKopfweg: 20 % = ein Fünftel → 45 : 5 = 9 €",
+      "misconceptions": [
+        {
+          "id": "endpreis_statt_teil",
+          "value": 36,
+          "feedback": "Das ist der Preis nach dem Rabatt. Gefragt ist die Ersparnis."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "rabatt"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ06-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "In einem Betrieb arbeiten 320 Personen. 45 % arbeiten im Homeoffice. Wie viele Personen sind das?",
+      "answer": 144,
+      "unit_label": "Personen",
+      "tolerance": 0.01,
+      "hints": [
+        "W = 320 · 45 : 100"
+      ],
+      "solution": "W = 320 · 45 : 100 = 144 Personen\nProbe: 45 % ist knapp die Hälfte. Die Hälfte von 320 wäre 160. Passt. ✓",
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 176,
+          "feedback": "Das sind die 55 %, die nicht im Homeoffice arbeiten."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ06-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Auto kostet netto 24 500 €. Darauf kommen 19 % Mehrwertsteuer. Wie viel Euro Mehrwertsteuer sind das?",
+      "answer": 4655,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Der Nettopreis ist der Grundwert.",
+        "W = 24 500 · 19 : 100"
+      ],
+      "solution": "W = 24 500 € · 19 : 100 = 4 655 €\nProbe: 20 % wären 4 900 €. 19 % müssen knapp darunter liegen. ✓",
+      "misconceptions": [
+        {
+          "id": "gesamtwert_statt_teil",
+          "value": 29155,
+          "feedback": "Das ist der Bruttopreis (netto + Steuer). Gefragt ist nur die Mehrwertsteuer."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 245,
+          "feedback": "Das ist 1 %. Noch mal 19 nehmen."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "mwst",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ06-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine Wanderung ist 18 km lang. Nach 35 % der Strecke machst du Pause. Nach wie vielen Kilometern ist das?",
+      "answer": 6.3,
+      "unit_label": "km",
+      "tolerance": 0.01,
+      "hints": [
+        "W = 18 · 35 : 100",
+        "Das Ergebnis ist keine ganze Zahl — das ist in Ordnung."
+      ],
+      "solution": "W = 18 km · 35 : 100 = 6,3 km\nProbe: Ein Drittel von 18 km wären 6 km. 35 % ist etwas mehr. ✓",
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 11.7,
+          "feedback": "Das ist der Rest der Strecke (65 %). Gefragt sind die ersten 35 %."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "groessen"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "PZ06-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Auf einem Konto liegen 3 400 €. Die Bank zahlt 2,5 % Zinsen im Jahr. Wie viel Euro Zinsen sind das?",
+      "answer": 85,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Der Faktor zu 2,5 % ist 0,025.",
+        "3 400 · 0,025"
+      ],
+      "solution": "W = 3 400 € · 0,025 = 85 €\nÜberschlag: 1 % wären 34 €, 2,5 % also gut das Doppelte. ✓",
+      "misconceptions": [
+        {
+          "id": "komma_verschoben",
+          "value": 850,
+          "feedback": "Um Faktor 10 zu groß. 2,5 % sind 0,025 — nicht 0,25. 0,25 wären 25 %."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "dezimaler_satz",
+        "zinsen"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-BRUCH"
+      ]
+    },
+    {
+      "id": "PZ06-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Berechne 17 % von 250 € auf zwei Wegen: einmal mit dem Faktor, einmal zerlegt in 10 % + 7 %.",
+      "answer": 42.5,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Weg 1: 250 · 0,17",
+        "Weg 2: 10 % = 25 €, 1 % = 2,50 € → 7 % = 17,50 €. Beides addieren."
+      ],
+      "solution": "Weg 1: 250 € · 0,17 = 42,50 €\nWeg 2: 10 % = 25,00 €;  1 % = 2,50 €;  7 % = 17,50 €;  25,00 + 17,50 = 42,50 €\nBeide Wege führen zum selben Ergebnis — Weg 2 geht im Kopf.",
+      "misconceptions": [
+        {
+          "id": "zerlegung_falsch",
+          "value": 27.5,
+          "feedback": "Du hast 10 % + 1 % gerechnet. Es müssen 10 % + 7 % sein."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "zwei_wege",
+        "kopfrechnen"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ06-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Grundstück ist 1 250 m² groß. 0,8 % davon dürfen bebaut werden. Wie viele Quadratmeter sind das?",
+      "answer": 10,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "0,8 % sind weniger als 1 %. Das Ergebnis ist also kleiner als 12,5 m².",
+        "Faktor: 0,008"
+      ],
+      "solution": "1 % = 12,5 m²  →  0,8 % = 12,5 · 0,8 = 10 m²\noder direkt: 1 250 · 0,008 = 10 m²",
+      "misconceptions": [
+        {
+          "id": "komma_verschoben",
+          "value": 100,
+          "feedback": "Um Faktor 10 zu groß — du hast 8 % gerechnet. 0,8 % entspricht dem Faktor 0,008."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 12.5,
+          "feedback": "Das ist 1 %. Gesucht sind 0,8 % — also etwas weniger."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "dezimaler_satz",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "PZ06-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine Jacke kostet 89,90 €. Sie wird um 33 % reduziert. Wie viel Euro sind das? Runde auf Cent.",
+      "answer": 29.67,
+      "unit_label": "€",
+      "tolerance": 0.011,
+      "hints": [
+        "Überschlage zuerst: 33 % ist ungefähr ein Drittel von 90 € — also etwa 30 €.",
+        "89,90 · 0,33"
+      ],
+      "solution": "W = 89,90 € · 0,33 = 29,667 € ≈ 29,67 €\nÜberschlag vorher: ein Drittel von 90 € ≈ 30 €. Passt.",
+      "misconceptions": [
+        {
+          "id": "endpreis_statt_teil",
+          "value": 60.23,
+          "feedback": "Das ist der reduzierte Preis. Gefragt ist die Ersparnis."
+        },
+        {
+          "id": "falsch_gerundet",
+          "value": 29.7,
+          "feedback": "Fast — 29,667 € wird auf Cent gerundet zu 29,67 €, nicht 29,70 €."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "runden",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-BRUCH"
+      ]
+    }
+  ]
+}
