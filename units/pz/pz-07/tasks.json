@@ -1,0 +1,474 @@
+{
+  "unit": "PZ-07",
+  "title": "Prozentsatz berechnen",
+  "leitidee": "L1",
+  "standards": [
+    "K5"
+  ],
+  "wortspeicher": [
+    "der Grundwert",
+    "der Prozentwert",
+    "der Prozentsatz",
+    "der Anteil"
+  ],
+  "can_do": {
+    "A": "Du bestimmst den Prozentsatz, wenn Teil und Ganzes gut teilbar sind.",
+    "B": "Du wendest p = W : G · 100 sicher an, auch mit Taschenrechner und Rundung.",
+    "C": "Du bestimmst den Prozentsatz bei Veränderungen und beurteilst, ob die Angabe aussagekräftig ist."
+  },
+  "formelkarte": {
+    "formeln": [
+      "p % = W : G · 100",
+      "Merke: Teil : Ganzes — nie umgekehrt.",
+      "Bei Veränderungen: G ist immer der ALTE Wert."
+    ],
+    "saetze": [
+      "Der Anteil ist … von … , also … Prozent.",
+      "Der Grundwert ist … , weil das der Wert vorher ist.",
+      "Das Ergebnis muss unter 100 % liegen, weil der Teil kleiner als das Ganze ist."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ07-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Du hattest 80 Aufgaben. 20 davon waren richtig. Wie viel Prozent sind richtig?",
+      "answer": 25,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Teile den Teil durch das Ganze: 20 : 80.",
+        "Das Ergebnis noch mal 100 nehmen."
+      ],
+      "solution": "p = 20 : 80 · 100 = 0,25 · 100 = 25 %",
+      "misconceptions": [
+        {
+          "id": "mal_100_vergessen",
+          "value": 0.25,
+          "feedback": "Das ist der Anteil als Dezimalzahl. Für Prozent noch mal 100 nehmen."
+        },
+        {
+          "id": "geteilt_vertauscht",
+          "value": 400,
+          "feedback": "Du hast 80 : 20 gerechnet. Es muss Teil : Ganzes sein, also 20 : 80."
+        }
+      ],
+      "tags": [
+        "prozentsatz"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-BRUCH"
+      ]
+    },
+    {
+      "id": "PZ07-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "In einer Gruppe sind 30 Kinder. 9 davon spielen Fußball. Wie viel Prozent sind das?",
+      "answer": 30,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "9 : 30 = 0,3",
+        "0,3 · 100 = ?"
+      ],
+      "solution": "p = 9 : 30 · 100 = 0,3 · 100 = 30 %",
+      "misconceptions": [
+        {
+          "id": "mal_100_vergessen",
+          "value": 0.3,
+          "feedback": "Das ist der Anteil als Dezimalzahl. Noch mal 100 für Prozent."
+        },
+        {
+          "id": "geteilt_vertauscht",
+          "value": 333.33,
+          "feedback": "Du hast 30 : 9 gerechnet. Der Teil kommt zuerst: 9 : 30."
+        }
+      ],
+      "tags": [
+        "prozentsatz"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Von 50 Sitzplätzen sind 12 besetzt. Wie viel Prozent sind besetzt?",
+      "answer": 24,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "12 : 50 · 100"
+      ],
+      "solution": "p = 12 : 50 · 100 = 0,24 · 100 = 24 %",
+      "misconceptions": [
+        {
+          "id": "mal_100_vergessen",
+          "value": 0.24,
+          "feedback": "Noch mal 100 nehmen — dann sind es Prozent."
+        },
+        {
+          "id": "rest_statt_teil",
+          "value": 76,
+          "feedback": "Das sind die freien Plätze. Gefragt sind die besetzten."
+        }
+      ],
+      "tags": [
+        "prozentsatz"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Von 70 Bäumen sind 35 Nadelbäume. Wie viel Prozent sind Nadelbäume?",
+      "answer": 50,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "35 ist genau die Hälfte von 70.",
+        "Die Hälfte sind wie viel Prozent?"
+      ],
+      "solution": "p = 35 : 70 · 100 = 0,5 · 100 = 50 %\nDie Hälfte ist immer 50 %.",
+      "misconceptions": [
+        {
+          "id": "mal_100_vergessen",
+          "value": 0.5,
+          "feedback": "Das ist der Anteil als Dezimalzahl. 0,5 · 100 = 50 %."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "kopfrechnen"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ07-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Von 200 Fahrgästen haben 34 keinen Fahrschein. Wie viel Prozent sind das?",
+      "answer": 17,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "p = W : G · 100",
+        "34 : 200 · 100"
+      ],
+      "solution": "p = 34 : 200 · 100 = 17 %\nProbe: 10 % wären 20 Fahrgäste, 20 % wären 40. 34 liegt dazwischen. ✓",
+      "misconceptions": [
+        {
+          "id": "geteilt_vertauscht",
+          "value": 588.24,
+          "feedback": "Du hast 200 : 34 gerechnet. Teil durch Ganzes: 34 : 200."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Von 350 Bestellungen wurden 63 zurückgeschickt. Wie viel Prozent sind das?",
+      "answer": 18,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "63 : 350 · 100"
+      ],
+      "solution": "p = 63 : 350 · 100 = 18 %\nProbe: 10 % wären 35, 20 % wären 70. 63 liegt knapp darunter. ✓",
+      "misconceptions": [
+        {
+          "id": "mal_100_vergessen",
+          "value": 0.18,
+          "feedback": "Noch mal 100 nehmen."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Speicher fasst 128 GB. 96 GB sind belegt. Wie viel Prozent sind belegt?",
+      "answer": 75,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "96 : 128 · 100",
+        "96 von 128 sind drei Viertel."
+      ],
+      "solution": "p = 96 : 128 · 100 = 0,75 · 100 = 75 %\nDrei Viertel sind immer 75 %.",
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 25,
+          "feedback": "Das ist der freie Speicher. Gefragt ist der belegte."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-BRUCH"
+      ]
+    },
+    {
+      "id": "PZ07-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Von 56 Schülerinnen und Schülern fehlen 7. Wie viel Prozent fehlen?",
+      "answer": 12.5,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "7 : 56 · 100",
+        "Das Ergebnis ist keine ganze Zahl."
+      ],
+      "solution": "p = 7 : 56 · 100 = 0,125 · 100 = 12,5 %",
+      "misconceptions": [
+        {
+          "id": "geteilt_vertauscht",
+          "value": 800,
+          "feedback": "Du hast 56 : 7 gerechnet. Der Teil steht vorn: 7 : 56."
+        },
+        {
+          "id": "mal_100_vergessen",
+          "value": 0.125,
+          "feedback": "Noch mal 100 nehmen."
+        }
+      ],
+      "tags": [
+        "prozentsatz"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-BRUCH"
+      ]
+    },
+    {
+      "id": "PZ07-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Ticket kostete 40 €. Jetzt kostet es 46 €. Um wie viel Prozent ist der Preis gestiegen?",
+      "answer": 15,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Berechne zuerst die Erhöhung in Euro: 46 − 40.",
+        "Der Grundwert ist der ALTE Preis: 40 €."
+      ],
+      "solution": "Erhöhung W = 46 € − 40 € = 6 €\np = 6 : 40 · 100 = 15 %",
+      "misconceptions": [
+        {
+          "id": "neuer_wert_in_prozent",
+          "value": 115,
+          "feedback": "115 % ist der neue Preis im Verhältnis zum alten. Gefragt ist nur die Steigerung — also 15 %."
+        },
+        {
+          "id": "neuer_als_grundwert",
+          "value": 13.04,
+          "feedback": "Du hast durch 46 geteilt. Der Grundwert ist immer der alte Preis: 6 : 40."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "veraenderung",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Von 1 500 Tickets sind 1 200 verkauft. Wie viel Prozent sind verkauft?",
+      "answer": 80,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "1 200 : 1 500 · 100"
+      ],
+      "solution": "p = 1 200 : 1 500 · 100 = 0,8 · 100 = 80 %",
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 20,
+          "feedback": "Das sind die übrigen Tickets. Gefragt sind die verkauften."
+        }
+      ],
+      "tags": [
+        "prozentsatz"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "In einem Dorf mit 240 Einwohnern sind 3 arbeitslos. Wie viel Prozent sind das?",
+      "answer": 1.25,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "3 : 240 · 100"
+      ],
+      "solution": "p = 3 : 240 · 100 = 1,25 %\nZum Nachdenken: Wenn eine einzige Person wegzieht, ändert sich die Quote schon um über 0,4 Prozentpunkte. Bei so kleinen Grundwerten sind Prozentangaben wenig aussagekräftig.",
+      "misconceptions": [
+        {
+          "id": "geteilt_vertauscht",
+          "value": 8000,
+          "feedback": "Du hast 240 : 3 gerechnet. Teil durch Ganzes: 3 : 240."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "kritisch",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Von 37 Prüflingen haben 22 bestanden. Wie viel Prozent sind das? Runde auf ganze Prozent.",
+      "answer": 59,
+      "unit_label": "%",
+      "tolerance": 0.6,
+      "hints": [
+        "22 : 37 · 100",
+        "Der Taschenrechner zeigt viele Nachkommastellen — runde am Ende."
+      ],
+      "solution": "p = 22 : 37 · 100 = 59,459… ≈ 59 %",
+      "misconceptions": [
+        {
+          "id": "falsch_gerundet",
+          "value": 60,
+          "feedback": "59,46 wird auf ganze Prozent gerundet zu 59 %, nicht 60 %. Die erste Nachkommastelle ist 4."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "runden",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Preis fällt von 250 € auf 190 €. Um wie viel Prozent ist er gefallen?",
+      "answer": 24,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Berechne zuerst die Abnahme: 250 − 190.",
+        "Der Grundwert ist der alte Preis 250 €."
+      ],
+      "solution": "Abnahme W = 250 € − 190 € = 60 €\np = 60 : 250 · 100 = 24 %",
+      "misconceptions": [
+        {
+          "id": "neuer_wert_in_prozent",
+          "value": 76,
+          "feedback": "76 % ist der neue Preis im Verhältnis zum alten. Gefragt ist die Abnahme: 100 % − 76 % = 24 %."
+        },
+        {
+          "id": "neuer_als_grundwert",
+          "value": 31.58,
+          "feedback": "Du hast durch 190 geteilt. Der Grundwert ist der Preis VORHER: 60 : 250."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "veraenderung",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ07-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Verein hatte 80 Mitglieder, jetzt sind es 100. Um wie viel Prozent ist die Zahl gestiegen?",
+      "answer": 25,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Die Zunahme sind 20 Mitglieder.",
+        "Womit vergleichst du — mit 80 oder mit 100?"
+      ],
+      "solution": "Zunahme W = 100 − 80 = 20\np = 20 : 80 · 100 = 25 %\nAchtung: Die Zunahme sind 25 % — obwohl 20 von 100 nach „20 %\" aussieht.",
+      "misconceptions": [
+        {
+          "id": "neuer_als_grundwert",
+          "value": 20,
+          "feedback": "Du hast 20 : 100 gerechnet — also durch den NEUEN Wert geteilt. Der Grundwert ist der alte Wert 80: 20 : 80 = 25 %."
+        },
+        {
+          "id": "neuer_wert_in_prozent",
+          "value": 125,
+          "feedback": "125 % ist der neue Stand im Verhältnis zum alten. Gefragt ist die Zunahme: 25 %."
+        }
+      ],
+      "tags": [
+        "prozentsatz",
+        "veraenderung",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    }
+  ]
+}
