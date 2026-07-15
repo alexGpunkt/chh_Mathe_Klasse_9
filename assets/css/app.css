@@ -337,6 +337,177 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 .formel-inhalt ul { margin: 0; padding-left: 18px; font-size: 15px; }
 .formel-inhalt li { margin-bottom: 4px; }
 
+/* ============================================================
+   Lehrkraft-Werkzeuge: Arbeitsblatt & Kompetenzmatrix
+   ============================================================ */
+
+.nur-drucken { display: none; }
+
+/* ---------- Auswahlformular ---------- */
+
+.ab-gitter { display: grid; gap: 6px; grid-template-columns: 1fr; }
+@media (min-width: 620px) { .ab-gitter { grid-template-columns: 1fr 1fr; } }
+
+.ab-check {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 48px; padding: 8px 12px;
+  background: var(--paper-hi); border: 1px solid #E1E6E9; border-radius: var(--r);
+  font-size: 15px; cursor: pointer;
+}
+.ab-check input { width: 20px; height: 20px; flex: 0 0 auto; accent-color: var(--pfad); }
+.ab-check:has(input:checked) { border-color: var(--pfad); background: var(--pfad-bg); }
+
+/* ---------- Arbeitsblatt ---------- */
+
+#blatt:empty { display: none; }
+
+.blatt-kopf {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 18px;
+}
+.blatt-kopf h2 { font-family: var(--f-display); font-size: 22px; margin: 4px 0; }
+.blatt-schule {
+  font-family: var(--f-num); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.blatt-meta { font-size: 13px; color: var(--ink-soft); }
+.blatt-namensfeld {
+  font-size: 12px; color: var(--ink-soft); text-align: right;
+  flex: 0 0 auto; min-width: 170px;
+}
+.blatt-namensfeld span {
+  display: block; border-bottom: 1px solid var(--ink-faint);
+  height: 20px; margin: 2px 0 8px;
+}
+
+.blatt-formel {
+  border: 1px solid var(--ink-faint); border-radius: var(--r);
+  padding: 10px 14px; margin-bottom: 18px; background: var(--paper-hi);
+}
+.blatt-formel h3 {
+  font-family: var(--f-num); font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ink-soft); margin: 0 0 4px;
+}
+.blatt-formel h3 + h3 { margin-top: 10px; }
+.blatt-formel pre {
+  font-family: var(--f-num); font-size: 12px; line-height: 1.5;
+  margin: 0; white-space: pre-wrap;
+}
+.blatt-formel p { font-size: 13px; margin: 0; color: var(--ink-soft); }
+
+.blatt-aufgaben, .blatt-loesungen { padding-left: 24px; margin: 0; }
+.blatt-aufgaben > li { margin-bottom: 20px; page-break-inside: avoid; }
+.blatt-loesungen > li { margin-bottom: 12px; page-break-inside: avoid; }
+.blatt-aufgaben > li::marker, .blatt-loesungen > li::marker {
+  font-family: var(--f-num); font-weight: 700; color: var(--pfad);
+}
+
+.ab-frage { font-size: 15px; margin-bottom: 8px; }
+.ab-optionen, .ab-slots { list-style: none; padding: 0; margin: 6px 0 0; font-size: 15px; }
+.ab-optionen li, .ab-slots li { margin-bottom: 6px; }
+.ab-werte {
+  font-size: 13px; color: var(--ink-soft); font-family: var(--f-num);
+  margin: 4px 0 6px;
+}
+.ab-linie {
+  display: inline-block; min-width: 90px;
+  border-bottom: 1px solid var(--ink-faint);
+}
+.ab-rechenraum {
+  height: 52px; border-bottom: 1px dotted var(--ink-faint); margin: 6px 0;
+}
+.ab-ergebnis { font-size: 14px; }
+.ab-tipp {
+  font-size: 12px; color: var(--ink-soft); font-style: italic; margin-top: 5px;
+}
+
+.blatt-umbruch { page-break-before: always; height: 0; }
+.blatt-loesungstitel {
+  font-family: var(--f-display); font-size: 20px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin: 24px 0 14px;
+}
+.blatt-loesungen .rechenweg {
+  font-family: var(--f-num); font-size: 12.5px; white-space: pre-wrap;
+  border: 0; margin: 0; padding: 0;
+}
+.blatt-fuss {
+  margin-top: 22px; padding-top: 8px; border-top: 1px solid var(--ink-faint);
+  font-size: 10px; color: var(--ink-faint); font-family: var(--f-num);
+}
+
+/* ---------- Kompetenzmatrix ---------- */
+
+.mx-leiste {
+  background: var(--paper-hi); border: 1px solid #E1E6E9;
+  border-radius: var(--r); padding: 14px; margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.mx-stand {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin: 12px 0; font-family: var(--f-num); font-size: 13px; color: var(--ink-soft);
+}
+
+.mx-einheit {
+  background: var(--paper-hi); border: 1px solid #E1E6E9;
+  border-radius: var(--r); margin-bottom: 10px; overflow: hidden;
+  page-break-inside: avoid;
+}
+.mx-kopf {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  padding: 10px 12px; background: #EDF1F3; border-bottom: 1px solid #E1E6E9;
+}
+.mx-code { font-family: var(--f-num); font-size: 12px; font-weight: 700; }
+.mx-titel { font-weight: 700; font-size: 15px; }
+.mx-standards {
+  margin-left: auto; font-family: var(--f-num); font-size: 11px; color: var(--ink-soft);
+}
+.mx-zeile {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; border-top: 1px solid #EDF1F3; cursor: pointer;
+  font-size: 15px;
+}
+.mx-zeile:first-of-type { border-top: 0; }
+.mx-zeile input { width: 20px; height: 20px; flex: 0 0 auto; margin-top: 1px; }
+.mx-zeile:has(input:checked) { background: #F4F8F6; }
+.mx-zeile:has(input:checked) .mx-satz { font-weight: 700; }
+.mx-pfad {
+  font-family: var(--f-num); font-size: 11px; color: var(--ink-soft);
+  flex: 0 0 auto; width: 88px; padding-top: 2px;
+}
+.mx-satz { flex: 1 1 auto; }
+.mx-ausgabe {
+  width: 100%; margin-top: 8px; font-family: var(--f-num); font-size: 12px;
+  border: 1px solid #C8D2D8; border-radius: 6px; padding: 8px;
+}
+
+/* ---------- Druck ---------- */
+
+@media print {
+  body {
+    background: #fff; padding: 0; font-size: 11pt;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  main { padding: 0; max-width: none; }
+
+  .kopf, .hero, .formelkarte, .aktionen, .pfadwahl, .streifen-wrap,
+  .nicht-drucken, .liste, .hinweis { display: none !important; }
+  .nur-drucken { display: block; }
+
+  .karte { box-shadow: none; page-break-inside: avoid; }
+
+  /* Der Prozentstreifen muss auch auf Papier ein Streifen bleiben */
+  .aufg-streifen { border: 1pt solid #000; height: 34pt; }
+  .aufg-fuell { background: #999 !important; }
+  .aufg-marke { background: #000 !important; }
+
+  .mx-einheit, .ab-check { border-color: #999; }
+  .mx-kopf { background: #eee !important; }
+  .mx-zeile:has(input:checked) { background: #f2f2f2 !important; }
+  .mx-zeile input { -webkit-appearance: checkbox; appearance: checkbox; }
+
+  a[href]::after { content: ''; }
+}
+
 /* ---------- Startseite ---------- */
 
 .hero { padding: 28px 16px 22px; background: var(--ink); color: var(--paper-hi); }
@@ -386,10 +557,4 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   background: rgba(21,35,58,.08); padding: 2px 5px; border-radius: 4px;
 }
 
-/* ---------- Druck ---------- */
 
-@media print {
-  body { background: #fff; padding: 0; }
-  .kopf, .formelkarte, .aktionen, .pfadwahl, .streifen-wrap { display: none !important; }
-  .karte { box-shadow: none; page-break-inside: avoid; }
-}
