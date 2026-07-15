@@ -1,0 +1,476 @@
+{
+  "unit": "PZ-04",
+  "title": "Antiproportional – und der Unterschied",
+  "leitidee": "L4",
+  "standards": [
+    "K1",
+    "K3"
+  ],
+  "wortspeicher": [
+    "die Zuordnung",
+    "proportional",
+    "antiproportional",
+    "der Dreisatz",
+    "die Produktprobe"
+  ],
+  "can_do": {
+    "A": "Du sagst bei einer Situation voraus, ob der zweite Wert steigt oder fällt.",
+    "B": "Du unterscheidest proportional und antiproportional und rechnest beide Dreisätze.",
+    "C": "Du prüfst mit der Produktprobe und zeigst, dass „mehr → weniger“ allein nicht reicht."
+  },
+  "formelkarte": {
+    "formeln": [
+      "proportional:      mehr → mehr    Quotient y : x ist konstant",
+      "antiproportional:  mehr → weniger Produkt x · y ist konstant",
+      "Dreisatz antiproportional:",
+      "  3 Maler → 12 Tage",
+      "  1 Maler → 12 · 3 = 36 Tage     (mal statt geteilt!)",
+      "  4 Maler → 36 : 4 = 9 Tage      (geteilt statt mal!)"
+    ],
+    "saetze": [
+      "Mehr … bedeutet weniger … , also ist die Zuordnung antiproportional.",
+      "Ein Maler allein braucht länger, deshalb multipliziere ich.",
+      "Die Produktprobe: … · … = … · … — das Produkt bleibt gleich."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ04-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Mehr Arbeiter bauen gemeinsam eine Mauer. Was passiert mit der Bauzeit?",
+      "options": [
+        "Sie wird kürzer",
+        "Sie wird länger"
+      ],
+      "answer": 0,
+      "hints": [
+        "Stell es dir vor: Erst arbeitet einer allein, dann helfen zehn mit."
+      ],
+      "solution": "Mehr Arbeiter → weniger Zeit. Das ist eine antiproportionale Zuordnung.",
+      "tags": [
+        "antiproportional",
+        "richtung"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Du kaufst mehr Brötchen. Was passiert mit dem Preis?",
+      "options": [
+        "Er wird höher",
+        "Er wird niedriger"
+      ],
+      "answer": 0,
+      "hints": [
+        "Mehr Ware kostet mehr Geld."
+      ],
+      "solution": "Mehr Brötchen → mehr Geld. Das ist eine proportionale Zuordnung.",
+      "misconceptions": [
+        {
+          "id": "antiproportional_gerechnet",
+          "value": 1,
+          "feedback": "Vorsicht: Nicht jede Zuordnung ist antiproportional. Mehr Brötchen kosten mehr — hier gilt „mehr → mehr“."
+        }
+      ],
+      "tags": [
+        "proportional",
+        "richtung"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Ein Wasservorrat wird auf mehr Personen verteilt. Was passiert mit der Menge pro Person?",
+      "options": [
+        "Sie wird kleiner",
+        "Sie wird größer"
+      ],
+      "answer": 0,
+      "hints": [
+        "Der Vorrat bleibt gleich groß. Nur die Zahl der Personen steigt."
+      ],
+      "solution": "Mehr Personen → weniger pro Person. Antiproportional.\nDer Vorrat (das Produkt aus Personen und Menge pro Person) bleibt gleich.",
+      "tags": [
+        "antiproportional",
+        "richtung"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Du fährst dieselbe Strecke, aber schneller. Was passiert mit der Fahrzeit?",
+      "options": [
+        "Sie wird kürzer",
+        "Sie wird länger"
+      ],
+      "answer": 0,
+      "hints": [
+        "Die Strecke bleibt gleich. Nur das Tempo steigt."
+      ],
+      "solution": "Mehr Tempo → weniger Zeit. Antiproportional.",
+      "tags": [
+        "antiproportional",
+        "richtung"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "choice",
+      "prompt": "3 Maler streichen ein Haus in 12 Tagen. Wie ist die Zuordnung „Anzahl Maler → Anzahl Tage“?",
+      "options": [
+        "antiproportional",
+        "proportional"
+      ],
+      "answer": 0,
+      "hints": [
+        "Was passiert mit der Zeit, wenn mehr Maler kommen?"
+      ],
+      "solution": "Mehr Maler → weniger Tage. Die Zuordnung ist antiproportional.\nDas Produkt Maler · Tage bleibt konstant: 3 · 12 = 36 Manntage.",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": 1,
+          "feedback": "Bei proportional würde gelten: mehr Maler → mehr Tage. Das ergibt keinen Sinn."
+        }
+      ],
+      "tags": [
+        "zuordnungsart"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "3 Maler streichen ein Haus in 12 Tagen. Wie lange brauchen 4 Maler?",
+      "answer": 9,
+      "unit_label": "Tage",
+      "tolerance": 0.01,
+      "hints": [
+        "Schritt 1: Wie lange bräuchte 1 Maler allein? Er braucht LÄNGER — also mal nehmen: 12 · 3 = 36 Tage.",
+        "Schritt 2: 36 Tage auf 4 Maler verteilen — also teilen."
+      ],
+      "solution": "1 Maler → 12 · 3 = 36 Tage\n4 Maler → 36 : 4 = 9 Tage\nProbe: 3 · 12 = 36 und 4 · 9 = 36. Das Produkt bleibt gleich. ✓",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": 16,
+          "feedback": "Du hast proportional gerechnet (12 : 3 · 4). Aber mehr Maler brauchen weniger Zeit, nicht mehr. Bei antiproportional wird erst mal genommen, dann geteilt."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 36,
+          "feedback": "Das ist die Zeit für 1 Maler allein. Jetzt noch durch 4 teilen."
+        }
+      ],
+      "tags": [
+        "antiproportional",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "6 Pumpen leeren ein Becken in 10 Stunden. Wie lange brauchen 4 Pumpen?",
+      "answer": 15,
+      "unit_label": "Stunden",
+      "tolerance": 0.01,
+      "hints": [
+        "1 Pumpe: 10 · 6 = 60 Stunden",
+        "4 Pumpen: 60 : 4"
+      ],
+      "solution": "1 Pumpe → 10 · 6 = 60 h\n4 Pumpen → 60 : 4 = 15 h\nProbe: 6 · 10 = 60 und 4 · 15 = 60. ✓\nWeniger Pumpen brauchen mehr Zeit — das Ergebnis muss größer als 10 h sein.",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": 6.67,
+          "feedback": "Du hast proportional gerechnet. Weniger Pumpen brauchen LÄNGER — dein Ergebnis müsste größer als 10 h sein."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 60,
+          "feedback": "Das ist die Zeit für 1 Pumpe allein."
+        }
+      ],
+      "tags": [
+        "antiproportional",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "5 kg Futter reichen für ein Pferd 20 Tage. Wie lange reichen 8 kg?",
+      "answer": 32,
+      "unit_label": "Tage",
+      "tolerance": 0.01,
+      "hints": [
+        "Achtung: Prüfe zuerst die Art der Zuordnung. Mehr Futter — mehr oder weniger Tage?",
+        "Mehr Futter reicht länger. Also proportional: 20 : 5 · 8."
+      ],
+      "solution": "Mehr Futter → mehr Tage. Die Zuordnung ist PROPORTIONAL.\n1 kg → 20 : 5 = 4 Tage\n8 kg → 4 · 8 = 32 Tage",
+      "misconceptions": [
+        {
+          "id": "antiproportional_gerechnet",
+          "value": 12.5,
+          "feedback": "Du hast antiproportional gerechnet. Aber mehr Futter reicht LÄNGER, nicht kürzer. Hier gilt „mehr → mehr“."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 4,
+          "feedback": "Das ist die Zeit für 1 kg Futter."
+        }
+      ],
+      "tags": [
+        "proportional",
+        "abgrenzung",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Heuvorrat reicht für 12 Pferde 15 Tage. Wie lange reicht er für 20 Pferde?",
+      "answer": 9,
+      "unit_label": "Tage",
+      "tolerance": 0.01,
+      "hints": [
+        "Mehr Pferde → der Vorrat reicht kürzer. Also antiproportional.",
+        "1 Pferd: 15 · 12 = 180 Tage. Dann : 20."
+      ],
+      "solution": "1 Pferd → 15 · 12 = 180 Tage\n20 Pferde → 180 : 20 = 9 Tage\nProbe: 12 · 15 = 180 und 20 · 9 = 180. ✓",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": 25,
+          "feedback": "Du hast proportional gerechnet. Mehr Pferde fressen den Vorrat SCHNELLER auf — das Ergebnis muss kleiner als 15 Tage sein."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 180,
+          "feedback": "Das wäre die Zeit für ein einziges Pferd."
+        }
+      ],
+      "tags": [
+        "antiproportional",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Auto braucht für eine Strecke mit 60 km/h genau 4 Stunden. Wie lange braucht es mit 80 km/h?",
+      "answer": 3,
+      "unit_label": "Stunden",
+      "tolerance": 0.01,
+      "hints": [
+        "Wie lang ist die Strecke? 60 · 4 = 240 km",
+        "Bei 80 km/h: 240 : 80"
+      ],
+      "solution": "Strecke: 60 · 4 = 240 km\nZeit bei 80 km/h: 240 : 80 = 3 h\nProbe: 60 · 4 = 240 und 80 · 3 = 240. Das Produkt (die Strecke) bleibt gleich. ✓",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": 5.33,
+          "feedback": "Du hast proportional gerechnet. Schneller fahren heißt weniger Zeit — das Ergebnis muss unter 4 Stunden liegen."
+        }
+      ],
+      "tags": [
+        "antiproportional",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Bei allen drei Zuordnungen gilt „mehr → weniger“. Welche ist trotzdem NICHT antiproportional?",
+      "options": [
+        "Je älter ein Auto, desto niedriger sein Wert",
+        "6 Pumpen brauchen 10 h, 12 Pumpen brauchen 5 h",
+        "4 Arbeiter brauchen 9 Tage, 6 Arbeiter brauchen 6 Tage"
+      ],
+      "answer": 0,
+      "hints": [
+        "Mach bei jeder Zuordnung die Produktprobe.",
+        "Bei b): 6 · 10 = 60 und 12 · 5 = 60. Bei c): 4 · 9 = 36 und 6 · 6 = 36. Und bei a)?"
+      ],
+      "solution": "Produktprobe:\nb) 6 · 10 = 60;  12 · 5 = 60  → konstant, antiproportional ✓\nc) 4 · 9 = 36;  6 · 6 = 36   → konstant, antiproportional ✓\na) Ein Auto verliert nicht nach dieser Regel an Wert — Alter · Wert ist nicht konstant. Ein 10 Jahre altes Auto ist nicht genau halb so viel wert wie ein 5 Jahre altes.\n\nMerke: „mehr → weniger“ allein reicht nicht. Nur wenn das Produkt konstant bleibt, ist eine Zuordnung antiproportional.",
+      "misconceptions": [
+        {
+          "id": "produktprobe_uebersehen",
+          "value": 1,
+          "feedback": "Mach die Produktprobe: 6 · 10 = 60 und 12 · 5 = 60. Das Produkt bleibt gleich — also ist diese Zuordnung antiproportional."
+        },
+        {
+          "id": "produktprobe_uebersehen",
+          "value": 2,
+          "feedback": "Mach die Produktprobe: 4 · 9 = 36 und 6 · 6 = 36. Das Produkt bleibt gleich — also antiproportional."
+        }
+      ],
+      "tags": [
+        "gegenbeispiel",
+        "produktprobe",
+        "msa"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "multi",
+      "prompt": "8 Arbeiter brauchen 15 Tage. Berechne die Zeit für 10 Arbeiter und prüfe mit der Produktprobe.",
+      "fields": [
+        {
+          "label": "Zeit für 10 Arbeiter",
+          "answer": 12,
+          "unit_label": "Tage",
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "proportional_gerechnet",
+              "value": 18.75,
+              "feedback": "Du hast proportional gerechnet. Mehr Arbeiter brauchen weniger Zeit."
+            }
+          ]
+        },
+        {
+          "label": "Produktprobe: 10 · deine Zeit =",
+          "answer": 120,
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "1 Arbeiter: 15 · 8 = 120 Tage",
+        "10 Arbeiter: 120 : 10",
+        "Die Produktprobe muss denselben Wert liefern wie 8 · 15."
+      ],
+      "solution": "1 Arbeiter → 15 · 8 = 120 Tage\n10 Arbeiter → 120 : 10 = 12 Tage\nProduktprobe: 8 · 15 = 120 und 10 · 12 = 120. Gleich → die Rechnung stimmt. ✓",
+      "tags": [
+        "antiproportional",
+        "produktprobe"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Wasserhahn füllt ein Becken in 45 Minuten. Wie lange brauchen 3 gleiche Hähne?",
+      "answer": 15,
+      "unit_label": "Minuten",
+      "tolerance": 0.01,
+      "hints": [
+        "Hier ist die Zeit für 1 Hahn schon gegeben — der erste Dreisatzschritt entfällt.",
+        "3 Hähne: 45 : 3"
+      ],
+      "solution": "1 Hahn → 45 min\n3 Hähne → 45 : 3 = 15 min\nProbe: 1 · 45 = 45 und 3 · 15 = 45. ✓",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": 135,
+          "feedback": "Du hast multipliziert. Drei Hähne füllen das Becken SCHNELLER — die Zeit muss kleiner werden."
+        }
+      ],
+      "tags": [
+        "antiproportional"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ04-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Welche Aussage über antiproportionale Zuordnungen ist richtig?",
+      "options": [
+        "Das Produkt x · y ist konstant",
+        "Der Quotient y : x ist konstant",
+        "Die Summe x + y ist konstant"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe an einem Beispiel: 6 Pumpen · 10 h und 4 Pumpen · 15 h.",
+        "Rechne bei jedem Vorschlag beide Wertepaare durch."
+      ],
+      "solution": "Beispiel: 6 Pumpen → 10 h;  4 Pumpen → 15 h\nProdukt: 6 · 10 = 60 und 4 · 15 = 60 → konstant ✓\nQuotient: 10 : 6 = 1,67 und 15 : 4 = 3,75 → nicht konstant ✗\nSumme: 6 + 10 = 16 und 4 + 15 = 19 → nicht konstant ✗\n\nMerke: konstanter Quotient = proportional. Konstantes Produkt = antiproportional.",
+      "misconceptions": [
+        {
+          "id": "prop_antiprop_vertauscht",
+          "value": 1,
+          "feedback": "Der konstante Quotient gehört zur PROPORTIONALEN Zuordnung. Bei antiproportional ist das Produkt konstant."
+        },
+        {
+          "id": "summe_vermutet",
+          "value": 2,
+          "feedback": "Prüf es nach: 6 + 10 = 16, aber 4 + 15 = 19. Die Summe ändert sich — sie ist kein Merkmal."
+        }
+      ],
+      "tags": [
+        "begruendung",
+        "produktprobe",
+        "msa"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    }
+  ]
+}
