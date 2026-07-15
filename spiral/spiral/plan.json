@@ -1,0 +1,174 @@
+{
+  "_hinweis": "Datei steuert das Warm-up. Kein Code muss angefasst werden.",
+  "kategorien": [
+    "W-PROZ",
+    "W-BRUCH",
+    "W-EINH"
+  ],
+  "geplant": [
+    "W-KOPF",
+    "W-TERM",
+    "W-GEO",
+    "W-FKT",
+    "W-SACH"
+  ],
+  "intervalle_tage": [
+    0,
+    1,
+    3,
+    7,
+    21,
+    60
+  ],
+  "verzahnung": {
+    "pz-01": [
+      "W-BRUCH"
+    ],
+    "pz-02": [
+      "W-PROZ",
+      "W-KOPF"
+    ],
+    "pz-03": [
+      "W-SACH",
+      "W-KOPF"
+    ],
+    "pz-04": [
+      "W-SACH"
+    ],
+    "pz-05": [
+      "W-PROZ"
+    ],
+    "pz-06": [
+      "W-PROZ",
+      "W-KOPF"
+    ],
+    "pz-07": [
+      "W-BRUCH",
+      "W-PROZ"
+    ],
+    "pz-08": [
+      "W-PROZ"
+    ],
+    "pz-09": [
+      "W-PROZ"
+    ],
+    "pz-10": [
+      "W-PROZ"
+    ],
+    "pz-11": [
+      "W-PROZ"
+    ],
+    "pz-12": [
+      "W-EINH",
+      "W-PROZ"
+    ],
+    "pz-13": [
+      "W-PROZ"
+    ],
+    "pz-14": [
+      "W-PROZ",
+      "W-SACH"
+    ],
+    "lf-04": [
+      "W-BRUCH",
+      "W-SACH"
+    ],
+    "lf-11": [
+      "W-TERM"
+    ],
+    "kp-02": [
+      "W-EINH"
+    ],
+    "kp-08": [
+      "W-GEO"
+    ],
+    "kp-09": [
+      "W-GEO",
+      "W-EINH"
+    ],
+    "sk-04": [
+      "W-GEO"
+    ]
+  },
+  "fehlerprofil": {
+    "abgezogen_statt_addiert": "W-PROZ",
+    "ablesefehler_vermutet": "W-PROZ",
+    "addiert_statt_abgezogen": "W-PROZ",
+    "alter_grundwert": "W-PROZ",
+    "anker_verwechselt": "W-PROZ",
+    "antiproportional_gerechnet": "W-SACH",
+    "anzahlung_vergessen": "W-PROZ",
+    "bank_zahlt_mehr": "W-PROZ",
+    "bei_1prozent_gestoppt": "W-PROZ",
+    "bei_einheit_gestoppt": "W-SACH",
+    "bei_schritt_1_gestoppt": "W-PROZ",
+    "differenz_addiert": "W-SACH",
+    "differenz_als_grundwert": "W-PROZ",
+    "einfacher_zins": "W-PROZ",
+    "einheit_gleich_uebersehen": "W-EINH",
+    "einheitsschritt_uebersprungen": "W-SACH",
+    "endpreis_statt_teil": "W-PROZ",
+    "endwert_als_grundwert": "W-PROZ",
+    "faktor_als_prozent": "W-PROZ",
+    "faktor_mal_n": "W-PROZ",
+    "faktor_ohne_eins": "W-PROZ",
+    "falsch_gerundet": "W-BRUCH",
+    "falsche_groesse_angegeben": "W-PROZ",
+    "falsche_groesse_gewaehlt": "W-PROZ",
+    "flaeche_wie_laenge": "W-EINH",
+    "ganzes_statt_teil": "W-PROZ",
+    "genau_statt_ueberschlag": "W-PROZ",
+    "gesamtwert_statt_teil": "W-PROZ",
+    "geteilt_statt_mal": "W-PROZ",
+    "geteilt_vertauscht": "W-PROZ",
+    "grundwert_uebersehen": "W-PROZ",
+    "haelfte_verwechselt": "W-BRUCH",
+    "komma_verschoben": "W-BRUCH",
+    "konvention_als_tatsache": "W-PROZ",
+    "mal_100_vergessen": "W-BRUCH",
+    "mal_statt_geteilt": "W-PROZ",
+    "monotonie_reicht": "W-SACH",
+    "name_missverstanden": "W-SACH",
+    "negativer_faktor": "W-PROZ",
+    "nenner_als_prozent": "W-BRUCH",
+    "neuer_als_grundwert": "W-PROZ",
+    "neuer_wert_in_prozent": "W-PROZ",
+    "nur_nenner_erweitert": "W-BRUCH",
+    "nur_teil_berechnet": "W-PROZ",
+    "produktprobe_uebersehen": "W-SACH",
+    "prop_antiprop_vertauscht": "W-SACH",
+    "proportional_gerechnet": "W-SACH",
+    "prozent_auf_endwert_addiert": "W-PROZ",
+    "prozent_vom_endwert_abgezogen": "W-PROZ",
+    "prozentsaetze_addiert": "W-PROZ",
+    "rabatt_als_rest": "W-PROZ",
+    "regel_ohne_grund": "W-PROZ",
+    "rest_statt_teil": "W-PROZ",
+    "restfaktor_als_antwort": "W-PROZ",
+    "richtung_vertauscht": "W-SACH",
+    "rundung_missverstanden": "W-BRUCH",
+    "satz_als_faktor": "W-PROZ",
+    "satz_als_wert": "W-PROZ",
+    "satz_falsch_erinnert": "W-PROZ",
+    "summe_vermutet": "W-SACH",
+    "tage_365": "W-EINH",
+    "teil_statt_ganzes": "W-PROZ",
+    "ueber_100_unmoeglich": "W-BRUCH",
+    "umrechnungszahl_falsch": "W-EINH",
+    "umstellung_falsch": "W-PROZ",
+    "umweg_ueber_1prozent": "W-PROZ",
+    "veraenderungen_heben_sich_auf": "W-PROZ",
+    "volumen_wie_flaeche": "W-EINH",
+    "vorzeichen_vertauscht": "W-PROZ",
+    "zaehler_als_prozent": "W-BRUCH",
+    "zaehler_nenner_addiert": "W-BRUCH",
+    "zahlen_addiert": "W-PROZ",
+    "zehntel_hundertstel": "W-BRUCH",
+    "zeit_dezimal_gedacht": "W-EINH",
+    "zeitfaktor_umgedreht": "W-EINH",
+    "zeitfaktor_vergessen": "W-EINH",
+    "zeitfaktor_verwechselt": "W-EINH",
+    "zerlegung_falsch": "W-BRUCH",
+    "zu_frueh_gestoppt": "W-PROZ"
+  }
+}
