@@ -1,0 +1,528 @@
+{
+  "unit": "PZ-08",
+  "title": "Grundwert berechnen",
+  "leitidee": "L1",
+  "standards": [
+    "K2",
+    "K5"
+  ],
+  "wortspeicher": [
+    "der Grundwert",
+    "der Prozentwert",
+    "der Prozentsatz",
+    "das Kapital",
+    "der Rabatt"
+  ],
+  "can_do": {
+    "A": "Du berechnest den Grundwert über den 1-%-Schritt.",
+    "B": "Du bestimmst den Grundwert selbstständig und prüfst, ob er größer als der Prozentwert ist.",
+    "C": "Du erkennst den Fehler „mal statt geteilt\" und rechnest auch vom verminderten Wert zurück."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Über 1 %:  1 % = W : p   →   G = (W : p) · 100",
+      "Formel:    G = W · 100 : p",
+      "Kontrolle: G muss GRÖSSER sein als W (solange p < 100 %)."
+    ],
+    "saetze": [
+      "Wenn … % gleich … € sind, dann ist 1 % gleich … €.",
+      "Also sind 100 % gleich … €.",
+      "Mein Ergebnis ist größer als der Prozentwert — das passt."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ08-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "10 % von einem Betrag sind 30 €. Wie groß ist der ganze Betrag?",
+      "answer": 300,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Wenn 10 % gleich 30 € sind, dann ist 1 % gleich 30 : 10 = 3 €.",
+        "Und 100 % sind 3 € · 100."
+      ],
+      "solution": "1 % = 30 € : 10 = 3 €\n100 % = 3 € · 100 = 300 €",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 3,
+          "feedback": "Das ist 1 %. Gesucht sind 100 % — also noch mal 100 nehmen."
+        },
+        {
+          "id": "mal_statt_geteilt",
+          "value": 3000,
+          "feedback": "Um Faktor 10 zu groß. Du hast 30 · 10 · 10 gerechnet. Richtig: erst 30 : 10 = 3, dann · 100."
+        }
+      ],
+      "tags": [
+        "grundwert"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ08-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "25 % von einem Betrag sind 50 €. Wie groß ist der ganze Betrag?",
+      "answer": 200,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 50 : 25 = 2 €",
+        "100 % = 2 € · 100"
+      ],
+      "solution": "1 % = 50 € : 25 = 2 €\n100 % = 2 € · 100 = 200 €\nKontrolle: 200 € ist größer als 50 €. ✓",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 2,
+          "feedback": "Das ist 1 %. Noch mal 100 nehmen."
+        },
+        {
+          "id": "mal_statt_geteilt",
+          "value": 12.5,
+          "feedback": "Du hast 25 % VON 50 € gerechnet. Aber 50 € sind schon der Teil — gesucht ist das Ganze. Es muss größer werden."
+        }
+      ],
+      "tags": [
+        "grundwert"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "20 % einer Kiste sind 14 kg. Wie viele Kilogramm wiegt die ganze Kiste?",
+      "answer": 70,
+      "unit_label": "kg",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 14 : 20 = 0,7 kg",
+        "100 % = 0,7 · 100"
+      ],
+      "solution": "1 % = 14 kg : 20 = 0,7 kg\n100 % = 0,7 kg · 100 = 70 kg",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 0.7,
+          "feedback": "Das ist 1 %. Gesucht sind 100 %."
+        },
+        {
+          "id": "mal_statt_geteilt",
+          "value": 2.8,
+          "feedback": "Du hast 20 % von 14 kg gerechnet. Die 14 kg sind aber schon der Teil. Das Ganze muss größer sein."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "groessen"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "PZ08-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "5 % von einem Preis sind 12 €. Wie hoch ist der ganze Preis?",
+      "answer": 240,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 12 : 5 = 2,40 €",
+        "100 % = 2,40 € · 100"
+      ],
+      "solution": "1 % = 12 € : 5 = 2,40 €\n100 % = 2,40 € · 100 = 240 €\nKontrolle: 240 € ist viel größer als 12 € — das passt, denn 5 % ist wenig.",
+      "misconceptions": [
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 2.4,
+          "feedback": "Das ist 1 %. Noch mal 100 nehmen."
+        },
+        {
+          "id": "mal_statt_geteilt",
+          "value": 0.6,
+          "feedback": "Du hast 5 % von 12 € gerechnet. Das Ergebnis wird dabei kleiner — der Grundwert muss aber größer sein."
+        }
+      ],
+      "tags": [
+        "grundwert"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "17 % eines Betrags sind 68 €. Wie groß ist der Betrag?",
+      "answer": 400,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Was ist hier das Ganze — der Betrag oder die 68 €?",
+        "Rechne zuerst 1 %: 68 : 17",
+        "Dann mal 100."
+      ],
+      "solution": "1 % = 68 € : 17 = 4 €\n100 % = 4 € · 100 = 400 €\noder mit der Formel: G = 68 · 100 : 17 = 400 €",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 11.56,
+          "feedback": "Du hast 17 % von 68 € gerechnet. Aber 68 € sind schon der Prozentwert — gesucht ist das Ganze, und das ist größer."
+        },
+        {
+          "id": "zahlen_addiert",
+          "value": 85,
+          "feedback": "Du hast 68 + 17 gerechnet. Prozent und Euro darf man nicht addieren — 17 ist ein Prozentsatz, kein Geldbetrag."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 4,
+          "feedback": "Das ist 1 %. Gesucht sind 100 %."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "12 % eines Kapitals sind 54 €. Wie hoch ist das Kapital?",
+      "answer": 450,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "G = W · 100 : p",
+        "54 · 100 : 12"
+      ],
+      "solution": "G = 54 € · 100 : 12 = 450 €\nKontrolle: 450 € ist größer als 54 €. ✓",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 6.48,
+          "feedback": "Du hast 12 % von 54 € gerechnet. Es muss geteilt werden: 54 : 12 · 100."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 4.5,
+          "feedback": "Das ist 1 %. Noch mal 100."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "8 % der Schülerinnen und Schüler einer Schule sind 24 Kinder. Wie viele Kinder besuchen die Schule?",
+      "answer": 300,
+      "unit_label": "Kinder",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 24 : 8 = 3 Kinder",
+        "100 % = 3 · 100"
+      ],
+      "solution": "1 % = 24 : 8 = 3\n100 % = 3 · 100 = 300 Kinder",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 1.92,
+          "feedback": "Du hast 8 % von 24 gerechnet. Die 24 sind schon der Teil — das Ganze ist größer."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 3,
+          "feedback": "Das ist 1 %."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "35 % eines Betrags sind 91 €. Wie groß ist der Betrag?",
+      "answer": 260,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 91 : 35 = 2,60 €",
+        "100 % = 2,60 · 100"
+      ],
+      "solution": "1 % = 91 € : 35 = 2,60 €\n100 % = 2,60 € · 100 = 260 €\nProbe: 35 % von 260 € = 91 €. ✓",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 31.85,
+          "feedback": "Du hast 35 % von 91 € gerechnet. Gesucht ist das Ganze — teile: 91 : 35 · 100."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 2.6,
+          "feedback": "Das ist 1 %."
+        }
+      ],
+      "tags": [
+        "grundwert"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "45 % einer Wanderstrecke sind 27 km. Wie lang ist die ganze Strecke?",
+      "answer": 60,
+      "unit_label": "km",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 27 : 45 = 0,6 km",
+        "100 % = 0,6 · 100"
+      ],
+      "solution": "1 % = 27 km : 45 = 0,6 km\n100 % = 0,6 km · 100 = 60 km\nProbe: 45 % ist knapp die Hälfte. Die Hälfte von 60 km wären 30 km — 27 km passt. ✓",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 12.15,
+          "feedback": "Du hast 45 % von 27 km gerechnet. Das Ganze muss größer als 27 km sein."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 0.6,
+          "feedback": "Das ist 1 %."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "groessen"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "PZ08-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "3 % einer Rechnung sind 4,50 €. Wie hoch ist die ganze Rechnung?",
+      "answer": 150,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 4,50 : 3 = 1,50 €",
+        "100 % = 1,50 · 100"
+      ],
+      "solution": "1 % = 4,50 € : 3 = 1,50 €\n100 % = 1,50 € · 100 = 150 €\nKontrolle: 3 % ist sehr wenig — deshalb muss das Ganze sehr viel größer sein. ✓",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 0.135,
+          "feedback": "Du hast 3 % von 4,50 € gerechnet. Der Grundwert muss viel größer sein als 4,50 €."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 1.5,
+          "feedback": "Das ist 1 %."
+        }
+      ],
+      "tags": [
+        "grundwert"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Aufgabe: 15 % eines Betrags sind 45 €. Gerechnet wurde: 45 · 15 : 100 = 6,75 €. — Wo steckt der Fehler?",
+      "options": [
+        "Es muss geteilt werden: 45 : 15 · 100 = 300 €",
+        "Das Ergebnis muss nur auf ganze Euro gerundet werden",
+        "Der Prozentsatz wurde falsch abgelesen"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe zuerst: Kann der Grundwert kleiner sein als der Prozentwert?",
+        "45 € sind bereits 15 %. Das Ganze muss größer sein."
+      ],
+      "solution": "Die Rechnung 45 · 15 : 100 berechnet 15 % VON 45 € — das ist die Formel für den Prozentwert.\nHier ist aber der Grundwert gesucht: G = 45 : 15 · 100 = 300 €.\nMerkhilfe: Das Ergebnis 6,75 € ist kleiner als 45 € — unmöglich, wenn 45 € nur 15 % sind.",
+      "misconceptions": [
+        {
+          "id": "rundung_missverstanden",
+          "value": 1,
+          "feedback": "Runden ist hier nicht das Problem. Schau auf die Größenordnung: 6,75 € kann nicht das Ganze sein, wenn 45 € schon 15 % sind."
+        },
+        {
+          "id": "ablesefehler_vermutet",
+          "value": 2,
+          "feedback": "Der Prozentsatz stimmt. Der Fehler steckt in der Rechenrichtung: mal statt geteilt."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "fehlersuche",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "62 % eines Betrags sind 217 €. Wie groß ist der Betrag?",
+      "answer": 350,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 217 : 62",
+        "Überschlag: 62 % ist etwas mehr als die Hälfte. Das Ganze ist also etwas weniger als 434 €."
+      ],
+      "solution": "1 % = 217 € : 62 = 3,50 €\n100 % = 3,50 € · 100 = 350 €\nÜberschlag vorher: 50 % wären 434 €, also muss G unter 434 € liegen. ✓",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 134.54,
+          "feedback": "Du hast 62 % von 217 € gerechnet. Das Ergebnis ist kleiner als 217 € — der Grundwert muss aber größer sein."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 3.5,
+          "feedback": "Das ist 1 %."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "ueberschlag"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Nach 20 % Rabatt zahlst du 64 €. Wie hoch war der Preis vorher?",
+      "answer": 80,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Wie viel Prozent sind die 64 € — 100 % oder weniger?",
+        "100 % − 20 % = 80 %. Die 64 € sind also 80 %.",
+        "1 % = 64 : 80"
+      ],
+      "solution": "Die 64 € entsprechen 80 % (100 % − 20 % Rabatt).\n1 % = 64 € : 80 = 0,80 €\n100 % = 0,80 € · 100 = 80 €\nProbe: 20 % von 80 € = 16 €;  80 € − 16 € = 64 €. ✓",
+      "misconceptions": [
+        {
+          "id": "prozent_auf_endwert_addiert",
+          "value": 76.8,
+          "feedback": "Du hast 20 % auf 64 € draufgerechnet. Aber 64 € sind 80 % — nicht 100 %. Deshalb funktioniert das nicht."
+        },
+        {
+          "id": "endwert_als_grundwert",
+          "value": 12.8,
+          "feedback": "Du hast 20 % von 64 € gerechnet. Das ist der Rabatt bezogen auf den falschen Grundwert."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "verminderter_grundwert",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ08-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Kapital bringt bei 2,5 % Zinsen im Jahr 75 € Zinsen. Wie hoch ist das Kapital?",
+      "answer": 3000,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Das Kapital ist der Grundwert.",
+        "1 % = 75 : 2,5 = 30 €",
+        "100 % = 30 · 100"
+      ],
+      "solution": "1 % = 75 € : 2,5 = 30 €\n100 % = 30 € · 100 = 3 000 €\nProbe: 2,5 % von 3 000 € = 75 €. ✓",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 1.88,
+          "feedback": "Du hast 2,5 % von 75 € gerechnet. Das Kapital ist gesucht — es muss viel größer sein als die Zinsen."
+        },
+        {
+          "id": "komma_verschoben",
+          "value": 300,
+          "feedback": "Um Faktor 10 zu klein. Du hast mit 25 % gerechnet statt mit 2,5 %."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 30,
+          "feedback": "Das ist 1 %."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "zinsen",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    }
+  ]
+}
