@@ -1,0 +1,499 @@
+{
+  "unit": "PZ-14",
+  "title": "Anwendung & Prüfungstraining",
+  "leitidee": "L1",
+  "standards": [
+    "K3",
+    "K1"
+  ],
+  "wortspeicher": [
+    "der Grundwert",
+    "der Prozentwert",
+    "der Prozentsatz",
+    "das Kapital",
+    "der Rabatt",
+    "die Mehrwertsteuer"
+  ],
+  "can_do": {
+    "A": "Du erkennst, welche Größe gesucht ist, und rechnest dann mit der Formelkarte.",
+    "B": "Du löst einen gemischten Aufgabensatz, ohne dass die Aufgabenart genannt wird.",
+    "C": "Du modellierst mehrschrittige Realaufgaben und begründest eine Empfehlung."
+  },
+  "formelkarte": {
+    "formeln": [
+      "W = G · p : 100        Prozentwert gesucht",
+      "p = W · 100 : G        Prozentsatz gesucht",
+      "G = W · 100 : p        Grundwert gesucht",
+      "Z = K · p : 100 · n    Zinsen über n Jahre (einfach)",
+      "",
+      "Zuerst fragen: Welche Größe ist gesucht?",
+      "  „Wie viel Euro Rabatt?\"     → W",
+      "  „Wie viel Prozent?\"          → p",
+      "  „Wie hoch war der Preis?\"    → G"
+    ],
+    "saetze": [
+      "Gesucht ist … , weil im Text nach … gefragt wird.",
+      "Gegeben sind … und … .",
+      "Ich empfehle … , weil … günstiger ist."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ14-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "„Ein Rad kostet 300 €. Du bekommst 10 % Rabatt. Wie viel Euro Rabatt sind das?“ — Welche Größe ist gesucht?",
+      "options": [
+        "der Prozentwert W",
+        "der Grundwert G",
+        "der Prozentsatz p"
+      ],
+      "answer": 0,
+      "hints": [
+        "Gefragt ist eine Angabe in Euro — aber nicht das Ganze.",
+        "Das Ganze (300 €) ist schon gegeben, der Prozentsatz (10 %) auch."
+      ],
+      "solution": "Gegeben: G = 300 €, p = 10 %\nGesucht: W (der Rabatt in Euro) → Formel W = G · p : 100",
+      "misconceptions": [
+        {
+          "id": "falsche_groesse_gewaehlt",
+          "value": 1,
+          "feedback": "Der Grundwert ist schon gegeben: die 300 €. Gesucht ist der Teil davon."
+        }
+      ],
+      "tags": [
+        "aufgabenart"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Jetzt rechne: Ein Rad kostet 300 €. Du bekommst 10 % Rabatt. Wie viel Euro Rabatt sind das?",
+      "answer": 30,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "W = G · p : 100",
+        "300 · 10 : 100"
+      ],
+      "solution": "W = 300 € · 10 : 100 = 30 €",
+      "misconceptions": [
+        {
+          "id": "endpreis_statt_teil",
+          "value": 270,
+          "feedback": "Das ist der Preis nach dem Rabatt. Gefragt ist der Rabatt selbst."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 3,
+          "feedback": "Das ist 1 %. Noch mal 10 nehmen."
+        }
+      ],
+      "tags": [
+        "prozentwert"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "„20 % von einem Betrag sind 40 €. Wie groß ist der ganze Betrag?“ — Welche Größe ist gesucht?",
+      "options": [
+        "der Grundwert G",
+        "der Prozentwert W",
+        "der Prozentsatz p"
+      ],
+      "answer": 0,
+      "hints": [
+        "Gefragt ist das Ganze."
+      ],
+      "solution": "Gegeben: W = 40 €, p = 20 %\nGesucht: G (das Ganze) → Formel G = W · 100 : p",
+      "misconceptions": [
+        {
+          "id": "falsche_groesse_gewaehlt",
+          "value": 1,
+          "feedback": "Der Prozentwert ist schon gegeben: die 40 €. Gesucht ist das Ganze."
+        }
+      ],
+      "tags": [
+        "aufgabenart"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Jetzt rechne: 20 % von einem Betrag sind 40 €. Wie groß ist der ganze Betrag?",
+      "answer": 200,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "1 % = 40 : 20 = 2 €",
+        "100 % = 2 · 100"
+      ],
+      "solution": "1 % = 40 € : 20 = 2 €\n100 % = 2 € · 100 = 200 €",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 8,
+          "feedback": "Du hast 20 % von 40 € gerechnet. Die 40 € sind schon der Teil — das Ganze ist größer."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 2,
+          "feedback": "Das ist 1 %."
+        }
+      ],
+      "tags": [
+        "grundwert"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Handy kostet 450 €. Es gibt 15 % Rabatt. Wie viel zahlst du?",
+      "answer": 382.5,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Achte auf die Frage: gefragt ist der Endpreis, nicht der Rabatt."
+      ],
+      "solution": "100 % − 15 % = 85 %  →  450 € · 0,85 = 382,50 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 67.5,
+          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst."
+        }
+      ],
+      "tags": [
+        "gemischt",
+        "rabatt",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Von 250 Schülerinnen und Schülern fahren 60 mit auf Klassenfahrt. Wie viel Prozent sind das?",
+      "answer": 24,
+      "unit_label": "%",
+      "tolerance": 0.01,
+      "hints": [
+        "Welche Größe ist gesucht? Es wird nach Prozent gefragt.",
+        "p = 60 : 250 · 100"
+      ],
+      "solution": "p = 60 : 250 · 100 = 24 %",
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 76,
+          "feedback": "Das sind die, die nicht mitfahren."
+        },
+        {
+          "id": "geteilt_vertauscht",
+          "value": 416.67,
+          "feedback": "Du hast 250 : 60 gerechnet. Teil durch Ganzes."
+        }
+      ],
+      "tags": [
+        "gemischt",
+        "prozentsatz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "8 % eines Betrags sind 36 €. Wie groß ist der Betrag?",
+      "answer": 450,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Gesucht ist der Grundwert.",
+        "1 % = 36 : 8 = 4,50 €"
+      ],
+      "solution": "1 % = 36 € : 8 = 4,50 €\n100 % = 4,50 € · 100 = 450 €",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 2.88,
+          "feedback": "Du hast 8 % von 36 € gerechnet. Gesucht ist das Ganze — es ist größer."
+        },
+        {
+          "id": "bei_1prozent_gestoppt",
+          "value": 4.5,
+          "feedback": "Das ist 1 %."
+        }
+      ],
+      "tags": [
+        "gemischt",
+        "grundwert",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 4 000 € wird ein Jahr lang mit 2 % verzinst. Wie viel Euro Zinsen sind das?",
+      "answer": 80,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Z = K · p : 100"
+      ],
+      "solution": "Z = 4 000 € · 2 : 100 = 80 €",
+      "misconceptions": [
+        {
+          "id": "gesamtwert_statt_teil",
+          "value": 4080,
+          "feedback": "Das ist das Geld nach einem Jahr. Gefragt sind nur die Zinsen."
+        }
+      ],
+      "tags": [
+        "gemischt",
+        "zinsen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "5 kg Kartoffeln kosten 4,50 €. Was kosten 8 kg?",
+      "answer": 7.2,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Das ist keine Prozentaufgabe — hier hilft der Dreisatz.",
+        "1 kg: 4,50 : 5 = 0,90 €"
+      ],
+      "solution": "1 kg → 4,50 : 5 = 0,90 €\n8 kg → 0,90 · 8 = 7,20 €",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": 0.9,
+          "feedback": "Das ist der Preis für 1 kg. Gefragt sind 8 kg."
+        }
+      ],
+      "tags": [
+        "gemischt",
+        "dreisatz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ14-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Werkzeug kostet netto 180 €. Dazu kommen 19 % Mehrwertsteuer. Wie hoch ist der Bruttopreis?",
+      "answer": 214.2,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Faktor: 1,19",
+        "180 · 1,19"
+      ],
+      "solution": "Brutto = 180 € · 1,19 = 214,20 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 34.2,
+          "feedback": "Das ist die Mehrwertsteuer allein. Gefragt ist der Bruttopreis."
+        }
+      ],
+      "tags": [
+        "gemischt",
+        "mwst",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Sofa kostet bar 1 200 €. Bei Ratenzahlung: 100 € Anzahlung und danach 12 Monatsraten zu je 98 €. Wie viel Euro zahlst du beim Ratenkauf mehr als bar?",
+      "answer": 76,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Rechne zuerst aus, was der Ratenkauf insgesamt kostet.",
+        "Anzahlung + 12 · 98 = ?",
+        "Dann die Differenz zum Barpreis bilden."
+      ],
+      "solution": "Ratenkauf gesamt: 100 € + 12 · 98 € = 100 € + 1 176 € = 1 276 €\nMehrkosten: 1 276 € − 1 200 € = 76 €",
+      "misconceptions": [
+        {
+          "id": "falsche_groesse_angegeben",
+          "value": 1276,
+          "feedback": "Das ist der Gesamtpreis beim Ratenkauf. Gefragt ist, wie viel MEHR das gegenüber 1 200 € bar ist."
+        },
+        {
+          "id": "anzahlung_vergessen",
+          "value": -24,
+          "feedback": "Du hast die Anzahlung vergessen: 12 · 98 = 1 176 €. Dazu kommen noch 100 € Anzahlung."
+        }
+      ],
+      "tags": [
+        "modellieren",
+        "ratenkauf",
+        "msa"
+      ],
+      "spiral": [
+        "W-SACH"
+      ]
+    },
+    {
+      "id": "PZ14-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Der Ratenkauf aus der letzten Aufgabe kostet 76 € mehr als der Barpreis von 1 200 €. Um wie viel Prozent ist der Ratenkauf teurer? Runde auf zwei Nachkommastellen.",
+      "answer": 6.33,
+      "unit_label": "%",
+      "tolerance": 0.011,
+      "hints": [
+        "Der Grundwert ist der Barpreis — mit ihm wird verglichen.",
+        "p = 76 : 1 200 · 100"
+      ],
+      "solution": "p = 76 € : 1 200 € · 100 = 6,333… ≈ 6,33 %\n\nZum Nachdenken: 6,33 % klingt wenig — aber du zahlst über ein Jahr verteilt. Ein Kredit mit 6,33 % Zinsen wäre also ungefähr gleich teuer.",
+      "misconceptions": [
+        {
+          "id": "neuer_als_grundwert",
+          "value": 5.96,
+          "feedback": "Du hast durch 1 276 € geteilt. Der Grundwert ist der Barpreis 1 200 €, denn mit ihm wird verglichen."
+        },
+        {
+          "id": "neuer_wert_in_prozent",
+          "value": 106.33,
+          "feedback": "106,33 % ist der Ratenpreis im Verhältnis zum Barpreis. Gefragt ist nur der Aufschlag: 6,33 %."
+        }
+      ],
+      "tags": [
+        "modellieren",
+        "ratenkauf",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Du nimmst einen Kredit über 5 000 € zu 7,5 % Zinsen auf und zahlst ihn nach genau einem Jahr komplett zurück. Wie viel Euro zahlst du insgesamt zurück?",
+      "answer": 5375,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Zinsen: 5 000 · 7,5 : 100 = 375 €",
+        "Rückzahlung = Kredit + Zinsen. Oder direkt: 5 000 · 1,075"
+      ],
+      "solution": "Zinsen: 5 000 € · 7,5 : 100 = 375 €\nRückzahlung: 5 000 € + 375 € = 5 375 €\nKurz: 5 000 € · 1,075 = 5 375 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 375,
+          "feedback": "Das sind nur die Zinsen. Gefragt ist die gesamte Rückzahlung — der Kredit muss auch zurück."
+        },
+        {
+          "id": "komma_verschoben",
+          "value": 5037.5,
+          "feedback": "Du hast mit 0,75 % gerechnet. Der Zinssatz ist 7,5 %."
+        }
+      ],
+      "tags": [
+        "modellieren",
+        "kredit",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ14-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine Jacke kostet 80 €. Im Schaufenster steht „20 % reduziert“. An der Kasse gibt es mit der Kundenkarte noch einmal 10 % auf den bereits reduzierten Preis. Was zahlst du?",
+      "answer": 57.6,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Rechne in zwei Schritten. Die 10 % gelten NICHT für 80 €.",
+        "Schritt 1: 80 · 0,8 = 64 €",
+        "Schritt 2: 10 % von 64 € abziehen."
+      ],
+      "solution": "Schritt 1: 80 € · 0,80 = 64 €\nSchritt 2: 64 € · 0,90 = 57,60 €\nFaktorkette: 80 · 0,8 · 0,9 = 80 · 0,72 = 57,60 €\n\nAchtung: Zusammen sind das 28 % Rabatt, nicht 30 % — die zweite Reduzierung gilt nur noch für den kleineren Preis.",
+      "misconceptions": [
+        {
+          "id": "prozentsaetze_addiert",
+          "value": 56,
+          "feedback": "Du hast 20 % + 10 % = 30 % gerechnet. Die zweiten 10 % gelten aber nur für die bereits reduzierten 64 € — also weniger Rabatt, mehr zu zahlen."
+        },
+        {
+          "id": "bei_schritt_1_gestoppt",
+          "value": 64,
+          "feedback": "Das ist der Preis nach der ersten Reduzierung. Die Kundenkarte bringt noch 10 % darauf."
+        }
+      ],
+      "tags": [
+        "modellieren",
+        "faktorkette",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    }
+  ]
+}
