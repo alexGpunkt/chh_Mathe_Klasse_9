@@ -17,7 +17,8 @@ const S = {
   tippsGenutzt: 0,
   versuche: 0,
   start: 0,
-  geloest: new Set()
+  geloest: new Set(),
+  aufAnhieb: 0
 };
 
 const $ = (s, w = document) => w.querySelector(s);
@@ -30,24 +31,28 @@ const el = (tag, klasse, text) => {
 
 const STUFEN = { 1: 'Einstieg', 2: 'Geführt', 3: 'Frei', 4: 'Transfer' };
 
-/* ---------- Start ---------- */
+/* ---------- Start ----------
+   Normalfall: eine Einheit über ?u= laden.
+   Der Prüfungstrainer setzt vorher window.QUELLE und liefert seine eigenen
+   Aufgaben — dieselbe Engine, anderer Zusammensteller. */
 async function start() {
-  const id = new URLSearchParams(location.search).get('u') || 'pz-05';
-  const bereich = id.split('-')[0];
-  const pfadZurDatei = `units/${bereich}/${id}/tasks.json`;
-
-  try {
-    const antwort = await fetch(pfadZurDatei, { cache: 'no-cache' });
-    if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
-    S.daten = await antwort.json();
-  } catch (e) {
-    zeigeFehler(pfadZurDatei, e);
-    return;
+  if (typeof window.QUELLE === 'function') {
+    try { S.daten = await window.QUELLE(); }
+    catch (e) { zeigeFehler('den Aufgabenpool', e); return; }
+  } else {
+    const id = new URLSearchParams(location.search).get('u') || 'pz-05';
+    const bereich = id.split('-')[0];
+    const pfadZurDatei = `units/${bereich}/${id}/tasks.json`;
+    try {
+      const antwort = await fetch(pfadZurDatei, { cache: 'no-cache' });
+      if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
+      S.daten = await antwort.json();
+    } catch (e) { zeigeFehler(pfadZurDatei, e); return; }
   }
-  Tracker.setContext({ page: 'einheit', unit: S.daten.unit, path: S.pfad });
+  Tracker.setContext({ page: S.daten.pruefung ? 'pruefung' : 'einheit', unit: S.daten.unit, path: S.pfad });
   kopfBauen();
   formelkarteBauen();
-  pfadSetzen(S.pfad);
+  pfadSetzen(S.daten.pfad_fest || S.pfad);
 }
 
 function zeigeFehler(pfad, e) {
@@ -71,6 +76,12 @@ function kopfBauen() {
   $('#titel').textContent = S.daten.title;
   document.title = S.daten.unit + ' · ' + S.daten.title;
 
+  /* Ein Prüfungsset legt den Pfad fest — dann ist die Wahl keine Wahl mehr. */
+  if (S.daten.pfad_fest) {
+    const wahl = $('.pfadwahl');
+    if (wahl) wahl.remove();
+    return;
+  }
   document.querySelectorAll('.pfad-btn').forEach(b => {
     b.addEventListener('click', () => pfadSetzen(b.dataset.p));
   });
@@ -78,19 +89,20 @@ function kopfBauen() {
 
 function pfadSetzen(p) {
   S.pfad = p;
-  Speicher.schreib('mathe9.pfad', p);
+  if (!S.daten.pfad_fest) Speicher.schreib('mathe9.pfad', p);
   document.documentElement.style.setProperty('--pfad', `var(--${p.toLowerCase()})`);
   document.documentElement.style.setProperty('--pfad-bg', `var(--${p.toLowerCase()}-bg)`);
   document.querySelectorAll('.pfad-btn').forEach(b =>
     b.setAttribute('aria-pressed', String(b.dataset.p === p)));
 
-  S.reihe = S.daten.tasks
-    .filter(t => t.path === p)
-    .sort((a, b) => a.step - b.step);
+  S.reihe = S.daten.tasks.filter(t => t.path === p);
+  /* Der Prüfungstrainer hat seine Reihenfolge schon festgelegt. */
+  if (!S.daten.reihenfolge_fest) S.reihe.sort((a, b) => a.step - b.step);
   S.index = 0;
   S.geloest = new Set();
+  S.aufAnhieb = 0;
   Tracker.setContext({ unit: S.daten.unit, path: p, task: null, progress: 0 });
-  Tracker.track('path_selected', { path: p });
+  Tracker.track('path_selected', { path: p, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
   Tracker.progress({ unit: S.daten.unit, path: p, completed: 0, total: S.reihe.length, percent: 0, status: 'active' });
   aufgabeZeigen();
 }
@@ -119,11 +131,11 @@ function aufgabeZeigen() {
   S.versuche = 0;
   S.start = Date.now();
   Tracker.setContext({ unit: S.daten.unit, path: t.path, task: t.id, progress: Math.round(S.geloest.size / (S.reihe.length || 1) * 100) });
-  Tracker.track('task_view', { step: t.step, index: S.index + 1, total: S.reihe.length });
+  Tracker.track('task_view', { step: t.step, index: S.index + 1, total: S.reihe.length, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
 
   const zeile = el('div', 'stufe-zeile');
   zeile.append(el('span', 'stufe-pill', `Pfad ${t.path} · Stufe ${t.step}`));
-  zeile.append(el('span', null, STUFEN[t.step]));
+  zeile.append(el('span', null, t.herkunft || STUFEN[t.step]));
   zeile.append(el('span', null, `· Aufgabe ${S.index + 1}/${S.reihe.length}`));
   b.append(zeile);
 
@@ -145,7 +157,7 @@ function aufgabeZeigen() {
   pruefen.addEventListener('click', () => pruefe());
   akt.append(pruefen);
 
-  if (t.hints && t.hints.length) {
+  if (t.hints && t.hints.length && S.daten.hilfen !== false) {
     const tipp = el('button', 'btn btn-neben', 'Tipp');
     tipp.id = 'tipp';
     tipp.addEventListener('click', () => tippZeigen());
@@ -412,6 +424,7 @@ function melden(richtig, fehlvorstellung) {
 
   if (richtig) {
     S.geloest.add(t.id);
+    if (S.versuche === 1) S.aufAnhieb++;
     const box = el('div', 'rueck ok');
     box.innerHTML = '<b>Richtig.</b>' + (t.solution ? `<div class="rechenweg">${t.solution}</div>` : '');
     $('#rueck').append(box);
@@ -421,7 +434,7 @@ function melden(richtig, fehlvorstellung) {
     if ($('#tipp')) $('#tipp').disabled = true;
     streifenAktualisieren();
     const percent = Math.round(S.geloest.size / (S.reihe.length || 1) * 100);
-    Tracker.progress({ unit: S.daten.unit, path: S.pfad, task: t.id, completed: S.geloest.size, total: S.reihe.length, percent, status: percent === 100 ? 'completed' : 'active' });
+    Tracker.progress({ unit: S.daten.unit, path: S.pfad, task: t.id, completed: S.geloest.size, total: S.reihe.length, percent, correct: S.aufAnhieb, attempts: S.versuche, status: percent === 100 ? 'completed' : 'active' });
     return;
   }
 
@@ -448,10 +461,45 @@ function melden(richtig, fehlvorstellung) {
 
 /* ---------- Abschluss ---------- */
 function abschluss() {
-  Tracker.track('unit_completed', { completed: S.geloest.size, total: S.reihe.length });
-  Tracker.progress({ unit: S.daten.unit, path: S.pfad, task: null, completed: S.geloest.size, total: S.reihe.length, percent: 100, status: 'completed' });
+  Tracker.track(S.daten.pruefung ? 'exam_completed' : 'unit_completed', { completed: S.geloest.size, total: S.reihe.length, correct_first_try: S.aufAnhieb });
+  Tracker.progress({ unit: S.daten.unit, path: S.pfad, task: null, completed: S.geloest.size, total: S.reihe.length, percent: 100, correct: S.aufAnhieb, status: 'completed' });
   const b = $('#buehne');
   const karte = el('div', 'karte');
+
+  /* Prüfungsset: Es zählt, was auf Anhieb saß. */
+  if (S.daten.pruefung) {
+    const n = S.reihe.length;
+    const ziel = S.daten.pruefung.ziel;
+    const geschafft = S.aufAnhieb >= ziel;
+    karte.append(el('h2', 'frage', `${S.aufAnhieb} von ${n} auf Anhieb richtig.`));
+    const p = el('p');
+    p.innerHTML = geschafft
+      ? `Das Ziel waren ${ziel}. <b>Geschafft.</b>`
+      : `Das Ziel waren ${ziel}. Noch nicht ganz — aber du weißt jetzt, woran du arbeiten musst.`;
+    karte.append(p);
+
+    /* Welche Denkfehler sind heute gehäuft aufgetreten? */
+    const heute = fehlerProfil(1).slice(0, 3);
+    if (heute.length) {
+      const h = el('p');
+      h.innerHTML = 'Das ging mehrfach schief:<br>' +
+        heute.map(f => `<span class="stufe-pill">${f.id}</span>`).join(' ');
+      karte.append(h);
+    }
+
+    const akt = el('div', 'aktionen');
+    const n2 = el('button', 'btn btn-haupt', 'Neuer Satz');
+    n2.addEventListener('click', () => location.reload());
+    akt.append(n2);
+    const z = el('a', 'btn btn-neben', 'Zur Übersicht');
+    z.href = 'index.html';
+    z.style.textDecoration = 'none';
+    akt.append(z);
+    karte.append(akt);
+    b.append(karte);
+    return;
+  }
+
   karte.append(el('h2', 'frage', `Pfad ${S.pfad} geschafft.`));
 
   const satz = S.daten.can_do[S.pfad];
@@ -496,4 +544,7 @@ function formelkarteBauen() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', start);
+/* Auch dann starten, wenn dieses Skript erst nach DOMContentLoaded
+   nachgeladen wurde — der Prüfungstrainer lädt engine.js dynamisch. */
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+else start();

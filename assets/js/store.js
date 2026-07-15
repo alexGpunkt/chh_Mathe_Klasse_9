@@ -41,6 +41,19 @@ function lesarten(s) {
   return alsDezimal === alsTausender ? [alsDezimal] : [alsDezimal, alsTausender];
 }
 
+/* ---------- Offline ----------
+   Registrierung nur, wo ein Service Worker überhaupt laufen darf: über
+   https (GitHub Pages) oder auf localhost. Bei file:// passiert nichts —
+   dort läuft ohnehin nichts, weil der Browser die JSON-Dateien blockt. */
+if ('serviceWorker' in navigator &&
+    (location.protocol === 'https:' || location.hostname === 'localhost' ||
+     location.hostname === '127.0.0.1')) {
+  addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .catch(e => console.warn('[sw] Registrierung fehlgeschlagen:', e.message));
+  });
+}
+
 /* ---------- Fehlerprofil ----------
    Jede Fehlvorstellung, die in einer Einheit auftritt, wird lokal notiert.
    Das Warm-up der nächsten Stunde zieht daraus die passende Kategorie.

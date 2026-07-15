@@ -139,12 +139,22 @@ function fmt(x) {
   return rest ? mitTrenner + ',' + rest : mitTrenner;
 }
 
+/* Geld hat immer zwei Nachkommastellen. "3,6 €" liest sich falsch. */
+function fmtGeld(x) {
+  const s = Math.abs(x).toFixed(2).replace('.', ',');
+  const [ganz, rest] = s.split(',');
+  return (x < 0 ? '-' : '') + ganz.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ',' + rest;
+}
+
 /* Platzhalter dürfen rechnen: {G} genauso wie {100-p} oder {1+p/100}.
+   Mit :€ als Zusatz wird als Geldbetrag formatiert — {pa:€} → "3,60".
    Das spart Hilfsvariablen in jedem Generator. */
 function fuelle(vorlage, vars) {
-  return String(vorlage).replace(/\{([^{}]+)\}/g, (ganz, ausdruck) => {
-    try { return fmt(werteAus(ausdruck, vars)); }
-    catch { return ganz; }
+  return String(vorlage).replace(/\{([^{}:]+)(?::(€))?\}/g, (ganz, ausdruck, flagge) => {
+    try {
+      const w = werteAus(ausdruck, vars);
+      return flagge === '€' ? fmtGeld(w) : fmt(w);
+    } catch { return ganz; }
   });
 }
 
@@ -294,7 +304,6 @@ async function starte() {
   const p = new URLSearchParams(location.search);
   SP.einheit = p.get('u');
   SP.level = Speicher.lies('mathe9.pfad', 'B');
-  Tracker.setContext({ page: 'warmup', unit: 'WARMUP', path: SP.level, progress: 0 });
 
   try {
     SP.plan = await (await fetch('spiral/plan.json', { cache: 'no-cache' })).json();
@@ -317,6 +326,7 @@ async function starte() {
   document.documentElement.style.setProperty('--pfad', `var(--${SP.level.toLowerCase()})`);
   document.documentElement.style.setProperty('--pfad-bg', `var(--${SP.level.toLowerCase()}-bg)`);
 
+  Tracker.setContext({ page: 'warmup', unit: 'WARMUP', path: SP.level, progress: 0 });
   SP.reihe = waehle(5).map(baue);
   if (!SP.reihe.length) {
     $$('#buehne').innerHTML = `<div class="karte"><p class="frage">Für Pfad ${SP.level}
@@ -369,6 +379,7 @@ function zeige() {
   if ($$('#tipp')) $$('#tipp').addEventListener('click', () => {
     melde('tipp', `<b>Tipp:</b> ${a.hint}`);
     $$('#tipp').disabled = true;
+    Tracker.track('hint_opened', { hint_number: 1, task: a.genId });
   });
   $$('.zahl-feld').focus({ preventScroll: true });
 }
@@ -427,7 +438,6 @@ function pruefe() {
 }
 
 function weiterKnopf() {
-  const a = SP.aufgabe;
   const alt = $$('#pruefen');
   const neu = alt.cloneNode(false);
   neu.className = 'btn btn-haupt';
@@ -467,4 +477,7 @@ function fertig() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', starte);
+/* Auch dann starten, wenn dieses Skript erst nach DOMContentLoaded
+   nachgeladen wurde — der Prüfungstrainer lädt engine.js dynamisch. */
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', starte);
+else starte();
