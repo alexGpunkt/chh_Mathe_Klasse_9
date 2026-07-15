@@ -1,0 +1,689 @@
+{
+  "category": "W-SACH",
+  "title": "Sachrechnen",
+  "generators": [
+    {
+      "id": "WSACH-A-einzelpreis",
+      "level": "A",
+      "skill": "Preis für ein Stück",
+      "vars": {
+        "n": {
+          "aus": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "e": {
+          "aus": [
+            0.3,
+            0.5,
+            0.6,
+            0.8,
+            1.2,
+            1.5,
+            2
+          ]
+        }
+      },
+      "berechnet": {
+        "p": "n*e"
+      },
+      "template": "{n} Brötchen kosten {p:€} €. Was kostet 1 Brötchen?",
+      "answer": "e",
+      "unit_label": "€",
+      "round": 2,
+      "hint": "Teile durch {n}.",
+      "solution": "{p:€} : {n} = {ergebnis} €",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "p*n",
+          "feedback": "Du hast multipliziert. Ein einzelnes Brötchen kostet weniger als alle {n} zusammen."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-A-dreisatz",
+      "level": "A",
+      "skill": "Dreisatz über die Einheit",
+      "vars": {
+        "e": {
+          "aus": [
+            0.5,
+            1.5,
+            2,
+            2.5,
+            3
+          ]
+        },
+        "a": {
+          "aus": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "b": {
+          "aus": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      },
+      "berechnet": {
+        "pa": "a*e"
+      },
+      "template": "{a} Hefte kosten {pa:€} €. Was kosten {b} Hefte?",
+      "answer": "b*e",
+      "unit_label": "€",
+      "round": 2,
+      "hint": "Erst 1 Heft: {pa:€} : {a}. Dann mal {b}.",
+      "solution": "1 Heft → {pa:€} : {a} = {e:€} €\n{b} Hefte → {e:€} · {b} = {ergebnis} €",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "e",
+          "feedback": "Das ist der Preis für 1 Heft. Jetzt noch mal {b} nehmen."
+        },
+        {
+          "id": "additives_denken",
+          "value": "pa+(b-a)",
+          "feedback": "Du hast {b-a} € dazugerechnet, weil {b-a} Hefte mehr sind. Aber ein Heft kostet nicht 1 € — rechne über den Einzelpreis."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-A-rezept-doppelt",
+      "level": "A",
+      "skill": "Rezept verdoppeln",
+      "vars": {
+        "g": {
+          "aus": [
+            150,
+            200,
+            250,
+            300,
+            400,
+            500
+          ]
+        }
+      },
+      "template": "Für 4 Personen braucht man {g} g Reis. Wie viel Gramm für 8 Personen?",
+      "answer": "2*g",
+      "unit_label": "g",
+      "round": 0,
+      "hint": "8 Personen sind doppelt so viele wie 4.",
+      "solution": "{g} · 2 = {ergebnis} g",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "g/2",
+          "feedback": "Du hast halbiert. Für mehr Personen braucht man mehr Reis."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-A-rezept-halb",
+      "level": "A",
+      "skill": "Rezept halbieren",
+      "vars": {
+        "g": {
+          "aus": [
+            200,
+            300,
+            400,
+            500,
+            600,
+            800
+          ]
+        }
+      },
+      "template": "Für 8 Personen braucht man {g} g Nudeln. Wie viel Gramm für 4 Personen?",
+      "answer": "g/2",
+      "unit_label": "g",
+      "round": 0,
+      "hint": "4 Personen sind halb so viele wie 8.",
+      "solution": "{g} : 2 = {ergebnis} g",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "2*g",
+          "feedback": "Du hast verdoppelt. Für weniger Personen braucht man weniger Nudeln."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-A-tempo",
+      "level": "A",
+      "skill": "Strecke bei gleichem Tempo",
+      "vars": {
+        "v": {
+          "aus": [
+            40,
+            50,
+            60,
+            70,
+            80,
+            90,
+            100
+          ]
+        },
+        "t": {
+          "aus": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "template": "Ein Auto fährt {v} km in einer Stunde. Wie weit kommt es in {t} Stunden?",
+      "answer": "v*t",
+      "unit_label": "km",
+      "round": 0,
+      "hint": "In jeder Stunde kommen {v} km dazu.",
+      "solution": "{v} · {t} = {ergebnis} km",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "v/t",
+          "feedback": "Du hast geteilt. Mehr Zeit bedeutet mehr Strecke."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-B-dreisatz",
+      "level": "B",
+      "skill": "Dreisatz mit Kommazahlen",
+      "vars": {
+        "e": {
+          "aus": [
+            1.2,
+            1.4,
+            1.6,
+            1.8,
+            2.2,
+            2.4
+          ]
+        },
+        "a": {
+          "aus": [
+            5,
+            6,
+            7,
+            9
+          ]
+        },
+        "b": {
+          "aus": [
+            3,
+            4,
+            8,
+            11,
+            12
+          ]
+        }
+      },
+      "berechnet": {
+        "pa": "a*e"
+      },
+      "template": "{a} kg Äpfel kosten {pa:€} €. Was kosten {b} kg?",
+      "answer": "b*e",
+      "unit_label": "€",
+      "round": 2,
+      "hint": "1 kg: {pa:€} : {a} = {e:€} €. Dann mal {b}.",
+      "solution": "1 kg → {pa:€} : {a} = {e:€} €\n{b} kg → {e:€} · {b} = {ergebnis} €",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "e",
+          "feedback": "Das ist der Preis für 1 kg. Gefragt sind {b} kg."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-B-antiproportional",
+      "level": "B",
+      "skill": "Antiproportionaler Dreisatz",
+      "vars": {
+        "t": {
+          "aus": [
+            12,
+            24,
+            36
+          ]
+        },
+        "a": {
+          "aus": [
+            2,
+            3,
+            4,
+            6
+          ]
+        },
+        "b": {
+          "aus": [
+            2,
+            3,
+            4,
+            6,
+            12
+          ]
+        }
+      },
+      "bedingung": "b != a",
+      "template": "{a} Arbeiter brauchen {t} Tage. Wie lange brauchen {b} Arbeiter?",
+      "answer": "a*t/b",
+      "unit_label": "Tage",
+      "round": 2,
+      "hint": "Mehr Arbeiter, weniger Zeit. Erst 1 Arbeiter: {t} · {a} = {a*t} Tage. Dann durch {b}.",
+      "solution": "1 Arbeiter → {t} · {a} = {a*t} Tage\n{b} Arbeiter → {a*t} : {b} = {ergebnis} Tage\nProbe: {a} · {t} = {a*t} und {b} · {ergebnis} = {a*t} ✓",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": "t*b/a",
+          "feedback": "Du hast proportional gerechnet. Mehr Arbeiter brauchen WENIGER Zeit — erst mal nehmen, dann teilen."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "a*t",
+          "feedback": "Das ist die Zeit für einen einzigen Arbeiter. Jetzt noch durch {b} teilen."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-B-tempo",
+      "level": "B",
+      "skill": "Strecke aus Strecke und Zeit",
+      "vars": {
+        "v": {
+          "aus": [
+            60,
+            70,
+            80,
+            90,
+            100,
+            120
+          ]
+        },
+        "t": {
+          "aus": [
+            2,
+            3,
+            4
+          ]
+        },
+        "u": {
+          "aus": [
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      "berechnet": {
+        "s": "v*t"
+      },
+      "template": "Ein Zug fährt in {t} Stunden {s} km. Wie weit kommt er in {u} Stunden?",
+      "answer": "v*u",
+      "unit_label": "km",
+      "round": 0,
+      "hint": "In 1 Stunde: {s} : {t} = {v} km. Dann mal {u}.",
+      "solution": "1 Stunde → {s} : {t} = {v} km\n{u} Stunden → {v} · {u} = {ergebnis} km",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "v",
+          "feedback": "Das ist die Strecke in einer Stunde. Gefragt sind {u} Stunden."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-B-massstab",
+      "level": "B",
+      "skill": "Maßstab: Karte zur Wirklichkeit",
+      "vars": {
+        "m": {
+          "aus": [
+            100,
+            200,
+            500,
+            1000
+          ]
+        },
+        "c": {
+          "aus": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            10
+          ]
+        }
+      },
+      "template": "Auf einer Karte im Maßstab 1 : {m} ist eine Strecke {c} cm lang. Wie viele Meter sind das in Wirklichkeit?",
+      "answer": "c*m/100",
+      "unit_label": "m",
+      "round": 2,
+      "hint": "In Wirklichkeit ist alles {m}-mal so groß. Erst in cm rechnen, dann in Meter umwandeln.",
+      "solution": "{c} · {m} = {c*m} cm\n{c*m} : 100 = {ergebnis} m",
+      "misconceptions": [
+        {
+          "id": "einheit_vergessen",
+          "value": "c*m",
+          "feedback": "{c*m} ist die Länge in Zentimetern. Gefragt sind Meter — also noch durch 100 teilen."
+        },
+        {
+          "id": "richtung_vertauscht",
+          "value": "c/m*100",
+          "feedback": "Du hast geteilt. In Wirklichkeit ist die Strecke GRÖSSER als auf der Karte."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-B-rezept",
+      "level": "B",
+      "skill": "Rezept umrechnen",
+      "vars": {
+        "e": {
+          "aus": [
+            25,
+            40,
+            50,
+            60,
+            75
+          ]
+        },
+        "a": {
+          "aus": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        "b": {
+          "aus": [
+            3,
+            7,
+            9,
+            10,
+            12
+          ]
+        }
+      },
+      "berechnet": {
+        "g": "a*e"
+      },
+      "template": "Für {a} Portionen braucht man {g} g Mehl. Wie viel Gramm für {b} Portionen?",
+      "answer": "b*e",
+      "unit_label": "g",
+      "round": 0,
+      "hint": "1 Portion: {g} : {a} = {e} g.",
+      "solution": "1 Portion → {g} : {a} = {e} g\n{b} Portionen → {e} · {b} = {ergebnis} g",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "e",
+          "feedback": "Das ist die Menge für 1 Portion. Gefragt sind {b}."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-C-antiproportional-umkehr",
+      "level": "C",
+      "skill": "Antiproportional rückwärts",
+      "vars": {
+        "t": {
+          "aus": [
+            12,
+            24,
+            36
+          ]
+        },
+        "a": {
+          "aus": [
+            2,
+            3,
+            4,
+            6
+          ]
+        },
+        "u": {
+          "aus": [
+            2,
+            3,
+            4,
+            6,
+            12
+          ]
+        }
+      },
+      "bedingung": "u != t",
+      "template": "Ein Vorrat reicht für {a} Pferde {t} Tage. Für wie viele Pferde reicht er {u} Tage?",
+      "answer": "a*t/u",
+      "unit_label": "Pferde",
+      "round": 2,
+      "hint": "Der ganze Vorrat sind {a} · {t} = {a*t} Pferdetage. Wie viele Pferde passen in {u} Tage?",
+      "solution": "Vorrat: {a} · {t} = {a*t} Pferdetage\n{a*t} : {u} = {ergebnis} Pferde\nProbe: {ergebnis} · {u} = {a*t} ✓",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": "a*u/t",
+          "feedback": "Du hast proportional gerechnet. Wenn der Vorrat kürzer reichen soll, müssen es MEHR Pferde sein — und umgekehrt."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "a*t",
+          "feedback": "Das ist der Vorrat in Pferdetagen, nicht die Zahl der Pferde."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-C-massstab-rueck",
+      "level": "C",
+      "skill": "Maßstab: Wirklichkeit zur Karte",
+      "vars": {
+        "m": {
+          "aus": [
+            100,
+            200,
+            500,
+            1000
+          ]
+        },
+        "s": {
+          "aus": [
+            10,
+            20,
+            25,
+            50,
+            100
+          ]
+        }
+      },
+      "template": "Eine Strecke ist in Wirklichkeit {s} m lang. Wie viele Zentimeter sind das auf einer Karte im Maßstab 1 : {m}?",
+      "answer": "s*100/m",
+      "unit_label": "cm",
+      "round": 2,
+      "hint": "Erst in Zentimeter: {s} · 100 = {s*100} cm. Auf der Karte ist alles {m}-mal kleiner.",
+      "solution": "{s} m = {s*100} cm\n{s*100} : {m} = {ergebnis} cm",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "s*m/100",
+          "feedback": "Du hast multipliziert. Auf der Karte ist die Strecke {m}-mal KLEINER."
+        },
+        {
+          "id": "einheit_vergessen",
+          "value": "s/m",
+          "feedback": "Das ist die Länge in Metern. Gefragt sind Zentimeter — die {s} m müssen erst in cm umgerechnet werden."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-C-dreisatz-dezimal",
+      "level": "C",
+      "skill": "Dreisatz mit Kommazahl als Menge",
+      "vars": {
+        "a": {
+          "aus": [
+            1.5,
+            2.5,
+            3.5,
+            4.5
+          ]
+        },
+        "e": {
+          "aus": [
+            4,
+            6,
+            7,
+            8,
+            12
+          ]
+        },
+        "b": {
+          "aus": [
+            3,
+            4,
+            6,
+            8,
+            10
+          ]
+        }
+      },
+      "berechnet": {
+        "pa": "a*e"
+      },
+      "template": "{a} m Stoff kosten {pa:€} €. Was kosten {b} m?",
+      "answer": "b*e",
+      "unit_label": "€",
+      "round": 2,
+      "hint": "Auch mit Kommazahlen: {pa:€} : {a} = {e:€} € pro Meter.",
+      "solution": "1 m → {pa:€} : {a} = {e:€} €\n{b} m → {e:€} · {b} = {ergebnis} €",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "e",
+          "feedback": "Das ist der Preis für 1 m. Gefragt sind {b} m."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-C-tempo-antiproportional",
+      "level": "C",
+      "skill": "Zeit bei anderem Tempo",
+      "vars": {
+        "v1": {
+          "aus": [
+            40,
+            60,
+            80,
+            120
+          ]
+        },
+        "v2": {
+          "aus": [
+            40,
+            60,
+            80,
+            120
+          ]
+        },
+        "t1": {
+          "aus": [
+            2,
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "bedingung": "v2 != v1",
+      "berechnet": {
+        "s": "v1*t1"
+      },
+      "template": "Ein Auto braucht für eine Strecke bei {v1} km/h genau {t1} Stunden. Wie lange braucht es bei {v2} km/h?",
+      "answer": "s/v2",
+      "unit_label": "Stunden",
+      "round": 2,
+      "hint": "Wie lang ist die Strecke? {v1} · {t1} = {s} km. Dann durch {v2} teilen.",
+      "solution": "Strecke: {v1} · {t1} = {s} km\nZeit: {s} : {v2} = {ergebnis} Stunden\nProbe: {v1} · {t1} = {s} und {v2} · {ergebnis} = {s} ✓",
+      "misconceptions": [
+        {
+          "id": "proportional_gerechnet",
+          "value": "t1*v2/v1",
+          "feedback": "Du hast proportional gerechnet. Schneller fahren heißt WENIGER Zeit."
+        },
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "s",
+          "feedback": "Das ist die Streckenlänge in Kilometern, nicht die Zeit."
+        }
+      ]
+    },
+    {
+      "id": "WSACH-C-portionen-umkehr",
+      "level": "C",
+      "skill": "Wie viele Portionen reichen?",
+      "vars": {
+        "e": {
+          "aus": [
+            50,
+            60,
+            75,
+            80
+          ]
+        },
+        "a": {
+          "aus": [
+            4,
+            6,
+            8
+          ]
+        },
+        "f": {
+          "aus": [
+            3,
+            5,
+            9,
+            10,
+            12
+          ]
+        }
+      },
+      "berechnet": {
+        "g": "a*e",
+        "h": "f*e"
+      },
+      "template": "Für {a} Portionen braucht man {g} g. Für wie viele Portionen reichen {h} g?",
+      "answer": "f",
+      "unit_label": "Portionen",
+      "round": 2,
+      "hint": "Erst die Menge pro Portion: {g} : {a} = {e} g. Dann: Wie oft passt {e} in {h}?",
+      "solution": "1 Portion → {g} : {a} = {e} g\n{h} : {e} = {ergebnis} Portionen",
+      "misconceptions": [
+        {
+          "id": "bei_einheit_gestoppt",
+          "value": "e",
+          "feedback": "Das ist die Menge pro Portion in Gramm, nicht die Anzahl der Portionen."
+        },
+        {
+          "id": "richtung_vertauscht",
+          "value": "h/a",
+          "feedback": "Du hast durch die Personenzahl geteilt. Teile durch die Menge PRO Portion ({e} g)."
+        }
+      ]
+    }
+  ]
+}

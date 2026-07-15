@@ -1,0 +1,159 @@
+{
+  "category": "W-KOPF",
+  "title": "Kopfrechnen",
+  "_hinweis": "Nicht jeder Generator hat Fehlvorstellungen. Ein Rechenfehler im Einmaleins ist ein Ausrutscher, kein Denkfehler — dafür eine Diagnose zu erfinden, wäre gelogen.",
+  "generators": [
+
+    {
+      "id": "WKOPF-A-einmaleins", "level": "A", "skill": "Einmaleins",
+      "vars": { "a": { "von": 2, "bis": 10 }, "b": { "von": 2, "bis": 10 } },
+      "template": "{a} · {b}", "answer": "a*b", "round": 0,
+      "hint": "Denk an die Reihe der {a}.",
+      "solution": "{a} · {b} = {ergebnis}",
+      "misconceptions": [
+        { "id": "addiert_statt_multipliziert", "value": "a+b", "feedback": "Du hast {a} + {b} gerechnet. Das Zeichen · bedeutet mal nehmen." }
+      ]
+    },
+    {
+      "id": "WKOPF-A-mal10", "level": "A", "skill": "Mal 10",
+      "vars": { "n": { "von": 3, "bis": 99 } },
+      "template": "{n} · 10", "answer": "n*10", "round": 0,
+      "hint": "Bei mal 10 hängst du eine Null an.",
+      "solution": "{n} · 10 = {ergebnis}",
+      "misconceptions": [
+        { "id": "addiert_statt_multipliziert", "value": "n+10", "feedback": "Du hast {n} + 10 gerechnet. Bei mal 10 wird die Zahl zehnmal so groß." }
+      ]
+    },
+    {
+      "id": "WKOPF-A-durch10", "level": "A", "skill": "Durch 10",
+      "vars": { "n": { "von": 20, "bis": 990, "schritt": 10 } },
+      "template": "{n} : 10", "answer": "n/10", "round": 0,
+      "hint": "Bei geteilt durch 10 fällt die letzte Null weg.",
+      "solution": "{n} : 10 = {ergebnis}",
+      "misconceptions": [
+        { "id": "richtung_vertauscht", "value": "n*10", "feedback": "Du hast multipliziert. Beim Teilen wird die Zahl kleiner." },
+        { "id": "komma_verschoben", "value": "n/100", "feedback": "Das wäre geteilt durch 100. Hier ist es nur eine Stelle." }
+      ]
+    },
+    {
+      "id": "WKOPF-A-teilen-1x1", "level": "A", "skill": "Teilen im Einmaleins",
+      "vars": { "a": { "von": 2, "bis": 10 }, "b": { "von": 2, "bis": 10 } },
+      "berechnet": { "p": "a*b" },
+      "template": "{p} : {b}", "answer": "a", "round": 0,
+      "hint": "Wie oft passt {b} in {p}?",
+      "solution": "{b} · {ergebnis} = {p}, also ist {p} : {b} = {ergebnis}"
+    },
+    {
+      "id": "WKOPF-A-ergaenze100", "level": "A", "skill": "Auf 100 ergänzen",
+      "vars": { "n": { "von": 5, "bis": 95, "schritt": 5 } },
+      "template": "{n} + ? = 100", "answer": "100-n", "round": 0,
+      "hint": "Wie weit ist es von {n} bis 100?",
+      "solution": "100 − {n} = {ergebnis}\nDas brauchst du dauernd: Nach {n} % Rabatt zahlst du noch {ergebnis} %.",
+      "misconceptions": [
+        { "id": "richtung_vertauscht", "value": "100+n", "feedback": "Du hast addiert. Gesucht ist, was noch FEHLT bis 100." }
+      ]
+    },
+
+    {
+      "id": "WKOPF-B-mal100", "level": "B", "skill": "Mal 100",
+      "vars": { "n": { "von": 3, "bis": 99 } },
+      "template": "{n} · 100", "answer": "n*100", "round": 0,
+      "hint": "Bei mal 100 hängst du zwei Nullen an.",
+      "solution": "{n} · 100 = {ergebnis}",
+      "misconceptions": [
+        { "id": "komma_verschoben", "value": "n*10", "feedback": "Das ist mal 10. Bei mal 100 sind es ZWEI Nullen." }
+      ]
+    },
+    {
+      "id": "WKOPF-B-durch100", "level": "B", "skill": "Durch 100",
+      "vars": { "n": { "von": 5, "bis": 995, "schritt": 5 } },
+      "template": "{n} : 100", "answer": "n/100", "round": 2,
+      "hint": "Das Komma wandert zwei Stellen nach links.",
+      "solution": "{n} : 100 = {ergebnis}\nGenau das ist der 1-%-Schritt.",
+      "misconceptions": [
+        { "id": "komma_verschoben", "value": "n/10", "feedback": "Nur eine Stelle. Bei geteilt durch 100 sind es zwei." }
+      ]
+    },
+    {
+      "id": "WKOPF-B-zehnerzahl", "level": "B", "skill": "Mal eine Zehnerzahl",
+      "vars": { "a": { "von": 3, "bis": 9 }, "b": { "aus": [20, 30, 40, 50, 60, 70, 80, 90] } },
+      "template": "{a} · {b}", "answer": "a*b", "round": 0,
+      "hint": "Rechne {a} · {b/10} und häng eine Null an.",
+      "solution": "{a} · {b/10} = {a*b/10}, dann eine Null: {ergebnis}",
+      "misconceptions": [
+        { "id": "komma_verschoben", "value": "a*b/10", "feedback": "Die Null fehlt. {a} · {b/10} = {a*b/10}, aber gefragt ist {a} · {b}." }
+      ]
+    },
+    {
+      "id": "WKOPF-B-haelfte-krumm", "level": "B", "skill": "Ungerade halbieren",
+      "vars": { "n": { "von": 11, "bis": 199, "schritt": 2 } },
+      "template": "Die Hälfte von {n}", "answer": "n/2", "round": 2,
+      "hint": "{n} ist ungerade — es bleibt ein halber Rest.",
+      "solution": "{n} : 2 = {ergebnis}",
+      "misconceptions": [
+        { "id": "rest_abgeschnitten", "value": "(n-1)/2", "feedback": "Du hast den Rest weggelassen. {n} ist ungerade: die Hälfte ist {ergebnis}, nicht {(n-1)/2}." }
+      ]
+    },
+    {
+      "id": "WKOPF-B-quadrat", "level": "B", "skill": "Quadratzahlen",
+      "vars": { "n": { "von": 2, "bis": 15 } },
+      "template": "Wie viel ist {n}²?", "answer": "n*n", "round": 0,
+      "hint": "{n}² bedeutet {n} · {n}.",
+      "solution": "{n} · {n} = {ergebnis}",
+      "misconceptions": [
+        { "id": "potenz_als_mal", "value": "2*n", "feedback": "Das ist {n} · 2. Quadrieren heißt {n} · {n} — die Zahl mit sich selbst." }
+      ]
+    },
+
+    {
+      "id": "WKOPF-C-quadrat-gross", "level": "C", "skill": "Große Quadratzahlen",
+      "vars": { "n": { "von": 11, "bis": 25 } },
+      "template": "Wie viel ist {n}²?", "answer": "n*n", "round": 0,
+      "hint": "Zerlege: {n}² = {n} · {n-1} + {n}.",
+      "solution": "{n} · {n} = {ergebnis}",
+      "misconceptions": [
+        { "id": "potenz_als_mal", "value": "2*n", "feedback": "Das ist {n} · 2. Quadrieren heißt {n} · {n}." }
+      ]
+    },
+    {
+      "id": "WKOPF-C-wurzel", "level": "C", "skill": "Quadratwurzel",
+      "vars": { "n": { "von": 2, "bis": 20 } },
+      "berechnet": { "q": "n*n" },
+      "template": "Wie viel ist die Quadratwurzel aus {q}?", "answer": "n", "round": 0,
+      "hint": "Welche Zahl ergibt mit sich selbst multipliziert {q}?",
+      "solution": "{ergebnis} · {ergebnis} = {q}, also ist die Wurzel aus {q} gleich {ergebnis}.",
+      "misconceptions": [
+        { "id": "wurzel_als_halbieren", "value": "q/2", "feedback": "Die Wurzel ist nicht die Hälfte. Gesucht ist die Zahl, die MIT SICH SELBST multipliziert {q} ergibt." }
+      ]
+    },
+    {
+      "id": "WKOPF-C-mal-dezimal", "level": "C", "skill": "Mal eine Kommazahl",
+      "vars": { "n": { "von": 4, "bis": 40 }, "k": { "von": 1, "bis": 9 } },
+      "berechnet": { "d": "k/10" },
+      "template": "{n} · {d}", "answer": "n*d", "round": 2,
+      "hint": "Rechne erst {n} · {k}, dann das Komma eine Stelle nach links.",
+      "solution": "{n} · {k} = {n*k}, Komma eine Stelle nach links: {ergebnis}\nMerke: Mal einer Zahl unter 1 wird das Ergebnis KLEINER.",
+      "misconceptions": [
+        { "id": "komma_ignoriert", "value": "n*k", "feedback": "Du hast das Komma weggelassen. {d} ist kleiner als 1 — das Ergebnis muss also kleiner als {n} sein." }
+      ]
+    },
+    {
+      "id": "WKOPF-C-halbschriftlich", "level": "C", "skill": "Halbschriftlich multiplizieren",
+      "vars": { "a": { "aus": [15, 25, 35, 45, 55, 65, 75, 85, 95] }, "b": { "von": 11, "bis": 19 } },
+      "template": "{a} · {b}", "answer": "a*b", "round": 0,
+      "hint": "Zerlege {b} in 10 + {b-10}.",
+      "solution": "{a} · 10 = {a*10}\n{a} · {b-10} = {a*(b-10)}\nzusammen: {ergebnis}"
+    },
+    {
+      "id": "WKOPF-C-kubik", "level": "C", "skill": "Dritte Potenz",
+      "vars": { "n": { "von": 2, "bis": 10 } },
+      "template": "Wie viel ist {n}³?", "answer": "n*n*n", "round": 0,
+      "hint": "{n}³ = {n} · {n} · {n}. Das brauchst du beim Volumen eines Würfels.",
+      "solution": "{n} · {n} · {n} = {ergebnis}",
+      "misconceptions": [
+        { "id": "potenz_als_mal", "value": "3*n", "feedback": "Das ist {n} · 3. Hoch 3 heißt {n} · {n} · {n}." },
+        { "id": "quadrat_statt_kubik", "value": "n*n", "feedback": "Das ist {n}² — nur zwei Faktoren. Hoch 3 braucht drei: {n} · {n} · {n}." }
+      ]
+    }
+  ]
+}

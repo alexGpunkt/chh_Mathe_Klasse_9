@@ -243,17 +243,17 @@
       "berechnet": {
         "W": "G*p/100"
       },
-      "template": "{p} % eines Betrags sind {W} €. Wie groß ist der Betrag?",
+      "template": "{p} % eines Betrags sind {W:€} €. Wie groß ist der Betrag?",
       "answer": "G",
       "unit_label": "€",
       "round": 2,
-      "hint": "Erst 1 % ({W} : {p}), dann mal 100.",
-      "solution": "1 % = {W} : {p}\n100 % = {ergebnis} €",
+      "hint": "Erst 1 % ({W:€} : {p}), dann mal 100.",
+      "solution": "1 % = {W:€} : {p}\n100 % = {ergebnis} €",
       "misconceptions": [
         {
           "id": "mal_statt_geteilt",
           "value": "W*p/100",
-          "feedback": "Du hast {p} % von {W} € gerechnet. Die {W} € sind schon der Teil — das Ganze ist größer."
+          "feedback": "Du hast {p} % von {W:€} € gerechnet. Die {W:€} € sind schon der Teil — das Ganze ist größer."
         },
         {
           "id": "bei_1prozent_gestoppt",
@@ -359,22 +359,22 @@
       "berechnet": {
         "E": "G*(100-p)/100"
       },
-      "template": "Nach {p} % Rabatt zahlst du {E} €. Wie hoch war der Preis vorher?",
+      "template": "Nach {p} % Rabatt zahlst du {E:€} €. Wie hoch war der Preis vorher?",
       "answer": "G",
       "unit_label": "€",
       "round": 2,
-      "hint": "Die {E} € sind nicht 100 %, sondern {100-p} %.",
-      "solution": "{E} : {100-p} · 100 = {ergebnis} €",
+      "hint": "Die {E:€} € sind nicht 100 %, sondern {100-p} %.",
+      "solution": "{E:€} : {100-p} · 100 = {ergebnis} €",
       "misconceptions": [
         {
           "id": "prozent_auf_endwert_addiert",
           "value": "E*(100+p)/100",
-          "feedback": "Du hast {p} % auf {E} € draufgerechnet. Aber {E} € sind {100-p} % — nicht 100 %."
+          "feedback": "Du hast {p} % auf {E:€} € draufgerechnet. Aber {E:€} € sind {100-p} % — nicht 100 %."
         },
         {
           "id": "nur_teil_berechnet",
           "value": "E*p/100",
-          "feedback": "Das ist {p} % von {E} €. Gefragt ist der ganze Preis."
+          "feedback": "Das ist {p} % von {E:€} €. Gefragt ist der ganze Preis."
         }
       ]
     },
