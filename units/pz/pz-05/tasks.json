@@ -1,0 +1,505 @@
+{
+  "unit": "PZ-05",
+  "title": "G, W und p % benennen",
+  "leitidee": "L1",
+  "standards": [
+    "K6"
+  ],
+  "wortspeicher": [
+    "der Grundwert",
+    "der Prozentwert",
+    "der Prozentsatz",
+    "der Rabatt",
+    "der Anteil"
+  ],
+  "can_do": {
+    "A": "Du findest in einem Text den Grundwert — das Ganze.",
+    "B": "Du benennst in einer Sachaufgabe Grundwert, Prozentwert und Prozentsatz.",
+    "C": "Du erkennst Texte, in denen der Grundwert gar nicht genannt ist, und begründest das."
+  },
+  "formelkarte": {
+    "formeln": [
+      "G  = das Ganze  = 100 %",
+      "W  = der Teil davon",
+      "p %= wie viel Prozent der Teil ist"
+    ],
+    "saetze": [
+      "Der Grundwert ist … , weil das das Ganze ist.",
+      "Der Prozentwert ist … , weil das nur ein Teil ist.",
+      "Nach dem Rabatt sind es nur noch … Prozent."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ05-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Ein Pullover kostet 40 €. Der Rabatt beträgt 8 €. — Was ist der Grundwert?",
+      "options": [
+        "40 € — der volle Preis",
+        "8 € — der Rabatt"
+      ],
+      "answer": 0,
+      "hints": [
+        "Der Grundwert ist immer das Ganze.",
+        "Was war zuerst da: der volle Preis oder der Rabatt?"
+      ],
+      "solution": "Grundwert G = 40 € (der volle Preis, bevor etwas abgezogen wird).",
+      "misconceptions": [
+        {
+          "id": "teil_statt_ganzes",
+          "value": 1,
+          "feedback": "8 € ist nur ein Teil — der Rabatt. Der Grundwert ist der volle Preis: 40 €."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "sprache"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "choice",
+      "prompt": "In der Klasse 9a sind 25 Kinder. 5 Kinder tragen eine Brille. — Was ist der Grundwert?",
+      "options": [
+        "25 Kinder",
+        "5 Kinder"
+      ],
+      "answer": 0,
+      "hints": [
+        "Das Ganze ist die ganze Klasse."
+      ],
+      "solution": "G = 25 Kinder (die ganze Klasse). W = 5 Kinder (der Teil mit Brille).",
+      "misconceptions": [
+        {
+          "id": "teil_statt_ganzes",
+          "value": 1,
+          "feedback": "5 Kinder sind nur ein Teil der Klasse. Das Ganze sind 25 Kinder."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "sprache"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Ein Handy kostet 300 €. Du bekommst 60 € Rabatt. — Was ist der Prozentwert, also der Teil?",
+      "options": [
+        "300 €",
+        "60 €"
+      ],
+      "answer": 1,
+      "hints": [
+        "Der Prozentwert ist der Teil, nicht das Ganze."
+      ],
+      "solution": "W = 60 € (der Teil). G = 300 € (das Ganze).",
+      "misconceptions": [
+        {
+          "id": "ganzes_statt_teil",
+          "value": 0,
+          "feedback": "300 € ist das Ganze — also der Grundwert. Der Teil sind die 60 € Rabatt."
+        }
+      ],
+      "tags": [
+        "prozentwert",
+        "sprache"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Von 200 Schülern kommen 40 mit dem Fahrrad. 60 kommen zu Fuß. — Was ist der Grundwert?",
+      "options": [
+        "200 Schüler",
+        "40 Schüler",
+        "60 Schüler"
+      ],
+      "answer": 0,
+      "hints": [
+        "Es gibt hier zwei Teile — aber nur ein Ganzes."
+      ],
+      "solution": "G = 200 Schüler. Es gibt zwei Prozentwerte: 40 (Fahrrad) und 60 (zu Fuß).",
+      "misconceptions": [
+        {
+          "id": "teil_statt_ganzes",
+          "value": 1,
+          "feedback": "40 ist ein Teil. Suche das Ganze: alle Schüler zusammen."
+        },
+        {
+          "id": "teil_statt_ganzes",
+          "value": 2,
+          "feedback": "60 ist auch nur ein Teil. Das Ganze sind alle 200 Schüler."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "sprache"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "assign",
+      "prompt": "Ein Fahrrad kostet 500 €. Der Rabatt beträgt 50 €. Das sind 10 %. — Ordne zu.",
+      "slots": [
+        "Grundwert G",
+        "Prozentwert W",
+        "Prozentsatz p"
+      ],
+      "values": [
+        "500 €",
+        "50 €",
+        "10 %"
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "hints": [
+        "Der Prozentsatz ist die Angabe mit dem %-Zeichen."
+      ],
+      "solution": "G = 500 €, W = 50 €, p = 10 %.",
+      "tags": [
+        "zuordnung"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "assign",
+      "prompt": "An der Schule sind 600 Schüler. 150 davon sind in Jahrgang 9. Das sind 25 %. — Ordne zu.",
+      "slots": [
+        "Grundwert G",
+        "Prozentwert W",
+        "Prozentsatz p"
+      ],
+      "values": [
+        "150 Schüler",
+        "25 %",
+        "600 Schüler"
+      ],
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "hints": [
+        "Achtung: Die Werte stehen nicht in derselben Reihenfolge wie im Text."
+      ],
+      "solution": "G = 600 Schüler, W = 150 Schüler, p = 25 %.",
+      "tags": [
+        "zuordnung"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "assign",
+      "prompt": "Ein Trikot kostet 80 €. Der Preis steigt um 12 €. Das sind 15 %. — Ordne zu.",
+      "slots": [
+        "Grundwert G",
+        "Prozentwert W",
+        "Prozentsatz p"
+      ],
+      "values": [
+        "15 %",
+        "80 €",
+        "12 €"
+      ],
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "hints": [
+        "Der Grundwert ist der Preis vor der Erhöhung."
+      ],
+      "solution": "G = 80 € (Preis vorher), W = 12 € (die Erhöhung), p = 15 %.",
+      "tags": [
+        "zuordnung",
+        "erhoehung"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "assign",
+      "prompt": "Von 30 Aufgaben hast du 24 richtig. Das sind 80 %. — Ordne zu.",
+      "slots": [
+        "Grundwert G",
+        "Prozentwert W",
+        "Prozentsatz p"
+      ],
+      "values": [
+        "24 Aufgaben",
+        "80 %",
+        "30 Aufgaben"
+      ],
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "hints": [
+        "Wie viele Aufgaben gab es insgesamt?"
+      ],
+      "solution": "G = 30 Aufgaben, W = 24 Aufgaben, p = 80 %.",
+      "tags": [
+        "zuordnung"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Nach 20 % Rabatt zahlst du 64 €. — Was ist hier der Grundwert?",
+      "options": [
+        "64 €",
+        "Der Preis vor dem Rabatt — er wird gar nicht genannt",
+        "20 %"
+      ],
+      "answer": 1,
+      "hints": [
+        "Der Grundwert ist immer der volle Preis, also 100 %.",
+        "Steht der volle Preis im Text?"
+      ],
+      "solution": "64 € sind der Preis NACH dem Rabatt, also 80 %. Der Grundwert (100 %) kommt im Text nicht vor — er muss erst berechnet werden.",
+      "misconceptions": [
+        {
+          "id": "endwert_als_grundwert",
+          "value": 0,
+          "feedback": "64 € ist der Preis nach dem Rabatt — das sind nur 80 %. Der Grundwert ist der volle Preis, und der steht nicht da."
+        },
+        {
+          "id": "satz_als_wert",
+          "value": 2,
+          "feedback": "20 % ist der Prozentsatz, kein Geldbetrag. Der Grundwert ist immer eine Größe wie €, kg oder Personen."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "versteckt",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Der Umsatz steigt von 200 € auf 250 €. — Was ist der Grundwert?",
+      "options": [
+        "200 €",
+        "250 €",
+        "50 €"
+      ],
+      "answer": 0,
+      "hints": [
+        "Womit wird verglichen — mit dem Wert vorher oder dem Wert nachher?"
+      ],
+      "solution": "G = 200 € (der Wert VORHER). W = 50 € (die Zunahme). Bei Veränderungen ist der Grundwert immer der alte Wert.",
+      "misconceptions": [
+        {
+          "id": "neuer_als_grundwert",
+          "value": 1,
+          "feedback": "250 € ist der neue Wert. Der Grundwert ist immer der Wert vorher — mit ihm wird verglichen."
+        },
+        {
+          "id": "differenz_als_grundwert",
+          "value": 2,
+          "feedback": "50 € ist die Zunahme, also der Prozentwert. Der Grundwert ist der Startwert 200 €."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "veraenderung",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Ein Laptop kostet nach 25 % Rabatt noch 450 €. — Welche Aussage stimmt?",
+      "options": [
+        "450 € entsprechen 100 %",
+        "450 € entsprechen 75 %",
+        "450 € entsprechen 25 %"
+      ],
+      "answer": 1,
+      "hints": [
+        "Der volle Preis ist 100 %. Wie viel Prozent bleiben nach 25 % Rabatt übrig?"
+      ],
+      "solution": "100 % − 25 % = 75 %. Die 450 € sind der verminderte Grundwert und entsprechen 75 %.",
+      "misconceptions": [
+        {
+          "id": "endwert_als_grundwert",
+          "value": 0,
+          "feedback": "Das ist der häufigste Fehler: 450 € sind nicht das Ganze, sondern der Rest nach dem Rabatt — 75 %."
+        },
+        {
+          "id": "rabatt_als_rest",
+          "value": 2,
+          "feedback": "25 % ist der Rabatt selbst. Übrig bleiben 100 % − 25 % = 75 %."
+        }
+      ],
+      "tags": [
+        "verminderter_grundwert",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Die Miete steigt um 8 % auf 1 080 €. — Wie viel Prozent entsprechen den 1 080 €?",
+      "options": [
+        "100 %",
+        "108 %",
+        "92 %"
+      ],
+      "answer": 1,
+      "hints": [
+        "Die alte Miete ist 100 %. Es kommen 8 % dazu."
+      ],
+      "solution": "100 % + 8 % = 108 %. Die 1 080 € sind der vermehrte Grundwert.",
+      "misconceptions": [
+        {
+          "id": "endwert_als_grundwert",
+          "value": 0,
+          "feedback": "1 080 € ist die neue Miete — also mehr als 100 %. Der Grundwert ist die alte Miete."
+        },
+        {
+          "id": "vorzeichen_vertauscht",
+          "value": 2,
+          "feedback": "92 % wäre richtig, wenn die Miete um 8 % SINKEN würde. Sie steigt."
+        }
+      ],
+      "tags": [
+        "vermehrter_grundwert",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Nur noch 40 % der Plätze sind frei — das sind 60 Plätze. Gefragt ist die Gesamtzahl der Plätze. — Welche Größe wird gesucht?",
+      "options": [
+        "Der Grundwert",
+        "Der Prozentwert",
+        "Der Prozentsatz"
+      ],
+      "answer": 0,
+      "hints": [
+        "Die Gesamtzahl ist immer das Ganze."
+      ],
+      "solution": "Gesucht ist G. Gegeben sind W = 60 Plätze und p = 40 %.",
+      "misconceptions": [
+        {
+          "id": "teil_statt_ganzes",
+          "value": 1,
+          "feedback": "Der Prozentwert sind die 60 freien Plätze — der ist schon gegeben. Gesucht ist das Ganze."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "aufgabenart"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ05-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "In welchem Text ist der Grundwert NICHT genannt?",
+      "options": [
+        "Von 400 Fahrgästen haben 40 keinen Fahrschein.",
+        "Nach 30 % Rabatt kostet die Jacke 70 €.",
+        "Ein Sparbuch mit 2 000 € bringt 40 € Zinsen."
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe bei jedem Text: Steht der Wert da, der 100 % entspricht?"
+      ],
+      "solution": "Text 1: G = 400 Fahrgäste. Text 3: G = 2 000 €. Text 2: 70 € entsprechen nur 70 % — der volle Preis (100 %) fehlt und muss berechnet werden.",
+      "misconceptions": [
+        {
+          "id": "grundwert_uebersehen",
+          "value": 0,
+          "feedback": "Hier steht der Grundwert: 400 Fahrgäste sind das Ganze."
+        },
+        {
+          "id": "grundwert_uebersehen",
+          "value": 2,
+          "feedback": "Hier steht der Grundwert: Das Kapital von 2 000 € ist das Ganze."
+        }
+      ],
+      "tags": [
+        "grundwert",
+        "versteckt",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    }
+  ]
+}
