@@ -1,0 +1,495 @@
+{
+  "unit": "PZ-09",
+  "title": "Vermehrter und verminderter Grundwert",
+  "leitidee": "L1",
+  "standards": [
+    "K3"
+  ],
+  "wortspeicher": [
+    "der Grundwert",
+    "der Rabatt",
+    "der Aufschlag",
+    "die Mehrwertsteuer",
+    "der Prozentsatz"
+  ],
+  "can_do": {
+    "A": "Du berechnest einen Endpreis in zwei Schritten: erst den Rabatt, dann abziehen.",
+    "B": "Du berechnest Endpreise in einem Schritt über 100 % ± p %.",
+    "C": "Du rechnest vom Endpreis auf den Ausgangspreis zurück und begründest, warum Abziehen dort falsch ist."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Weniger:  Endwert = G · (100 − p) : 100     20 % Rabatt → · 0,80",
+      "Mehr:     Endwert = G · (100 + p) : 100     19 % MwSt   → · 1,19",
+      "Zurück:   G = Endwert : Faktor              238 € : 1,19 = 200 €"
+    ],
+    "saetze": [
+      "Nach dem Rabatt sind es noch … Prozent.",
+      "Der Endpreis entspricht … Prozent, nicht 100 Prozent.",
+      "Ich teile durch den Faktor, weil ich vom Teil auf das Ganze zurückrechne."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ09-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Pullover kostet 40 €. Du bekommst 10 % Rabatt. Was zahlst du?",
+      "answer": 36,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Schritt 1: Wie viel Euro Rabatt sind 10 % von 40 €?",
+        "Schritt 2: Ziehe den Rabatt von 40 € ab."
+      ],
+      "solution": "Schritt 1: 10 % von 40 € = 4 €\nSchritt 2: 40 € − 4 € = 36 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 4,
+          "feedback": "Das ist der Rabatt in Euro. Jetzt fehlt Schritt 2: 40 € − 4 €."
+        },
+        {
+          "id": "addiert_statt_abgezogen",
+          "value": 44,
+          "feedback": "Du hast den Rabatt dazugerechnet. Ein Rabatt macht den Preis günstiger — also abziehen."
+        }
+      ],
+      "tags": [
+        "rabatt",
+        "zwei_schritte"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Eine Jacke kostet 80 €. Es gibt 25 % Rabatt. Was zahlst du?",
+      "answer": 60,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Schritt 1: 25 % von 80 € = ?",
+        "Schritt 2: 80 € minus den Rabatt."
+      ],
+      "solution": "Schritt 1: 25 % von 80 € = 20 €\nSchritt 2: 80 € − 20 € = 60 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 20,
+          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst: 80 € − 20 €."
+        },
+        {
+          "id": "addiert_statt_abgezogen",
+          "value": 100,
+          "feedback": "Du hast addiert. Bei Rabatt wird abgezogen."
+        }
+      ],
+      "tags": [
+        "rabatt",
+        "zwei_schritte"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Spiel kostet 60 €. Es ist um 20 % reduziert. Was zahlst du?",
+      "answer": 48,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Erst den Rabatt berechnen, dann abziehen."
+      ],
+      "solution": "20 % von 60 € = 12 €\n60 € − 12 € = 48 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 12,
+          "feedback": "Das ist der Rabatt. Jetzt noch von 60 € abziehen."
+        }
+      ],
+      "tags": [
+        "rabatt"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Ticket kostet 30 €. Der Preis steigt um 10 %. Was kostet das Ticket jetzt?",
+      "answer": 33,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Schritt 1: 10 % von 30 € = 3 €",
+        "Achtung: Der Preis STEIGT. Wird der Betrag addiert oder abgezogen?"
+      ],
+      "solution": "Schritt 1: 10 % von 30 € = 3 €\nSchritt 2: 30 € + 3 € = 33 €",
+      "misconceptions": [
+        {
+          "id": "abgezogen_statt_addiert",
+          "value": 27,
+          "feedback": "Du hast abgezogen. Der Preis steigt — also dazurechnen."
+        },
+        {
+          "id": "nur_teil_berechnet",
+          "value": 3,
+          "feedback": "Das ist die Erhöhung. Gefragt ist der neue Preis: 30 € + 3 €."
+        }
+      ],
+      "tags": [
+        "aufschlag"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Laptop kostet 850 €. Im Angebot gibt es 20 % Rabatt. Wie hoch ist der Endpreis?",
+      "answer": 680,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "100 % − 20 % = 80 %. Der Endpreis sind also 80 % von 850 €.",
+        "850 · 0,80"
+      ],
+      "solution": "100 % − 20 % = 80 %  →  Faktor 0,80\nEndpreis = 850 € · 0,80 = 680 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 170,
+          "feedback": "Das ist der Rabatt. Gefragt ist der Endpreis: 850 € − 170 €."
+        }
+      ],
+      "tags": [
+        "rabatt",
+        "faktor",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Gerät kostet netto 240 €. Dazu kommen 19 % Mehrwertsteuer. Wie hoch ist der Bruttopreis?",
+      "answer": 285.6,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "100 % + 19 % = 119 %  →  Faktor 1,19",
+        "240 · 1,19"
+      ],
+      "solution": "Faktor = 1,19\nBrutto = 240 € · 1,19 = 285,60 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 45.6,
+          "feedback": "Das ist die Mehrwertsteuer allein. Gefragt ist der Bruttopreis: 240 € + 45,60 €."
+        },
+        {
+          "id": "abgezogen_statt_addiert",
+          "value": 194.4,
+          "feedback": "Du hast die Steuer abgezogen. Mehrwertsteuer kommt dazu."
+        }
+      ],
+      "tags": [
+        "mwst",
+        "faktor",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Eine Rechnung im Restaurant beträgt 68 €. Du gibst 10 % Trinkgeld. Wie viel zahlst du insgesamt?",
+      "answer": 74.8,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Faktor: 1,10",
+        "68 · 1,10"
+      ],
+      "solution": "68 € · 1,10 = 74,80 €\nKopfweg: 10 % von 68 € = 6,80 €;  68 + 6,80 = 74,80 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 6.8,
+          "feedback": "Das ist das Trinkgeld. Gefragt ist der Gesamtbetrag."
+        }
+      ],
+      "tags": [
+        "aufschlag",
+        "faktor"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "PZ09-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Eine Miete von 720 € steigt um 5 %. Wie hoch ist die neue Miete?",
+      "answer": 756,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Faktor: 1,05",
+        "720 · 1,05"
+      ],
+      "solution": "720 € · 1,05 = 756 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 36,
+          "feedback": "Das ist die Erhöhung. Gefragt ist die neue Miete: 720 € + 36 €."
+        },
+        {
+          "id": "komma_verschoben",
+          "value": 1080,
+          "feedback": "Du hast mit dem Faktor 1,5 gerechnet — das wären 50 %. Bei 5 % ist der Faktor 1,05."
+        }
+      ],
+      "tags": [
+        "aufschlag",
+        "faktor",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Rucksack kostet 129 €. Er wird um 30 % reduziert. Wie hoch ist der neue Preis?",
+      "answer": 90.3,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "100 % − 30 % = 70 %  →  Faktor 0,70",
+        "129 · 0,70"
+      ],
+      "solution": "129 € · 0,70 = 90,30 €\nProbe: Der Rabatt wäre 38,70 €;  129 − 38,70 = 90,30 €. ✓",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 38.7,
+          "feedback": "Das ist der Rabatt. Gefragt ist der neue Preis."
+        }
+      ],
+      "tags": [
+        "rabatt",
+        "faktor"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Fahrrad kostet 450 €. Es gibt 15 % Rabatt. Wie viel zahlst du?",
+      "answer": 382.5,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Faktor: 0,85",
+        "450 · 0,85"
+      ],
+      "solution": "450 € · 0,85 = 382,50 €",
+      "misconceptions": [
+        {
+          "id": "nur_teil_berechnet",
+          "value": 67.5,
+          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst."
+        }
+      ],
+      "tags": [
+        "rabatt",
+        "faktor",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Gerät kostet mit 19 % Mehrwertsteuer 238 €. Wie hoch ist der Nettopreis?",
+      "answer": 200,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Die 238 € sind nicht 100 %, sondern 119 %.",
+        "Zurückrechnen heißt: durch den Faktor teilen.",
+        "238 : 1,19"
+      ],
+      "solution": "Der Bruttopreis entspricht 119 %.\nNetto = 238 € : 1,19 = 200 €\nProbe: 200 € · 1,19 = 238 €. ✓",
+      "misconceptions": [
+        {
+          "id": "prozent_vom_endwert_abgezogen",
+          "value": 192.78,
+          "feedback": "Du hast 19 % von 238 € abgezogen. Die 19 % werden aber vom Nettopreis berechnet — nicht vom Bruttopreis. Deshalb: teilen durch 1,19."
+        },
+        {
+          "id": "nur_teil_berechnet",
+          "value": 45.22,
+          "feedback": "Das ist 19 % von 238 €. Gefragt ist der Nettopreis."
+        }
+      ],
+      "tags": [
+        "mwst",
+        "rueckrechnung",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Nach 25 % Rabatt zahlst du 90 €. Wie hoch war der ursprüngliche Preis?",
+      "answer": 120,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Die 90 € entsprechen 75 %.",
+        "90 : 0,75"
+      ],
+      "solution": "100 % − 25 % = 75 %  →  Faktor 0,75\nUrsprungspreis = 90 € : 0,75 = 120 €\nProbe: 25 % von 120 € = 30 €;  120 − 30 = 90 €. ✓",
+      "misconceptions": [
+        {
+          "id": "prozent_auf_endwert_addiert",
+          "value": 112.5,
+          "feedback": "Du hast 25 % auf 90 € draufgerechnet. Die 25 % beziehen sich aber auf den Ursprungspreis — der ist größer, deshalb ist der Rabatt größer als 22,50 €."
+        },
+        {
+          "id": "nur_teil_berechnet",
+          "value": 22.5,
+          "feedback": "Das ist 25 % von 90 €. Gefragt ist der Preis vorher."
+        }
+      ],
+      "tags": [
+        "rabatt",
+        "rueckrechnung",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Warum ist es falsch, vom Bruttopreis einfach 19 % abzuziehen, um den Nettopreis zu erhalten?",
+      "options": [
+        "Weil die 19 % vom Nettopreis berechnet werden, nicht vom Bruttopreis",
+        "Weil man Prozentwerte nicht abziehen darf",
+        "Weil die Mehrwertsteuer eigentlich 7 % beträgt"
+      ],
+      "answer": 0,
+      "hints": [
+        "Frage dich: Wovon werden die 19 % berechnet?",
+        "Der Nettopreis ist der Grundwert — nicht der Bruttopreis."
+      ],
+      "solution": "Die Mehrwertsteuer ist 19 % VOM NETTOPREIS. Der Nettopreis ist also der Grundwert (100 %), der Bruttopreis sind 119 %.\nZieht man 19 % vom Bruttopreis ab, nimmt man 19 % von 119 % — also zu viel.\nBeispiel: 238 € − 19 % = 192,78 €. Richtig sind aber 200 €.",
+      "misconceptions": [
+        {
+          "id": "regel_ohne_grund",
+          "value": 1,
+          "feedback": "Prozentwerte darf man durchaus abziehen — nur muss der Grundwert stimmen. Hier ist der Grundwert der Nettopreis."
+        },
+        {
+          "id": "satz_falsch_erinnert",
+          "value": 2,
+          "feedback": "Der Regelsatz beträgt 19 %. 7 % gilt nur für bestimmte Waren. Der Fehler liegt woanders: beim Grundwert."
+        }
+      ],
+      "tags": [
+        "mwst",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ09-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Preis von 500 € wird erst um 20 % erhöht und danach um 20 % gesenkt. Wie hoch ist der Endpreis?",
+      "answer": 480,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Rechne in zwei Schritten. Der zweite Schritt geht nicht von 500 € aus.",
+        "Schritt 1: 500 · 1,20 = 600 €",
+        "Schritt 2: 20 % von 600 € — nicht von 500 €."
+      ],
+      "solution": "Schritt 1: 500 € · 1,20 = 600 €\nSchritt 2: 600 € · 0,80 = 480 €\nAls Faktorkette: 500 · 1,2 · 0,8 = 500 · 0,96 = 480 €\nDer Preis liegt am Ende 4 % unter dem Start — weil die Senkung von einem größeren Grundwert ausgeht als die Erhöhung.",
+      "misconceptions": [
+        {
+          "id": "veraenderungen_heben_sich_auf",
+          "value": 500,
+          "feedback": "Das ist der häufigste Gedanke — aber +20 % und −20 % heben sich nicht auf. Die Senkung wird von 600 € berechnet, nicht von 500 €."
+        },
+        {
+          "id": "prozentsaetze_addiert",
+          "value": 600,
+          "feedback": "Du hast bei Schritt 1 aufgehört. Jetzt kommt die Senkung um 20 % — von 600 €."
+        }
+      ],
+      "tags": [
+        "faktorkette",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    }
+  ]
+}
