@@ -1,0 +1,478 @@
+{
+  "unit": "PZ-12",
+  "title": "Monats- und Tageszinsen",
+  "leitidee": "L2",
+  "standards": [
+    "K5"
+  ],
+  "wortspeicher": [
+    "das Kapital",
+    "der Zinssatz",
+    "die Zinsen",
+    "die Laufzeit",
+    "das Bankjahr"
+  ],
+  "can_do": {
+    "A": "Du berechnest Zinsen für ein halbes oder ein viertel Jahr.",
+    "B": "Du wendest den Zeitfaktor m/12 bzw. t/360 sicher an.",
+    "C": "Du rechnest die Laufzeit aus gegebenen Zinsen zurück."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Monate:  Z = K · p : 100 · m : 12",
+      "Tage:    Z = K · p : 100 · t : 360",
+      "",
+      "Immer zuerst die JAHRESZINSEN rechnen — dann den Zeitanteil.",
+      "  6 Monate  = Jahreszinsen : 2",
+      "  3 Monate  = Jahreszinsen : 4",
+      "Bankjahr: 12 Monate zu je 30 Tagen = 360 Tage"
+    ],
+    "saetze": [
+      "Für ein ganzes Jahr wären es … € Zinsen.",
+      "… Monate sind … Zwölftel eines Jahres.",
+      "Das Ergebnis muss kleiner sein als die Jahreszinsen."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "PZ12-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Du legst 1 200 € für 6 Monate zu 2 % an. Rechne in zwei Schritten.",
+      "fields": [
+        {
+          "label": "Zinsen für ein ganzes Jahr",
+          "answer": 24,
+          "unit_label": "€",
+          "tolerance": 0.01
+        },
+        {
+          "label": "Zinsen für 6 Monate",
+          "answer": 12,
+          "unit_label": "€",
+          "tolerance": 0.01
+        }
+      ],
+      "hints": [
+        "Schritt 1: Z = 1 200 · 2 : 100",
+        "Schritt 2: 6 Monate sind ein halbes Jahr — also die Hälfte."
+      ],
+      "solution": "Jahreszinsen: 1 200 € · 2 : 100 = 24 €\n6 Monate = ein halbes Jahr → 24 € : 2 = 12 €",
+      "tags": [
+        "monatszinsen"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Auf einem Sparbuch liegen 800 € zu 3 %. Wie viel Euro Zinsen gibt es nach 6 Monaten?",
+      "answer": 12,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 800 · 3 : 100 = 24 €",
+        "6 Monate sind ein halbes Jahr."
+      ],
+      "solution": "Jahreszinsen: 24 €\n6 Monate → 24 € : 2 = 12 €",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 24,
+          "feedback": "Das sind die Zinsen für ein ganzes Jahr. Gefragt sind nur 6 Monate — also die Hälfte."
+        }
+      ],
+      "tags": [
+        "monatszinsen"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 2 000 € wird mit 4 % verzinst. Wie viel Euro Zinsen gibt es nach 3 Monaten?",
+      "answer": 20,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 2 000 · 4 : 100 = 80 €",
+        "3 Monate sind ein Viertel Jahr — also durch 4 teilen."
+      ],
+      "solution": "Jahreszinsen: 80 €\n3 Monate = ein Viertel Jahr → 80 € : 4 = 20 €",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 80,
+          "feedback": "Das sind die Zinsen für ein ganzes Jahr. 3 Monate sind nur ein Viertel davon."
+        },
+        {
+          "id": "zeitfaktor_verwechselt",
+          "value": 40,
+          "feedback": "Du hast halbiert. 3 Monate sind aber ein Viertel Jahr, nicht ein halbes."
+        }
+      ],
+      "tags": [
+        "monatszinsen"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Auf einem Konto liegen 600 € zu 2 %. Wie viel Euro Zinsen gibt es nach 6 Monaten?",
+      "answer": 6,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 600 · 2 : 100 = 12 €",
+        "Dann halbieren."
+      ],
+      "solution": "Jahreszinsen: 12 €\n6 Monate → 12 € : 2 = 6 €",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 12,
+          "feedback": "Das ist ein ganzes Jahr. Gefragt sind 6 Monate."
+        }
+      ],
+      "tags": [
+        "monatszinsen"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 4 000 € wird mit 3 % verzinst. Wie hoch sind die Zinsen nach 5 Monaten?",
+      "answer": 50,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 4 000 · 3 : 100 = 120 €",
+        "Zeitfaktor: 5/12 — also 120 · 5 : 12"
+      ],
+      "solution": "Jahreszinsen: 120 €\nZ = 120 € · 5 : 12 = 50 €\nKontrolle: 5 Monate sind gut ein Drittel Jahr → rund 40 bis 50 €. ✓",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 120,
+          "feedback": "Das sind die Jahreszinsen. Multipliziere noch mit 5/12."
+        },
+        {
+          "id": "zeitfaktor_umgedreht",
+          "value": 288,
+          "feedback": "Du hast mit 12/5 multipliziert. Es muss 5/12 sein — 5 Monate sind weniger als ein Jahr, also weniger Zinsen."
+        }
+      ],
+      "tags": [
+        "monatszinsen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ",
+        "W-BRUCH"
+      ]
+    },
+    {
+      "id": "PZ12-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 6 000 € wird mit 2,4 % verzinst. Wie hoch sind die Zinsen nach 8 Monaten?",
+      "answer": 96,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 6 000 · 2,4 : 100 = 144 €",
+        "144 · 8 : 12"
+      ],
+      "solution": "Jahreszinsen: 144 €\nZ = 144 € · 8 : 12 = 96 €",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 144,
+          "feedback": "Das sind die Jahreszinsen. Es sind nur 8 Monate."
+        }
+      ],
+      "tags": [
+        "monatszinsen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 9 000 € wird mit 4 % verzinst. Wie hoch sind die Zinsen nach 90 Tagen?",
+      "answer": 90,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 9 000 · 4 : 100 = 360 €",
+        "Zeitfaktor bei Tagen: t/360 — also 360 · 90 : 360"
+      ],
+      "solution": "Jahreszinsen: 360 €\nZ = 360 € · 90 : 360 = 90 €\nKontrolle: 90 Tage sind ein Viertel Bankjahr. 360 € : 4 = 90 €. ✓",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 360,
+          "feedback": "Das sind die Jahreszinsen. 90 Tage sind nur ein Viertel Jahr."
+        },
+        {
+          "id": "tage_365",
+          "value": 88.77,
+          "feedback": "Du hast mit 365 Tagen gerechnet. Banken rechnen mit dem Bankjahr: 360 Tage."
+        }
+      ],
+      "tags": [
+        "tageszinsen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 2 500 € wird mit 3,6 % verzinst. Wie hoch sind die Zinsen nach 200 Tagen?",
+      "answer": 50,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 2 500 · 3,6 : 100 = 90 €",
+        "Z = 90 · 200 : 360"
+      ],
+      "solution": "Jahreszinsen: 90 €\nZ = 90 € · 200 : 360 = 50 €\nKontrolle: 200 Tage sind gut ein halbes Bankjahr → etwas mehr als 45 €. ✓",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 90,
+          "feedback": "Das sind die Jahreszinsen. Es sind nur 200 von 360 Tagen."
+        }
+      ],
+      "tags": [
+        "tageszinsen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 15 000 € wird mit 2 % verzinst. Wie hoch sind die Zinsen nach 7 Monaten?",
+      "answer": 175,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 15 000 · 2 : 100 = 300 €",
+        "300 · 7 : 12"
+      ],
+      "solution": "Jahreszinsen: 300 €\nZ = 300 € · 7 : 12 = 175 €",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 300,
+          "feedback": "Das sind die Jahreszinsen."
+        },
+        {
+          "id": "zeitfaktor_umgedreht",
+          "value": 514.29,
+          "feedback": "Du hast mit 12/7 multipliziert. Bei 7 Monaten muss der Faktor 7/12 sein — kleiner als 1."
+        }
+      ],
+      "tags": [
+        "monatszinsen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 1 800 € wird mit 5 % verzinst. Wie hoch sind die Zinsen nach 60 Tagen?",
+      "answer": 15,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 1 800 · 5 : 100 = 90 €",
+        "Z = 90 · 60 : 360"
+      ],
+      "solution": "Jahreszinsen: 90 €\nZ = 90 € · 60 : 360 = 15 €\nKontrolle: 60 Tage sind zwei Monate = ein Sechstel Jahr. 90 € : 6 = 15 €. ✓",
+      "misconceptions": [
+        {
+          "id": "zeitfaktor_vergessen",
+          "value": 90,
+          "feedback": "Das sind die Jahreszinsen. 60 Tage sind nur ein Sechstel davon."
+        }
+      ],
+      "tags": [
+        "tageszinsen"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 5 000 € wird mit 3 % verzinst. Nach welcher Laufzeit in Monaten sind 75 € Zinsen aufgelaufen?",
+      "answer": 6,
+      "unit_label": "Monate",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen wären: 5 000 · 3 : 100 = 150 €",
+        "Welcher Anteil eines Jahres sind 75 € von 150 €?",
+        "m = 75 : 150 · 12"
+      ],
+      "solution": "Jahreszinsen: 150 €\n75 € sind die Hälfte davon → ein halbes Jahr\nm = 75 : 150 · 12 = 6 Monate",
+      "misconceptions": [
+        {
+          "id": "geteilt_vertauscht",
+          "value": 24,
+          "feedback": "Du hast 150 : 75 · 12 gerechnet. Die aufgelaufenen Zinsen kommen zuerst: 75 : 150 · 12."
+        }
+      ],
+      "tags": [
+        "laufzeit",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 12 000 € wird mit 2,5 % verzinst. Nach wie vielen Tagen sind 100 € Zinsen aufgelaufen?",
+      "answer": 120,
+      "unit_label": "Tage",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 12 000 · 2,5 : 100 = 300 €",
+        "t = 100 : 300 · 360"
+      ],
+      "solution": "Jahreszinsen: 300 €\nt = 100 : 300 · 360 = 120 Tage\nKontrolle: 100 € sind ein Drittel von 300 € → ein Drittel Bankjahr = 120 Tage. ✓",
+      "misconceptions": [
+        {
+          "id": "tage_365",
+          "value": 121.67,
+          "feedback": "Du hast mit 365 Tagen gerechnet. Das Bankjahr hat 360 Tage."
+        },
+        {
+          "id": "geteilt_vertauscht",
+          "value": 1080,
+          "feedback": "Du hast 300 : 100 · 360 gerechnet. Das ergäbe drei Jahre — unmöglich, wenn die Zinsen kleiner als die Jahreszinsen sind."
+        }
+      ],
+      "tags": [
+        "laufzeit",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Kapital von 6 000 € wird mit 4 % verzinst. Nach wie vielen Monaten sind 140 € Zinsen aufgelaufen?",
+      "answer": 7,
+      "unit_label": "Monate",
+      "tolerance": 0.01,
+      "hints": [
+        "Jahreszinsen: 6 000 · 4 : 100 = 240 €",
+        "m = 140 : 240 · 12"
+      ],
+      "solution": "Jahreszinsen: 240 €\nm = 140 : 240 · 12 = 7 Monate\nProbe: 240 € · 7 : 12 = 140 €. ✓",
+      "misconceptions": [
+        {
+          "id": "geteilt_vertauscht",
+          "value": 20.57,
+          "feedback": "Du hast 240 : 140 · 12 gerechnet. Die aufgelaufenen Zinsen stehen vorn."
+        }
+      ],
+      "tags": [
+        "laufzeit",
+        "msa"
+      ],
+      "spiral": [
+        "W-PROZ"
+      ]
+    },
+    {
+      "id": "PZ12-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Warum rechnen Banken traditionell mit 360 Tagen im Jahr?",
+      "options": [
+        "Weil das Bankjahr aus 12 Monaten zu je 30 Tagen besteht — das vereinfacht die Rechnung",
+        "Weil ein Jahr tatsächlich 360 Tage hat",
+        "Weil an 5 Tagen im Jahr keine Zinsen anfallen"
+      ],
+      "answer": 0,
+      "hints": [
+        "12 · 30 = ?",
+        "Die 360 ist eine Rechenvereinfachung, keine Naturkonstante."
+      ],
+      "solution": "Das Bankjahr rechnet mit 12 Monaten zu je 30 Tagen: 12 · 30 = 360.\nDadurch lassen sich Monats- und Tageszinsen bequem ineinander umrechnen — jeder Monat ist genau 30/360 = 1/12 des Jahres.\nDie Vereinfachung stammt aus der Zeit vor dem Taschenrechner. Heute nutzen viele Banken andere Methoden — im Unterricht bleibt es beim Bankjahr mit 360 Tagen.",
+      "misconceptions": [
+        {
+          "id": "konvention_als_tatsache",
+          "value": 1,
+          "feedback": "Ein Jahr hat 365 Tage (im Schaltjahr 366). Die 360 ist eine Rechenvereinfachung."
+        },
+        {
+          "id": "konvention_als_tatsache",
+          "value": 2,
+          "feedback": "Zinsen laufen an jedem Kalendertag auf, auch an Feiertagen. Die 360 kommt von 12 · 30."
+        }
+      ],
+      "tags": [
+        "bankjahr",
+        "begruendung"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    }
+  ]
+}
