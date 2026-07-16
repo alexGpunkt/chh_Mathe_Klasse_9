@@ -1,0 +1,215 @@
+{
+  "unit": "LF-02",
+  "title": "Wertetabelle → Graph",
+  "leitidee": "L4",
+  "standards": ["K4", "K5"],
+  "wortspeicher": ["die Wertetabelle", "der Punkt", "die Koordinate", "der Graph", "linear"],
+  "can_do": {
+    "A": "Du liest die Koordinaten eines Punktes ab: erst nach rechts, dann nach oben.",
+    "B": "Du füllst eine Wertetabelle zu y = mx + b aus, auch mit negativen Werten.",
+    "C": "Du erkennst an der konstanten Differenz, ob eine Zuordnung linear ist."
+  },
+  "formelkarte": {
+    "formeln": [
+      "P( x | y )   —   erst rechts, dann hoch",
+      "",
+      "Wertetabelle zu y = m · x + b:",
+      "  für jedes x den Wert einsetzen und ausrechnen",
+      "  y = 2 · 3 + 1 = 7   →   Punkt P(3|7)",
+      "",
+      "Linear?  Bei gleichen x-Schritten immer derselbe y-Sprung."
+    ],
+    "saetze": [
+      "Der Punkt liegt … Schritte rechts und … Schritte oben.",
+      "Ich setze x = … in die Gleichung ein und erhalte y = … .",
+      "Die Differenz ist immer … , also ist die Zuordnung linear."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF02-A1-001", "path": "A", "step": 1, "type": "multi",
+      "prompt": "Der Punkt P(3|4). Wie kommst du hin?",
+      "visual": { "type": "koordinaten", "punkte": [{ "x": 3, "y": 4, "label": "P" }],
+                  "alt": "Ein Koordinatensystem mit einem Punkt P bei 3 rechts und 4 oben." },
+      "fields": [
+        { "label": "Schritte nach rechts", "answer": 3, "tolerance": 0.01 },
+        { "label": "Schritte nach oben", "answer": 4, "tolerance": 0.01 }
+      ],
+      "hints": ["Die erste Zahl in der Klammer sagt, wie weit nach rechts.", "Die zweite sagt, wie weit nach oben."],
+      "solution": "P(3|4): 3 nach rechts, 4 nach oben.\nMerke die Reihenfolge: erst rechts, dann hoch — wie beim Treppensteigen erst hingehen, dann raufgehen.",
+      "tags": ["koordinaten"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF02-A2-002", "path": "A", "step": 2, "type": "choice",
+      "prompt": "Welche Koordinaten hat der markierte Punkt?",
+      "visual": { "type": "koordinaten", "punkte": [{ "x": 2, "y": 5, "label": "P" }], "ymax": 7,
+                  "alt": "Ein Punkt bei 2 rechts und 5 oben." },
+      "options": ["P(2|5)", "P(5|2)", "P(2|2)"],
+      "answer": 0,
+      "hints": ["Erst rechts, dann hoch.", "Wie weit rechts liegt der Punkt? Und wie hoch?"],
+      "solution": "Der Punkt liegt 2 nach rechts und 5 nach oben: P(2|5).",
+      "misconceptions": [
+        { "id": "koordinaten_vertauscht", "value": 1, "feedback": "Du hast die Zahlen vertauscht. Die erste Zahl ist immer x — also rechts. P(5|2) läge ganz woanders." }
+      ],
+      "tags": ["koordinaten"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF02-A3-003", "path": "A", "step": 3, "type": "multi",
+      "prompt": "Der Punkt Q(5|2). Wie kommst du hin?",
+      "visual": { "type": "koordinaten", "punkte": [{ "x": 5, "y": 2, "label": "Q" }], "xmax": 7,
+                  "alt": "Ein Punkt Q bei 5 rechts und 2 oben." },
+      "fields": [
+        { "label": "Schritte nach rechts", "answer": 5, "tolerance": 0.01 },
+        { "label": "Schritte nach oben", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["Achtung: Diesmal ist die erste Zahl größer.", "Erst rechts, dann hoch."],
+      "solution": "Q(5|2): 5 nach rechts, 2 nach oben.\nVergleiche mit P(3|4) aus der ersten Aufgabe — die Reihenfolge bleibt immer gleich.",
+      "tags": ["koordinaten"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF02-A4-004", "path": "A", "step": 4, "type": "choice",
+      "prompt": "Welche Koordinaten hat der markierte Punkt?",
+      "visual": { "type": "koordinaten", "punkte": [{ "x": 4, "y": 0, "label": "R" }], "xmax": 7,
+                  "alt": "Ein Punkt R bei 4 rechts, genau auf der waagerechten Achse." },
+      "options": ["R(4|0)", "R(0|4)", "R(4|4)"],
+      "answer": 0,
+      "hints": ["Der Punkt liegt direkt auf der waagerechten Achse.", "Wie hoch liegt er dann?"],
+      "solution": "R liegt 4 nach rechts und 0 nach oben: R(4|0).\nAuf der waagerechten Achse ist y immer 0.",
+      "misconceptions": [
+        { "id": "koordinaten_vertauscht", "value": 1, "feedback": "Vertauscht. R(0|4) läge auf der senkrechten Achse, ganz oben — nicht hier." }
+      ],
+      "tags": ["koordinaten", "achse"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF02-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Fülle die Wertetabelle zu y = 2x + 1 aus.",
+      "fields": [
+        { "label": "y für x = 0", "answer": 1, "tolerance": 0.01,
+          "misconceptions": [{ "id": "b_vergessen", "value": 0, "feedback": "2 · 0 = 0 — aber die + 1 kommt noch dazu." }] },
+        { "label": "y für x = 1", "answer": 3, "tolerance": 0.01 },
+        { "label": "y für x = 2", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["Setze x ein: y = 2 · 0 + 1", "Punkt vor Strich: erst mal nehmen, dann addieren."],
+      "solution": "x = 0:  y = 2 · 0 + 1 = 1\nx = 1:  y = 2 · 1 + 1 = 3\nx = 2:  y = 2 · 2 + 1 = 5\nDie y-Werte springen immer um 2 — das ist die Steigung.",
+      "tags": ["wertetabelle"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF02-B2-006", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Fülle die Wertetabelle zu y = 3x − 2 aus.",
+      "fields": [
+        { "label": "y für x = 0", "answer": -2, "tolerance": 0.01 },
+        { "label": "y für x = 2", "answer": 4, "tolerance": 0.01 },
+        { "label": "y für x = 4", "answer": 10, "tolerance": 0.01 }
+      ],
+      "hints": ["y = 3 · 0 − 2 = −2", "Auch negative y-Werte sind erlaubt."],
+      "solution": "x = 0:  y = 3 · 0 − 2 = −2\nx = 2:  y = 3 · 2 − 2 = 4\nx = 4:  y = 3 · 4 − 2 = 10",
+      "tags": ["wertetabelle", "negativ"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF02-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Fülle die Wertetabelle zu y = −x + 5 aus.",
+      "fields": [
+        { "label": "y für x = 0", "answer": 5, "tolerance": 0.01 },
+        { "label": "y für x = 3", "answer": 2, "tolerance": 0.01 },
+        { "label": "y für x = 6", "answer": -1, "tolerance": 0.01 }
+      ],
+      "hints": ["−x bedeutet: −1 · x", "y = −1 · 3 + 5 = 2"],
+      "solution": "x = 0:  y = −0 + 5 = 5\nx = 3:  y = −3 + 5 = 2\nx = 6:  y = −6 + 5 = −1\nDie y-Werte werden kleiner — die Gerade fällt.",
+      "tags": ["wertetabelle", "negativ", "bbr"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF02-B4-008", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Berechne y für x = 5 bei y = 4x − 3.",
+      "answer": 17, "tolerance": 0.01,
+      "hints": ["Setze 5 für x ein: y = 4 · 5 − 3", "Punkt vor Strich."],
+      "solution": "y = 4 · 5 − 3 = 20 − 3 = 17",
+      "misconceptions": [
+        { "id": "punkt_vor_strich", "value": 8, "feedback": "Du hast 5 − 3 = 2 gerechnet und dann · 4. Es gilt Punkt vor Strich: erst 4 · 5, dann − 3." },
+        { "id": "vorzeichen", "value": 23, "feedback": "Du hast addiert. In der Gleichung steht − 3." }
+      ],
+      "tags": ["einsetzen", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF02-B5-009", "path": "B", "step": 3, "type": "choice",
+      "prompt": "Welcher Punkt liegt auf dem Graphen?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 2 }], "xmax": 7, "ymax": 8,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse bei 2 schneidet." },
+      "options": ["(2|4)", "(4|2)", "(3|3)"],
+      "answer": 0,
+      "hints": ["Prüfe jeden Punkt: Geh so weit rechts und so hoch. Landest du auf der Linie?", "(2|4) heißt: 2 rechts, 4 hoch."],
+      "solution": "(2|4): 2 nach rechts, 4 nach oben → liegt auf der Linie ✓\n(4|2): 4 rechts, 2 hoch → liegt unter der Linie\n(3|3): 3 rechts, 3 hoch → liegt unter der Linie",
+      "misconceptions": [
+        { "id": "koordinaten_vertauscht", "value": 1, "feedback": "(4|2) ist (2|4) mit vertauschten Zahlen — und liegt woanders. Die erste Zahl ist immer x." }
+      ],
+      "tags": ["punkt_auf_gerade"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF02-B6-010", "path": "B", "step": 4, "type": "multi",
+      "prompt": "Fülle die Wertetabelle zu y = 0,5x + 2 aus.",
+      "fields": [
+        { "label": "y für x = 0", "answer": 2, "tolerance": 0.01 },
+        { "label": "y für x = 2", "answer": 3, "tolerance": 0.01 },
+        { "label": "y für x = 4", "answer": 4, "tolerance": 0.01 }
+      ],
+      "hints": ["0,5 · x heißt: die Hälfte von x.", "y = 0,5 · 2 + 2 = 1 + 2 = 3"],
+      "solution": "x = 0:  y = 0 + 2 = 2\nx = 2:  y = 1 + 2 = 3\nx = 4:  y = 2 + 2 = 4\nBei einem Sprung von 2 in x wächst y nur um 1 — die Gerade ist flach.",
+      "tags": ["wertetabelle", "bruch"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+
+    {
+      "id": "LF02-C1-011", "path": "C", "step": 1, "type": "choice",
+      "prompt": "Ist diese Zuordnung linear?\n\nx:  0 → 1 → 2 → 3\ny:  2 → 5 → 8 → 11",
+      "options": ["Ja — die Differenz ist immer 3", "Nein — die Zahlen werden zu schnell größer", "Das kann man so nicht entscheiden"],
+      "answer": 0,
+      "hints": ["Rechne die Sprünge aus: 5 − 2, dann 8 − 5, dann 11 − 8.", "Sind alle Sprünge gleich groß?"],
+      "solution": "Sprünge: 5 − 2 = 3;  8 − 5 = 3;  11 − 8 = 3\nBei gleichen x-Schritten immer derselbe y-Sprung → linear.\nDie Gleichung wäre y = 3x + 2.",
+      "misconceptions": [
+        { "id": "linear_missverstanden", "value": 1, "feedback": "Wie schnell die Zahlen wachsen, ist egal. Entscheidend ist, ob sie GLEICHMÄSSIG wachsen. Hier: immer +3." }
+      ],
+      "tags": ["linear", "differenz"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF02-C2-012", "path": "C", "step": 2, "type": "choice",
+      "prompt": "Ist diese Zuordnung linear?\n\nx:  1 → 2 → 3 → 4\ny:  1 → 4 → 9 → 16",
+      "options": ["Ja", "Nein — die Sprünge werden größer", "Nein — die Sprünge werden kleiner"],
+      "answer": 1,
+      "hints": ["Rechne die Sprünge: 4 − 1, dann 9 − 4, dann 16 − 9.", "Bleiben sie gleich?"],
+      "solution": "Sprünge: 3, dann 5, dann 7 — sie werden immer größer.\nAlso NICHT linear. (Es sind die Quadratzahlen: y = x².)\n\nMerke: Für linear reicht „wird größer\" nicht. Es muss GLEICHMÄSSIG größer werden.",
+      "misconceptions": [
+        { "id": "linear_missverstanden", "value": 0, "feedback": "Rechne die Sprünge nach: 3, 5, 7. Sie bleiben nicht gleich — also nicht linear." }
+      ],
+      "tags": ["linear", "gegenbeispiel", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF02-C3-013", "path": "C", "step": 3, "type": "multi",
+      "prompt": "Diese Zuordnung ist linear. Bestimme m und b.\n\nx:  0 → 1 → 2 → 3\ny:  4 → 6 → 8 → 10",
+      "fields": [
+        { "label": "Steigung m", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 4, "tolerance": 0.01,
+          "misconceptions": [{ "id": "b_falsch_abgelesen", "value": 6, "feedback": "6 gehört zu x = 1. Der y-Achsenabschnitt ist der Wert bei x = 0." }] }
+      ],
+      "hints": ["m ist der Sprung von y, wenn x um 1 wächst.", "b ist der y-Wert bei x = 0 — der steht schon in der Tabelle."],
+      "solution": "m: Bei jedem x-Schritt wächst y um 2 → m = 2\nb: Bei x = 0 ist y = 4 → b = 4\nDie Gleichung: y = 2x + 4\nProbe: x = 3 → 2 · 3 + 4 = 10 ✓",
+      "tags": ["linear", "gleichung", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF02-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Woran erkennst du an einer Wertetabelle sicher, dass eine Zuordnung linear ist?",
+      "options": [
+        "Bei gleichen x-Schritten ist der y-Sprung immer gleich groß",
+        "Die y-Werte werden immer größer",
+        "Alle y-Werte sind ganze Zahlen"
+      ],
+      "answer": 0,
+      "hints": ["Denk an die Quadratzahlen aus der letzten Aufgabe — die werden auch immer größer.", "Was unterscheidet linear von nicht-linear?"],
+      "solution": "Nur der gleichmäßige Sprung zählt. Dieser Sprung ist genau die Steigung m.\n\nAchtung bei ungleichen x-Schritten: Springt x von 0 auf 2, muss y um 2m springen — nicht um m. Deshalb immer beide Achsen vergleichen.\n\nGegenbeispiel zu b): 1, 4, 9, 16 wird immer größer, ist aber nicht linear.\nGegenbeispiel zu c): y = 0,5x + 1 hat krumme y-Werte und ist trotzdem linear.",
+      "misconceptions": [
+        { "id": "linear_missverstanden", "value": 1, "feedback": "Die Quadratzahlen 1, 4, 9, 16 werden auch immer größer — sind aber nicht linear. Der Sprung muss GLEICH bleiben." },
+        { "id": "linear_missverstanden", "value": 2, "feedback": "y = 0,5x + 1 liefert krumme Werte und ist trotzdem linear. Wie die Zahlen aussehen, spielt keine Rolle." }
+      ],
+      "tags": ["linear", "begruendung", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}
