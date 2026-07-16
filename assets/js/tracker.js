@@ -44,9 +44,15 @@ const Tracker = (() => {
       return id;
     } catch { return uuid(); }
   }
+  function studentRecord() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('mathe9.student') || 'null');
+      return saved && saved.student_id ? saved : null;
+    } catch { return null; }
+  }
   function studentName() {
-    try { return (localStorage.getItem('mathe9.name') || '').trim() || 'anonym'; }
-    catch { return 'anonym'; }
+    const student = studentRecord();
+    return student?.display_name || student?.login_name || 'anonym';
   }
   function pageName() {
     const file = location.pathname.split('/').pop() || 'index.html';
@@ -56,22 +62,28 @@ const Tracker = (() => {
     return Boolean(TRACKER_CONFIG.enabled && TRACKER_CONFIG.url && TRACKER_CONFIG.anonKey);
   }
   function headers(prefer = 'return=minimal') {
-    return {
+    const key = String(TRACKER_CONFIG.anonKey || '').trim();
+    const result = {
       'Content-Type': 'application/json',
-      apikey: TRACKER_CONFIG.anonKey,
-      Authorization: 'Bearer ' + TRACKER_CONFIG.anonKey,
+      apikey: key,
       Prefer: prefer
     };
+    if (key && !key.startsWith('sb_publishable_')) {
+      result.Authorization = 'Bearer ' + key;
+    }
+    return result;
   }
   function base() {
     return String(TRACKER_CONFIG.url).replace(/\/$/, '') + '/rest/v1/';
   }
   function common() {
+    const student = studentRecord();
     return {
+      student_id: student?.student_id || null,
       student: studentName(),
       device_id: getOrCreate(DEVICE_KEY),
       session_id: getOrCreate(SESSION_KEY, true),
-      class_code: TRACKER_CONFIG.classCode || null,
+      class_code: student?.class_code || TRACKER_CONFIG.classCode || null,
       page: currentContext.page,
       unit: currentContext.unit,
       path: currentContext.path,
@@ -123,7 +135,7 @@ const Tracker = (() => {
     };
     delete row.task;
     try {
-const q = new URLSearchParams({on_conflict: 'device_id,unit,path'});
+      const q = new URLSearchParams({ on_conflict: 'student_id,unit,path' });
       const response = await fetch(base() + 'mathe9_progress?' + q, {
         method: 'POST', headers: headers('resolution=merge-duplicates,return=minimal'),
         body: JSON.stringify(row), keepalive: true
@@ -165,4 +177,8 @@ function track(event) {
   Tracker.track('answer', { step, correct, misconception, hints_used, attempts, duration_ms, ...extra });
 }
 
-document.addEventListener('DOMContentLoaded', () => Tracker.start(), { once: true });
+document.addEventListener('DOMContentLoaded', () => {
+  const ready = window.MATHE9_STUDENT_READY || Promise.resolve();
+  ready.then(() => Tracker.start()).catch(error =>
+    console.warn('[Mathe9 tracker] Anmeldung nicht bereit:', error));
+}, { once: true });
