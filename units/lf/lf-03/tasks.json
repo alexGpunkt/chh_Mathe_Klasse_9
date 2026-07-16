@@ -1,0 +1,209 @@
+{
+  "unit": "LF-03",
+  "title": "Proportionale Funktionen y = m · x",
+  "leitidee": "L4",
+  "standards": ["K4"],
+  "wortspeicher": ["proportional", "der Ursprung", "die Steigung", "der Faktor", "der Graph"],
+  "can_do": {
+    "A": "Du erkennst eine Gerade durch den Ursprung und rechnest y = m · x aus.",
+    "B": "Du bestimmst m aus einer Wertetabelle (y : x) und schreibst die Gleichung auf.",
+    "C": "Du begründest, warum jede proportionale Zuordnung durch (0|0) geht, und siehst den Dreisatzfaktor darin wieder."
+  },
+  "formelkarte": {
+    "formeln": [
+      "y = m · x          proportional — die Gerade geht durch (0|0)",
+      "m = y : x          aus einem beliebigen Wertepaar",
+      "",
+      "Das ist derselbe Faktor wie beim Dreisatz:",
+      "  5 kg → 7,50 €     m = 7,50 : 5 = 1,50 €/kg",
+      "  9 kg → 1,50 · 9 = 13,50 €"
+    ],
+    "saetze": [
+      "Die Gerade geht durch den Ursprung, weil bei x = 0 auch y = 0 ist.",
+      "Der Faktor m ist … , weil y : x immer … ergibt.",
+      "Für null Stück zahlt man null Euro — deshalb (0|0)."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF03-A1-001", "path": "A", "step": 1, "type": "choice",
+      "prompt": "Welche der beiden Geraden geht durch den Ursprung (0|0)?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1.5, "b": 0 }, { "m": 1, "b": 3, "farbe": "zweit" }],
+                  "xmax": 5, "ymax": 8,
+                  "alt": "Zwei Geraden: eine durchgezogene durch den Nullpunkt, eine gestrichelte, die höher startet." },
+      "options": ["die durchgezogene Linie", "die gestrichelte Linie", "beide"],
+      "answer": 0,
+      "hints": ["Der Ursprung ist der Punkt, wo beide Achsen sich kreuzen.", "Welche Linie geht genau durch diese Ecke?"],
+      "solution": "Die durchgezogene Linie startet genau im Ursprung (0|0). Sie ist proportional.\nDie gestrichelte startet bei 3 — sie ist nicht proportional.",
+      "tags": ["ursprung", "proportional"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF03-A2-002", "path": "A", "step": 2, "type": "numeric",
+      "prompt": "Es gilt y = 3x. Berechne y für x = 4.",
+      "answer": 12, "tolerance": 0.01,
+      "hints": ["Setze 4 für x ein: y = 3 · 4"],
+      "solution": "y = 3 · 4 = 12",
+      "misconceptions": [
+        { "id": "addiert_statt_multipliziert", "value": 7, "feedback": "Du hast 3 + 4 gerechnet. 3x bedeutet 3 · x." }
+      ],
+      "tags": ["proportional", "einsetzen"], "spiral": ["W-KOPF"]
+    },
+    {
+      "id": "LF03-A3-003", "path": "A", "step": 3, "type": "numeric",
+      "prompt": "Es gilt y = 2x. Lies oder rechne: Welchen y-Wert hat der Punkt mit x = 7?",
+      "answer": 14, "tolerance": 0.01,
+      "hints": ["y = 2 · 7"],
+      "solution": "y = 2 · 7 = 14",
+      "misconceptions": [
+        { "id": "addiert_statt_multipliziert", "value": 9, "feedback": "Du hast addiert. 2x heißt 2 · x." }
+      ],
+      "tags": ["proportional", "einsetzen"], "spiral": ["W-KOPF"]
+    },
+    {
+      "id": "LF03-A4-004", "path": "A", "step": 4, "type": "choice",
+      "prompt": "Bei y = 5x: Welchen y-Wert hat der Punkt mit x = 0?",
+      "options": ["y = 0", "y = 5", "Das geht nicht"],
+      "answer": 0,
+      "hints": ["Setze 0 ein: y = 5 · 0", "Was ergibt irgendetwas mal null?"],
+      "solution": "y = 5 · 0 = 0\nDeshalb geht jede proportionale Gerade durch den Ursprung (0|0).",
+      "misconceptions": [
+        { "id": "null_mal_falsch", "value": 1, "feedback": "5 · 0 = 0, nicht 5. Deshalb liegt der Punkt bei (0|0)." }
+      ],
+      "tags": ["ursprung", "proportional"], "spiral": ["W-KOPF"]
+    },
+
+    {
+      "id": "LF03-B1-005", "path": "B", "step": 1, "type": "numeric",
+      "prompt": "Eine proportionale Zuordnung: x = 2 gehört zu y = 6. Bestimme m.",
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["m = y : x", "6 : 2 = ?"],
+      "solution": "m = 6 : 2 = 3\nDie Gleichung lautet y = 3x.",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": 0.333, "feedback": "Du hast 2 : 6 gerechnet. Es gilt m = y : x — der y-Wert steht oben." }
+      ],
+      "tags": ["steigung", "proportional"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF03-B2-006", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Eine proportionale Zuordnung: x = 3 gehört zu y = 4,5. Bestimme m.",
+      "answer": 1.5, "tolerance": 0.01,
+      "hints": ["m = 4,5 : 3", "Das Ergebnis ist keine ganze Zahl — das ist in Ordnung."],
+      "solution": "m = 4,5 : 3 = 1,5\nDie Gleichung lautet y = 1,5x.",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": 0.667, "feedback": "Du hast 3 : 4,5 gerechnet. m = y : x." }
+      ],
+      "tags": ["steigung", "proportional"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF03-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Eine proportionale Zuordnung: x = 5 gehört zu y = 20. Bestimme m und dann y für x = 9.",
+      "fields": [
+        { "label": "Steigung m", "answer": 4, "tolerance": 0.01 },
+        { "label": "y für x = 9", "answer": 36, "tolerance": 0.01 }
+      ],
+      "hints": ["m = 20 : 5", "Dann y = m · 9"],
+      "solution": "m = 20 : 5 = 4  →  y = 4x\ny = 4 · 9 = 36",
+      "tags": ["steigung", "proportional", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF03-B4-008", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Prüfe an der Wertetabelle und gib m an — falls die Zuordnung proportional ist.\n\nx:  2 → 4 → 6\ny:  5 → 10 → 15",
+      "answer": 2.5, "tolerance": 0.01,
+      "hints": ["Rechne y : x für jedes Paar: 5 : 2, dann 10 : 4, dann 15 : 6.", "Kommt immer dasselbe heraus?"],
+      "solution": "5 : 2 = 2,5\n10 : 4 = 2,5\n15 : 6 = 2,5\nImmer derselbe Wert → proportional, m = 2,5.\nDie Gleichung: y = 2,5x",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": 0.4, "feedback": "Du hast x : y gerechnet. Es gilt m = y : x." },
+        { "id": "differenz_statt_quotient", "value": 3, "feedback": "Du hast 5 − 2 gerechnet. Bei proportionalen Zuordnungen zählt der QUOTIENT y : x, nicht die Differenz." }
+      ],
+      "tags": ["steigung", "wertetabelle", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF03-B5-009", "path": "B", "step": 3, "type": "multi",
+      "prompt": "5 kg Äpfel kosten 7,50 €. Der Preis ist proportional zum Gewicht.",
+      "fields": [
+        { "label": "Preis pro kg (das ist m)", "answer": 1.5, "unit_label": "€", "tolerance": 0.01 },
+        { "label": "Preis für 9 kg", "answer": 13.5, "unit_label": "€", "tolerance": 0.01 }
+      ],
+      "hints": ["m = 7,50 : 5", "Dann y = m · 9 — das ist genau der Dreisatz."],
+      "solution": "m = 7,50 € : 5 = 1,50 €/kg\ny = 1,50 € · 9 = 13,50 €\n\nDas ist derselbe Rechenweg wie beim Dreisatz in PZ-03: erst auf 1 herunter, dann hoch. Der Preis pro kg IST die Steigung.",
+      "tags": ["proportional", "sachkontext", "bbr"], "spiral": ["W-SACH", "W-FKT"]
+    },
+    {
+      "id": "LF03-B6-010", "path": "B", "step": 4, "type": "numeric",
+      "prompt": "Lies am Graphen ab und bestimme m. Die Gerade geht durch den Ursprung.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1.5, "b": 0 }], "punkte": [{ "x": 4, "y": 6, "label": "P" }],
+                  "xmax": 6, "ymax": 8,
+                  "alt": "Eine Gerade durch den Nullpunkt. Der Punkt P liegt bei 4 rechts und 6 oben." },
+      "answer": 1.5, "tolerance": 0.01,
+      "hints": ["Such dir einen Punkt, der genau auf einem Gitterkreuz liegt — zum Beispiel P.", "m = y : x = 6 : 4"],
+      "solution": "P(4|6) liegt auf der Geraden.\nm = 6 : 4 = 1,5\nDie Gleichung: y = 1,5x",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": 0.667, "feedback": "Du hast 4 : 6 gerechnet. m = y : x — die Höhe geteilt durch die Breite." }
+      ],
+      "tags": ["steigung", "ablesen", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF03-C1-011", "path": "C", "step": 1, "type": "choice",
+      "prompt": "Warum geht jede proportionale Gerade durch den Ursprung?",
+      "options": [
+        "Weil y = m · 0 = 0 ist — bei x = 0 muss y null sein",
+        "Weil man immer bei null anfängt zu zeichnen",
+        "Weil der Ursprung der schönste Punkt ist"
+      ],
+      "answer": 0,
+      "hints": ["Setze x = 0 in y = m · x ein.", "Was ergibt jede Zahl mal null?"],
+      "solution": "y = m · 0 = 0 — egal wie groß m ist.\nDer Punkt (0|0) liegt also IMMER auf der Geraden.\n\nIm Sachkontext: Für null Kilogramm Äpfel zahlt man null Euro. Sobald es einen Grundpreis gibt, ist die Zuordnung nicht mehr proportional.",
+      "misconceptions": [
+        { "id": "konvention_statt_grund", "value": 1, "feedback": "Wo man anfängt zu zeichnen, ist Geschmackssache. Der Grund liegt in der Gleichung: m · 0 = 0." }
+      ],
+      "tags": ["begruendung", "ursprung", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF03-C2-012", "path": "C", "step": 2, "type": "choice",
+      "prompt": "Welche Zuordnung ist proportional?",
+      "options": [
+        "Ein Taxi kostet 2 € pro Kilometer, kein Grundpreis",
+        "Ein Taxi kostet 3 € Grundpreis und 2 € pro Kilometer",
+        "Ein Handytarif kostet 12 € im Monat, egal wie viel man telefoniert"
+      ],
+      "answer": 0,
+      "hints": ["Prüfe bei jedem: Was kostet null Kilometer?", "Proportional heißt: Bei x = 0 muss y = 0 sein."],
+      "solution": "a) 0 km → 0 € ✓ proportional, y = 2x\nb) 0 km → 3 € (Grundpreis) ✗ — die Gerade startet bei 3, nicht bei 0\nc) 0 min → 12 € ✗ — waagerechte Gerade, y ändert sich gar nicht\n\nDer Test ist immer derselbe: Was passiert bei null?",
+      "misconceptions": [
+        { "id": "grundpreis_uebersehen", "value": 1, "feedback": "Der Grundpreis von 3 € fällt auch bei 0 km an. Damit geht die Gerade nicht durch (0|0) — nicht proportional." },
+        { "id": "konstant_als_proportional", "value": 2, "feedback": "Hier ändert sich y überhaupt nicht. Das ist eine waagerechte Gerade bei 12, keine proportionale Zuordnung." }
+      ],
+      "tags": ["proportional", "abgrenzung", "msa"], "spiral": ["W-SACH", "W-FKT"]
+    },
+    {
+      "id": "LF03-C3-013", "path": "C", "step": 3, "type": "multi",
+      "prompt": "7 m Kabel kosten 10,50 €. Bestimme den Faktor und den Preis für 12 m — einmal über den Dreisatz, einmal über y = m · x.",
+      "fields": [
+        { "label": "m (Preis je Meter)", "answer": 1.5, "unit_label": "€", "tolerance": 0.01 },
+        { "label": "Preis für 12 m", "answer": 18, "unit_label": "€", "tolerance": 0.01 }
+      ],
+      "hints": ["Dreisatz: 10,50 : 7 = Preis für 1 m. Dann · 12.", "Funktion: m = 10,50 : 7, dann y = m · 12.", "Merkst du was? Es sind dieselben zwei Rechnungen."],
+      "solution": "Dreisatz:\n  7 m → 10,50 €\n  1 m → 10,50 : 7 = 1,50 €\n  12 m → 1,50 · 12 = 18,00 €\n\nFunktion:\n  m = 10,50 : 7 = 1,50   →   y = 1,5x\n  y = 1,5 · 12 = 18,00 €\n\nDer Dreisatzfaktor und die Steigung sind dasselbe. Der Dreisatz ist die Funktion, nur ohne Formel aufgeschrieben.",
+      "tags": ["proportional", "dreisatz", "zwei_wege", "msa"], "spiral": ["W-SACH", "W-FKT"]
+    },
+    {
+      "id": "LF03-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Eine Wertetabelle:\n\nx:  2 → 4 → 6\ny:  5 → 9 → 13\n\nIst diese Zuordnung proportional?",
+      "options": [
+        "Nein — y : x ist nicht konstant (2,5 dann 2,25 dann ≈2,17)",
+        "Ja — die Sprünge sind immer gleich groß",
+        "Ja — y wird gleichmäßig größer"
+      ],
+      "answer": 0,
+      "hints": ["Rechne y : x für jedes Paar durch.", "Achtung: Die Zuordnung ist linear — aber ist sie auch proportional?"],
+      "solution": "y : x  →  5 : 2 = 2,5;  9 : 4 = 2,25;  13 : 6 = 2,17…\nNicht konstant → NICHT proportional.\n\nAber: Die Sprünge in y sind gleich (+4 bei +2 in x) → die Zuordnung ist LINEAR.\nDie Gleichung ist y = 2x + 1 — sie hat ein b, deshalb geht sie nicht durch (0|0).\n\nMerke: Jede proportionale Zuordnung ist linear. Aber nicht jede lineare ist proportional. Proportional ist nur der Sonderfall b = 0.",
+      "misconceptions": [
+        { "id": "linear_gleich_proportional", "value": 1, "feedback": "Stimmt — die Sprünge sind gleich, die Zuordnung ist LINEAR. Aber proportional heißt zusätzlich: durch (0|0). Bei x = 0 wäre y = 1, nicht 0." },
+        { "id": "linear_gleich_proportional", "value": 2, "feedback": "y wächst gleichmäßig, das macht die Zuordnung linear. Für proportional müsste zusätzlich y : x konstant sein — ist es nicht." }
+      ],
+      "tags": ["proportional", "abgrenzung", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}
