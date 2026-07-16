@@ -1,9 +1,58 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mathe 9 · Lehrerdashboard</title><link rel="stylesheet" href="dashboard.css"></head>
-<body><header><div><small>Campus Hannah Höch · Live-Übersicht</small><h1>Lehrerdashboard</h1></div><div class="status"><span id="liveDot"></span><span id="statusText">verbinde …</span></div></header>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mathe 9 · Lehrerdashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<header>
+  <div><small>Campus Hannah Höch · Live-Übersicht</small><h1>Lehrerdashboard</h1></div>
+  <div class="headerActions">
+    <div class="status"><span id="liveDot"></span><span id="statusText">nicht angemeldet</span></div>
+    <button id="logout" type="button" hidden>Abmelden</button>
+  </div>
+</header>
+
 <main>
-<section class="filters"><label>Klasse <input id="classFilter" value="9"></label><label>Zeitraum <select id="range"><option value="60">letzte Stunde</option><option value="240">letzte 4 Stunden</option><option value="1440" selected>heute</option><option value="10080">7 Tage</option></select></label><button id="refresh">Aktualisieren</button></section>
-<section class="kpis"><article><strong id="activeNow">0</strong><span>jetzt aktiv</span></article><article><strong id="studentsToday">0</strong><span>Schülergeräte</span></article><article><strong id="answers">0</strong><span>Antworten</span></article><article><strong id="correctRate">–</strong><span>richtig</span></article></section>
-<section class="panel"><div class="panelHead"><h2>Schüleraktivität und Fortschritt</h2><span>aktiv: Ping innerhalb 60 s</span></div><div class="tableWrap"><table><thead><tr><th>Status</th><th>Name</th><th>Einheit</th><th>Pfad</th><th>Fortschritt</th><th>Aufgabe</th><th>zuletzt aktiv</th></tr></thead><tbody id="studentsBody"></tbody></table></div></section>
-<section class="grid"><article class="panel"><h2>Häufige Denkfehler</h2><div id="misconceptions" class="bars"></div></article><article class="panel"><h2>Letzte Antworten</h2><div id="feed" class="feed"></div></article></section>
-<p id="error" class="error" hidden></p>
-</main><script src="../assets/js/supabase-config.js"></script><script src="dashboard.js"></script></body></html>
+  <section id="loginPanel" class="authPanel">
+    <form id="teacherLogin" class="panel authCard">
+      <h2>Lehrkraft anmelden</h2>
+      <p>Verwende ein zuvor in Supabase Authentication angelegtes Lehrkraftkonto.</p>
+      <label>E-Mail <input id="teacherEmail" type="email" autocomplete="username" required></label>
+      <label>Passwort <input id="teacherPassword" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Anmelden</button>
+      <p id="loginError" class="error" hidden></p>
+    </form>
+  </section>
+
+  <div id="dashboardApp" hidden>
+    <section class="filters">
+      <label>Lerngruppe <input id="classFilter" value="9"></label>
+      <label>Zeitraum <select id="range"><option value="60">letzte Stunde</option><option value="240">letzte 4 Stunden</option><option value="1440" selected>heute</option><option value="10080">7 Tage</option></select></label>
+      <button id="refresh" type="button">Aktualisieren</button>
+    </section>
+
+    <section class="panel">
+      <div class="panelHead"><div><h2>Freigabeliste</h2><span>Nur aktive Einträge können sich anmelden.</span></div></div>
+      <form id="studentForm" class="rosterForm">
+        <label>Benutzername <input id="studentLogin" placeholder="mustermann.max" autocapitalize="none" spellcheck="false" required></label>
+        <label>Anzeigename <input id="studentDisplay" placeholder="Max Mustermann" required></label>
+        <label>Lerngruppe <input id="studentClass" placeholder="M456_9er" required></label>
+        <button type="submit">Hinzufügen</button>
+      </form>
+      <p id="rosterMessage" class="message" hidden></p>
+      <div class="tableWrap"><table class="rosterTable"><thead><tr><th>Benutzername</th><th>Name</th><th>Lerngruppe</th><th>Status</th><th>Aktion</th></tr></thead><tbody id="rosterBody"></tbody></table></div>
+    </section>
+
+    <section class="kpis"><article><strong id="activeNow">0</strong><span>jetzt aktiv</span></article><article><strong id="studentsToday">0</strong><span>Schüler</span></article><article><strong id="answers">0</strong><span>Antworten</span></article><article><strong id="correctRate">–</strong><span>richtig</span></article></section>
+    <section class="panel"><div class="panelHead"><h2>Schüleraktivität und Fortschritt</h2><span>aktiv: Ereignis innerhalb 60 s</span></div><div class="tableWrap"><table><thead><tr><th>Status</th><th>Name</th><th>Einheit</th><th>Pfad</th><th>Fortschritt</th><th>Aufgabe</th><th>zuletzt aktiv</th></tr></thead><tbody id="studentsBody"></tbody></table></div></section>
+    <section class="grid"><article class="panel"><h2>Häufige Denkfehler</h2><div id="misconceptions" class="bars"></div></article><article class="panel"><h2>Letzte Antworten</h2><div id="feed" class="feed"></div></article></section>
+    <p id="error" class="error" hidden></p>
+  </div>
+</main>
+<script src="../assets/js/supabase-config.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
