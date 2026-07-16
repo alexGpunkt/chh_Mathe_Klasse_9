@@ -130,6 +130,7 @@ function aufgabeZeigen() {
   S.tippsGenutzt = 0;
   S.versuche = 0;
   S.start = Date.now();
+
   Tracker.setContext({ unit: S.daten.unit, path: t.path, task: t.id, progress: Math.round(S.geloest.size / (S.reihe.length || 1) * 100) });
   Tracker.track('task_view', { step: t.step, index: S.index + 1, total: S.reihe.length, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
 
@@ -144,7 +145,7 @@ function aufgabeZeigen() {
   frage.innerHTML = markiereWorte(t.prompt);
   karte.append(frage);
 
-  if (t.visual) karte.append(darstellung(t.visual));
+  if (t.visual) karte.append(visualBlock(t.visual));
 
   if (t.type === 'numeric') karte.append(numerischesFeld(t));
   if (t.type === 'choice')  karte.append(auswahl(t));
@@ -196,29 +197,6 @@ function numerischesFeld(t) {
   zeile.append(i);
   if (t.unit_label) zeile.append(el('span', 'einheit-label', t.unit_label));
   return zeile;
-}
-
-/* Prozentstreifen als Aufgabenbild — dieselbe Darstellung wie oben im Kopf,
-   damit Streifen im ganzen Bereich dasselbe bedeuten. */
-function darstellung(v) {
-  const wrap = el('div', 'bild');
-  if (v.type === 'streifen') {
-    const s = el('div', 'aufg-streifen');
-    const f = el('div', 'aufg-fuell');
-    f.style.width = v.fill + '%';
-    s.append(f);
-    s.append(el('div', 'aufg-skala'));
-    s.append(el('div', 'aufg-marke'));
-    s.setAttribute('role', 'img');
-    s.setAttribute('aria-label', v.alt || 'Ein Streifen, teilweise gefärbt. Der Strich in der Mitte markiert 50 Prozent.');
-    wrap.append(s);
-    const leg = el('div', 'aufg-legende');
-    leg.append(el('span', null, '0 %'));
-    leg.append(el('span', null, '50 %'));
-    leg.append(el('span', null, '100 %'));
-    wrap.append(leg);
-  }
-  return wrap;
 }
 
 /* Mehrere Zahlenfelder — für Tabellen (Zinsen Jahr für Jahr) und
@@ -297,7 +275,6 @@ function tippZeigen() {
   box.innerHTML = `<b>Tipp ${S.tippsGenutzt + 1}:</b> ${t.hints[S.tippsGenutzt]}`;
   $('#rueck').append(box);
   S.tippsGenutzt++;
-  Tracker.track('hint_opened', { hint_number: S.tippsGenutzt, task: t.id });
   if (S.tippsGenutzt >= t.hints.length) $('#tipp').disabled = true;
 }
 
@@ -425,6 +402,19 @@ function melden(richtig, fehlvorstellung) {
   if (richtig) {
     S.geloest.add(t.id);
     if (S.versuche === 1) S.aufAnhieb++;
+    const percent = Math.round(S.geloest.size / (S.reihe.length || 1) * 100);
+    Tracker.setContext({ progress: percent });
+    Tracker.progress({
+      unit: S.daten.unit,
+      path: S.pfad,
+      task: t.id,
+      completed: S.geloest.size,
+      total: S.reihe.length,
+      percent,
+      correct: S.aufAnhieb,
+      attempts: S.versuche,
+      status: S.geloest.size >= S.reihe.length ? 'completed' : 'active'
+    });
     const box = el('div', 'rueck ok');
     box.innerHTML = '<b>Richtig.</b>' + (t.solution ? `<div class="rechenweg">${t.solution}</div>` : '');
     $('#rueck').append(box);
@@ -433,8 +423,6 @@ function melden(richtig, fehlvorstellung) {
     $('#pruefen').addEventListener('click', () => { S.index++; aufgabeZeigen(); });
     if ($('#tipp')) $('#tipp').disabled = true;
     streifenAktualisieren();
-    const percent = Math.round(S.geloest.size / (S.reihe.length || 1) * 100);
-    Tracker.progress({ unit: S.daten.unit, path: S.pfad, task: t.id, completed: S.geloest.size, total: S.reihe.length, percent, correct: S.aufAnhieb, attempts: S.versuche, status: percent === 100 ? 'completed' : 'active' });
     return;
   }
 
@@ -461,8 +449,6 @@ function melden(richtig, fehlvorstellung) {
 
 /* ---------- Abschluss ---------- */
 function abschluss() {
-  Tracker.track(S.daten.pruefung ? 'exam_completed' : 'unit_completed', { completed: S.geloest.size, total: S.reihe.length, correct_first_try: S.aufAnhieb });
-  Tracker.progress({ unit: S.daten.unit, path: S.pfad, task: null, completed: S.geloest.size, total: S.reihe.length, percent: 100, correct: S.aufAnhieb, status: 'completed' });
   const b = $('#buehne');
   const karte = el('div', 'karte');
 

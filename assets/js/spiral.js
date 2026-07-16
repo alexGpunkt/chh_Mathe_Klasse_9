@@ -136,7 +136,14 @@ function fmt(x) {
   let s = Number.isInteger(g) ? String(g) : String(g).replace('.', ',');
   const [ganz, rest] = s.split(',');
   const mitTrenner = ganz.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  return rest ? mitTrenner + ',' + rest : mitTrenner;
+  /* Typografisches Minus (−), nicht der Bindestrich (-). */
+  return (rest ? mitTrenner + ',' + rest : mitTrenner).replace('-', '\u2212');
+}
+
+/* Vorzeichenbehaftetes Anhängen: aus b = −1 wird "− 1", aus b = 3 wird "+ 3".
+   Damit steht in keiner Aufgabe mehr "y = 2x + -1". */
+function fmtVorzeichen(x) {
+  return (x < 0 ? '\u2212 ' : '+ ') + fmt(Math.abs(x));
 }
 
 /* Geld hat immer zwei Nachkommastellen. "3,6 €" liest sich falsch. */
@@ -150,10 +157,12 @@ function fmtGeld(x) {
    Mit :€ als Zusatz wird als Geldbetrag formatiert — {pa:€} → "3,60".
    Das spart Hilfsvariablen in jedem Generator. */
 function fuelle(vorlage, vars) {
-  return String(vorlage).replace(/\{([^{}:]+)(?::(€))?\}/g, (ganz, ausdruck, flagge) => {
+  return String(vorlage).replace(/\{([^{}:]+)(?::(€|\u00b1))?\}/g, (ganz, ausdruck, flagge) => {
     try {
       const w = werteAus(ausdruck, vars);
-      return flagge === '€' ? fmtGeld(w) : fmt(w);
+      if (flagge === '€') return fmtGeld(w);
+      if (flagge === '\u00b1') return fmtVorzeichen(w);
+      return fmt(w);
     } catch { return ganz; }
   });
 }
@@ -350,8 +359,8 @@ function zeige() {
   SP.aufgabe = a;
   SP.versuche = 0;
   SP.start = Date.now();
-  Tracker.setContext({ unit: 'WARMUP', path: SP.level, task: a.genId, progress: Math.round(SP.index / (SP.reihe.length || 1) * 100) });
-  Tracker.track('task_view', { index: SP.index + 1, total: SP.reihe.length, generator: a.genId });
+  Tracker.setContext({ unit: 'WARMUP', path: SP.level, task: a.id, progress: Math.round(SP.index / (SP.reihe.length || 1) * 100) });
+  Tracker.track('task_view', { category: a.kategorie, skill: a.skill, index: SP.index + 1, total: SP.reihe.length, source: 'warmup' });
 
   const zeile = document.createElement('div');
   zeile.className = 'stufe-zeile';
@@ -379,7 +388,6 @@ function zeige() {
   if ($$('#tipp')) $$('#tipp').addEventListener('click', () => {
     melde('tipp', `<b>Tipp:</b> ${a.hint}`);
     $$('#tipp').disabled = true;
-    Tracker.track('hint_opened', { hint_number: 1, task: a.genId });
   });
   $$('.zahl-feld').focus({ preventScroll: true });
 }
@@ -444,19 +452,13 @@ function weiterKnopf() {
   neu.id = 'pruefen';
   neu.textContent = 'Weiter';
   alt.replaceWith(neu);
-  neu.addEventListener('click', () => {
-    SP.index++;
-    Tracker.progress({ unit: 'WARMUP', path: SP.level, task: a.genId, completed: SP.index, total: SP.reihe.length, percent: Math.round(SP.index / (SP.reihe.length || 1) * 100), correct: SP.richtig, status: SP.index >= SP.reihe.length ? 'completed' : 'active' });
-    zeige();
-  });
+  neu.addEventListener('click', () => { SP.index++; zeige(); });
   if ($$('#tipp')) $$('#tipp').disabled = true;
   $$('.zahl-feld').disabled = true;
   neu.focus();
 }
 
 function fertig() {
-  Tracker.track('warmup_completed', { correct_first_try: SP.richtig, total: SP.reihe.length });
-  Tracker.progress({ unit: 'WARMUP', path: SP.level, task: null, completed: SP.reihe.length, total: SP.reihe.length, percent: 100, correct: SP.richtig, status: 'completed' });
   const b = $$('#buehne');
   const karte = document.createElement('div');
   karte.className = 'karte';
