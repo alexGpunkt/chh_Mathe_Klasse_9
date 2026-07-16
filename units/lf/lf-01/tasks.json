@@ -1,0 +1,241 @@
+{
+  "unit": "LF-01",
+  "title": "Zuordnungen im Alltag – Graphen lesen",
+  "leitidee": "L4",
+  "standards": ["K4"],
+  "wortspeicher": ["der Graph", "die Achse", "der Punkt", "die Zuordnung", "steigen", "fallen"],
+  "can_do": {
+    "A": "Du liest zu einem x-Wert den passenden y-Wert am Graphen ab.",
+    "B": "Du beschreibst einen Graphen in Worten und liest in beide Richtungen ab.",
+    "C": "Du deutest Knickstellen und begründest, was ein fallender Abschnitt bedeutet."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Ein Punkt hat zwei Angaben:  P( x | y )",
+      "  x  =  wie weit nach rechts   (waagerechte Achse)",
+      "  y  =  wie hoch                (senkrechte Achse)",
+      "",
+      "Ablesen:  bei x nach oben gehen bis zur Linie, dann nach links",
+      "Rückwärts: bei y nach rechts gehen bis zur Linie, dann nach unten"
+    ],
+    "saetze": [
+      "Bei x = … liegt der Punkt bei y = … .",
+      "Der Graph steigt / fällt / bleibt gleich.",
+      "Zwischen … und … passiert … , weil der Graph … ."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF01-A1-001", "path": "A", "step": 1, "type": "numeric",
+      "prompt": "Lies am Graphen ab: Welchen y-Wert hat der Punkt mit x = 3?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 1 }], "punkte": [{ "x": 3, "y": 4 }],
+                  "alt": "Eine steigende Gerade im Koordinatensystem. Bei x gleich 3 ist ein Punkt markiert." },
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["Geh bei x = 3 nach oben, bis du die Linie triffst.", "Dann schau nach links: Auf welcher Höhe liegst du?"],
+      "solution": "Bei x = 3 liegt der Punkt auf der Höhe y = 4.",
+      "misconceptions": [
+        { "id": "achsen_vertauscht", "value": 3, "feedback": "Das ist der x-Wert — den kanntest du schon. Gefragt ist, wie HOCH der Punkt liegt." }
+      ],
+      "tags": ["ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-A2-002", "path": "A", "step": 2, "type": "numeric",
+      "prompt": "Lies am Graphen ab: Welchen y-Wert hat der Punkt mit x = 3?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 0 }], "punkte": [{ "x": 3, "y": 6 }],
+                  "alt": "Eine steile steigende Gerade durch den Nullpunkt. Bei x gleich 3 ist ein Punkt markiert." },
+      "answer": 6, "tolerance": 0.01,
+      "hints": ["Bei x = 3 nach oben bis zur Linie.", "Zähl die Kästchen bis zur Höhe."],
+      "solution": "Bei x = 3 liegt der Punkt bei y = 6.",
+      "misconceptions": [
+        { "id": "achsen_vertauscht", "value": 3, "feedback": "Das ist der x-Wert. Gesucht ist die Höhe." }
+      ],
+      "tags": ["ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-A3-003", "path": "A", "step": 3, "type": "numeric",
+      "prompt": "Lies am Graphen ab: Welchen y-Wert hat der Punkt mit x = 5?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 2 }], "punkte": [{ "x": 5, "y": 7 }],
+                  "xmax": 8, "ymax": 8,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse bei 2 schneidet." },
+      "answer": 7, "tolerance": 0.01,
+      "hints": ["Bei x = 5 nach oben bis zur Linie, dann nach links."],
+      "solution": "Bei x = 5 liegt der Punkt bei y = 7.",
+      "misconceptions": [
+        { "id": "achsen_vertauscht", "value": 5, "feedback": "Das ist der x-Wert. Gefragt ist die Höhe." }
+      ],
+      "tags": ["ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-A4-004", "path": "A", "step": 4, "type": "numeric",
+      "prompt": "Diese Gerade fällt. Lies ab: Welchen y-Wert hat der Punkt mit x = 2?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -1, "b": 7 }], "punkte": [{ "x": 2, "y": 5 }],
+                  "xmax": 8, "ymax": 8,
+                  "alt": "Eine fallende Gerade. Bei x gleich 2 ist ein Punkt markiert." },
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["Auch bei einer fallenden Geraden: bei x = 2 nach oben bis zur Linie.", "Dann nach links schauen."],
+      "solution": "Bei x = 2 liegt der Punkt bei y = 5.\nDass die Gerade fällt, ändert am Ablesen nichts.",
+      "misconceptions": [
+        { "id": "achsen_vertauscht", "value": 2, "feedback": "Das ist der x-Wert. Gefragt ist die Höhe." }
+      ],
+      "tags": ["ablesen", "fallend"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF01-B1-005", "path": "B", "step": 1, "type": "choice",
+      "prompt": "Was macht dieser Graph?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 1 }],
+                  "alt": "Eine Gerade, die von links unten nach rechts oben verläuft." },
+      "options": ["Er steigt", "Er fällt", "Er bleibt gleich"],
+      "answer": 0,
+      "hints": ["Geh mit dem Finger von links nach rechts. Geht es bergauf oder bergab?"],
+      "solution": "Der Graph steigt: Je größer x, desto größer y.",
+      "misconceptions": [
+        { "id": "richtung_verlesen", "value": 1, "feedback": "Lies immer von LINKS nach RECHTS. Dann geht es hier bergauf." }
+      ],
+      "tags": ["beschreiben"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-B2-006", "path": "B", "step": 1, "type": "choice",
+      "prompt": "Was macht dieser Graph?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -1.5, "b": 6 }], "xmax": 5, "ymax": 7,
+                  "alt": "Eine Gerade, die von links oben nach rechts unten verläuft." },
+      "options": ["Er steigt", "Er fällt", "Er bleibt gleich"],
+      "answer": 1,
+      "hints": ["Von links nach rechts gelesen: bergauf oder bergab?"],
+      "solution": "Der Graph fällt: Je größer x, desto kleiner y.",
+      "tags": ["beschreiben"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-B3-007", "path": "B", "step": 2, "type": "choice",
+      "prompt": "Was macht dieser Graph?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0, "b": 3 }],
+                  "alt": "Eine waagerechte Gerade auf Höhe 3." },
+      "options": ["Er steigt", "Er fällt", "Er bleibt gleich"],
+      "answer": 2,
+      "hints": ["Ändert sich die Höhe, wenn x größer wird?"],
+      "solution": "Der Graph bleibt gleich: Egal welches x — y ist immer 3.",
+      "tags": ["beschreiben", "konstant"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-B4-008", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Ein Taxi berechnet einen Grundpreis und dann etwas pro Kilometer. Der Graph zeigt den Preis. Was kosten 4 km?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 3 }], "punkte": [{ "x": 4, "y": 11 }],
+                  "xmax": 6, "ymax": 13,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse bei 3 schneidet. Bei x gleich 4 ist ein Punkt markiert." },
+      "answer": 11, "unit_label": "€", "tolerance": 0.01,
+      "hints": ["Die waagerechte Achse zeigt die Kilometer, die senkrechte den Preis in Euro.", "Geh bei 4 km nach oben bis zur Linie."],
+      "solution": "Bei 4 km liegt die Linie auf 11 €.",
+      "misconceptions": [
+        { "id": "grundpreis_vergessen", "value": 8, "feedback": "Du hast nur 4 · 2 € gerechnet. Der Grundpreis von 3 € kommt noch dazu — deshalb startet die Linie nicht bei null." },
+        { "id": "achsen_vertauscht", "value": 4, "feedback": "Das ist die Kilometerzahl. Gefragt ist der Preis." }
+      ],
+      "tags": ["ablesen", "sachkontext", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-B5-009", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Rückwärts ablesen: Bei welchem x-Wert hat der Graph die Höhe y = 8?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 2 }], "punkte": [{ "x": 3, "y": 8 }],
+                  "xmax": 6, "ymax": 10,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse bei 2 schneidet. Auf Höhe 8 ist ein Punkt markiert." },
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["Diesmal andersherum: Starte auf Höhe 8 und geh nach rechts bis zur Linie.", "Dann nach unten: Bei welchem x bist du?"],
+      "solution": "Auf Höhe y = 8 trifft die Linie bei x = 3.",
+      "misconceptions": [
+        { "id": "achsen_vertauscht", "value": 8, "feedback": "Das ist der y-Wert — den kanntest du schon. Gefragt ist, wie weit rechts der Punkt liegt." }
+      ],
+      "tags": ["ablesen", "rueckwaerts", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-B6-010", "path": "B", "step": 4, "type": "choice",
+      "prompt": "Der Graph zeigt den zurückgelegten Weg über die Zeit. Welche Situation passt?",
+      "visual": { "type": "koordinaten", "polylinien": [{ "punkte": [[0, 0], [2, 3], [4, 3], [6, 8]] }],
+                  "xmax": 7, "ymax": 9,
+                  "alt": "Ein Streckenzug: erst steigend, dann waagerecht, dann steiler steigend." },
+      "options": [
+        "Erst gehen, dann eine Pause, dann schneller gehen",
+        "Erst gehen, dann zurückgehen, dann wieder vorwärts",
+        "Die ganze Zeit gleich schnell gehen"
+      ],
+      "answer": 0,
+      "hints": ["Der waagerechte Teil: Ändert sich der zurückgelegte Weg dort?", "Wenn der Weg gleich bleibt, bewegt sich die Person nicht."],
+      "solution": "0 bis 2: Der Weg wächst — die Person geht.\n2 bis 4: Der Weg bleibt bei 3 — die Person steht (Pause).\n4 bis 6: Der Weg wächst steiler — die Person geht schneller.",
+      "misconceptions": [
+        { "id": "graph_als_bild", "value": 1, "feedback": "Zurückgehen würde bedeuten, dass der zurückgelegte Weg wieder KLEINER wird — die Linie müsste fallen. Sie bleibt aber waagerecht." },
+        { "id": "steigung_uebersehen", "value": 2, "feedback": "Dann müsste die Linie überall gleich steil sein. Sie hat aber zwei Knicke." }
+      ],
+      "tags": ["situation", "knick", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF01-C1-011", "path": "C", "step": 1, "type": "choice",
+      "prompt": "Der Graph zeigt den zurückgelegten Weg (in km) über die Zeit (in Stunden). In welchem Abschnitt ist die Person am schnellsten?",
+      "visual": { "type": "koordinaten", "polylinien": [{ "punkte": [[0, 0], [2, 3], [4, 3], [6, 8]] }],
+                  "xmax": 7, "ymax": 9,
+                  "alt": "Ein Streckenzug: erst steigend, dann waagerecht, dann steiler steigend." },
+      "options": ["zwischen 0 und 2", "zwischen 2 und 4", "zwischen 4 und 6"],
+      "answer": 2,
+      "hints": ["Schnell heißt: viel Weg in wenig Zeit. Wie sieht das im Graphen aus?", "Vergleiche, wie steil die Abschnitte sind."],
+      "solution": "0 bis 2: 3 km in 2 h → 1,5 km/h\n2 bis 4: 0 km in 2 h → 0 km/h\n4 bis 6: 5 km in 2 h → 2,5 km/h\nAm steilsten ist der dritte Abschnitt — dort ist die Person am schnellsten.\n\nMerke: Die Steilheit IST die Geschwindigkeit.",
+      "misconceptions": [
+        { "id": "steigung_als_hoehe", "value": 0, "feedback": "Im ersten Abschnitt ist die Linie am NIEDRIGSTEN, nicht am steilsten. Für die Geschwindigkeit zählt die Steilheit, nicht die Höhe." }
+      ],
+      "tags": ["steigung", "deuten", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-C2-012", "path": "C", "step": 2, "type": "choice",
+      "prompt": "Warum hat dieser Graph bei Stunde 2 einen Knick?",
+      "visual": { "type": "koordinaten", "polylinien": [{ "punkte": [[0, 0], [2, 3], [4, 3], [6, 8]] }],
+                  "xmax": 7, "ymax": 9,
+                  "alt": "Ein Streckenzug mit einem Knick bei x gleich 2." },
+      "options": [
+        "Weil sich dort die Geschwindigkeit ändert",
+        "Weil die Person dort um eine Ecke geht",
+        "Weil die Zeit dort stehen bleibt"
+      ],
+      "answer": 0,
+      "hints": ["Ein Knick bedeutet: Die Steilheit ändert sich.", "Und die Steilheit ist hier die Geschwindigkeit."],
+      "solution": "Ein Knick heißt: Die Steilheit ändert sich sprunghaft. Da die Steilheit die Geschwindigkeit ist, ändert sich dort das Tempo — die Person bleibt stehen.\n\nDer Graph ist keine Landkarte. Er zeigt keinen Weg im Gelände, sondern wie viel Weg zu welcher Zeit geschafft ist.",
+      "misconceptions": [
+        { "id": "graph_als_bild", "value": 1, "feedback": "Das ist der häufigste Denkfehler: Der Graph ist kein Bild vom Weg. Die waagerechte Achse ist die ZEIT, keine Richtung im Gelände." },
+        { "id": "achsen_missdeutet", "value": 2, "feedback": "Die Zeit läuft immer weiter — deshalb geht der Graph nie nach links. Waagerecht heißt: Zeit vergeht, aber der Weg wächst nicht." }
+      ],
+      "tags": ["knick", "begruendung", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-C3-013", "path": "C", "step": 3, "type": "choice",
+      "prompt": "Dieser Graph zeigt die Entfernung vom Zuhause über die Zeit. Was bedeutet der fallende Teil?",
+      "visual": { "type": "koordinaten", "polylinien": [{ "punkte": [[0, 0], [2, 4], [4, 4], [6, 0]] }],
+                  "xmax": 7, "ymax": 6,
+                  "alt": "Ein Streckenzug: steigend, waagerecht, dann fallend bis auf null." },
+      "options": [
+        "Die Person geht zurück nach Hause",
+        "Die Person wird langsamer",
+        "Die Person geht bergab"
+      ],
+      "answer": 0,
+      "hints": ["Die senkrechte Achse zeigt die Entfernung von zu Hause.", "Was heißt es, wenn diese Entfernung kleiner wird?"],
+      "solution": "Die Entfernung von zu Hause wird wieder kleiner — die Person kommt zurück. Am Ende ist sie bei 0, also wieder zu Hause.\n\nAchtung: „Fallend\" heißt hier NICHT langsamer und NICHT bergab. Es heißt: Der abgebildete Wert wird kleiner.",
+      "misconceptions": [
+        { "id": "fallend_als_langsamer", "value": 1, "feedback": "Langsamer wäre FLACHER, nicht fallend. Fallend heißt: Die Entfernung wird kleiner." },
+        { "id": "graph_als_bild", "value": 2, "feedback": "Der Graph ist kein Bild vom Gelände. Die senkrechte Achse zeigt die Entfernung von zu Hause, keine Höhe über dem Meer." }
+      ],
+      "tags": ["deuten", "graph_als_bild", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF01-C4-014", "path": "C", "step": 4, "type": "numeric",
+      "prompt": "Die Person aus der letzten Aufgabe: Wie viele Kilometer legt sie insgesamt zurück — hin und zurück?",
+      "visual": { "type": "koordinaten", "polylinien": [{ "punkte": [[0, 0], [2, 4], [4, 4], [6, 0]] }],
+                  "xmax": 7, "ymax": 6,
+                  "alt": "Ein Streckenzug: steigend bis 4, waagerecht, dann fallend bis auf null." },
+      "answer": 8, "unit_label": "km", "tolerance": 0.01,
+      "hints": ["Der Graph zeigt die Entfernung von zu Hause, nicht den zurückgelegten Weg.", "Hinweg: 4 km. Und der Rückweg?"],
+      "solution": "Hinweg: von 0 auf 4 km → 4 km\nPause: 0 km\nRückweg: von 4 km auf 0 → nochmal 4 km\nInsgesamt: 8 km\n\nDer höchste Punkt des Graphen (4) ist nicht die Antwort — das ist nur die größte Entfernung, nicht der ganze Weg.",
+      "misconceptions": [
+        { "id": "hoechstwert_als_summe", "value": 4, "feedback": "4 km ist die größte Entfernung von zu Hause. Der Rückweg zählt aber auch — die Person läuft ihn tatsächlich." },
+        { "id": "achsen_missdeutet", "value": 6, "feedback": "6 ist die Zeit in Stunden, nicht der Weg. Schau auf die senkrechte Achse." }
+      ],
+      "tags": ["deuten", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}
