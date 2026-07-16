@@ -1,0 +1,582 @@
+{
+  "category": "W-FKT",
+  "title": "Funktionen",
+  "generators": [
+    {
+      "id": "WFKT-A-einsetzen-prop",
+      "level": "A",
+      "skill": "In y = mx einsetzen",
+      "vars": {
+        "m": {
+          "von": 2,
+          "bis": 9
+        },
+        "x": {
+          "von": 2,
+          "bis": 9
+        }
+      },
+      "template": "y = {m}x. Berechne y für x = {x}.",
+      "answer": "m*x",
+      "round": 0,
+      "hint": "{m}x bedeutet {m} · x.",
+      "solution": "y = {m} · {x} = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "addiert_statt_multipliziert",
+          "value": "m+x",
+          "feedback": "Du hast {m} + {x} gerechnet. {m}x heißt {m} mal x."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-A-b-ablesen",
+      "level": "A",
+      "skill": "b aus der Gleichung",
+      "vars": {
+        "m": {
+          "von": 2,
+          "bis": 9
+        },
+        "b": {
+          "von": 1,
+          "bis": 9
+        }
+      },
+      "template": "y = {m}x + {b}. Wie groß ist der y-Achsenabschnitt b?",
+      "answer": "b",
+      "round": 0,
+      "hint": "b ist die Zahl OHNE x — sie steht hinten.",
+      "solution": "b = {ergebnis} — das ist die Zahl ohne x.",
+      "misconceptions": [
+        {
+          "id": "m_als_b",
+          "value": "m",
+          "feedback": "{m} steht VOR dem x — das ist die Steigung m. b ist die Zahl hinten."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-A-m-ablesen",
+      "level": "A",
+      "skill": "m aus der Gleichung",
+      "vars": {
+        "m": {
+          "von": 2,
+          "bis": 9
+        },
+        "b": {
+          "von": 1,
+          "bis": 9
+        }
+      },
+      "template": "y = {m}x + {b}. Wie groß ist die Steigung m?",
+      "answer": "m",
+      "round": 0,
+      "hint": "m ist die Zahl VOR dem x.",
+      "solution": "m = {ergebnis} — das ist die Zahl vor dem x.",
+      "misconceptions": [
+        {
+          "id": "b_als_m",
+          "value": "b",
+          "feedback": "{b} steht hinten, ohne x — das ist der y-Achsenabschnitt b. m steht vor dem x."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-A-einsetzen",
+      "level": "A",
+      "skill": "In y = mx + b einsetzen",
+      "vars": {
+        "m": {
+          "von": 2,
+          "bis": 6
+        },
+        "b": {
+          "von": 1,
+          "bis": 9
+        },
+        "x": {
+          "von": 1,
+          "bis": 8
+        }
+      },
+      "template": "y = {m}x + {b}. Berechne y für x = {x}.",
+      "answer": "m*x+b",
+      "round": 0,
+      "hint": "Erst {m} · {x}, dann + {b}. Punkt vor Strich.",
+      "solution": "y = {m} · {x} + {b} = {m*x} + {b} = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "punkt_vor_strich",
+          "value": "m*(x+b)",
+          "feedback": "Du hast erst {x} + {b} gerechnet. Punkt vor Strich: zuerst {m} · {x}."
+        },
+        {
+          "id": "b_vergessen",
+          "value": "m*x",
+          "feedback": "Das ist nur {m} · {x}. Die + {b} fehlt noch."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-A-y-bei-null",
+      "level": "A",
+      "skill": "Wert bei x = 0",
+      "vars": {
+        "m": {
+          "von": 2,
+          "bis": 9
+        },
+        "b": {
+          "von": 1,
+          "bis": 9
+        }
+      },
+      "template": "y = {m}x + {b}. Welchen y-Wert hat der Punkt mit x = 0?",
+      "answer": "b",
+      "round": 0,
+      "hint": "{m} · 0 = 0. Was bleibt dann übrig?",
+      "solution": "y = {m} · 0 + {b} = 0 + {b} = {ergebnis}\nDeshalb ist b der Startwert: Bei x = 0 bleibt nur b übrig.",
+      "misconceptions": [
+        {
+          "id": "null_mal_falsch",
+          "value": "m+b",
+          "feedback": "{m} · 0 ist 0, nicht {m}. Es bleibt nur die {b} übrig."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-B-einsetzen",
+      "level": "B",
+      "skill": "Einsetzen mit negativem b",
+      "vars": {
+        "m": {
+          "von": 2,
+          "bis": 8
+        },
+        "b": {
+          "von": -9,
+          "bis": -1
+        },
+        "x": {
+          "von": 2,
+          "bis": 9
+        }
+      },
+      "template": "y = {m}x − {-b}. Berechne y für x = {x}.",
+      "answer": "m*x+b",
+      "round": 0,
+      "hint": "Erst {m} · {x}, dann {-b} abziehen.",
+      "solution": "y = {m} · {x} − {-b} = {m*x} − {-b} = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "vorzeichen",
+          "value": "m*x-b",
+          "feedback": "Du hast addiert. In der Gleichung steht ein Minus."
+        },
+        {
+          "id": "punkt_vor_strich",
+          "value": "m*(x+b)",
+          "feedback": "Du hast erst {x} − {-b} gerechnet. Punkt vor Strich."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-B-m-aus-punkten",
+      "level": "B",
+      "skill": "m aus zwei Punkten",
+      "vars": {
+        "x1": {
+          "von": 0,
+          "bis": 3
+        },
+        "m": {
+          "aus": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "b": {
+          "von": 0,
+          "bis": 6
+        },
+        "d": {
+          "aus": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "berechnet": {
+        "x2": "x1+d",
+        "y1": "m*x1+b",
+        "y2": "m*(x1+d)+b"
+      },
+      "template": "P({x1}|{y1}) und Q({x2}|{y2}) liegen auf einer Geraden. Berechne m.",
+      "answer": "m",
+      "round": 2,
+      "hint": "m = (y₂ − y₁) : (x₂ − x₁) = ({y2} − {y1}) : ({x2} − {x1})",
+      "solution": "m = ({y2} − {y1}) : ({x2} − {x1}) = {y2-y1} : {x2-x1} = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "geteilt_vertauscht",
+          "value": "(x2-x1)/(y2-y1)",
+          "feedback": "Du hast Δx : Δy gerechnet. Oben steht die y-Differenz: m = Δy : Δx."
+        },
+        {
+          "id": "dy_als_m",
+          "value": "y2-y1",
+          "feedback": "Das ist Δy allein. Teile noch durch Δx = {x2-x1}."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-B-b-berechnen",
+      "level": "B",
+      "skill": "b aus Punkt und m",
+      "vars": {
+        "m": {
+          "aus": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "x": {
+          "von": 1,
+          "bis": 6
+        },
+        "b": {
+          "von": 1,
+          "bis": 9
+        }
+      },
+      "berechnet": {
+        "y": "m*x+b"
+      },
+      "template": "Eine Gerade hat m = {m} und geht durch P({x}|{y}). Berechne b.",
+      "answer": "b",
+      "round": 2,
+      "hint": "b = y − m · x = {y} − {m} · {x}",
+      "solution": "{y} = {m} · {x} + b\n{y} = {m*x} + b     | − {m*x}\nb = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "vorzeichen",
+          "value": "y+m*x",
+          "feedback": "Du hast addiert. Aus {y} = {m*x} + b folgt b = {y} − {m*x}."
+        },
+        {
+          "id": "koordinaten_vertauscht",
+          "value": "x-m*y",
+          "feedback": "Du hast x und y vertauscht. Die erste Zahl im Punkt ist x = {x}."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-B-punktprobe",
+      "level": "B",
+      "skill": "Punktprobe: rechte Seite",
+      "vars": {
+        "m": {
+          "aus": [
+            2,
+            3,
+            4
+          ]
+        },
+        "b": {
+          "von": 1,
+          "bis": 6
+        },
+        "x": {
+          "von": 2,
+          "bis": 8
+        }
+      },
+      "template": "Punktprobe für x = {x} auf y = {m}x + {b}. Welchen Wert hat die Gerade dort?",
+      "answer": "m*x+b",
+      "round": 0,
+      "hint": "Setze {x} ein: {m} · {x} + {b}",
+      "solution": "y = {m} · {x} + {b} = {ergebnis}\nDiesen Wert vergleichst du mit dem y des Punktes: gleich → liegt drauf.",
+      "misconceptions": [
+        {
+          "id": "b_vergessen",
+          "value": "m*x",
+          "feedback": "Die + {b} fehlt."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-B-tarif",
+      "level": "B",
+      "skill": "Grundgebühr und Preis pro Stück",
+      "vars": {
+        "b": {
+          "aus": [
+            5,
+            8,
+            10,
+            12,
+            15,
+            20
+          ]
+        },
+        "m": {
+          "aus": [
+            0.5,
+            1,
+            1.5,
+            2,
+            2.5,
+            3
+          ]
+        },
+        "x": {
+          "von": 3,
+          "bis": 20
+        }
+      },
+      "template": "Ein Tarif kostet {b:€} € Grundgebühr und {m:€} € pro Stück. Was kosten {x} Stück?",
+      "answer": "m*x+b",
+      "unit_label": "€",
+      "round": 2,
+      "hint": "Die Grundgebühr ist b, der Preis pro Stück ist m. y = {m} · {x} + {b}",
+      "solution": "y = {m:€} · {x} + {b:€} = {m*x:€} + {b:€} = {ergebnis:€} €",
+      "misconceptions": [
+        {
+          "id": "b_vergessen",
+          "value": "m*x",
+          "feedback": "Die Grundgebühr von {b:€} € fehlt — sie fällt immer an."
+        },
+        {
+          "id": "m_und_b_vertauscht",
+          "value": "b*x+m",
+          "feedback": "Vertauscht: {b:€} € ist die Grundgebühr (einmal), {m:€} € der Preis pro Stück."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-C-m-negativ",
+      "level": "C",
+      "skill": "m aus zwei Punkten, negativ",
+      "vars": {
+        "x1": {
+          "von": -3,
+          "bis": 2
+        },
+        "m": {
+          "aus": [
+            -1,
+            -2,
+            -3,
+            -0.5
+          ]
+        },
+        "b": {
+          "von": 2,
+          "bis": 8
+        },
+        "d": {
+          "aus": [
+            2,
+            4
+          ]
+        }
+      },
+      "berechnet": {
+        "x2": "x1+d",
+        "y1": "m*x1+b",
+        "y2": "m*(x1+d)+b"
+      },
+      "template": "P({x1}|{y1}) und Q({x2}|{y2}) liegen auf einer Geraden. Berechne m.",
+      "answer": "m",
+      "round": 2,
+      "hint": "m = ({y2} − {y1}) : ({x2} − {x1}). Achte auf die Vorzeichen.",
+      "solution": "m = ({y2} − {y1}) : ({x2} − {x1}) = {y2-y1} : {x2-x1} = {ergebnis}\nDie Gerade fällt — deshalb ist m negativ.",
+      "misconceptions": [
+        {
+          "id": "vorzeichen_fehlt",
+          "value": "-m",
+          "feedback": "Der Betrag stimmt. Von P nach Q geht es nach UNTEN — m ist negativ."
+        },
+        {
+          "id": "geteilt_vertauscht",
+          "value": "(x2-x1)/(y2-y1)",
+          "feedback": "Du hast Δx : Δy gerechnet."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-C-b-negativ",
+      "level": "C",
+      "skill": "b berechnen, negatives m",
+      "vars": {
+        "m": {
+          "aus": [
+            -1,
+            -2,
+            -3
+          ]
+        },
+        "x": {
+          "von": 1,
+          "bis": 5
+        },
+        "b": {
+          "von": 3,
+          "bis": 9
+        }
+      },
+      "berechnet": {
+        "y": "m*x+b"
+      },
+      "template": "Eine Gerade hat m = {m} und geht durch P({x}|{y}). Berechne b.",
+      "answer": "b",
+      "round": 2,
+      "hint": "b = y − m · x = {y} − ({m}) · {x}. Minus mal Minus ergibt Plus.",
+      "solution": "{y} = {m} · {x} + b\n{y} = {m*x} + b     | − ({m*x})\nb = {y} + {-m*x} = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "minus_minus",
+          "value": "y+m*x",
+          "feedback": "Du hast {y} − {-m*x} gerechnet. Die {m*x} steht auf der rechten Seite und wandert als +{-m*x} herüber."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-C-k-bei-x",
+      "level": "C",
+      "skill": "Fehlende y-Koordinate",
+      "vars": {
+        "m": {
+          "aus": [
+            -3,
+            -2,
+            2,
+            3,
+            4
+          ]
+        },
+        "b": {
+          "von": -5,
+          "bis": 8
+        },
+        "x": {
+          "von": 2,
+          "bis": 7
+        }
+      },
+      "template": "Für welches k liegt P({x}|k) auf y = {m}x {b:±}?",
+      "answer": "m*x+b",
+      "round": 2,
+      "hint": "Der x-Wert ist bekannt — einfach einsetzen: k = {m} · {x} {b:±}",
+      "solution": "k = {m} · {x} {b:±} = {ergebnis}\nIst x gegeben, wird nur eingesetzt.",
+      "misconceptions": [
+        {
+          "id": "punkt_vor_strich",
+          "value": "m*(x+b)",
+          "feedback": "Punkt vor Strich: erst {m} · {x}, dann {b:±}."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-C-k-bei-y",
+      "level": "C",
+      "skill": "Fehlende x-Koordinate",
+      "vars": {
+        "m": {
+          "aus": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "b": {
+          "von": -4,
+          "bis": 6
+        },
+        "k": {
+          "von": 2,
+          "bis": 8
+        }
+      },
+      "berechnet": {
+        "y": "m*k+b"
+      },
+      "template": "Für welches k liegt P(k|{y}) auf y = {m}x {b:±}?",
+      "answer": "k",
+      "round": 2,
+      "hint": "Diesmal ist y bekannt: {y} = {m}k {b:±}. Löse nach k auf.",
+      "solution": "{y} = {m}k {b:±}      | {-b:±}\n{y-b} = {m}k         | : {m}\nk = {ergebnis}\n\nProbe: {m} · {ergebnis} {b:±} = {y} ✓\nIst y gegeben, muss man eine Gleichung lösen — nicht nur einsetzen.",
+      "misconceptions": [
+        {
+          "id": "eingesetzt_statt_geloest",
+          "value": "m*y+b",
+          "feedback": "Du hast {y} für x eingesetzt. Die {y} ist aber der y-Wert — sie gehört auf die linke Seite."
+        }
+      ]
+    },
+    {
+      "id": "WFKT-C-tarifvergleich",
+      "level": "C",
+      "skill": "Zwei Tarife vergleichen",
+      "vars": {
+        "b1": {
+          "aus": [
+            10,
+            12,
+            15,
+            20
+          ]
+        },
+        "m1": {
+          "aus": [
+            1,
+            2
+          ]
+        },
+        "m2": {
+          "aus": [
+            3,
+            4,
+            5
+          ]
+        },
+        "x": {
+          "von": 4,
+          "bis": 12
+        }
+      },
+      "berechnet": {
+        "p1": "m1*x+b1",
+        "p2": "m2*x"
+      },
+      "template": "Tarif A: {b1:€} € Grundgebühr + {m1:€} € pro Stück. Tarif B: keine Grundgebühr, {m2:€} € pro Stück. Wie viel Euro kostet Tarif A bei {x} Stück?",
+      "answer": "m1*x+b1",
+      "unit_label": "€",
+      "round": 2,
+      "hint": "Tarif A: y = {m1} · x + {b1}",
+      "solution": "Tarif A: {m1:€} · {x} + {b1:€} = {ergebnis:€} €\n(Tarif B wäre {m2:€} · {x} = {p2:€} €.)",
+      "misconceptions": [
+        {
+          "id": "b_vergessen",
+          "value": "m1*x",
+          "feedback": "Die Grundgebühr von {b1:€} € fehlt."
+        },
+        {
+          "id": "tarif_verwechselt",
+          "value": "m2*x",
+          "feedback": "Das ist Tarif B. Gefragt war Tarif A — der hat eine Grundgebühr."
+        }
+      ]
+    }
+  ]
+}

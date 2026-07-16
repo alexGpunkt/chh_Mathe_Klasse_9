@@ -1,0 +1,512 @@
+{
+  "category": "W-TERM",
+  "title": "Terme & Gleichungen",
+  "generators": [
+    {
+      "id": "WTERM-A-zusammenfassen",
+      "level": "A",
+      "skill": "Gleiche Summanden zusammenfassen",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 9
+        },
+        "b": {
+          "von": 2,
+          "bis": 9
+        }
+      },
+      "template": "Fasse zusammen: {a}x + {b}x = ?x — gib nur die Zahl vor dem x an.",
+      "answer": "a+b",
+      "round": 0,
+      "hint": "{a} Stück x und {b} Stück x — wie viele sind das zusammen?",
+      "solution": "{a}x + {b}x = {ergebnis}x\nDenk an Äpfel: {a} Äpfel + {b} Äpfel = {ergebnis} Äpfel.",
+      "misconceptions": [
+        {
+          "id": "multipliziert_statt_addiert",
+          "value": "a*b",
+          "feedback": "Du hast multipliziert. Beim Zusammenfassen werden die Zahlen vor dem x ADDIERT."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-A-einsetzen",
+      "level": "A",
+      "skill": "In einen Term einsetzen",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 8
+        },
+        "b": {
+          "von": 1,
+          "bis": 9
+        },
+        "x": {
+          "von": 2,
+          "bis": 9
+        }
+      },
+      "template": "Berechne {a}x + {b} für x = {x}.",
+      "answer": "a*x+b",
+      "round": 0,
+      "hint": "Punkt vor Strich: erst {a} · {x}, dann + {b}.",
+      "solution": "{a} · {x} + {b} = {a*x} + {b} = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "punkt_vor_strich",
+          "value": "a*(x+b)",
+          "feedback": "Du hast erst {x} + {b} gerechnet. Punkt vor Strich: zuerst {a} · {x}."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-A-plus",
+      "level": "A",
+      "skill": "Gleichung x + a = c",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 20
+        },
+        "x": {
+          "von": 2,
+          "bis": 30
+        }
+      },
+      "berechnet": {
+        "c": "x+a"
+      },
+      "template": "x + {a} = {c}. Wie groß ist x?",
+      "answer": "x",
+      "round": 0,
+      "hint": "Was muss man zu {a} addieren, um {c} zu erhalten?",
+      "solution": "x + {a} = {c}      | − {a}\nx = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "c+a",
+          "feedback": "Du hast addiert. Zum Auflösen muss die {a} weg — also auf beiden Seiten abziehen."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-A-minus",
+      "level": "A",
+      "skill": "Gleichung x − a = c",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 20
+        },
+        "x": {
+          "von": 5,
+          "bis": 40
+        }
+      },
+      "berechnet": {
+        "c": "x-a"
+      },
+      "template": "x − {a} = {c}. Wie groß ist x?",
+      "answer": "x",
+      "round": 0,
+      "hint": "Die {a} wird abgezogen — also auf beiden Seiten wieder addieren.",
+      "solution": "x − {a} = {c}      | + {a}\nx = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "c-a",
+          "feedback": "Du hast nochmal abgezogen. Um − {a} rückgängig zu machen, musst du + {a} rechnen."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-A-mal",
+      "level": "A",
+      "skill": "Gleichung a · x = p",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 9
+        },
+        "x": {
+          "von": 2,
+          "bis": 12
+        }
+      },
+      "berechnet": {
+        "p": "a*x"
+      },
+      "template": "{a}x = {p}. Wie groß ist x?",
+      "answer": "x",
+      "round": 0,
+      "hint": "Wie oft passt {a} in {p}?",
+      "solution": "{a}x = {p}      | : {a}\nx = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "p*a",
+          "feedback": "Du hast multipliziert. Um · {a} rückgängig zu machen, musst du durch {a} teilen."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-B-axb",
+      "level": "B",
+      "skill": "Gleichung ax + b = c",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 8
+        },
+        "b": {
+          "von": 1,
+          "bis": 15
+        },
+        "x": {
+          "von": 2,
+          "bis": 12
+        }
+      },
+      "berechnet": {
+        "c": "a*x+b"
+      },
+      "template": "{a}x + {b} = {c}. Löse nach x auf.",
+      "answer": "x",
+      "round": 2,
+      "hint": "Erst die {b} wegschaffen: | − {b}. Dann durch {a} teilen.",
+      "solution": "{a}x + {b} = {c}      | − {b}\n{a}x = {c-b}          | : {a}\nx = {ergebnis}\n\nProbe: {a} · {ergebnis} + {b} = {c} ✓",
+      "misconceptions": [
+        {
+          "id": "reihenfolge_vertauscht",
+          "value": "c/a-b",
+          "feedback": "Du hast zuerst geteilt. Erst die + {b} wegschaffen, dann durch {a} teilen — rückwärts wie beim Auspacken."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-B-axb-minus",
+      "level": "B",
+      "skill": "Gleichung ax − b = c",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 8
+        },
+        "b": {
+          "von": 1,
+          "bis": 15
+        },
+        "x": {
+          "von": 3,
+          "bis": 12
+        }
+      },
+      "berechnet": {
+        "c": "a*x-b"
+      },
+      "template": "{a}x − {b} = {c}. Löse nach x auf.",
+      "answer": "x",
+      "round": 2,
+      "hint": "| + {b} auf beiden Seiten. Dann | : {a}.",
+      "solution": "{a}x − {b} = {c}      | + {b}\n{a}x = {c+b}          | : {a}\nx = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "(c-b)/a",
+          "feedback": "Du hast {b} abgezogen. In der Gleichung steht schon − {b} — um das rückgängig zu machen, musst du addieren."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-B-beide-seiten",
+      "level": "B",
+      "skill": "x auf beiden Seiten",
+      "vars": {
+        "a": {
+          "von": 4,
+          "bis": 9
+        },
+        "d": {
+          "von": 1,
+          "bis": 3
+        },
+        "b": {
+          "von": 1,
+          "bis": 8
+        },
+        "x": {
+          "von": 2,
+          "bis": 9
+        }
+      },
+      "bedingung": "a > d",
+      "berechnet": {
+        "e": "(a-d)*x+b"
+      },
+      "template": "{a}x + {b} = {d}x + {e}. Löse nach x auf.",
+      "answer": "x",
+      "round": 2,
+      "hint": "Bring alle x auf eine Seite: | − {d}x. Dann | − {b}.",
+      "solution": "{a}x + {b} = {d}x + {e}      | − {d}x\n{a-d}x + {b} = {e}           | − {b}\n{a-d}x = {e-b}               | : {a-d}\nx = {ergebnis}\n\nProbe: links {a} · {ergebnis} + {b} = {a*x+b},  rechts {d} · {ergebnis} + {e} = {d*x+e} ✓",
+      "misconceptions": [
+        {
+          "id": "x_nicht_gesammelt",
+          "value": "(e-b)/a",
+          "feedback": "Du hast die {d}x auf der rechten Seite stehen lassen. Erst alle x auf eine Seite bringen: {a} − {d} = {a-d}."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-B-klammer",
+      "level": "B",
+      "skill": "Gleichung mit Klammer",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 6
+        },
+        "b": {
+          "von": 1,
+          "bis": 8
+        },
+        "x": {
+          "von": 2,
+          "bis": 10
+        }
+      },
+      "berechnet": {
+        "c": "a*(x+b)"
+      },
+      "template": "{a}(x + {b}) = {c}. Löse nach x auf.",
+      "answer": "x",
+      "round": 2,
+      "hint": "Teile zuerst beide Seiten durch {a}: x + {b} = {c/a}. Dann | − {b}.",
+      "solution": "{a}(x + {b}) = {c}      | : {a}\nx + {b} = {c/a}         | − {b}\nx = {ergebnis}\n\nAnderer Weg: erst ausmultiplizieren zu {a}x + {a*b} = {c}, dann wie gewohnt.",
+      "misconceptions": [
+        {
+          "id": "klammer_ignoriert",
+          "value": "c/a+b",
+          "feedback": "Du hast + {b} gerechnet. In der Klammer steht + {b} — um das wegzuschaffen, musst du abziehen."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-B-einsetzen-negativ",
+      "level": "B",
+      "skill": "Negatives x einsetzen",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 8
+        },
+        "b": {
+          "von": 1,
+          "bis": 12
+        },
+        "x": {
+          "von": 2,
+          "bis": 8
+        }
+      },
+      "template": "Berechne {a}x + {b} für x = −{x}.",
+      "answer": "-a*x+b",
+      "round": 0,
+      "hint": "{a} · (−{x}) ist negativ. Dann + {b}.",
+      "solution": "{a} · (−{x}) + {b} = {-a*x} + {b} = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "vorzeichen",
+          "value": "a*x+b",
+          "feedback": "Das Minus fehlt: {a} · (−{x}) = {-a*x}, nicht {a*x}."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-C-beide-seiten-negativ",
+      "level": "C",
+      "skill": "x auf beiden Seiten, negatives Ergebnis",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 5
+        },
+        "d": {
+          "von": 6,
+          "bis": 9
+        },
+        "b": {
+          "von": 1,
+          "bis": 9
+        },
+        "x": {
+          "von": 1,
+          "bis": 6
+        }
+      },
+      "bedingung": "d > a",
+      "berechnet": {
+        "e": "b-(d-a)*x"
+      },
+      "template": "{a}x + {b} = {d}x {e:±}. Löse nach x auf.",
+      "answer": "x",
+      "round": 2,
+      "hint": "Bring die x auf die Seite, wo mehr davon stehen: | − {a}x. Dann bleibt {d-a}x auf der rechten Seite.",
+      "solution": "{a}x + {b} = {d}x {e:±}      | − {a}x\n{b} = {d-a}x {e:±}           | {-e:±}\n{b-e} = {d-a}x               | : {d-a}\nx = {ergebnis}\n\nTrick: Sammle die x immer dort, wo die größere Zahl steht — dann bleibt der Faktor positiv.",
+      "misconceptions": [
+        {
+          "id": "x_nicht_gesammelt",
+          "value": "(e-b)/a",
+          "feedback": "Erst alle x auf eine Seite bringen. Hier ist {d} größer als {a} — sammle rechts."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-C-ausmultiplizieren",
+      "level": "C",
+      "skill": "Klammer ausmultiplizieren",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 9
+        },
+        "b": {
+          "von": 2,
+          "bis": 9
+        }
+      },
+      "template": "Multipliziere aus: {a}(x + {b}) = {a}x + ? — gib die Zahl ohne x an.",
+      "answer": "a*b",
+      "round": 0,
+      "hint": "Die {a} wird mit BEIDEM in der Klammer multipliziert — auch mit der {b}.",
+      "solution": "{a}(x + {b}) = {a} · x + {a} · {b} = {a}x + {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "klammer_nur_halb",
+          "value": "b",
+          "feedback": "Du hast die {b} unverändert übernommen. Die {a} muss mit BEIDEN Teilen der Klammer multipliziert werden: {a} · {b} = {a*b}."
+        },
+        {
+          "id": "multipliziert_statt_addiert",
+          "value": "a+b",
+          "feedback": "Beim Ausmultiplizieren wird multipliziert: {a} · {b} = {a*b}."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-C-bruch",
+      "level": "C",
+      "skill": "Gleichung mit Bruch",
+      "vars": {
+        "a": {
+          "aus": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "b": {
+          "von": 1,
+          "bis": 9
+        },
+        "q": {
+          "von": 2,
+          "bis": 9
+        }
+      },
+      "berechnet": {
+        "x": "q*a",
+        "c": "q+b"
+      },
+      "template": "x : {a} + {b} = {c}. Löse nach x auf.",
+      "answer": "x",
+      "round": 2,
+      "hint": "Erst | − {b}: x : {a} = {q}. Dann | · {a}.",
+      "solution": "x : {a} + {b} = {c}      | − {b}\nx : {a} = {q}          | · {a}\nx = {ergebnis}\n\nGeteilt wird durch Malnehmen rückgängig gemacht.",
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": "q/a",
+          "feedback": "Du hast nochmal geteilt. Um „: {a}\" rückgängig zu machen, musst du · {a} rechnen."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-C-umstellen",
+      "level": "C",
+      "skill": "Nach x umstellen und einsetzen",
+      "vars": {
+        "a": {
+          "aus": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "b": {
+          "von": -6,
+          "bis": 8
+        },
+        "x": {
+          "von": 2,
+          "bis": 9
+        }
+      },
+      "berechnet": {
+        "y": "a*x+b"
+      },
+      "template": "Stelle y = {a}x {b:±} nach x um und berechne x für y = {y}.",
+      "answer": "x",
+      "round": 2,
+      "hint": "x = (y {-b:±}) : {a}",
+      "solution": "y = {a}x {b:±}        | {-b:±}\ny {-b:±} = {a}x        | : {a}\nx = (y {-b:±}) : {a}\n\nEinsetzen: x = ({y} {-b:±}) : {a} = {y-b} : {a} = {ergebnis}",
+      "misconceptions": [
+        {
+          "id": "reihenfolge_vertauscht",
+          "value": "y/a-b",
+          "feedback": "Du hast zuerst geteilt. Erst die {b} wegschaffen, dann durch {a} teilen."
+        }
+      ]
+    },
+    {
+      "id": "WTERM-C-negativer-faktor",
+      "level": "C",
+      "skill": "Gleichung mit negativem Faktor",
+      "vars": {
+        "a": {
+          "aus": [
+            -2,
+            -3,
+            -4,
+            -5
+          ]
+        },
+        "b": {
+          "von": 2,
+          "bis": 12
+        },
+        "x": {
+          "von": 2,
+          "bis": 8
+        }
+      },
+      "berechnet": {
+        "c": "a*x+b"
+      },
+      "template": "{a}x + {b} = {c}. Löse nach x auf.",
+      "answer": "x",
+      "round": 2,
+      "hint": "| − {b}: {a}x = {c-b}. Dann | : ({a}) — Minus geteilt durch Minus ergibt Plus.",
+      "solution": "{a}x + {b} = {c}      | − {b}\n{a}x = {c-b}          | : ({a})\nx = {ergebnis}\n\nProbe: {a} · {ergebnis} + {b} = {c} ✓",
+      "misconceptions": [
+        {
+          "id": "vorzeichen_beim_teilen",
+          "value": "-x",
+          "feedback": "Beim Teilen durch eine negative Zahl dreht sich das Vorzeichen: {c-b} : ({a}) = {ergebnis}."
+        }
+      ]
+    }
+  ]
+}
