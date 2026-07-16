@@ -1,0 +1,198 @@
+{
+  "unit": "LF-08",
+  "title": "Punktprobe",
+  "leitidee": "L4",
+  "standards": ["K5", "K1"],
+  "wortspeicher": ["die Punktprobe", "einsetzen", "die linke Seite", "die rechte Seite", "erfüllen"],
+  "can_do": {
+    "A": "Du setzt einen x-Wert in die Gleichung ein und rechnest aus, was herauskommt.",
+    "B": "Du führst die Punktprobe sauber durch und schreibst das Ergebnis als Satz.",
+    "C": "Du bestimmst eine fehlende Koordinate so, dass der Punkt auf der Geraden liegt."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Punktprobe für P( x | y )  auf  y = m · x + b:",
+      "  1. x in die Gleichung einsetzen",
+      "  2. ausrechnen",
+      "  3. mit dem y des Punktes vergleichen",
+      "",
+      "  Gleich  →  P liegt auf der Geraden",
+      "  Ungleich →  P liegt NICHT auf der Geraden",
+      "",
+      "Fehlende Koordinate:",
+      "  P( 3 | k )  →  k einfach ausrechnen: k = m · 3 + b",
+      "  P( k | 7 )  →  Gleichung nach k auflösen: 7 = m · k + b"
+    ],
+    "saetze": [
+      "Ich setze x = … ein und erhalte y = … .",
+      "Das ist gleich / ungleich dem y-Wert des Punktes.",
+      "Also liegt P auf der Geraden / nicht auf der Geraden."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF08-A1-001", "path": "A", "step": 1, "type": "numeric",
+      "prompt": "Setze x = 3 in y = 2x + 1 ein. Was kommt heraus?",
+      "answer": 7, "tolerance": 0.01,
+      "hints": ["y = 2 · 3 + 1", "Punkt vor Strich: erst mal nehmen, dann addieren."],
+      "solution": "y = 2 · 3 + 1 = 6 + 1 = 7",
+      "misconceptions": [
+        { "id": "punkt_vor_strich", "value": 8, "feedback": "Du hast 3 + 1 = 4 gerechnet und dann · 2. Es gilt Punkt vor Strich: erst 2 · 3, dann + 1." }
+      ],
+      "tags": ["einsetzen"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-A2-002", "path": "A", "step": 2, "type": "numeric",
+      "prompt": "Setze x = 2 in y = x + 4 ein. Was kommt heraus?",
+      "answer": 6, "tolerance": 0.01,
+      "hints": ["y = 2 + 4"],
+      "solution": "y = 2 + 4 = 6",
+      "tags": ["einsetzen"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-A3-003", "path": "A", "step": 3, "type": "numeric",
+      "prompt": "Setze x = 2 in y = 3x − 1 ein. Was kommt heraus?",
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["y = 3 · 2 − 1", "Erst 3 · 2 = 6, dann − 1."],
+      "solution": "y = 3 · 2 − 1 = 6 − 1 = 5",
+      "misconceptions": [
+        { "id": "punkt_vor_strich", "value": 3, "feedback": "Du hast 2 − 1 = 1 gerechnet und dann · 3. Punkt vor Strich: erst 3 · 2." },
+        { "id": "vorzeichen", "value": 7, "feedback": "Du hast addiert. In der Gleichung steht − 1." }
+      ],
+      "tags": ["einsetzen"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-A4-004", "path": "A", "step": 4, "type": "choice",
+      "prompt": "Du hast gerade ausgerechnet: Bei x = 2 ergibt y = 3x − 1 den Wert 5. Liegt der Punkt P(2|5) auf der Geraden?",
+      "options": ["Ja — die Rechnung ergibt genau 5", "Nein", "Das kann man so nicht wissen"],
+      "answer": 0,
+      "hints": ["Vergleiche: Deine Rechnung ergab 5. Und der Punkt P hat den y-Wert …?"],
+      "solution": "Rechnung: 3 · 2 − 1 = 5\nPunkt P(2|5) hat y = 5\n5 = 5 → P liegt auf der Geraden. ✓",
+      "tags": ["punktprobe"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF08-B1-005", "path": "B", "step": 1, "type": "numeric",
+      "prompt": "Punktprobe für P(4|9) auf y = 2x + 1. Rechne die rechte Seite aus.",
+      "answer": 9, "tolerance": 0.01,
+      "hints": ["Setze x = 4 ein: y = 2 · 4 + 1"],
+      "solution": "y = 2 · 4 + 1 = 9\nDer Punkt hat y = 9. Also: 9 = 9 → P liegt auf der Geraden.\n\nSo schreibt man es auf:\n  Punktprobe P(4|9):\n  y = 2 · 4 + 1 = 9 = y_P  ✓\n  Antwort: P liegt auf der Geraden.",
+      "tags": ["punktprobe", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-B2-006", "path": "B", "step": 2, "type": "choice",
+      "prompt": "Liegt P(4|10) auf der Geraden y = 2x + 1?",
+      "options": ["Nein — die Rechnung ergibt 9, nicht 10", "Ja", "Nur ungefähr"],
+      "answer": 0,
+      "hints": ["Setze x = 4 ein und vergleiche mit dem y-Wert des Punktes."],
+      "solution": "y = 2 · 4 + 1 = 9\nP hat aber y = 10.\n9 ≠ 10 → P liegt NICHT auf der Geraden.\n\nP liegt einen Schritt darüber. „Fast\" gibt es bei der Punktprobe nicht — entweder es stimmt oder nicht.",
+      "misconceptions": [
+        { "id": "fast_als_ja", "value": 2, "feedback": "Bei der Punktprobe gibt es kein „ungefähr\". 9 ist nicht 10 — der Punkt liegt daneben, wenn auch nur knapp." }
+      ],
+      "tags": ["punktprobe", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-B3-007", "path": "B", "step": 2, "type": "choice",
+      "prompt": "Liegt Q(−2|−3) auf der Geraden y = 2x + 1?",
+      "options": ["Ja — die Rechnung ergibt −3", "Nein", "Negative Werte kann man nicht einsetzen"],
+      "answer": 0,
+      "hints": ["y = 2 · (−2) + 1", "2 · (−2) = −4, dann + 1."],
+      "solution": "y = 2 · (−2) + 1 = −4 + 1 = −3\nQ hat y = −3.\n−3 = −3 → Q liegt auf der Geraden. ✓\n\nNegative Werte sind völlig normal — man muss nur beim Rechnen aufpassen.",
+      "misconceptions": [
+        { "id": "negativ_scheu", "value": 2, "feedback": "Doch — negative x-Werte sind ganz normal. Die Gerade geht ja auch nach links weiter." }
+      ],
+      "tags": ["punktprobe", "negativ", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-B4-008", "path": "B", "step": 3, "type": "choice",
+      "prompt": "Welcher Punkt liegt auf der Geraden y = −3x + 5?",
+      "options": ["P(2|−1)", "P(2|11)", "P(2|2)"],
+      "answer": 0,
+      "hints": ["Setze bei allen dreien x = 2 ein — der x-Wert ist überall gleich.", "y = −3 · 2 + 5"],
+      "solution": "y = −3 · 2 + 5 = −6 + 5 = −1\nAlso liegt P(2|−1) auf der Geraden.\n\nP(2|11) käme heraus, wenn man −3 · 2 = 6 rechnete (Vorzeichenfehler).\nP(2|2) hat mit der Geraden nichts zu tun.",
+      "misconceptions": [
+        { "id": "vorzeichen", "value": 1, "feedback": "Du hast −3 · 2 = +6 gerechnet. Minus mal Plus ergibt Minus: −3 · 2 = −6." }
+      ],
+      "tags": ["punktprobe", "negativ", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-B5-009", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Punktprobe für P(6|4) auf y = 0,5x + 1. Rechne die rechte Seite aus.",
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["y = 0,5 · 6 + 1", "0,5 · 6 ist die Hälfte von 6."],
+      "solution": "y = 0,5 · 6 + 1 = 3 + 1 = 4\nP hat y = 4 → P liegt auf der Geraden. ✓",
+      "misconceptions": [
+        { "id": "punkt_vor_strich", "value": 3.5, "feedback": "Du hast 6 + 1 = 7 gerechnet und dann · 0,5. Punkt vor Strich: erst 0,5 · 6." }
+      ],
+      "tags": ["punktprobe", "bruch"], "spiral": ["W-TERM", "W-BRUCH"]
+    },
+    {
+      "id": "LF08-B6-010", "path": "B", "step": 4, "type": "choice",
+      "prompt": "Der Graph zeigt y = x + 2. Liegt P(3|5) darauf? Prüfe beides: am Graphen und mit der Rechnung.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 2 }], "punkte": [{ "x": 3, "y": 5, "label": "P" }],
+                  "xmax": 7, "ymax": 8,
+                  "alt": "Eine steigende Gerade mit einem markierten Punkt P." },
+      "options": ["Ja — beide Wege sagen dasselbe", "Nein — der Graph täuscht", "Nur die Rechnung zählt"],
+      "answer": 0,
+      "hints": ["Am Graphen: Liegt P auf der Linie?", "Mit der Rechnung: y = 3 + 2 = 5. Stimmt das mit dem y-Wert von P überein?"],
+      "solution": "Graph: P liegt sichtbar auf der Linie.\nRechnung: y = 3 + 2 = 5 = y_P ✓\n\nBeide Wege stimmen überein. Der Graph ist gut zum Kontrollieren, die Rechnung ist exakt. Bei krummen Werten sieht man am Graphen nicht mehr sicher, ob ein Punkt genau drauf liegt — dann entscheidet die Rechnung.",
+      "misconceptions": [
+        { "id": "graph_misstrauen", "value": 1, "feedback": "Der Graph täuscht hier nicht — P liegt wirklich auf der Linie, und die Rechnung bestätigt es." }
+      ],
+      "tags": ["punktprobe", "kontrolle", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF08-C1-011", "path": "C", "step": 1, "type": "numeric",
+      "prompt": "Für welchen Wert k liegt P(3|k) auf der Geraden y = 2x − 1?",
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["Der x-Wert ist bekannt: 3. Das k ist einfach der zugehörige y-Wert.", "k = 2 · 3 − 1"],
+      "solution": "k = 2 · 3 − 1 = 5\nDer Punkt ist P(3|5).\n\nWenn der x-Wert gegeben ist, muss man nur einsetzen — keine Gleichung lösen.",
+      "misconceptions": [
+        { "id": "punkt_vor_strich", "value": 4, "feedback": "Du hast 3 − 1 = 2 gerechnet und dann · 2. Punkt vor Strich: erst 2 · 3." }
+      ],
+      "tags": ["fehlende_koordinate", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-C2-012", "path": "C", "step": 2, "type": "numeric",
+      "prompt": "Für welchen Wert k liegt P(k|7) auf der Geraden y = 2x + 1?",
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["Diesmal ist der y-Wert bekannt. Setze ihn ein: 7 = 2 · k + 1", "Löse die Gleichung nach k auf: 7 = 2k + 1 | −1"],
+      "solution": "7 = 2k + 1        | − 1\n6 = 2k            | : 2\nk = 3\nDer Punkt ist P(3|7).\n\nProbe: 2 · 3 + 1 = 7 ✓\n\nUnterschied zur letzten Aufgabe: Ist x gegeben, wird nur eingesetzt. Ist y gegeben, muss man eine Gleichung lösen.",
+      "misconceptions": [
+        { "id": "eingesetzt_statt_geloest", "value": 15, "feedback": "Du hast 7 für x eingesetzt: 2 · 7 + 1 = 15. Die 7 ist aber der y-Wert — sie gehört auf die linke Seite." }
+      ],
+      "tags": ["fehlende_koordinate", "gleichung", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-C3-013", "path": "C", "step": 3, "type": "numeric",
+      "prompt": "Für welchen Wert k liegt P(k|−5) auf der Geraden y = −2x + 3?",
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["−5 = −2k + 3", "| − 3 auf beiden Seiten: −8 = −2k", "| : (−2)"],
+      "solution": "−5 = −2k + 3      | − 3\n−8 = −2k          | : (−2)\nk = 4\nDer Punkt ist P(4|−5).\n\nProbe: −2 · 4 + 3 = −8 + 3 = −5 ✓",
+      "misconceptions": [
+        { "id": "vorzeichen_beim_teilen", "value": -4, "feedback": "Beim Teilen durch −2 dreht sich das Vorzeichen: −8 : (−2) = +4. Minus geteilt durch Minus ergibt Plus." },
+        { "id": "eingesetzt_statt_geloest", "value": 13, "feedback": "Du hast −5 für x eingesetzt: −2 · (−5) + 3 = 13. Die −5 ist aber der y-Wert." }
+      ],
+      "tags": ["fehlende_koordinate", "negativ", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF08-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Warum ist die Punktprobe zuverlässiger als das Ablesen am Graphen?",
+      "options": [
+        "Weil sie exakt rechnet — am Graphen sieht man bei krummen Werten nicht, ob ein Punkt genau drauf liegt",
+        "Weil Graphen immer falsch gezeichnet sind",
+        "Weil man am Graphen keine negativen Werte sehen kann"
+      ],
+      "answer": 0,
+      "hints": ["Stell dir vor, P(3|5,02) und die Gerade y = x + 2 liegen fast aufeinander.", "Könntest du das am Graphen unterscheiden?"],
+      "solution": "Liegt P(3|5,02) auf y = x + 2? Die Rechnung sagt: 3 + 2 = 5 ≠ 5,02 → nein.\nAm Graphen wäre der Unterschied von 0,02 Kästchen nicht zu sehen.\n\nDer Graph ist gut zum groben Prüfen und zum Verstehen. Für eine sichere Antwort braucht es die Rechnung.\n\nZu b): Graphen sind nicht falsch — nur ungenau ablesbar.\nZu c): Negative Werte sieht man am Graphen problemlos, links und unten vom Nullpunkt.",
+      "misconceptions": [
+        { "id": "graph_misstrauen", "value": 1, "feedback": "Zu hart. Ein sauber gezeichneter Graph ist richtig — er ist nur nicht genau genug ablesbar." },
+        { "id": "negativ_scheu", "value": 2, "feedback": "Negative Werte sieht man sehr wohl: links und unterhalb des Nullpunkts. Das ist nicht das Problem." }
+      ],
+      "tags": ["begruendung", "kontrolle", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}
