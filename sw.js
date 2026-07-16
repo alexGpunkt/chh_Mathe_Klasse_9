@@ -24,6 +24,7 @@ const SCHALE = [
   'assets/css/app.css',
   'assets/js/store.js',
   'assets/js/supabase-config.js',
+  'assets/js/student-login.js',
   'assets/js/tracker.js',
   'assets/js/engine.js',
   'assets/js/spiral.js',
