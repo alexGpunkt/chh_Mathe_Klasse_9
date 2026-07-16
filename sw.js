@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v2-integrated';
+const VERSION = 'mathe9-v3-integrated';
 
 const SCHALE = [
   './',
