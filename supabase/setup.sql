@@ -87,6 +87,16 @@ alter table public.mathe9_students enable row level security;
 alter table public.mathe9_events enable row level security;
 alter table public.mathe9_progress enable row level security;
 
+drop policy if exists "teachers read students" on public.mathe9_students;
+drop policy if exists "teachers insert students" on public.mathe9_students;
+drop policy if exists "teachers update students" on public.mathe9_students;
+drop policy if exists "teachers delete students" on public.mathe9_students;
+drop policy if exists "students insert events" on public.mathe9_events;
+drop policy if exists "students insert progress" on public.mathe9_progress;
+drop policy if exists "students update progress" on public.mathe9_progress;
+drop policy if exists "teachers read events" on public.mathe9_events;
+drop policy if exists "teachers read progress" on public.mathe9_progress;
+
 -- Freigabeliste nur für angemeldete Lehrkräfte
 create policy "teachers read students" on public.mathe9_students for select to authenticated using (true);
 create policy "teachers insert students" on public.mathe9_students for insert to authenticated with check (true);
