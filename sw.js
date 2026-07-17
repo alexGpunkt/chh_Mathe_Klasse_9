@@ -19,6 +19,7 @@ const SCHALE = [
   'arbeitsblatt.html',
   'matrix.html',
   'pruefung-sets.json',
+  'assets/js/dev-tools.js',
   'units/index.json',
   'spiral/plan.json',
   'assets/css/app.css',
