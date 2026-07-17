@@ -3,14 +3,14 @@
 Differenzierte Lernwege für Jahrgang 9, Campus Hannah Höch.
 Statische Website, keine Abhängigkeiten, kein Build-Step.
 
-**22 Einheiten à 60 Minuten · 308 Aufgaben.**
+**30 Einheiten à 60 Minuten · 420 Aufgaben.**
 **Spiral-Pool: 105 Generatoren in 7 Kategorien für das Warm-up „Altes Wissen".**
 **Prüfungstrainer, Arbeitsblatt-Druck, Kompetenzmatrix, Offline-Betrieb.**
 
 | Bereich | Einheiten | Stand |
 |---|---|---|
 | **PZ** Prozent & Zinsrechnung | 14 | vollständig |
-| **LF** Lineare Funktionen | 8 von 16 | LF-01 bis LF-08 |
+| **LF** Lineare Funktionen | 16 | vollständig |
 | **KP** Würfel, Quader, Prisma, Zylinder | 0 von 12 | offen |
 | **SK** Spitzkörper | 0 von 12 | offen |
 
@@ -50,10 +50,24 @@ vollständigem Rechenweg und hinterlegten Fehlvorstellungen.
 | | LF-06 | y = mx + b zeichnen |
 | | LF-07 | Vom Graphen zur Gleichung |
 | | LF-08 | Punktprobe |
+| **Mit Geraden rechnen** | LF-09 | Gleichung aus zwei Punkten |
+| | LF-10 | Die Nullstelle |
+| | LF-11 | Lineare Gleichungen sicher lösen |
+| | LF-12 | Schnittpunkt – grafisch |
+| **Schnittpunkt & Anwendung** | LF-13 | Schnittpunkt rechnerisch |
+| | LF-14 | Modellieren: Tarifvergleich |
+| | LF-15 | Lineare Gleichungssysteme |
+| | LF-16 | Prüfungstraining |
 
-**LF-09 bis LF-16 fehlen noch:** Gleichung aus zwei Punkten, Nullstelle,
-lineare Gleichungen lösen, Schnittpunkt grafisch und rechnerisch,
-Tarifvergleich, Gleichungssysteme, Prüfungstraining.
+**LF-11 ist bewusst eine Werkstattstunde:** kein neuer Funktionsinhalt,
+sondern Gleichungen lösen — die Voraussetzung für LF-13. Ohne sie scheitert
+das Gleichsetzungsverfahren nicht am Verständnis, sondern am Umformen.
+
+**LF-14 nutzt durchgehend dieselben drei Tarife** (A: 12 € + 0,10 €/min,
+B: 0,25 €/min, Flat: 30 €). Die Schnittpunkte liegen bei 80, 120 und
+180 Minuten — jeder Tarif hat einen echten Bereich, in dem er gewinnt. Das
+ist kein Zufall, sondern so gewählt: Ein Vergleich, bei dem eine Option nie
+sinnvoll ist, lehrt nichts.
 
 ## Aufgabenbilder (`zeichnen.js`)
 
@@ -320,7 +334,7 @@ zurück auf Box 1, kommt morgen wieder.
 **2. Fehlerprofil.** Jede Fehlvorstellung aus den Einheiten wird lokal
 notiert (`mathe9.fehler`, nur IDs — keine Namen, keine Aufgabentexte). Wer
 gestern `komma_verschoben` produziert hat, bekommt heute W-BRUCH.
-Die Zuordnung steht in `plan.json` unter `fehlerprofil` — alle 139 IDs aus
+Die Zuordnung steht in `plan.json` unter `fehlerprofil` — alle 162 IDs aus
 dem Pool sind zugeordnet.
 
 Dazu kommt die **Verzahnung**: `plan.json` → `verzahnung` sagt, welche
@@ -343,7 +357,7 @@ einseitig.
 | `W-TERM` | Terme & Gleichungen | 15 Generatoren |
 | `W-GEO` | Grundgeometrie, Pythagoras | geplant (trägt KP-08, SK-04) |
 
-Alle **139 Fehlvorstellungs-IDs** aus dem Pool zeigen auf eine gebaute
+Alle **162 Fehlvorstellungs-IDs** aus dem Pool zeigen auf eine gebaute
 Kategorie — es läuft keine ins Leere.
 
 Nicht jeder Generator hat Fehlvorstellungen. Ein Rechenfehler im Einmaleins
@@ -419,7 +433,7 @@ Rechner, an dem mehrere arbeiten, besser Kürzel als Klarnamen.
 ## Offline (`sw.js`)
 
 Das Schul-WLAN fällt aus, der Unterricht nicht. Der Service Worker cached alle
-48 Dateien — der ganze Pool ist unter 100 KB.
+56 Dateien — der ganze Pool ist unter 100 KB.
 
 - **JSON:** erst Netz, dann Cache. Korrekturen kommen an; fällt das Netz aus,
   merkt niemand etwas.
@@ -437,7 +451,7 @@ hilft niemandem. Mit dem Feld sagt sie, **welcher Denkfehler** passiert ist,
 und das Dashboard kann auszählen, welcher Fehler in der Klasse gehäuft
 auftritt.
 
-Im Pool: **139 IDs.** Die häufigsten aus den Einheiten:
+Im Pool: **162 IDs.** Die häufigsten aus den Einheiten:
 
 | | ID | Bedeutung |
 |---|---|---|
