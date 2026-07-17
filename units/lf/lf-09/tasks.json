@@ -1,0 +1,221 @@
+{
+  "unit": "LF-09",
+  "title": "Gleichung aus zwei Punkten",
+  "leitidee": "L4",
+  "standards": ["K2"],
+  "wortspeicher": ["die Gleichung", "die Steigung", "der y-Achsenabschnitt", "einsetzen"],
+  "can_do": {
+    "A": "Du zeichnest die Gerade durch zwei Punkte und liest m und b ab.",
+    "B": "Du berechnest m mit der Formel und b durch Einsetzen — ohne zu zeichnen.",
+    "C": "Du beschreibst den Weg allgemein und wendest ihn auf Brüche und negative Werte an."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Gleichung aus P(x₁|y₁) und Q(x₂|y₂) — drei Schritte:",
+      "  1. m = (y₂ − y₁) : (x₂ − x₁)",
+      "  2. b = y₁ − m · x₁      (einen der beiden Punkte einsetzen)",
+      "  3. y = m · x + b",
+      "",
+      "Probe: den ANDEREN Punkt einsetzen — er muss auch passen.",
+      "",
+      "Sonderfall: Ist x₁ = 0, steht b schon da (P liegt auf der y-Achse)."
+    ],
+    "saetze": [
+      "m ist … , weil die y-Differenz … und die x-Differenz … beträgt.",
+      "Ich setze P ein und erhalte b = … .",
+      "Zur Probe setze ich Q ein: … — passt."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF09-A1-001", "path": "A", "step": 1, "type": "multi",
+      "prompt": "Die Gerade geht durch P(0|2) und Q(1|5). Lies m und b am Bild ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 3, "b": 2 }],
+                  "punkte": [{ "x": 0, "y": 2, "label": "P" }, { "x": 1, "y": 5, "label": "Q" }],
+                  "xmax": 4, "ymax": 9,
+                  "alt": "Eine steile Gerade durch die Punkte P bei (0|2) und Q bei (1|5)." },
+      "fields": [
+        { "label": "Steigung m", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["P liegt direkt auf der senkrechten Achse — dort kannst du b ablesen.", "Von P nach Q: 1 nach rechts, 3 nach oben."],
+      "solution": "b = 2 (P liegt auf der y-Achse)\nm = 3 (1 nach rechts, 3 nach oben)\nDie Gleichung: y = 3x + 2",
+      "tags": ["zwei_punkte"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF09-A2-002", "path": "A", "step": 2, "type": "multi",
+      "prompt": "Die Gerade geht durch P(0|1) und Q(2|5). Lies m und b ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 1 }],
+                  "punkte": [{ "x": 0, "y": 1, "label": "P" }, { "x": 2, "y": 5, "label": "Q" }],
+                  "xmax": 5, "ymax": 8,
+                  "alt": "Eine steigende Gerade durch die Punkte P bei (0|1) und Q bei (2|5)." },
+      "fields": [
+        { "label": "Steigung m", "answer": 2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "dy_als_m", "value": 4, "feedback": "Das ist Δy. Von P nach Q gehst du 2 nach rechts — also noch durch 2 teilen." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 1, "tolerance": 0.01 }
+      ],
+      "hints": ["b: P liegt auf der senkrechten Achse.", "m: 2 nach rechts, 4 nach oben → m = 4 : 2"],
+      "solution": "b = 1\nm = 4 : 2 = 2\nDie Gleichung: y = 2x + 1",
+      "tags": ["zwei_punkte"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF09-A3-003", "path": "A", "step": 3, "type": "multi",
+      "prompt": "Die Gerade geht durch P(0|4) und Q(3|1). Lies m und b ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -1, "b": 4 }],
+                  "punkte": [{ "x": 0, "y": 4, "label": "P" }, { "x": 3, "y": 1, "label": "Q" }],
+                  "xmax": 6, "ymax": 6,
+                  "alt": "Eine fallende Gerade durch die Punkte P bei (0|4) und Q bei (3|1)." },
+      "fields": [
+        { "label": "Steigung m", "answer": -1, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 1, "feedback": "Der Betrag stimmt. Von P nach Q geht es aber nach UNTEN — m ist negativ." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 4, "tolerance": 0.01 }
+      ],
+      "hints": ["b = 4 (P liegt auf der senkrechten Achse).", "Von P nach Q: 3 nach rechts, 3 nach unten."],
+      "solution": "b = 4\nm = −3 : 3 = −1\nDie Gleichung: y = −x + 4",
+      "tags": ["zwei_punkte", "negativ"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF09-A4-004", "path": "A", "step": 4, "type": "multi",
+      "prompt": "Die Gerade geht durch P(0|0) und Q(2|6). Lies m und b ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 3, "b": 0 }],
+                  "punkte": [{ "x": 0, "y": 0, "label": "P" }, { "x": 2, "y": 6, "label": "Q" }],
+                  "xmax": 4, "ymax": 8,
+                  "alt": "Eine steile Gerade durch den Ursprung und den Punkt Q bei (2|6)." },
+      "fields": [
+        { "label": "Steigung m", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 0, "tolerance": 0.01 }
+      ],
+      "hints": ["P ist der Ursprung — was ist dann b?", "m = 6 : 2"],
+      "solution": "b = 0 (die Gerade geht durch den Ursprung)\nm = 6 : 2 = 3\nDie Gleichung: y = 3x — die + 0 lässt man weg.",
+      "tags": ["zwei_punkte", "ursprung"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF09-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(1|5) und Q(3|11) — rechnerisch.",
+      "fields": [
+        { "label": "Steigung m", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "b_falsch_berechnet", "value": 8, "feedback": "Du hast 5 + 3 · 1 gerechnet. Es gilt b = y − m · x = 5 − 3 = 2." }] }
+      ],
+      "hints": ["m = (11 − 5) : (3 − 1)", "b = y − m · x — nimm P(1|5): b = 5 − 3 · 1"],
+      "solution": "m = (11 − 5) : (3 − 1) = 6 : 2 = 3\nb = 5 − 3 · 1 = 2\ny = 3x + 2\n\nProbe mit Q: 3 · 3 + 2 = 11 ✓",
+      "tags": ["zwei_punkte", "bbr"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF09-B2-006", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(2|3) und Q(6|11).",
+      "fields": [
+        { "label": "Steigung m", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": -1, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 1, "feedback": "b = 3 − 2 · 2 = 3 − 4 = −1. Das Ergebnis ist negativ." }] }
+      ],
+      "hints": ["m = (11 − 3) : (6 − 2) = 8 : 4", "b = 3 − 2 · 2"],
+      "solution": "m = 8 : 4 = 2\nb = 3 − 2 · 2 = 3 − 4 = −1\ny = 2x − 1\n\nProbe mit Q: 2 · 6 − 1 = 11 ✓",
+      "tags": ["zwei_punkte", "negativ", "bbr"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF09-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(1|7) und Q(5|3).",
+      "fields": [
+        { "label": "Steigung m", "answer": -1, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 1, "feedback": "Δy = 3 − 7 = −4. Also m = −4 : 4 = −1." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 8, "tolerance": 0.01 }
+      ],
+      "hints": ["m = (3 − 7) : (5 − 1) = −4 : 4", "b = 7 − (−1) · 1 = 7 + 1"],
+      "solution": "m = −4 : 4 = −1\nb = 7 − (−1) · 1 = 7 + 1 = 8\ny = −x + 8\n\nProbe mit Q: −5 + 8 = 3 ✓",
+      "tags": ["zwei_punkte", "negativ", "bbr"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF09-B4-008", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(2|9) und Q(5|18).",
+      "fields": [
+        { "label": "Steigung m", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["m = (18 − 9) : (5 − 2) = 9 : 3", "b = 9 − 3 · 2"],
+      "solution": "m = 9 : 3 = 3\nb = 9 − 3 · 2 = 3\ny = 3x + 3\n\nProbe mit Q: 3 · 5 + 3 = 18 ✓",
+      "tags": ["zwei_punkte", "bbr"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF09-B5-009", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(0|3) und Q(4|5).",
+      "fields": [
+        { "label": "Steigung m", "answer": 0.5, "tolerance": 0.01,
+          "misconceptions": [{ "id": "geteilt_vertauscht", "value": 2, "feedback": "Du hast Δx : Δy gerechnet. m = 2 : 4 = 0,5." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["m = (5 − 3) : (4 − 0) = 2 : 4", "P liegt auf der y-Achse — b kannst du direkt ablesen."],
+      "solution": "m = 2 : 4 = 0,5\nb = 3 — P(0|3) liegt auf der y-Achse, also steht b schon da.\ny = 0,5x + 3\n\nProbe mit Q: 0,5 · 4 + 3 = 5 ✓\nTipp: Ist einer der Punkte ein (0|…), sparst du dir die b-Rechnung.",
+      "tags": ["zwei_punkte", "bruch", "bbr"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF09-B6-010", "path": "B", "step": 4, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(3|2) und Q(7|10).",
+      "fields": [
+        { "label": "Steigung m", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": -4, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 4, "feedback": "b = 2 − 2 · 3 = 2 − 6 = −4." }] }
+      ],
+      "hints": ["m = (10 − 2) : (7 − 3) = 8 : 4", "b = 2 − 2 · 3"],
+      "solution": "m = 8 : 4 = 2\nb = 2 − 2 · 3 = 2 − 6 = −4\ny = 2x − 4\n\nProbe mit Q: 2 · 7 − 4 = 10 ✓",
+      "tags": ["zwei_punkte", "negativ", "bbr"], "spiral": ["W-FKT", "W-TERM"]
+    },
+
+    {
+      "id": "LF09-C1-011", "path": "C", "step": 1, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(−2|7) und Q(2|−1).",
+      "fields": [
+        { "label": "Steigung m", "answer": -2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "minus_minus", "value": -4, "feedback": "Im Nenner: 2 − (−2) = 2 + 2 = 4, nicht 2. Minus und Minus ergibt Plus." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 3, "tolerance": 0.01,
+          "misconceptions": [{ "id": "minus_minus", "value": 11, "feedback": "b = 7 − (−2) · (−2) = 7 − 4 = 3. Minus mal Minus ergibt Plus — die 4 wird abgezogen." }] }
+      ],
+      "hints": ["m = (−1 − 7) : (2 − (−2)) = −8 : 4", "b = 7 − (−2) · (−2) = 7 − 4"],
+      "solution": "m = (−1 − 7) : (2 − (−2)) = −8 : 4 = −2\nb = 7 − (−2) · (−2) = 7 − 4 = 3\ny = −2x + 3\n\nProbe mit Q: −2 · 2 + 3 = −1 ✓",
+      "tags": ["zwei_punkte", "negativ", "msa"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF09-C2-012", "path": "C", "step": 2, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(−3|−4) und Q(3|2).",
+      "fields": [
+        { "label": "Steigung m", "answer": 1, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": -1, "tolerance": 0.01,
+          "misconceptions": [{ "id": "minus_minus", "value": -7, "feedback": "b = −4 − 1 · (−3) = −4 + 3 = −1. Minus mal Minus ergibt Plus." }] }
+      ],
+      "hints": ["m = (2 − (−4)) : (3 − (−3)) = 6 : 6", "b = −4 − 1 · (−3) = −4 + 3"],
+      "solution": "m = (2 + 4) : (3 + 3) = 6 : 6 = 1\nb = −4 − 1 · (−3) = −4 + 3 = −1\ny = x − 1\n\nProbe mit Q: 3 − 1 = 2 ✓",
+      "tags": ["zwei_punkte", "negativ", "msa"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF09-C3-013", "path": "C", "step": 3, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(2|1) und Q(6|4). Hier sind m und b keine ganzen Zahlen.",
+      "fields": [
+        { "label": "Steigung m", "answer": 0.75, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": -0.5, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 0.5, "feedback": "b = 1 − 0,75 · 2 = 1 − 1,5 = −0,5. Das Ergebnis ist negativ." }] }
+      ],
+      "hints": ["m = (4 − 1) : (6 − 2) = 3 : 4 = 0,75", "b = 1 − 0,75 · 2 = 1 − 1,5"],
+      "solution": "m = 3 : 4 = 0,75\nb = 1 − 0,75 · 2 = 1 − 1,5 = −0,5\ny = 0,75x − 0,5\n\nProbe mit Q: 0,75 · 6 − 0,5 = 4,5 − 0,5 = 4 ✓\n\nKrumme Werte sind kein Fehler. Die Probe entscheidet — nicht, ob das Ergebnis schön aussieht.",
+      "tags": ["zwei_punkte", "bruch", "msa"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF09-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "In welcher Reihenfolge bestimmt man die Gleichung aus zwei Punkten?",
+      "options": [
+        "Erst m aus beiden Punkten, dann b durch Einsetzen EINES Punktes",
+        "Erst b aus beiden Punkten, dann m durch Einsetzen",
+        "m und b lassen sich beide direkt aus den Punkten ablesen"
+      ],
+      "answer": 0,
+      "hints": ["Für welche der beiden Größen brauchst du wirklich beide Punkte?", "Und was brauchst du, um b zu berechnen?"],
+      "solution": "m braucht BEIDE Punkte: m = (y₂ − y₁) : (x₂ − x₁).\nb braucht m und EINEN Punkt: b = y − m · x.\nAlso muss m zuerst kommen — ohne m geht b nicht.\n\nZu b): b lässt sich nicht direkt aus zwei Punkten bestimmen. Es gibt keine Formel dafür ohne m.\nZu c): Nur wenn einer der Punkte ein (0|…) ist, kann man b ablesen. Im Allgemeinen nicht.\n\nUnd immer: mit dem ANDEREN Punkt Probe machen. Sonst merkst du einen Rechenfehler nicht.",
+      "misconceptions": [
+        { "id": "reihenfolge_vertauscht", "value": 1, "feedback": "Für b brauchst du m — also muss m zuerst berechnet werden. Umgekehrt geht es nicht." },
+        { "id": "ablesen_statt_rechnen", "value": 2, "feedback": "Nur wenn ein Punkt auf der y-Achse liegt (x = 0), kann man b ablesen. Bei P(1|5) und Q(3|11) geht das nicht." }
+      ],
+      "tags": ["verfahren", "begruendung", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}
