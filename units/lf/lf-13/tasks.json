@@ -1,0 +1,213 @@
+{
+  "unit": "LF-13",
+  "title": "Schnittpunkt rechnerisch",
+  "leitidee": "L4",
+  "standards": ["K2", "K5"],
+  "wortspeicher": ["gleichsetzen", "der Schnittpunkt", "die gemeinsame Lösung", "einsetzen"],
+  "can_do": {
+    "A": "Du setzt die beiden Terme gleich und bestimmst x mit vorgegebenen Schritten.",
+    "B": "Du führst das Gleichsetzungsverfahren vollständig durch — x und y.",
+    "C": "Du deutest das Ergebnis, wenn x herausfällt, und erkennst darin die Sonderfälle wieder."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Gleichsetzungsverfahren — drei Schritte:",
+      "  1. Beide Terme gleichsetzen:  m₁x + b₁ = m₂x + b₂",
+      "  2. Nach x auflösen",
+      "  3. x in EINE der beiden Gleichungen einsetzen → y",
+      "",
+      "Warum darf man das? Im Schnittpunkt ist y auf beiden Geraden gleich —",
+      "also dürfen auch die beiden Terme gleichgesetzt werden.",
+      "",
+      "Probe: x in die ANDERE Gleichung einsetzen — muss dasselbe y liefern.",
+      "",
+      "Fällt x heraus:  falsche Aussage → parallel, keine Lösung",
+      "                 wahre Aussage  → identisch, unendlich viele"
+    ],
+    "saetze": [
+      "Im Schnittpunkt ist y gleich, also setze ich die Terme gleich.",
+      "Ich löse nach x auf und erhalte x = … .",
+      "Eingesetzt in … ergibt y = … , also S(…|…)."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF13-A1-001", "path": "A", "step": 1, "type": "multi",
+      "prompt": "Schnittpunkt von y = 2x + 1 und y = x + 4. Setze gleich: 2x + 1 = x + 4",
+      "fields": [
+        { "label": "x-Wert (löse 2x + 1 = x + 4)", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert (setze x in y = x + 4 ein)", "answer": 7, "tolerance": 0.01 }
+      ],
+      "hints": ["2x + 1 = x + 4      | − x", "x + 1 = 4      | − 1      →  x = 3", "Dann y = 3 + 4"],
+      "solution": "2x + 1 = x + 4      | − x\nx + 1 = 4           | − 1\nx = 3\n\ny = 3 + 4 = 7\nS(3|7)\n\nProbe mit der anderen Gleichung: 2 · 3 + 1 = 7 ✓",
+      "tags": ["gleichsetzen"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF13-A2-002", "path": "A", "step": 2, "type": "multi",
+      "prompt": "Schnittpunkt von y = 3x − 2 und y = x + 6. Setze gleich: 3x − 2 = x + 6",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 10, "tolerance": 0.01 }
+      ],
+      "hints": ["3x − 2 = x + 6      | − x", "2x − 2 = 6      | + 2      →  2x = 8", "Dann y = 4 + 6"],
+      "solution": "3x − 2 = x + 6      | − x\n2x − 2 = 6          | + 2\n2x = 8              | : 2\nx = 4\n\ny = 4 + 6 = 10\nS(4|10)\n\nProbe: 3 · 4 − 2 = 10 ✓",
+      "tags": ["gleichsetzen"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF13-A3-003", "path": "A", "step": 3, "type": "multi",
+      "prompt": "Schnittpunkt von y = x + 5 und y = 4x − 1.",
+      "fields": [
+        { "label": "x-Wert", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 7, "tolerance": 0.01 }
+      ],
+      "hints": ["Setze gleich: x + 5 = 4x − 1", "| − x: 5 = 3x − 1, dann | + 1"],
+      "solution": "x + 5 = 4x − 1      | − x\n5 = 3x − 1          | + 1\n6 = 3x              | : 3\nx = 2\n\ny = 2 + 5 = 7\nS(2|7)\n\nProbe: 4 · 2 − 1 = 7 ✓",
+      "tags": ["gleichsetzen"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF13-A4-004", "path": "A", "step": 4, "type": "multi",
+      "prompt": "Schnittpunkt von y = 2x und y = x + 3.",
+      "fields": [
+        { "label": "x-Wert", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 6, "tolerance": 0.01 }
+      ],
+      "hints": ["2x = x + 3      | − x", "Dann y = 2 · 3"],
+      "solution": "2x = x + 3      | − x\nx = 3\n\ny = 2 · 3 = 6\nS(3|6)\n\nProbe: 3 + 3 = 6 ✓",
+      "misconceptions": [],
+      "tags": ["gleichsetzen"], "spiral": ["W-TERM", "W-FKT"]
+    },
+
+    {
+      "id": "LF13-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = 4x − 3 und y = 2x + 5.",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 13, "tolerance": 0.01,
+          "misconceptions": [{ "id": "x_als_y", "value": 4, "feedback": "Das ist der x-Wert. Setz ihn noch in eine der Gleichungen ein: y = 4 · 4 − 3 = 13." }] }
+      ],
+      "hints": ["4x − 3 = 2x + 5      | − 2x", "2x − 3 = 5      | + 3      →  2x = 8", "y = 4 · 4 − 3"],
+      "solution": "4x − 3 = 2x + 5      | − 2x\n2x − 3 = 5           | + 3\n2x = 8               | : 2\nx = 4\n\ny = 4 · 4 − 3 = 13\nS(4|13)\n\nProbe: 2 · 4 + 5 = 13 ✓",
+      "tags": ["gleichsetzen", "bbr"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF13-B2-006", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = −x + 8 und y = 2x − 1.",
+      "fields": [
+        { "label": "x-Wert", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["−x + 8 = 2x − 1      | + x", "8 = 3x − 1      | + 1      →  9 = 3x"],
+      "solution": "−x + 8 = 2x − 1      | + x\n8 = 3x − 1           | + 1\n9 = 3x               | : 3\nx = 3\n\ny = −3 + 8 = 5\nS(3|5)\n\nProbe: 2 · 3 − 1 = 5 ✓",
+      "tags": ["gleichsetzen", "negativ", "bbr"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF13-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = 0,5x + 2 und y = −x + 8.",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 4, "tolerance": 0.01 }
+      ],
+      "hints": ["0,5x + 2 = −x + 8      | + x", "1,5x + 2 = 8      | − 2      →  1,5x = 6"],
+      "solution": "0,5x + 2 = −x + 8      | + x\n1,5x + 2 = 8           | − 2\n1,5x = 6               | : 1,5\nx = 4\n\ny = 0,5 · 4 + 2 = 4\nS(4|4)\n\nProbe: −4 + 8 = 4 ✓",
+      "tags": ["gleichsetzen", "bruch", "bbr"], "spiral": ["W-TERM", "W-BRUCH"]
+    },
+    {
+      "id": "LF13-B4-008", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = 3x + 1 und y = −2x + 11.",
+      "fields": [
+        { "label": "x-Wert", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 7, "tolerance": 0.01 }
+      ],
+      "hints": ["3x + 1 = −2x + 11      | + 2x", "5x + 1 = 11      | − 1      →  5x = 10"],
+      "solution": "3x + 1 = −2x + 11      | + 2x\n5x + 1 = 11            | − 1\n5x = 10                | : 5\nx = 2\n\ny = 3 · 2 + 1 = 7\nS(2|7)\n\nProbe: −2 · 2 + 11 = 7 ✓",
+      "tags": ["gleichsetzen", "negativ", "bbr"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF13-B5-009", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = −2x + 3 und y = x − 6.",
+      "fields": [
+        { "label": "x-Wert", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": -3, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 3, "feedback": "y = 3 − 6 = −3. Der Schnittpunkt liegt unterhalb der x-Achse." }] }
+      ],
+      "hints": ["−2x + 3 = x − 6      | + 2x", "3 = 3x − 6      | + 6      →  9 = 3x", "y = 3 − 6"],
+      "solution": "−2x + 3 = x − 6      | + 2x\n3 = 3x − 6           | + 6\n9 = 3x               | : 3\nx = 3\n\ny = 3 − 6 = −3\nS(3|−3)\n\nProbe: −2 · 3 + 3 = −3 ✓\nEin negativer y-Wert ist normal — der Schnittpunkt liegt eben unter der x-Achse.",
+      "tags": ["gleichsetzen", "negativ", "bbr"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF13-B6-010", "path": "B", "step": 4, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = 5x − 4 und y = 2x + 8.",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 16, "tolerance": 0.01 }
+      ],
+      "hints": ["5x − 4 = 2x + 8      | − 2x", "3x − 4 = 8      | + 4      →  3x = 12"],
+      "solution": "5x − 4 = 2x + 8      | − 2x\n3x − 4 = 8           | + 4\n3x = 12              | : 3\nx = 4\n\ny = 5 · 4 − 4 = 16\nS(4|16)\n\nProbe: 2 · 4 + 8 = 16 ✓",
+      "tags": ["gleichsetzen", "bbr"], "spiral": ["W-TERM", "W-FKT"]
+    },
+
+    {
+      "id": "LF13-C1-011", "path": "C", "step": 1, "type": "choice",
+      "prompt": "Du setzt y = 2x + 1 und y = 2x + 5 gleich und erhältst 1 = 5. Was bedeutet das?",
+      "options": [
+        "Die Geraden sind parallel — es gibt keinen Schnittpunkt",
+        "Du hast dich verrechnet",
+        "Der Schnittpunkt liegt bei x = 5"
+      ],
+      "answer": 0,
+      "hints": ["Rechne selbst nach: 2x + 1 = 2x + 5 | − 2x", "Vergleiche die Steigungen beider Geraden."],
+      "solution": "2x + 1 = 2x + 5      | − 2x\n1 = 5\n\nDas x ist verschwunden, und übrig bleibt eine FALSCHE Aussage. Es gibt kein x, das beide Gleichungen erfüllt → kein Schnittpunkt.\n\nDas passt zum Bild: Beide haben m = 2, sind also parallel. Genau das hast du in LF-12 gesehen — hier steht dasselbe in Zahlen.\n\nDas Verschwinden von x ist kein Rechenfehler, sondern das Ergebnis.",
+      "misconceptions": [
+        { "id": "sonderfall_als_fehler", "value": 1, "feedback": "Kein Rechenfehler — das ist das richtige Ergebnis. Wenn x herausfällt, sagt dir die Rechnung: Diese Geraden treffen sich nie." },
+        { "id": "sonderfall_uebersehen", "value": 2, "feedback": "Die 5 ist kein x-Wert. Die Gleichung 1 = 5 ist einfach falsch — es gibt keine Lösung." }
+      ],
+      "tags": ["sonderfall", "parallel", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF13-C2-012", "path": "C", "step": 2, "type": "choice",
+      "prompt": "Du setzt y = 3x − 2 und y = 3x − 2 gleich und erhältst −2 = −2. Was bedeutet das?",
+      "options": [
+        "Es ist dieselbe Gerade — unendlich viele gemeinsame Punkte",
+        "Es gibt keinen Schnittpunkt",
+        "Der Schnittpunkt liegt bei x = −2"
+      ],
+      "answer": 0,
+      "hints": ["Ist die Aussage −2 = −2 wahr oder falsch?", "Vergleiche m und b bei beiden Gleichungen."],
+      "solution": "3x − 2 = 3x − 2      | − 3x\n−2 = −2\n\nDas x ist weg, und übrig bleibt eine WAHRE Aussage. Jedes x erfüllt beide Gleichungen → unendlich viele gemeinsame Punkte.\n\nKein Wunder: Es ist zweimal dieselbe Gerade.\n\nDie zwei Fälle im Vergleich:\n  1 = 5   falsch  →  parallel  →  keine Lösung\n  −2 = −2 wahr    →  identisch →  unendlich viele",
+      "misconceptions": [
+        { "id": "sonderfall_vertauscht", "value": 1, "feedback": "Keine Lösung gibt es bei einer FALSCHEN Aussage. −2 = −2 ist wahr — also passt jedes x." },
+        { "id": "sonderfall_uebersehen", "value": 2, "feedback": "Die −2 ist kein x-Wert, sondern der Rest der Gleichung. Es gibt nicht einen Schnittpunkt, sondern unendlich viele." }
+      ],
+      "tags": ["sonderfall", "identisch", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF13-C3-013", "path": "C", "step": 3, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = 0,5x + 1 und y = 2x − 5.",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["0,5x + 1 = 2x − 5      | − 0,5x", "1 = 1,5x − 5      | + 5      →  6 = 1,5x", "6 : 1,5 = 4"],
+      "solution": "0,5x + 1 = 2x − 5      | − 0,5x\n1 = 1,5x − 5           | + 5\n6 = 1,5x               | : 1,5\nx = 4\n\ny = 0,5 · 4 + 1 = 3\nS(4|3)\n\nProbe: 2 · 4 − 5 = 3 ✓\n\nTipp: Sammle die x dort, wo der größere Faktor steht (hier rechts bei 2x) — dann bleibt er positiv.",
+      "tags": ["gleichsetzen", "bruch", "msa"], "spiral": ["W-TERM", "W-BRUCH"]
+    },
+    {
+      "id": "LF13-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Warum darf man beim Gleichsetzungsverfahren die beiden Terme überhaupt gleichsetzen?",
+      "options": [
+        "Weil im Schnittpunkt beide Geraden denselben y-Wert haben",
+        "Weil beide Gleichungen mit y = anfangen",
+        "Weil man Gleichungen immer gleichsetzen darf"
+      ],
+      "answer": 0,
+      "hints": ["Was ist das Besondere am Schnittpunkt?", "Denk an LF-12: Der Schnittpunkt liegt auf beiden Geraden."],
+      "solution": "Im Schnittpunkt liegt der Punkt auf beiden Geraden. Also gilt dort gleichzeitig:\n  y = m₁x + b₁   und   y = m₂x + b₂\n\nBeide Terme sind also gleich demselben y — und damit gleich groß:\n  m₁x + b₁ = m₂x + b₂\n\nWichtig: Das gilt NUR im Schnittpunkt. Für alle anderen x sind die y-Werte verschieden. Genau deshalb liefert die Gleichung einen einzigen x-Wert — den des Schnittpunkts.\n\nZu b): Die Schreibweise ist nur der Anlass, nicht der Grund.\nZu c): Nein. y = 2x + 1 und y = 5x sind für x = 3 verschieden (7 und 15). Gleichsetzen heißt: Ich SUCHE die Stelle, wo sie gleich sind.",
+      "misconceptions": [
+        { "id": "folge_statt_grund", "value": 1, "feedback": "Das ist nur die Schreibweise. Der Grund liegt im Schnittpunkt selbst: Dort ist y auf beiden Geraden gleich." },
+        { "id": "regel_ohne_grund", "value": 2, "feedback": "Darf man nicht einfach so. y = 2x + 1 und y = 5x sind bei x = 3 verschieden. Gleichsetzen heißt: die Stelle SUCHEN, wo sie übereinstimmen." }
+      ],
+      "tags": ["begruendung", "verfahren", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}
