@@ -1,0 +1,192 @@
+{
+  "unit": "LF-11",
+  "title": "Lineare Gleichungen sicher lösen",
+  "leitidee": "L4",
+  "standards": ["K5"],
+  "wortspeicher": ["die Gleichung", "die Waage", "die Probe", "die Lösung", "umformen"],
+  "can_do": {
+    "A": "Du löst Gleichungen der Form ax + b = c mit dem Waagemodell.",
+    "B": "Du löst Gleichungen mit x auf beiden Seiten und machst die Probe.",
+    "C": "Du löst Gleichungen mit Klammern und erkennst Sonderfälle ohne oder mit unendlich vielen Lösungen."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Die Waage bleibt im Gleichgewicht:",
+      "  Was du links tust, musst du auch rechts tun.",
+      "",
+      "Reihenfolge — rückwärts wie beim Auspacken:",
+      "  1. alle x auf EINE Seite  | ± … x",
+      "  2. alle Zahlen auf die ANDERE Seite  | ± …",
+      "  3. durch die Zahl vor dem x teilen  | : …",
+      "",
+      "Probe: Lösung in die URSPRÜNGLICHE Gleichung einsetzen.",
+      "",
+      "Sonderfälle:  5 = 3   →  keine Lösung",
+      "              0 = 0   →  unendlich viele Lösungen"
+    ],
+    "saetze": [
+      "Ich rechne auf beiden Seiten … .",
+      "Die Probe: links … , rechts … — es passt.",
+      "Die Aussage … ist falsch, also gibt es keine Lösung."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF11-A1-001", "path": "A", "step": 1, "type": "numeric",
+      "prompt": "Löse: 2x + 3 = 11",
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["Nimm auf beiden Seiten 3 weg: 2x = 8", "Jetzt durch 2 teilen."],
+      "solution": "2x + 3 = 11      | − 3\n2x = 8           | : 2\nx = 4\n\nProbe: 2 · 4 + 3 = 11 ✓",
+      "misconceptions": [
+        { "id": "reihenfolge_vertauscht", "value": 2.5, "feedback": "Du hast zuerst durch 2 geteilt. Erst die + 3 wegschaffen, dann teilen." }
+      ],
+      "tags": ["gleichung"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-A2-002", "path": "A", "step": 2, "type": "numeric",
+      "prompt": "Löse: 3x + 5 = 20",
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["| − 5 auf beiden Seiten: 3x = 15", "| : 3"],
+      "solution": "3x + 5 = 20      | − 5\n3x = 15          | : 3\nx = 5\n\nProbe: 3 · 5 + 5 = 20 ✓",
+      "tags": ["gleichung"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-A3-003", "path": "A", "step": 3, "type": "numeric",
+      "prompt": "Löse: 4x − 2 = 14",
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["Hier steht ein Minus. Um − 2 wegzuschaffen, musst du + 2 rechnen.", "4x = 16, dann | : 4"],
+      "solution": "4x − 2 = 14      | + 2\n4x = 16          | : 4\nx = 4\n\nProbe: 4 · 4 − 2 = 14 ✓",
+      "misconceptions": [
+        { "id": "richtung_vertauscht", "value": 3, "feedback": "Du hast noch einmal 2 abgezogen. Um − 2 rückgängig zu machen, musst du + 2 rechnen." }
+      ],
+      "tags": ["gleichung"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-A4-004", "path": "A", "step": 4, "type": "numeric",
+      "prompt": "Löse: 5x + 7 = 32",
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["| − 7: 5x = 25", "| : 5"],
+      "solution": "5x + 7 = 32      | − 7\n5x = 25          | : 5\nx = 5\n\nProbe: 5 · 5 + 7 = 32 ✓",
+      "misconceptions": [
+        { "id": "reihenfolge_vertauscht", "value": 0.4, "feedback": "Du hast zuerst geteilt: 32 : 5 = 6,4, dann − 7 → 0,4 wäre falsch. Erst die + 7 wegschaffen." }
+      ],
+      "tags": ["gleichung"], "spiral": ["W-TERM"]
+    },
+
+    {
+      "id": "LF11-B1-005", "path": "B", "step": 1, "type": "numeric",
+      "prompt": "Löse: 3x + 4 = x + 12",
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["Erst die x auf eine Seite: | − x", "2x + 4 = 12, dann | − 4 und | : 2"],
+      "solution": "3x + 4 = x + 12      | − x\n2x + 4 = 12          | − 4\n2x = 8               | : 2\nx = 4\n\nProbe: links 3 · 4 + 4 = 16;  rechts 4 + 12 = 16 ✓",
+      "misconceptions": [
+        { "id": "x_nicht_gesammelt", "value": 2.67, "feedback": "Du hast das x auf der rechten Seite stehen lassen. Erst | − x: dann bleibt 2x auf der linken Seite." }
+      ],
+      "tags": ["gleichung", "beide_seiten", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-B2-006", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Löse: 5x − 3 = 2x + 18",
+      "answer": 7, "tolerance": 0.01,
+      "hints": ["| − 2x: 3x − 3 = 18", "| + 3: 3x = 21, dann | : 3"],
+      "solution": "5x − 3 = 2x + 18      | − 2x\n3x − 3 = 18           | + 3\n3x = 21               | : 3\nx = 7\n\nProbe: links 5 · 7 − 3 = 32;  rechts 2 · 7 + 18 = 32 ✓",
+      "tags": ["gleichung", "beide_seiten", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-B3-007", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Löse: 4x + 7 = 7x − 2",
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["Rechts stehen mehr x. Sammle dort: | − 4x", "7 = 3x − 2, dann | + 2 und | : 3"],
+      "solution": "4x + 7 = 7x − 2      | − 4x\n7 = 3x − 2           | + 2\n9 = 3x               | : 3\nx = 3\n\nProbe: links 4 · 3 + 7 = 19;  rechts 7 · 3 − 2 = 19 ✓\n\nTipp: Sammle die x dort, wo die größere Zahl steht — dann bleibt der Faktor positiv.",
+      "misconceptions": [
+        { "id": "vorzeichen_beim_teilen", "value": -3, "feedback": "Wenn du | − 7x rechnest, bekommst du −3x + 7 = −2, also −3x = −9 und x = +3. Minus geteilt durch Minus ergibt Plus." }
+      ],
+      "tags": ["gleichung", "beide_seiten", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-B4-008", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Löse: 2x + 9 = 6x − 11",
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["| − 2x: 9 = 4x − 11", "| + 11: 20 = 4x"],
+      "solution": "2x + 9 = 6x − 11      | − 2x\n9 = 4x − 11           | + 11\n20 = 4x               | : 4\nx = 5\n\nProbe: links 2 · 5 + 9 = 19;  rechts 6 · 5 − 11 = 19 ✓",
+      "tags": ["gleichung", "beide_seiten", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-B5-009", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Löse: 7x − 5 = 3x + 19",
+      "answer": 6, "tolerance": 0.01,
+      "hints": ["| − 3x: 4x − 5 = 19", "| + 5: 4x = 24"],
+      "solution": "7x − 5 = 3x + 19      | − 3x\n4x − 5 = 19           | + 5\n4x = 24               | : 4\nx = 6\n\nProbe: links 7 · 6 − 5 = 37;  rechts 3 · 6 + 19 = 37 ✓",
+      "tags": ["gleichung", "beide_seiten", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-B6-010", "path": "B", "step": 4, "type": "numeric",
+      "prompt": "Löse: 12 − x = 3x + 4",
+      "answer": 2, "tolerance": 0.01,
+      "hints": ["Achtung: Links steht − x. Rechne | + x, dann verschwindet es.", "12 = 4x + 4, dann | − 4"],
+      "solution": "12 − x = 3x + 4      | + x\n12 = 4x + 4          | − 4\n8 = 4x               | : 4\nx = 2\n\nProbe: links 12 − 2 = 10;  rechts 3 · 2 + 4 = 10 ✓\n\nSteht ein −x im Weg, schafft man es mit + x weg — nicht mit − x.",
+      "misconceptions": [
+        { "id": "x_nicht_gesammelt", "value": 4, "feedback": "Du hast das −x übersehen. Rechne | + x: dann steht 12 = 4x + 4." }
+      ],
+      "tags": ["gleichung", "beide_seiten", "negativ", "bbr"], "spiral": ["W-TERM"]
+    },
+
+    {
+      "id": "LF11-C1-011", "path": "C", "step": 1, "type": "numeric",
+      "prompt": "Löse: 2(x + 3) = 4x − 2",
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["Multipliziere zuerst die Klammer aus: 2 · x + 2 · 3", "2x + 6 = 4x − 2, dann | − 2x"],
+      "solution": "2(x + 3) = 4x − 2\n2x + 6 = 4x − 2      | − 2x\n6 = 2x − 2           | + 2\n8 = 2x               | : 2\nx = 4\n\nProbe: links 2 · (4 + 3) = 14;  rechts 4 · 4 − 2 = 14 ✓",
+      "misconceptions": [
+        { "id": "klammer_nur_halb", "value": 2.5, "feedback": "Du hast nur mit x multipliziert: 2x + 3. Die 2 muss mit BEIDEM in der Klammer mal genommen werden: 2x + 6." }
+      ],
+      "tags": ["gleichung", "klammer", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-C2-012", "path": "C", "step": 2, "type": "numeric",
+      "prompt": "Löse: 3(x − 1) = 2(x + 4)",
+      "answer": 11, "tolerance": 0.01,
+      "hints": ["Beide Klammern ausmultiplizieren: 3x − 3 = 2x + 8", "| − 2x, dann | + 3"],
+      "solution": "3(x − 1) = 2(x + 4)\n3x − 3 = 2x + 8      | − 2x\nx − 3 = 8            | + 3\nx = 11\n\nProbe: links 3 · (11 − 1) = 30;  rechts 2 · (11 + 4) = 30 ✓",
+      "misconceptions": [
+        { "id": "klammer_nur_halb", "value": 5, "feedback": "Prüfe beide Klammern: 3(x − 1) = 3x − 3 und 2(x + 4) = 2x + 8. Beide Zahlen in der Klammer werden multipliziert." }
+      ],
+      "tags": ["gleichung", "klammer", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-C3-013", "path": "C", "step": 3, "type": "choice",
+      "prompt": "Löse: 2x + 5 = 2x + 3",
+      "options": [
+        "Keine Lösung — es bleibt 5 = 3, und das ist falsch",
+        "x = 0",
+        "Unendlich viele Lösungen"
+      ],
+      "answer": 0,
+      "hints": ["Rechne | − 2x. Was bleibt stehen?", "Ist die übrig bleibende Aussage wahr oder falsch?"],
+      "solution": "2x + 5 = 2x + 3      | − 2x\n5 = 3\n\nDas x ist weg, und übrig bleibt eine FALSCHE Aussage. Es gibt kein x, das die Gleichung erfüllt → keine Lösung.\n\nAnschaulich: y = 2x + 5 und y = 2x + 3 haben dieselbe Steigung — sie sind parallel und schneiden sich nie.",
+      "misconceptions": [
+        { "id": "sonderfall_uebersehen", "value": 1, "feedback": "Prüf x = 0: links 5, rechts 3. Das stimmt nicht. Es gibt gar keine Lösung." },
+        { "id": "sonderfall_vertauscht", "value": 2, "feedback": "Unendlich viele Lösungen gäbe es, wenn eine WAHRE Aussage übrig bliebe (z. B. 0 = 0). Hier bleibt 5 = 3 — das ist falsch." }
+      ],
+      "tags": ["gleichung", "sonderfall", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF11-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Löse: 3(x + 2) = 3x + 6",
+      "options": [
+        "Unendlich viele Lösungen — es bleibt 6 = 6, und das ist immer wahr",
+        "Keine Lösung",
+        "x = 6"
+      ],
+      "answer": 0,
+      "hints": ["Multipliziere die Klammer aus. Was steht dann links?", "Vergleiche beide Seiten."],
+      "solution": "3(x + 2) = 3x + 6\n3x + 6 = 3x + 6      | − 3x\n6 = 6\n\nDas x ist weg, und übrig bleibt eine WAHRE Aussage. Jedes x erfüllt die Gleichung → unendlich viele Lösungen.\n\nGrund: Beide Seiten sind derselbe Term, nur anders geschrieben. Anschaulich sind es zwei Gleichungen für dieselbe Gerade — sie liegen aufeinander.\n\nMerke die zwei Fälle:\n  falsche Aussage (5 = 3)  →  keine Lösung  →  parallel\n  wahre Aussage  (6 = 6)  →  unendlich viele  →  identisch",
+      "misconceptions": [
+        { "id": "sonderfall_vertauscht", "value": 1, "feedback": "Keine Lösung gäbe es bei einer FALSCHEN Aussage. Hier bleibt 6 = 6 — das ist wahr, also passt jedes x." },
+        { "id": "sonderfall_uebersehen", "value": 2, "feedback": "Setz x = 6 ein: links 3 · 8 = 24, rechts 24. Stimmt — aber x = 1 stimmt auch: links 9, rechts 9. Es passt eben JEDES x." }
+      ],
+      "tags": ["gleichung", "sonderfall", "msa"], "spiral": ["W-TERM"]
+    }
+  ]
+}
