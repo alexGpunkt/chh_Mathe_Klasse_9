@@ -55,7 +55,8 @@ alter table public.mathe9_events add column if not exists student_id uuid refere
 alter table public.mathe9_progress add column if not exists student_id uuid references public.mathe9_students(id) on delete cascade;
 alter table public.mathe9_progress drop constraint if exists mathe9_progress_device_id_session_id_unit_path_key;
 alter table public.mathe9_progress drop constraint if exists mathe9_progress_device_unit_path_key;
-create unique index if not exists mathe9_progress_student_unit_path_uidx on public.mathe9_progress(student_id, unit, path) where student_id is not null;
+drop index if exists public.mathe9_progress_student_unit_path_uidx;
+create unique index mathe9_progress_student_unit_path_uidx on public.mathe9_progress(student_id, unit, path);
 
 create index if not exists mathe9_events_ts_idx on public.mathe9_events(ts desc);
 create index if not exists mathe9_events_student_idx on public.mathe9_events(student_id, ts desc);
