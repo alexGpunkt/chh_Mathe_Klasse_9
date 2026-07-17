@@ -127,26 +127,41 @@ const Tracker = (() => {
   async function progress(snapshot = {}) {
     currentContext = { ...currentContext, ...snapshot };
     if (!configured()) { console.debug('[Mathe9 progress]', snapshot); return; }
+
+    const student = studentRecord();
+    if (!student?.student_id) {
+      console.warn('[Mathe9 progress] Kein gültiger Schüler angemeldet.');
+      return;
+    }
+
     const row = {
       ...common(),
-      current_task: snapshot.task ?? currentContext.task,
-      completed_tasks: snapshot.completed ?? 0,
-      total_tasks: snapshot.total ?? 0,
-      progress_percent: snapshot.percent ?? 0,
-      correct_count: snapshot.correct ?? null,
-      attempts_count: snapshot.attempts ?? null,
-      status: snapshot.status || 'active',
+      current_task: snapshot.task ?? currentContext.task ?? null,
+      completed_tasks: wholeNumber(snapshot.completed, 0),
+      total_tasks: wholeNumber(snapshot.total, 0),
+      progress_percent: percentage(snapshot.percent),
+      correct_count: wholeNumber(snapshot.correct, 0),
+      attempts_count: wholeNumber(snapshot.attempts, 0),
+      status: snapshot.status === 'completed' ? 'completed' : 'active',
       updated_at: new Date().toISOString()
     };
     delete row.task;
+
     try {
       const q = new URLSearchParams({ on_conflict: 'student_id,unit,path' });
       const response = await fetch(base() + 'mathe9_progress?' + q, {
-        method: 'POST', headers: headers('resolution=merge-duplicates,return=minimal'),
-        body: JSON.stringify(row), keepalive: true
+        method: 'POST',
+        headers: headers('resolution=merge-duplicates,return=minimal'),
+        body: JSON.stringify(row),
+        keepalive: true
       });
-      if (!response.ok) throw new Error('Progress HTTP ' + response.status);
-    } catch (error) { console.warn('[Mathe9 progress]', error.message); }
+      if (!response.ok) {
+        const details = await response.text();
+        throw new Error(`Progress HTTP ${response.status}${details ? `: ${details}` : ''}`);
+      }
+    } catch (error) {
+      console.warn('[Mathe9 progress]', error.message);
+    }
   }
   function setContext(context = {}) { currentContext = { ...currentContext, ...context }; }
   function heartbeat(reason = 'interval') {
