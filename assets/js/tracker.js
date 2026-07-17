@@ -59,7 +59,12 @@ const Tracker = (() => {
     return file.replace('.html', '') || 'index';
   }
   function configured() {
-    return Boolean(TRACKER_CONFIG.enabled && TRACKER_CONFIG.url && TRACKER_CONFIG.anonKey);
+    return Boolean(
+      TRACKER_CONFIG.enabled &&
+      TRACKER_CONFIG.devTrackerDisabled !== true &&
+      TRACKER_CONFIG.url &&
+      TRACKER_CONFIG.anonKey
+    );
   }
   function headers(prefer = 'return=minimal') {
     const key = String(TRACKER_CONFIG.anonKey || '').trim();
@@ -169,6 +174,9 @@ const Tracker = (() => {
   }
   return { start, track: enqueue, progress, setContext, flush, heartbeat, studentName };
 })();
+
+/* Für Entwicklermenü und Diagnose explizit freigeben. */
+window.Tracker = Tracker;
 
 /* Rückwärtskompatibel für engine.js und spiral.js */
 function track(event) {
