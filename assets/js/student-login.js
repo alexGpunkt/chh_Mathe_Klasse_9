@@ -214,6 +214,26 @@
 
   async function initialize() {
     addStyles();
+
+    /* Entwicklermodus: Login kontrolliert überspringen. */
+    if (CONFIG.devMode === true && CONFIG.skipStudentLogin === true) {
+      const devStudent = window.Mathe9DevTools?.saveTestStudent(
+        CONFIG.devStudentKey || 'test1'
+      ) || {
+        student_id: '00000000-0000-4000-8000-000000000001',
+        login_name: 'test.schueler1',
+        display_name: 'Testschüler 1',
+        class_code: CONFIG.devClassCode || 'DEV',
+        verified_at: new Date().toISOString(),
+        dev_bypass: true
+      };
+      const saved = saveStudent(devStudent);
+      showUserChip(saved);
+      resolveReady(saved);
+      window.dispatchEvent(new CustomEvent('mathe9:student-ready', { detail: saved }));
+      console.info('[Mathe9 DEV] Schülerlogin wurde übersprungen.');
+      return;
+    }
     const stored = readStoredStudent();
     if (!stored) {
       showLogin();
