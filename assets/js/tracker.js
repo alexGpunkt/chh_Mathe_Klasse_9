@@ -112,14 +112,23 @@ const Tracker = (() => {
       ts: new Date().toISOString()
     };
   }
-  function enqueue(type, payload = {}) {
-    const event = { event_type: type, ...common(), payload };
-    if (!configured()) { console.debug('[Mathe9 tracker]', event); return; }
-    queue.push(event);
-    if (queue.length > MAX_QUEUE) queue = queue.slice(-MAX_QUEUE);
-    writeJson(QUEUE_KEY, queue);
-    scheduleFlush(type === 'answer' ? 400 : 1800);
+function enqueue(type, payload = {}) {
+  const event = {
+    event_type: type,
+    ...common(),
+    payload
+  };
+  if (!configured()) {
+    console.debug('[Mathe9 tracker]', event);
+    return;
   }
+  if (!event.student_id) {
+    console.warn(
+      '[Mathe9 tracker] Kein gültiger Schüler angemeldet.'
+    );
+    return;
+  }
+  queue.push(event);
   function scheduleFlush(delay) {
     clearTimeout(flushTimer);
     flushTimer = setTimeout(flush, delay);
