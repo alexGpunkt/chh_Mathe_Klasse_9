@@ -81,6 +81,22 @@ const Tracker = (() => {
   function base() {
     return String(TRACKER_CONFIG.url).replace(/\/$/, '') + '/rest/v1/';
   }
+  function wholeNumber(value, fallback = 0) {
+    const number = Number(value);
+    if (!Number.isFinite(number)) {
+      return fallback;
+    }
+    return Math.max(
+      0,
+      Math.round(number)
+    );
+  }
+  function percentage(value) {
+    return Math.min(
+      100,
+      wholeNumber(value, 0)
+    );
+  }
   function common() {
     const student = studentRecord();
     return {
