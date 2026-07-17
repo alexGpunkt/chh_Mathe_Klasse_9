@@ -16,6 +16,7 @@ const S = {
   index: 0,
   tippsGenutzt: 0,
   versuche: 0,
+  versucheGesamt: 0,
   start: 0,
   geloest: new Set(),
   aufAnhieb: 0
@@ -101,9 +102,20 @@ function pfadSetzen(p) {
   S.index = 0;
   S.geloest = new Set();
   S.aufAnhieb = 0;
+  S.versucheGesamt = 0;
   Tracker.setContext({ unit: S.daten.unit, path: p, task: null, progress: 0 });
   Tracker.track('path_selected', { path: p, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
-  Tracker.progress({ unit: S.daten.unit, path: p, completed: 0, total: S.reihe.length, percent: 0, status: 'active' });
+  Tracker.progress({
+    unit: S.daten.unit,
+    path: p,
+    task: null,
+    completed: 0,
+    total: S.reihe.length,
+    percent: 0,
+    correct: 0,
+    attempts: 0,
+    status: 'active'
+  });
   aufgabeZeigen();
 }
 
@@ -305,7 +317,7 @@ function pruefe() {
 
   if (t.type === 'choice') {
     const g = document.querySelector('.opt[aria-pressed="true"]');
-    if (!g) return;
+    if (!g) { S.versuche--; return; }
     gegeben = Number(g.dataset.i);
     richtig = gegeben === t.answer;
     if (!richtig && t.misconceptions) {
@@ -385,6 +397,7 @@ function melde(art, text) {
 
 function melden(richtig, fehlvorstellung) {
   const t = S.aufgabe;
+  S.versucheGesamt++;
 
   /* Der Denkfehler wird lokal notiert — das Warm-up der nächsten Stunde
      zieht daraus die passende Wiederholungskategorie. */
@@ -396,6 +409,7 @@ function melden(richtig, fehlvorstellung) {
     misconception: fehlvorstellung ? fehlvorstellung.id : null,
     hints_used: S.tippsGenutzt,
     attempts: S.versuche,
+    total_attempts: S.versucheGesamt,
     duration_ms: Date.now() - S.start
   });
 
@@ -412,7 +426,7 @@ function melden(richtig, fehlvorstellung) {
       total: S.reihe.length,
       percent,
       correct: S.aufAnhieb,
-      attempts: S.versuche,
+      attempts: S.versucheGesamt,
       status: S.geloest.size >= S.reihe.length ? 'completed' : 'active'
     });
     const box = el('div', 'rueck ok');
