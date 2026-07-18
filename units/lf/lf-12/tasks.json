@@ -1,0 +1,247 @@
+{
+  "unit": "LF-12",
+  "title": "Schnittpunkt zweier Geraden – grafisch",
+  "leitidee": "L4",
+  "standards": ["K4"],
+  "wortspeicher": ["der Schnittpunkt", "parallel", "identisch", "die gemeinsame Lösung"],
+  "can_do": {
+    "A": "Du liest den Schnittpunkt zweier gezeichneter Geraden ab und schreibst ihn als Paar.",
+    "B": "Du bestimmst den Schnittpunkt aus den Gleichungen und prüfst ihn am Bild.",
+    "C": "Du erklärst, wann es keinen und wann es unendlich viele Schnittpunkte gibt."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Der Schnittpunkt ist der Punkt, der auf BEIDEN Geraden liegt.",
+      "  → dort haben beide denselben x-Wert UND denselben y-Wert",
+      "  → er ist die gemeinsame Lösung beider Gleichungen",
+      "",
+      "Schreibweise:  S( x | y )",
+      "",
+      "Sonderfälle:",
+      "  gleiches m, verschiedenes b  →  parallel  →  kein Schnittpunkt",
+      "  gleiches m, gleiches b       →  identisch →  unendlich viele"
+    ],
+    "saetze": [
+      "Die Geraden schneiden sich bei x = … und y = … , also S(…|…).",
+      "Beide Geraden haben die Steigung … — sie sind parallel.",
+      "Parallele Geraden treffen sich nie, also gibt es keine gemeinsame Lösung."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF12-A1-001", "path": "A", "step": 1, "type": "multi",
+      "prompt": "Lies den Schnittpunkt der beiden Geraden ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 1 }, { "m": -1, "b": 5, "farbe": "zweit" }],
+                  "punkte": [{ "x": 2, "y": 3, "label": "S" }], "xmax": 6, "ymax": 7,
+                  "alt": "Zwei Geraden, die sich im markierten Punkt S bei (2|3) kreuzen." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["Der Schnittpunkt ist die Stelle, wo sich die Linien kreuzen.", "Erst nach rechts lesen, dann nach oben."],
+      "solution": "Die Linien kreuzen sich bei 2 nach rechts und 3 nach oben.\nDer Schnittpunkt ist S(2|3).",
+      "tags": ["schnittpunkt", "ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-A2-002", "path": "A", "step": 2, "type": "multi",
+      "prompt": "Lies den Schnittpunkt ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 0 }, { "m": 1, "b": 2, "farbe": "zweit" }],
+                  "punkte": [{ "x": 2, "y": 4, "label": "S" }], "xmax": 5, "ymax": 8,
+                  "alt": "Zwei Geraden, die sich im markierten Punkt S bei (2|4) kreuzen." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 4, "tolerance": 0.01 }
+      ],
+      "hints": ["Wo kreuzen sich die Linien?", "Erst rechts, dann hoch."],
+      "solution": "S(2|4)",
+      "tags": ["schnittpunkt", "ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-A3-003", "path": "A", "step": 3, "type": "multi",
+      "prompt": "Lies den Schnittpunkt ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": -1 }, { "m": -1, "b": 5, "farbe": "zweit" }],
+                  "punkte": [{ "x": 3, "y": 2, "label": "S" }],
+                  "xmin": -1, "xmax": 7, "ymin": -2, "ymax": 7,
+                  "alt": "Zwei Geraden, die sich im markierten Punkt S bei (3|2) kreuzen." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["Der Kreuzungspunkt liegt 3 nach rechts.", "Und wie hoch?"],
+      "solution": "S(3|2)",
+      "misconceptions": [],
+      "tags": ["schnittpunkt", "ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-A4-004", "path": "A", "step": 4, "type": "multi",
+      "prompt": "Lies den Schnittpunkt ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0.5, "b": 1 }, { "m": -1, "b": 4, "farbe": "zweit" }],
+                  "punkte": [{ "x": 2, "y": 2, "label": "S" }], "xmax": 6, "ymax": 6,
+                  "alt": "Zwei Geraden, die sich im markierten Punkt S bei (2|2) kreuzen." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["Hier sind x und y zufällig gleich groß — lies trotzdem beide sauber ab."],
+      "solution": "S(2|2)\nDass x und y hier gleich sind, ist Zufall. Meistens sind sie verschieden.",
+      "tags": ["schnittpunkt", "ablesen"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF12-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Die Geraden y = 2x − 1 und y = −x + 5 sind gezeichnet. Lies den Schnittpunkt ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": -1 }, { "m": -1, "b": 5, "farbe": "zweit" }],
+                  "xmin": -1, "xmax": 6, "ymin": -2, "ymax": 8,
+                  "alt": "Zwei Geraden, die sich kreuzen. Eine steigt steil, eine fällt." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["Diesmal ist der Punkt nicht markiert — such die Kreuzung selbst.", "Kontrolle: Setz deinen x-Wert in beide Gleichungen ein. Kommt zweimal dasselbe y heraus?"],
+      "solution": "S(2|3)\n\nKontrolle: y = 2 · 2 − 1 = 3 und y = −2 + 5 = 3 ✓\nBeide Gleichungen liefern bei x = 2 denselben y-Wert — das ist der Beweis.",
+      "tags": ["schnittpunkt", "ablesen", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-B2-006", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Die Geraden y = x + 2 und y = 3x − 4 sind gezeichnet. Lies den Schnittpunkt ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 2 }, { "m": 3, "b": -4, "farbe": "zweit" }],
+                  "xmin": -1, "xmax": 6, "ymin": -5, "ymax": 9,
+                  "alt": "Zwei steigende Geraden, die sich kreuzen. Eine ist steiler als die andere." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["Beide Geraden steigen — trotzdem kreuzen sie sich, weil sie verschieden steil sind.", "Kontrolle: 3 + 2 = 5 und 3 · 3 − 4 = 5"],
+      "solution": "S(3|5)\n\nKontrolle: y = 3 + 2 = 5 und y = 3 · 3 − 4 = 5 ✓\n\nZwei Geraden schneiden sich immer, wenn ihre Steigungen verschieden sind — egal ob beide steigen.",
+      "tags": ["schnittpunkt", "ablesen", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Die Geraden y = 0,5x + 1 und y = −x + 7 sind gezeichnet. Lies den Schnittpunkt ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0.5, "b": 1 }, { "m": -1, "b": 7, "farbe": "zweit" }],
+                  "xmax": 8, "ymax": 9,
+                  "alt": "Eine flach steigende und eine fallende Gerade, die sich kreuzen." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["Such die Kreuzung.", "Kontrolle: 0,5 · 4 + 1 = 3 und −4 + 7 = 3"],
+      "solution": "S(4|3)\n\nKontrolle: 0,5 · 4 + 1 = 3 und −4 + 7 = 3 ✓",
+      "tags": ["schnittpunkt", "ablesen", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-B4-008", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Die Geraden y = 3x − 7 und y = x + 1 sind gezeichnet. Lies den Schnittpunkt ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 3, "b": -7 }, { "m": 1, "b": 1, "farbe": "zweit" }],
+                  "xmin": -1, "xmax": 7, "ymin": -8, "ymax": 9,
+                  "alt": "Zwei steigende Geraden, die sich kreuzen." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["Kontrolle: 3 · 4 − 7 = 5 und 4 + 1 = 5"],
+      "solution": "S(4|5)\n\nKontrolle: 3 · 4 − 7 = 5 und 4 + 1 = 5 ✓",
+      "tags": ["schnittpunkt", "ablesen", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-B5-009", "path": "B", "step": 3, "type": "choice",
+      "prompt": "Welche Aussage über den Schnittpunkt stimmt?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 1 }, { "m": -1, "b": 5, "farbe": "zweit" }],
+                  "punkte": [{ "x": 2, "y": 3, "label": "S" }], "xmax": 6, "ymax": 7,
+                  "alt": "Zwei Geraden, die sich im markierten Punkt S kreuzen." },
+      "options": [
+        "S liegt auf beiden Geraden — er erfüllt beide Gleichungen",
+        "S liegt nur auf der durchgezogenen Geraden",
+        "S ist der Punkt, wo beide Geraden die x-Achse schneiden"
+      ],
+      "answer": 0,
+      "hints": ["Der Schnittpunkt gehört zu beiden Linien gleichzeitig.", "Was heißt das für die Gleichungen?"],
+      "solution": "S(2|3) liegt auf beiden Geraden. Setzt man x = 2 in beide Gleichungen ein, kommt beide Male y = 3 heraus.\n\nDeshalb heißt der Schnittpunkt „gemeinsame Lösung\": Er erfüllt beide Gleichungen gleichzeitig. Genau darauf beruht das Rechenverfahren in der nächsten Stunde.",
+      "misconceptions": [
+        { "id": "schnittpunkt_missverstanden", "value": 1, "feedback": "S liegt auf BEIDEN — deshalb kreuzen sie sich ja dort." },
+        { "id": "nullstelle_verwechselt", "value": 2, "feedback": "Das wären die Nullstellen. Der Schnittpunkt der beiden Geraden liegt bei (2|3), nicht auf der x-Achse." }
+      ],
+      "tags": ["schnittpunkt", "begruendung", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-B6-010", "path": "B", "step": 4, "type": "multi",
+      "prompt": "Die Geraden y = 2x + 1 und y = −2x + 9 sind gezeichnet. Lies den Schnittpunkt ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 1 }, { "m": -2, "b": 9, "farbe": "zweit" }],
+                  "xmax": 6, "ymax": 11,
+                  "alt": "Eine steigende und eine fallende Gerade, die sich kreuzen." },
+      "fields": [
+        { "label": "x-Wert des Schnittpunkts", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert des Schnittpunkts", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["Kontrolle: 2 · 2 + 1 = 5 und −2 · 2 + 9 = 5"],
+      "solution": "S(2|5)\n\nKontrolle: 2 · 2 + 1 = 5 und −4 + 9 = 5 ✓",
+      "tags": ["schnittpunkt", "ablesen", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF12-C1-011", "path": "C", "step": 1, "type": "choice",
+      "prompt": "Wie viele Schnittpunkte haben diese beiden Geraden?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 1 }, { "m": 1, "b": 4, "farbe": "zweit" }],
+                  "xmax": 6, "ymax": 9,
+                  "alt": "Zwei parallele steigende Geraden mit demselben Anstieg, aber verschiedenen Startwerten." },
+      "options": ["keinen — sie sind parallel", "genau einen", "unendlich viele"],
+      "answer": 0,
+      "hints": ["Vergleiche die Steigungen: Sind sie gleich?", "Zwei Geraden mit gleicher Steigung laufen nebeneinander her."],
+      "solution": "Beide haben m = 1 — gleiche Steigung, aber verschiedenes b (1 und 4).\nSie laufen parallel und treffen sich nie → kein Schnittpunkt.\n\nRechnerisch: x + 1 = x + 4 | − x → 1 = 4. Eine falsche Aussage → keine Lösung.",
+      "misconceptions": [
+        { "id": "parallel_uebersehen", "value": 1, "feedback": "Beide Geraden haben m = 1. Sie sind gleich steil und laufen immer im selben Abstand — sie können sich nicht treffen." }
+      ],
+      "tags": ["parallel", "sonderfall", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-C2-012", "path": "C", "step": 2, "type": "choice",
+      "prompt": "Die Gleichungen y = 2x + 3 und y = 2x + 3 beschreiben zwei Geraden. Wie viele Schnittpunkte haben sie?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 3 }], "xmax": 5, "ymax": 10,
+                  "alt": "Eine steigende Gerade — die zweite liegt genau darauf und ist nicht zu unterscheiden." },
+      "options": ["unendlich viele — es ist dieselbe Gerade", "keinen", "genau einen"],
+      "answer": 0,
+      "hints": ["Vergleiche m und b bei beiden Gleichungen.", "Wenn beides gleich ist — wo liegt die zweite Gerade?"],
+      "solution": "Beide haben m = 2 UND b = 3. Es ist zweimal dieselbe Gerade — sie liegen aufeinander.\nJeder Punkt der Geraden liegt auf beiden → unendlich viele Schnittpunkte.\n\nRechnerisch: 2x + 3 = 2x + 3 | − 2x → 3 = 3. Eine wahre Aussage → unendlich viele Lösungen.\n\nIm Bild sieht man nur eine Linie — die zweite liegt exakt darunter.",
+      "misconceptions": [
+        { "id": "identisch_uebersehen", "value": 1, "feedback": "Kein Schnittpunkt gäbe es bei parallelen Geraden mit VERSCHIEDENEM b. Hier ist auch b gleich — sie liegen aufeinander." },
+        { "id": "identisch_uebersehen", "value": 2, "feedback": "Genau einen Schnittpunkt gibt es nur bei verschiedenen Steigungen. Hier ist alles gleich." }
+      ],
+      "tags": ["identisch", "sonderfall", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-C3-013", "path": "C", "step": 3, "type": "choice",
+      "prompt": "Woran erkennst du an den GLEICHUNGEN — ohne zu zeichnen — dass zwei Geraden genau einen Schnittpunkt haben?",
+      "options": [
+        "Die Steigungen m sind verschieden",
+        "Die y-Achsenabschnitte b sind verschieden",
+        "Beide Geraden steigen"
+      ],
+      "answer": 0,
+      "hints": ["Denk an die beiden Sonderfälle: Wann gibt es keinen, wann unendlich viele?", "In beiden Fällen war m gleich."],
+      "solution": "Nur die Steigung entscheidet:\n  m verschieden        →  genau ein Schnittpunkt\n  m gleich, b verschieden →  parallel, keiner\n  m gleich, b gleich      →  identisch, unendlich viele\n\nZu b): y = 2x + 1 und y = 2x + 5 haben verschiedene b — und trotzdem keinen Schnittpunkt. b allein reicht nicht.\nZu c): y = x + 1 und y = 3x − 2 steigen beide und schneiden sich. y = x + 1 und y = x + 5 steigen auch beide — und schneiden sich nicht. Steigen sagt nichts.",
+      "misconceptions": [
+        { "id": "b_statt_m", "value": 1, "feedback": "Gegenbeispiel: y = 2x + 1 und y = 2x + 5 haben verschiedene b, sind aber parallel — kein Schnittpunkt. Es kommt auf m an." },
+        { "id": "monotonie_reicht", "value": 2, "feedback": "Gegenbeispiel: y = x + 1 und y = x + 5 steigen beide und schneiden sich trotzdem nie. Entscheidend ist m." }
+      ],
+      "tags": ["begruendung", "sonderfall", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF12-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Zwei Handytarife: A kostet 10 € + 0,20 €/min, B kostet 15 € + 0,20 €/min. Ab wie vielen Minuten lohnt sich B?",
+      "options": [
+        "Nie — beide steigen gleich schnell, B ist immer 5 € teurer",
+        "Ab 25 Minuten",
+        "Ab 75 Minuten"
+      ],
+      "answer": 0,
+      "hints": ["Vergleiche die Steigungen der beiden Tarife.", "Was bedeutet gleiche Steigung für die Graphen?"],
+      "solution": "A: y = 0,2x + 10\nB: y = 0,2x + 15\n\nBeide haben m = 0,2 — die Geraden sind parallel. B liegt überall genau 5 € über A.\nEs gibt keinen Schnittpunkt, also keine Minutenzahl, ab der B günstiger wäre.\n\nRechnerisch: 0,2x + 10 = 0,2x + 15 | − 0,2x → 10 = 15. Falsch → keine Lösung.\n\nDas ist die praktische Bedeutung von „parallel\": B ist ein schlechterer Tarif, egal wie viel man telefoniert.",
+      "misconceptions": [
+        { "id": "parallel_uebersehen", "value": 1, "feedback": "Rechne es nach: 0,2x + 10 = 0,2x + 15 führt auf 10 = 15 — das stimmt nie. Beide Tarife steigen gleich schnell." },
+        { "id": "parallel_uebersehen", "value": 2, "feedback": "Es gibt keinen solchen Punkt. Beide Tarife kosten pro Minute gleich viel — der Abstand von 5 € bleibt für immer." }
+      ],
+      "tags": ["parallel", "sachkontext", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}

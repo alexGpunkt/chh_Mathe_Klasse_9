@@ -1,0 +1,202 @@
+{
+  "unit": "LF-15",
+  "title": "Lineare Gleichungssysteme",
+  "leitidee": "L4",
+  "standards": ["K5"],
+  "wortspeicher": ["das Gleichungssystem", "das Einsetzungsverfahren", "das Additionsverfahren", "die Lösung"],
+  "can_do": {
+    "A": "Du wiederholst das Gleichsetzungsverfahren sicher — das ist die Grundlage.",
+    "B": "Du löst ein Gleichungssystem durch Einsetzen, wenn eine Gleichung nach y aufgelöst ist.",
+    "C": "Du beherrschst Einsetzungs- und Additionsverfahren und wählst begründet das günstigere."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Ein Gleichungssystem: zwei Gleichungen, zwei Unbekannte.",
+      "Die Lösung ist der Schnittpunkt der beiden Geraden.",
+      "",
+      "EINSETZUNGSVERFAHREN — gut, wenn eine Gleichung nach y aufgelöst ist:",
+      "  I:   y = 2x + 1",
+      "  II:  3x + y = 11",
+      "  → y aus I in II einsetzen:  3x + (2x + 1) = 11",
+      "",
+      "ADDITIONSVERFAHREN — gut, wenn sich eine Unbekannte weghebt:",
+      "  I:   2x + y = 7",
+      "  II:  3x − y = 8",
+      "  → I + II:  5x = 15   (das y fällt weg: +y und −y)",
+      "",
+      "Immer: das gefundene x einsetzen → y. Dann Probe in BEIDEN Gleichungen."
+    ],
+    "saetze": [
+      "Ich setze y aus Gleichung I in Gleichung II ein.",
+      "Ich addiere beide Gleichungen, dann fällt y weg.",
+      "Die Lösung ist x = … und y = … , also S(…|…)."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF15-A1-001", "path": "A", "step": 1, "type": "multi",
+      "prompt": "Wiederholung: Schnittpunkt von y = 3x − 1 und y = x + 5.",
+      "fields": [
+        { "label": "x-Wert", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 8, "tolerance": 0.01 }
+      ],
+      "hints": ["Gleichsetzen: 3x − 1 = x + 5", "| − x: 2x − 1 = 5, dann | + 1"],
+      "solution": "3x − 1 = x + 5      | − x\n2x − 1 = 5          | + 1\n2x = 6              | : 2\nx = 3\n\ny = 3 + 5 = 8\nS(3|8)\n\nProbe: 3 · 3 − 1 = 8 ✓",
+      "tags": ["gleichsetzen", "wiederholung"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF15-A2-002", "path": "A", "step": 2, "type": "multi",
+      "prompt": "Schnittpunkt von y = 2x + 3 und y = 4x − 1.",
+      "fields": [
+        { "label": "x-Wert", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 7, "tolerance": 0.01 }
+      ],
+      "hints": ["2x + 3 = 4x − 1      | − 2x", "3 = 2x − 1      | + 1      →  4 = 2x"],
+      "solution": "2x + 3 = 4x − 1      | − 2x\n3 = 2x − 1           | + 1\n4 = 2x               | : 2\nx = 2\n\ny = 2 · 2 + 3 = 7\nS(2|7)",
+      "tags": ["gleichsetzen", "wiederholung"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF15-A3-003", "path": "A", "step": 3, "type": "multi",
+      "prompt": "Schnittpunkt von y = −x + 9 und y = 2x + 3.",
+      "fields": [
+        { "label": "x-Wert", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 7, "tolerance": 0.01 }
+      ],
+      "hints": ["−x + 9 = 2x + 3      | + x", "9 = 3x + 3      | − 3      →  6 = 3x"],
+      "solution": "−x + 9 = 2x + 3      | + x\n9 = 3x + 3           | − 3\n6 = 3x               | : 3\nx = 2\n\ny = −2 + 9 = 7\nS(2|7)\n\nProbe: 2 · 2 + 3 = 7 ✓",
+      "tags": ["gleichsetzen", "wiederholung"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF15-A4-004", "path": "A", "step": 4, "type": "multi",
+      "prompt": "Schnittpunkt von y = 5x − 8 und y = x + 4.",
+      "fields": [
+        { "label": "x-Wert", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 7, "tolerance": 0.01 }
+      ],
+      "hints": ["5x − 8 = x + 4      | − x", "4x − 8 = 4      | + 8      →  4x = 12"],
+      "solution": "5x − 8 = x + 4      | − x\n4x − 8 = 4          | + 8\n4x = 12             | : 4\nx = 3\n\ny = 3 + 4 = 7\nS(3|7)",
+      "tags": ["gleichsetzen", "wiederholung"], "spiral": ["W-TERM", "W-FKT"]
+    },
+
+    {
+      "id": "LF15-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Löse durch Einsetzen:\n\nI:   y = 2x + 1\nII:  3x + y = 11",
+      "fields": [
+        { "label": "x-Wert", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["Gleichung I sagt, was y ist. Setze diesen Term in II ein.", "3x + (2x + 1) = 11", "5x + 1 = 11"],
+      "solution": "y aus I in II einsetzen:\n3x + (2x + 1) = 11\n5x + 1 = 11        | − 1\n5x = 10            | : 5\nx = 2\n\ny = 2 · 2 + 1 = 5\nS(2|5)\n\nProbe in II: 3 · 2 + 5 = 11 ✓",
+      "tags": ["einsetzungsverfahren", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF15-B2-006", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Löse durch Einsetzen:\n\nI:   y = x − 3\nII:  2x + y = 9",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 1, "tolerance": 0.01 }
+      ],
+      "hints": ["2x + (x − 3) = 9", "3x − 3 = 9"],
+      "solution": "2x + (x − 3) = 9\n3x − 3 = 9        | + 3\n3x = 12           | : 3\nx = 4\n\ny = 4 − 3 = 1\nS(4|1)\n\nProbe in II: 2 · 4 + 1 = 9 ✓",
+      "tags": ["einsetzungsverfahren", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF15-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Löse durch Einsetzen:\n\nI:   y = −x + 6\nII:  x + 2y = 8",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["x + 2 · (−x + 6) = 8 — die Klammer muss mit 2 multipliziert werden!", "x − 2x + 12 = 8", "−x + 12 = 8"],
+      "solution": "x + 2 · (−x + 6) = 8\nx − 2x + 12 = 8\n−x + 12 = 8        | − 12\n−x = −4            | : (−1)\nx = 4\n\ny = −4 + 6 = 2\nS(4|2)\n\nProbe in II: 4 + 2 · 2 = 8 ✓\n\nAchtung: Vor y steht eine 2 — die Klammer muss ganz multipliziert werden.",
+      "misconceptions": [],
+      "tags": ["einsetzungsverfahren", "klammer", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF15-B4-008", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Löse durch Einsetzen:\n\nI:   y = 3x − 5\nII:  2x + y = 5",
+      "fields": [
+        { "label": "x-Wert", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 1, "tolerance": 0.01 }
+      ],
+      "hints": ["2x + (3x − 5) = 5", "5x − 5 = 5"],
+      "solution": "2x + (3x − 5) = 5\n5x − 5 = 5        | + 5\n5x = 10           | : 5\nx = 2\n\ny = 3 · 2 − 5 = 1\nS(2|1)\n\nProbe in II: 2 · 2 + 1 = 5 ✓",
+      "tags": ["einsetzungsverfahren", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF15-B5-009", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Löse durch Einsetzen:\n\nI:   y = 2x\nII:  x + y = 9",
+      "fields": [
+        { "label": "x-Wert", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 6, "tolerance": 0.01 }
+      ],
+      "hints": ["x + 2x = 9", "3x = 9"],
+      "solution": "x + 2x = 9\n3x = 9        | : 3\nx = 3\n\ny = 2 · 3 = 6\nS(3|6)\n\nProbe in II: 3 + 6 = 9 ✓",
+      "tags": ["einsetzungsverfahren", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF15-B6-010", "path": "B", "step": 4, "type": "multi",
+      "prompt": "Löse durch Einsetzen:\n\nI:   y = 4 − x\nII:  3x − y = 4",
+      "fields": [
+        { "label": "x-Wert", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["3x − (4 − x) = 4 — Achtung: Das Minus gilt für die ganze Klammer!", "3x − 4 + x = 4", "4x − 4 = 4"],
+      "solution": "3x − (4 − x) = 4\n3x − 4 + x = 4      ← aus −(−x) wird +x\n4x − 4 = 4          | + 4\n4x = 8              | : 4\nx = 2\n\ny = 4 − 2 = 2\nS(2|2)\n\nProbe in II: 3 · 2 − 2 = 4 ✓\n\nDas Minus vor der Klammer dreht ALLE Vorzeichen darin um.",
+      "misconceptions": [],
+      "tags": ["einsetzungsverfahren", "klammer", "negativ", "msa"], "spiral": ["W-TERM"]
+    },
+
+    {
+      "id": "LF15-C1-011", "path": "C", "step": 1, "type": "multi",
+      "prompt": "Löse mit dem Additionsverfahren:\n\nI:   2x + y = 7\nII:  3x − y = 8",
+      "fields": [
+        { "label": "x-Wert", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 1, "tolerance": 0.01 }
+      ],
+      "hints": ["Addiere I und II. Was passiert mit +y und −y?", "(2x + 3x) + (y − y) = 7 + 8 → 5x = 15", "x einsetzen: 2 · 3 + y = 7"],
+      "solution": "I + II:\n  (2x + 3x) + (y − y) = 7 + 8\n  5x = 15        | : 5\n  x = 3\n\ny aus I: 2 · 3 + y = 7 → y = 1\nS(3|1)\n\nProbe in II: 3 · 3 − 1 = 8 ✓\n\nDas y fällt weg, weil +y und −y sich aufheben. Genau dafür ist das Verfahren gemacht.",
+      "tags": ["additionsverfahren", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF15-C2-012", "path": "C", "step": 2, "type": "multi",
+      "prompt": "Löse mit dem Additionsverfahren:\n\nI:   x + 2y = 11\nII:  x − 2y = −1",
+      "fields": [
+        { "label": "x-Wert", "answer": 5, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["Addiere I und II: +2y und −2y heben sich auf.", "2x = 10", "x einsetzen: 5 + 2y = 11"],
+      "solution": "I + II:\n  (x + x) + (2y − 2y) = 11 + (−1)\n  2x = 10        | : 2\n  x = 5\n\ny aus I: 5 + 2y = 11 | − 5 → 2y = 6 → y = 3\nS(5|3)\n\nProbe in II: 5 − 2 · 3 = −1 ✓",
+      "tags": ["additionsverfahren", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF15-C3-013", "path": "C", "step": 3, "type": "multi",
+      "prompt": "Löse mit dem Additionsverfahren:\n\nI:   3x + 2y = 16\nII:  x − 2y = 0",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["I + II: +2y und −2y heben sich auf.", "4x = 16", "y aus II: 4 − 2y = 0"],
+      "solution": "I + II:\n  (3x + x) + (2y − 2y) = 16 + 0\n  4x = 16        | : 4\n  x = 4\n\ny aus II: 4 − 2y = 0 | + 2y → 4 = 2y → y = 2\nS(4|2)\n\nProbe in I: 3 · 4 + 2 · 2 = 16 ✓",
+      "tags": ["additionsverfahren", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF15-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Welches Verfahren ist hier am schnellsten?\n\nI:   4x + 3y = 18\nII:  4x − 3y = 6",
+      "options": [
+        "Additionsverfahren — die 3y heben sich beim Addieren weg",
+        "Einsetzungsverfahren — erst I nach y auflösen",
+        "Gleichsetzungsverfahren — beide nach y auflösen"
+      ],
+      "answer": 0,
+      "hints": ["Schau auf die y-Terme: +3y und −3y.", "Was passiert, wenn du beide Gleichungen addierst?"],
+      "solution": "I + II: 8x + 0y = 24 → x = 3. Ein Schritt, keine Brüche.\ny aus I: 4 · 3 + 3y = 18 → 3y = 6 → y = 2. S(3|2)\n\nDie anderen Wege funktionieren auch, sind aber umständlicher:\n  Einsetzen: I nach y auflösen gäbe y = (18 − 4x) : 3 — mit Brüchen.\n  Gleichsetzen: beide nach y auflösen, also zweimal durch 3 teilen.\n\nFaustregel:\n  Eine Unbekannte hebt sich auf   →  Addition\n  Eine Gleichung ist schon y = …  →  Einsetzen\n  BEIDE sind y = …                →  Gleichsetzen",
+      "misconceptions": [
+        { "id": "verfahren_ungeschickt", "value": 1, "feedback": "Geht, ist aber unnötig umständlich: Nach y aufgelöst entstehen Brüche. Beim Addieren fällt y sofort weg." },
+        { "id": "verfahren_ungeschickt", "value": 2, "feedback": "Auch möglich, aber du müsstest beide Gleichungen erst durch 3 teilen. Addieren geht in einem Schritt." }
+      ],
+      "tags": ["verfahrenswahl", "begruendung", "msa"], "spiral": ["W-TERM"]
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "unit": "LF-14",
+  "title": "Modellieren: Tarifvergleich",
+  "leitidee": "L4",
+  "standards": ["K3"],
+  "wortspeicher": ["der Tarif", "die Grundgebühr", "der Schnittpunkt", "die Empfehlung", "sich lohnen"],
+  "can_do": {
+    "A": "Du rechnest für beide Tarife die Kosten aus und sagst, welcher günstiger ist.",
+    "B": "Du schreibst beide Tarife als Gleichung, berechnest den Schnittpunkt und formulierst eine Empfehlung.",
+    "C": "Du beziehst eine dritte Option ein und empfiehlst je nach Nutzungsprofil."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Tarif als Gleichung:",
+      "  y = Preis pro Einheit · x + Grundgebühr",
+      "  y = m · x + b",
+      "",
+      "Der Schnittpunkt sagt: Ab hier dreht sich das Verhältnis um.",
+      "  vor dem Schnittpunkt  → der mit der kleineren Grundgebühr",
+      "  nach dem Schnittpunkt → der mit dem kleineren Preis pro Einheit",
+      "",
+      "Die Tarife dieser Einheit:",
+      "  A:  y = 0,10x + 12      B:  y = 0,25x      Flat:  y = 30"
+    ],
+    "saetze": [
+      "Tarif A kostet bei … Minuten … Euro.",
+      "Der Schnittpunkt liegt bei … Minuten — dort kosten beide gleich viel.",
+      "Ich empfehle Tarif … , weil … ."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF14-A1-001", "path": "A", "step": 1, "type": "numeric",
+      "prompt": "Tarif A kostet 12 € Grundgebühr und 0,10 € pro Minute. Was kostet A bei 100 Minuten?",
+      "answer": 22, "unit_label": "€", "tolerance": 0.01,
+      "hints": ["Erst die Minuten: 100 · 0,10 € = 10 €", "Dann die Grundgebühr dazu."],
+      "solution": "Minuten: 100 · 0,10 € = 10 €\nGrundgebühr: 12 €\nZusammen: 22 €",
+      "misconceptions": [
+        { "id": "b_vergessen", "value": 10, "feedback": "Die Grundgebühr von 12 € fehlt — die fällt immer an." }
+      ],
+      "tags": ["tarif"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF14-A2-002", "path": "A", "step": 2, "type": "numeric",
+      "prompt": "Tarif B hat keine Grundgebühr und kostet 0,25 € pro Minute. Was kostet B bei 100 Minuten?",
+      "answer": 25, "unit_label": "€", "tolerance": 0.01,
+      "hints": ["100 · 0,25 € = ?", "Eine Grundgebühr gibt es hier nicht."],
+      "solution": "100 · 0,25 € = 25 €\nKeine Grundgebühr → das ist schon alles.",
+      "tags": ["tarif"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF14-A3-003", "path": "A", "step": 3, "type": "choice",
+      "prompt": "Bei 100 Minuten kostet A 22 € und B 25 €. Welcher Tarif ist günstiger?",
+      "options": ["Tarif A", "Tarif B", "beide gleich"],
+      "answer": 0,
+      "hints": ["Vergleiche einfach die beiden Beträge."],
+      "solution": "22 € < 25 € → Tarif A ist bei 100 Minuten günstiger.",
+      "tags": ["tarif", "vergleich"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF14-A4-004", "path": "A", "step": 4, "type": "choice",
+      "prompt": "Und bei nur 40 Minuten? A kostet 12 € + 40 · 0,10 € = 16 €. B kostet 40 · 0,25 € = 10 €. Welcher ist günstiger?",
+      "options": ["Tarif B", "Tarif A", "beide gleich"],
+      "answer": 0,
+      "hints": ["10 € oder 16 € — was ist weniger?"],
+      "solution": "10 € < 16 € → bei 40 Minuten ist Tarif B günstiger.\n\nInteressant: Bei 100 Minuten war A günstiger, bei 40 Minuten ist es B. Irgendwo dazwischen muss es kippen — genau das ist der Schnittpunkt.",
+      "misconceptions": [
+        { "id": "immer_derselbe_tarif", "value": 1, "feedback": "Bei 100 Minuten war A günstiger — bei 40 Minuten aber nicht. Welcher Tarif besser ist, hängt von der Nutzung ab." }
+      ],
+      "tags": ["tarif", "vergleich"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF14-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Schreibe die beiden Tarife als Gleichung. A: 12 € Grundgebühr + 0,10 €/min. B: 0,25 €/min ohne Grundgebühr.",
+      "fields": [
+        { "label": "m von Tarif A", "answer": 0.1, "tolerance": 0.001 },
+        { "label": "b von Tarif A", "answer": 12, "tolerance": 0.01 },
+        { "label": "m von Tarif B", "answer": 0.25, "tolerance": 0.001 },
+        { "label": "b von Tarif B", "answer": 0, "tolerance": 0.01 }
+      ],
+      "hints": ["m ist immer der Preis pro Minute.", "b ist die Grundgebühr — bei B gibt es keine."],
+      "solution": "A: y = 0,1x + 12\nB: y = 0,25x        (b = 0, deshalb schreibt man es nicht)\n\nB ist proportional — die Gerade geht durch den Ursprung. A nicht.",
+      "tags": ["tarif", "modellieren", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF14-B2-006", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von A (y = 0,1x + 12) und B (y = 0,25x).",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0.1, "b": 12 }, { "m": 0.25, "b": 0, "farbe": "zweit" }],
+                  "xmin": 0, "xmax": 140, "ymin": 0, "ymax": 35,
+                  "alt": "Zwei Geraden im Koordinatensystem: eine startet bei 12 und steigt flach, die andere startet im Nullpunkt und steigt steiler. Sie kreuzen sich." },
+      "fields": [
+        { "label": "x-Wert (Minuten)", "answer": 80, "unit_label": "min", "tolerance": 0.01 },
+        { "label": "y-Wert (Euro)", "answer": 20, "unit_label": "€", "tolerance": 0.01 }
+      ],
+      "hints": ["Gleichsetzen: 0,1x + 12 = 0,25x", "| − 0,1x: 12 = 0,15x", "12 : 0,15 = 80"],
+      "solution": "0,1x + 12 = 0,25x      | − 0,1x\n12 = 0,15x             | : 0,15\nx = 80\n\ny = 0,25 · 80 = 20\nS(80|20)\n\nProbe: 0,1 · 80 + 12 = 20 ✓\nBei 80 Minuten kosten beide Tarife genau 20 €.",
+      "tags": ["tarif", "schnittpunkt", "bbr"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF14-B3-007", "path": "B", "step": 2, "type": "choice",
+      "prompt": "Der Schnittpunkt liegt bei 80 Minuten. Ab wann lohnt sich Tarif A?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0.1, "b": 12 }, { "m": 0.25, "b": 0, "farbe": "zweit" }],
+                  "punkte": [{ "x": 80, "y": 20, "label": "S" }],
+                  "xmin": 0, "xmax": 140, "ymin": 0, "ymax": 35,
+                  "alt": "Zwei Geraden mit markiertem Schnittpunkt S bei 80 Minuten und 20 Euro." },
+      "options": [
+        "Ab mehr als 80 Minuten",
+        "Bis 80 Minuten",
+        "Immer — A hat die kleinere Steigung"
+      ],
+      "answer": 0,
+      "hints": ["Schau rechts vom Schnittpunkt: Welche Linie verläuft dort tiefer?", "Tiefer heißt: billiger."],
+      "solution": "Rechts vom Schnittpunkt liegt A unter B → A ist günstiger.\nLinks vom Schnittpunkt liegt B unter A → B ist günstiger.\n\nAntwort: Ab mehr als 80 Minuten lohnt sich A. Bei genau 80 Minuten ist es egal.\n\nDas passt zu den Rechnungen von vorhin: bei 40 min war B besser, bei 100 min war A besser.",
+      "misconceptions": [
+        { "id": "schnittpunkt_richtung", "value": 1, "feedback": "Umgekehrt. Bis 80 Minuten ist B günstiger — A hat ja die Grundgebühr, die sich erst amortisieren muss." },
+        { "id": "steigung_allein", "value": 2, "feedback": "Die kleinere Steigung nützt A erst bei vielen Minuten. Am Anfang bremst die Grundgebühr von 12 € — bei 0 Minuten kostet A schon 12 €, B nichts." }
+      ],
+      "tags": ["tarif", "empfehlung", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF14-B4-008", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Zwei andere Tarife: C kostet 8 € + 0,15 €/min, D kostet 0,35 €/min. Berechne den Schnittpunkt.",
+      "fields": [
+        { "label": "x-Wert (Minuten)", "answer": 40, "unit_label": "min", "tolerance": 0.01 },
+        { "label": "y-Wert (Euro)", "answer": 14, "unit_label": "€", "tolerance": 0.01 }
+      ],
+      "hints": ["0,15x + 8 = 0,35x", "| − 0,15x: 8 = 0,2x", "8 : 0,2 = 40"],
+      "solution": "0,15x + 8 = 0,35x      | − 0,15x\n8 = 0,2x               | : 0,2\nx = 40\n\ny = 0,35 · 40 = 14\nS(40|14)\n\nProbe: 0,15 · 40 + 8 = 6 + 8 = 14 ✓",
+      "tags": ["tarif", "schnittpunkt", "bbr"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF14-B5-009", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Was zahlst du bei Tarif A (12 € + 0,10 €/min) für 150 Minuten?",
+      "answer": 27, "unit_label": "€", "tolerance": 0.01,
+      "hints": ["y = 0,1 · 150 + 12"],
+      "solution": "y = 0,1 · 150 + 12 = 15 + 12 = 27 €",
+      "misconceptions": [
+        { "id": "b_vergessen", "value": 15, "feedback": "Die Grundgebühr von 12 € fehlt." }
+      ],
+      "tags": ["tarif", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF14-B6-010", "path": "B", "step": 4, "type": "choice",
+      "prompt": "Jemand telefoniert im Monat etwa 50 Minuten. Welchen Tarif empfiehlst du — A (12 € + 0,10 €/min) oder B (0,25 €/min)?",
+      "options": [
+        "Tarif B — 50 liegt unter dem Schnittpunkt bei 80 Minuten",
+        "Tarif A — die Grundgebühr lohnt sich immer",
+        "Egal — der Unterschied ist zu klein"
+      ],
+      "answer": 0,
+      "hints": ["Der Schnittpunkt liegt bei 80 Minuten. Liegen 50 Minuten davor oder danach?", "Rechne zur Kontrolle beide Preise aus."],
+      "solution": "A bei 50 min: 0,1 · 50 + 12 = 17 €\nB bei 50 min: 0,25 · 50 = 12,50 €\n\n50 Minuten liegen links vom Schnittpunkt (80 min) → B ist günstiger.\nErsparnis: 4,50 € im Monat, also 54 € im Jahr.\n\nEmpfehlung: Tarif B — solange die Nutzung unter 80 Minuten bleibt.",
+      "misconceptions": [
+        { "id": "b_vergessen", "value": 1, "feedback": "Eine Grundgebühr lohnt sich nur bei viel Nutzung. Bei 50 Minuten zahlt man bei A 17 €, bei B nur 12,50 €." },
+        { "id": "unterschied_kleingeredet", "value": 2, "feedback": "4,50 € im Monat sind 54 € im Jahr. Das ist kein kleiner Unterschied." }
+      ],
+      "tags": ["tarif", "empfehlung", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF14-C1-011", "path": "C", "step": 1, "type": "numeric",
+      "prompt": "Es gibt jetzt noch eine Flat: 30 € im Monat, unbegrenzt telefonieren. Ab wie vielen Minuten ist die Flat günstiger als Tarif A (12 € + 0,10 €/min)?",
+      "visual": { "type": "koordinaten",
+                  "lines": [{ "m": 0.1, "b": 12 }, { "m": 0, "b": 30, "farbe": "zweit" }],
+                  "xmin": 0, "xmax": 220, "ymin": 0, "ymax": 38,
+                  "alt": "Eine flach steigende Gerade und eine waagerechte Gerade auf Höhe 30, die sich kreuzen." },
+      "answer": 180, "unit_label": "min", "tolerance": 0.01,
+      "hints": ["Die Flat ist eine waagerechte Gerade: y = 30.", "0,1x + 12 = 30      | − 12", "0,1x = 18"],
+      "solution": "0,1x + 12 = 30      | − 12\n0,1x = 18           | : 0,1\nx = 180\n\nAb mehr als 180 Minuten ist die Flat günstiger als A.\nBei genau 180 Minuten kosten beide 30 €.",
+      "misconceptions": [
+        { "id": "b_vergessen", "value": 300, "feedback": "Du hast 30 : 0,1 gerechnet und die Grundgebühr vergessen. Erst | − 12, dann teilen." }
+      ],
+      "tags": ["tarif", "flat", "msa"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF14-C2-012", "path": "C", "step": 2, "type": "numeric",
+      "prompt": "Ab wie vielen Minuten ist die Flat (30 €) günstiger als Tarif B (0,25 €/min)?",
+      "answer": 120, "unit_label": "min", "tolerance": 0.01,
+      "hints": ["0,25x = 30", "30 : 0,25"],
+      "solution": "0,25x = 30      | : 0,25\nx = 120\n\nAb mehr als 120 Minuten ist die Flat günstiger als B.",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": 7.5, "feedback": "Du hast 30 · 0,25 gerechnet. Es muss 30 : 0,25 sein — und Teilen durch eine Zahl unter 1 macht das Ergebnis größer." }
+      ],
+      "tags": ["tarif", "flat", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF14-C3-013", "path": "C", "step": 3, "type": "choice",
+      "prompt": "Alle drei Tarife: A (12 € + 0,10 €/min), B (0,25 €/min), Flat (30 €). Die Schnittpunkte liegen bei 80, 120 und 180 Minuten. Welche Empfehlung stimmt?",
+      "visual": { "type": "koordinaten",
+                  "lines": [{ "m": 0.1, "b": 12 }, { "m": 0.25, "b": 0, "farbe": "zweit" }, { "m": 0, "b": 30, "farbe": "zweit" }],
+                  "xmin": 0, "xmax": 220, "ymin": 0, "ymax": 40,
+                  "alt": "Drei Geraden: eine flach steigende ab 12, eine steiler steigende ab null und eine waagerechte auf 30." },
+      "options": [
+        "Unter 80 min: B. Zwischen 80 und 180 min: A. Über 180 min: Flat.",
+        "Unter 120 min: B. Über 120 min: Flat. A lohnt sich nie.",
+        "Immer die Flat — sie ist unbegrenzt."
+      ],
+      "answer": 0,
+      "hints": ["Geh die Bereiche durch und rechne je einen Wert nach — zum Beispiel 40, 100 und 200 Minuten.", "Welche Linie verläuft dort jeweils am tiefsten?"],
+      "solution": "Bei 40 min:  A = 16 €;  B = 10 €;  Flat = 30 €   →  B\nBei 100 min: A = 22 €;  B = 25 €;  Flat = 30 €   →  A\nBei 200 min: A = 32 €;  B = 50 €;  Flat = 30 €   →  Flat\n\nDie Bereiche:\n  0 bis 80 min     →  B  (keine Grundgebühr)\n  80 bis 180 min   →  A  (Grundgebühr amortisiert sich)\n  über 180 min     →  Flat\n\nJeder Tarif hat seinen Bereich. Wer wenig telefoniert, nimmt B; wer viel telefoniert, die Flat; dazwischen A.",
+      "misconceptions": [
+        { "id": "tarif_uebersehen", "value": 1, "feedback": "Prüf 100 Minuten: A kostet 22 €, B kostet 25 €, die Flat 30 €. A ist dort am günstigsten — es hat sehr wohl seinen Bereich." },
+        { "id": "flat_ueberschaetzt", "value": 2, "feedback": "Bei 40 Minuten kostet die Flat 30 €, B nur 10 €. Unbegrenzt nützt nichts, wenn man wenig telefoniert." }
+      ],
+      "tags": ["tarif", "empfehlung", "modellieren", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF14-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Jemand sagt: „Ich telefoniere im Schnitt 80 Minuten, also ist es egal, ob A oder B.“ Was ist an dieser Aussage problematisch?",
+      "options": [
+        "Der Schnitt sagt nichts über die einzelnen Monate — mal sind es 40, mal 120 Minuten",
+        "Nichts — bei 80 Minuten kosten beide 20 €",
+        "80 Minuten sind zu wenig für ein Handy"
+      ],
+      "answer": 0,
+      "hints": ["Bei genau 80 Minuten stimmt die Rechnung. Aber telefoniert jemand jeden Monat exakt gleich viel?", "Rechne beide Tarife für einen 40-Minuten-Monat und einen 120-Minuten-Monat durch."],
+      "solution": "Bei genau 80 min kosten beide 20 € — das stimmt.\n\nAber: Ein Schnitt von 80 kann aus 40 und 120 entstehen.\n  40 min:  A = 16 €;  B = 10 €   →  B spart 6 €\n  120 min: A = 24 €;  B = 30 €   →  A spart 6 €\n  Zusammen: A = 40 €;  B = 40 €   →  wirklich gleich\n\nHier hebt es sich zufällig auf. Bei anderen Schwankungen nicht unbedingt — und wer die Flat einmal braucht, zahlt bei B kräftig drauf.\n\nDas Modell rechnet mit einer Zahl. Die Wirklichkeit schwankt. Ein Schnittpunkt ist eine Entscheidungshilfe, keine Garantie.",
+      "misconceptions": [
+        { "id": "durchschnitt_als_wirklichkeit", "value": 1, "feedback": "Bei exakt 80 Minuten stimmt es. Aber niemand telefoniert jeden Monat exakt gleich viel — der Durchschnitt verdeckt die Schwankung." },
+        { "id": "thema_verfehlt", "value": 2, "feedback": "Wie viel jemand telefoniert, ist seine Sache. Die Frage war, ob der Durchschnitt für die Entscheidung ausreicht." }
+      ],
+      "tags": ["tarif", "modellgrenzen", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}

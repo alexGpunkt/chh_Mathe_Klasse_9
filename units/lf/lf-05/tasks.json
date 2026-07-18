@@ -1,0 +1,201 @@
+{
+  "unit": "LF-05",
+  "title": "Der y-Achsenabschnitt b",
+  "leitidee": "L4",
+  "standards": ["K4"],
+  "wortspeicher": ["der y-Achsenabschnitt", "der Startwert", "die Grundgebühr", "der Schnittpunkt"],
+  "can_do": {
+    "A": "Du liest b am Graphen ab: die Höhe, auf der die Gerade die senkrechte Achse schneidet.",
+    "B": "Du bestimmst b aus Graph, Tabelle und Sachkontext („Grundgebühr“).",
+    "C": "Du berechnest b aus einem Punkt und der Steigung: b = y − m · x."
+  },
+  "formelkarte": {
+    "formeln": [
+      "y = m · x + b",
+      "  b = der Wert bei x = 0",
+      "  b = wo die Gerade die senkrechte Achse schneidet",
+      "  b = der Startwert / die Grundgebühr",
+      "",
+      "b aus einem Punkt und m berechnen:",
+      "  b = y − m · x"
+    ],
+    "saetze": [
+      "Die Gerade schneidet die y-Achse bei … , also ist b = … .",
+      "Bei x = 0 ist y = … — das ist der Startwert.",
+      "Die Grundgebühr fällt auch an, wenn man nichts nutzt. Deshalb ist sie b."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF05-A1-001", "path": "A", "step": 1, "type": "numeric",
+      "prompt": "Bei welcher Höhe schneidet die Gerade die senkrechte Achse?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 3 }], "punkte": [{ "x": 0, "y": 3 }],
+                  "xmax": 5, "ymax": 8,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse bei 3 schneidet. Der Schnittpunkt ist markiert." },
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["Such die Stelle, wo die Linie die senkrechte Achse kreuzt.", "Auf welcher Höhe ist das?"],
+      "solution": "Die Gerade schneidet die senkrechte Achse bei 3. Also ist b = 3.",
+      "tags": ["y_achsenabschnitt"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF05-A2-002", "path": "A", "step": 2, "type": "numeric",
+      "prompt": "Lies b ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -1, "b": 5 }], "punkte": [{ "x": 0, "y": 5 }],
+                  "xmax": 6, "ymax": 7,
+                  "alt": "Eine fallende Gerade, die die senkrechte Achse bei 5 schneidet." },
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["Auch bei einer fallenden Geraden: Wo kreuzt sie die senkrechte Achse?"],
+      "solution": "b = 5.\nOb die Gerade steigt oder fällt, ändert nichts am Ablesen von b.",
+      "tags": ["y_achsenabschnitt", "fallend"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF05-A3-003", "path": "A", "step": 3, "type": "numeric",
+      "prompt": "Lies b ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 0 }], "punkte": [{ "x": 0, "y": 0 }],
+                  "xmax": 4, "ymax": 8,
+                  "alt": "Eine Gerade durch den Nullpunkt." },
+      "answer": 0, "tolerance": 0.01,
+      "hints": ["Wo kreuzt die Gerade die senkrechte Achse?", "Genau im Nullpunkt — auf welcher Höhe ist das?"],
+      "solution": "b = 0.\nDie Gerade geht durch den Ursprung — das ist eine proportionale Funktion. Die Gleichung heißt einfach y = 2x.",
+      "tags": ["y_achsenabschnitt", "ursprung"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF05-A4-004", "path": "A", "step": 4, "type": "numeric",
+      "prompt": "Lies b ab. Achtung: Der Wert ist negativ.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": -2 }], "punkte": [{ "x": 0, "y": -2 }],
+                  "xmin": -1, "xmax": 7, "ymin": -3, "ymax": 5,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse unterhalb des Nullpunkts bei minus 2 schneidet." },
+      "answer": -2, "tolerance": 0.01,
+      "hints": ["Die Gerade kreuzt die senkrechte Achse UNTERHALB des Nullpunkts.", "Dann ist b negativ."],
+      "solution": "b = −2.\nLiegt der Schnittpunkt unter dem Nullpunkt, ist b negativ. Die Gleichung wäre y = x − 2.",
+      "misconceptions": [
+        { "id": "vorzeichen_fehlt", "value": 2, "feedback": "Die Höhe stimmt, aber der Punkt liegt UNTER dem Nullpunkt — also b = −2." }
+      ],
+      "tags": ["y_achsenabschnitt", "negativ"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF05-B1-005", "path": "B", "step": 1, "type": "numeric",
+      "prompt": "Bestimme b aus der Wertetabelle.\n\nx:  0 → 1 → 2 → 3\ny:  7 → 9 → 11 → 13",
+      "answer": 7, "tolerance": 0.01,
+      "hints": ["b ist der y-Wert bei x = 0.", "Der steht schon in der Tabelle."],
+      "solution": "Bei x = 0 ist y = 7 → b = 7\n(Die Steigung wäre m = 2, die Gleichung y = 2x + 7.)",
+      "misconceptions": [
+        { "id": "m_als_b", "value": 2, "feedback": "2 ist der Sprung zwischen den y-Werten — das ist m. b ist der Wert bei x = 0." }
+      ],
+      "tags": ["y_achsenabschnitt", "wertetabelle"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF05-B2-006", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Ein Handytarif kostet 8 € Grundgebühr im Monat und dazu 0,10 € pro Minute. Wie groß ist b?",
+      "answer": 8, "unit_label": "€", "tolerance": 0.01,
+      "hints": ["b ist das, was du zahlst, wenn du gar nicht telefonierst — also bei x = 0.", "Was kostet der Tarif bei 0 Minuten?"],
+      "solution": "Bei 0 Minuten zahlst du trotzdem 8 € Grundgebühr → b = 8.\nDie Gleichung: y = 0,1x + 8\n\nMerke: Die Grundgebühr ist immer b. Der Preis pro Minute ist m.",
+      "misconceptions": [
+        { "id": "m_als_b", "value": 0.1, "feedback": "0,10 € pro Minute ist der Preis PRO Minute — das ist m. b ist die Grundgebühr." }
+      ],
+      "tags": ["y_achsenabschnitt", "sachkontext", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF05-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Ein Taxi: 3,50 € Grundpreis, dazu 2 € pro Kilometer. Bestimme m und b.",
+      "fields": [
+        { "label": "Steigung m", "answer": 2, "unit_label": "€/km", "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 3.5, "unit_label": "€", "tolerance": 0.01 }
+      ],
+      "hints": ["Was ändert sich mit jedem Kilometer? Das ist m.", "Was fällt schon bei 0 km an? Das ist b."],
+      "solution": "m = 2 €/km (kommt pro Kilometer dazu)\nb = 3,50 € (fällt sofort an)\nDie Gleichung: y = 2x + 3,5",
+      "tags": ["y_achsenabschnitt", "sachkontext", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF05-B4-008", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Bestimme b aus dem Graphen.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -1.5, "b": 6 }], "punkte": [{ "x": 0, "y": 6 }],
+                  "xmax": 5, "ymax": 8,
+                  "alt": "Eine fallende Gerade, die die senkrechte Achse bei 6 schneidet." },
+      "answer": 6, "tolerance": 0.01,
+      "hints": ["Wo kreuzt die Gerade die senkrechte Achse?"],
+      "solution": "b = 6. Die Gleichung wäre y = −1,5x + 6.",
+      "misconceptions": [
+        { "id": "m_als_b", "value": -1.5, "feedback": "−1,5 ist die Steigung. b ist die Höhe am Schnittpunkt mit der senkrechten Achse." }
+      ],
+      "tags": ["y_achsenabschnitt", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF05-B5-009", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Bestimme m und b aus der Wertetabelle.\n\nx:  0 → 2 → 4 → 6\ny:  −3 → 1 → 5 → 9",
+      "fields": [
+        { "label": "Steigung m", "answer": 2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "schritt_uebersehen", "value": 4, "feedback": "y springt zwar um 4 — aber x springt um 2, nicht um 1. m = 4 : 2 = 2." }] },
+        { "label": "y-Achsenabschnitt b", "answer": -3, "tolerance": 0.01 }
+      ],
+      "hints": ["Achtung: x springt hier um 2, nicht um 1.", "m = Δy : Δx = 4 : 2", "b ist der Wert bei x = 0."],
+      "solution": "Δy = 4, Δx = 2  →  m = 4 : 2 = 2\nb: bei x = 0 ist y = −3  →  b = −3\nDie Gleichung: y = 2x − 3\nProbe: x = 6 → 2 · 6 − 3 = 9 ✓",
+      "tags": ["y_achsenabschnitt", "wertetabelle", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF05-B6-010", "path": "B", "step": 4, "type": "numeric",
+      "prompt": "Ein Schwimmbad-Abo: 15 € im Monat, jeder Besuch kostet zusätzlich 1,50 €. Wie viel zahlst du in einem Monat ohne einen einzigen Besuch?",
+      "answer": 15, "unit_label": "€", "tolerance": 0.01,
+      "hints": ["Kein Besuch heißt x = 0.", "y = 1,5 · 0 + 15"],
+      "solution": "y = 1,5 · 0 + 15 = 15 €\nDas ist genau b. Der y-Achsenabschnitt ist im Sachkontext der Wert, der auch ohne Nutzung anfällt.",
+      "misconceptions": [
+        { "id": "b_vergessen", "value": 0, "feedback": "Das Abo kostet auch ohne Besuch. Die 15 € fallen immer an — das ist der Sinn eines Abos." }
+      ],
+      "tags": ["y_achsenabschnitt", "sachkontext", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF05-C1-011", "path": "C", "step": 1, "type": "numeric",
+      "prompt": "Eine Gerade hat m = 2 und geht durch P(3|11). Berechne b.",
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["Setze P in y = mx + b ein: 11 = 2 · 3 + b", "11 = 6 + b — was ist b?"],
+      "solution": "y = m · x + b\n11 = 2 · 3 + b\n11 = 6 + b        | − 6\nb = 5\n\nOder mit der Formel: b = y − m · x = 11 − 2 · 3 = 5\nDie Gleichung: y = 2x + 5",
+      "misconceptions": [
+        { "id": "vorzeichen", "value": 17, "feedback": "Du hast addiert. Aus 11 = 6 + b folgt b = 11 − 6 = 5." },
+        { "id": "koordinaten_vertauscht", "value": -3, "feedback": "Du hast x und y vertauscht: 3 = 2 · 11 + b. Die erste Zahl im Punkt ist x." }
+      ],
+      "tags": ["y_achsenabschnitt", "berechnen", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF05-C2-012", "path": "C", "step": 2, "type": "numeric",
+      "prompt": "Eine Gerade hat m = −3 und geht durch P(2|1). Berechne b.",
+      "answer": 7, "tolerance": 0.01,
+      "hints": ["1 = −3 · 2 + b", "1 = −6 + b — was ist b?"],
+      "solution": "1 = −3 · 2 + b\n1 = −6 + b        | + 6\nb = 7\n\nOder: b = y − m · x = 1 − (−3) · 2 = 1 + 6 = 7\nDie Gleichung: y = −3x + 7",
+      "misconceptions": [
+        { "id": "minus_minus", "value": -5, "feedback": "Du hast 1 − 6 gerechnet. Aus 1 = −6 + b folgt b = 1 + 6 = 7 — die −6 wandert als +6 auf die andere Seite." }
+      ],
+      "tags": ["y_achsenabschnitt", "berechnen", "negativ", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF05-C3-013", "path": "C", "step": 3, "type": "numeric",
+      "prompt": "Eine Gerade hat m = 0,5 und geht durch P(6|1). Berechne b.",
+      "answer": -2, "tolerance": 0.01,
+      "hints": ["1 = 0,5 · 6 + b", "1 = 3 + b"],
+      "solution": "1 = 0,5 · 6 + b\n1 = 3 + b        | − 3\nb = −2\n\nDie Gerade schneidet die senkrechte Achse unterhalb des Nullpunkts. Die Gleichung: y = 0,5x − 2",
+      "misconceptions": [
+        { "id": "vorzeichen_fehlt", "value": 2, "feedback": "Aus 1 = 3 + b folgt b = 1 − 3 = −2. Das Ergebnis ist negativ." }
+      ],
+      "tags": ["y_achsenabschnitt", "berechnen", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF05-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Zwei Tarife: A kostet 20 € Grundgebühr und nichts pro Minute. B kostet keine Grundgebühr, aber 0,20 € pro Minute. Welche Aussage stimmt?",
+      "options": [
+        "A hat m = 0 und b = 20; B hat m = 0,2 und b = 0",
+        "A hat m = 20 und b = 0; B hat m = 0 und b = 0,2",
+        "Beide haben b = 0, weil man bei 0 Minuten nichts zahlt"
+      ],
+      "answer": 0,
+      "hints": ["m ist immer das, was PRO Einheit dazukommt.", "b ist immer das, was schon bei null anfällt."],
+      "solution": "Tarif A: pro Minute kommt nichts dazu → m = 0. Bei 0 Minuten zahlst du 20 € → b = 20.\n  Gleichung: y = 20 (waagerechte Gerade)\n\nTarif B: pro Minute 0,20 € → m = 0,2. Bei 0 Minuten zahlst du nichts → b = 0.\n  Gleichung: y = 0,2x (proportional, durch den Ursprung)\n\nDie beiden sind gewissermaßen Gegenstücke: A ist reine Grundgebühr, B ist reiner Verbrauch.",
+      "misconceptions": [
+        { "id": "m_und_b_vertauscht", "value": 1, "feedback": "Vertauscht. Die 20 € fallen einmalig an, nicht pro Minute — also sind sie b. Die 0,20 € fallen pro Minute an — also sind sie m." },
+        { "id": "b_vergessen", "value": 2, "feedback": "Bei Tarif A zahlst du auch mit 0 Minuten die 20 € Grundgebühr. Nur bei B ist b = 0." }
+      ],
+      "tags": ["y_achsenabschnitt", "sachkontext", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}

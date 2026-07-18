@@ -1,0 +1,225 @@
+{
+  "unit": "LF-04",
+  "title": "Die Steigung m",
+  "leitidee": "L4",
+  "standards": ["K5"],
+  "wortspeicher": ["die Steigung", "das Steigungsdreieck", "Delta x", "Delta y", "der Quotient"],
+  "can_do": {
+    "A": "Du liest am Steigungsdreieck ab: so viele Schritte nach rechts, so viele nach oben.",
+    "B": "Du berechnest m = Δy : Δx aus dem Graphen — auch negativ und als Bruch.",
+    "C": "Du zeigst, dass m nicht von der Größe des Dreiecks abhängt, und berechnest m aus zwei Punkten."
+  },
+  "formelkarte": {
+    "formeln": [
+      "m = Δy : Δx          Höhe geteilt durch Breite",
+      "  Δx = Schritte nach rechts   (immer positiv)",
+      "  Δy = Schritte nach oben     (negativ, wenn es abwärts geht)",
+      "",
+      "Aus zwei Punkten P(x₁|y₁) und Q(x₂|y₂):",
+      "  m = (y₂ − y₁) : (x₂ − x₁)",
+      "",
+      "m > 0  die Gerade steigt",
+      "m < 0  die Gerade fällt",
+      "m = 0  die Gerade ist waagerecht"
+    ],
+    "saetze": [
+      "Ich gehe … nach rechts und … nach oben, also ist m = … .",
+      "Δy ist negativ, weil die Gerade fällt.",
+      "Egal wie groß ich das Dreieck mache — m bleibt gleich."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF04-A1-001", "path": "A", "step": 1, "type": "multi",
+      "prompt": "Am roten Dreieck kannst du die Steigung ablesen. Wie viele Schritte gehst du?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 1 }],
+                  "steigungsdreieck": { "x0": 1, "dx": 1 }, "xmax": 5, "ymax": 8,
+                  "alt": "Eine steigende Gerade mit einem roten Steigungsdreieck: einen Schritt nach rechts, zwei nach oben." },
+      "fields": [
+        { "label": "Schritte nach rechts (Δx)", "answer": 1, "tolerance": 0.01 },
+        { "label": "Schritte nach oben (Δy)", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["Der waagerechte rote Strich zeigt Δx.", "Der senkrechte rote Strich zeigt Δy."],
+      "solution": "Δx = 1 nach rechts, Δy = 2 nach oben.\nMan sagt: „Einen nach rechts, zwei nach oben.\"",
+      "tags": ["steigungsdreieck"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF04-A2-002", "path": "A", "step": 2, "type": "numeric",
+      "prompt": "Ein Schritt nach rechts, drei nach oben. Wie groß ist die Steigung m?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 3, "b": 0 }],
+                  "steigungsdreieck": { "x0": 1, "dx": 1 }, "xmax": 4, "ymax": 8,
+                  "alt": "Eine steile Gerade mit einem Steigungsdreieck: einen Schritt nach rechts, drei nach oben." },
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["Wenn Δx = 1 ist, dann ist m einfach die Höhe Δy.", "m = 3 : 1"],
+      "solution": "m = Δy : Δx = 3 : 1 = 3\nBei einem Schritt nach rechts ist m genau die Zahl der Schritte nach oben.",
+      "tags": ["steigung"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF04-A3-003", "path": "A", "step": 3, "type": "numeric",
+      "prompt": "Lies am roten Dreieck ab: Wie groß ist m?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 2 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 }, "xmax": 6, "ymax": 8,
+                  "alt": "Eine Gerade mit einem Steigungsdreieck: einen Schritt nach rechts, einen nach oben." },
+      "answer": 1, "tolerance": 0.01,
+      "hints": ["Δx = 1, Δy = 1", "m = 1 : 1"],
+      "solution": "m = 1 : 1 = 1\nEine Gerade mit m = 1 steigt genau im 45-Grad-Winkel.",
+      "tags": ["steigung"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF04-A4-004", "path": "A", "step": 4, "type": "numeric",
+      "prompt": "Bei diesem Dreieck gehst du 2 nach rechts und 4 nach oben. Wie groß ist m?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 0 }],
+                  "steigungsdreieck": { "x0": 1, "dx": 2 }, "xmax": 5, "ymax": 8,
+                  "alt": "Eine Gerade mit einem größeren Steigungsdreieck: zwei Schritte nach rechts, vier nach oben." },
+      "answer": 2, "tolerance": 0.01,
+      "hints": ["m = Δy : Δx = 4 : 2", "Achtung: m ist nicht 4."],
+      "solution": "m = 4 : 2 = 2\nVorsicht: Nur wenn Δx = 1 ist, kannst du Δy direkt als m nehmen. Sonst musst du teilen.",
+      "misconceptions": [
+        { "id": "dy_als_m", "value": 4, "feedback": "Das ist Δy allein. Du bist aber 2 nach rechts gegangen — also noch durch 2 teilen." }
+      ],
+      "tags": ["steigung"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF04-B1-005", "path": "B", "step": 1, "type": "numeric",
+      "prompt": "Bestimme m aus dem Graphen.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 3, "b": 1 }],
+                  "steigungsdreieck": { "x0": 1, "dx": 2 }, "xmax": 4, "ymax": 9,
+                  "alt": "Eine steile Gerade mit einem Steigungsdreieck: zwei nach rechts, sechs nach oben." },
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["m = Δy : Δx", "6 : 2 = ?"],
+      "solution": "m = 6 : 2 = 3",
+      "misconceptions": [
+        { "id": "dy_als_m", "value": 6, "feedback": "Das ist Δy. Teile noch durch Δx = 2." },
+        { "id": "geteilt_vertauscht", "value": 0.333, "feedback": "Du hast Δx : Δy gerechnet. Die Höhe steht oben: m = Δy : Δx." }
+      ],
+      "tags": ["steigung", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF04-B2-006", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Diese Gerade fällt. Bestimme m. Denk an das Vorzeichen.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -2, "b": 7 }],
+                  "steigungsdreieck": { "x0": 1, "dx": 1 }, "xmax": 5, "ymax": 8,
+                  "alt": "Eine fallende Gerade mit einem Steigungsdreieck: einen nach rechts, zwei nach unten." },
+      "answer": -2, "tolerance": 0.01,
+      "hints": ["Δx = 1 nach rechts. Aber geht es dann nach oben oder nach unten?", "Nach unten heißt: Δy ist negativ."],
+      "solution": "Δx = 1, Δy = −2 (nach unten!)\nm = −2 : 1 = −2\n\nBei einer fallenden Geraden ist m immer negativ. Δx zählt man immer nach rechts positiv — das Vorzeichen steckt in Δy.",
+      "misconceptions": [
+        { "id": "vorzeichen_fehlt", "value": 2, "feedback": "Der Betrag stimmt, aber das Vorzeichen fehlt. Die Gerade FÄLLT — also ist m negativ." }
+      ],
+      "tags": ["steigung", "negativ", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF04-B3-007", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Bestimme m. Das Ergebnis ist kleiner als 1.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0.5, "b": 1 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 2 }, "xmax": 8, "ymax": 6,
+                  "alt": "Eine flache steigende Gerade mit einem Steigungsdreieck: zwei nach rechts, einen nach oben." },
+      "answer": 0.5, "tolerance": 0.01,
+      "hints": ["Δx = 2, Δy = 1", "m = 1 : 2 — das ist ein halber."],
+      "solution": "m = 1 : 2 = 0,5\nEine flache Gerade hat ein m zwischen 0 und 1. Man geht 2 nach rechts, aber nur 1 nach oben.",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": 2, "feedback": "Du hast 2 : 1 gerechnet. m = Δy : Δx — die Höhe geteilt durch die Breite. Diese Gerade ist flach, also muss m unter 1 liegen." }
+      ],
+      "tags": ["steigung", "bruch", "bbr"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF04-B4-008", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Bestimme m aus dem Graphen.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -0.5, "b": 5 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 4 }, "xmax": 8, "ymax": 6,
+                  "alt": "Eine flach fallende Gerade mit einem Steigungsdreieck: vier nach rechts, zwei nach unten." },
+      "answer": -0.5, "tolerance": 0.01,
+      "hints": ["Δx = 4 nach rechts, Δy = −2 (nach unten).", "m = −2 : 4"],
+      "solution": "m = −2 : 4 = −0,5\nFlach UND fallend: Der Betrag ist klein, das Vorzeichen negativ.",
+      "misconceptions": [
+        { "id": "vorzeichen_fehlt", "value": 0.5, "feedback": "Der Betrag stimmt. Die Gerade fällt aber — m muss negativ sein." },
+        { "id": "geteilt_vertauscht", "value": -2, "feedback": "Du hast 4 : (−2) gerechnet. m = Δy : Δx = −2 : 4." }
+      ],
+      "tags": ["steigung", "negativ", "bruch"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF04-B5-009", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Wie groß ist die Steigung dieser Geraden?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0, "b": 4 }], "xmax": 7, "ymax": 7,
+                  "alt": "Eine waagerechte Gerade auf Höhe 4." },
+      "answer": 0, "tolerance": 0.01,
+      "hints": ["Geh 1 nach rechts. Wie viel musst du nach oben?", "Gar nicht — also ist Δy = 0."],
+      "solution": "Δx = 1, Δy = 0\nm = 0 : 1 = 0\nEine waagerechte Gerade hat die Steigung 0. Die Gleichung lautet y = 4 (das 0 · x lässt man weg).",
+      "misconceptions": [
+        { "id": "b_als_m", "value": 4, "feedback": "4 ist die Höhe, auf der die Gerade liegt — das ist b, nicht m. Die Steigung ist 0, weil die Gerade nicht steigt." }
+      ],
+      "tags": ["steigung", "konstant", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF04-B6-010", "path": "B", "step": 4, "type": "numeric",
+      "prompt": "Bestimme m. Hier ist kein Dreieck eingezeichnet — such dir selbst zwei Gitterpunkte auf der Geraden.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1.5, "b": 1 }],
+                  "punkte": [{ "x": 0, "y": 1 }, { "x": 2, "y": 4 }], "xmax": 5, "ymax": 8,
+                  "alt": "Eine steigende Gerade mit zwei markierten Gitterpunkten bei (0|1) und (2|4)." },
+      "answer": 1.5, "tolerance": 0.01,
+      "hints": ["Die beiden markierten Punkte liegen auf Gitterkreuzen: (0|1) und (2|4).", "Von links nach rechts: Δx = 2. Und Δy?", "m = 3 : 2"],
+      "solution": "Von (0|1) nach (2|4):\n  Δx = 2 − 0 = 2\n  Δy = 4 − 1 = 3\nm = 3 : 2 = 1,5",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": 0.667, "feedback": "Du hast Δx : Δy gerechnet. m = Δy : Δx." },
+        { "id": "dy_als_m", "value": 3, "feedback": "Das ist Δy. Teile noch durch Δx = 2." }
+      ],
+      "tags": ["steigung", "zwei_punkte", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF04-C1-011", "path": "C", "step": 1, "type": "numeric",
+      "prompt": "Schieb das Dreieck mit den Reglern hin und her und mach es breiter. Beobachte, was mit m passiert — und gib m an.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1.5, "b": 1 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 2 }, "regler": true,
+                  "xmin": -1, "xmax": 7, "ymin": -1, "ymax": 11,
+                  "alt": "Eine steigende Gerade mit einem verschiebbaren Steigungsdreieck." },
+      "answer": 1.5, "tolerance": 0.01,
+      "hints": ["Probier verschiedene Positionen und Breiten aus.", "Δy und Δx ändern sich beide — aber ihr Quotient?"],
+      "solution": "Egal wo und egal wie breit: m bleibt 1,5.\n  Δx = 1 → Δy = 1,5   →  1,5 : 1 = 1,5\n  Δx = 2 → Δy = 3     →  3 : 2 = 1,5\n  Δx = 4 → Δy = 6     →  6 : 4 = 1,5\n\nDer Grund: Alle diese Dreiecke sind ähnlich — sie haben dieselbe Form, nur verschiedene Größe. Bei ähnlichen Dreiecken ist das Verhältnis der Seiten immer gleich.",
+      "tags": ["steigung", "unabhaengig", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF04-C2-012", "path": "C", "step": 2, "type": "choice",
+      "prompt": "Warum ist es egal, wie groß du das Steigungsdreieck zeichnest?",
+      "options": [
+        "Weil alle diese Dreiecke ähnlich sind — das Verhältnis Δy : Δx bleibt gleich",
+        "Weil man das Dreieck sowieso nicht genau zeichnen kann",
+        "Weil man immer Δx = 1 nehmen sollte"
+      ],
+      "answer": 0,
+      "hints": ["Denk an die Regler aus der letzten Aufgabe: Δy und Δx wurden beide größer.", "Um welchen Faktor jeweils?"],
+      "solution": "Machst du Δx doppelt so groß, wird Δy automatisch auch doppelt so groß. Der Quotient ändert sich dadurch nicht:\n  (2 · Δy) : (2 · Δx) = Δy : Δx\n\nGeometrisch: Alle Steigungsdreiecke an einer Geraden sind ähnlich — gleiche Form, verschiedene Größe. Bei ähnlichen Figuren sind die Seitenverhältnisse gleich.\n\nPraktisch nützt das: Nimm ein großes Dreieck, dann liest du genauer ab.",
+      "misconceptions": [
+        { "id": "ungenauigkeit_als_grund", "value": 1, "feedback": "Das ist kein Grund, sondern ein Problem. m bleibt exakt gleich — auch wenn man exakt zeichnen könnte." },
+        { "id": "regel_ohne_grund", "value": 2, "feedback": "Δx = 1 ist praktisch, aber keine Vorschrift. Die Frage war, WARUM jede Größe funktioniert." }
+      ],
+      "tags": ["begruendung", "aehnlichkeit", "msa"], "spiral": ["W-FKT", "W-GEO"]
+    },
+    {
+      "id": "LF04-C3-013", "path": "C", "step": 3, "type": "numeric",
+      "prompt": "Berechne m aus den Punkten P(1|2) und Q(5|10). Ohne zu zeichnen.",
+      "answer": 2, "tolerance": 0.01,
+      "hints": ["m = (y₂ − y₁) : (x₂ − x₁)", "m = (10 − 2) : (5 − 1)"],
+      "solution": "m = (10 − 2) : (5 − 1) = 8 : 4 = 2",
+      "misconceptions": [
+        { "id": "geteilt_vertauscht", "value": 0.5, "feedback": "Du hast die Differenzen vertauscht. Oben steht die y-Differenz: (y₂ − y₁) : (x₂ − x₁)." },
+        { "id": "koordinaten_gemischt", "value": 2.25, "feedback": "Du hast (10 − 1) : (5 − 1) gerechnet und dabei y₂ mit x₁ vermischt. Oben nur y-Werte, unten nur x-Werte." }
+      ],
+      "tags": ["steigung", "zwei_punkte", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF04-C4-014", "path": "C", "step": 4, "type": "numeric",
+      "prompt": "Berechne m aus P(−2|5) und Q(4|2). Achte auf die Vorzeichen.",
+      "answer": -0.5, "tolerance": 0.01,
+      "hints": ["m = (2 − 5) : (4 − (−2))", "Minus minus zwei ist plus zwei: der Nenner ist 6.", "m = −3 : 6"],
+      "solution": "m = (y₂ − y₁) : (x₂ − x₁)\n  = (2 − 5) : (4 − (−2))\n  = (−3) : (4 + 2)\n  = −3 : 6\n  = −0,5\n\nProbe: Von P nach Q geht es 6 nach rechts und 3 nach unten. Die Gerade fällt flach — passt zu m = −0,5. ✓",
+      "misconceptions": [
+        { "id": "vorzeichen_fehlt", "value": 0.5, "feedback": "Der Betrag stimmt. Aber von P(−2|5) nach Q(4|2) geht es nach UNTEN — m ist negativ." },
+        { "id": "minus_minus", "value": -1.5, "feedback": "Du hast im Nenner 4 − 2 = 2 gerechnet. Es ist aber 4 − (−2) = 4 + 2 = 6. Minus und Minus ergibt Plus." }
+      ],
+      "tags": ["steigung", "zwei_punkte", "negativ", "msa"], "spiral": ["W-FKT", "W-TERM"]
+    }
+  ]
+}

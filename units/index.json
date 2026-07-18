@@ -90,6 +90,108 @@
           "aufgaben": 14
         }
       ]
+    },
+    {
+      "code": "lf",
+      "title": "Lineare Funktionen",
+      "einheiten": [
+        {
+          "id": "lf-01",
+          "title": "Zuordnungen im Alltag – Graphen lesen",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-02",
+          "title": "Wertetabelle → Graph",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-03",
+          "title": "Proportionale Funktionen y = m · x",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-04",
+          "title": "Die Steigung m",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-05",
+          "title": "Der y-Achsenabschnitt b",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-06",
+          "title": "y = mx + b zeichnen",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-07",
+          "title": "Vom Graphen zur Gleichung",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-08",
+          "title": "Punktprobe",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-09",
+          "title": "Gleichung aus zwei Punkten",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-10",
+          "title": "Die Nullstelle",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-11",
+          "title": "Lineare Gleichungen sicher lösen",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-12",
+          "title": "Schnittpunkt zweier Geraden – grafisch",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-13",
+          "title": "Schnittpunkt rechnerisch",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-14",
+          "title": "Modellieren: Tarifvergleich",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-15",
+          "title": "Lineare Gleichungssysteme",
+          "leitidee": "L4",
+          "aufgaben": 14
+        },
+        {
+          "id": "lf-16",
+          "title": "Prüfungstraining Lineare Funktionen",
+          "leitidee": "L4",
+          "aufgaben": 14
+        }
+      ]
     }
   ]
 }

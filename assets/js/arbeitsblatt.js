@@ -157,12 +157,7 @@ function esc(s) {
 function aufgabeHtml(t, mitTipps) {
   let h = `<div class="ab-frage">${esc(t.prompt)}</div>`;
 
-  if (t.visual && t.visual.type === 'streifen') {
-    h += `<div class="bild"><div class="aufg-streifen">
-      <div class="aufg-fuell" style="width:${t.visual.fill}%"></div>
-      <div class="aufg-skala"></div><div class="aufg-marke"></div></div>
-      <div class="aufg-legende"><span>0 %</span><span>50 %</span><span>100 %</span></div></div>`;
-  }
+  if (t.visual) h += visualHtml(t.visual);
 
   if (t.type === 'choice') {
     h += '<ul class="ab-optionen">';

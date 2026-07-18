@@ -32,7 +32,9 @@ const Speicher = (() => {
    Die Lesarten unterscheiden sich um Faktor 1000 — dass die falsche
    zufällig die Lösung trifft, kommt nicht vor. */
 function lesarten(s) {
-  const t = String(s).replace(/\s|€|%/g, '');
+  /* Manche kopieren die Zahl aus dem Aufgabentext — dort steht ein
+     typografisches Minus (\u2212), das parseFloat nicht kennt. */
+  const t = String(s).replace(/\u2212/g, '-').replace(/\s|€|%/g, '');
   if (t.includes(',')) {
     return [parseFloat(t.replace(/\./g, '').replace(',', '.'))];
   }

@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v3-integrated';
+const VERSION = 'mathe9-v7-devtools';
 
 const SCHALE = [
   './',
@@ -19,12 +19,14 @@ const SCHALE = [
   'arbeitsblatt.html',
   'matrix.html',
   'pruefung-sets.json',
+  'assets/js/dev-tools.js',
   'units/index.json',
   'spiral/plan.json',
   'assets/css/app.css',
   'assets/js/store.js',
   'assets/js/supabase-config.js',
   'assets/js/student-login.js',
+  'assets/js/zeichnen.js',
   'assets/js/tracker.js',
   'assets/js/engine.js',
   'assets/js/spiral.js',
@@ -33,12 +35,48 @@ const SCHALE = [
   'assets/js/matrix.js'
 ];
 
-const EINHEITEN = ['pz-01','pz-02','pz-03','pz-04','pz-05','pz-06','pz-07',
-                   'pz-08','pz-09','pz-10','pz-11','pz-12','pz-13','pz-14']
-  .map(u => `units/pz/${u}/tasks.json`);
+const EINHEITEN = [
+  'units/pz/pz-01/tasks.json',
+  'units/pz/pz-02/tasks.json',
+  'units/pz/pz-03/tasks.json',
+  'units/pz/pz-04/tasks.json',
+  'units/pz/pz-05/tasks.json',
+  'units/pz/pz-06/tasks.json',
+  'units/pz/pz-07/tasks.json',
+  'units/pz/pz-08/tasks.json',
+  'units/pz/pz-09/tasks.json',
+  'units/pz/pz-10/tasks.json',
+  'units/pz/pz-11/tasks.json',
+  'units/pz/pz-12/tasks.json',
+  'units/pz/pz-13/tasks.json',
+  'units/pz/pz-14/tasks.json',
+  'units/lf/lf-01/tasks.json',
+  'units/lf/lf-02/tasks.json',
+  'units/lf/lf-03/tasks.json',
+  'units/lf/lf-04/tasks.json',
+  'units/lf/lf-05/tasks.json',
+  'units/lf/lf-06/tasks.json',
+  'units/lf/lf-07/tasks.json',
+  'units/lf/lf-08/tasks.json',
+  'units/lf/lf-09/tasks.json',
+  'units/lf/lf-10/tasks.json',
+  'units/lf/lf-11/tasks.json',
+  'units/lf/lf-12/tasks.json',
+  'units/lf/lf-13/tasks.json',
+  'units/lf/lf-14/tasks.json',
+  'units/lf/lf-15/tasks.json',
+  'units/lf/lf-16/tasks.json'
+];
 
-const SPIRAL = ['w-proz','w-bruch','w-einh','w-kopf','w-sach']
-  .map(k => `spiral/${k}.json`);
+const SPIRAL = [
+  'spiral/w-proz.json',
+  'spiral/w-bruch.json',
+  'spiral/w-einh.json',
+  'spiral/w-kopf.json',
+  'spiral/w-sach.json',
+  'spiral/w-fkt.json',
+  'spiral/w-term.json'
+];
 
 const ALLES = [...SCHALE, ...EINHEITEN, ...SPIRAL];
 

@@ -1,0 +1,229 @@
+{
+  "unit": "LF-06",
+  "title": "y = mx + b zeichnen",
+  "leitidee": "L4",
+  "standards": ["K5"],
+  "wortspeicher": ["die Gerade", "die Steigung", "der y-Achsenabschnitt", "das Steigungsdreieck"],
+  "can_do": {
+    "A": "Du zeichnest mit der Anleitungskarte: b markieren, Steigungsdreieck, Linie.",
+    "B": "Du zeichnest jede Gerade — auch mit m als Bruch und negativem m.",
+    "C": "Du zeichnest Sonderfälle und erklärst, warum x = c keine Funktion ist."
+  },
+  "formelkarte": {
+    "formeln": [
+      "So zeichnest du y = m · x + b:",
+      "  1. b auf der senkrechten Achse markieren  →  erster Punkt",
+      "  2. von dort das Steigungsdreieck: 1 nach rechts, m nach oben",
+      "     (m negativ → nach unten)",
+      "  3. zweiten Punkt markieren, Linie durchziehen",
+      "",
+      "m als Bruch, z. B. m = 3/4:  4 nach rechts, 3 nach oben",
+      "",
+      "Sonderfälle:  y = c   waagerecht",
+      "              x = c   senkrecht — KEINE Funktion"
+    ],
+    "saetze": [
+      "Ich starte bei b = … auf der senkrechten Achse.",
+      "Dann gehe ich … nach rechts und … nach oben/unten.",
+      "x = c ist keine Funktion, weil zu einem x viele y gehören."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF06-A1-001", "path": "A", "step": 1, "type": "multi",
+      "prompt": "Du sollst y = 2x + 1 zeichnen. Schritt 1 und 2: Wo startest du, und wie gehst du weiter?",
+      "fields": [
+        { "label": "Startpunkt auf der senkrechten Achse (b)", "answer": 1, "tolerance": 0.01 },
+        { "label": "Von dort 1 nach rechts und wie viele nach oben?", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["In y = 2x + 1 ist b die Zahl hinten: 1.", "m ist die Zahl vor dem x: 2."],
+      "solution": "b = 1 → Start bei (0|1)\nm = 2 → 1 nach rechts, 2 nach oben → zweiter Punkt (1|3)\nDurch die beiden Punkte die Linie ziehen.",
+      "tags": ["zeichnen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF06-A2-002", "path": "A", "step": 2, "type": "choice",
+      "prompt": "Welche Gerade ist y = 2x + 1?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 1 }, { "m": 1, "b": 2, "farbe": "zweit" }],
+                  "xmax": 4, "ymax": 8,
+                  "alt": "Zwei Geraden: eine durchgezogene steile, eine gestrichelte flachere." },
+      "options": ["die durchgezogene", "die gestrichelte"],
+      "answer": 0,
+      "hints": ["Prüfe b: Wo startet y = 2x + 1 auf der senkrechten Achse? Bei 1.", "Welche Linie startet bei 1?"],
+      "solution": "y = 2x + 1 hat b = 1 → startet bei (0|1) und ist steil (m = 2).\nDie gestrichelte ist y = x + 2: startet bei 2 und ist flacher.",
+      "misconceptions": [
+        { "id": "m_und_b_vertauscht", "value": 1, "feedback": "Du hast m und b vertauscht. In y = 2x + 1 ist 2 die Steigung und 1 der Startwert — nicht umgekehrt." }
+      ],
+      "tags": ["zeichnen", "zuordnen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF06-A3-003", "path": "A", "step": 3, "type": "multi",
+      "prompt": "Du sollst y = 3x + 2 zeichnen. Gib den Startpunkt und den zweiten Punkt an.",
+      "fields": [
+        { "label": "Start: y-Wert bei x = 0", "answer": 2, "tolerance": 0.01 },
+        { "label": "Zweiter Punkt: y-Wert bei x = 1", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["Start ist immer b — hier 2.", "Von (0|2) gehst du 1 nach rechts und 3 nach oben."],
+      "solution": "Start: (0|2), denn b = 2\n1 nach rechts, 3 nach oben → (1|5)\nProbe mit der Gleichung: y = 3 · 1 + 2 = 5 ✓",
+      "tags": ["zeichnen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF06-A4-004", "path": "A", "step": 4, "type": "multi",
+      "prompt": "Du sollst y = x + 4 zeichnen. Vorsicht: Vor dem x steht keine Zahl.",
+      "fields": [
+        { "label": "Start: y-Wert bei x = 0", "answer": 4, "tolerance": 0.01 },
+        { "label": "Wie viele Schritte nach oben pro Schritt nach rechts?", "answer": 1, "tolerance": 0.01,
+          "misconceptions": [{ "id": "m_null_gedacht", "value": 0, "feedback": "Wenn keine Zahl vor dem x steht, ist m = 1 — nicht 0. Bei m = 0 wäre die Gerade waagerecht." }] }
+      ],
+      "hints": ["y = x + 4 heißt dasselbe wie y = 1 · x + 4.", "Also ist m = 1."],
+      "solution": "b = 4 → Start bei (0|4)\nm = 1 (die 1 schreibt man nicht) → 1 nach rechts, 1 nach oben → (1|5)",
+      "tags": ["zeichnen", "m_gleich_eins"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF06-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Zeichne y = −2x + 6. Gib Startpunkt und zweiten Punkt an.",
+      "fields": [
+        { "label": "Start: y-Wert bei x = 0", "answer": 6, "tolerance": 0.01 },
+        { "label": "Zweiter Punkt: y-Wert bei x = 1", "answer": 4, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 8, "feedback": "m ist negativ — es geht nach UNTEN: 6 − 2 = 4." }] }
+      ],
+      "hints": ["b = 6 → Start bei (0|6).", "m = −2 → 1 nach rechts, 2 nach UNTEN."],
+      "solution": "Start: (0|6)\nm = −2 → 1 nach rechts, 2 nach unten → (1|4)\nDie Gerade fällt.",
+      "tags": ["zeichnen", "negativ", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF06-B2-006", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Zeichne y = 0,5x + 1. Bei einem m unter 1 nimmt man ein größeres Dreieck.",
+      "fields": [
+        { "label": "Start: y-Wert bei x = 0", "answer": 1, "tolerance": 0.01 },
+        { "label": "Wie viele Schritte nach rechts, um genau 1 nach oben zu kommen?", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["0,5 ist dasselbe wie 1/2 — also 1 hoch auf 2 nach rechts.", "Ein Dreieck mit Δx = 2 trifft ein Gitterkreuz. Δx = 1 nicht."],
+      "solution": "b = 1 → Start bei (0|1)\nm = 0,5 = 1/2 → 2 nach rechts, 1 nach oben → (2|2)\n\nTrick: Bei m als Bruch gibt der Nenner an, wie weit nach rechts, und der Zähler, wie weit nach oben. So landest du immer auf einem Gitterkreuz.",
+      "tags": ["zeichnen", "bruch", "bbr"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF06-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Zeichne y = ¾x + 1. Nutze den Trick mit Zähler und Nenner.",
+      "fields": [
+        { "label": "Schritte nach rechts (Nenner)", "answer": 4, "tolerance": 0.01 },
+        { "label": "Schritte nach oben (Zähler)", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["m = 3/4 — der Nenner ist 4, der Zähler ist 3.", "Nenner nach rechts, Zähler nach oben."],
+      "solution": "m = 3/4 → 4 nach rechts, 3 nach oben\nVon (0|1) aus landest du bei (4|4).\n\nWarum funktioniert das? Weil 3 : 4 = 0,75 = m. Das Dreieck mit Δx = 4 und Δy = 3 hat genau diese Steigung — trifft aber Gitterkreuze.",
+      "misconceptions": [],
+      "tags": ["zeichnen", "bruch", "bbr"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF06-B4-008", "path": "B", "step": 3, "type": "choice",
+      "prompt": "Welche Gerade ist y = −x + 5?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -1, "b": 5 }, { "m": 1, "b": 5, "farbe": "zweit" }],
+                  "xmax": 6, "ymax": 8,
+                  "alt": "Zwei Geraden, die sich auf der senkrechten Achse bei 5 treffen: eine durchgezogene fallende, eine gestrichelte steigende." },
+      "options": ["die durchgezogene (fallend)", "die gestrichelte (steigend)"],
+      "answer": 0,
+      "hints": ["Beide haben b = 5 — das hilft nicht weiter.", "Achte auf das Vorzeichen von m: −1."],
+      "solution": "m = −1 ist negativ → die Gerade fällt.\nDie gestrichelte wäre y = x + 5 mit m = +1.",
+      "misconceptions": [
+        { "id": "vorzeichen_uebersehen", "value": 1, "feedback": "Das Minus vor dem x ist entscheidend: m = −1, die Gerade fällt." }
+      ],
+      "tags": ["zeichnen", "negativ", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF06-B5-009", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Zeichne y = −⅔x + 4.",
+      "fields": [
+        { "label": "Start: y-Wert bei x = 0", "answer": 4, "tolerance": 0.01 },
+        { "label": "Schritte nach rechts", "answer": 3, "tolerance": 0.01 },
+        { "label": "Schritte nach unten", "answer": 2, "tolerance": 0.01 }
+      ],
+      "hints": ["m = −2/3: Nenner 3 nach rechts, Zähler 2 — aber nach UNTEN, weil m negativ ist.", "Von (0|4) landest du bei (3|2)."],
+      "solution": "b = 4 → Start bei (0|4)\nm = −2/3 → 3 nach rechts, 2 nach unten → (3|2)\nProbe: y = −2/3 · 3 + 4 = −2 + 4 = 2 ✓",
+      "tags": ["zeichnen", "bruch", "negativ", "msa"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF06-B6-010", "path": "B", "step": 4, "type": "multi",
+      "prompt": "Zeichne y = 4x − 3.",
+      "fields": [
+        { "label": "Start: y-Wert bei x = 0", "answer": -3, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 3, "feedback": "In der Gleichung steht − 3, also b = −3. Der Start liegt UNTER dem Nullpunkt." }] },
+        { "label": "Zweiter Punkt: y-Wert bei x = 1", "answer": 1, "tolerance": 0.01 }
+      ],
+      "hints": ["y = 4x − 3 heißt: b = −3 (mit Minus!).", "Von (0|−3) gehst du 1 nach rechts und 4 nach oben."],
+      "solution": "b = −3 → Start bei (0|−3), also unterhalb des Nullpunkts\nm = 4 → 1 nach rechts, 4 nach oben → (1|1)\nProbe: y = 4 · 1 − 3 = 1 ✓",
+      "tags": ["zeichnen", "negativ", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF06-C1-011", "path": "C", "step": 1, "type": "choice",
+      "prompt": "Wie sieht der Graph von y = 3 aus?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0, "b": 3 }], "xmax": 7, "ymax": 6,
+                  "alt": "Eine waagerechte Gerade auf Höhe 3." },
+      "options": [
+        "Eine waagerechte Gerade auf Höhe 3",
+        "Eine senkrechte Gerade bei x = 3",
+        "Eine Gerade durch den Ursprung"
+      ],
+      "answer": 0,
+      "hints": ["y = 3 heißt ausführlich: y = 0 · x + 3.", "Was passiert bei m = 0?"],
+      "solution": "y = 3 bedeutet y = 0 · x + 3. Egal welches x — y ist immer 3.\nm = 0 → die Gerade steigt nicht → waagerecht.\nb = 3 → auf Höhe 3.",
+      "misconceptions": [
+        { "id": "x_und_y_verwechselt", "value": 1, "feedback": "Senkrecht bei x = 3 wäre die Gleichung „x = 3\". Hier steht aber y = 3 — die HÖHE ist festgelegt, nicht die Position nach rechts." }
+      ],
+      "tags": ["zeichnen", "sonderfall", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF06-C2-012", "path": "C", "step": 2, "type": "choice",
+      "prompt": "Wie sieht der Graph von x = 4 aus?",
+      "visual": { "type": "koordinaten", "lines": [{ "x": 4 }], "xmax": 7, "ymax": 7,
+                  "alt": "Eine senkrechte Gerade bei x gleich 4." },
+      "options": [
+        "Eine senkrechte Gerade bei 4",
+        "Eine waagerechte Gerade auf Höhe 4",
+        "Eine Gerade mit m = 4"
+      ],
+      "answer": 0,
+      "hints": ["x = 4 legt fest, wie weit rechts der Punkt liegt — über y sagt die Gleichung nichts.", "Also darf y alles sein."],
+      "solution": "x = 4 bedeutet: x ist immer 4, y darf beliebig sein.\nAlle Punkte (4|0), (4|1), (4|2), (4|17) … erfüllen das → eine senkrechte Gerade bei 4.",
+      "misconceptions": [
+        { "id": "x_und_y_verwechselt", "value": 1, "feedback": "Waagerecht wäre y = 4. Hier ist x festgelegt, nicht y." }
+      ],
+      "tags": ["zeichnen", "sonderfall", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF06-C3-013", "path": "C", "step": 3, "type": "choice",
+      "prompt": "Warum ist x = 4 KEINE Funktion?",
+      "visual": { "type": "koordinaten", "lines": [{ "x": 4 }],
+                  "punkte": [{ "x": 4, "y": 1 }, { "x": 4, "y": 3 }, { "x": 4, "y": 5 }],
+                  "xmax": 7, "ymax": 7,
+                  "alt": "Eine senkrechte Gerade bei 4 mit drei markierten Punkten übereinander." },
+      "options": [
+        "Weil zu x = 4 unendlich viele y-Werte gehören — eine Funktion braucht genau einen",
+        "Weil man sie nicht als y = mx + b schreiben kann",
+        "Weil sie senkrecht ist"
+      ],
+      "answer": 0,
+      "hints": ["Schau auf die drei markierten Punkte: Alle haben x = 4.", "Eine Funktion ordnet jedem x GENAU EIN y zu."],
+      "solution": "Bei x = 4 liegen (4|1), (4|3), (4|5) und unendlich viele weitere. Zu einem x gehören also viele y.\n\nEine Funktion muss jedem x GENAU EIN y zuordnen. Das ist hier verletzt → keine Funktion.\n\nAntwort b) beschreibt eine Folge, keinen Grund: Man kann sie nicht als y = mx + b schreiben, WEIL sie keine Funktion ist — nicht umgekehrt.\nAntwort c) ist auch nur eine Beschreibung. Eine fast senkrechte Gerade mit m = 1000 ist sehr wohl eine Funktion.",
+      "misconceptions": [
+        { "id": "folge_statt_grund", "value": 1, "feedback": "Das ist die Folge, nicht der Grund. Sie lässt sich nicht so schreiben, WEIL sie keine Funktion ist." },
+        { "id": "beschreibung_statt_grund", "value": 2, "feedback": "Senkrecht zu sein ist nur die Beschreibung. Eine Gerade mit m = 1000 ist fast senkrecht und trotzdem eine Funktion — entscheidend ist die Eindeutigkeit." }
+      ],
+      "tags": ["funktion", "begruendung", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF06-C4-014", "path": "C", "step": 4, "type": "multi",
+      "prompt": "Zeichne y = −0,25x + 3. Wähle das Dreieck so, dass du auf Gitterkreuzen landest.",
+      "fields": [
+        { "label": "Start: y-Wert bei x = 0", "answer": 3, "tolerance": 0.01 },
+        { "label": "Schritte nach rechts", "answer": 4, "tolerance": 0.01,
+          "misconceptions": [{ "id": "dreieck_zu_klein", "value": 1, "feedback": "Bei Δx = 1 müsstest du 0,25 nach unten — das trifft kein Gitterkreuz. Schreib m als Bruch: −0,25 = −1/4." }] },
+        { "label": "Schritte nach unten", "answer": 1, "tolerance": 0.01 }
+      ],
+      "hints": ["Schreib m zuerst als Bruch: −0,25 = −1/4.", "Nenner nach rechts, Zähler nach unten."],
+      "solution": "b = 3 → Start bei (0|3)\nm = −0,25 = −1/4 → 4 nach rechts, 1 nach unten → (4|2)\nProbe: y = −0,25 · 4 + 3 = −1 + 3 = 2 ✓\n\nDer Umweg über den Bruch lohnt sich immer, wenn m krumm ist: Der Nenner sagt dir, wie breit du das Dreieck machen musst.",
+      "tags": ["zeichnen", "bruch", "negativ", "msa"], "spiral": ["W-FKT", "W-BRUCH"]
+    }
+  ]
+}

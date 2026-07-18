@@ -1,0 +1,256 @@
+{
+  "unit": "LF-07",
+  "title": "Vom Graphen zur Gleichung",
+  "leitidee": "L4",
+  "standards": ["K4"],
+  "wortspeicher": ["die Gleichung", "die Steigung", "der y-Achsenabschnitt", "der Graph"],
+  "can_do": {
+    "A": "Du wählst zu einem Graphen aus mehreren Gleichungen die richtige aus.",
+    "B": "Du liest m und b ab und schreibst die Gleichung selbst auf.",
+    "C": "Du bestimmst die Gleichung auch bei Bruchsteigung und wenn b erst gerechnet werden muss."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Vom Graphen zur Gleichung — zwei Schritte:",
+      "  1. b ablesen:  Wo schneidet die Gerade die senkrechte Achse?",
+      "  2. m bestimmen: Steigungsdreieck → m = Δy : Δx",
+      "  3. einsetzen:  y = m · x + b",
+      "",
+      "Wenn b nicht ablesbar ist:  b = y − m · x  (mit einem Punkt der Geraden)",
+      "",
+      "Kontrolle: Steigt die Gerade? Dann muss m > 0 sein."
+    ],
+    "saetze": [
+      "Die Gerade schneidet die y-Achse bei … , also b = … .",
+      "Ich gehe … nach rechts und … nach oben, also m = … .",
+      "Die Gleichung lautet y = … x + … ."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF07-A1-001", "path": "A", "step": 1, "type": "choice",
+      "prompt": "Welche Gleichung gehört zu diesem Graphen?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 1 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 }, "xmax": 4, "ymax": 8,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse bei 1 schneidet, mit Steigungsdreieck." },
+      "options": ["y = 2x + 1", "y = x + 2", "y = 2x"],
+      "answer": 0,
+      "hints": ["Schau zuerst auf b: Wo kreuzt die Linie die senkrechte Achse? Bei 1.", "Also muss hinten + 1 stehen."],
+      "solution": "b = 1 (Schnittpunkt mit der senkrechten Achse)\nm = 2 (1 nach rechts, 2 nach oben)\ny = 2x + 1",
+      "misconceptions": [
+        { "id": "m_und_b_vertauscht", "value": 1, "feedback": "Vertauscht. Die Zahl VOR dem x ist die Steigung, die Zahl HINTEN ist der Startwert." },
+        { "id": "b_vergessen", "value": 2, "feedback": "y = 2x würde durch den Ursprung gehen. Diese Gerade startet aber bei 1." }
+      ],
+      "tags": ["gleichung_ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF07-A2-002", "path": "A", "step": 2, "type": "choice",
+      "prompt": "Welche Gleichung gehört zu diesem Graphen?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 3 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 }, "xmax": 5, "ymax": 8,
+                  "alt": "Eine Gerade, die die senkrechte Achse bei 3 schneidet und pro Schritt nach rechts einen nach oben geht." },
+      "options": ["y = x + 3", "y = 3x + 1", "y = 3x"],
+      "answer": 0,
+      "hints": ["b = 3 — welche Gleichungen haben hinten eine 3?", "Und m? Ein Schritt rechts, ein Schritt hoch → m = 1."],
+      "solution": "b = 3, m = 1\ny = 1x + 3 — die 1 vor dem x schreibt man nicht: y = x + 3",
+      "misconceptions": [
+        { "id": "m_und_b_vertauscht", "value": 1, "feedback": "Vertauscht. Die Gerade ist flach (m = 1) und startet hoch (b = 3) — nicht umgekehrt." },
+        { "id": "b_vergessen", "value": 2, "feedback": "y = 3x geht durch den Ursprung und ist steil. Diese Gerade ist flach und startet bei 3." }
+      ],
+      "tags": ["gleichung_ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF07-A3-003", "path": "A", "step": 3, "type": "choice",
+      "prompt": "Welche Gleichung gehört zu diesem Graphen?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -1, "b": 4 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 }, "xmax": 6, "ymax": 6,
+                  "alt": "Eine fallende Gerade, die die senkrechte Achse bei 4 schneidet." },
+      "options": ["y = −x + 4", "y = x + 4", "y = 4x − 1"],
+      "answer": 0,
+      "hints": ["Die Gerade fällt — was heißt das für m?", "b = 4 stimmt bei zwei Antworten. Entscheidend ist das Vorzeichen von m."],
+      "solution": "b = 4, m = −1 (1 nach rechts, 1 nach UNTEN)\ny = −x + 4",
+      "misconceptions": [
+        { "id": "vorzeichen_uebersehen", "value": 1, "feedback": "y = x + 4 würde steigen. Diese Gerade fällt — m muss negativ sein." },
+        { "id": "m_und_b_vertauscht", "value": 2, "feedback": "Vertauscht. Die 4 ist der Startwert, nicht die Steigung." }
+      ],
+      "tags": ["gleichung_ablesen", "negativ"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF07-A4-004", "path": "A", "step": 4, "type": "choice",
+      "prompt": "Welche Gleichung gehört zu diesem Graphen?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 3, "b": 0 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 }, "xmax": 4, "ymax": 8,
+                  "alt": "Eine steile Gerade durch den Nullpunkt." },
+      "options": ["y = 3x", "y = x + 3", "y = 3"],
+      "answer": 0,
+      "hints": ["Die Gerade geht durch den Ursprung. Was ist dann b?", "Wenn b = 0 ist, schreibt man es nicht hin."],
+      "solution": "b = 0 (durch den Ursprung), m = 3\ny = 3x + 0 — die + 0 lässt man weg: y = 3x",
+      "misconceptions": [
+        { "id": "m_und_b_vertauscht", "value": 1, "feedback": "y = x + 3 startet bei 3. Diese Gerade startet bei 0." },
+        { "id": "m_vergessen", "value": 2, "feedback": "y = 3 wäre eine waagerechte Gerade auf Höhe 3. Diese Gerade steigt steil." }
+      ],
+      "tags": ["gleichung_ablesen", "ursprung"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF07-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Bestimme m und b aus dem Graphen.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 3 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 }, "xmax": 4, "ymax": 10,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse bei 3 schneidet, mit Steigungsdreieck." },
+      "fields": [
+        { "label": "Steigung m", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["b: Wo kreuzt die Linie die senkrechte Achse?", "m: Schau auf das rote Dreieck."],
+      "solution": "b = 3, m = 2\nDie Gleichung: y = 2x + 3",
+      "tags": ["gleichung_ablesen", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF07-B2-006", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Bestimme m und b. Achte auf das Vorzeichen.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -2, "b": 5 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 }, "xmax": 5, "ymax": 7,
+                  "alt": "Eine fallende Gerade, die die senkrechte Achse bei 5 schneidet." },
+      "fields": [
+        { "label": "Steigung m", "answer": -2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 2, "feedback": "Der Betrag stimmt. Die Gerade fällt aber — m ist negativ." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["b = 5.", "Das Dreieck geht nach unten → Δy ist negativ."],
+      "solution": "b = 5, m = −2\nDie Gleichung: y = −2x + 5",
+      "tags": ["gleichung_ablesen", "negativ", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF07-B3-007", "path": "B", "step": 2, "type": "multi",
+      "prompt": "Bestimme m und b. Die Gerade ist flach.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0.5, "b": 1 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 2 }, "xmax": 8, "ymax": 6,
+                  "alt": "Eine flach steigende Gerade, die die senkrechte Achse bei 1 schneidet." },
+      "fields": [
+        { "label": "Steigung m", "answer": 0.5, "tolerance": 0.01,
+          "misconceptions": [{ "id": "geteilt_vertauscht", "value": 2, "feedback": "Du hast Δx : Δy gerechnet. Die Gerade ist flach — m muss unter 1 liegen." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 1, "tolerance": 0.01 }
+      ],
+      "hints": ["Das Dreieck: 2 nach rechts, 1 nach oben.", "m = 1 : 2"],
+      "solution": "b = 1, m = 1 : 2 = 0,5\nDie Gleichung: y = 0,5x + 1",
+      "tags": ["gleichung_ablesen", "bruch", "bbr"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF07-B4-008", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Bestimme m und b. Der Schnittpunkt liegt unter dem Nullpunkt.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": -2 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 },
+                  "xmin": -1, "xmax": 7, "ymin": -3, "ymax": 5,
+                  "alt": "Eine steigende Gerade, die die senkrechte Achse bei minus 2 schneidet." },
+      "fields": [
+        { "label": "Steigung m", "answer": 1, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": -2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 2, "feedback": "Der Schnittpunkt liegt UNTER dem Nullpunkt — b ist negativ." }] }
+      ],
+      "hints": ["Die Linie kreuzt die senkrechte Achse unterhalb der 0.", "m: 1 nach rechts, 1 nach oben."],
+      "solution": "b = −2, m = 1\nDie Gleichung: y = x − 2\n(Bei b = −2 schreibt man − 2 statt + (−2).)",
+      "tags": ["gleichung_ablesen", "negativ", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF07-B5-009", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Bestimme m und b. Achte auf beides: Vorzeichen und Bruch.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -0.5, "b": 4 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 2 }, "xmax": 8, "ymax": 6,
+                  "alt": "Eine flach fallende Gerade, die die senkrechte Achse bei 4 schneidet." },
+      "fields": [
+        { "label": "Steigung m", "answer": -0.5, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 0.5, "feedback": "Der Betrag stimmt. Die Gerade fällt — m ist negativ." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 4, "tolerance": 0.01 }
+      ],
+      "hints": ["Das Dreieck: 2 nach rechts, 1 nach unten.", "m = −1 : 2"],
+      "solution": "b = 4, m = −1 : 2 = −0,5\nDie Gleichung: y = −0,5x + 4",
+      "tags": ["gleichung_ablesen", "negativ", "bruch", "msa"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF07-B6-010", "path": "B", "step": 4, "type": "choice",
+      "prompt": "Zwei Geraden. Welche Gleichung gehört zur gestrichelten?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 1 }, { "m": -1, "b": 6, "farbe": "zweit" }],
+                  "xmax": 7, "ymax": 8,
+                  "alt": "Zwei Geraden: eine durchgezogene steigende ab 1, eine gestrichelte fallende ab 6." },
+      "options": ["y = −x + 6", "y = x + 1", "y = 6x − 1"],
+      "answer": 0,
+      "hints": ["Die gestrichelte fällt und startet bei 6.", "Fallend heißt: m ist negativ."],
+      "solution": "Die gestrichelte: b = 6, m = −1 → y = −x + 6\nDie durchgezogene wäre y = x + 1.",
+      "misconceptions": [
+        { "id": "linie_verwechselt", "value": 1, "feedback": "Das ist die durchgezogene Linie. Gefragt war die gestrichelte." },
+        { "id": "m_und_b_vertauscht", "value": 2, "feedback": "Vertauscht. Die 6 ist der Startwert, die −1 die Steigung." }
+      ],
+      "tags": ["gleichung_ablesen", "zwei_geraden", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF07-C1-011", "path": "C", "step": 1, "type": "multi",
+      "prompt": "Bestimme m und b. Nutze das große Dreieck.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0.75, "b": 1 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 4 }, "xmax": 8, "ymax": 7,
+                  "alt": "Eine flach steigende Gerade, die die senkrechte Achse bei 1 schneidet, mit einem breiten Steigungsdreieck." },
+      "fields": [
+        { "label": "Steigung m", "answer": 0.75, "tolerance": 0.01,
+          "misconceptions": [{ "id": "geteilt_vertauscht", "value": 1.333, "feedback": "Du hast Δx : Δy gerechnet. m = Δy : Δx = 3 : 4." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 1, "tolerance": 0.01 }
+      ],
+      "hints": ["Das Dreieck: 4 nach rechts, 3 nach oben.", "m = 3 : 4 = 0,75"],
+      "solution": "b = 1\nm = 3 : 4 = 0,75\nDie Gleichung: y = 0,75x + 1  (oder y = ¾x + 1)\n\nHier lohnt sich das große Dreieck: Mit Δx = 1 hättest du 0,75 nach oben schätzen müssen — mit Δx = 4 liest du exakt ab.",
+      "tags": ["gleichung_ablesen", "bruch", "msa"], "spiral": ["W-FKT", "W-BRUCH"]
+    },
+    {
+      "id": "LF07-C2-012", "path": "C", "step": 2, "type": "multi",
+      "prompt": "Zwei Punkte der Geraden sind markiert: P(2|7) und Q(5|13). Bestimme die Gleichung — rechnerisch, ohne b abzulesen.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 3 }],
+                  "punkte": [{ "x": 2, "y": 7, "label": "P" }, { "x": 5, "y": 13, "label": "Q" }],
+                  "xmax": 7, "ymax": 15,
+                  "alt": "Eine steigende Gerade mit zwei markierten Punkten P und Q." },
+      "fields": [
+        { "label": "Steigung m", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 3, "tolerance": 0.01,
+          "misconceptions": [{ "id": "b_falsch_berechnet", "value": 11, "feedback": "Du hast 7 + 2 · 2 gerechnet. Es gilt b = y − m · x = 7 − 4 = 3." }] }
+      ],
+      "hints": ["m = (13 − 7) : (5 − 2)", "b = y − m · x — nimm einen der beiden Punkte, z. B. P(2|7)."],
+      "solution": "m = (13 − 7) : (5 − 2) = 6 : 3 = 2\nb = y − m · x = 7 − 2 · 2 = 3\nDie Gleichung: y = 2x + 3\n\nProbe mit Q: 2 · 5 + 3 = 13 ✓ — immer mit dem ANDEREN Punkt prüfen.",
+      "tags": ["gleichung_berechnen", "zwei_punkte", "msa"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF07-C3-013", "path": "C", "step": 3, "type": "multi",
+      "prompt": "Bestimme die Gleichung dieser Geraden aus den markierten Punkten P(1|5) und Q(4|−1).",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -2, "b": 7 }],
+                  "punkte": [{ "x": 1, "y": 5, "label": "P" }, { "x": 4, "y": -1, "label": "Q" }],
+                  "xmin": -1, "xmax": 6, "ymin": -3, "ymax": 8,
+                  "alt": "Eine fallende Gerade mit zwei markierten Punkten P und Q." },
+      "fields": [
+        { "label": "Steigung m", "answer": -2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 2, "feedback": "Von P nach Q geht es nach UNTEN: Δy = −1 − 5 = −6. Also m = −6 : 3 = −2." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 7, "tolerance": 0.01 }
+      ],
+      "hints": ["m = (−1 − 5) : (4 − 1) = −6 : 3", "b = y − m · x = 5 − (−2) · 1 = 5 + 2"],
+      "solution": "m = (−1 − 5) : (4 − 1) = −6 : 3 = −2\nb = 5 − (−2) · 1 = 5 + 2 = 7\nDie Gleichung: y = −2x + 7\n\nProbe mit Q: −2 · 4 + 7 = −1 ✓",
+      "tags": ["gleichung_berechnen", "zwei_punkte", "negativ", "msa"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF07-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Jemand liest ab: „b = 2, m = 4, also y = 4x + 2.“ Stimmt das?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 0.25, "b": 2 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 4 }, "xmax": 8, "ymax": 5,
+                  "alt": "Eine sehr flache steigende Gerade, die die senkrechte Achse bei 2 schneidet, mit einem breiten Steigungsdreieck." },
+      "options": [
+        "Nein — Δx und Δy wurden vertauscht. Richtig ist m = 1 : 4 = 0,25",
+        "Ja, das stimmt",
+        "Nein — b ist falsch abgelesen"
+      ],
+      "answer": 0,
+      "hints": ["Schau die Gerade an: Ist sie steil oder flach?", "Bei m = 4 müsste sie sehr steil sein. Ist sie das?"],
+      "solution": "Das Dreieck zeigt: Δx = 4 nach rechts, Δy = 1 nach oben.\nm = Δy : Δx = 1 : 4 = 0,25 — nicht 4.\nDie Gleichung lautet y = 0,25x + 2.\n\nb = 2 war richtig abgelesen.\n\nDie schnellste Kontrolle: Eine flache Gerade hat ein m zwischen 0 und 1. Ein m von 4 hieße vier Schritte hoch pro Schritt nach rechts — das wäre sehr steil.",
+      "misconceptions": [
+        { "id": "steilheit_nicht_geprueft", "value": 1, "feedback": "Prüf die Größenordnung: Bei m = 4 müsste die Gerade vier Kästchen hoch gehen pro Kästchen nach rechts. Sie geht aber nur eines hoch auf vier nach rechts." },
+        { "id": "b_falsch_vermutet", "value": 2, "feedback": "b = 2 ist richtig — die Linie kreuzt die senkrechte Achse bei 2. Der Fehler steckt bei m." }
+      ],
+      "tags": ["fehlersuche", "kontrolle", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}

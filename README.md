@@ -1,13 +1,20 @@
-# Mathe 9 · Prozent & Zinsrechnung
+# Mathe 9 · Campus Hannah Höch
 
 Differenzierte Lernwege für Jahrgang 9, Campus Hannah Höch.
 Statische Website, keine Abhängigkeiten, kein Build-Step.
 
-**14 Einheiten à 60 Minuten · 196 Aufgaben · vollständiger Themenbereich.**
-**Plus Spiral-Pool: 75 Generatoren in 5 Kategorien für das Warm-up „Altes Wissen".**
-**Plus Prüfungstrainer, Arbeitsblatt-Druck, Kompetenzmatrix und Offline-Betrieb.**
+**30 Einheiten à 60 Minuten · 420 Aufgaben.**
+**Spiral-Pool: 105 Generatoren in 7 Kategorien für das Warm-up „Altes Wissen".**
+**Prüfungstrainer, Arbeitsblatt-Druck, Kompetenzmatrix, Offline-Betrieb.**
 
-## Einheiten
+| Bereich | Einheiten | Stand |
+|---|---|---|
+| **PZ** Prozent & Zinsrechnung | 14 | vollständig |
+| **LF** Lineare Funktionen | 16 | vollständig |
+| **KP** Würfel, Quader, Prisma, Zylinder | 0 von 12 | offen |
+| **SK** Spitzkörper | 0 von 12 | offen |
+
+## Einheiten · PZ
 
 | | Einheit | Schwerpunkt |
 |---|---|---|
@@ -29,6 +36,83 @@ Statische Website, keine Abhängigkeiten, kein Build-Step.
 Jede Einheit: 4 Aufgaben Basis · 6 Standard · 4 Vertiefung, jeweils über die
 Stufen Einstieg → Geführt → Frei → Transfer. Alle mit gestuften Tipps,
 vollständigem Rechenweg und hinterlegten Fehlvorstellungen.
+
+
+## Einheiten · LF
+
+| | Einheit | Schwerpunkt |
+|---|---|---|
+| **Gerade lesen** | LF-01 | Zuordnungen im Alltag – Graphen lesen |
+| | LF-02 | Wertetabelle → Graph |
+| | LF-03 | Proportionale Funktionen y = m · x |
+| | LF-04 | Die Steigung m |
+| **Gerade und Gleichung** | LF-05 | Der y-Achsenabschnitt b |
+| | LF-06 | y = mx + b zeichnen |
+| | LF-07 | Vom Graphen zur Gleichung |
+| | LF-08 | Punktprobe |
+| **Mit Geraden rechnen** | LF-09 | Gleichung aus zwei Punkten |
+| | LF-10 | Die Nullstelle |
+| | LF-11 | Lineare Gleichungen sicher lösen |
+| | LF-12 | Schnittpunkt – grafisch |
+| **Schnittpunkt & Anwendung** | LF-13 | Schnittpunkt rechnerisch |
+| | LF-14 | Modellieren: Tarifvergleich |
+| | LF-15 | Lineare Gleichungssysteme |
+| | LF-16 | Prüfungstraining |
+
+**LF-11 ist bewusst eine Werkstattstunde:** kein neuer Funktionsinhalt,
+sondern Gleichungen lösen — die Voraussetzung für LF-13. Ohne sie scheitert
+das Gleichsetzungsverfahren nicht am Verständnis, sondern am Umformen.
+
+**LF-14 nutzt durchgehend dieselben drei Tarife** (A: 12 € + 0,10 €/min,
+B: 0,25 €/min, Flat: 30 €). Die Schnittpunkte liegen bei 80, 120 und
+180 Minuten — jeder Tarif hat einen echten Bereich, in dem er gewinnt. Das
+ist kein Zufall, sondern so gewählt: Ein Vergleich, bei dem eine Option nie
+sinnvoll ist, lehrt nichts.
+
+## Aufgabenbilder (`zeichnen.js`)
+
+Drei Typen, alle über das Feld `visual` an jeder Aufgabe:
+
+```jsonc
+"visual": { "type": "streifen", "fill": 35, "alt": "…" }
+
+"visual": {
+  "type": "koordinaten",
+  "xmin": -1, "xmax": 7, "ymin": -1, "ymax": 7,     // alle optional
+  "lines": [ { "m": 2, "b": 1 },                     // Gerade
+             { "x": 4 },                             // senkrechte Gerade
+             { "m": -1, "b": 6, "farbe": "zweit" } ],// gestrichelt
+  "steigungsdreieck": { "line": 0, "x0": 1, "dx": 2 },
+  "regler": true,                                    // Dreieck wird beweglich
+  "punkte": [ { "x": 3, "y": 4, "label": "P" } ],
+  "polylinien": [ { "punkte": [[0,0],[2,3],[4,3]] } ],  // qualitative Graphen
+  "alt": "Pflicht, sobald das Bild die Aufgabe trägt"
+}
+
+"visual": { "type": "geogebra", "material_id": "abc123" }
+```
+
+### Warum kein GeoGebra für die Aufgabenbilder?
+
+Das Konzept sah GeoGebra vor. Ich habe die Bilder trotzdem als Inline-SVG
+gebaut — aus drei praktischen Gründen:
+
+1. **Material-IDs rotten.** Fremde verschwinden; eigene müsstest du erst
+   anlegen, und ich kann keine erfinden, die es nicht gibt.
+2. **Der Service Worker cached geogebra.org nicht.** Fällt das WLAN aus,
+   wäre die halbe Einheit weg — genau in der Stunde, in der du sie brauchst.
+3. **Ein Applet pro Aufgabe lädt.** Auf 28 Schulgeräten spürbar.
+
+Die SVGs laden sofort, funktionieren offline, drucken in Graustufen und
+lassen sich mit Reglern trotzdem bewegen. **LF-04-C1 ist der Beweis:** Das
+Steigungsdreieck ist verschiebbar und verbreiterbar, Δy und Δx ändern sich,
+m bleibt stehen. Genau das, was das Konzept als „Kernanimation des Themas"
+verlangt — nur ohne Abhängigkeit.
+
+Der Typ `geogebra` bleibt als Haken für **deine eigenen** Materialien, etwa
+einen Geradenbaukasten zum freien Erkunden. Ohne `material_id` erscheint ein
+ehrlicher Platzhalter statt eines leeren Kastens; ist GeoGebra nicht
+erreichbar, sagt die Seite das, statt stumm zu bleiben.
 
 ## Starten
 
@@ -60,6 +144,7 @@ Für die Lehrkraft
 Code
   assets/css/app.css        ein Stylesheet, inkl. Druckansicht
   assets/js/store.js        Speicher, Zahlenparser, Fehlerprofil, SW-Registrierung
+  assets/js/zeichnen.js     Aufgabenbilder: Streifen, Koordinatensystem, GeoGebra
   assets/js/engine.js       Aufgabenlogik der Einheiten
   assets/js/spiral.js       Warm-up: Generatoren, Leitner-Kartei, Auswahl
   assets/js/pruefung.js     stellt Prüfungssets zusammen (nutzt engine.js)
@@ -69,8 +154,9 @@ Code
   sw.js                     Service Worker (Offline)
 
 Inhalt
-  units/index.json          Liste aller Einheiten — hier neue eintragen
+  units/index.json          Liste aller Bereiche und Einheiten — hier neue eintragen
   units/pz/pz-08/tasks.json Inhalt einer Einheit
+  units/lf/lf-04/tasks.json Neuer Bereich = neuer Ordner, sonst nichts
   pruefung-sets.json        Definition der Prüfungssets + Formelsammlung
   spiral/plan.json          Intervalle, Verzahnung, Fehlerprofil-Zuordnung
   spiral/w-proz.json        Generatoren einer Wiederholungskategorie
@@ -188,7 +274,7 @@ nach Fälligkeit.
 ### Generatoren statt Einzelaufgaben
 
 Warm-ups leben von Variation. Statt 60 Aufgaben pro Kategorie zu schreiben,
-stehen dort **75 Generatoren** (15 je Kategorie, 5 je Pfad), die jeweils
+stehen dort **105 Generatoren** (15 je Kategorie, 5 je Pfad), die jeweils
 hunderte Varianten erzeugen:
 
 ```jsonc
@@ -224,9 +310,16 @@ Ausgewertet wird mit einem eigenen kleinen Parser (`werteAus` in `spiral.js`),
 **nicht mit `eval`** — er kennt nur `+ - * / ( )`, Zahlen, Variablen und
 Vergleiche. Funktionsaufrufe lehnt er ab.
 
-Mit `:€` als Zusatz wird als Geldbetrag formatiert: `{pa:€}` → `3,60`, nicht
-`3,6`. Bei allem, was ein Kind als Preis liest, gehören zwei Nachkommastellen
-hin.
+Zwei Formatzusätze, beide aus echten Mängeln entstanden:
+
+- `{pa:€}` → `3,60` statt `3,6`. Bei allem, was ein Kind als Preis liest,
+  gehören zwei Nachkommastellen hin.
+- `{b:±}` → `− 1` bzw. `+ 3`. Sonst steht in der Aufgabe `y = 2x + -1`,
+  und so schreibt man das nicht.
+
+Zahlen werden mit dem typografischen Minus (−) ausgegeben, nicht mit dem
+Bindestrich. `lesarten()` in `store.js` versteht beides — falls jemand die
+Zahl aus dem Aufgabentext kopiert.
 
 Kollidiert eine Fehlvorstellung bei bestimmten Zufallswerten mit der Lösung
 (bei `p = 50` ist „Rest“ gleich „Teil“), wird sie für diese Variante
@@ -241,7 +334,7 @@ zurück auf Box 1, kommt morgen wieder.
 **2. Fehlerprofil.** Jede Fehlvorstellung aus den Einheiten wird lokal
 notiert (`mathe9.fehler`, nur IDs — keine Namen, keine Aufgabentexte). Wer
 gestern `komma_verschoben` produziert hat, bekommt heute W-BRUCH.
-Die Zuordnung steht in `plan.json` unter `fehlerprofil` — alle 87 IDs aus
+Die Zuordnung steht in `plan.json` unter `fehlerprofil` — alle 162 IDs aus
 dem Pool sind zugeordnet.
 
 Dazu kommt die **Verzahnung**: `plan.json` → `verzahnung` sagt, welche
@@ -260,11 +353,11 @@ einseitig.
 | `W-EINH` | Einheiten | 15 Generatoren |
 | `W-KOPF` | Kopfrechnen | 15 Generatoren |
 | `W-SACH` | Sachrechnen (Dreisatz, Maßstab) | 15 Generatoren |
-| `W-TERM` | Terme & Gleichungen | geplant (trägt LF-11) |
+| `W-FKT` | Funktionen | 15 Generatoren |
+| `W-TERM` | Terme & Gleichungen | 15 Generatoren |
 | `W-GEO` | Grundgeometrie, Pythagoras | geplant (trägt KP-08, SK-04) |
-| `W-FKT` | Funktionen | geplant (trägt LF) |
 
-Alle **87 Fehlvorstellungs-IDs** aus dem Pool zeigen auf eine gebaute
+Alle **162 Fehlvorstellungs-IDs** aus dem Pool zeigen auf eine gebaute
 Kategorie — es läuft keine ins Leere.
 
 Nicht jeder Generator hat Fehlvorstellungen. Ein Rechenfehler im Einmaleins
@@ -340,7 +433,7 @@ Rechner, an dem mehrere arbeiten, besser Kürzel als Klarnamen.
 ## Offline (`sw.js`)
 
 Das Schul-WLAN fällt aus, der Unterricht nicht. Der Service Worker cached alle
-37 Dateien — der ganze Pool ist unter 100 KB.
+56 Dateien — der ganze Pool ist unter 100 KB.
 
 - **JSON:** erst Netz, dann Cache. Korrekturen kommen an; fällt das Netz aus,
   merkt niemand etwas.
@@ -358,7 +451,7 @@ hilft niemandem. Mit dem Feld sagt sie, **welcher Denkfehler** passiert ist,
 und das Dashboard kann auszählen, welcher Fehler in der Klasse gehäuft
 auftritt.
 
-Im Pool: **87 IDs.** Die häufigsten aus den Einheiten:
+Im Pool: **162 IDs.** Die häufigsten aus den Einheiten:
 
 | | ID | Bedeutung |
 |---|---|---|
@@ -420,13 +513,3 @@ Schwierigkeiten entwickelt, unterscheidet klar zwischen 0/O und 1/l/I — das
 ist bei Zahlenaufgaben und DaZ kein Luxus. Falls das Schulnetz Google Fonts
 blockiert, greifen die Fallbacks; besser ist, die Dateien nach
 `assets/fonts/` zu legen und lokal einzubinden.
-
-
-## Lehrerdashboard und Supabase-Tracking (integrierter Stand)
-
-Die Dateien `assets/js/supabase-config.js`, `assets/js/tracker.js`, `dashboard/` und
-`supabase/setup.sql` bleiben Bestandteil des Projekts. Schülerseiten und der
-Prüfungstrainer laden die gemeinsame Konfiguration vor dem Tracker. Antworten,
-Heartbeats und Fortschrittsstände werden damit weiterhin an dieselbe Schnittstelle
-übergeben. Arbeitsblatt und Kompetenzmatrix arbeiten bewusst lokal und senden keine
-Schülerdaten.

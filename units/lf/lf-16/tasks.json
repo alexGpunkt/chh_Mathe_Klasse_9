@@ -1,0 +1,213 @@
+{
+  "unit": "LF-16",
+  "title": "Prüfungstraining Lineare Funktionen",
+  "leitidee": "L4",
+  "standards": ["K1", "K2", "K3", "K4", "K5"],
+  "wortspeicher": ["die Steigung", "der y-Achsenabschnitt", "die Nullstelle", "die Punktprobe", "der Schnittpunkt"],
+  "can_do": {
+    "A": "Du löst die vier Grundaufgaben — ablesen, zeichnen, Punktprobe, Nullstelle — mit der Formelkarte.",
+    "B": "Du löst einen gemischten Aufgabensatz, ohne dass die Aufgabenart genannt wird.",
+    "C": "Du löst Aufgaben auf MSA-Niveau und begründest deine Lösung schriftlich."
+  },
+  "formelkarte": {
+    "formeln": [
+      "y = m · x + b",
+      "  m = Δy : Δx        Steigung     (aus zwei Punkten: (y₂−y₁):(x₂−x₁))",
+      "  b = y − m · x      y-Achsenabschnitt",
+      "",
+      "Nullstelle:   y = 0 setzen  →  0 = mx + b  →  x = −b : m",
+      "Punktprobe:   x einsetzen, mit dem y des Punktes vergleichen",
+      "Schnittpunkt: beide Terme gleichsetzen, nach x auflösen, dann y",
+      "",
+      "Sonderfälle:  m gleich, b verschieden  →  parallel, keine Lösung",
+      "              m gleich, b gleich       →  identisch, unendlich viele"
+    ],
+    "saetze": [
+      "Gesucht ist … , weil im Text nach … gefragt wird.",
+      "Ich lese ab / setze ein / setze gleich.",
+      "Zur Probe setze ich … ein — es passt."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF16-A1-001", "path": "A", "step": 1, "type": "numeric",
+      "prompt": "Ablesen: Welchen y-Wert hat der Punkt mit x = 4?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": 2 }], "punkte": [{ "x": 4, "y": 6 }],
+                  "xmax": 7, "ymax": 8,
+                  "alt": "Eine steigende Gerade mit einem markierten Punkt bei x gleich 4." },
+      "answer": 6, "tolerance": 0.01,
+      "hints": ["Bei x = 4 nach oben bis zur Linie, dann nach links."],
+      "solution": "Bei x = 4 liegt der Punkt bei y = 6.",
+      "misconceptions": [
+        { "id": "achsen_vertauscht", "value": 4, "feedback": "Das ist der x-Wert. Gefragt ist die Höhe." }
+      ],
+      "tags": ["gemischt", "ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF16-A2-002", "path": "A", "step": 2, "type": "multi",
+      "prompt": "Zeichnen: Du sollst y = 2x + 1 zeichnen. Gib Startpunkt und zweiten Punkt an.",
+      "fields": [
+        { "label": "Start: y-Wert bei x = 0", "answer": 1, "tolerance": 0.01 },
+        { "label": "Zweiter Punkt: y-Wert bei x = 1", "answer": 3, "tolerance": 0.01 }
+      ],
+      "hints": ["Start ist immer b — hier 1.", "Von (0|1) gehst du 1 nach rechts und 2 nach oben."],
+      "solution": "b = 1 → Start bei (0|1)\nm = 2 → 1 nach rechts, 2 nach oben → (1|3)",
+      "tags": ["gemischt", "zeichnen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF16-A3-003", "path": "A", "step": 3, "type": "numeric",
+      "prompt": "Punktprobe: Setze x = 3 in y = 2x − 1 ein. Was kommt heraus?",
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["y = 2 · 3 − 1", "Punkt vor Strich."],
+      "solution": "y = 2 · 3 − 1 = 5\nHat der Punkt auch y = 5, liegt er auf der Geraden.",
+      "misconceptions": [
+        { "id": "punkt_vor_strich", "value": 4, "feedback": "Du hast 3 − 1 = 2 gerechnet und dann · 2. Erst 2 · 3, dann − 1." }
+      ],
+      "tags": ["gemischt", "punktprobe"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF16-A4-004", "path": "A", "step": 4, "type": "numeric",
+      "prompt": "Nullstelle: Lies ab, wo die Gerade die waagerechte Achse schneidet.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": -2 }], "punkte": [{ "x": 2, "y": 0 }],
+                  "xmin": -1, "xmax": 7, "ymin": -3, "ymax": 5,
+                  "alt": "Eine steigende Gerade, die die waagerechte Achse bei 2 schneidet." },
+      "answer": 2, "tolerance": 0.01,
+      "hints": ["Wo kreuzt die Linie die waagerechte Achse?"],
+      "solution": "Die Nullstelle ist x = 2.",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": -2, "feedback": "−2 ist b — der Schnittpunkt mit der senkrechten Achse." }
+      ],
+      "tags": ["gemischt", "nullstelle"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF16-B1-005", "path": "B", "step": 1, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -2, "b": 6 }],
+                  "steigungsdreieck": { "x0": 0, "dx": 1 }, "xmax": 5, "ymax": 8,
+                  "alt": "Eine fallende Gerade, die die senkrechte Achse bei 6 schneidet, mit Steigungsdreieck." },
+      "fields": [
+        { "label": "Steigung m", "answer": -2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "vorzeichen_fehlt", "value": 2, "feedback": "Die Gerade fällt — m ist negativ." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 6, "tolerance": 0.01 }
+      ],
+      "hints": ["b: Wo kreuzt die Linie die senkrechte Achse?", "m: Das Dreieck geht nach unten."],
+      "solution": "b = 6, m = −2\ny = −2x + 6",
+      "tags": ["gemischt", "gleichung_ablesen", "bbr"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF16-B2-006", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Berechne die Nullstelle von y = 3x − 9.",
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["0 = 3x − 9      | + 9", "9 = 3x"],
+      "solution": "0 = 3x − 9      | + 9\n9 = 3x          | : 3\nx = 3\n\nProbe: 3 · 3 − 9 = 0 ✓",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": -9, "feedback": "−9 ist b. Setze y = 0 und löse nach x auf." },
+        { "id": "vorzeichen_fehlt", "value": -3, "feedback": "Aus 0 = 3x − 9 folgt 9 = 3x, also x = +3." }
+      ],
+      "tags": ["gemischt", "nullstelle", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF16-B3-007", "path": "B", "step": 2, "type": "choice",
+      "prompt": "Liegt der Punkt P(2|5) auf der Geraden y = 3x − 1?",
+      "options": ["Ja — die Rechnung ergibt 5", "Nein", "Das kann man nur am Graphen sehen"],
+      "answer": 0,
+      "hints": ["Setze x = 2 ein: y = 3 · 2 − 1", "Vergleiche mit dem y-Wert des Punktes."],
+      "solution": "y = 3 · 2 − 1 = 5\nP hat y = 5.\n5 = 5 → P liegt auf der Geraden. ✓",
+      "misconceptions": [
+        { "id": "graph_misstrauen", "value": 2, "feedback": "Die Punktprobe rechnet exakt — dafür braucht es keinen Graphen." }
+      ],
+      "tags": ["gemischt", "punktprobe", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF16-B4-008", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(1|3) und Q(4|12).",
+      "fields": [
+        { "label": "Steigung m", "answer": 3, "tolerance": 0.01 },
+        { "label": "y-Achsenabschnitt b", "answer": 0, "tolerance": 0.01 }
+      ],
+      "hints": ["m = (12 − 3) : (4 − 1) = 9 : 3", "b = 3 − 3 · 1"],
+      "solution": "m = 9 : 3 = 3\nb = 3 − 3 · 1 = 0\ny = 3x\n\nProbe mit Q: 3 · 4 = 12 ✓\nb = 0 → die Gerade geht durch den Ursprung, sie ist proportional.",
+      "tags": ["gemischt", "zwei_punkte", "bbr"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF16-B5-009", "path": "B", "step": 3, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = 2x + 1 und y = −x + 7.",
+      "fields": [
+        { "label": "x-Wert", "answer": 2, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["2x + 1 = −x + 7      | + x", "3x + 1 = 7      | − 1      →  3x = 6"],
+      "solution": "2x + 1 = −x + 7      | + x\n3x + 1 = 7           | − 1\n3x = 6               | : 3\nx = 2\n\ny = 2 · 2 + 1 = 5\nS(2|5)\n\nProbe: −2 + 7 = 5 ✓",
+      "tags": ["gemischt", "schnittpunkt", "bbr"], "spiral": ["W-TERM", "W-FKT"]
+    },
+    {
+      "id": "LF16-B6-010", "path": "B", "step": 4, "type": "numeric",
+      "prompt": "Ein Tarif kostet 10 € Grundgebühr und 0,20 € pro Minute. Was zahlst du bei 60 Minuten?",
+      "answer": 22, "unit_label": "€", "tolerance": 0.01,
+      "hints": ["y = 0,2 · 60 + 10"],
+      "solution": "y = 0,2 · 60 + 10 = 12 + 10 = 22 €",
+      "misconceptions": [
+        { "id": "b_vergessen", "value": 12, "feedback": "Die Grundgebühr von 10 € fehlt." }
+      ],
+      "tags": ["gemischt", "sachkontext", "bbr"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF16-C1-011", "path": "C", "step": 1, "type": "multi",
+      "prompt": "Bestimme die Gleichung der Geraden durch P(−1|6) und Q(3|−2).",
+      "fields": [
+        { "label": "Steigung m", "answer": -2, "tolerance": 0.01,
+          "misconceptions": [{ "id": "minus_minus", "value": -4, "feedback": "Im Nenner: 3 − (−1) = 3 + 1 = 4, nicht 2." }] },
+        { "label": "y-Achsenabschnitt b", "answer": 4, "tolerance": 0.01,
+          "misconceptions": [{ "id": "minus_minus", "value": 8, "feedback": "b = 6 − (−2) · (−1) = 6 − 2 = 4. Minus mal Minus ergibt Plus — die 2 wird abgezogen." }] }
+      ],
+      "hints": ["m = (−2 − 6) : (3 − (−1)) = −8 : 4", "b = 6 − (−2) · (−1) = 6 − 2"],
+      "solution": "m = (−2 − 6) : (3 + 1) = −8 : 4 = −2\nb = 6 − (−2) · (−1) = 6 − 2 = 4\ny = −2x + 4\n\nProbe mit Q: −2 · 3 + 4 = −2 ✓",
+      "tags": ["gemischt", "zwei_punkte", "negativ", "msa"], "spiral": ["W-FKT", "W-TERM"]
+    },
+    {
+      "id": "LF16-C2-012", "path": "C", "step": 2, "type": "multi",
+      "prompt": "Berechne den Schnittpunkt von y = 0,5x + 3 und y = 2x − 3.",
+      "fields": [
+        { "label": "x-Wert", "answer": 4, "tolerance": 0.01 },
+        { "label": "y-Wert", "answer": 5, "tolerance": 0.01 }
+      ],
+      "hints": ["0,5x + 3 = 2x − 3      | − 0,5x", "3 = 1,5x − 3      | + 3      →  6 = 1,5x"],
+      "solution": "0,5x + 3 = 2x − 3      | − 0,5x\n3 = 1,5x − 3           | + 3\n6 = 1,5x               | : 1,5\nx = 4\n\ny = 0,5 · 4 + 3 = 5\nS(4|5)\n\nProbe: 2 · 4 − 3 = 5 ✓",
+      "tags": ["gemischt", "schnittpunkt", "bruch", "msa"], "spiral": ["W-TERM", "W-BRUCH"]
+    },
+    {
+      "id": "LF16-C3-013", "path": "C", "step": 3, "type": "choice",
+      "prompt": "Begründe: Warum haben y = 3x + 2 und y = 3x − 5 keinen Schnittpunkt?",
+      "options": [
+        "Beide haben m = 3 — sie sind parallel und treffen sich nie",
+        "Weil ein b positiv und eins negativ ist",
+        "Sie haben doch einen — bei x = 7"
+      ],
+      "answer": 0,
+      "hints": ["Vergleiche die Steigungen.", "Setz die Terme gleich und schau, was passiert."],
+      "solution": "Beide haben m = 3, aber verschiedenes b (2 und −5).\nGleiche Steigung → die Geraden laufen parallel → kein Schnittpunkt.\n\nRechnerisch:\n3x + 2 = 3x − 5      | − 3x\n2 = −5\n\nDas x fällt heraus, übrig bleibt eine falsche Aussage → keine Lösung.\n\nZu b): Die Vorzeichen von b sind egal. y = 3x + 2 und y = 3x + 5 sind auch parallel — beide b positiv.",
+      "misconceptions": [
+        { "id": "b_statt_m", "value": 1, "feedback": "Auf die Vorzeichen von b kommt es nicht an. y = 3x + 2 und y = 3x + 5 sind auch parallel. Entscheidend ist, dass m gleich ist." },
+        { "id": "sonderfall_uebersehen", "value": 2, "feedback": "Prüf x = 7: links 23, rechts 16. Nicht gleich. Es gibt gar kein x, bei dem beide übereinstimmen." }
+      ],
+      "tags": ["gemischt", "begruendung", "parallel", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF16-C4-014", "path": "C", "step": 4, "type": "multi",
+      "prompt": "Zwei Fahrradverleiher. A: 5 € Grundgebühr + 2 €/Stunde. B: 3 €/Stunde ohne Grundgebühr. Ab wann lohnt sich A?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": 5 }, { "m": 3, "b": 0, "farbe": "zweit" }],
+                  "xmin": 0, "xmax": 9, "ymin": 0, "ymax": 24,
+                  "alt": "Zwei Geraden: eine startet bei 5 und steigt flach, die andere startet im Nullpunkt und steigt steiler. Sie kreuzen sich." },
+      "fields": [
+        { "label": "Schnittpunkt: Stunden", "answer": 5, "unit_label": "h", "tolerance": 0.01 },
+        { "label": "Schnittpunkt: Euro", "answer": 15, "unit_label": "€", "tolerance": 0.01 }
+      ],
+      "hints": ["A: y = 2x + 5. B: y = 3x.", "Gleichsetzen: 2x + 5 = 3x", "| − 2x: 5 = x"],
+      "solution": "A: y = 2x + 5\nB: y = 3x\n\n2x + 5 = 3x      | − 2x\n5 = x\n\ny = 3 · 5 = 15\nS(5|15)\n\nProbe: 2 · 5 + 5 = 15 ✓\n\nAntwort: Ab mehr als 5 Stunden lohnt sich A. Bei genau 5 Stunden kosten beide 15 €. Wer kürzer leiht, nimmt B — bei A zahlt man die 5 € Grundgebühr, egal wie kurz.\n\nProbe an der Grafik: Rechts von x = 5 verläuft die Linie von A tiefer. ✓",
+      "tags": ["gemischt", "sachkontext", "modellieren", "msa"], "spiral": ["W-TERM", "W-FKT"]
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "unit": "LF-10",
+  "title": "Die Nullstelle",
+  "leitidee": "L4",
+  "standards": ["K5"],
+  "wortspeicher": ["die Nullstelle", "die x-Achse", "der Schnittpunkt", "das Modell"],
+  "can_do": {
+    "A": "Du liest die Nullstelle am Graphen ab: wo die Gerade die waagerechte Achse schneidet.",
+    "B": "Du berechnest die Nullstelle aus 0 = mx + b.",
+    "C": "Du deutest die Nullstelle im Sachkontext und nennst die Grenzen des Modells."
+  },
+  "formelkarte": {
+    "formeln": [
+      "Nullstelle = die Stelle, wo y = 0 ist",
+      "         = wo die Gerade die WAAGERECHTE Achse schneidet",
+      "",
+      "Berechnen:  0 = m · x + b     | − b",
+      "           −b = m · x         | : m",
+      "            x = −b : m",
+      "",
+      "Achtung: Die Nullstelle ist ein x-Wert, kein y-Wert."
+    ],
+    "saetze": [
+      "Die Gerade schneidet die x-Achse bei … , also ist die Nullstelle x = … .",
+      "Ich setze y = 0 und löse nach x auf.",
+      "Im Sachkontext bedeutet die Nullstelle: … ."
+    ]
+  },
+
+  "tasks": [
+    {
+      "id": "LF10-A1-001", "path": "A", "step": 1, "type": "numeric",
+      "prompt": "Bei welchem x-Wert schneidet die Gerade die waagerechte Achse?",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 1, "b": -3 }], "punkte": [{ "x": 3, "y": 0 }],
+                  "xmin": -1, "xmax": 7, "ymin": -4, "ymax": 5,
+                  "alt": "Eine steigende Gerade, die die waagerechte Achse bei 3 schneidet. Der Schnittpunkt ist markiert." },
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["Such die Stelle, wo die Linie die waagerechte Achse kreuzt.", "Wie weit rechts liegt dieser Punkt?"],
+      "solution": "Die Gerade kreuzt die waagerechte Achse bei x = 3.\nDie Nullstelle ist x = 3.",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": -3, "feedback": "−3 ist der Schnittpunkt mit der SENKRECHTEN Achse — das ist b. Die Nullstelle liegt auf der waagerechten Achse." }
+      ],
+      "tags": ["nullstelle", "ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF10-A2-002", "path": "A", "step": 2, "type": "numeric",
+      "prompt": "Lies die Nullstelle ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -1, "b": 4 }], "punkte": [{ "x": 4, "y": 0 }],
+                  "xmin": -1, "xmax": 7, "ymin": -2, "ymax": 6,
+                  "alt": "Eine fallende Gerade, die die waagerechte Achse bei 4 schneidet." },
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["Auch bei einer fallenden Geraden: Wo kreuzt sie die waagerechte Achse?"],
+      "solution": "Die Nullstelle ist x = 4.",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": 0, "feedback": "0 ist die HÖHE des Schnittpunkts — die ist bei jeder Nullstelle 0. Gefragt ist, wie weit rechts er liegt." }
+      ],
+      "tags": ["nullstelle", "ablesen", "fallend"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF10-A3-003", "path": "A", "step": 3, "type": "numeric",
+      "prompt": "Lies die Nullstelle ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": 2, "b": -4 }], "punkte": [{ "x": 2, "y": 0 }],
+                  "xmin": -1, "xmax": 6, "ymin": -5, "ymax": 6,
+                  "alt": "Eine steile steigende Gerade, die die waagerechte Achse bei 2 schneidet." },
+      "answer": 2, "tolerance": 0.01,
+      "hints": ["Die Stelle, wo die Linie die waagerechte Achse trifft."],
+      "solution": "Die Nullstelle ist x = 2.\nDort ist y = 0 — der Punkt heißt (2|0).",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": -4, "feedback": "−4 ist b, der Schnittpunkt mit der senkrechten Achse. Die Nullstelle liegt bei x = 2." }
+      ],
+      "tags": ["nullstelle", "ablesen"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF10-A4-004", "path": "A", "step": 4, "type": "numeric",
+      "prompt": "Lies die Nullstelle ab.",
+      "visual": { "type": "koordinaten", "lines": [{ "m": -2, "b": 6 }], "punkte": [{ "x": 3, "y": 0 }],
+                  "xmin": -1, "xmax": 6, "ymin": -3, "ymax": 8,
+                  "alt": "Eine steil fallende Gerade, die die waagerechte Achse bei 3 schneidet." },
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["Wo trifft die Linie die waagerechte Achse?"],
+      "solution": "Die Nullstelle ist x = 3.",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": 6, "feedback": "6 ist b. Die Nullstelle liegt dort, wo die Gerade die waagerechte Achse kreuzt: bei x = 3." }
+      ],
+      "tags": ["nullstelle", "ablesen", "fallend"], "spiral": ["W-FKT"]
+    },
+
+    {
+      "id": "LF10-B1-005", "path": "B", "step": 1, "type": "numeric",
+      "prompt": "Berechne die Nullstelle von y = 2x − 6.",
+      "answer": 3, "tolerance": 0.01,
+      "hints": ["Setze y = 0: 0 = 2x − 6", "| + 6 auf beiden Seiten: 6 = 2x. Dann | : 2."],
+      "solution": "0 = 2x − 6      | + 6\n6 = 2x          | : 2\nx = 3\n\nProbe: 2 · 3 − 6 = 0 ✓",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": -6, "feedback": "−6 ist b. Setze y = 0 und löse nach x auf." },
+        { "id": "vorzeichen", "value": -3, "feedback": "Aus 0 = 2x − 6 folgt 6 = 2x, also x = +3. Die −6 wandert als +6 auf die andere Seite." }
+      ],
+      "tags": ["nullstelle", "berechnen", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF10-B2-006", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Berechne die Nullstelle von y = 3x + 9.",
+      "answer": -3, "tolerance": 0.01,
+      "hints": ["0 = 3x + 9      | − 9", "−9 = 3x        | : 3"],
+      "solution": "0 = 3x + 9      | − 9\n−9 = 3x         | : 3\nx = −3\n\nProbe: 3 · (−3) + 9 = 0 ✓\nDie Nullstelle liegt links vom Nullpunkt — das ist völlig normal.",
+      "misconceptions": [
+        { "id": "vorzeichen_fehlt", "value": 3, "feedback": "Aus 0 = 3x + 9 folgt −9 = 3x, also x = −3. Das Ergebnis ist negativ." }
+      ],
+      "tags": ["nullstelle", "berechnen", "negativ", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF10-B3-007", "path": "B", "step": 2, "type": "numeric",
+      "prompt": "Berechne die Nullstelle von y = −x + 5.",
+      "answer": 5, "tolerance": 0.01,
+      "hints": ["0 = −x + 5      | − 5", "−5 = −x        | : (−1)"],
+      "solution": "0 = −x + 5      | − 5\n−5 = −x         | : (−1)\nx = 5\n\nProbe: −5 + 5 = 0 ✓\nKürzer: 0 = −x + 5 heißt x = 5, denn die Gerade fällt von 5 aus genau um 5.",
+      "misconceptions": [
+        { "id": "vorzeichen_beim_teilen", "value": -5, "feedback": "Beim Teilen durch −1 dreht sich das Vorzeichen: −5 : (−1) = +5." }
+      ],
+      "tags": ["nullstelle", "berechnen", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF10-B4-008", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Berechne die Nullstelle von y = 0,5x − 2.",
+      "answer": 4, "tolerance": 0.01,
+      "hints": ["0 = 0,5x − 2      | + 2", "2 = 0,5x          | : 0,5 — das ist dasselbe wie · 2."],
+      "solution": "0 = 0,5x − 2      | + 2\n2 = 0,5x          | : 0,5\nx = 4\n\nProbe: 0,5 · 4 − 2 = 0 ✓\nDurch 0,5 teilen ist dasselbe wie mal 2 nehmen — das Ergebnis wird größer.",
+      "misconceptions": [
+        { "id": "durch_bruch_geteilt", "value": 1, "feedback": "Du hast 2 · 0,5 gerechnet. Es muss 2 : 0,5 sein — und das ergibt 4, nicht 1." }
+      ],
+      "tags": ["nullstelle", "berechnen", "bruch", "bbr"], "spiral": ["W-TERM", "W-BRUCH"]
+    },
+    {
+      "id": "LF10-B5-009", "path": "B", "step": 3, "type": "numeric",
+      "prompt": "Berechne die Nullstelle von y = −2x + 7.",
+      "answer": 3.5, "tolerance": 0.01,
+      "hints": ["0 = −2x + 7      | − 7", "−7 = −2x         | : (−2)"],
+      "solution": "0 = −2x + 7      | − 7\n−7 = −2x         | : (−2)\nx = 3,5\n\nProbe: −2 · 3,5 + 7 = −7 + 7 = 0 ✓\nDie Nullstelle muss keine ganze Zahl sein.",
+      "misconceptions": [
+        { "id": "vorzeichen_beim_teilen", "value": -3.5, "feedback": "Minus geteilt durch Minus ergibt Plus: −7 : (−2) = +3,5." }
+      ],
+      "tags": ["nullstelle", "berechnen", "bbr"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF10-B6-010", "path": "B", "step": 4, "type": "numeric",
+      "prompt": "Berechne die Nullstelle von y = 4x + 1.",
+      "answer": -0.25, "tolerance": 0.01,
+      "hints": ["0 = 4x + 1      | − 1", "−1 = 4x         | : 4"],
+      "solution": "0 = 4x + 1      | − 1\n−1 = 4x         | : 4\nx = −0,25\n\nProbe: 4 · (−0,25) + 1 = −1 + 1 = 0 ✓\nDie Gerade ist steil und startet knapp über null — deshalb liegt die Nullstelle knapp links davon.",
+      "misconceptions": [
+        { "id": "vorzeichen_fehlt", "value": 0.25, "feedback": "Aus −1 = 4x folgt x = −0,25. Das Ergebnis ist negativ." },
+        { "id": "geteilt_vertauscht", "value": -4, "feedback": "Du hast 4 : (−1) gerechnet. Es muss −1 : 4 sein." }
+      ],
+      "tags": ["nullstelle", "berechnen", "bruch"], "spiral": ["W-TERM", "W-BRUCH"]
+    },
+
+    {
+      "id": "LF10-C1-011", "path": "C", "step": 1, "type": "numeric",
+      "prompt": "Auf einem Konto liegen 400 €. Jede Woche werden 50 € abgehoben: y = −50x + 400 (x in Wochen, y in Euro). Nach wie vielen Wochen ist das Konto leer?",
+      "answer": 8, "unit_label": "Wochen", "tolerance": 0.01,
+      "hints": ["„Leer\" heißt: y = 0.", "0 = −50x + 400      | + 50x", "400 = 50x"],
+      "solution": "0 = −50x + 400      | + 50x\n50x = 400           | : 50\nx = 8\n\nNach 8 Wochen ist das Konto leer.\nDie Nullstelle beantwortet im Sachkontext die Frage „Wann ist nichts mehr da?\"",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": 400, "feedback": "400 € ist der Startbetrag (b), keine Wochenzahl. Gesucht ist x." }
+      ],
+      "tags": ["nullstelle", "sachkontext", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF10-C2-012", "path": "C", "step": 2, "type": "numeric",
+      "prompt": "Eine Kerze ist 18 cm hoch und brennt pro Stunde 1,5 cm ab: y = −1,5x + 18 (x in Stunden, y in cm). Nach wie vielen Stunden ist sie abgebrannt?",
+      "answer": 12, "unit_label": "Stunden", "tolerance": 0.01,
+      "hints": ["„Abgebrannt\" heißt: Höhe y = 0.", "0 = −1,5x + 18      | + 1,5x", "18 = 1,5x"],
+      "solution": "0 = −1,5x + 18      | + 1,5x\n1,5x = 18           | : 1,5\nx = 12\n\nNach 12 Stunden ist die Kerze abgebrannt.",
+      "misconceptions": [
+        { "id": "b_als_nullstelle", "value": 18, "feedback": "18 cm ist die Anfangshöhe. Gesucht ist die Zeit." },
+        { "id": "geteilt_vertauscht", "value": 0.083, "feedback": "Du hast 1,5 : 18 gerechnet. Es muss 18 : 1,5 sein." }
+      ],
+      "tags": ["nullstelle", "sachkontext", "msa"], "spiral": ["W-TERM"]
+    },
+    {
+      "id": "LF10-C3-013", "path": "C", "step": 3, "type": "choice",
+      "prompt": "Die Kerze von eben: y = −1,5x + 18. Was sagt das Modell für x = 15 Stunden — und was stimmt daran nicht?",
+      "options": [
+        "Es sagt y = −4,5 cm. Eine negative Höhe gibt es nicht — das Modell gilt nur bis x = 12.",
+        "Es sagt y = 4,5 cm. Die Kerze brennt einfach weiter.",
+        "Es sagt y = 0 cm, weil die Kerze schon abgebrannt ist."
+      ],
+      "answer": 0,
+      "hints": ["Rechne einfach aus: y = −1,5 · 15 + 18", "Kann eine Kerze −4,5 cm hoch sein?"],
+      "solution": "y = −1,5 · 15 + 18 = −22,5 + 18 = −4,5\n\nDas Modell liefert −4,5 cm — eine negative Höhe. Das gibt es nicht.\n\nDie Gerade läuft mathematisch beliebig weiter. Die KERZE hört bei 12 Stunden auf. Das Modell beschreibt die Wirklichkeit also nur für 0 ≤ x ≤ 12.\n\nGenau das ist mit „Grenzen des Modells\" gemeint: Die Formel rechnet immer, aber sie stimmt nicht überall.",
+      "misconceptions": [
+        { "id": "modellgrenze_uebersehen", "value": 1, "feedback": "Rechne nach: −1,5 · 15 = −22,5, plus 18 sind −4,5 — nicht +4,5. Und weiterbrennen kann sie auch nicht, sie ist ja weg." },
+        { "id": "modell_korrigiert_sich", "value": 2, "feedback": "Das Modell weiß nichts von der Kerze. Es rechnet stur weiter und liefert −4,5. Dass das Unsinn ist, musst DU erkennen." }
+      ],
+      "tags": ["nullstelle", "modellgrenzen", "msa"], "spiral": ["W-FKT"]
+    },
+    {
+      "id": "LF10-C4-014", "path": "C", "step": 4, "type": "choice",
+      "prompt": "Eine Gerade hat m = 0. Was ist mit ihrer Nullstelle?",
+      "options": [
+        "Bei b ≠ 0 gibt es keine Nullstelle; bei b = 0 ist die ganze Gerade die x-Achse",
+        "Die Nullstelle ist immer 0",
+        "Bei m = 0 gibt es immer genau eine Nullstelle"
+      ],
+      "answer": 0,
+      "hints": ["Bei m = 0 lautet die Gleichung y = b — eine waagerechte Gerade.", "Kreuzt eine waagerechte Gerade auf Höhe 3 jemals die x-Achse?"],
+      "solution": "Bei m = 0 ist y = b, also eine waagerechte Gerade.\n\nFall b ≠ 0, z. B. y = 3: Die Gerade liegt immer auf Höhe 3 und trifft die x-Achse nie → keine Nullstelle.\n  Rechnerisch: 0 = 3 ist eine falsche Aussage — es gibt keine Lösung.\n\nFall b = 0: y = 0 IST die x-Achse. Jeder x-Wert ist eine Nullstelle → unendlich viele.\n  Rechnerisch: 0 = 0 ist immer wahr.\n\nDie Formel x = −b : m versagt hier, weil man nicht durch 0 teilen darf. Das ist kein Zufall: Genau dann gibt es keine oder unendlich viele Lösungen.",
+      "misconceptions": [
+        { "id": "sonderfall_uebersehen", "value": 1, "feedback": "y = 3 hat keine Nullstelle — die Gerade liegt überall auf Höhe 3 und trifft die x-Achse nie." },
+        { "id": "sonderfall_uebersehen", "value": 2, "feedback": "Bei m = 0 würde die Formel x = −b : 0 lauten — durch null darf man nicht teilen. Es gibt keine oder unendlich viele Nullstellen, nie genau eine." }
+      ],
+      "tags": ["nullstelle", "sonderfall", "msa"], "spiral": ["W-FKT"]
+    }
+  ]
+}
