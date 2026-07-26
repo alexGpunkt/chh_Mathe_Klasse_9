@@ -4,6 +4,6 @@ window.MATHE9_SUPABASE = {
   enabled: true,
   heartbeatSeconds: 20,
   classCode: '9',
-  devMode: false,
+  devMode: true,
   devClassCode: 'DEV'
 };
