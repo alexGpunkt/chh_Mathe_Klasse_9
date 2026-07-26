@@ -146,6 +146,9 @@ function lernkarteZeigen(modus) {
   b.append(zeile);
 
   const karte = el('div', 'karte lernkarte');
+  /* Die Karte sofort einhängen. Falls ein Bild-Renderer ausfällt,
+     bleibt der bereits erzeugte Erklärungstext sichtbar. */
+  b.append(karte);
 
   if (lk.titel) karte.append(el('h2', 'lk-titel', lk.titel));
 
@@ -155,7 +158,7 @@ function lernkarteZeigen(modus) {
     karte.append(p);
   }
 
-  if (lk.visual && lk.bild_oben !== false) karte.append(visualBlock(lk.visual));
+  if (lk.visual && lk.bild_oben !== false) karte.append(visualBlockSicher(lk.visual));
 
   (lk.erklaerung || []).forEach(absatz => {
     const p = el('p', 'lk-erkl');
@@ -163,7 +166,7 @@ function lernkarteZeigen(modus) {
     karte.append(p);
   });
 
-  if (lk.visual && lk.bild_oben === false) karte.append(visualBlock(lk.visual));
+  if (lk.visual && lk.bild_oben === false) karte.append(visualBlockSicher(lk.visual));
 
   if (lk.beispiel) {
     const bsp = lk.beispiel;
@@ -207,7 +210,6 @@ function lernkarteZeigen(modus) {
     akt.append(w);
   }
   karte.append(akt);
-  b.append(karte);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -252,11 +254,15 @@ function aufgabeZeigen() {
   b.append(zeile);
 
   const karte = el('div', 'karte');
+  /* Sofort einhängen: Ein Fehler in einer optionalen Visualisierung
+     darf die eigentliche Aufgabe nicht unsichtbar machen. */
+  b.append(karte);
+
   const frage = el('p', 'frage');
   frage.innerHTML = markiereWorte(t.prompt);
   karte.append(frage);
 
-  if (t.visual) karte.append(visualBlock(t.visual));
+  if (t.visual) karte.append(visualBlockSicher(t.visual));
 
   if (t.type === 'numeric') karte.append(numerischesFeld(t));
   if (t.type === 'choice')  karte.append(auswahl(t));
@@ -280,19 +286,53 @@ function aufgabeZeigen() {
   rueck.id = 'rueck';
   karte.append(rueck);
 
-  b.append(karte);
   const feld = $('.zahl-feld');
   if (feld) feld.focus({ preventScroll: true });
 }
 
+/* Optionale Bilder dürfen nie die Aufgabe oder Erklärung blockieren. */
+function visualBlockSicher(v) {
+  try {
+    if (typeof visualBlock !== 'function') {
+      throw new Error('visualBlock ist nicht verfügbar');
+    }
+    const block = visualBlock(v);
+    if (!block) throw new Error('Visualisierung lieferte kein Element');
+    return block;
+  } catch (error) {
+    console.error('[Mathe9 Visualisierung]', error);
+    const hinweis = el('div', 'bild visual-fehler');
+    hinweis.textContent = 'Die Abbildung konnte nicht geladen werden. Die Aufgabe kann trotzdem bearbeitet werden.';
+    return hinweis;
+  }
+}
+
+function regexSicher(text) {
+  return String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 /* Wortspeicher-Begriffe im Text markieren */
 function markiereWorte(text) {
-  let out = text.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-  (S.daten.wortspeicher || []).forEach(w => {
-    const kern = w.replace(/^(der|die|das)\s+/i, '');
-    out = out.replace(new RegExp(`\\b(${kern})\\b`, 'g'),
-      `<span class="wort" title="${w}">$1</span>`);
+  let out = String(text ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  (S.daten.wortspeicher || []).forEach(wort => {
+    const w = String(wort ?? '');
+    const kern = w.replace(/^(der|die|das)\s+/i, '').trim();
+    if (!kern) return;
+
+    try {
+      out = out.replace(
+        new RegExp(`\\b(${regexSicher(kern)})\\b`, 'gi'),
+        `<span class="wort" title="${w.replace(/"/g, '&quot;')}">$1</span>`
+      );
+    } catch (error) {
+      console.warn('[Mathe9 Wortspeicher]', kern, error);
+    }
   });
+
   return out;
 }
 

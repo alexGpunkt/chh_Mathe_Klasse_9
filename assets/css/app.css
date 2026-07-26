@@ -632,3 +632,14 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   .lk-rechenweg { overflow: visible; }
   .erklaerung-link { display: none; }
 }
+
+
+/* Eine ausgefallene optionale Visualisierung darf die Aufgabe nicht sperren. */
+.visual-fehler {
+  padding: 10px 12px;
+  border: 1px dashed #C98A12;
+  border-radius: var(--r);
+  background: #FFF6E0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}

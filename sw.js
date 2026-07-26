@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v11-kp-sk-animationen-develop';
+const VERSION = 'mathe9-v12-render-fix-develop';
 
 const SCHALE = [
   './',
