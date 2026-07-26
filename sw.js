@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v12-render-fix-develop';
+const VERSION = 'mathe9-v13-adjustments-develop';
 
 const SCHALE = [
   './',
@@ -136,26 +136,38 @@ self.addEventListener('fetch', e => {
   e.respondWith((async () => {
     const cache = await caches.open(VERSION);
 
-    /* Inhalte: erst Netz (damit Korrekturen ankommen), dann Cache.
-       Fällt das WLAN aus, merkt niemand etwas. */
-    if (url.pathname.endsWith('.json')) {
+    /* Programmcode und Inhalte: online immer die aktuelle Fassung laden,
+       offline auf den vollständigen Cache zurückfallen. Das verhindert nach
+       größeren Updates gemischte Versionen von engine.js und zeichnen.js. */
+    const istAktualitaetskritisch =
+      url.pathname.endsWith('.json') ||
+      url.pathname.endsWith('.html') ||
+      url.pathname.endsWith('.js') ||
+      url.pathname.endsWith('.css') ||
+      url.pathname.endsWith('/');
+
+    if (istAktualitaetskritisch) {
       try {
-        const netz = await fetch(e.request);
+        const netz = await fetch(e.request, { cache: 'no-store' });
         if (netz.ok) cache.put(e.request, netz.clone());
         return netz;
       } catch {
         const c = await cache.match(e.request);
         if (c) return c;
-        throw new Error('offline und nicht im Cache');
+        return new Response('Offline und nicht im Cache', { status: 503 });
       }
     }
 
-    /* Schale: erst Cache (schnell), im Hintergrund auffrischen. */
+    /* Sonstige lokale Ressourcen: Cache zuerst, Netz als Rückfall. */
     const c = await cache.match(e.request);
-    const netz = fetch(e.request).then(r => {
-      if (r.ok) cache.put(e.request, r.clone());
-      return r;
-    }).catch(() => null);
-    return c || (await netz) || new Response('Offline', { status: 503 });
+    if (c) return c;
+
+    try {
+      const netz = await fetch(e.request);
+      if (netz.ok) cache.put(e.request, netz.clone());
+      return netz;
+    } catch {
+      return new Response('Offline', { status: 503 });
+    }
   })());
 });

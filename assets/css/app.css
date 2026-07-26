@@ -643,3 +643,13 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   color: var(--ink-soft);
   font-size: 14px;
 }
+
+.visual-fehler-detail {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--f-num);
+  font-size: 11px;
+  color: #8A5B00;
+  overflow-wrap: anywhere;
+}
+

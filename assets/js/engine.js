@@ -303,6 +303,15 @@ function visualBlockSicher(v) {
     console.error('[Mathe9 Visualisierung]', error);
     const hinweis = el('div', 'bild visual-fehler');
     hinweis.textContent = 'Die Abbildung konnte nicht geladen werden. Die Aufgabe kann trotzdem bearbeitet werden.';
+
+    /* Im develop-Modus die technische Ursache anzeigen. Dadurch lässt sich
+       ein Cache- oder Rendererfehler direkt erkennen, ohne die Konsole zu öffnen. */
+    if (window.MATHE9_SUPABASE?.devMode === true) {
+      const detail = el('small', 'visual-fehler-detail');
+      detail.textContent = `Technischer Hinweis: ${error?.message || String(error)}`;
+      hinweis.append(detail);
+    }
+
     return hinweis;
   }
 }
