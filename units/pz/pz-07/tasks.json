@@ -33,7 +33,12 @@
         ],
         "ergebnis": "25 % der Plätze sind besetzt."
       },
-      "merke": "1/2 = 50 %, 1/4 = 25 %, 1/5 = 20 %, 1/10 = 10 %."
+      "merke": "1/2 = 50 %, 1/4 = 25 %, 1/5 = 20 %, 1/10 = 10 %.",
+      "visual": {
+        "type": "animation",
+        "name": "prozentsatz",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Prozentsatz mit der Formel",
@@ -51,7 +56,12 @@
         ],
         "ergebnis": "85 % der Punkte wurden erreicht."
       },
-      "merke": "p = W : G · 100. Erst teilen, dann mal 100."
+      "merke": "p = W : G · 100. Erst teilen, dann mal 100.",
+      "visual": {
+        "type": "animation",
+        "name": "prozentsatz",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Prozentsatz bei Veränderungen beurteilen",
@@ -69,7 +79,12 @@
         ],
         "ergebnis": "Der Preis ist um 15 % gestiegen."
       },
-      "merke": "Prozentuale Veränderung: immer durch den ALTEN Wert teilen."
+      "merke": "Prozentuale Veränderung: immer durch den ALTEN Wert teilen.",
+      "visual": {
+        "type": "animation",
+        "name": "prozentsatz",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

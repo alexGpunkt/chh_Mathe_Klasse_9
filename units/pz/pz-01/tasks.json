@@ -26,9 +26,9 @@
         "Teile den Streifen in gleiche Stücke und zähle, wie viele gefärbt sind."
       ],
       "visual": {
-        "type": "streifen",
-        "fill": 50,
-        "alt": "Ein Streifen, zur Hälfte gefärbt."
+        "type": "animation",
+        "name": "anteile",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Der halbe Streifen ist gefärbt. Wie viel Prozent sind das?",
@@ -56,7 +56,12 @@
         ],
         "ergebnis": "3/4 = 0,75 = 75 %"
       },
-      "merke": "· 100 macht aus der Dezimalzahl den Prozentsatz, : 100 macht ihn wieder rückgängig."
+      "merke": "· 100 macht aus der Dezimalzahl den Prozentsatz, : 100 macht ihn wieder rückgängig.",
+      "visual": {
+        "type": "animation",
+        "name": "anteile",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Unbequeme Brüche sinnvoll runden",
@@ -74,7 +79,12 @@
         ],
         "ergebnis": "2/3 ≈ 67 %"
       },
-      "merke": "Beim Runden wird = zu ≈. Gib immer an, worauf du gerundet hast."
+      "merke": "Beim Runden wird = zu ≈. Gib immer an, worauf du gerundet hast.",
+      "visual": {
+        "type": "animation",
+        "name": "anteile",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v13-adjustments-develop';
+const VERSION = 'mathe9-v14-pz-animationen-develop';
 
 const SCHALE = [
   './',

@@ -33,7 +33,12 @@
         ],
         "ergebnis": "Für ein halbes Jahr gibt es 30 € Zinsen."
       },
-      "merke": "Halbes Jahr → : 2, viertel Jahr → : 4."
+      "merke": "Halbes Jahr → : 2, viertel Jahr → : 4.",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Der Zeitfaktor m/12 und t/360",
@@ -51,7 +56,12 @@
         ],
         "ergebnis": "Für 3 Monate gibt es 15 € Zinsen."
       },
-      "merke": "Monate: · m/12. Tage: · t/360."
+      "merke": "Monate: · m/12. Tage: · t/360.",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Die Laufzeit zurückrechnen",
@@ -69,7 +79,12 @@
         ],
         "ergebnis": "Die Laufzeit betrug 3 Monate."
       },
-      "merke": "Teil-Zinsen : Jahreszinsen = Anteil des Jahres."
+      "merke": "Teil-Zinsen : Jahreszinsen = Anteil des Jahres.",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

@@ -35,7 +35,12 @@
         ],
         "ergebnis": "Der ganze Preis beträgt 60 €."
       },
-      "merke": "Erst : p auf 1 %, dann · 100 auf das Ganze."
+      "merke": "Erst : p auf 1 %, dann · 100 auf das Ganze.",
+      "visual": {
+        "type": "animation",
+        "name": "grundwert",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Grundwert bestimmen und prüfen",
@@ -54,7 +59,12 @@
         ],
         "ergebnis": "Der Grundwert beträgt 50 €."
       },
-      "merke": "G = W : p · 100. Der Grundwert ist größer als der Prozentwert (bei p < 100 %)."
+      "merke": "G = W : p · 100. Der Grundwert ist größer als der Prozentwert (bei p < 100 %).",
+      "visual": {
+        "type": "animation",
+        "name": "grundwert",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Rückwärts vom verminderten Wert",
@@ -72,7 +82,12 @@
         ],
         "ergebnis": "Der Originalpreis war 60 € (nicht 48 € + 20 %!)."
       },
-      "merke": "Vom rabattierten Preis NICHT einfach zurück­addieren – durch den Restanteil teilen."
+      "merke": "Vom rabattierten Preis NICHT einfach zurück­addieren – durch den Restanteil teilen.",
+      "visual": {
+        "type": "animation",
+        "name": "grundwert",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

@@ -33,7 +33,12 @@
         ],
         "ergebnis": "20 % von 250 € sind 50 €."
       },
-      "merke": "1 % = G : 100. Dann mal p."
+      "merke": "1 % = G : 100. Dann mal p.",
+      "visual": {
+        "type": "animation",
+        "name": "prozentwert",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Prozentwert mit der Formel",
@@ -43,9 +48,9 @@
         "Prüfe am Streifen: Ist p kleiner als 100 %, muss W kleiner als G sein."
       ],
       "visual": {
-        "type": "streifen",
-        "fill": 35,
-        "alt": "Streifen zu 35 Prozent gefärbt – der Prozentwert ist kleiner als das Ganze."
+        "type": "animation",
+        "name": "prozentwert",
+        "stufe": "B"
       },
       "beispiel": {
         "aufgabe": "Ein Pullover kostet 80 €, der Rabatt beträgt 35 %. Wie viel Euro sind das?",
@@ -74,7 +79,12 @@
         ],
         "ergebnis": "28 € – der Überschlag (≈ 27 €) bestätigt es."
       },
-      "merke": "Prozent als Faktor (35 % = 0,35). Überschlag schützt vor Kommafehlern."
+      "merke": "Prozent als Faktor (35 % = 0,35). Überschlag schützt vor Kommafehlern.",
+      "visual": {
+        "type": "animation",
+        "name": "prozentwert",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

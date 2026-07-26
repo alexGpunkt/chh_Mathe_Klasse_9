@@ -33,7 +33,12 @@
         ],
         "ergebnis": "Der Endpreis beträgt 170 €."
       },
-      "merke": "Erst den Rabatt in Euro, dann abziehen."
+      "merke": "Erst den Rabatt in Euro, dann abziehen.",
+      "visual": {
+        "type": "animation",
+        "name": "veraenderung",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Endpreis in einem Schritt",
@@ -50,7 +55,12 @@
         ],
         "ergebnis": "Endpreis 170 € – in einem Schritt über Faktor 0,85."
       },
-      "merke": "Rabatt: · (1 − p/100). Aufschlag: · (1 + p/100)."
+      "merke": "Rabatt: · (1 − p/100). Aufschlag: · (1 + p/100).",
+      "visual": {
+        "type": "animation",
+        "name": "veraenderung",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Vom Endpreis zurück – ohne Abzieh-Falle",
@@ -68,7 +78,12 @@
         ],
         "ergebnis": "Der Nettopreis war 100 € (nicht 119 € − 19 %!)."
       },
-      "merke": "Zurück heißt : Faktor, niemals denselben Prozentsatz abziehen."
+      "merke": "Zurück heißt : Faktor, niemals denselben Prozentsatz abziehen.",
+      "visual": {
+        "type": "animation",
+        "name": "veraenderung",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

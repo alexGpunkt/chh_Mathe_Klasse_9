@@ -35,7 +35,12 @@
         ],
         "ergebnis": "Mehr Maler → weniger Tage (antiproportional)."
       },
-      "merke": "Mehr → mehr ist proportional. Mehr → weniger ist antiproportional."
+      "merke": "Mehr → mehr ist proportional. Mehr → weniger ist antiproportional.",
+      "visual": {
+        "type": "animation",
+        "name": "antiproportional",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Proportional oder antiproportional rechnen",
@@ -53,7 +58,12 @@
         ],
         "ergebnis": "8 Maler brauchen 6 Tage."
       },
-      "merke": "Antiproportional: Menge · Menge bleibt konstant."
+      "merke": "Antiproportional: Menge · Menge bleibt konstant.",
+      "visual": {
+        "type": "animation",
+        "name": "antiproportional",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Die Produktprobe",
@@ -71,7 +81,12 @@
         ],
         "ergebnis": "Produkt konstant (12) → die Zuordnung ist antiproportional."
       },
-      "merke": "Antiproportional ⇔ das Produkt beider Größen ist konstant."
+      "merke": "Antiproportional ⇔ das Produkt beider Größen ist konstant.",
+      "visual": {
+        "type": "animation",
+        "name": "antiproportional",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

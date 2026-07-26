@@ -34,7 +34,12 @@
         ],
         "ergebnis": "Grundwert G = 60 € (das Ganze = 100 %)."
       },
-      "merke": "Der Grundwert ist das, was 100 % entspricht."
+      "merke": "Der Grundwert ist das, was 100 % entspricht.",
+      "visual": {
+        "type": "animation",
+        "name": "grundgroessen",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "G, W und p % benennen",
@@ -52,7 +57,12 @@
         ],
         "ergebnis": "G = 30, W = 12, p % = 40 %."
       },
-      "merke": "% hängt am Prozentsatz, die Sacheinheit am Prozentwert."
+      "merke": "% hängt am Prozentsatz, die Sacheinheit am Prozentwert.",
+      "visual": {
+        "type": "animation",
+        "name": "grundgroessen",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Wenn der Grundwert fehlt",
@@ -70,7 +80,12 @@
         ],
         "ergebnis": "Grundwert = alter Inhalt (100 %); fehlt er, bleibt der Zuwachs unbestimmt."
       },
-      "merke": "Kein Grundwert genannt? Dann ist er der alte/ursprüngliche Wert – oder die Angabe ist unvollständig."
+      "merke": "Kein Grundwert genannt? Dann ist er der alte/ursprüngliche Wert – oder die Angabe ist unvollständig.",
+      "visual": {
+        "type": "animation",
+        "name": "grundgroessen",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

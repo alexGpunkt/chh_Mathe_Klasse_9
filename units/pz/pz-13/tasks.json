@@ -33,7 +33,12 @@
         ],
         "ergebnis": "Nach 2 Jahren: 1040,40 €."
       },
-      "merke": "Neues Kapital = altes Kapital + Zinsen. Damit weiter in die nächste Zeile."
+      "merke": "Neues Kapital = altes Kapital + Zinsen. Damit weiter in die nächste Zeile.",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Zinseszins mit K · q hoch n",
@@ -51,7 +56,12 @@
         ],
         "ergebnis": "1040,40 € – gleiches Ergebnis wie die Tabelle."
       },
-      "merke": "Endkapital = K · q^n mit q = 1 + p/100."
+      "merke": "Endkapital = K · q^n mit q = 1 + p/100.",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Laufzeit finden, Zins und Zinseszins vergleichen",
@@ -68,7 +78,12 @@
         ],
         "ergebnis": "Nach 3 Jahren übersteigt das Kapital 1060 €."
       },
-      "merke": "Zinseszins wächst schneller als einfacher Zins – der Vorsprung wächst mit den Jahren."
+      "merke": "Zinseszins wächst schneller als einfacher Zins – der Vorsprung wächst mit den Jahren.",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

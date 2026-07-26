@@ -34,7 +34,12 @@
         ],
         "ergebnis": "Die Jahreszinsen betragen 60 €."
       },
-      "merke": "Z = K · p : 100 (Kapital = Grundwert)."
+      "merke": "Z = K · p : 100 (Kapital = Grundwert).",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "K, p oder Z – was ist gesucht?",
@@ -52,7 +57,12 @@
         ],
         "ergebnis": "Der Zinssatz betrug 3 %."
       },
-      "merke": "Erst die gesuchte Größe bestimmen, dann die passende Formel wählen."
+      "merke": "Erst die gesuchte Größe bestimmen, dann die passende Formel wählen.",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Die Zinsformel nach jeder Größe umstellen",
@@ -70,7 +80,12 @@
         ],
         "ergebnis": "2500 € bringen bei 4 % genau 100 € Zinsen."
       },
-      "merke": "Eine Formel genügt – der Rest ist Umstellen mit gleichen Schritten auf beiden Seiten."
+      "merke": "Eine Formel genügt – der Rest ist Umstellen mit gleichen Schritten auf beiden Seiten.",
+      "visual": {
+        "type": "animation",
+        "name": "zinsen",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

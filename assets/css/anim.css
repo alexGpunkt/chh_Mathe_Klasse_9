@@ -183,3 +183,30 @@
 .anim-schalt[aria-pressed="true"].anim-schalt-b { background: #2563A8; color: #fff; }
 .anim-schalt[aria-pressed="true"].anim-schalt-c { background: #6B3FA0; color: #fff; }
 .anim-schalt:focus-visible { outline: 3px solid #2563A8; outline-offset: -2px; }
+
+/* ---------- Gruppenüberschrift in der Galerie ---------- */
+.anim-gruppe {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 20px; font-weight: 800; color: #15233A;
+  margin: 26px 0 12px; padding-bottom: 6px;
+  border-bottom: 2px solid #E1E6E9;
+}
+.anim-gruppe:first-child { margin-top: 4px; }
+
+/* ---------- Schema-Animationen (Dreisatz, Antiproportional) ---------- */
+.anim-schema {
+  font-family: 'JetBrains Mono', monospace; font-size: 15px;
+  max-width: 320px; margin: 4px auto 0;
+}
+.anim-schema-zeile {
+  display: grid; grid-template-columns: 44px 1fr 24px 1fr; align-items: center;
+  gap: 4px; padding: 5px 0; transition: opacity .35s;
+}
+.anim-schema-tab .anim-schema-zeile { grid-template-columns: 1fr 1fr 1fr; text-align: center; }
+.anim-schema-op { color: #6B3FA0; font-weight: 700; font-size: 13px; text-align: right; }
+.anim-schema-l { color: #15233A; }
+.anim-schema-pf { color: #8C99A8; text-align: center; }
+.anim-schema-r { color: #2E7D5B; font-weight: 700; text-align: right; }
+.anim-schema-kopf { font-weight: 700; color: #4A5A70; border-bottom: 1px solid #E1E6E9; opacity: 1 !important; }
+.anim-schema-z { text-align: center; }
+.anim-prod { color: #6B3FA0; font-weight: 700; }

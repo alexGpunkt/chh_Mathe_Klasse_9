@@ -33,7 +33,12 @@
         ],
         "ergebnis": "Gestiegen um 8 €."
       },
-      "merke": "Erst Richtung (größer/kleiner), dann Differenz."
+      "merke": "Erst Richtung (größer/kleiner), dann Differenz.",
+      "visual": {
+        "type": "animation",
+        "name": "veraenderung",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Prozentuale Veränderung und Wachstumsfaktor",
@@ -50,7 +55,12 @@
         ],
         "ergebnis": "+16 %, Wachstumsfaktor q = 1,16."
       },
-      "merke": "Immer durch den ALTEN Wert teilen. Faktor = 1 ± p/100."
+      "merke": "Immer durch den ALTEN Wert teilen. Faktor = 1 ± p/100.",
+      "visual": {
+        "type": "animation",
+        "name": "veraenderung",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Faktorketten – warum sich +10 % und −10 % nicht aufheben",
@@ -68,7 +78,12 @@
         ],
         "ergebnis": "99 € – nicht 100 €. +10 % und −10 % heben sich nicht auf."
       },
-      "merke": "Änderungen hintereinander → Faktoren MAL nehmen, nicht Prozente addieren."
+      "merke": "Änderungen hintereinander → Faktoren MAL nehmen, nicht Prozente addieren.",
+      "visual": {
+        "type": "animation",
+        "name": "veraenderung",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

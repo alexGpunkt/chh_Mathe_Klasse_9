@@ -170,6 +170,21 @@ einen Geradenbaukasten zum freien Erkunden. Ohne `material_id` erscheint ein
 ehrlicher Platzhalter statt eines leeren Kastens; ist GeoGebra nicht
 erreichbar, sagt die Seite das, statt stumm zu bleiben.
 
+
+## Interaktive Animationen
+
+Die Anwendung enthält nun **20 interaktive Animationen** in jeweils drei
+Niveaustufen:
+
+- 10 zu Prozent- und Zinsrechnung (`PZ-01` bis `PZ-13`, thematisch gebündelt)
+- 10 zu linearen Funktionen
+
+Die PZ-Lernkarten verwenden 39 Animationsverweise: je eine Animation für die
+Pfade A, B und C in `PZ-01` bis `PZ-13`. `PZ-14` bleibt als gemischtes
+Prüfungstraining bewusst ohne eigene Animation. Die Galerie kann über
+`animationen.html?bereich=PZ` beziehungsweise `animationen.html?bereich=LF`
+gefiltert geöffnet werden.
+
 ## Starten
 
 **Auf GitHub Pages:** Repo pushen, unter *Settings → Pages* die Quelle auf

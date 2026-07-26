@@ -33,7 +33,12 @@
         ],
         "ergebnis": "8 Brötchen kosten 3,20 €."
       },
-      "merke": "Erst : auf 1 herunter, dann · auf die gesuchte Menge hoch."
+      "merke": "Erst : auf 1 herunter, dann · auf die gesuchte Menge hoch.",
+      "visual": {
+        "type": "animation",
+        "name": "dreisatz",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Das Dreisatz-Schema selbst aufschreiben",
@@ -53,7 +58,12 @@
         ],
         "ergebnis": "7 m Stoff kosten 17,50 €."
       },
-      "merke": "Was du links tust, tust du rechts genauso."
+      "merke": "Was du links tust, tust du rechts genauso.",
+      "visual": {
+        "type": "animation",
+        "name": "dreisatz",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Warum der Dreisatz funktioniert – der Faktor",
@@ -70,7 +80,12 @@
         ],
         "ergebnis": "10 kg kosten 15,00 € – in einem Schritt über den Faktor."
       },
-      "merke": "Der Faktor (Preis je Einheit) ersetzt die zwei Dreisatzschritte."
+      "merke": "Der Faktor (Preis je Einheit) ersetzt die zwei Dreisatzschritte.",
+      "visual": {
+        "type": "animation",
+        "name": "dreisatz",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
