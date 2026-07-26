@@ -1,0 +1,531 @@
+{
+  "unit": "KP-05",
+  "title": "Rückwärts rechnen: fehlende Kante finden",
+  "leitidee": "L2",
+  "standards": [
+    "K2",
+    "K5"
+  ],
+  "wortspeicher": [
+    "die gesuchte Kante",
+    "umstellen",
+    "die dritte Wurzel",
+    "die Grundfläche",
+    "teilen"
+  ],
+  "can_do": {
+    "A": "Du findest eine fehlende Kante eines Quaders, wenn Volumen und zwei Kanten gegeben sind.",
+    "B": "Du findest die Kantenlänge eines Würfels aus Volumen oder Oberfläche.",
+    "C": "Du löst rückwärts gestellte Volumen- und Oberflächenaufgaben und begründest den Weg."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Fehlende Quaderkante finden",
+      "hinfuehrung": "Manchmal kennst du das Volumen und zwei Kanten und suchst die dritte. Dann drehst du die Volumenformel um.",
+      "erklaerung": [
+        "Aus V = a · b · c folgt: die fehlende Kante = V geteilt durch das Produkt der beiden anderen.",
+        "Rechne zuerst das Produkt der bekannten Kanten aus, dann teile das Volumen dadurch."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "quader",
+        "labels": {
+          "a": "a",
+          "b": "b",
+          "c": "?"
+        },
+        "alt": "Quader, bei dem eine Kante gesucht ist."
+      },
+      "beispiel": {
+        "aufgabe": "V = 60 cm³, a = 5 cm, b = 4 cm. Wie lang ist c?",
+        "schritte": [
+          "a · b = 5 · 4 = 20",
+          "c = V : (a·b) = 60 : 20",
+          "c = 3 cm"
+        ],
+        "ergebnis": "Die fehlende Kante c = 3 cm."
+      },
+      "merke": "Fehlende Kante = V : (Produkt der anderen beiden)."
+    },
+    "B": {
+      "titel": "Würfelkante aus Volumen oder Oberfläche",
+      "hinfuehrung": "Beim Würfel führt der Rückweg über eine Wurzel: aus dem Volumen die dritte Wurzel, aus der Oberfläche die Quadratwurzel.",
+      "erklaerung": [
+        "Aus V = a³ folgt a = ∛V (dritte Wurzel).",
+        "Aus O = 6 · a² folgt zuerst eine Fläche = O : 6, dann a = √(Fläche)."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Würfel hat V = 64 cm³. Wie lang ist die Kante?",
+        "schritte": [
+          "a = ∛V = ∛64",
+          "4 · 4 · 4 = 64",
+          "a = 4 cm"
+        ],
+        "ergebnis": "Die Kante ist a = 4 cm."
+      },
+      "merke": "Würfel: a = ∛V. Aus O: erst O : 6, dann √."
+    },
+    "C": {
+      "titel": "Rückwärtsaufgaben begründen",
+      "hinfuehrung": "Bei rückwärts gestellten Aufgaben zeigst du nicht nur das Ergebnis, sondern auch, welche Formel du wie umgestellt hast.",
+      "erklaerung": [
+        "Notiere die Ausgangsformel, stelle sie Schritt für Schritt nach der gesuchten Größe um und setze dann ein.",
+        "Eine Probe (Ergebnis wieder einsetzen) sichert den Weg ab."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Würfel hat O = 96 cm². Bestimme a und mach die Probe.",
+        "schritte": [
+          "O = 6·a²  →  a² = O : 6 = 96 : 6 = 16",
+          "a = √16 = 4 cm",
+          "Probe: 6 · 4² = 6 · 16 = 96 cm²  ✓"
+        ],
+        "ergebnis": "a = 4 cm (durch Probe bestätigt)."
+      },
+      "merke": "Formel notieren, umstellen, einsetzen, Probe machen."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "V = a · b · c   →   fehlende Kante = V : (andere zwei)",
+      "Würfel:  a = ∛V   (dritte Wurzel des Volumens)",
+      "Würfel:  eine Fläche = O : 6 , dann a = √(Fläche)",
+      "Höhe aus Volumen:  h = V : Grundfläche"
+    ],
+    "saetze": [
+      "Rückwärts heißt: durch das teilen, was gegeben ist.",
+      "Volumen → dritte Wurzel. Fläche → Quadratwurzel."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP05-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Quader hat das Volumen 60 cm³. Grundfläche 15 cm², Höhe gesucht. Wie hoch ist er?",
+      "answer": 4,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "V = Grundfläche · Höhe.",
+        "Höhe = V : Grundfläche = 60 : 15."
+      ],
+      "solution": "h = V : G = 60 cm³ : 15 cm² = 4 cm.",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 900,
+          "feedback": "Rückwärts wird geteilt: 60 : 15 = 4, nicht mal."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP05-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Quader hat V = 120 cm³. Zwei Kanten sind 6 cm und 5 cm. Wie lang ist die dritte Kante?",
+      "answer": 4,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Erst die zwei bekannten Kanten multiplizieren: 6 · 5 = 30.",
+        "Dann V : 30."
+      ],
+      "solution": "6 · 5 = 30 cm². Dritte Kante = 120 : 30 = 4 cm.",
+      "misconceptions": [
+        {
+          "id": "nur_durch_eine",
+          "value": 20,
+          "feedback": "Durch beide bekannten Kanten teilen: 120 : (6·5) = 120 : 30 = 4."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP05-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat das Volumen 27 cm³. Wie lang ist eine Kante?",
+      "answer": 3,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Welche Zahl mal sich selbst mal sich selbst ergibt 27?",
+        "3 · 3 · 3 = 27."
+      ],
+      "solution": "a = ∛27 = 3 cm, denn 3 · 3 · 3 = 27.",
+      "misconceptions": [
+        {
+          "id": "geteilt_durch_drei",
+          "value": 9,
+          "feedback": "Nicht 27 : 3. Gesucht ist die Zahl mit a·a·a = 27, also a = 3."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "wuerfel",
+        "wurzel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP05-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat das Volumen 8 cm³. Wie lang ist eine Kante?",
+      "answer": 2,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "a · a · a = 8.",
+        "2 · 2 · 2 = 8."
+      ],
+      "solution": "a = ∛8 = 2 cm.",
+      "misconceptions": [
+        {
+          "id": "geteilt_durch_drei",
+          "value": 2.67,
+          "feedback": "Nicht 8 : 3. Gesucht ist a mit a³ = 8, also a = 2."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "wuerfel",
+        "wurzel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP05-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Quader hat V = 200 cm³, Länge 10 cm, Breite 5 cm. Wie hoch ist er?",
+      "answer": 4,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Grundfläche = 10 · 5 = 50 cm².",
+        "h = 200 : 50."
+      ],
+      "solution": "h = V : (a · b) = 200 : 50 = 4 cm.",
+      "misconceptions": [
+        {
+          "id": "nur_durch_eine",
+          "value": 40,
+          "feedback": "Durch beide Kanten teilen: 200 : (10·5) = 4."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP05-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat das Volumen 64 cm³. Wie lang ist eine Kante?",
+      "answer": 4,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "a³ = 64.",
+        "4 · 4 · 4 = 64."
+      ],
+      "solution": "a = ∛64 = 4 cm.",
+      "misconceptions": [
+        {
+          "id": "geteilt_durch_drei",
+          "value": 21.33,
+          "feedback": "Nicht 64 : 3. Gesucht ist a mit a³ = 64, also a = 4."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "wuerfel",
+        "wurzel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP05-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Behälter fasst 12 Liter. Die Grundfläche misst 30 cm · 20 cm. Wie hoch ist er?",
+      "answer": 20,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "12 l = 12 000 cm³.",
+        "Grundfläche 30·20 = 600 cm², h = 12 000 : 600."
+      ],
+      "solution": "12 l = 12 000 cm³. Grundfläche = 30 · 20 = 600 cm².\nh = 12 000 : 600 = 20 cm.",
+      "misconceptions": [
+        {
+          "id": "liter_nicht_umgerechnet",
+          "value": 0.02,
+          "feedback": "12 Liter erst in cm³: · 1000 = 12 000 cm³, dann : 600 = 20 cm."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "quader",
+        "liter",
+        "bbr"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP05-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat die Oberfläche 54 cm². Wie lang ist eine Kante?",
+      "answer": 3,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Eine Fläche = O : 6 = 54 : 6 = 9 cm².",
+        "a = √9."
+      ],
+      "solution": "Eine Fläche = 54 : 6 = 9 cm². Dann a = √9 = 3 cm.",
+      "misconceptions": [
+        {
+          "id": "nicht_durch_sechs",
+          "value": 7.35,
+          "feedback": "Erst durch 6 teilen (6 Flächen): 54 : 6 = 9, dann √9 = 3."
+        },
+        {
+          "id": "wurzel_vergessen",
+          "value": 9,
+          "feedback": "9 cm² ist die Fläche. Die Kante ist √9 = 3 cm."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "wuerfel",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP05-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Quader hat V = 360 cm³. Länge 12 cm, Höhe 5 cm. Wie breit ist er?",
+      "answer": 6,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "12 · 5 = 60.",
+        "Breite = 360 : 60."
+      ],
+      "solution": "b = V : (a · c) = 360 : (12·5) = 360 : 60 = 6 cm.",
+      "misconceptions": [
+        {
+          "id": "nur_durch_eine",
+          "value": 30,
+          "feedback": "Durch beide bekannten Kanten: 360 : 60 = 6."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "quader",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP05-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine Schachtel soll 1 Liter fassen. Grundfläche 100 cm². Wie hoch muss sie sein?",
+      "answer": 10,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "1 l = 1000 cm³.",
+        "h = 1000 : 100."
+      ],
+      "solution": "1 l = 1000 cm³. h = 1000 : 100 = 10 cm.",
+      "misconceptions": [
+        {
+          "id": "liter_nicht_umgerechnet",
+          "value": 0.01,
+          "feedback": "1 Liter = 1000 cm³. h = 1000 : 100 = 10 cm."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "quader",
+        "liter",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP05-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat das Volumen 1000 cm³. Wie lang ist eine Kante?",
+      "answer": 10,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "a³ = 1000.",
+        "10 · 10 · 10 = 1000."
+      ],
+      "solution": "a = ∛1000 = 10 cm.",
+      "misconceptions": [
+        {
+          "id": "geteilt_durch_drei",
+          "value": 333.3,
+          "feedback": "Nicht 1000 : 3. Gesucht ist a mit a³ = 1000, also a = 10."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "wuerfel",
+        "wurzel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP05-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Quader mit quadratischer Grundfläche hat V = 500 cm³ und die Höhe 5 cm. Wie lang ist eine Grundkante?",
+      "answer": 10,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Grundfläche = V : Höhe = 500 : 5 = 100 cm².",
+        "Die Grundfläche ist ein Quadrat: a = √100."
+      ],
+      "solution": "Grundfläche = 500 : 5 = 100 cm². Sie ist quadratisch, also a = √100 = 10 cm.",
+      "misconceptions": [
+        {
+          "id": "wurzel_vergessen",
+          "value": 100,
+          "feedback": "100 cm² ist die Grundfläche. Die Kante ist √100 = 10 cm."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "quader",
+        "wurzel",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP05-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Aquarium (Grundfläche 40 cm · 25 cm) enthält 20 Liter Wasser. Wie hoch steht das Wasser?",
+      "answer": 20,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "20 l = 20 000 cm³.",
+        "Grundfläche = 40·25 = 1000 cm², h = 20 000 : 1000."
+      ],
+      "solution": "20 l = 20 000 cm³. Grundfläche = 40 · 25 = 1000 cm².\nWasserhöhe = 20 000 : 1000 = 20 cm.",
+      "misconceptions": [
+        {
+          "id": "liter_nicht_umgerechnet",
+          "value": 0.02,
+          "feedback": "20 l erst in cm³: 20 000. Dann : 1000 = 20 cm."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "quader",
+        "liter",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP05-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Würfel und ein Quader haben dasselbe Volumen 216 cm³. Der Würfel — wie lang ist seine Kante?",
+      "answer": 6,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Nur der Würfel wird gefragt.",
+        "a³ = 216, und 6 · 6 · 6 = 216."
+      ],
+      "solution": "a = ∛216 = 6 cm, denn 6 · 6 · 6 = 216.",
+      "misconceptions": [
+        {
+          "id": "geteilt_durch_drei",
+          "value": 72,
+          "feedback": "Nicht 216 : 3. Gesucht ist a mit a³ = 216, also a = 6."
+        }
+      ],
+      "tags": [
+        "rueckwaerts",
+        "wuerfel",
+        "wurzel",
+        "msa"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,601 @@
+{
+  "unit": "KP-03",
+  "title": "Oberfläche von Würfel und Quader",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K4"
+  ],
+  "wortspeicher": [
+    "die Oberfläche",
+    "die Seitenfläche",
+    "die Kantenlänge",
+    "das Rechteck",
+    "der Flächeninhalt"
+  ],
+  "can_do": {
+    "A": "Du berechnest die Oberfläche eines Würfels über 6 · a · a.",
+    "B": "Du berechnest die Oberfläche eines Quaders über die drei Flächenpaare.",
+    "C": "Du berechnest Oberflächen mit gemischten Einheiten und in Sachzusammenhängen."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Oberfläche des Würfels",
+      "hinfuehrung": "Die Oberfläche ist die Summe aller Außenflächen. Beim Würfel ist das leicht: sechs gleiche Quadrate.",
+      "erklaerung": [
+        "Ein Quadrat der Kante a hat den Flächeninhalt a · a = a².",
+        "Der Würfel hat 6 solche Quadrate, also O = 6 · a²."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "wuerfel",
+        "labels": {
+          "a": "a"
+        },
+        "alt": "Würfel mit Kante a."
+      },
+      "beispiel": {
+        "aufgabe": "Berechne die Oberfläche eines Würfels mit a = 5 cm.",
+        "schritte": [
+          "eine Fläche = a² = 5 cm · 5 cm = 25 cm²",
+          "O = 6 · 25 cm² = 150 cm²"
+        ],
+        "ergebnis": "O = 150 cm²."
+      },
+      "merke": "Würfel: O = 6 · a²."
+    },
+    "B": {
+      "titel": "Oberfläche des Quaders",
+      "hinfuehrung": "Der Quader hat drei verschiedene Flächenpaare. Du rechnest jedes Paar einmal aus und addierst.",
+      "erklaerung": [
+        "Gegenüberliegende Flächen sind gleich groß: vorn/hinten, links/rechts, oben/unten.",
+        "O = 2 · (a·b + a·c + b·c) – die drei Rechtecke einmal berechnen, verdoppeln, addieren."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "quader",
+        "labels": {
+          "a": "a",
+          "b": "b",
+          "c": "c"
+        },
+        "alt": "Quader mit Kanten a, b und c."
+      },
+      "beispiel": {
+        "aufgabe": "Quader mit a = 4 cm, b = 3 cm, c = 2 cm. Berechne O.",
+        "schritte": [
+          "a·b = 4·3 = 12,  a·c = 4·2 = 8,  b·c = 3·2 = 6",
+          "Summe = 12 + 8 + 6 = 26",
+          "O = 2 · 26 = 52 cm²"
+        ],
+        "ergebnis": "O = 52 cm²."
+      },
+      "merke": "Quader: O = 2 · (a·b + a·c + b·c)."
+    },
+    "C": {
+      "titel": "Oberflächen mit gemischten Einheiten",
+      "hinfuehrung": "In Sachaufgaben stehen die Kanten manchmal in verschiedenen Einheiten. Erst gleichnamig machen, dann rechnen.",
+      "erklaerung": [
+        "Wandle alle Längen in dieselbe Einheit um, bevor du multiplizierst – sonst stimmt das Ergebnis nicht.",
+        "Gib am Ende die passende Flächeneinheit an und prüfe die Größenordnung."
+      ],
+      "beispiel": {
+        "aufgabe": "Eine Kiste: a = 1 m, b = 80 cm, c = 50 cm. Oberfläche in m²?",
+        "schritte": [
+          "gleichnamig: b = 0,8 m, c = 0,5 m",
+          "a·b + a·c + b·c = 0,8 + 0,5 + 0,4 = 1,7",
+          "O = 2 · 1,7 = 3,4 m²"
+        ],
+        "ergebnis": "O = 3,4 m²."
+      },
+      "merke": "Erst alle Längen gleichnamig, dann die Oberfläche berechnen."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Würfel:  O = 6 · a²",
+      "Quader:  O = 2 · (a·b + a·c + b·c)",
+      "        = 2·a·b + 2·a·c + 2·b·c",
+      "Jede Fläche ist ein Rechteck: Länge · Breite."
+    ],
+    "saetze": [
+      "Ein Quader hat drei Paare gleicher Flächen.",
+      "Oberfläche ist eine Fläche → Einheit cm² oder m²."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP03-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat die Kantenlänge 3 cm. Wie groß ist eine Seitenfläche?",
+      "visual": {
+        "type": "koerper",
+        "form": "wuerfel",
+        "labels": {
+          "a": "a = 3 cm"
+        },
+        "alt": "Ein Würfel mit 3 cm Kantenlänge."
+      },
+      "answer": 9,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Eine Seitenfläche ist ein Quadrat.",
+        "a · a = 3 · 3."
+      ],
+      "solution": "Eine Fläche: a · a = 3 cm · 3 cm = 9 cm².",
+      "misconceptions": [
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 6,
+          "feedback": "3 · 2 = 6 ist falsch. Fläche heißt a · a = 3 · 3 = 9."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP03-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Wie viele gleiche Flächen hat ein Würfel, die du für die Oberfläche zusammenzählst?",
+      "answer": 6,
+      "unit_label": "Flächen",
+      "tolerance": 0.01,
+      "hints": [
+        "Denk an einen Spielwürfel.",
+        "Oben, unten und ringsum."
+      ],
+      "solution": "Ein Würfel hat 6 gleich große quadratische Flächen.",
+      "tags": [
+        "oberflaeche",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP03-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Berechne die Oberfläche eines Würfels mit a = 3 cm.",
+      "visual": {
+        "type": "koerper",
+        "form": "wuerfel",
+        "labels": {
+          "a": "a = 3 cm"
+        },
+        "alt": "Würfel, Kantenlänge 3 cm."
+      },
+      "answer": 54,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Eine Fläche ist 3 · 3 = 9 cm².",
+        "Davon gibt es 6 Stück."
+      ],
+      "solution": "O = 6 · a² = 6 · (3 cm)² = 6 · 9 cm² = 54 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_eine_flaeche",
+          "value": 9,
+          "feedback": "9 cm² ist nur eine Fläche. Der Würfel hat 6: 6 · 9 = 54."
+        },
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 36,
+          "feedback": "Nicht 6 · 3 · 2. Sondern 6 · (3 · 3) = 6 · 9 = 54."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP03-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Berechne die Oberfläche eines Würfels mit a = 5 cm.",
+      "answer": 150,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Eine Fläche: 5 · 5 = 25 cm².",
+        "6 · 25."
+      ],
+      "solution": "O = 6 · a² = 6 · 25 cm² = 150 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_eine_flaeche",
+          "value": 25,
+          "feedback": "25 cm² ist eine Fläche. Mal 6 nehmen: 150."
+        },
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 60,
+          "feedback": "6 · 5 · 2 ist falsch. Richtig: 6 · (5 · 5) = 150."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP03-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Quader mit a = 5 cm, b = 3 cm, c = 4 cm. Berechne zuerst die drei verschiedenen Rechtecke.",
+      "visual": {
+        "type": "koerper",
+        "form": "quader",
+        "labels": {
+          "a": "a = 5 cm",
+          "b": "b = 3 cm",
+          "c": "c = 4 cm"
+        },
+        "alt": "Quader 5 × 3 × 4 cm."
+      },
+      "fields": [
+        {
+          "label": "Boden a · b",
+          "answer": 15,
+          "tolerance": 0.01,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Vorderseite a · c",
+          "answer": 20,
+          "tolerance": 0.01,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Seite b · c",
+          "answer": 12,
+          "tolerance": 0.01,
+          "unit_label": "cm²"
+        }
+      ],
+      "hints": [
+        "Jede Fläche ist Länge · Breite.",
+        "a·b = 5·3, a·c = 5·4, b·c = 3·4."
+      ],
+      "solution": "a·b = 5·3 = 15 cm²\na·c = 5·4 = 20 cm²\nb·c = 3·4 = 12 cm²",
+      "tags": [
+        "oberflaeche",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP03-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Derselbe Quader (5 · 3 · 4 cm). Die drei Rechtecke sind 15, 20 und 12 cm². Wie groß ist die Oberfläche?",
+      "visual": {
+        "type": "koerper",
+        "form": "quader",
+        "labels": {
+          "a": "a = 5 cm",
+          "b": "b = 3 cm",
+          "c": "c = 4 cm"
+        },
+        "alt": "Quader 5 × 3 × 4 cm."
+      },
+      "answer": 94,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Jedes Rechteck kommt zweimal vor.",
+        "O = 2 · (15 + 20 + 12)."
+      ],
+      "solution": "O = 2 · (15 + 20 + 12) = 2 · 47 = 94 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_drei_flaechen",
+          "value": 47,
+          "feedback": "47 cm² sind erst drei Flächen. Jede gibt es zweimal: · 2 = 94."
+        },
+        {
+          "id": "volumen_statt_oberflaeche",
+          "value": 60,
+          "feedback": "60 cm³ wäre das Volumen (5·3·4). Gefragt ist die Oberfläche."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP03-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Berechne die Oberfläche eines Quaders mit a = 6 cm, b = 4 cm, c = 2 cm.",
+      "answer": 88,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "a·b = 24, a·c = 12, b·c = 8.",
+        "O = 2 · (24 + 12 + 8)."
+      ],
+      "solution": "O = 2 · (6·4 + 6·2 + 4·2) = 2 · (24 + 12 + 8) = 2 · 44 = 88 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_drei_flaechen",
+          "value": 44,
+          "feedback": "44 cm² sind drei Flächen. Verdoppeln: 88."
+        },
+        {
+          "id": "volumen_statt_oberflaeche",
+          "value": 48,
+          "feedback": "48 cm³ ist das Volumen. Gefragt ist die Oberfläche."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP03-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat die Kantenlänge 10 cm. Wie groß ist seine Oberfläche?",
+      "answer": 600,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Eine Fläche: 10 · 10 = 100 cm².",
+        "6 · 100."
+      ],
+      "solution": "O = 6 · (10 cm)² = 6 · 100 cm² = 600 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_eine_flaeche",
+          "value": 100,
+          "feedback": "100 cm² ist eine Fläche. Mal 6: 600."
+        },
+        {
+          "id": "volumen_statt_oberflaeche",
+          "value": 1000,
+          "feedback": "1000 cm³ ist das Volumen (10³). Oberfläche ist 6 · 100 = 600."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "wuerfel",
+        "bbr"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP03-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Berechne die Oberfläche eines Quaders mit a = 8 cm, b = 5 cm, c = 3 cm.",
+      "answer": 158,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "a·b = 40, a·c = 24, b·c = 15.",
+        "O = 2 · (40 + 24 + 15)."
+      ],
+      "solution": "O = 2 · (8·5 + 8·3 + 5·3) = 2 · (40 + 24 + 15) = 2 · 79 = 158 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_drei_flaechen",
+          "value": 79,
+          "feedback": "79 cm² sind drei Flächen. Verdoppeln: 158."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "quader",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP03-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein geschlossener Karton ist 40 cm lang, 30 cm breit und 20 cm hoch. Wie viel Pappe braucht man (Oberfläche)?",
+      "answer": 5200,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "a·b = 1200, a·c = 800, b·c = 600.",
+        "O = 2 · (1200 + 800 + 600)."
+      ],
+      "solution": "O = 2 · (40·30 + 40·20 + 30·20) = 2 · (1200 + 800 + 600) = 2 · 2600 = 5200 cm².",
+      "tags": [
+        "oberflaeche",
+        "quader",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP03-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Quader ist 12 cm lang, 8 cm breit und 5 cm hoch. Berechne die Oberfläche.",
+      "answer": 392,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "a·b = 96, a·c = 60, b·c = 40.",
+        "O = 2 · (96 + 60 + 40)."
+      ],
+      "solution": "O = 2 · (12·8 + 12·5 + 8·5) = 2 · (96 + 60 + 40) = 2 · 196 = 392 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_drei_flaechen",
+          "value": 196,
+          "feedback": "196 cm² sind drei Flächen. Verdoppeln: 392."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP03-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein oben offener Karton (ohne Deckel) misst 30 cm · 20 cm · 15 cm. Wie viel Pappe braucht man?",
+      "answer": 2100,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "Ohne Deckel fehlt eine a·b-Fläche.",
+        "O = 1·(a·b) + 2·(a·c) + 2·(b·c)."
+      ],
+      "solution": "Ohne Deckel: Boden 30·20 = 600, zwei Längsseiten 2·(30·15) = 900, zwei Stirnseiten 2·(20·15) = 600.\n600 + 900 + 600 = 2100 cm².",
+      "misconceptions": [
+        {
+          "id": "deckel_mitgezaehlt",
+          "value": 2700,
+          "feedback": "Der Karton ist oben offen — die obere Fläche (30·20 = 600) darf nicht mitgezählt werden: 2700 − 600 = 2100."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "quader",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP03-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "multi",
+      "prompt": "Ein Quader hat a = 1,2 m, b = 0,5 m, c = 0,4 m. Berechne die Oberfläche in m² und in cm².",
+      "fields": [
+        {
+          "label": "Oberfläche in m²",
+          "answer": 2.56,
+          "tolerance": 0.01,
+          "unit_label": "m²"
+        },
+        {
+          "label": "Oberfläche in cm²",
+          "answer": 25600,
+          "tolerance": 1,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "flaeche_faktor_100",
+              "value": 256,
+              "feedback": "Von m² nach cm² ist der Faktor 10 000, nicht 100: 1 m² = 100 cm · 100 cm = 10 000 cm²."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "a·b = 0,6, a·c = 0,48, b·c = 0,2.",
+        "1 m² = 10 000 cm²."
+      ],
+      "solution": "O = 2·(1,2·0,5 + 1,2·0,4 + 0,5·0,4) = 2·(0,6 + 0,48 + 0,2) = 2·1,28 = 2,56 m²\n2,56 m² · 10 000 = 25 600 cm²",
+      "tags": [
+        "oberflaeche",
+        "quader",
+        "einheiten",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP03-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Ein Würfel wird an jeder Kante doppelt so lang. Wie ändert sich die Oberfläche?",
+      "options": [
+        "Sie wird viermal so groß.",
+        "Sie wird doppelt so groß.",
+        "Sie wird achtmal so groß."
+      ],
+      "answer": 0,
+      "hints": [
+        "Jede Fläche ist a · a. Wird a doppelt, wird a·a …?",
+        "Probiere a = 1 und a = 2."
+      ],
+      "solution": "Jede Fläche ist a². Wird a verdoppelt, wird a² viermal so groß (2² = 4). Also auch die ganze Oberfläche. (Das Volumen dagegen achtfach — 2³.)",
+      "misconceptions": [
+        {
+          "id": "linear_gedacht",
+          "value": 1,
+          "feedback": "Die Oberfläche wächst nicht linear. Fläche ist a², also 2² = 4-fach."
+        },
+        {
+          "id": "volumen_faktor",
+          "value": 2,
+          "feedback": "8-fach gilt fürs Volumen (2³). Die Oberfläche ist a², also 4-fach."
+        }
+      ],
+      "tags": [
+        "oberflaeche",
+        "wuerfel",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

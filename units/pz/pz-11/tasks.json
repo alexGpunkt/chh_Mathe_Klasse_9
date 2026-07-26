@@ -17,6 +17,62 @@
     "B": "Du erkennst, ob K, p oder Z gesucht ist, und rechnest entsprechend.",
     "C": "Du stellst die Zinsformel nach jeder Größe um und wendest sie an."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Jahreszinsen mit der Formel",
+      "hinfuehrung": "Zinsen sind die „Miete“ fürs Geld. Für ein Jahr rechnest du sie wie einen Prozentwert vom Kapital.",
+      "erklaerung": [
+        "Das Kapital K ist der Grundwert, der Zinssatz p der Prozentsatz, die Zinsen Z der Prozentwert.",
+        "Formel: Z = K · p : 100."
+      ],
+      "beispiel": {
+        "aufgabe": "2000 € werden zu 3 % pro Jahr angelegt. Wie viel Zinsen in einem Jahr?",
+        "schritte": [
+          "Z = K · p : 100",
+          "Z = 2000 € · 3 : 100",
+          "Z = 60 €"
+        ],
+        "ergebnis": "Die Jahreszinsen betragen 60 €."
+      },
+      "merke": "Z = K · p : 100 (Kapital = Grundwert)."
+    },
+    "B": {
+      "titel": "K, p oder Z – was ist gesucht?",
+      "hinfuehrung": "Die Zinsformel hat drei Größen. Zuerst erkennst du, welche fehlt, dann stellst du passend um.",
+      "erklaerung": [
+        "Zinsen gesucht: Z = K · p : 100.",
+        "Zinssatz gesucht: p = Z : K · 100. Kapital gesucht: K = Z : p · 100."
+      ],
+      "beispiel": {
+        "aufgabe": "Für 2000 € gab es 60 € Zinsen. Wie hoch war der Zinssatz?",
+        "schritte": [
+          "gesucht: p",
+          "p = Z : K · 100",
+          "p = 60 : 2000 · 100 = 3 %"
+        ],
+        "ergebnis": "Der Zinssatz betrug 3 %."
+      },
+      "merke": "Erst die gesuchte Größe bestimmen, dann die passende Formel wählen."
+    },
+    "C": {
+      "titel": "Die Zinsformel nach jeder Größe umstellen",
+      "hinfuehrung": "Wer die Formel wirklich beherrscht, stellt sie selbst um – nach K, nach p, nach Z – und muss sich nur eine merken.",
+      "erklaerung": [
+        "Ausgangspunkt Z = K · p : 100.",
+        "Nach K: K = Z · 100 : p. Nach p: p = Z · 100 : K. Das Umstellen folgt den Regeln der Äquivalenzumformung – dieselbe Rechenoperation auf beiden Seiten."
+      ],
+      "beispiel": {
+        "aufgabe": "Wie viel Kapital bringt bei 4 % genau 100 € Jahreszinsen?",
+        "schritte": [
+          "Z = K · p : 100   | · 100",
+          "Z · 100 = K · p   | : p",
+          "K = Z · 100 : p = 100 · 100 : 4 = 2500 €"
+        ],
+        "ergebnis": "2500 € bringen bei 4 % genau 100 € Zinsen."
+      },
+      "merke": "Eine Formel genügt – der Rest ist Umstellen mit gleichen Schritten auf beiden Seiten."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "Z = K · p : 100        Zinsen für 1 Jahr",

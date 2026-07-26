@@ -18,6 +18,62 @@
     "B": "Du unterscheidest proportional und antiproportional und rechnest beide Dreisätze.",
     "C": "Du prüfst mit der Produktprobe und zeigst, dass „mehr → weniger“ allein nicht reicht."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Steigt der Wert oder fällt er?",
+      "hinfuehrung": "Nicht immer gilt „mehr → mehr“. Manchmal führt mehr zu weniger. Erst überlegen, dann rechnen.",
+      "erklaerung": [
+        "Proportional: mehr Arbeiter → mehr Lohn. Beide Größen wachsen zusammen.",
+        "Antiproportional: mehr Arbeiter → weniger Zeit. Die eine Größe wächst, die andere schrumpft."
+      ],
+      "beispiel": {
+        "aufgabe": "6 Maler brauchen 8 Tage. Wenn mehr Maler kommen: steigt oder fällt die Tagezahl?",
+        "schritte": [
+          "Mehr Maler teilen sich die Arbeit.",
+          "Jeder Einzelne muss weniger tun.",
+          "→ die Zeit wird kürzer"
+        ],
+        "ergebnis": "Mehr Maler → weniger Tage (antiproportional)."
+      },
+      "merke": "Mehr → mehr ist proportional. Mehr → weniger ist antiproportional."
+    },
+    "B": {
+      "titel": "Proportional oder antiproportional rechnen",
+      "hinfuehrung": "Erst entscheidest du die Art, dann rechnest du – der Weg ist bei beiden fast gleich, nur der zweite Pfeil dreht sich um.",
+      "erklaerung": [
+        "Proportional: auf 1 herunter (:), auf die Menge hoch (·).",
+        "Antiproportional: auf 1 zusammenrechnen bedeutet mal (·), auf die Menge dann geteilt (:). Der Gesamt­aufwand bleibt gleich (Arbeiter · Tage = konstant)."
+      ],
+      "beispiel": {
+        "aufgabe": "6 Maler brauchen 8 Tage. Wie lange brauchen 8 Maler?",
+        "schritte": [
+          "antiproportional: Maler · Tage bleibt gleich",
+          "6 Maler · 8 Tage = 48 „Maler-Tage“",
+          "48 : 8 Maler = 6 Tage"
+        ],
+        "ergebnis": "8 Maler brauchen 6 Tage."
+      },
+      "merke": "Antiproportional: Menge · Menge bleibt konstant."
+    },
+    "C": {
+      "titel": "Die Produktprobe",
+      "hinfuehrung": "„Mehr führt zu weniger“ allein macht eine Zuordnung noch nicht antiproportional. Der Test ist das Produkt.",
+      "erklaerung": [
+        "Bei echter Antiproportionalität ist das Produkt beider Werte in jeder Spalte gleich. Das ist die Produktprobe.",
+        "Steht in einer Spalte ein anderes Produkt, ist die Zuordnung weder proportional noch antiproportional – dann darfst du nicht so rechnen."
+      ],
+      "beispiel": {
+        "aufgabe": "Prüfe, ob die Tabelle antiproportional ist: 2 Pumpen – 6 h, 3 Pumpen – 4 h, 4 Pumpen – 3 h.",
+        "schritte": [
+          "2 · 6 = 12",
+          "3 · 4 = 12",
+          "4 · 3 = 12   → alle Produkte gleich"
+        ],
+        "ergebnis": "Produkt konstant (12) → die Zuordnung ist antiproportional."
+      },
+      "merke": "Antiproportional ⇔ das Produkt beider Größen ist konstant."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "proportional:      mehr → mehr    Quotient y : x ist konstant",

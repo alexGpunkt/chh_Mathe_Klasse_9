@@ -1,0 +1,542 @@
+{
+  "unit": "SK-11",
+  "title": "Zusammengesetzte Körper & Anwendungen",
+  "leitidee": "L3",
+  "standards": [
+    "K3",
+    "K2"
+  ],
+  "wortspeicher": [
+    "zusammengesetzt",
+    "die Halbkugel",
+    "der Aufsatz",
+    "das Silo",
+    "aufteilen",
+    "addieren"
+  ],
+  "can_do": {
+    "A": "Du zerlegst einen zusammengesetzten Körper in Spitz-, Rund- und Säulenkörper.",
+    "B": "Du addierst die Teilvolumen (z. B. Eistüte, Silo).",
+    "C": "Du löst mehrschrittige Anwendungsaufgaben mit Spitzkörpern."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Zusammengesetzte Körper zerlegen",
+      "hinfuehrung": "Eine Eistüte oder ein Silo besteht aus mehreren Grundkörpern. Erkenne die Teile und ihre Formeln.",
+      "erklaerung": [
+        "Zerlege den Körper in Spitzkörper (Kegel, Pyramide), Rundkörper (Halbkugel) und Säulen (Zylinder, Prisma).",
+        "Ordne jedem Teil seine Volumenformel zu, bevor du rechnest."
+      ],
+      "beispiel": {
+        "aufgabe": "Eine Eistüte ist ein Kegel mit Halbkugel oben. In welche Teile zerlegst du?",
+        "schritte": [
+          "unten: Kegel → V = (π·r²·h):3",
+          "oben: Halbkugel → halbes Kugelvolumen",
+          "Gesamt = Kegel + Halbkugel"
+        ],
+        "ergebnis": "Kegel plus Halbkugel – beide Volumen addieren."
+      },
+      "merke": "Zusammengesetzt: in Grundkörper zerlegen, Formeln zuordnen."
+    },
+    "B": {
+      "titel": "Teilvolumen addieren",
+      "hinfuehrung": "Nach dem Zerlegen berechnest du jedes Teilvolumen und addierst alles zum Gesamtvolumen.",
+      "erklaerung": [
+        "Halbkugel = halbes Kugelvolumen = (4 · π · r³) : 3 : 2 = (2 · π · r³) : 3.",
+        "Rechne die Teile getrennt und achte auf gemeinsame Einheiten."
+      ],
+      "beispiel": {
+        "aufgabe": "Kegel (r = 3, h = 8) mit Halbkugel (r = 3) oben. Gesamtvolumen (π ≈ 3,14)?",
+        "schritte": [
+          "Kegel = (3,14 · 9 · 8) : 3 = 226,08 : 3 = 75,36 cm³",
+          "Halbkugel = (2 · 3,14 · 27) : 3 = 169,56 : 3 = 56,52 cm³",
+          "V = 75,36 + 56,52 = 131,88 cm³"
+        ],
+        "ergebnis": "V ≈ 131,88 cm³."
+      },
+      "merke": "Halbkugel = halbes Kugelvolumen; Teile addieren."
+    },
+    "C": {
+      "titel": "Mehrschrittige Anwendungsaufgaben",
+      "hinfuehrung": "Bei komplexen Aufgaben kommen Pythagoras, mehrere Körper und Einheitenwechsel zusammen. Struktur ist alles.",
+      "erklaerung": [
+        "Plane: Welche fehlenden Größen brauche ich (oft s oder h mit Pythagoras)? Welche Teilkörper?",
+        "Rechne Schritt für Schritt, halte Zwischenergebnisse fest und prüfe die Größenordnung am Ende."
+      ],
+      "beispiel": {
+        "aufgabe": "Silo: Zylinder (r = 2 m, h = 5 m) mit Kegeldach (r = 2 m, h = 1,5 m). Volumen (π ≈ 3,14)?",
+        "schritte": [
+          "Zylinder = 3,14 · 4 · 5 = 62,8 m³",
+          "Kegel = (3,14 · 4 · 1,5) : 3 = 18,84 : 3 = 6,28 m³",
+          "V = 62,8 + 6,28 = 69,08 m³"
+        ],
+        "ergebnis": "V ≈ 69,08 m³."
+      },
+      "merke": "Erst fehlende Größen, dann Teilkörper, dann addieren."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Kegel V = (π·r²·h):3      Zylinder V = π·r²·h",
+      "Pyramide V = (G·h):3      Prisma V = G·h",
+      "Kugel V = (4·π·r³):3      Halbkugel = Hälfte davon",
+      "Zusammengesetzt: Teile bestimmen, Volumen addieren"
+    ],
+    "saetze": [
+      "Zeichne die Trennlinie zwischen den Teilkörpern.",
+      "Gleiche Einheiten? Erst prüfen, dann addieren."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "SK11-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Körper besteht aus einem Zylinder (60 cm³) mit einem Kegel obendrauf (20 cm³). Gesamtvolumen?",
+      "answer": 80,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "Teilvolumen addieren.",
+        "60 + 20."
+      ],
+      "solution": "V = 60 + 20 = 80 cm³.",
+      "tags": [
+        "zusammengesetzt",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Eine Eistüte: Kegel (94,2 cm³) mit einer Eis-Halbkugel obendrauf (56,52 cm³). Gesamtvolumen (zwei Nachkommastellen)?",
+      "answer": 150.72,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "Kegel + Halbkugel addieren.",
+        "94,2 + 56,52."
+      ],
+      "solution": "V = 94,2 + 56,52 = 150,72 cm³.",
+      "misconceptions": [
+        {
+          "id": "nur_ein_teil",
+          "value": 94.2,
+          "feedback": "Die Eiskugel (Halbkugel) dazu: 94,2 + 56,52 = 150,72."
+        }
+      ],
+      "tags": [
+        "zusammengesetzt",
+        "kegel",
+        "kugel",
+        "sachaufgabe"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "In welche zwei Grundkörper zerlegst du ein 'Haus' (Quader mit Satteldach)?",
+      "options": [
+        "Quader + Dreiecksprisma",
+        "Quader + Pyramide",
+        "Zylinder + Kegel"
+      ],
+      "answer": 0,
+      "hints": [
+        "Das Satteldach hat eine dreieckige Stirnseite.",
+        "Es zieht sich als Dreieck durch die Länge."
+      ],
+      "solution": "Das Haus ist ein Quader (Wände) plus ein Dreiecksprisma (Satteldach). Ein Zeltdach mit Spitze wäre eine Pyramide.",
+      "misconceptions": [
+        {
+          "id": "dach_als_pyramide",
+          "value": 1,
+          "feedback": "Ein Satteldach ist ein Dreiecksprisma, keine Pyramide (die hätte eine einzelne Spitze)."
+        }
+      ],
+      "tags": [
+        "zusammengesetzt",
+        "prisma"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Silo: Zylinder (V = 62,8 cm³) mit Kegeldach (V = 12,56 cm³). Gesamtvolumen (zwei Nachkommastellen)?",
+      "answer": 75.36,
+      "unit_label": "cm³",
+      "tolerance": 0.3,
+      "hints": [
+        "Addieren.",
+        "62,8 + 12,56."
+      ],
+      "solution": "V = 62,8 + 12,56 = 75,36 cm³.",
+      "tags": [
+        "zusammengesetzt",
+        "zylinder",
+        "kegel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Eistüte: Kegel r = 3 cm, h = 10 cm, dazu eine Eis-Halbkugel r = 3 cm (π ≈ 3,14).",
+      "visual": {
+        "type": "koerper",
+        "form": "kegel",
+        "labels": {
+          "r": "r = 3 cm",
+          "h": "h = 10 cm",
+          "s": ""
+        },
+        "alt": "Kegel der Eistüte."
+      },
+      "fields": [
+        {
+          "label": "Volumen Kegel (zwei NKS)",
+          "answer": 94.2,
+          "tolerance": 0.6,
+          "unit_label": "cm³"
+        },
+        {
+          "label": "Volumen Halbkugel (zwei NKS)",
+          "answer": 56.52,
+          "tolerance": 0.6,
+          "unit_label": "cm³",
+          "misconceptions": [
+            {
+              "id": "ganze_kugel",
+              "value": 113.04,
+              "feedback": "Nur eine HALBe Kugel: 113,04 : 2 = 56,52."
+            }
+          ]
+        },
+        {
+          "label": "Gesamt",
+          "answer": 150.72,
+          "tolerance": 1,
+          "unit_label": "cm³"
+        }
+      ],
+      "hints": [
+        "Kegel = (3,14·9·10):3.",
+        "Halbkugel = (4·3,14·27):3 : 2. Addieren."
+      ],
+      "solution": "Kegel = (3,14·9·10):3 = 94,2 cm³.\nHalbkugel = 113,04 : 2 = 56,52 cm³.\nGesamt = 150,72 cm³.",
+      "tags": [
+        "zusammengesetzt",
+        "kegel",
+        "kugel",
+        "sachaufgabe"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "multi",
+      "prompt": "Turm: Zylinder r = 2 m, h = 5 m mit Kegeldach r = 2 m, h = 3 m (π ≈ 3,14).",
+      "fields": [
+        {
+          "label": "Volumen Zylinder (zwei NKS)",
+          "answer": 62.8,
+          "tolerance": 0.5,
+          "unit_label": "m³"
+        },
+        {
+          "label": "Volumen Kegeldach (zwei NKS)",
+          "answer": 12.56,
+          "tolerance": 0.3,
+          "unit_label": "m³"
+        },
+        {
+          "label": "Gesamt",
+          "answer": 75.36,
+          "tolerance": 0.5,
+          "unit_label": "m³"
+        }
+      ],
+      "hints": [
+        "Zylinder = 3,14·4·5.",
+        "Kegel = (3,14·4·3):3. Addieren."
+      ],
+      "solution": "Zylinder = 3,14·4·5 = 62,8 m³. Kegel = (3,14·4·3):3 = 12,56 m³.\nGesamt = 75,36 m³.",
+      "tags": [
+        "zusammengesetzt",
+        "zylinder",
+        "kegel",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Haus: Quader 10·6·4 m³ mit Dreiecksprisma-Dach (Grundfläche 6 m², Länge 10 m). Gesamtvolumen (m³)?",
+      "answer": 300,
+      "unit_label": "m³",
+      "tolerance": 1,
+      "hints": [
+        "Quader = 10·6·4 = 240. Dach = 6·10 = 60.",
+        "Addieren."
+      ],
+      "solution": "Quader = 10·6·4 = 240 m³. Dach (Prisma) = 6·10 = 60 m³.\nGesamt = 240 + 60 = 300 m³.",
+      "misconceptions": [
+        {
+          "id": "nur_ein_teil",
+          "value": 240,
+          "feedback": "Das Dach (60 m³) dazu: 240 + 60 = 300."
+        }
+      ],
+      "tags": [
+        "zusammengesetzt",
+        "quader",
+        "prisma",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Bleistift: Zylinder r = 0,5 cm, h = 14 cm mit Kegelspitze r = 0,5 cm, h = 1,5 cm (π ≈ 3,14). Gesamtvolumen (zwei NKS)?",
+      "answer": 11.38,
+      "unit_label": "cm³",
+      "tolerance": 0.3,
+      "hints": [
+        "Zylinder = 3,14·0,25·14 = 10,99.",
+        "Kegel = (3,14·0,25·1,5):3 = 0,3925. Addieren."
+      ],
+      "solution": "Zylinder = 3,14·0,25·14 = 10,99 cm³. Kegel = (3,14·0,25·1,5):3 ≈ 0,39 cm³.\nGesamt = 11,3825 cm³ ≈ 11,38 cm³.",
+      "tags": [
+        "zusammengesetzt",
+        "zylinder",
+        "kegel",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Zeltbau: Quader-Unterbau 4·4·2 m³ mit quadratischer Pyramide obendrauf (a = 4 m, h = 3 m). Gesamtvolumen (m³)?",
+      "answer": 48,
+      "unit_label": "m³",
+      "tolerance": 0.5,
+      "hints": [
+        "Quader = 4·4·2 = 32. Pyramide = (16·3):3 = 16.",
+        "Addieren."
+      ],
+      "solution": "Quader = 32 m³. Pyramide = (4²·3):3 = 48:3 = 16 m³.\nGesamt = 32 + 16 = 48 m³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 80,
+          "feedback": "Bei der Pyramide durch 3: (16·3):3 = 16, dann + 32 = 48."
+        }
+      ],
+      "tags": [
+        "zusammengesetzt",
+        "quader",
+        "pyramide",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Obelisk: Quadersäule 2·2·9 m³ mit Pyramidenspitze (a = 2 m, h = 1,5 m). Gesamtvolumen (m³)?",
+      "answer": 38,
+      "unit_label": "m³",
+      "tolerance": 0.5,
+      "hints": [
+        "Quader = 2·2·9 = 36. Pyramide = (4·1,5):3 = 2.",
+        "Addieren."
+      ],
+      "solution": "Quader = 36 m³. Pyramide = (2²·1,5):3 = 6:3 = 2 m³.\nGesamt = 36 + 2 = 38 m³.",
+      "tags": [
+        "zusammengesetzt",
+        "quader",
+        "pyramide",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Spielzeug: Zylinder r = 2 cm, h = 8 cm mit Halbkugel r = 2 cm oben (π ≈ 3,14). Gesamtvolumen (zwei NKS)?",
+      "answer": 117.23,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "Zylinder = 3,14·4·8 = 100,48.",
+        "Halbkugel = (4·3,14·8):3 :2 = 16,75. Addieren."
+      ],
+      "solution": "Zylinder = 3,14·4·8 = 100,48 cm³. Halbkugel = (4·3,14·8):3 : 2 = 33,49 : 2 = 16,75 cm³.\nGesamt ≈ 117,23 cm³.",
+      "misconceptions": [
+        {
+          "id": "ganze_kugel",
+          "value": 133.97,
+          "feedback": "Oben ist nur eine HALBe Kugel: 33,49 : 2 = 16,75."
+        }
+      ],
+      "tags": [
+        "zusammengesetzt",
+        "zylinder",
+        "kugel",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Eine Kapsel: Zylinder r = 3 cm, h = 10 cm mit zwei Halbkugeln (r = 3 cm) an den Enden (π ≈ 3,14). Zwei Halbkugeln = eine ganze Kugel. Gesamtvolumen (zwei NKS)?",
+      "answer": 395.64,
+      "unit_label": "cm³",
+      "tolerance": 3,
+      "hints": [
+        "Zylinder = 3,14·9·10 = 282,6.",
+        "Zwei Halbkugeln = eine Kugel = 113,04. Addieren."
+      ],
+      "solution": "Zylinder = 3,14·9·10 = 282,6 cm³. Zwei Halbkugeln = ganze Kugel = 113,04 cm³.\nGesamt = 282,6 + 113,04 = 395,64 cm³.",
+      "misconceptions": [
+        {
+          "id": "nur_eine_halbkugel",
+          "value": 339.12,
+          "feedback": "Es sind ZWEI Halbkugeln (= eine ganze Kugel = 113,04), nicht eine."
+        }
+      ],
+      "tags": [
+        "zusammengesetzt",
+        "zylinder",
+        "kugel",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK11-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Sektglas (Kegel): d = 6 cm, h = 8 cm (π ≈ 3,14). Wie viele Milliliter fasst es (ganze ml)?",
+      "answer": 75,
+      "unit_label": "ml",
+      "tolerance": 2,
+      "hints": [
+        "r = 3 cm.",
+        "V = (3,14·9·8):3 = 75,36 cm³ = ml."
+      ],
+      "solution": "r = 3 cm. V = (3,14·9·8):3 = 226,08:3 = 75,36 ≈ 75 ml.",
+      "misconceptions": [
+        {
+          "id": "durchmesser_als_radius",
+          "value": 301,
+          "feedback": "Erst r = d:2 = 3 cm."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "volumen",
+        "durchmesser",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "SK11-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Kegel (V = 94,2 cm³) und ein Zylinder gleicher Grundfläche und Höhe: Wie groß ist das Zylindervolumen?",
+      "answer": 282.6,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "Der Kegel ist ein Drittel des Zylinders.",
+        "Zylinder = 3 · Kegel."
+      ],
+      "solution": "Ein Kegel ist genau ⅓ des Zylinders gleicher Grundfläche und Höhe.\nZylinder = 3 · 94,2 = 282,6 cm³.",
+      "misconceptions": [
+        {
+          "id": "gleich_gross",
+          "value": 94.2,
+          "feedback": "Der Kegel ist nur ⅓. Der Zylinder ist dreimal so groß: 3·94,2 = 282,6."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "zylinder",
+        "volumen",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

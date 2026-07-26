@@ -1,0 +1,615 @@
+{
+  "unit": "KP-01",
+  "title": "Körper erkennen und benennen",
+  "leitidee": "L3",
+  "standards": [
+    "K4",
+    "K6"
+  ],
+  "wortspeicher": [
+    "der Körper",
+    "die Ecke",
+    "die Kante",
+    "die Fläche",
+    "die Grundfläche",
+    "der Mantel",
+    "das Netz"
+  ],
+  "can_do": {
+    "A": "Du erkennst Würfel, Quader, Prisma und Zylinder und zählst Ecken, Kanten und Flächen.",
+    "B": "Du ordnest jedem Körper seine Grundfläche und sein Netz zu und beschreibst die Mantelfläche.",
+    "C": "Du schließt von der Grundfläche eines Prismas auf die Anzahl seiner Flächen, Kanten und Ecken."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Körper erkennen und benennen",
+      "hinfuehrung": "Würfel, Quader, Prisma, Zylinder – jeder Körper hat einen Namen und lässt sich an seinen Ecken, Kanten und Flächen erkennen.",
+      "erklaerung": [
+        "Eine Fläche ist eine Begrenzung (z. B. eine Seite des Würfels), eine Kante die Linie, wo zwei Flächen zusammenstoßen, eine Ecke der Punkt, wo Kanten zusammenlaufen.",
+        "Zähle systematisch und immer in derselben Reihenfolge, damit du nichts doppelt oder gar nicht zählst."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "wuerfel",
+        "labels": {
+          "a": "a"
+        },
+        "alt": "Schrägbild eines Würfels."
+      },
+      "beispiel": {
+        "aufgabe": "Wie viele Flächen, Kanten und Ecken hat ein Würfel?",
+        "schritte": [
+          "Flächen: oben, unten, 4 Seiten = 6",
+          "Kanten: 4 oben, 4 unten, 4 senkrecht = 12",
+          "Ecken: 4 oben, 4 unten = 8"
+        ],
+        "ergebnis": "Würfel: 6 Flächen, 12 Kanten, 8 Ecken."
+      },
+      "merke": "Würfel und Quader: 6 Flächen, 12 Kanten, 8 Ecken."
+    },
+    "B": {
+      "titel": "Grundfläche, Netz und Mantel",
+      "hinfuehrung": "Jeder Säulenkörper hat eine Grundfläche, die sich unten und oben wiederholt. Faltet man den Körper auf, entsteht sein Netz.",
+      "erklaerung": [
+        "Die Grundfläche bestimmt den Körpernamen: Dreieck → Dreiecksprisma, Kreis → Zylinder.",
+        "Der Mantel ist die Fläche rundherum zwischen den beiden Grundflächen. Im Netz liegt er als zusammenhängendes Rechteck (bzw. gebogenes Rechteck beim Zylinder) neben den Grundflächen."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "prisma",
+        "labels": {
+          "g": "g",
+          "hd": "h_d",
+          "h": "h"
+        },
+        "alt": "Schrägbild eines Dreiecksprismas mit Grundfläche und Länge."
+      },
+      "beispiel": {
+        "aufgabe": "Beschreibe Grundfläche und Mantel eines Dreiecksprismas.",
+        "schritte": [
+          "Grundfläche: das Dreieck (vorn und hinten gleich)",
+          "Mantel: 3 Rechtecke an den Dreiecksseiten",
+          "Netz: 2 Dreiecke + 3 Rechtecke"
+        ],
+        "ergebnis": "Grundfläche = Dreieck, Mantel = 3 Rechtecke; das Netz zeigt beides nebeneinander."
+      },
+      "merke": "Die Grundfläche gibt dem Prisma seinen Namen; der Mantel ist die Fläche rundherum."
+    },
+    "C": {
+      "titel": "Von der Grundfläche auf Flächen, Kanten, Ecken schließen",
+      "hinfuehrung": "Bei einem Prisma musst du nicht jede Kante zählen. Aus der Eckenzahl der Grundfläche folgt alles mit einer festen Regel.",
+      "erklaerung": [
+        "Hat die Grundfläche n Ecken, so hat das Prisma: n + 2 Flächen (Mantel + 2 Grundflächen), 3 · n Kanten und 2 · n Ecken.",
+        "Diese Regel gilt, weil sich die Grundfläche oben und unten wiederholt und der Mantel n Seitenflächen bildet."
+      ],
+      "beispiel": {
+        "aufgabe": "Wie viele Flächen, Kanten und Ecken hat ein Sechseck-Prisma (n = 6)?",
+        "schritte": [
+          "Flächen = n + 2 = 6 + 2 = 8",
+          "Kanten  = 3 · n = 3 · 6 = 18",
+          "Ecken   = 2 · n = 2 · 6 = 12"
+        ],
+        "ergebnis": "8 Flächen, 18 Kanten, 12 Ecken."
+      },
+      "merke": "n-Eck-Prisma: n + 2 Flächen, 3n Kanten, 2n Ecken."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Prisma mit n-eckiger Grundfläche:",
+      "  Flächen = n + 2      Kanten = 3 · n      Ecken = 2 · n",
+      "Würfel/Quader:  6 Flächen · 12 Kanten · 8 Ecken",
+      "Zylinder: 2 Kreise + 1 gebogener Mantel"
+    ],
+    "saetze": [
+      "Die Grundfläche liegt unten und oben — deckungsgleich.",
+      "Der Mantel verbindet die beiden Grundflächen."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP01-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Ein Körper hat 6 gleich große quadratische Flächen. Wie heißt er?",
+      "visual": {
+        "type": "koerper",
+        "form": "wuerfel",
+        "labels": {
+          "a": ""
+        },
+        "alt": "Ein Würfel mit sechs gleichen quadratischen Flächen."
+      },
+      "options": [
+        "Würfel",
+        "Quader",
+        "Zylinder"
+      ],
+      "answer": 0,
+      "hints": [
+        "Alle Flächen sind gleich große Quadrate.",
+        "Ein Quader hat auch 6 Flächen, aber nicht alle gleich."
+      ],
+      "solution": "6 gleiche Quadrate → Würfel. Der Würfel ist der Sonderfall des Quaders, bei dem alle Kanten gleich lang sind.",
+      "misconceptions": [
+        {
+          "id": "quader_statt_wuerfel",
+          "value": 1,
+          "feedback": "Ein Quader hat 6 Flächen, aber nur beim Würfel sind alle gleich große Quadrate."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Wie viele Flächen hat ein Quader?",
+      "visual": {
+        "type": "koerper",
+        "form": "quader",
+        "labels": {
+          "a": "",
+          "b": "",
+          "c": ""
+        },
+        "alt": "Ein Quader."
+      },
+      "options": [
+        "6",
+        "8",
+        "12"
+      ],
+      "answer": 0,
+      "hints": [
+        "Denk an einen Karton: oben, unten und die vier Seiten.",
+        "Oben + unten = 2, ringsum = 4."
+      ],
+      "solution": "Ein Quader hat 6 Flächen: Boden, Deckel und 4 Seitenflächen.",
+      "misconceptions": [
+        {
+          "id": "ecken_statt_flaechen",
+          "value": 1,
+          "feedback": "8 ist die Zahl der Ecken, nicht der Flächen."
+        },
+        {
+          "id": "kanten_statt_flaechen",
+          "value": 2,
+          "feedback": "12 ist die Zahl der Kanten."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Wie viele Kanten hat ein Quader?",
+      "options": [
+        "12",
+        "8",
+        "6"
+      ],
+      "answer": 0,
+      "hints": [
+        "Kanten sind die Linien, an denen zwei Flächen zusammenstoßen.",
+        "Unten 4, oben 4, senkrecht 4."
+      ],
+      "solution": "Ein Quader hat 12 Kanten: 4 unten, 4 oben, 4 senkrechte.",
+      "misconceptions": [
+        {
+          "id": "ecken_statt_kanten",
+          "value": 1,
+          "feedback": "8 sind die Ecken. Kanten sind die Linien dazwischen."
+        },
+        {
+          "id": "flaechen_statt_kanten",
+          "value": 2,
+          "feedback": "6 sind die Flächen."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Wie viele Ecken hat ein Quader?",
+      "options": [
+        "8",
+        "6",
+        "12"
+      ],
+      "answer": 0,
+      "hints": [
+        "Ecken sind die Punkte, an denen drei Kanten zusammentreffen.",
+        "Unten 4, oben 4."
+      ],
+      "solution": "Ein Quader hat 8 Ecken: 4 unten und 4 oben.",
+      "misconceptions": [
+        {
+          "id": "flaechen_statt_ecken",
+          "value": 1,
+          "feedback": "6 sind die Flächen, nicht die Ecken."
+        },
+        {
+          "id": "kanten_statt_ecken",
+          "value": 2,
+          "feedback": "12 sind die Kanten."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Welche Form hat die Grundfläche eines Zylinders?",
+      "visual": {
+        "type": "koerper",
+        "form": "zylinder",
+        "labels": {
+          "r": "r",
+          "h": "h"
+        },
+        "alt": "Ein Zylinder mit kreisförmiger Grundfläche."
+      },
+      "options": [
+        "ein Kreis",
+        "ein Rechteck",
+        "ein Dreieck"
+      ],
+      "answer": 0,
+      "hints": [
+        "Stell dir eine Konservendose von unten vor.",
+        "Der Deckel und der Boden sind rund."
+      ],
+      "solution": "Grund- und Deckfläche eines Zylinders sind Kreise. Der Mantel ist gebogen.",
+      "misconceptions": [
+        {
+          "id": "mantel_als_grundflaeche",
+          "value": 1,
+          "feedback": "Das Rechteck ist der aufgerollte Mantel, nicht die Grundfläche."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "zylinder",
+        "grundflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "assign",
+      "prompt": "Ordne jedem Körper seine Grundfläche zu.",
+      "slots": [
+        "Würfel",
+        "Dreiecksprisma",
+        "Zylinder"
+      ],
+      "values": [
+        "Quadrat",
+        "Dreieck",
+        "Kreis"
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "hints": [
+        "Die Grundfläche bestimmt den Namen des Prismas.",
+        "Ein Zylinder ist rund."
+      ],
+      "solution": "Würfel → Quadrat, Dreiecksprisma → Dreieck, Zylinder → Kreis.",
+      "tags": [
+        "koerper",
+        "grundflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Was gilt für die beiden Grundflächen eines Prismas?",
+      "options": [
+        "Sie sind deckungsgleich und parallel.",
+        "Sie sind verschieden groß.",
+        "Sie sind gebogen."
+      ],
+      "answer": 0,
+      "hints": [
+        "Ein Prisma entsteht, indem man eine Fläche gerade nach oben schiebt.",
+        "Oben und unten sieht es gleich aus."
+      ],
+      "solution": "Bei einem geraden Prisma sind Grund- und Deckfläche deckungsgleich und liegen parallel übereinander.",
+      "misconceptions": [
+        {
+          "id": "grundflaechen_verschieden",
+          "value": 1,
+          "feedback": "Bei einem Prisma sind beide Grundflächen gleich groß — sonst wäre es eine Pyramide oder ein Kegelstumpf."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "prisma"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Aus wie vielen Quadraten besteht das Netz eines Würfels?",
+      "options": [
+        "6",
+        "4",
+        "8"
+      ],
+      "answer": 0,
+      "hints": [
+        "Das Netz ist der aufgeklappte Körper.",
+        "So viele Flächen hat der Würfel."
+      ],
+      "solution": "Der Würfel hat 6 Flächen, das Netz besteht aus 6 Quadraten.",
+      "misconceptions": [
+        {
+          "id": "kanten_im_netz",
+          "value": 2,
+          "feedback": "8 wären die Ecken. Gezählt werden die Flächen: 6."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "netz",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welcher Körper hat eine gekrümmte Mantelfläche?",
+      "options": [
+        "Zylinder",
+        "Quader",
+        "Dreiecksprisma"
+      ],
+      "answer": 0,
+      "hints": [
+        "Gekrümmt heißt: gebogen, nicht eben.",
+        "Runde Körper haben keine ebenen Seitenflächen."
+      ],
+      "solution": "Nur der Zylinder hat einen gebogenen Mantel. Quader und Prisma bestehen aus ebenen Flächen.",
+      "tags": [
+        "koerper",
+        "zylinder",
+        "mantel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "assign",
+      "prompt": "Ordne jedem Körper die Anzahl seiner Flächen zu.",
+      "slots": [
+        "Würfel",
+        "Dreiecksprisma",
+        "Zylinder"
+      ],
+      "values": [
+        "6 Flächen",
+        "5 Flächen",
+        "3 Flächen"
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "hints": [
+        "Dreiecksprisma: 2 Dreiecke + 3 Rechtecke.",
+        "Zylinder: 2 Kreise + 1 Mantel."
+      ],
+      "solution": "Würfel 6, Dreiecksprisma 2 + 3 = 5, Zylinder 2 + 1 = 3.",
+      "tags": [
+        "koerper"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Ein gerades Prisma hat eine fünfeckige Grundfläche. Wie viele Flächen hat es insgesamt?",
+      "options": [
+        "7",
+        "5",
+        "10"
+      ],
+      "answer": 0,
+      "hints": [
+        "2 Fünfecke (oben, unten) und für jede Seite des Fünfecks ein Rechteck.",
+        "2 + 5 = ?"
+      ],
+      "solution": "Grund- und Deckfläche = 2 Fünfecke. Dazu 5 Rechtecke am Mantel. 2 + 5 = 7 Flächen.",
+      "misconceptions": [
+        {
+          "id": "mantel_vergessen",
+          "value": 1,
+          "feedback": "5 sind nur die Mantelrechtecke. Grund- und Deckfläche fehlen: + 2."
+        },
+        {
+          "id": "ecken_statt_flaechen",
+          "value": 2,
+          "feedback": "10 sind die Ecken (2 · 5), nicht die Flächen."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "prisma",
+        "begruendung"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Prisma hat eine sechseckige Grundfläche. Wie viele Kanten hat es?",
+      "answer": 18,
+      "unit_label": "Kanten",
+      "tolerance": 0.01,
+      "hints": [
+        "Oben 6 Kanten, unten 6 Kanten.",
+        "Dazu die senkrechten Kanten: noch einmal 6."
+      ],
+      "solution": "6 oben + 6 unten + 6 senkrecht = 18 Kanten. Allgemein: 3 · n.",
+      "misconceptions": [
+        {
+          "id": "nur_grundflaeche_gezaehlt",
+          "value": 6,
+          "feedback": "6 sind nur die Kanten einer Grundfläche. Es gibt oben, unten und senkrecht — also 3 · 6."
+        },
+        {
+          "id": "ohne_senkrechte",
+          "value": 12,
+          "feedback": "Die 6 senkrechten Kanten fehlen: 12 + 6 = 18."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "prisma",
+        "begruendung"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welche Aussage über das Würfelnetz stimmt?",
+      "options": [
+        "Es gibt 11 verschiedene Netze eines Würfels.",
+        "Jedes Netz aus 6 Quadraten ergibt einen Würfel.",
+        "Ein Würfel hat nur ein einziges Netz."
+      ],
+      "answer": 0,
+      "hints": [
+        "Nicht jede Anordnung von 6 Quadraten lässt sich zum Würfel falten.",
+        "Manche 6-Quadrat-Figuren überlappen sich beim Falten."
+      ],
+      "solution": "Es gibt genau 11 verschiedene Würfelnetze. Nicht jede Figur aus 6 Quadraten funktioniert — manche überlappen beim Falten.",
+      "misconceptions": [
+        {
+          "id": "netz_immer_moeglich",
+          "value": 1,
+          "feedback": "Nicht jede Figur aus 6 Quadraten faltet sich zum Würfel. Zum Beispiel ergibt eine Reihe aus 6 Quadraten keinen Würfel."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "netz",
+        "begruendung"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP01-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Ein Körper hat 6 Flächen, 8 Ecken und 12 Kanten, aber nicht alle Flächen sind gleich. Was ist er sicher?",
+      "options": [
+        "ein Quader",
+        "ein Würfel",
+        "ein Prisma mit sechseckiger Grundfläche"
+      ],
+      "answer": 0,
+      "hints": [
+        "Würfel: alle Flächen gleich — hier nicht.",
+        "Sechseckprisma hätte 8 Flächen."
+      ],
+      "solution": "6 Flächen, 8 Ecken, 12 Kanten passt zum Quader. Der Würfel wäre der Sonderfall mit lauter gleichen Flächen — der ist hier ausgeschlossen.",
+      "misconceptions": [
+        {
+          "id": "wuerfel_trotz_ungleich",
+          "value": 1,
+          "feedback": "Beim Würfel müssen alle Flächen gleich sein. Hier sind sie es nicht — also Quader."
+        },
+        {
+          "id": "flaechenzahl_ignoriert",
+          "value": 2,
+          "feedback": "Ein Sechseckprisma hätte 6 + 2 = 8 Flächen, nicht 6."
+        }
+      ],
+      "tags": [
+        "koerper",
+        "begruendung"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

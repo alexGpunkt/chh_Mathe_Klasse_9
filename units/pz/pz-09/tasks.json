@@ -17,6 +17,60 @@
     "B": "Du berechnest Endpreise in einem Schritt über 100 % ± p %.",
     "C": "Du rechnest vom Endpreis auf den Ausgangspreis zurück und begründest, warum Abziehen dort falsch ist."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Endpreis in zwei Schritten",
+      "hinfuehrung": "Rabatt und Aufschlag rechnest du zuerst getrennt aus und ziehst dann ab oder addierst. Zwei klare Schritte.",
+      "erklaerung": [
+        "Schritt 1: den Prozentwert des Rabatts/Aufschlags berechnen (W = G · p : 100).",
+        "Schritt 2: bei Rabatt abziehen, bei Aufschlag addieren."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Rad kostet 200 €, es gibt 15 % Rabatt. Was ist der Endpreis?",
+        "schritte": [
+          "Rabatt = 200 € · 15 : 100 = 30 €",
+          "Endpreis = 200 € − 30 € = 170 €"
+        ],
+        "ergebnis": "Der Endpreis beträgt 170 €."
+      },
+      "merke": "Erst den Rabatt in Euro, dann abziehen."
+    },
+    "B": {
+      "titel": "Endpreis in einem Schritt",
+      "hinfuehrung": "Statt zweier Schritte reicht ein Faktor: 100 % minus/plus p % ergibt sofort den Endpreis.",
+      "erklaerung": [
+        "Bei −15 % bleiben 85 % übrig → Faktor 0,85. Endpreis = G · 0,85.",
+        "Bei +19 % sind es 119 % → Faktor 1,19. Endpreis = G · 1,19."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Rad kostet 200 €, 15 % Rabatt. Endpreis in einem Schritt.",
+        "schritte": [
+          "100 % − 15 % = 85 %  → Faktor 0,85",
+          "Endpreis = 200 € · 0,85 = 170 €"
+        ],
+        "ergebnis": "Endpreis 170 € – in einem Schritt über Faktor 0,85."
+      },
+      "merke": "Rabatt: · (1 − p/100). Aufschlag: · (1 + p/100)."
+    },
+    "C": {
+      "titel": "Vom Endpreis zurück – ohne Abzieh-Falle",
+      "hinfuehrung": "Vom Endpreis auf den Startpreis kommst du nur, wenn du durch den Faktor teilst. Abziehen führt in die Irre.",
+      "erklaerung": [
+        "Ist der Endpreis nach +19 % bekannt, entspricht er 119 % des Nettopreises. Also: Netto = Endpreis : 1,19.",
+        "Warum kein Abziehen? Die 19 % wurden vom kleineren Nettopreis genommen, nicht vom größeren Endpreis – die Grundwerte sind verschieden."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Preis enthält 19 % Mehrwertsteuer und beträgt 119 €. Wie hoch war der Nettopreis?",
+        "schritte": [
+          "Endpreis = 119 % = 119 €",
+          "Faktor 1,19",
+          "Netto = 119 € : 1,19 = 100 €"
+        ],
+        "ergebnis": "Der Nettopreis war 100 € (nicht 119 € − 19 %!)."
+      },
+      "merke": "Zurück heißt : Faktor, niemals denselben Prozentsatz abziehen."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "Weniger:  Endwert = G · (100 − p) : 100     20 % Rabatt → · 0,80",

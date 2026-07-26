@@ -17,6 +17,60 @@
     "B": "Du berechnest das Endkapital über die Tabelle und über K · q^n und vergleichst beide Wege.",
     "C": "Du bestimmst die Laufzeit durch systematisches Probieren und stellst Zins und Zinseszins gegenüber."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Zinstabelle Jahr für Jahr",
+      "hinfuehrung": "Bleibt Geld mehrere Jahre liegen, verzinst sich im nächsten Jahr auch der Zins mit. Eine Tabelle macht das sichtbar.",
+      "erklaerung": [
+        "Jede Zeile: Startkapital + Zinsen = neues Kapital.",
+        "Das neue Kapital ist das Startkapital der nächsten Zeile."
+      ],
+      "beispiel": {
+        "aufgabe": "1000 € zu 2 % über 2 Jahre. Fülle die Tabelle.",
+        "schritte": [
+          "Jahr 1: 1000 € + 2 % = 1000 + 20 = 1020 €",
+          "Jahr 2: 1020 € + 2 % = 1020 + 20,40 = 1040,40 €"
+        ],
+        "ergebnis": "Nach 2 Jahren: 1040,40 €."
+      },
+      "merke": "Neues Kapital = altes Kapital + Zinsen. Damit weiter in die nächste Zeile."
+    },
+    "B": {
+      "titel": "Zinseszins mit K · q hoch n",
+      "hinfuehrung": "Statt jede Zeile einzeln zu rechnen, fasst der Zinseszins alles in einer Formel zusammen: Kapital mal Wachstumsfaktor hoch Jahre.",
+      "erklaerung": [
+        "Der Wachstumsfaktor ist q = 1 + p/100. Bei 2 % ist q = 1,02.",
+        "Endkapital = K · q^n (n = Anzahl der Jahre). Das Ergebnis muss mit der Tabelle übereinstimmen."
+      ],
+      "beispiel": {
+        "aufgabe": "1000 € zu 2 % über 2 Jahre – mit der Formel.",
+        "schritte": [
+          "q = 1 + 2/100 = 1,02",
+          "K · q^n = 1000 € · 1,02^2",
+          "= 1000 € · 1,0404 = 1040,40 €"
+        ],
+        "ergebnis": "1040,40 € – gleiches Ergebnis wie die Tabelle."
+      },
+      "merke": "Endkapital = K · q^n mit q = 1 + p/100."
+    },
+    "C": {
+      "titel": "Laufzeit finden, Zins und Zinseszins vergleichen",
+      "hinfuehrung": "Wie lange dauert es, bis sich das Kapital lohnt? Und wie viel bringt der Zinseszins gegenüber dem einfachen Zins? Beides lässt sich zeigen.",
+      "erklaerung": [
+        "Die Laufzeit bei gegebenem Zielkapital findest du durch systematisches Probieren mit q^n (n hochzählen, bis das Ziel erreicht ist).",
+        "Einfacher Zins wächst linear (jedes Jahr gleich viel), Zinseszins wächst schneller, weil die Zinsen mitverzinst werden – der Abstand wird mit den Jahren größer."
+      ],
+      "beispiel": {
+        "aufgabe": "Ab wann sind aus 1000 € bei 2 % mehr als 1060 € geworden?",
+        "schritte": [
+          "n = 2: 1000 · 1,02^2 = 1040,40 €",
+          "n = 3: 1000 · 1,02^3 = 1061,21 €  > 1060 €"
+        ],
+        "ergebnis": "Nach 3 Jahren übersteigt das Kapital 1060 €."
+      },
+      "merke": "Zinseszins wächst schneller als einfacher Zins – der Vorsprung wächst mit den Jahren."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "Jahr für Jahr:   neues Kapital = altes Kapital + Zinsen",

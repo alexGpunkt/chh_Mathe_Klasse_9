@@ -7,11 +7,10 @@
     "W-KOPF",
     "W-SACH",
     "W-FKT",
-    "W-TERM"
-  ],
-  "geplant": [
+    "W-TERM",
     "W-GEO"
   ],
+  "geplant": [],
   "intervalle_tage": [
     0,
     1,
@@ -141,6 +140,69 @@
     "lf-16": [
       "W-FKT",
       "W-TERM"
+    ],
+    "kp-01": [
+      "W-GEO"
+    ],
+    "kp-03": [
+      "W-KOPF"
+    ],
+    "kp-04": [
+      "W-KOPF"
+    ],
+    "kp-05": [
+      "W-KOPF"
+    ],
+    "kp-06": [
+      "W-GEO"
+    ],
+    "kp-07": [
+      "W-GEO"
+    ],
+    "kp-10": [
+      "W-GEO"
+    ],
+    "kp-11": [
+      "W-EINH",
+      "W-GEO"
+    ],
+    "kp-12": [
+      "W-GEO",
+      "W-EINH"
+    ],
+    "sk-01": [
+      "W-GEO"
+    ],
+    "sk-02": [
+      "W-GEO"
+    ],
+    "sk-03": [
+      "W-KOPF"
+    ],
+    "sk-05": [
+      "W-GEO"
+    ],
+    "sk-06": [
+      "W-GEO"
+    ],
+    "sk-07": [
+      "W-GEO"
+    ],
+    "sk-08": [
+      "W-GEO"
+    ],
+    "sk-09": [
+      "W-GEO"
+    ],
+    "sk-10": [
+      "W-KOPF"
+    ],
+    "sk-11": [
+      "W-GEO",
+      "W-EINH"
+    ],
+    "sk-12": [
+      "W-GEO"
     ]
   },
   "fehlerprofil": {
@@ -305,6 +367,113 @@
     "zeitfaktor_vergessen": "W-EINH",
     "zeitfaktor_verwechselt": "W-EINH",
     "zerlegung_falsch": "W-BRUCH",
-    "zu_frueh_gestoppt": "W-PROZ"
+    "zu_frueh_gestoppt": "W-PROZ",
+    "addiert_statt_mal": "W-GEO",
+    "addiert_statt_subtrahiert": "W-GEO",
+    "dach_als_pyramide": "W-GEO",
+    "deckel_mitgezaehlt": "W-GEO",
+    "dichte_vergessen": "W-GEO",
+    "dreieck_halbe_vergessen": "W-GEO",
+    "drittel_vergessen_rueck": "W-GEO",
+    "durchmesser_als_radius": "W-GEO",
+    "ecken_statt_flaechen": "W-GEO",
+    "ecken_statt_kanten": "W-GEO",
+    "faktor_10": "W-EINH",
+    "faktor_100": "W-EINH",
+    "faktor_1000": "W-EINH",
+    "faktor_1000_bei_flaeche": "W-EINH",
+    "faktor_100_bei_volumen": "W-EINH",
+    "faktor_drittel_vergessen": "W-GEO",
+    "faktor_falsch": "W-EINH",
+    "faktor_vier_vergessen": "W-GEO",
+    "fehler_falsch_eingeschaetzt": "W-GEO",
+    "fehler_nicht_erkannt": "W-GEO",
+    "flaeche_faktor_100": "W-EINH",
+    "flaeche_gedacht": "W-GEO",
+    "flaeche_statt_umfang": "W-GEO",
+    "flaechen_statt_ecken": "W-GEO",
+    "flaechen_statt_kanten": "W-GEO",
+    "flaechenzahl_ignoriert": "W-GEO",
+    "ganze_kugel": "W-GEO",
+    "geteilt_durch_drei": "W-KOPF",
+    "gleich_gross": "W-GEO",
+    "gleich_lang_vermutet": "W-GEO",
+    "groesste_flaeche": "W-GEO",
+    "grundflaeche_mitgezaehlt": "W-GEO",
+    "grundflaeche_vergessen": "W-GEO",
+    "grundflaechen_verschieden": "W-GEO",
+    "grundkreis_mitgezaehlt": "W-GEO",
+    "grundkreis_vergessen": "W-GEO",
+    "h_gleich_s": "W-GEO",
+    "h_statt_s": "W-GEO",
+    "halbe_grundseite_vergessen": "W-GEO",
+    "halber_radius": "W-GEO",
+    "hoehe_als_mantellinie": "W-GEO",
+    "hoehe_seitenhoehe_verwechselt": "W-GEO",
+    "hoehe_statt_mantellinie": "W-GEO",
+    "hoehe_vergessen": "W-GEO",
+    "innen_vergessen": "W-GEO",
+    "kante_nicht_quadriert": "W-KOPF",
+    "kanten_addiert": "W-GEO",
+    "kanten_im_netz": "W-GEO",
+    "kanten_statt_ecken": "W-GEO",
+    "kanten_statt_flaechen": "W-GEO",
+    "kantenzahl_falsch": "W-GEO",
+    "linear_gedacht": "W-GEO",
+    "liter_als_kubikzentimeter": "W-EINH",
+    "liter_nicht_umgerechnet": "W-EINH",
+    "liter_umgerechnet": "W-EINH",
+    "liter_verwirrt": "W-EINH",
+    "mal_drei": "W-KOPF",
+    "mal_statt_geteilt_vol": "W-EINH",
+    "mal_zwei_statt_quadrat": "W-KOPF",
+    "mantel_als_grundflaeche": "W-GEO",
+    "mantel_als_kreis": "W-GEO",
+    "mantel_als_rechteck": "W-GEO",
+    "mantel_vergessen": "W-GEO",
+    "ml_umgerechnet": "W-EINH",
+    "netz_immer_moeglich": "W-GEO",
+    "nicht_durch_sechs": "W-GEO",
+    "nicht_halbiert": "W-GEO",
+    "nicht_in_liter": "W-EINH",
+    "nicht_subtrahiert": "W-GEO",
+    "nur_bis_dm3": "W-EINH",
+    "nur_drei_flaechen": "W-GEO",
+    "nur_durch_a": "W-GEO",
+    "nur_durch_eine": "W-GEO",
+    "nur_ein_dreieck": "W-GEO",
+    "nur_ein_kreis": "W-GEO",
+    "nur_ein_teil": "W-GEO",
+    "nur_eine_flaeche": "W-GEO",
+    "nur_eine_grundflaeche": "W-GEO",
+    "nur_eine_halbkugel": "W-GEO",
+    "nur_eine_richtung": "W-GEO",
+    "nur_grundflaeche_gezaehlt": "W-GEO",
+    "nur_grundkanten": "W-GEO",
+    "nur_halbe_grundkante": "W-GEO",
+    "nur_kegel": "W-GEO",
+    "nur_pyramide": "W-GEO",
+    "nur_zwei_kanten": "W-GEO",
+    "nur_zwei_seiten": "W-GEO",
+    "oberflaeche_statt_volumen": "W-GEO",
+    "oberflaechen_faktor": "W-GEO",
+    "ohne_bruchteil": "W-GEO",
+    "ohne_mittelwert": "W-GEO",
+    "ohne_senkrechte": "W-GEO",
+    "ohne_zwei": "W-GEO",
+    "pi_ueberall_vermutet": "W-GEO",
+    "prisma_verwechselt": "W-GEO",
+    "quader_statt_wuerfel": "W-GEO",
+    "quadratisch_gedacht": "W-GEO",
+    "radius_nicht_quadriert": "W-KOPF",
+    "seiten_addiert": "W-GEO",
+    "spitze_vergessen": "W-GEO",
+    "umfang_als_flaeche": "W-GEO",
+    "unterschied_nicht_erkannt": "W-GEO",
+    "volle_grundkante": "W-GEO",
+    "volumen_faktor": "W-GEO",
+    "volumen_statt_oberflaeche": "W-GEO",
+    "wuerfel_trotz_ungleich": "W-GEO",
+    "wurzel_vergessen": "W-GEO"
   }
 }

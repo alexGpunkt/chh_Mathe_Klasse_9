@@ -17,6 +17,62 @@
     "B": "Du benennst in einer Sachaufgabe Grundwert, Prozentwert und Prozentsatz.",
     "C": "Du erkennst Texte, in denen der Grundwert gar nicht genannt ist, und begründest das."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Den Grundwert finden – das Ganze",
+      "hinfuehrung": "In fast jeder Prozentaufgabe steckt ein „Ganzes“. Dieses Ganze heißt Grundwert. Ihn zuerst zu finden, ist der halbe Weg.",
+      "erklaerung": [
+        "Der Grundwert G ist die Menge, die 100 % entspricht – der Preis vor dem Rabatt, die ganze Klasse, das volle Glas.",
+        "Frage dich: Wovon werden hier die Prozente genommen? Das ist der Grundwert."
+      ],
+      "beispiel": {
+        "aufgabe": "„20 % von 60 € Rabatt.“ Was ist hier der Grundwert?",
+        "schritte": [
+          "Wovon werden die 20 % genommen?",
+          "Von den 60 € (dem vollen Preis).",
+          "→ 60 € = 100 %"
+        ],
+        "ergebnis": "Grundwert G = 60 € (das Ganze = 100 %)."
+      },
+      "merke": "Der Grundwert ist das, was 100 % entspricht."
+    },
+    "B": {
+      "titel": "G, W und p % benennen",
+      "hinfuehrung": "Drei Größen, drei Namen: Grundwert, Prozentwert, Prozentsatz. Wer sie sicher benennt, wählt danach mühelos die richtige Rechnung.",
+      "erklaerung": [
+        "Grundwert G = das Ganze (100 %). Prozentwert W = der Teil davon (in € oder Stück). Prozentsatz p % = wie viel Prozent der Teil ausmacht.",
+        "Der Prozentsatz trägt das %-Zeichen, der Prozentwert die Sacheinheit (€, kg, …)."
+      ],
+      "beispiel": {
+        "aufgabe": "„12 von 30 Schülern, also 40 %, tragen eine Brille.“ Benenne G, W und p %.",
+        "schritte": [
+          "das Ganze:      30 Schüler   → G",
+          "der Teil:       12 Schüler   → W",
+          "der Prozentsatz: 40 %        → p %"
+        ],
+        "ergebnis": "G = 30, W = 12, p % = 40 %."
+      },
+      "merke": "% hängt am Prozentsatz, die Sacheinheit am Prozentwert."
+    },
+    "C": {
+      "titel": "Wenn der Grundwert fehlt",
+      "hinfuehrung": "Manche Texte nennen den Grundwert gar nicht – und trotzdem lässt sich sagen, was er ist und ob man rechnen kann.",
+      "erklaerung": [
+        "Steht „der Preis steigt um 8 %“, ohne einen Betrag, ist der Grundwert der alte Preis – auch wenn keine Zahl dasteht.",
+        "Prozentangaben ohne Grundwert („20 % mehr Leistung“) sind oft Werbung: ohne das Ganze ist der Zuwachs nicht bezifferbar. Das darfst du benennen."
+      ],
+      "beispiel": {
+        "aufgabe": "„Neu: 25 % mehr Inhalt!“ Warum ist der Grundwert wichtig – und wo steckt er?",
+        "schritte": [
+          "25 % – wovon?",
+          "Vom alten Inhalt (= 100 %), der nicht genannt ist.",
+          "Ohne diese Menge ist „mehr“ nicht in Gramm sagbar."
+        ],
+        "ergebnis": "Grundwert = alter Inhalt (100 %); fehlt er, bleibt der Zuwachs unbestimmt."
+      },
+      "merke": "Kein Grundwert genannt? Dann ist er der alte/ursprüngliche Wert – oder die Angabe ist unvollständig."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "G  = das Ganze  = 100 %",

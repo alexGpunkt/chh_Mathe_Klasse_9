@@ -116,7 +116,99 @@ function pfadSetzen(p) {
     attempts: 0,
     status: 'active'
   });
-  aufgabeZeigen();
+  /* Vor den Aufgaben: die Lernkarte dieser Niveaustufe — Hinführung,
+     Erklärung, Bild, Beispielrechnung. Nur wenn sie hinterlegt ist und
+     wir nicht im Prüfungsset stecken. */
+  if (!S.daten.pruefung && S.daten.lernkarten && S.daten.lernkarten[p]) lernkarteZeigen('start');
+  else aufgabeZeigen();
+}
+
+/* ---------- Lernkarte (Hinführung je Niveaustufe) ----------
+   Erscheint beim Wählen eines Pfades vor der ersten Aufgabe und lässt
+   sich später über „📖 Erklärung" jederzeit wieder öffnen.
+   modus = 'start'  → Knopf „Los geht's" beginnt bei Aufgabe 1
+   modus = 'wieder' → Knopf „Zurück zu den Aufgaben" kehrt zur laufenden
+                      Aufgabe zurück, ohne den Fortschritt zu verlieren. */
+const NIVEAU = { A: 'Basis', B: 'Standard', C: 'Vertiefung' };
+
+function lernkarteZeigen(modus) {
+  const lk = S.daten.lernkarten && S.daten.lernkarten[S.pfad];
+  if (!lk) { aufgabeZeigen(); return; }
+
+  const b = $('#buehne');
+  b.innerHTML = '';
+  streifenAktualisieren();
+  Tracker.track('lernkarte_view', { path: S.pfad, modus });
+
+  const zeile = el('div', 'stufe-zeile');
+  zeile.append(el('span', 'stufe-pill', `Pfad ${S.pfad} · ${NIVEAU[S.pfad] || ''}`));
+  zeile.append(el('span', null, 'Erklärung'));
+  b.append(zeile);
+
+  const karte = el('div', 'karte lernkarte');
+
+  if (lk.titel) karte.append(el('h2', 'lk-titel', lk.titel));
+
+  if (lk.hinfuehrung) {
+    const p = el('p', 'lk-hin');
+    p.innerHTML = markiereWorte(lk.hinfuehrung);
+    karte.append(p);
+  }
+
+  if (lk.visual && lk.bild_oben !== false) karte.append(visualBlock(lk.visual));
+
+  (lk.erklaerung || []).forEach(absatz => {
+    const p = el('p', 'lk-erkl');
+    p.innerHTML = markiereWorte(absatz);
+    karte.append(p);
+  });
+
+  if (lk.visual && lk.bild_oben === false) karte.append(visualBlock(lk.visual));
+
+  if (lk.beispiel) {
+    const bsp = lk.beispiel;
+    const box = el('div', 'lk-beispiel');
+    box.append(el('div', 'lk-beispiel-kopf', bsp.titel || 'Beispiel'));
+    if (bsp.aufgabe) {
+      const a = el('p', 'lk-beispiel-aufgabe');
+      a.innerHTML = markiereWorte(bsp.aufgabe);
+      box.append(a);
+    }
+    if (bsp.schritte && bsp.schritte.length) {
+      const rw = el('div', 'lk-rechenweg');
+      rw.textContent = bsp.schritte.join('\n');
+      box.append(rw);
+    }
+    if (bsp.ergebnis) {
+      const e = el('div', 'lk-ergebnis');
+      e.innerHTML = '<b>Ergebnis:</b> ' + markiereWorte(bsp.ergebnis);
+      box.append(e);
+    }
+    karte.append(box);
+  }
+
+  if (lk.merke) {
+    const m = el('div', 'lk-merke');
+    m.innerHTML = '<b>Merke:</b> ' + markiereWorte(lk.merke);
+    karte.append(m);
+  }
+
+  const akt = el('div', 'aktionen');
+  const los = el('button', 'btn btn-haupt',
+    modus === 'wieder' ? 'Zurück zu den Aufgaben' : "Los geht's – Aufgaben starten");
+  los.addEventListener('click', () => aufgabeZeigen());
+  akt.append(los);
+
+  /* Auf einen anderen Pfad wechseln, ohne erst durch die Aufgaben zu müssen. */
+  const wechsel = { A: 'B', B: 'C', C: 'A' }[S.pfad];
+  if (!S.daten.pfad_fest && S.daten.lernkarten[wechsel]) {
+    const w = el('button', 'btn btn-neben', `Erklärung Pfad ${wechsel} ansehen`);
+    w.addEventListener('click', () => pfadSetzen(wechsel));
+    akt.append(w);
+  }
+  karte.append(akt);
+  b.append(karte);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ---------- Prozentstreifen = Fortschritt ---------- */
@@ -150,6 +242,13 @@ function aufgabeZeigen() {
   zeile.append(el('span', 'stufe-pill', `Pfad ${t.path} · Stufe ${t.step}`));
   zeile.append(el('span', null, t.herkunft || STUFEN[t.step]));
   zeile.append(el('span', null, `· Aufgabe ${S.index + 1}/${S.reihe.length}`));
+  /* Erklärung dieser Niveaustufe jederzeit wieder aufrufbar. */
+  if (S.daten.lernkarten && S.daten.lernkarten[t.path]) {
+    const erk = el('button', 'erklaerung-link', '📖 Erklärung');
+    erk.type = 'button';
+    erk.addEventListener('click', () => lernkarteZeigen('wieder'));
+    zeile.append(erk);
+  }
   b.append(zeile);
 
   const karte = el('div', 'karte');

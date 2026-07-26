@@ -19,6 +19,62 @@
     "B": "Du löst einen gemischten Aufgabensatz, ohne dass die Aufgabenart genannt wird.",
     "C": "Du modellierst mehrschrittige Realaufgaben und begründest eine Empfehlung."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Welche Größe ist gesucht?",
+      "hinfuehrung": "In der Prüfung steht nicht dabei, welche Formel gilt. Der erste Schritt ist immer: Was ist gegeben, was ist gesucht?",
+      "erklaerung": [
+        "Unterstreiche im Text: Grundwert, Prozentwert, Prozentsatz – welche zwei sind gegeben?",
+        "Die dritte ist gesucht. Dann greifst du zur passenden Formel von der Formelkarte."
+      ],
+      "beispiel": {
+        "aufgabe": "„18 € sind 30 % wovon?“ Welche Größe fehlt?",
+        "schritte": [
+          "gegeben: W = 18 €, p = 30 %",
+          "gesucht: G (das Ganze)",
+          "G = W : p · 100 = 18 : 30 · 100 = 60 €"
+        ],
+        "ergebnis": "Gesucht war der Grundwert: 60 €."
+      },
+      "merke": "Erst gegeben/gesucht klären, dann die Formel wählen."
+    },
+    "B": {
+      "titel": "Gemischte Aufgaben ohne Ansage",
+      "hinfuehrung": "Jetzt kommen die Aufgaben durcheinander – Rabatt, Zinsen, Veränderung. Du erkennst den Typ selbst und rechnest sicher.",
+      "erklaerung": [
+        "Achte auf Signalwörter: „Rabatt/Aufschlag“ → vermehrter/verminderter Grundwert; „pro Jahr“ → Zinsen; „von … auf …“ → prozentuale Veränderung.",
+        "Notiere gegeben/gesucht, wähle die Formel, prüfe das Ergebnis auf Plausibilität."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Handy kostet 300 €, im Angebot 20 % günstiger. Endpreis?",
+        "schritte": [
+          "Signal „günstiger“ → verminderter Grundwert",
+          "Faktor = 100 % − 20 % = 80 % = 0,80",
+          "300 € · 0,80 = 240 €"
+        ],
+        "ergebnis": "Der Endpreis beträgt 240 €."
+      },
+      "merke": "Signalwörter verraten den Aufgabentyp."
+    },
+    "C": {
+      "titel": "Mehrschrittig modellieren und empfehlen",
+      "hinfuehrung": "Reale Aufgaben brauchen mehrere Schritte und am Ende eine begründete Entscheidung – nicht nur eine Zahl.",
+      "erklaerung": [
+        "Zerlege die Aufgabe in Teilrechnungen und halte Zwischenergebnisse fest.",
+        "Vergleiche die Ergebnisse und formuliere eine Empfehlung mit Begründung – das ist der geforderte Modellierungsschritt."
+      ],
+      "beispiel": {
+        "aufgabe": "Angebot A: 100 € − 25 %. Angebot B: 100 € − 15 %, dann noch − 10 %. Welches ist günstiger?",
+        "schritte": [
+          "A: 100 € · 0,75 = 75 €",
+          "B: 100 € · 0,85 · 0,90 = 76,50 €",
+          "Vergleich: 75 € < 76,50 €"
+        ],
+        "ergebnis": "Angebot A ist günstiger – zwei Rabatte nacheinander ergeben nicht 25 %."
+      },
+      "merke": "Zwischenergebnisse festhalten, dann begründet empfehlen."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "W = G · p : 100        Prozentwert gesucht",

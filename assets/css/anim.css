@@ -1,0 +1,185 @@
+/* ============================================================
+   anim.css · Stile für die Animationen zu linearen Funktionen
+   Vollständig eigenständig: hartkodierte Farben (identisch zu den
+   App-Tokens), damit die Animationen auch ohne app.css korrekt aussehen.
+   ============================================================ */
+
+.anim {
+  margin: 0 0 16px;
+  padding: 12px;
+  border: 1px solid #E1E6E9;
+  border-radius: 12px;
+  background: #FFFFFF;
+}
+.anim-bild { margin: 0 0 16px; }
+
+.anim-svg {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  height: auto;
+  touch-action: manipulation;
+}
+
+/* Große Live-Gleichung (Geradenbaukasten) */
+.anim-gleichung {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  text-align: center;
+  color: #15233A;
+  margin: 2px 0 10px;
+  letter-spacing: .5px;
+}
+.anim-gleichung b { font-weight: 700; }
+.anim-gleichung .m { color: #6B3FA0; }
+.anim-gleichung .b { color: #C98A12; }
+.anim-gleichung .op { color: #8C99A8; }
+
+/* Ablesung / Rechnung unter dem Bild */
+.anim-ables, .anim-rechnung {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  text-align: center;
+  color: #15233A;
+  margin: 8px 0 4px;
+  min-height: 1.3em;
+}
+.anim-rechnung { color: #4A5A70; font-size: 13px; margin-bottom: 2px; }
+.anim-ables b { font-weight: 700; }
+
+/* Bedienleiste */
+.anim-steuer {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.anim-btn {
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  border: 1px solid #C8D2D8;
+  background: #F3F5F4;
+  color: #15233A;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.anim-btn:hover { background: #E2EBF6; border-color: #2563A8; }
+.anim-btn:focus-visible { outline: 3px solid #2563A8; outline-offset: 1px; }
+.anim-play { background: #2563A8; border-color: #2563A8; color: #FFFFFF; }
+.anim-play:hover { background: #1E5390; border-color: #1E5390; }
+
+/* Schieberegler */
+.anim-regler, .anim-regler-paar { display: block; margin: 8px auto 0; max-width: 340px; }
+.anim-regler-paar { display: grid; gap: 6px; }
+.anim-regler-txt {
+  display: block;
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-size: 13px; font-weight: 700; color: #4A5A70;
+  margin-bottom: 2px;
+}
+.anim-regler input[type=range] { width: 100%; accent-color: #2563A8; height: 22px; }
+
+/* Wertetabelle-Animation */
+.anim-tabellenreihe { display: flex; justify-content: center; margin-bottom: 8px; }
+.anim-tabelle { border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+.anim-tabelle th, .anim-tabelle td {
+  border: 1px solid #D3DAE0; padding: 4px 10px; text-align: center; min-width: 34px;
+  transition: background .2s, color .2s;
+}
+.anim-tabelle th { background: #EDF1F3; color: #4A5A70; }
+.anim-tabelle td.an { background: #E4F1EA; color: #2E7D5B; font-weight: 700; }
+
+/* Legende (Tarifvergleich) */
+.anim-legende {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 12px; color: #4A5A70;
+  margin: 6px 0 2px;
+}
+.anim-legende span { display: inline-flex; align-items: center; gap: 5px; }
+.anim-legende i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+.anim-fehlt, .anim-poster {
+  font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5A70;
+  padding: 20px; text-align: center; border: 1px dashed #C8D2D8; border-radius: 10px;
+}
+
+/* ---------- Galerie-Seite (animationen.html) ---------- */
+.anim-galerie {
+  display: grid; gap: 18px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) { .anim-galerie { grid-template-columns: 1fr 1fr; } }
+
+.anim-karte {
+  border: 1px solid #E1E6E9; border-radius: 16px; background: #FFFFFF;
+  padding: 16px; box-shadow: 0 1px 3px rgba(21,35,58,.06);
+}
+.anim-karte-kopf { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+.anim-bezug {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+  color: #2563A8; background: #E2EBF6; padding: 2px 8px; border-radius: 999px;
+}
+.anim-karte-titel {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 18px; font-weight: 800; color: #15233A; margin: 0; line-height: 1.2;
+}
+.anim-karte-kurz { font-size: 14px; color: #4A5A70; margin: 4px 0 12px; line-height: 1.45; }
+.anim-buehne { min-height: 40px; }
+.anim-karte-fuss { margin-top: 10px; border-top: 1px solid #EDF1F3; padding-top: 10px; }
+.anim-wege {
+  display: block; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-size: 12px; color: #8C99A8; margin-bottom: 6px;
+}
+.anim-code {
+  display: block; font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
+  color: #4A5A70; background: #F3F5F4; border: 1px dashed #C8D2D8; border-radius: 8px;
+  padding: 7px 9px; overflow-x: auto; white-space: pre;
+}
+
+@media print {
+  .anim-steuer, .anim-regler, .anim-regler-paar { display: none; }
+  .anim, .anim-karte { break-inside: avoid; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-svg * { transition: none !important; }
+}
+
+/* ---------- Niveaustufen-Abzeichen ---------- */
+.anim-stufe {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 700; letter-spacing: .03em;
+  padding: 2px 9px; border-radius: 999px;
+  border: 1px solid currentColor;
+  margin: 0 auto 8px; 
+}
+.anim { text-align: center; }
+.anim > * { text-align: initial; }
+.anim > .anim-stufe, .anim > .anim-gleichung, .anim > .anim-ables, .anim > .anim-rechnung { text-align: center; }
+
+/* ---------- A/B/C-Umschalter (Galerie) ---------- */
+.anim-schalter {
+  display: inline-flex; gap: 0; margin: 0 auto 10px;
+  border: 1px solid #C8D2D8; border-radius: 999px; overflow: hidden;
+  background: #F3F5F4;
+}
+.anim-karte { text-align: center; }
+.anim-karte > * { text-align: left; }
+.anim-karte > .anim-schalter { text-align: center; }
+.anim-schalt {
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-weight: 700; font-size: 13px;
+  padding: 6px 16px; border: 0; background: transparent; cursor: pointer;
+  color: #4A5A70; border-right: 1px solid #E1E6E9;
+}
+.anim-schalt:last-child { border-right: 0; }
+.anim-schalt:hover { background: #E9EEF1; }
+.anim-schalt[aria-pressed="true"].anim-schalt-a { background: #2E7D5B; color: #fff; }
+.anim-schalt[aria-pressed="true"].anim-schalt-b { background: #2563A8; color: #fff; }
+.anim-schalt[aria-pressed="true"].anim-schalt-c { background: #6B3FA0; color: #fff; }
+.anim-schalt:focus-visible { outline: 3px solid #2563A8; outline-offset: -2px; }

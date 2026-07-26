@@ -1,0 +1,499 @@
+{
+  "unit": "KP-11",
+  "title": "Anwendungen: zusammengesetzte Körper & Masse",
+  "leitidee": "L3",
+  "standards": [
+    "K3",
+    "K2"
+  ],
+  "wortspeicher": [
+    "zusammengesetzt",
+    "der Hohlkörper",
+    "die Dichte",
+    "die Masse",
+    "das Fassungsvermögen",
+    "aufteilen"
+  ],
+  "can_do": {
+    "A": "Du zerlegst einen zusammengesetzten Körper in Grundformen und addierst die Volumen.",
+    "B": "Du berechnest Füllmengen und Massen über Volumen · Dichte.",
+    "C": "Du löst mehrschrittige Sachaufgaben mit Hohlkörpern und Einheitenwechsel."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Zusammengesetzte Körper zerlegen",
+      "hinfuehrung": "Viele echte Gegenstände bestehen aus mehreren Grundkörpern. Zerlege sie und addiere die Einzelvolumen.",
+      "erklaerung": [
+        "Suche die einfachen Teilkörper (Quader, Zylinder, Prisma).",
+        "Berechne jedes Volumen einzeln und addiere sie zum Gesamtvolumen."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Sockel: Quader (4·4·2) mit aufgesetztem Würfel (a = 2). Gesamtvolumen?",
+        "schritte": [
+          "Quader = 4 · 4 · 2 = 32 cm³",
+          "Würfel = 2³ = 8 cm³",
+          "V = 32 + 8 = 40 cm³"
+        ],
+        "ergebnis": "V = 40 cm³."
+      },
+      "merke": "Zusammengesetzt: in Grundkörper zerlegen, Volumen addieren."
+    },
+    "B": {
+      "titel": "Masse über Volumen mal Dichte",
+      "hinfuehrung": "Aus dem Volumen und dem Material (Dichte) lässt sich die Masse berechnen – so schwer ist der Körper.",
+      "erklaerung": [
+        "Masse = Volumen · Dichte. Die Dichte steht oft in g/cm³ (z. B. Eisen ≈ 7,8 g/cm³).",
+        "Achte darauf, dass Volumen und Dichte zusammenpassen (cm³ zu g/cm³)."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Eisenquader hat V = 50 cm³, Dichte 7,8 g/cm³. Masse?",
+        "schritte": [
+          "Masse = V · Dichte",
+          "= 50 · 7,8",
+          "= 390 g"
+        ],
+        "ergebnis": "Die Masse beträgt 390 g."
+      },
+      "merke": "Masse = Volumen · Dichte (cm³ · g/cm³ = g)."
+    },
+    "C": {
+      "titel": "Hohlkörper und Einheitenwechsel",
+      "hinfuehrung": "Bei Rohren und Bechern zählt nur das Material zwischen außen und innen. Du rechnest Außenvolumen minus Innenvolumen.",
+      "erklaerung": [
+        "Hohlkörper: V = V_außen − V_innen.",
+        "Bei mehrschrittigen Sachaufgaben zwischendurch die Einheiten sauber wechseln (z. B. cm³ → l) und Zwischenergebnisse notieren."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Rohr: außen r = 5 cm, innen r = 4 cm, Länge 10 cm. Materialvolumen (π ≈ 3,14)?",
+        "schritte": [
+          "außen = 3,14 · 5² · 10 = 785 cm³",
+          "innen = 3,14 · 4² · 10 = 502,4 cm³",
+          "V = 785 − 502,4 = 282,6 cm³"
+        ],
+        "ergebnis": "Materialvolumen ≈ 282,6 cm³."
+      },
+      "merke": "Hohlkörper: außen minus innen."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Zusammengesetzt: in Teilkörper zerlegen, Volumen addieren",
+      "Hohlkörper: V = V_außen − V_innen",
+      "Masse = Volumen · Dichte      Dichte in g/cm³",
+      "Zylinder V = π·r²·h    Quader V = a·b·c"
+    ],
+    "saetze": [
+      "Zeichne die Trennlinie und benenne die Teilkörper.",
+      "Bei Masse immer prüfen: passen die Einheiten (cm³ zu g/cm³)?"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP11-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Körper besteht aus zwei Quadern: 100 cm³ und 60 cm³. Gesamtvolumen?",
+      "answer": 160,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "Teilvolumen addieren.",
+        "100 + 60."
+      ],
+      "solution": "V = 100 + 60 = 160 cm³.",
+      "tags": [
+        "zusammengesetzt",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP11-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Sockel (Quader 20·20·5 cm³) trägt eine Säule (Quader 10·10·30 cm³). Gesamtvolumen?",
+      "answer": 5000,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "Sockel = 20·20·5 = 2000.",
+        "Säule = 10·10·30 = 3000. Addieren."
+      ],
+      "solution": "Sockel: 20·20·5 = 2000 cm³. Säule: 10·10·30 = 3000 cm³.\nGesamt: 2000 + 3000 = 5000 cm³.",
+      "misconceptions": [
+        {
+          "id": "nur_ein_teil",
+          "value": 3000,
+          "feedback": "Beide Teile addieren: 2000 + 3000 = 5000."
+        }
+      ],
+      "tags": [
+        "zusammengesetzt",
+        "volumen",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP11-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Wasser hat die Dichte 1 g/cm³. Wie schwer sind 250 cm³ Wasser (in g)?",
+      "answer": 250,
+      "unit_label": "g",
+      "tolerance": 0.5,
+      "hints": [
+        "Masse = Volumen · Dichte.",
+        "250 · 1."
+      ],
+      "solution": "Masse = 250 cm³ · 1 g/cm³ = 250 g.",
+      "tags": [
+        "dichte",
+        "masse"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP11-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Aluminiumwürfel (a = 2 cm) hat V = 8 cm³. Alu-Dichte 2,7 g/cm³. Masse?",
+      "answer": 21.6,
+      "unit_label": "g",
+      "tolerance": 0.1,
+      "hints": [
+        "Masse = Volumen · Dichte.",
+        "8 · 2,7."
+      ],
+      "solution": "Masse = 8 · 2,7 = 21,6 g.",
+      "misconceptions": [
+        {
+          "id": "dichte_vergessen",
+          "value": 8,
+          "feedback": "8 cm³ ist erst das Volumen. Masse = 8 · 2,7 = 21,6 g."
+        }
+      ],
+      "tags": [
+        "dichte",
+        "masse",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-GEO",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP11-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Silo: unten ein Zylinder (r = 2 m, h = 5 m, π ≈ 3,14). Wie viele m³ passen hinein (ganze m³)?",
+      "answer": 63,
+      "unit_label": "m³",
+      "tolerance": 1,
+      "hints": [
+        "V = 3,14 · 2² · 5.",
+        "= 3,14·4·5."
+      ],
+      "solution": "V = 3,14 · 4 · 5 = 62,8 ≈ 63 m³.",
+      "tags": [
+        "zylinder",
+        "volumen",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP11-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Rohr ist außen ein Zylinder (r = 3 cm), innen hohl (r = 2 cm), Länge 10 cm (π ≈ 3,14). Wie viel Material (ganze cm³)?",
+      "answer": 157,
+      "unit_label": "cm³",
+      "tolerance": 3,
+      "hints": [
+        "V_außen = 3,14·9·10, V_innen = 3,14·4·10.",
+        "Differenz."
+      ],
+      "solution": "V_außen = 3,14·9·10 = 282,6. V_innen = 3,14·4·10 = 125,6.\nMaterial = 282,6 − 125,6 = 157 cm³.",
+      "misconceptions": [
+        {
+          "id": "innen_vergessen",
+          "value": 283,
+          "feedback": "Das Rohr ist hohl: V_außen − V_innen = 282,6 − 125,6 = 157."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "hohlkoerper",
+        "volumen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP11-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Eisenquader misst 5·4·2 cm³. Eisen-Dichte 7,8 g/cm³. Masse (g)?",
+      "answer": 312,
+      "unit_label": "g",
+      "tolerance": 1,
+      "hints": [
+        "V = 5·4·2 = 40 cm³.",
+        "Masse = 40 · 7,8."
+      ],
+      "solution": "V = 40 cm³. Masse = 40 · 7,8 = 312 g.",
+      "misconceptions": [
+        {
+          "id": "dichte_vergessen",
+          "value": 40,
+          "feedback": "40 cm³ ist das Volumen. Masse = 40 · 7,8 = 312 g."
+        }
+      ],
+      "tags": [
+        "dichte",
+        "masse",
+        "quader",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP11-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Getränkekasten-Körper besteht aus einem Quader (30·20·25 cm³) mit einem aufgesetzten Quader (30·20·5 cm³). Gesamtvolumen (cm³)?",
+      "answer": 18000,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "Unten 30·20·25 = 15000.",
+        "Oben 30·20·5 = 3000. Addieren."
+      ],
+      "solution": "Unten: 30·20·25 = 15 000 cm³. Oben: 30·20·5 = 3000 cm³.\nGesamt: 18 000 cm³.",
+      "tags": [
+        "zusammengesetzt",
+        "volumen",
+        "quader",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP11-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein zylindrischer Tank (r = 40 cm, h = 100 cm, π ≈ 3,14) — wie viele Liter fasst er (ganze l)?",
+      "answer": 502,
+      "unit_label": "l",
+      "tolerance": 3,
+      "hints": [
+        "V = 3,14·40²·100 cm³.",
+        "A=3,14·1600=5024; V=5024·100=502400 cm³; :1000."
+      ],
+      "solution": "A = 3,14·1600 = 5024 cm². V = 5024·100 = 502 400 cm³ = 502,4 l ≈ 502 l.",
+      "misconceptions": [
+        {
+          "id": "nicht_in_liter",
+          "value": 502400,
+          "feedback": "502 400 cm³ ist richtig, aber gefragt sind Liter: : 1000 ≈ 502 l."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "liter",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP11-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Betonpfeiler (Quader 0,4·0,4·3 m³) — Beton-Dichte 2400 kg/m³. Masse in kg?",
+      "answer": 1152,
+      "unit_label": "kg",
+      "tolerance": 2,
+      "hints": [
+        "V = 0,4·0,4·3 = 0,48 m³.",
+        "Masse = 0,48 · 2400."
+      ],
+      "solution": "V = 0,4·0,4·3 = 0,48 m³. Masse = 0,48 · 2400 = 1152 kg.",
+      "misconceptions": [
+        {
+          "id": "dichte_vergessen",
+          "value": 0.48,
+          "feedback": "0,48 m³ ist das Volumen. Masse = 0,48 · 2400 = 1152 kg."
+        }
+      ],
+      "tags": [
+        "dichte",
+        "masse",
+        "quader",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP11-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein L-Körper: großer Quader 10·6·4 cm³, davon ist ein kleiner Quader 4·6·4 cm³ ausgeschnitten. Restvolumen (cm³)?",
+      "answer": 144,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "V_groß = 10·6·4 = 240.",
+        "V_klein = 4·6·4 = 96. Differenz."
+      ],
+      "solution": "V_groß = 240 cm³. V_klein = 96 cm³. Rest = 240 − 96 = 144 cm³.",
+      "misconceptions": [
+        {
+          "id": "nicht_subtrahiert",
+          "value": 336,
+          "feedback": "Der kleine Quader ist ausgeschnitten — abziehen: 240 − 96 = 144."
+        }
+      ],
+      "tags": [
+        "zusammengesetzt",
+        "hohlkoerper",
+        "volumen",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP11-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Messingzylinder: r = 2 cm, h = 6 cm (π ≈ 3,14). Messing-Dichte 8,5 g/cm³. Masse (ganze g)?",
+      "answer": 641,
+      "unit_label": "g",
+      "tolerance": 5,
+      "hints": [
+        "V = 3,14·4·6 = 75,36 cm³.",
+        "Masse = 75,36 · 8,5."
+      ],
+      "solution": "V = 3,14·4·6 = 75,36 cm³. Masse = 75,36 · 8,5 = 640,56 ≈ 641 g.",
+      "misconceptions": [
+        {
+          "id": "dichte_vergessen",
+          "value": 75,
+          "feedback": "75,36 cm³ ist das Volumen. Masse = · 8,5 = 641 g."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "dichte",
+        "masse",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP11-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "In einen Quadertank (Grundfläche 50·40 cm²) mit 30 l Wasser wird ein Stein gelegt. Der Wasserspiegel steigt um 2 cm. Wie groß ist das Steinvolumen (cm³)?",
+      "answer": 4000,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "Das verdrängte Wasser = Grundfläche · Anstieg.",
+        "50·40·2."
+      ],
+      "solution": "Verdrängtes Volumen = Grundfläche · Höhenanstieg = 50·40·2 = 4000 cm³. So groß ist der Stein.",
+      "misconceptions": [
+        {
+          "id": "liter_verwirrt",
+          "value": 30,
+          "feedback": "Die 30 l sind Ablenkung. Es zählt der Anstieg: 50·40·2 = 4000 cm³."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "verdraengung",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP11-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Fass (Zylinder r = 30 cm, h = 90 cm, π ≈ 3,14) wird zu 2/3 gefüllt. Wie viele Liter sind drin (ganze l)?",
+      "answer": 170,
+      "unit_label": "l",
+      "tolerance": 3,
+      "hints": [
+        "Ganzes V = 3,14·900·90 cm³.",
+        "Davon 2/3, dann : 1000."
+      ],
+      "solution": "V_ganz = 3,14·900·90 = 254 340 cm³ = 254,34 l. Davon 2/3: 254,34 · 2 : 3 ≈ 169,6 ≈ 170 l.",
+      "misconceptions": [
+        {
+          "id": "ohne_bruchteil",
+          "value": 254,
+          "feedback": "Das Fass ist nur zu 2/3 voll: 254,34 · 2/3 ≈ 170 l."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "liter",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    }
+  ]
+}

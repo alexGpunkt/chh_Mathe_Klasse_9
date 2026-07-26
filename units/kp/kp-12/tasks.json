@@ -1,0 +1,506 @@
+{
+  "unit": "KP-12",
+  "title": "Prüfungstraining: Prismen & Zylinder",
+  "leitidee": "L2",
+  "standards": [
+    "K2",
+    "K3",
+    "K5"
+  ],
+  "wortspeicher": [
+    "das Volumen",
+    "die Oberfläche",
+    "der Zylinder",
+    "das Prisma",
+    "die Grundfläche",
+    "die Einheit"
+  ],
+  "can_do": {
+    "A": "Du erkennst selbst, ob Volumen oder Oberfläche gefragt ist, und rechnest sicher.",
+    "B": "Du löst gemischte Prüfungsaufgaben zu Prismen und Zylindern.",
+    "C": "Du begründest deinen Rechenweg und prüfst Ergebnisse auf Plausibilität."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Volumen oder Oberfläche?",
+      "hinfuehrung": "In der Prüfung steht nicht dabei, was gesucht ist. Der erste Schritt: Geht es um den Rauminhalt (Volumen) oder um die Außenhaut (Oberfläche)?",
+      "erklaerung": [
+        "Signalwörter für Volumen: „passt hinein“, „fasst“, „Liter“, „Rauminhalt“.",
+        "Signalwörter für Oberfläche: „anstreichen“, „Material“, „einwickeln“, „Fläche“."
+      ],
+      "beispiel": {
+        "aufgabe": "„Wie viel Liter fasst der Tank?“ Volumen oder Oberfläche?",
+        "schritte": [
+          "Signal „fasst“ / „Liter“",
+          "→ es geht um den Rauminhalt"
+        ],
+        "ergebnis": "Gesucht ist das Volumen."
+      },
+      "merke": "„fasst/Liter“ → Volumen. „anstreichen/Material“ → Oberfläche."
+    },
+    "B": {
+      "titel": "Gemischte Aufgaben zu Prismen und Zylindern",
+      "hinfuehrung": "Jetzt kommen Prismen und Zylinder durcheinander. Du erkennst den Körper, wählst die Formel und rechnest sicher.",
+      "erklaerung": [
+        "Bestimme zuerst den Körper (Grundfläche!) und ob Volumen oder Oberfläche gefragt ist.",
+        "Formeln von der Formelkarte: Prisma V = G·h, O = 2G + U·h; Zylinder V = π·r²·h, O = 2πr² + 2πrh."
+      ],
+      "beispiel": {
+        "aufgabe": "Zylinder r = 2 cm, h = 5 cm. Volumen (π ≈ 3,14)?",
+        "schritte": [
+          "Körper: Zylinder, gesucht: Volumen",
+          "V = π · r² · h = 3,14 · 4 · 5",
+          "V = 62,8 cm³"
+        ],
+        "ergebnis": "V = 62,8 cm³."
+      },
+      "merke": "Erst Körper und Größe erkennen, dann passende Formel."
+    },
+    "C": {
+      "titel": "Rechenweg begründen und prüfen",
+      "hinfuehrung": "Auf höchstem Niveau schreibst du den Weg begründet auf und prüfst, ob das Ergebnis überhaupt plausibel ist.",
+      "erklaerung": [
+        "Begründe jeden Schritt kurz (welche Formel, warum) und gib Einheiten an.",
+        "Plausibilitätsprüfung: Passt die Größenordnung? Ein Getränkekasten fasst Liter, kein Kubikmeter."
+      ],
+      "beispiel": {
+        "aufgabe": "Fasst ein Zylinder mit r = 10 cm, h = 20 cm mehr oder weniger als 5 Liter? (π ≈ 3,14)",
+        "schritte": [
+          "V = 3,14 · 10² · 20 = 6280 cm³",
+          "6280 cm³ = 6,28 dm³ = 6,28 l",
+          "6,28 l > 5 l"
+        ],
+        "ergebnis": "Er fasst mehr als 5 Liter (≈ 6,3 l) – plausibel für einen Eimer."
+      },
+      "merke": "Begründen, Einheiten mitführen, Größenordnung prüfen."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Quader: V = a·b·c   O = 2(ab+ac+bc)",
+      "Prisma: V = G·h    O = 2·G + Umfang·h",
+      "Zylinder: V = π·r²·h    O = 2πr² + 2πrh",
+      "1 l = 1 dm³ = 1000 cm³    Masse = V · Dichte"
+    ],
+    "saetze": [
+      "Zuerst fragen: Volumen (cm³) oder Oberfläche (cm²)?",
+      "Zum Schluss prüfen: passt die Größenordnung?"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP12-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat a = 6 cm. Volumen?",
+      "answer": 216,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "V = a³.",
+        "6·6·6."
+      ],
+      "solution": "V = 6³ = 216 cm³.",
+      "misconceptions": [
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 36,
+          "feedback": "Volumen: 6·6·6 = 216, nicht 6·6."
+        }
+      ],
+      "tags": [
+        "wuerfel",
+        "volumen"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP12-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Quader 8·5·4 cm. Oberfläche?",
+      "answer": 184,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "a·b=40, a·c=32, b·c=20.",
+        "O = 2·(40+32+20)."
+      ],
+      "solution": "O = 2·(40+32+20) = 2·92 = 184 cm².",
+      "misconceptions": [
+        {
+          "id": "volumen_statt_oberflaeche",
+          "value": 160,
+          "feedback": "160 cm³ ist das Volumen. Gefragt ist die Oberfläche: 184."
+        }
+      ],
+      "tags": [
+        "quader",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Dreiecksprisma: G = 10 cm², h = 7 cm. Volumen?",
+      "answer": 70,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "V = G·h.",
+        "10·7."
+      ],
+      "solution": "V = 10·7 = 70 cm³.",
+      "tags": [
+        "prisma",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Zylinder: Grundfläche 20 cm², h = 6 cm. Volumen?",
+      "answer": 120,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "V = Grundfläche·Höhe.",
+        "20·6."
+      ],
+      "solution": "V = 20·6 = 120 cm³.",
+      "tags": [
+        "zylinder",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 3 cm, h = 12 cm (π ≈ 3,14). Volumen (ganze cm³)?",
+      "answer": 339,
+      "unit_label": "cm³",
+      "tolerance": 4,
+      "hints": [
+        "A = 3,14·9 = 28,26.",
+        "V = 28,26·12."
+      ],
+      "solution": "A = 3,14·9 = 28,26 cm². V = 28,26·12 = 339,12 ≈ 339 cm³.",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 113,
+          "feedback": "r quadrieren: 3,14·3² = 28,26."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Quader-Aquarium 50·30·40 cm. Wie viele Liter?",
+      "answer": 60,
+      "unit_label": "l",
+      "tolerance": 1,
+      "hints": [
+        "V = 50·30·40 = 60 000 cm³.",
+        ":1000."
+      ],
+      "solution": "V = 60 000 cm³ = 60 l.",
+      "misconceptions": [
+        {
+          "id": "nicht_in_liter",
+          "value": 60000,
+          "feedback": "In Liter: 60 000 : 1000 = 60."
+        }
+      ],
+      "tags": [
+        "quader",
+        "volumen",
+        "liter",
+        "bbr"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP12-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Dreiecksprisma: Grundseite 6, Dreieckshöhe 4, Länge 9 cm. Volumen?",
+      "answer": 108,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "G = (6·4):2 = 12.",
+        "V = 12·9."
+      ],
+      "solution": "G = 12 cm². V = 12·9 = 108 cm³.",
+      "misconceptions": [
+        {
+          "id": "dreieck_halbe_vergessen",
+          "value": 216,
+          "feedback": "Durch 2: G = 12, dann · 9 = 108."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "volumen",
+        "dreieck",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Zylinderdose: d = 10 cm, h = 8 cm. Oberfläche (π ≈ 3,14, ganze cm²)?",
+      "answer": 408,
+      "unit_label": "cm²",
+      "tolerance": 4,
+      "hints": [
+        "r = 5.",
+        "O = 2·3,14·25 + 2·3,14·5·8."
+      ],
+      "solution": "r = 5 cm. Kreise: 2·3,14·25 = 157. Mantel: 2·3,14·5·8 = 251,2.\nO = 157 + 251,2 = 408,2 ≈ 408 cm².",
+      "misconceptions": [
+        {
+          "id": "durchmesser_als_radius",
+          "value": 1319,
+          "feedback": "Erst r = d:2 = 5 cm."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "oberflaeche",
+        "durchmesser",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Quader hat V = 480 cm³, Grundfläche 60 cm². Höhe?",
+      "answer": 8,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "h = V:G.",
+        "480:60."
+      ],
+      "solution": "h = 480 : 60 = 8 cm.",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 28800,
+          "feedback": "Rückwärts: 480 : 60 = 8."
+        }
+      ],
+      "tags": [
+        "quader",
+        "rueckwaerts",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Kupferquader 4·3·2 cm, Dichte 8,9 g/cm³. Masse (ganze g)?",
+      "answer": 214,
+      "unit_label": "g",
+      "tolerance": 2,
+      "hints": [
+        "V = 24 cm³.",
+        "Masse = 24·8,9."
+      ],
+      "solution": "V = 24 cm³. Masse = 24·8,9 = 213,6 ≈ 214 g.",
+      "misconceptions": [
+        {
+          "id": "dichte_vergessen",
+          "value": 24,
+          "feedback": "24 cm³ ist das Volumen. Masse = 24·8,9 ≈ 214 g."
+        }
+      ],
+      "tags": [
+        "quader",
+        "dichte",
+        "masse",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO",
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP12-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 7 cm, h = 20 cm (π ≈ 3,14). Volumen in Litern (eine Nachkommastelle)?",
+      "answer": 3.1,
+      "unit_label": "l",
+      "tolerance": 0.1,
+      "hints": [
+        "V = 3,14·49·20 cm³.",
+        ":1000 für Liter."
+      ],
+      "solution": "A = 3,14·49 = 153,86. V = 153,86·20 = 3077,2 cm³ ≈ 3,1 l.",
+      "misconceptions": [
+        {
+          "id": "nicht_in_liter",
+          "value": 3077,
+          "feedback": "3077 cm³ ist richtig, in Liter : 1000 ≈ 3,1 l."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "liter",
+        "msa"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP12-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein oben offenes Quaderbecken 40·30·20 cm soll innen gestrichen werden (Boden + 4 Wände). Fläche (cm²)?",
+      "answer": 4000,
+      "unit_label": "cm²",
+      "tolerance": 1,
+      "hints": [
+        "Boden 40·30 = 1200.",
+        "Wände 2·(40·20) + 2·(30·20)."
+      ],
+      "solution": "Boden: 40·30 = 1200. Wände: 2·(40·20) + 2·(30·20) = 1600 + 1200 = 2800.\nGesamt = 1200 + 2800 = 4000 cm².",
+      "misconceptions": [
+        {
+          "id": "deckel_mitgezaehlt",
+          "value": 5200,
+          "feedback": "Oben offen — die Deckfläche (1200) zählt nicht: 4000, nicht 5200."
+        }
+      ],
+      "tags": [
+        "quader",
+        "oberflaeche",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Rohr: außen r = 5 cm, innen r = 4 cm, Länge 50 cm (π ≈ 3,14). Materialvolumen (ganze cm³)?",
+      "answer": 1413,
+      "unit_label": "cm³",
+      "tolerance": 8,
+      "hints": [
+        "V_außen = 3,14·25·50, V_innen = 3,14·16·50.",
+        "Differenz."
+      ],
+      "solution": "V_außen = 3,14·25·50 = 3925. V_innen = 3,14·16·50 = 2512.\nMaterial = 3925 − 2512 = 1413 cm³.",
+      "misconceptions": [
+        {
+          "id": "innen_vergessen",
+          "value": 3925,
+          "feedback": "Das Rohr ist hohl: außen − innen = 3925 − 2512 = 1413."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "hohlkoerper",
+        "volumen",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP12-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Zwei Dosen sind gleich hoch. Dose B hat den doppelten Radius von Dose A. Wie viel mehr passt in B?",
+      "options": [
+        "viermal so viel",
+        "doppelt so viel",
+        "gleich viel"
+      ],
+      "answer": 0,
+      "hints": [
+        "V hängt von r² ab.",
+        "Doppelter Radius → r² viermal so groß."
+      ],
+      "solution": "V = π·r²·h. Doppelter Radius bedeutet r² viermal so groß (2² = 4). B fasst viermal so viel wie A.",
+      "misconceptions": [
+        {
+          "id": "linear_gedacht",
+          "value": 1,
+          "feedback": "Nicht doppelt — das Volumen hängt von r² ab, also 4-fach."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

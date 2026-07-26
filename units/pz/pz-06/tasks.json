@@ -17,6 +17,66 @@
     "B": "Du berechnest W = G · p : 100 und prüfst dein Ergebnis am Streifen.",
     "C": "Du rechnest mit dem Faktor, überschlägst vorher und vergleichst zwei Wege."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Prozentwert über den 1-%-Schritt",
+      "hinfuehrung": "Wenn du erst weißt, was 1 % ist, ist jeder Prozentwert nur noch ein Malnehmen entfernt.",
+      "erklaerung": [
+        "1 % ist der hundertste Teil des Grundwerts. Du bekommst ihn mit G : 100.",
+        "Danach multiplizierst du mit dem gesuchten Prozentsatz."
+      ],
+      "beispiel": {
+        "aufgabe": "Berechne 20 % von 250 € über den 1-%-Schritt.",
+        "schritte": [
+          "1 %  = 250 € : 100 = 2,50 €",
+          "20 % = 2,50 € · 20 = 50 €"
+        ],
+        "ergebnis": "20 % von 250 € sind 50 €."
+      },
+      "merke": "1 % = G : 100. Dann mal p."
+    },
+    "B": {
+      "titel": "Prozentwert mit der Formel",
+      "hinfuehrung": "Der 1-%-Schritt steckt in einer Formel: W = G · p : 100. Ein Bruchstrich statt zweier Schritte.",
+      "erklaerung": [
+        "W ist der gesuchte Teil, G der Grundwert (100 %), p der Prozentsatz.",
+        "Prüfe am Streifen: Ist p kleiner als 100 %, muss W kleiner als G sein."
+      ],
+      "visual": {
+        "type": "streifen",
+        "fill": 35,
+        "alt": "Streifen zu 35 Prozent gefärbt – der Prozentwert ist kleiner als das Ganze."
+      },
+      "beispiel": {
+        "aufgabe": "Ein Pullover kostet 80 €, der Rabatt beträgt 35 %. Wie viel Euro sind das?",
+        "schritte": [
+          "W = G · p : 100",
+          "W = 80 € · 35 : 100",
+          "W = 2800 : 100 = 28 €"
+        ],
+        "ergebnis": "Der Rabatt beträgt 28 €."
+      },
+      "merke": "W = G · p : 100"
+    },
+    "C": {
+      "titel": "Mit dem Faktor rechnen und überschlagen",
+      "hinfuehrung": "Profis rechnen Prozentwerte mit einem Faktor und prüfen das Ergebnis vorher im Kopf durch einen Überschlag.",
+      "erklaerung": [
+        "p % als Faktor: 35 % = 0,35. Dann ist W = G · 0,35 – ein Schritt.",
+        "Überschlag zuerst: 35 % ist gut ein Drittel. Ein Drittel von 80 ist knapp 27 – dein Ergebnis muss in dieser Nähe liegen."
+      ],
+      "beispiel": {
+        "aufgabe": "Berechne 35 % von 80 € mit dem Faktor und überschlage vorher.",
+        "schritte": [
+          "Überschlag: 35 % ≈ 1/3 von 80 ≈ 27 €",
+          "Faktor: 35 % = 0,35",
+          "W = 80 € · 0,35 = 28 €   ✓ nahe am Überschlag"
+        ],
+        "ergebnis": "28 € – der Überschlag (≈ 27 €) bestätigt es."
+      },
+      "merke": "Prozent als Faktor (35 % = 0,35). Überschlag schützt vor Kommafehlern."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "Über 1 %:   1 % = G : 100   →   W = (G : 100) · p",

@@ -1,0 +1,596 @@
+{
+  "unit": "SK-04",
+  "title": "Oberfläche der Pyramide",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K2"
+  ],
+  "wortspeicher": [
+    "die Oberfläche",
+    "die Grundfläche",
+    "der Mantel",
+    "das Seitendreieck",
+    "die Seitenhöhe",
+    "der Satz des Pythagoras"
+  ],
+  "can_do": {
+    "A": "Du berechnest die Fläche eines Seitendreiecks über (a · s) : 2.",
+    "B": "Du berechnest die Oberfläche = Grundfläche + Mantel (4 Dreiecke).",
+    "C": "Du bestimmst zuerst die Seitenhöhe mit Pythagoras und dann die Oberfläche."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Fläche eines Seitendreiecks",
+      "hinfuehrung": "Jede Seitenfläche der Pyramide ist ein Dreieck. Seine Fläche berechnest du mit Grundkante und Seitenhöhe.",
+      "erklaerung": [
+        "Dreiecksfläche = (Grundseite · Höhe) : 2. Hier: Grundkante a und Seitenhöhe s.",
+        "Also eine Seitenfläche = (a · s) : 2."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a",
+          "s": "s",
+          "h": "h"
+        },
+        "alt": "Pyramide mit Grundkante a und Seitenhöhe s."
+      },
+      "beispiel": {
+        "aufgabe": "Ein Seitendreieck mit a = 6 cm und s = 5 cm. Fläche?",
+        "schritte": [
+          "Fläche = (a · s) : 2",
+          "= (6 · 5) : 2 = 30 : 2",
+          "= 15 cm²"
+        ],
+        "ergebnis": "Ein Seitendreieck hat 15 cm²."
+      },
+      "merke": "Seitendreieck = (a · s) : 2."
+    },
+    "B": {
+      "titel": "Oberfläche = Grundfläche + Mantel",
+      "hinfuehrung": "Die Oberfläche der quadratischen Pyramide sind das Grundquadrat und die vier gleichen Seitendreiecke.",
+      "erklaerung": [
+        "Mantel = 4 · (a · s) : 2 = 2 · a · s.",
+        "Oberfläche O = a² + 2 · a · s (Grundfläche plus Mantel)."
+      ],
+      "beispiel": {
+        "aufgabe": "Quadratische Pyramide: a = 6 cm, s = 5 cm. Oberfläche?",
+        "schritte": [
+          "Grundfläche = a² = 36 cm²",
+          "Mantel = 2 · a · s = 2 · 6 · 5 = 60 cm²",
+          "O = 36 + 60 = 96 cm²"
+        ],
+        "ergebnis": "O = 96 cm²."
+      },
+      "merke": "Quadratische Pyramide: O = a² + 2 · a · s."
+    },
+    "C": {
+      "titel": "Erst die Seitenhöhe, dann die Oberfläche",
+      "hinfuehrung": "Oft ist s nicht gegeben, sondern nur h und a. Dann berechnest du zuerst s mit Pythagoras und danach die Oberfläche.",
+      "erklaerung": [
+        "Seitenhöhe: s = √( h² + (a : 2)² ).",
+        "Dann O = a² + 2 · a · s. Zwei Schritte, sauber getrennt."
+      ],
+      "beispiel": {
+        "aufgabe": "Pyramide mit a = 6 cm, h = 4 cm. Berechne die Oberfläche.",
+        "schritte": [
+          "s = √(4² + 3²) = √(16 + 9) = √25 = 5 cm",
+          "Mantel = 2 · 6 · 5 = 60 cm²",
+          "O = 6² + 60 = 36 + 60 = 96 cm²"
+        ],
+        "ergebnis": "O = 96 cm²."
+      },
+      "merke": "Erst s = √( h² + (a:2)² ), dann O = a² + 2·a·s."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "O = Grundfläche + Mantel",
+      "quadratische Pyramide: Mantel = 4 · (a · s) : 2 = 2 · a · s",
+      "Grundfläche = a²      →   O = a² + 2 · a · s",
+      "s zuerst mit Pythagoras: s = √( h² + (a:2)² )"
+    ],
+    "saetze": [
+      "Für die Oberfläche brauchst du die Seitenhöhe s, nicht h.",
+      "Ein Seitendreieck: Grundlinie a, Höhe s → (a·s):2."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "SK04-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Seitendreieck hat die Grundlinie a = 6 cm und die Seitenhöhe s = 5 cm. Flächeninhalt?",
+      "answer": 15,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Dreieck: (a · s) : 2.",
+        "(6 · 5) : 2."
+      ],
+      "solution": "Fläche = (a · s) : 2 = (6 · 5) : 2 = 30 : 2 = 15 cm².",
+      "misconceptions": [
+        {
+          "id": "dreieck_halbe_vergessen",
+          "value": 30,
+          "feedback": "Beim Dreieck durch 2: (6·5):2 = 15."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "dreieck"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Eine quadratische Pyramide hat 4 gleiche Seitendreiecke von je 15 cm². Wie groß ist der Mantel?",
+      "answer": 60,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Mantel = 4 · ein Dreieck.",
+        "4 · 15."
+      ],
+      "solution": "Mantel = 4 · 15 = 60 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_ein_dreieck",
+          "value": 15,
+          "feedback": "Es gibt 4 Seitendreiecke: 4 · 15 = 60."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "mantel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 6 cm, Mantel 60 cm². Grundfläche 36 cm². Gesamte Oberfläche?",
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a = 6 cm",
+          "h": "",
+          "s": "s = 5 cm"
+        },
+        "alt": "Pyramide a=6, s=5."
+      },
+      "answer": 96,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "O = Grundfläche + Mantel.",
+        "36 + 60."
+      ],
+      "solution": "O = G + Mantel = 36 + 60 = 96 cm².",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 60,
+          "feedback": "Zur Mantelfläche noch die Grundfläche: 36 + 60 = 96."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 8 cm, s = 5 cm. Oberfläche (O = a² + 2·a·s)?",
+      "answer": 144,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "Grundfläche 8² = 64.",
+        "Mantel 2·8·5 = 80. O = 64 + 80."
+      ],
+      "solution": "O = a² + 2·a·s = 64 + 2·8·5 = 64 + 80 = 144 cm².",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 80,
+          "feedback": "Der Mantel ist 80. Plus Grundfläche 64: O = 144."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Quadratische Pyramide: a = 10 cm, s = 13 cm. Rechne schrittweise.",
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a = 10 cm",
+          "h": "",
+          "s": "s = 13 cm"
+        },
+        "alt": "Pyramide a=10, s=13."
+      },
+      "fields": [
+        {
+          "label": "Grundfläche",
+          "answer": 100,
+          "tolerance": 0.01,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Mantel (2·a·s)",
+          "answer": 260,
+          "tolerance": 0.01,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 360,
+          "tolerance": 0.01,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_vergessen",
+              "value": 260,
+              "feedback": "Zur Mantelfläche 260 noch die Grundfläche 100: O = 360."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "G = 10².",
+        "Mantel = 2·10·13.",
+        "O = G + Mantel."
+      ],
+      "solution": "G = 100 cm². Mantel = 2·10·13 = 260 cm². O = 100 + 260 = 360 cm².",
+      "tags": [
+        "pyramide",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 12 cm, s = 10 cm. Oberfläche?",
+      "answer": 384,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 144, Mantel = 2·12·10 = 240.",
+        "O = 144 + 240."
+      ],
+      "solution": "O = 12² + 2·12·10 = 144 + 240 = 384 cm².",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 240,
+          "feedback": "Grundfläche 144 dazu: 144 + 240 = 384."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Seitendreieck: Grundlinie 8 cm, Seitenhöhe 7 cm. Fläche?",
+      "answer": 28,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "(8 · 7) : 2.",
+        "= 56 : 2."
+      ],
+      "solution": "Fläche = (8 · 7) : 2 = 28 cm².",
+      "misconceptions": [
+        {
+          "id": "dreieck_halbe_vergessen",
+          "value": 56,
+          "feedback": "Durch 2: (8·7):2 = 28."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "dreieck",
+        "flaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 6 cm, s = 8 cm. Oberfläche?",
+      "answer": 132,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 36, Mantel = 2·6·8 = 96.",
+        "O = 36 + 96."
+      ],
+      "solution": "O = 36 + 2·6·8 = 36 + 96 = 132 cm².",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 96,
+          "feedback": "Grundfläche 36 dazu: 132."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Zeltdach (quadratische Pyramide): a = 4 m, s = 3 m. Wie viel Stoff für die 4 Seiten (nur Mantel, m²)?",
+      "answer": 24,
+      "unit_label": "m²",
+      "tolerance": 0.5,
+      "hints": [
+        "Nur der Mantel: 2·a·s.",
+        "2·4·3."
+      ],
+      "solution": "Mantel = 2·a·s = 2·4·3 = 24 m². (Der Boden bleibt offen — nur das Dach.)",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_mitgezaehlt",
+          "value": 40,
+          "feedback": "Nur die 4 Seiten zählen (der Boden ist offen): Mantel = 24, ohne die 16 m² Grundfläche."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "mantel",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 16 cm, s = 10 cm. Oberfläche?",
+      "answer": 576,
+      "unit_label": "cm²",
+      "tolerance": 1,
+      "hints": [
+        "G = 256, Mantel = 2·16·10 = 320.",
+        "O = 256 + 320."
+      ],
+      "solution": "O = 256 + 2·16·10 = 256 + 320 = 576 cm².",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 320,
+          "feedback": "Grundfläche 256 dazu: 576."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Quadratische Pyramide: a = 6 cm, h = 4 cm. Erst s mit Pythagoras, dann die Oberfläche.",
+      "fields": [
+        {
+          "label": "Seitenhöhe s",
+          "answer": 5,
+          "tolerance": 0.01,
+          "unit_label": "cm",
+          "misconceptions": [
+            {
+              "id": "volle_grundkante",
+              "value": 7.21,
+              "feedback": "Halbe Grundkante 3 cm: s = √(4²+3²) = 5."
+            }
+          ]
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 96,
+          "tolerance": 0.01,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_vergessen",
+              "value": 60,
+              "feedback": "Zur Mantelfläche 60 noch die Grundfläche 36: O = 96."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "s = √(h² + (a:2)²) = √(16+9).",
+        "O = a² + 2·a·s = 36 + 2·6·5."
+      ],
+      "solution": "s = √(4² + 3²) = √25 = 5 cm.\nO = 36 + 2·6·5 = 36 + 60 = 96 cm².",
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "pythagoras",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "multi",
+      "prompt": "Quadratische Pyramide: a = 10 cm, h = 12 cm. Erst s, dann Oberfläche.",
+      "fields": [
+        {
+          "label": "Seitenhöhe s",
+          "answer": 13,
+          "tolerance": 0.01,
+          "unit_label": "cm"
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 360,
+          "tolerance": 0.01,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_vergessen",
+              "value": 260,
+              "feedback": "Mantel 260 + Grundfläche 100 = 360."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "s = √(12² + 5²) = √169.",
+        "O = 100 + 2·10·13."
+      ],
+      "solution": "s = √(144 + 25) = √169 = 13 cm.\nO = 100 + 2·10·13 = 100 + 260 = 360 cm².",
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "pythagoras",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Cheops-Modell: a = 14 cm, h = 24 cm. Zuerst s (= 25 cm) — dann nur der Mantel (cm²)?",
+      "answer": 700,
+      "unit_label": "cm²",
+      "tolerance": 2,
+      "hints": [
+        "s = √(24² + 7²) = 25.",
+        "Mantel = 2·a·s = 2·14·25."
+      ],
+      "solution": "s = √(576 + 49) = 25 cm. Mantel = 2·14·25 = 700 cm².",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_mitgezaehlt",
+          "value": 896,
+          "feedback": "Gefragt ist nur der Mantel: 700, ohne die Grundfläche 196."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "pythagoras",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK04-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Warum darf man für die Oberfläche NICHT die Körperhöhe h in die Dreiecksfläche einsetzen?",
+      "options": [
+        "Weil die Seitendreiecke schräg stehen — ihre Höhe ist die Seitenhöhe s, nicht h.",
+        "Weil h und s gleich sind.",
+        "Weil h zu klein ist."
+      ],
+      "answer": 0,
+      "hints": [
+        "Die Fläche eines Seitendreiecks braucht dessen eigene Höhe.",
+        "Das ist die schräge Strecke s, nicht die senkrechte h."
+      ],
+      "solution": "Die Höhe eines Seitendreiecks ist die Seitenhöhe s (schräg auf der Fläche). Die Körperhöhe h steht senkrecht im Inneren und gehört ins Volumen — nicht in die Dreiecksfläche.",
+      "misconceptions": [
+        {
+          "id": "h_statt_s",
+          "value": 1,
+          "feedback": "h und s sind verschieden: h senkrecht (Volumen), s schräg (Oberfläche)."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

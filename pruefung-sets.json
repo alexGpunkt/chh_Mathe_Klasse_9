@@ -66,12 +66,22 @@
       "K_n = K_0 · q^n              Zinseszins,  q = 1 + p/100",
       "",
       "Dreisatz proportional:      erst : n, dann · m",
-      "Dreisatz antiproportional:  erst · n, dann : m"
+      "Dreisatz antiproportional:  erst · n, dann : m",
+      "",
+      "── Körper ──",
+      "Quader:  V = a·b·c        O = 2(ab+ac+bc)",
+      "Prisma:  V = G·h          O = 2·G + Umfang·h",
+      "Zylinder: V = π·r²·h      O = 2πr² + 2πrh",
+      "Pyramide: V = (G·h):3     O = G + Mantel   s = √(h²+(a:2)²)",
+      "Kegel:   V = (π·r²·h):3   O = πr² + πrs    s = √(r²+h²)",
+      "Kugel:   V = (4·π·r³):3   O = 4πr²",
+      "1 l = 1 dm³ = 1000 cm³    Masse = V · Dichte"
     ],
     "saetze": [
       "Zuerst fragen: Welche Größe ist gesucht?",
       "Der Grundwert ist das Ganze — bei Veränderungen der ALTE Wert.",
-      "Kontrolle: Ist mein Ergebnis plausibel groß?"
+      "Kontrolle: Ist mein Ergebnis plausibel groß?",
+      "Bei Körpern zuerst fragen: Volumen (cm³) oder Oberfläche (cm²)?"
     ]
   }
 }

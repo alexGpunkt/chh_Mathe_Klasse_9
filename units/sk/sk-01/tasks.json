@@ -1,0 +1,550 @@
+{
+  "unit": "SK-01",
+  "title": "Die Pyramide kennenlernen",
+  "leitidee": "L3",
+  "standards": [
+    "K4",
+    "K6"
+  ],
+  "wortspeicher": [
+    "die Pyramide",
+    "die Spitze",
+    "die Grundkante",
+    "die Höhe",
+    "die Seitenhöhe",
+    "das Seitendreieck",
+    "das Netz"
+  ],
+  "can_do": {
+    "A": "Du erkennst eine Pyramide und benennst Spitze, Grundfläche, Grundkante und Höhe.",
+    "B": "Du unterscheidest Höhe und Seitenhöhe und beschreibst das Netz der Pyramide.",
+    "C": "Du schließt von der Grundfläche auf Anzahl und Form der Seitenflächen."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Die Pyramide kennenlernen",
+      "hinfuehrung": "Eine Pyramide hat eine Grundfläche und Seitendreiecke, die alle in einer Spitze zusammenlaufen. Ihre Teile haben feste Namen.",
+      "erklaerung": [
+        "Spitze: der oberste Punkt. Grundfläche: die Fläche unten (z. B. Quadrat). Grundkante a: eine Kante der Grundfläche.",
+        "Höhe h: der senkrechte Abstand von der Spitze zur Mitte der Grundfläche."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a",
+          "h": "h",
+          "s": "s"
+        },
+        "alt": "Quadratische Pyramide mit Grundkante a, Höhe h und Seitenhöhe s."
+      },
+      "beispiel": {
+        "aufgabe": "Benenne bei einer quadratischen Pyramide die vier Grundbegriffe.",
+        "schritte": [
+          "Spitze: oberster Punkt",
+          "Grundfläche: das Quadrat unten",
+          "Grundkante a: Seite des Quadrats; Höhe h: senkrecht zur Mitte"
+        ],
+        "ergebnis": "Spitze, Grundfläche, Grundkante a, Höhe h."
+      },
+      "merke": "Höhe h: senkrecht von der Spitze zur Mitte der Grundfläche."
+    },
+    "B": {
+      "titel": "Höhe und Seitenhöhe unterscheiden",
+      "hinfuehrung": "Zwei „Höhen“ treffen an der Spitze zusammen – die Körperhöhe h und die Seitenhöhe s. Sie zu verwechseln ist der häufigste Fehler.",
+      "erklaerung": [
+        "Höhe h: senkrecht durch das Innere zur Mitte der Grundfläche.",
+        "Seitenhöhe s: die Höhe eines Seitendreiecks, gemessen auf der schrägen Außenfläche. s ist immer länger als h."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a",
+          "h": "h",
+          "s": "s"
+        },
+        "alt": "Pyramide mit eingezeichneter Höhe h (innen) und Seitenhöhe s (außen)."
+      },
+      "beispiel": {
+        "aufgabe": "Welche Größe brauchst du für die Fläche eines Seitendreiecks – h oder s?",
+        "schritte": [
+          "Seitendreieck liegt auf der Außenfläche",
+          "seine Höhe ist die Seitenhöhe s",
+          "→ nicht die Körperhöhe h"
+        ],
+        "ergebnis": "Für die Seitenfläche brauchst du die Seitenhöhe s."
+      },
+      "merke": "h innen (senkrecht), s außen auf der Seitenfläche. s > h."
+    },
+    "C": {
+      "titel": "Von der Grundfläche auf die Seitenflächen schließen",
+      "hinfuehrung": "Die Form der Grundfläche bestimmt, wie viele Seitendreiecke die Pyramide hat und wie sie aussehen.",
+      "erklaerung": [
+        "Jede Kante der Grundfläche trägt genau ein Seitendreieck. Ein n-Eck als Grundfläche → n Seitendreiecke.",
+        "Bei regelmäßiger Grundfläche sind alle Seitendreiecke gleich; die Gesamtzahl der Flächen ist n + 1 (Grundfläche dazu)."
+      ],
+      "beispiel": {
+        "aufgabe": "Wie viele Flächen hat eine Pyramide mit sechseckiger Grundfläche?",
+        "schritte": [
+          "6 Grundkanten → 6 Seitendreiecke",
+          "+ 1 Grundfläche",
+          "Flächen = 6 + 1 = 7"
+        ],
+        "ergebnis": "7 Flächen (6 Dreiecke + Grundfläche)."
+      },
+      "merke": "n-Eck-Pyramide: n Seitendreiecke, n + 1 Flächen."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Pyramide: eine Grundfläche + Seitendreiecke, die in EINER Spitze zusammenlaufen",
+      "Höhe h: senkrecht von der Spitze zur Grundfläche (Mitte)",
+      "Seitenhöhe s: Höhe EINES Seitendreiecks (auf der Fläche)",
+      "quadratische Pyramide: Grundfläche = Quadrat, 4 gleiche Dreiecke"
+    ],
+    "saetze": [
+      "Die Grundfläche bestimmt den Namen der Pyramide.",
+      "Höhe steht senkrecht, Seitenhöhe liegt auf der Fläche."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "SK01-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Wodurch unterscheidet sich eine Pyramide von einem Prisma?",
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a",
+          "h": "h",
+          "s": "s"
+        },
+        "alt": "Eine quadratische Pyramide mit Spitze."
+      },
+      "options": [
+        "Alle Seitenflächen laufen in einer Spitze zusammen.",
+        "Sie hat zwei gleiche Grundflächen.",
+        "Sie hat eine gebogene Fläche."
+      ],
+      "answer": 0,
+      "hints": [
+        "Denk an die ägyptischen Pyramiden.",
+        "Oben ist ein einziger Punkt."
+      ],
+      "solution": "Eine Pyramide hat EINE Grundfläche; alle Seitendreiecke treffen sich oben in der Spitze. Ein Prisma hätte zwei gleiche Grundflächen.",
+      "misconceptions": [
+        {
+          "id": "prisma_verwechselt",
+          "value": 1,
+          "feedback": "Zwei Grundflächen hat das Prisma. Die Pyramide läuft oben spitz zu."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "koerper"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Welche Form hat die Grundfläche einer quadratischen Pyramide?",
+      "options": [
+        "ein Quadrat",
+        "ein Dreieck",
+        "ein Kreis"
+      ],
+      "answer": 0,
+      "hints": [
+        "Der Name verrät die Grundfläche.",
+        "'quadratisch' → …"
+      ],
+      "solution": "Bei einer quadratischen Pyramide ist die Grundfläche ein Quadrat.",
+      "tags": [
+        "pyramide",
+        "grundflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Wie viele Seitendreiecke (Seitenflächen) hat eine quadratische Pyramide?",
+      "answer": 4,
+      "unit_label": "Dreiecke",
+      "tolerance": 0.01,
+      "hints": [
+        "So viele wie die Grundfläche Seiten hat.",
+        "Ein Quadrat hat 4 Seiten."
+      ],
+      "solution": "Ein Quadrat hat 4 Seiten, also hat die Pyramide 4 Seitendreiecke.",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_mitgezaehlt",
+          "value": 5,
+          "feedback": "Gefragt sind nur die Seitendreiecke: 4. Die Grundfläche zählt separat."
+        }
+      ],
+      "tags": [
+        "pyramide"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Wie viele Flächen hat eine quadratische Pyramide insgesamt (mit Grundfläche)?",
+      "answer": 5,
+      "unit_label": "Flächen",
+      "tolerance": 0.01,
+      "hints": [
+        "4 Dreiecke + 1 Grundfläche.",
+        "4 + 1."
+      ],
+      "solution": "4 Seitendreiecke + 1 quadratische Grundfläche = 5 Flächen.",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 4,
+          "feedback": "Die Grundfläche zählt mit: 4 + 1 = 5."
+        }
+      ],
+      "tags": [
+        "pyramide"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Was ist die HÖHE h einer Pyramide?",
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a",
+          "h": "h",
+          "s": "s"
+        },
+        "alt": "Pyramide mit Höhe h und Seitenhöhe s."
+      },
+      "options": [
+        "die senkrechte Strecke von der Spitze zur Mitte der Grundfläche",
+        "die Höhe eines Seitendreiecks",
+        "eine Grundkante"
+      ],
+      "answer": 0,
+      "hints": [
+        "Höhe steht immer senkrecht.",
+        "Sie geht ins Innere, zur Mitte des Bodens."
+      ],
+      "solution": "Die Höhe h geht senkrecht von der Spitze zur Mitte der Grundfläche — sie liegt im Inneren des Körpers.",
+      "misconceptions": [
+        {
+          "id": "hoehe_seitenhoehe_verwechselt",
+          "value": 1,
+          "feedback": "Das ist die Seitenhöhe s. Die Höhe h steht senkrecht im Inneren."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "hoehe"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Was ist die SEITENHÖHE s?",
+      "options": [
+        "die Höhe eines Seitendreiecks (auf der Außenfläche)",
+        "die senkrechte Höhe des Körpers",
+        "die Länge einer Grundkante"
+      ],
+      "answer": 0,
+      "hints": [
+        "Sie liegt auf einer der schrägen Flächen.",
+        "Man braucht sie für die Oberfläche."
+      ],
+      "solution": "Die Seitenhöhe s ist die Höhe eines Seitendreiecks — sie liegt außen auf der schrägen Fläche. Man braucht sie für die Oberfläche.",
+      "misconceptions": [
+        {
+          "id": "hoehe_seitenhoehe_verwechselt",
+          "value": 1,
+          "feedback": "Das ist die Körperhöhe h. Die Seitenhöhe s liegt auf der schrägen Fläche."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "seitenhoehe"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "assign",
+      "prompt": "Ordne den Größen ihre Bedeutung zu.",
+      "slots": [
+        "Höhe h",
+        "Seitenhöhe s",
+        "Grundkante a"
+      ],
+      "values": [
+        "senkrecht von Spitze zur Bodenmitte",
+        "Höhe eines Seitendreiecks",
+        "Kante der Grundfläche"
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "hints": [
+        "Höhe ist senkrecht.",
+        "Grundkante liegt unten."
+      ],
+      "solution": "Höhe h → senkrecht zur Bodenmitte. Seitenhöhe s → Höhe eines Dreiecks. Grundkante a → unten.",
+      "tags": [
+        "pyramide"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Netz einer quadratischen Pyramide: 1 Quadrat und wie viele Dreiecke?",
+      "answer": 4,
+      "unit_label": "Dreiecke",
+      "tolerance": 0.01,
+      "hints": [
+        "Ein Seitendreieck pro Grundkante.",
+        "Das Quadrat hat 4 Kanten."
+      ],
+      "solution": "Das Netz besteht aus 1 Quadrat und 4 Dreiecken.",
+      "tags": [
+        "pyramide",
+        "netz",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Wie viele Kanten hat eine quadratische Pyramide?",
+      "answer": 8,
+      "unit_label": "Kanten",
+      "tolerance": 0.01,
+      "hints": [
+        "4 Grundkanten (Quadrat).",
+        "4 Seitenkanten (zur Spitze). 4 + 4."
+      ],
+      "solution": "4 Grundkanten + 4 Seitenkanten (zur Spitze) = 8 Kanten.",
+      "misconceptions": [
+        {
+          "id": "nur_grundkanten",
+          "value": 4,
+          "feedback": "Die 4 Seitenkanten zur Spitze fehlen: 4 + 4 = 8."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Wie viele Ecken hat eine quadratische Pyramide?",
+      "answer": 5,
+      "unit_label": "Ecken",
+      "tolerance": 0.01,
+      "hints": [
+        "4 Ecken unten (Quadrat).",
+        "1 Spitze oben. 4 + 1."
+      ],
+      "solution": "4 Ecken der Grundfläche + 1 Spitze = 5 Ecken.",
+      "misconceptions": [
+        {
+          "id": "spitze_vergessen",
+          "value": 4,
+          "feedback": "Die Spitze ist auch eine Ecke: 4 + 1 = 5."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Eine Pyramide hat eine sechseckige Grundfläche. Wie viele Seitendreiecke hat sie?",
+      "options": [
+        "6",
+        "5",
+        "8"
+      ],
+      "answer": 0,
+      "hints": [
+        "Ein Dreieck pro Grundkante.",
+        "Ein Sechseck hat 6 Kanten."
+      ],
+      "solution": "Ein Sechseck hat 6 Kanten, also 6 Seitendreiecke.",
+      "misconceptions": [
+        {
+          "id": "kantenzahl_falsch",
+          "value": 1,
+          "feedback": "Sechseck = 6 Kanten → 6 Dreiecke."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "begruendung"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Eine Pyramide mit fünfeckiger Grundfläche — wie viele Flächen hat sie insgesamt?",
+      "answer": 6,
+      "unit_label": "Flächen",
+      "tolerance": 0.01,
+      "hints": [
+        "5 Seitendreiecke + 1 Grundfläche.",
+        "5 + 1."
+      ],
+      "solution": "5 Seitendreiecke + 1 fünfeckige Grundfläche = 6 Flächen.",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 5,
+          "feedback": "Die Grundfläche zählt mit: 5 + 1 = 6."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Eine Pyramide mit n-eckiger Grundfläche hat wie viele Ecken bei n = 8?",
+      "answer": 9,
+      "unit_label": "Ecken",
+      "tolerance": 0.01,
+      "hints": [
+        "n Ecken unten + 1 Spitze.",
+        "8 + 1."
+      ],
+      "solution": "n Grundecken + 1 Spitze = 8 + 1 = 9 Ecken.",
+      "misconceptions": [
+        {
+          "id": "spitze_vergessen",
+          "value": 8,
+          "feedback": "Die Spitze zählt mit: 8 + 1 = 9."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK01-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Warum ist die Seitenhöhe s immer länger als die Körperhöhe h?",
+      "options": [
+        "Weil s die Schräge ist und schräg immer länger als senkrecht zur selben Höhe.",
+        "Weil s und h gleich lang sind.",
+        "Das stimmt nicht, h ist länger."
+      ],
+      "answer": 0,
+      "hints": [
+        "Beide starten an der Spitze.",
+        "s läuft schräg nach außen, h senkrecht — die Schräge ist die Hypotenuse."
+      ],
+      "solution": "s ist im rechtwinkligen Dreieck (h, a/2, s) die Hypotenuse. Die Hypotenuse ist stets länger als jede Kathete — also s > h.",
+      "misconceptions": [
+        {
+          "id": "gleich_lang_vermutet",
+          "value": 1,
+          "feedback": "s ist die Hypotenuse im Dreieck (h, a/2, s), also länger als h."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "pythagoras",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

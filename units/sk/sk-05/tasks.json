@@ -1,0 +1,532 @@
+{
+  "unit": "SK-05",
+  "title": "Pyramide: rückwärts und gemischt",
+  "leitidee": "L2",
+  "standards": [
+    "K2",
+    "K5"
+  ],
+  "wortspeicher": [
+    "das Volumen",
+    "die Oberfläche",
+    "die Grundkante",
+    "umstellen",
+    "die dritte Wurzel",
+    "die Seitenhöhe"
+  ],
+  "can_do": {
+    "A": "Du entscheidest, ob Volumen oder Oberfläche gefragt ist, und wählst die richtige Formel.",
+    "B": "Du bestimmst fehlende Größen (h, a) aus Volumen oder Oberfläche.",
+    "C": "Du löst mehrschrittige, gemischte Pyramidenaufgaben."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Volumen oder Oberfläche der Pyramide?",
+      "hinfuehrung": "Bei gemischten Aufgaben klärst du zuerst, welche Größe gefragt ist, und wählst dann die passende Formel.",
+      "erklaerung": [
+        "Rauminhalt („fasst“, „Liter“) → Volumen V = (a² · h) : 3.",
+        "Außenhaut („anstreichen“, „Material“) → Oberfläche O = a² + 2 · a · s."
+      ],
+      "beispiel": {
+        "aufgabe": "„Wie viel Sand passt in die Pyramide?“ Welche Formel?",
+        "schritte": [
+          "Signal „passt hinein“ → Rauminhalt",
+          "→ Volumen"
+        ],
+        "ergebnis": "Volumen: V = (a² · h) : 3."
+      },
+      "merke": "Erst Volumen/Oberfläche klären, dann Formel wählen."
+    },
+    "B": {
+      "titel": "Fehlende Größen aus Volumen oder Oberfläche",
+      "hinfuehrung": "Ist das Volumen gegeben und eine Kante gesucht, stellst du die Formel um.",
+      "erklaerung": [
+        "Aus V = (a² · h) : 3 folgt h = 3 · V : a² oder a = √(3 · V : h).",
+        "Setze die bekannten Werte ein und ziehe – falls nötig – die Wurzel."
+      ],
+      "beispiel": {
+        "aufgabe": "Pyramide mit V = 100 cm³, a = 5 cm. Berechne die Höhe h.",
+        "schritte": [
+          "h = 3 · V : a²",
+          "h = 3 · 100 : 25 = 300 : 25",
+          "h = 12 cm"
+        ],
+        "ergebnis": "h = 12 cm."
+      },
+      "merke": "h = 3·V : a²,   a = √(3·V : h)."
+    },
+    "C": {
+      "titel": "Mehrschrittige gemischte Aufgaben",
+      "hinfuehrung": "Anspruchsvolle Aufgaben verketten mehrere Schritte: erst Pythagoras, dann Fläche, dann Volumen oder Oberfläche.",
+      "erklaerung": [
+        "Plane die Reihenfolge: Welche Größe brauche ich zuerst? Häufig s aus h und a, dann O.",
+        "Halte Zwischenergebnisse mit Einheit fest und schreibe zu jedem Schritt eine kurze Begründung."
+      ],
+      "beispiel": {
+        "aufgabe": "Pyramide: a = 10 cm, h = 12 cm. Berechne die Oberfläche.",
+        "schritte": [
+          "s = √(12² + 5²) = √(144 + 25) = √169 = 13 cm",
+          "Mantel = 2 · 10 · 13 = 260 cm²",
+          "O = 10² + 260 = 100 + 260 = 360 cm²"
+        ],
+        "ergebnis": "O = 360 cm²."
+      },
+      "merke": "Reihenfolge planen: s zuerst, dann Fläche/Oberfläche."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "V = (a² · h) : 3      →   h = 3·V : a²      a = √(3·V : h)",
+      "O = a² + 2·a·s",
+      "s = √( h² + (a:2)² )",
+      "Volumen braucht h · Oberfläche braucht s"
+    ],
+    "saetze": [
+      "Erst fragen: Volumen (cm³) oder Oberfläche (cm²)?",
+      "Volumen → Höhe h. Oberfläche → Seitenhöhe s."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "SK05-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "„Wie viel Luft ist in dem Zelt?\" — Was ist gesucht?",
+      "options": [
+        "das Volumen",
+        "die Oberfläche",
+        "die Seitenhöhe"
+      ],
+      "answer": 0,
+      "hints": [
+        "Luft = Rauminhalt.",
+        "Rauminhalt ist das Volumen."
+      ],
+      "solution": "„Wie viel passt hinein\" fragt nach dem Volumen (Rauminhalt), Einheit cm³ oder m³.",
+      "misconceptions": [
+        {
+          "id": "oberflaeche_statt_volumen",
+          "value": 1,
+          "feedback": "Luft/Inhalt = Volumen, nicht Oberfläche."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "zuordnen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "choice",
+      "prompt": "„Wie viel Blech braucht man für die Außenhaut?\" — Was ist gesucht?",
+      "options": [
+        "die Oberfläche",
+        "das Volumen",
+        "die Höhe"
+      ],
+      "answer": 0,
+      "hints": [
+        "Außenhaut = Fläche.",
+        "Fläche ist die Oberfläche."
+      ],
+      "solution": "„Außenhaut / Material / Anstrich\" fragt nach der Oberfläche, Einheit cm² oder m².",
+      "misconceptions": [
+        {
+          "id": "volumen_statt_oberflaeche",
+          "value": 1,
+          "feedback": "Außenhaut = Oberfläche, nicht Volumen."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "zuordnen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Pyramide: V = 120 cm³, Grundfläche 40 cm². Höhe?",
+      "answer": 9,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "h = 3·V : G.",
+        "3·120 : 40."
+      ],
+      "solution": "h = 3·V : G = 3·120 : 40 = 360 : 40 = 9 cm.",
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen_rueck",
+          "value": 3,
+          "feedback": "Rückwärts mal 3: h = 3·120 : 40 = 9."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "rueckwaerts",
+        "hoehe"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: V = 100 cm³, h = 12 cm. Grundfläche?",
+      "answer": 25,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 3·V : h.",
+        "3·100 : 12."
+      ],
+      "solution": "G = 3·V : h = 3·100 : 12 = 300 : 12 = 25 cm².",
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen_rueck",
+          "value": 8.33,
+          "feedback": "Erst mal 3: G = 3·100 : 12 = 25."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "rueckwaerts"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: V = 300 cm³, h = 9 cm. Wie lang ist die Grundkante a?",
+      "answer": 10,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "G = 3·V : h = 100 cm².",
+        "a = √100."
+      ],
+      "solution": "G = 3·300 : 9 = 900 : 9 = 100 cm². a = √100 = 10 cm.",
+      "misconceptions": [
+        {
+          "id": "wurzel_vergessen",
+          "value": 100,
+          "feedback": "100 cm² ist die Grundfläche. a = √100 = 10."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "rueckwaerts",
+        "wurzel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 6 cm, h = 8 cm. Volumen?",
+      "answer": 96,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 36.",
+        "V = (36 · 8) : 3."
+      ],
+      "solution": "G = 36 cm². V = (36 · 8) : 3 = 288 : 3 = 96 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 288,
+          "feedback": "Durch 3: 288 : 3 = 96."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 12 cm, s = 10 cm. Oberfläche?",
+      "answer": 384,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 144, Mantel = 2·12·10.",
+        "O = 144 + 240."
+      ],
+      "solution": "O = 144 + 2·12·10 = 384 cm².",
+      "misconceptions": [
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 240,
+          "feedback": "Grundfläche 144 dazu: 384."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Pyramide: Grundfläche 48 cm², Volumen 96 cm³. Wie hoch ist sie?",
+      "answer": 6,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "h = 3·V : G.",
+        "3·96 : 48."
+      ],
+      "solution": "h = 3·96 : 48 = 288 : 48 = 6 cm.",
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen_rueck",
+          "value": 2,
+          "feedback": "Rückwärts mal 3: 3·96 : 48 = 6."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "rueckwaerts",
+        "hoehe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 9 cm, h = 4 cm. Volumen?",
+      "answer": 108,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 81.",
+        "V = (81 · 4) : 3."
+      ],
+      "solution": "G = 81 cm². V = (81 · 4) : 3 = 324 : 3 = 108 cm³.",
+      "tags": [
+        "pyramide",
+        "volumen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine quadratische Pyramide (a = 8 cm) hat den Mantel 80 cm². Wie lang ist die Seitenhöhe s?",
+      "answer": 5,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "Mantel = 2·a·s rückwärts.",
+        "s = Mantel : (2·a) = 80 : 16."
+      ],
+      "solution": "s = Mantel : (2·a) = 80 : (2·8) = 80 : 16 = 5 cm.",
+      "misconceptions": [
+        {
+          "id": "nur_durch_a",
+          "value": 10,
+          "feedback": "Durch 2·a = 16 teilen, nicht nur durch a: 80 : 16 = 5."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "oberflaeche",
+        "rueckwaerts",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 30 cm, h = 20 cm. Volumen (cm³)?",
+      "answer": 6000,
+      "unit_label": "cm³",
+      "tolerance": 10,
+      "hints": [
+        "G = 900.",
+        "V = (900 · 20) : 3."
+      ],
+      "solution": "G = 900 cm². V = (900 · 20) : 3 = 18 000 : 3 = 6000 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 18000,
+          "feedback": "Durch 3: 18 000 : 3 = 6000."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "multi",
+      "prompt": "Quadratische Pyramide: a = 16 cm, h = 6 cm. Berechne Volumen UND Oberfläche (s zuerst).",
+      "fields": [
+        {
+          "label": "Volumen",
+          "answer": 512,
+          "tolerance": 2,
+          "unit_label": "cm³"
+        },
+        {
+          "label": "Seitenhöhe s",
+          "answer": 10,
+          "tolerance": 0.01,
+          "unit_label": "cm"
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 576,
+          "tolerance": 2,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_vergessen",
+              "value": 320,
+              "feedback": "Mantel 320 + Grundfläche 256 = 576."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "V = (16²·6):3.",
+        "s = √(6²+8²) = 10.",
+        "O = 256 + 2·16·10."
+      ],
+      "solution": "V = (256·6):3 = 1536:3 = 512 cm³.\ns = √(36+64) = 10 cm. O = 256 + 2·16·10 = 256 + 320 = 576 cm².",
+      "tags": [
+        "pyramide",
+        "volumen",
+        "oberflaeche",
+        "pythagoras",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Eine quadratische Pyramide hat V = 500 cm³ und die Grundkante a = 10 cm. Wie hoch ist sie?",
+      "answer": 15,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "G = a² = 100.",
+        "h = 3·V : G = 3·500 : 100."
+      ],
+      "solution": "G = 100 cm². h = 3·500 : 100 = 1500 : 100 = 15 cm.",
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen_rueck",
+          "value": 5,
+          "feedback": "Mal 3: h = 3·500 : 100 = 15."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "rueckwaerts",
+        "hoehe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK05-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Bei einer Volumenaufgabe wurde s = 5 cm statt h eingesetzt. Warum ist das falsch?",
+      "options": [
+        "Das Volumen braucht die senkrechte Höhe h, nicht die schräge Seitenhöhe s.",
+        "Man darf s nie verwenden.",
+        "s und h sind gleich, also egal."
+      ],
+      "answer": 0,
+      "hints": [
+        "Welche Höhe steht senkrecht auf der Grundfläche?",
+        "s liegt außen auf der schrägen Fläche."
+      ],
+      "solution": "Das Volumen misst, wie hoch der Körper wirklich ist — das ist die senkrechte Höhe h. s ist die schräge Seitenhöhe und gehört nur zur Oberfläche.",
+      "misconceptions": [
+        {
+          "id": "h_gleich_s",
+          "value": 2,
+          "feedback": "h und s sind verschieden. Für Volumen die senkrechte Höhe h nehmen."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

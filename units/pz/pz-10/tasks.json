@@ -17,6 +17,60 @@
     "B": "Du berechnest die prozentuale Veränderung und schreibst sie als Faktor.",
     "C": "Du rechnest mit Faktorketten und zeigst, dass +10 % und −10 % sich nicht aufheben."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Gestiegen oder gefallen?",
+      "hinfuehrung": "Bevor du Prozente rechnest, klärst du die Richtung: Ist der Wert größer oder kleiner geworden – und um wie viel absolut?",
+      "erklaerung": [
+        "Vergleiche neuen und alten Wert. Größer = gestiegen, kleiner = gefallen.",
+        "Die Differenz ist der absolute Unterschied: neu − alt (bzw. alt − neu)."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Preis war 50 €, jetzt 58 €. Gestiegen oder gefallen und um wie viel?",
+        "schritte": [
+          "58 € > 50 €  → gestiegen",
+          "Differenz = 58 € − 50 € = 8 €"
+        ],
+        "ergebnis": "Gestiegen um 8 €."
+      },
+      "merke": "Erst Richtung (größer/kleiner), dann Differenz."
+    },
+    "B": {
+      "titel": "Prozentuale Veränderung und Wachstumsfaktor",
+      "hinfuehrung": "Die Veränderung in Prozent bezieht sich immer auf den alten Wert. Aus ihr wird ein Faktor, mit dem du weiterrechnest.",
+      "erklaerung": [
+        "p = (neu − alt) : alt · 100.",
+        "Der Wachstumsfaktor fasst die Veränderung zusammen: +16 % → q = 1,16; −16 % → q = 0,84."
+      ],
+      "beispiel": {
+        "aufgabe": "Von 50 € auf 58 €: Wie viel Prozent, und wie lautet der Faktor?",
+        "schritte": [
+          "p = (58 − 50) : 50 · 100 = 16 %",
+          "Faktor q = 1 + 16/100 = 1,16"
+        ],
+        "ergebnis": "+16 %, Wachstumsfaktor q = 1,16."
+      },
+      "merke": "Immer durch den ALTEN Wert teilen. Faktor = 1 ± p/100."
+    },
+    "C": {
+      "titel": "Faktorketten – warum sich +10 % und −10 % nicht aufheben",
+      "hinfuehrung": "Mehrere Veränderungen hintereinander multiplizierst du als Faktoren. Dabei zeigt sich: Rauf und wieder runter landet nicht beim Start.",
+      "erklaerung": [
+        "Nacheinander wirkende Änderungen: Faktoren multiplizieren, nicht Prozente addieren.",
+        "+10 % dann −10 % → 1,10 · 0,90 = 0,99. Der zweite Prozentsatz wird vom bereits größeren Wert genommen – deshalb bleibt ein Verlust von 1 %."
+      ],
+      "beispiel": {
+        "aufgabe": "100 € werden erst um 10 % erhöht, dann um 10 % gesenkt. Endwert?",
+        "schritte": [
+          "· 1,10 → 110 €",
+          "· 0,90 → 99 €",
+          "Kette: 1,10 · 0,90 = 0,99"
+        ],
+        "ergebnis": "99 € – nicht 100 €. +10 % und −10 % heben sich nicht auf."
+      },
+      "merke": "Änderungen hintereinander → Faktoren MAL nehmen, nicht Prozente addieren."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "Veränderung in %:  p = (neu − alt) : alt · 100",

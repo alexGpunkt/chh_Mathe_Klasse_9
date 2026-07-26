@@ -17,6 +17,66 @@
     "B": "Du wandelst zwischen Bruch, Dezimalzahl und Prozent um.",
     "C": "Du wandelst auch unbequeme Brüche um, rundest sinnvoll und begründest die Rundung."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Anteile als Prozent lesen",
+      "hinfuehrung": "Der ganze Streifen ist immer 100 %. Wenn du weißt, welcher Teil gefärbt ist, kannst du den Prozentsatz nennen.",
+      "erklaerung": [
+        "Ein Anteil sagt, wie viel von einem Ganzen gemeint ist. Prozent heißt „von hundert“: 100 % ist alles, 50 % ist die Hälfte, 25 % ist ein Viertel.",
+        "Teile den Streifen in gleiche Stücke und zähle, wie viele gefärbt sind."
+      ],
+      "visual": {
+        "type": "streifen",
+        "fill": 50,
+        "alt": "Ein Streifen, zur Hälfte gefärbt."
+      },
+      "beispiel": {
+        "aufgabe": "Der halbe Streifen ist gefärbt. Wie viel Prozent sind das?",
+        "schritte": [
+          "Der ganze Streifen  = 100 %",
+          "Die Hälfte davon    = 100 % : 2",
+          "                    = 50 %"
+        ],
+        "ergebnis": "Die Hälfte sind 50 %."
+      },
+      "merke": "1/2 = 50 %   1/4 = 25 %   1/10 = 10 %"
+    },
+    "B": {
+      "titel": "Bruch – Dezimalzahl – Prozent",
+      "hinfuehrung": "Bruch, Dezimalzahl und Prozent sind drei Schreibweisen für denselben Anteil. Mit zwei Rechenschritten wechselst du zwischen ihnen.",
+      "erklaerung": [
+        "Vom Bruch zur Dezimalzahl teilst du den Zähler durch den Nenner.",
+        "Von der Dezimalzahl zum Prozentsatz nimmst du mal 100 und hängst das Prozentzeichen an. Zurück geht es geteilt durch 100."
+      ],
+      "beispiel": {
+        "aufgabe": "Schreibe 3/4 als Dezimalzahl und als Prozent.",
+        "schritte": [
+          "Bruch → Dezimalzahl:  3 : 4      = 0,75",
+          "Dezimalzahl → Prozent: 0,75 · 100 = 75 %"
+        ],
+        "ergebnis": "3/4 = 0,75 = 75 %"
+      },
+      "merke": "· 100 macht aus der Dezimalzahl den Prozentsatz, : 100 macht ihn wieder rückgängig."
+    },
+    "C": {
+      "titel": "Unbequeme Brüche sinnvoll runden",
+      "hinfuehrung": "Nicht jeder Bruch ergibt eine glatte Dezimalzahl. Dann rundest du – und sagst, warum und wie weit.",
+      "erklaerung": [
+        "Manche Divisionen hören nicht auf (2 : 3 = 0,666…). Solche Zahlen rundest du auf so viele Stellen, wie für die Aufgabe sinnvoll sind – bei Prozent meist auf ganze oder eine Nachkommastelle.",
+        "Beim Runden schaust du auf die erste weggelassene Ziffer: 0–4 abrunden, 5–9 aufrunden. Schreibe das Rundungszeichen ≈, nicht =."
+      ],
+      "beispiel": {
+        "aufgabe": "Schreibe 2/3 als Prozent, gerundet auf ganze Prozent.",
+        "schritte": [
+          "2 : 3            = 0,6666…",
+          "· 100            = 66,66… %",
+          "Runden (7. Ziffer 6 → auf)  ≈ 67 %"
+        ],
+        "ergebnis": "2/3 ≈ 67 %"
+      },
+      "merke": "Beim Runden wird = zu ≈. Gib immer an, worauf du gerundet hast."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "Bruch → Dezimalzahl:  Zähler : Nenner       3 : 4 = 0,75",

@@ -192,6 +192,162 @@
           "aufgaben": 14
         }
       ]
+    },
+    {
+      "code": "kp",
+      "title": "Würfel, Quader, Prisma, Zylinder",
+      "einheiten": [
+        {
+          "id": "kp-01",
+          "title": "Körper erkennen und benennen",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-02",
+          "title": "Einheiten für Fläche und Volumen",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-03",
+          "title": "Oberfläche von Würfel und Quader",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-04",
+          "title": "Volumen von Würfel und Quader",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-05",
+          "title": "Rückwärts rechnen: fehlende Kante finden",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-06",
+          "title": "Das Prisma verstehen: Grundfläche · Höhe",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-07",
+          "title": "Volumen des Prismas berechnen",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-08",
+          "title": "Oberfläche des Prismas: Grundflächen + Mantel",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-09",
+          "title": "Der Zylinder: Volumen berechnen",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-10",
+          "title": "Oberfläche des Zylinders",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-11",
+          "title": "Anwendungen: zusammengesetzte Körper & Masse",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "kp-12",
+          "title": "Prüfungstraining: Prismen & Zylinder",
+          "leitidee": "L2",
+          "aufgaben": 14
+        }
+      ]
+    },
+    {
+      "code": "sk",
+      "title": "Spitzkörper",
+      "einheiten": [
+        {
+          "id": "sk-01",
+          "title": "Die Pyramide kennenlernen",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-02",
+          "title": "Höhe, Seitenhöhe und Grundkante mit Pythagoras",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-03",
+          "title": "Volumen der Pyramide",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-04",
+          "title": "Oberfläche der Pyramide",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-05",
+          "title": "Pyramide: rückwärts und gemischt",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-06",
+          "title": "Der Kegel: Höhe, Radius und Mantellinie",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-07",
+          "title": "Volumen des Kegels",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-08",
+          "title": "Oberfläche des Kegels",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-09",
+          "title": "Kegel: rückwärts und gemischt",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-10",
+          "title": "Die Kugel: Volumen und Oberfläche",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-11",
+          "title": "Zusammengesetzte Körper & Anwendungen",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "sk-12",
+          "title": "Prüfungstraining: Spitzkörper",
+          "leitidee": "L2",
+          "aufgaben": 14
+        }
+      ]
     }
   ]
 }

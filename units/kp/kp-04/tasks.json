@@ -1,0 +1,598 @@
+{
+  "unit": "KP-04",
+  "title": "Volumen von Würfel und Quader",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K4"
+  ],
+  "wortspeicher": [
+    "das Volumen",
+    "der Rauminhalt",
+    "die Höhe",
+    "der Kubikzentimeter",
+    "die Grundfläche"
+  ],
+  "can_do": {
+    "A": "Du berechnest das Volumen eines Würfels über a · a · a.",
+    "B": "Du berechnest das Volumen eines Quaders über a · b · c und gibst Liter an.",
+    "C": "Du berechnest Volumen mit gemischten Einheiten und in Sachzusammenhängen."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Volumen des Würfels",
+      "hinfuehrung": "Das Volumen sagt, wie viel in den Körper hineinpasst. Beim Würfel multiplizierst du die Kante dreimal mit sich selbst.",
+      "erklaerung": [
+        "Volumen = Länge · Breite · Höhe. Beim Würfel sind alle drei gleich a.",
+        "Also V = a · a · a = a³."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "wuerfel",
+        "labels": {
+          "a": "a"
+        },
+        "alt": "Würfel mit Kante a."
+      },
+      "beispiel": {
+        "aufgabe": "Berechne das Volumen eines Würfels mit a = 3 cm.",
+        "schritte": [
+          "V = a · a · a",
+          "V = 3 · 3 · 3",
+          "V = 27 cm³"
+        ],
+        "ergebnis": "V = 27 cm³."
+      },
+      "merke": "Würfel: V = a³ = a · a · a."
+    },
+    "B": {
+      "titel": "Volumen des Quaders und Liter",
+      "hinfuehrung": "Beim Quader multiplizierst du die drei verschiedenen Kanten. Rauminhalte lassen sich dann in Liter angeben.",
+      "erklaerung": [
+        "V = a · b · c – das ist Grundfläche (a·b) mal Höhe (c).",
+        "Für Liter: In dm rechnen, dann ist das Ergebnis in dm³ = l."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "quader",
+        "labels": {
+          "a": "a",
+          "b": "b",
+          "c": "c"
+        },
+        "alt": "Quader mit Kanten a, b, c."
+      },
+      "beispiel": {
+        "aufgabe": "Aquarium: 5 dm · 3 dm · 4 dm. Volumen in Litern?",
+        "schritte": [
+          "V = 5 · 3 · 4 = 60 dm³",
+          "1 dm³ = 1 l"
+        ],
+        "ergebnis": "V = 60 dm³ = 60 l."
+      },
+      "merke": "Quader: V = a · b · c. In dm gerechnet ergibt sich direkt Liter."
+    },
+    "C": {
+      "titel": "Volumen mit gemischten Einheiten",
+      "hinfuehrung": "Auch beim Volumen gilt: erst alle Kanten in dieselbe Einheit, dann multiplizieren – sonst ist das Ergebnis um Zehnerpotenzen daneben.",
+      "erklaerung": [
+        "Wähle eine sinnvolle gemeinsame Einheit (oft cm oder dm) und rechne alle Längen um.",
+        "Prüfe das Ergebnis: Ein Körper von wenigen dm Kantenlänge fasst nur wenige Liter, nicht Hunderte."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Kasten: 40 cm · 30 cm · 2 dm. Volumen in dm³?",
+        "schritte": [
+          "gleichnamig in dm: 4 dm · 3 dm · 2 dm",
+          "V = 4 · 3 · 2 = 24 dm³"
+        ],
+        "ergebnis": "V = 24 dm³ = 24 l."
+      },
+      "merke": "Vor dem Multiplizieren alle Kanten gleichnamig machen."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Quader:  V = a · b · c   ( = Grundfläche · Höhe )",
+      "Würfel:  V = a · a · a = a³",
+      "Einheit Volumen: cm³, dm³, m³",
+      "1 dm³ = 1 Liter = 1000 cm³"
+    ],
+    "saetze": [
+      "Volumen zählt, wie viele Einheitswürfel hineinpassen.",
+      "Volumen hat drei Richtungen → Einheit hoch 3."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP04-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat die Kantenlänge 2 cm. Wie viel Volumen hat er?",
+      "visual": {
+        "type": "koerper",
+        "form": "wuerfel",
+        "labels": {
+          "a": "a = 2 cm"
+        },
+        "alt": "Würfel, Kantenlänge 2 cm."
+      },
+      "answer": 8,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = a · a · a.",
+        "2 · 2 · 2."
+      ],
+      "solution": "V = a³ = 2 · 2 · 2 = 8 cm³.",
+      "misconceptions": [
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 4,
+          "feedback": "2 · 2 = 4 ist die Fläche. Volumen: dreimal, 2 · 2 · 2 = 8."
+        },
+        {
+          "id": "mal_drei",
+          "value": 6,
+          "feedback": "Nicht 2 · 3. Volumen heißt a · a · a = 8."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP04-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat die Kantenlänge 5 cm. Berechne sein Volumen.",
+      "answer": 125,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = a · a · a.",
+        "5 · 5 · 5."
+      ],
+      "solution": "V = 5³ = 5 · 5 · 5 = 125 cm³.",
+      "misconceptions": [
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 25,
+          "feedback": "25 cm² ist die Fläche. Volumen: 5 · 5 · 5 = 125."
+        },
+        {
+          "id": "mal_drei",
+          "value": 15,
+          "feedback": "Nicht 5 · 3. Sondern 5 · 5 · 5 = 125."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP04-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Quader ist 4 cm lang, 3 cm breit und 2 cm hoch. Wie groß ist sein Volumen?",
+      "visual": {
+        "type": "koerper",
+        "form": "quader",
+        "labels": {
+          "a": "a = 4 cm",
+          "b": "b = 3 cm",
+          "c": "c = 2 cm"
+        },
+        "alt": "Quader 4 × 3 × 2 cm."
+      },
+      "answer": 24,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = a · b · c.",
+        "4 · 3 · 2."
+      ],
+      "solution": "V = 4 · 3 · 2 = 24 cm³.",
+      "misconceptions": [
+        {
+          "id": "nur_zwei_kanten",
+          "value": 12,
+          "feedback": "12 cm² wäre nur a · b. Die Höhe fehlt: · 2 = 24."
+        },
+        {
+          "id": "kanten_addiert",
+          "value": 9,
+          "feedback": "Kanten werden multipliziert, nicht addiert: 4 · 3 · 2 = 24."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP04-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Quader ist 10 cm lang, 4 cm breit und 5 cm hoch. Berechne sein Volumen.",
+      "answer": 200,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = a · b · c.",
+        "10 · 4 · 5."
+      ],
+      "solution": "V = 10 · 4 · 5 = 200 cm³.",
+      "misconceptions": [
+        {
+          "id": "nur_zwei_kanten",
+          "value": 40,
+          "feedback": "40 cm² ist nur a · b. Höhe fehlt: · 5 = 200."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP04-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Berechne das Volumen eines Quaders mit a = 8 cm, b = 6 cm, c = 5 cm.",
+      "answer": 240,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = a · b · c.",
+        "Erst 8 · 6 = 48, dann · 5."
+      ],
+      "solution": "V = 8 · 6 · 5 = 240 cm³.",
+      "misconceptions": [
+        {
+          "id": "nur_zwei_kanten",
+          "value": 48,
+          "feedback": "48 cm² ist die Grundfläche. Mal Höhe 5: 240."
+        },
+        {
+          "id": "oberflaeche_statt_volumen",
+          "value": 236,
+          "feedback": "Das wäre in der Nähe der Oberfläche. Volumen ist a·b·c = 240."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP04-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "multi",
+      "prompt": "Ein Wasserbecken ist 50 cm lang, 40 cm breit und 30 cm hoch. Berechne Volumen in cm³ und in Litern.",
+      "visual": {
+        "type": "koerper",
+        "form": "quader",
+        "labels": {
+          "a": "50 cm",
+          "b": "40 cm",
+          "c": "30 cm"
+        },
+        "alt": "Becken 50 × 40 × 30 cm."
+      },
+      "fields": [
+        {
+          "label": "Volumen in cm³",
+          "answer": 60000,
+          "tolerance": 1,
+          "unit_label": "cm³"
+        },
+        {
+          "label": "Volumen in Litern",
+          "answer": 60,
+          "tolerance": 0.01,
+          "unit_label": "l",
+          "misconceptions": [
+            {
+              "id": "faktor_falsch",
+              "value": 60000,
+              "feedback": "1 l = 1000 cm³. 60 000 : 1000 = 60 l."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "V = 50 · 40 · 30.",
+        "1000 cm³ = 1 l."
+      ],
+      "solution": "V = 50 · 40 · 30 = 60 000 cm³\n60 000 : 1000 = 60 l",
+      "tags": [
+        "volumen",
+        "quader",
+        "liter"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP04-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat 4 cm Kantenlänge. Berechne sein Volumen.",
+      "answer": 64,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = a³.",
+        "4 · 4 · 4."
+      ],
+      "solution": "V = 4³ = 64 cm³.",
+      "misconceptions": [
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 16,
+          "feedback": "16 cm² ist die Fläche. Volumen: 4 · 4 · 4 = 64."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "wuerfel",
+        "bbr"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "KP04-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Aquarium ist 60 cm lang, 30 cm breit und 40 cm hoch. Wie viele Liter fasst es?",
+      "answer": 72,
+      "unit_label": "l",
+      "tolerance": 0.5,
+      "hints": [
+        "V = 60 · 30 · 40 = 72 000 cm³.",
+        ": 1000 für Liter."
+      ],
+      "solution": "V = 60 · 30 · 40 = 72 000 cm³ = 72 l.",
+      "misconceptions": [
+        {
+          "id": "nicht_in_liter",
+          "value": 72000,
+          "feedback": "72 000 cm³ ist richtig, aber gefragt sind Liter: : 1000 = 72 l."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "quader",
+        "liter",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP04-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Berechne das Volumen eines Quaders mit a = 12 cm, b = 5 cm, c = 4 cm.",
+      "answer": 240,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = a · b · c.",
+        "12 · 5 · 4."
+      ],
+      "solution": "V = 12 · 5 · 4 = 240 cm³.",
+      "misconceptions": [
+        {
+          "id": "nur_zwei_kanten",
+          "value": 60,
+          "feedback": "60 cm² ist a · b. Höhe fehlt: · 4 = 240."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "quader",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP04-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Umzugskarton fasst 40 cm · 40 cm · 60 cm. Wie viele Liter passen hinein?",
+      "answer": 96,
+      "unit_label": "l",
+      "tolerance": 0.5,
+      "hints": [
+        "V = 40 · 40 · 60 = 96 000 cm³.",
+        ": 1000."
+      ],
+      "solution": "V = 40 · 40 · 60 = 96 000 cm³ = 96 l.",
+      "tags": [
+        "volumen",
+        "quader",
+        "liter",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP04-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Quader hat a = 1,5 m, b = 0,8 m, c = 0,5 m. Berechne sein Volumen in m³.",
+      "answer": 0.6,
+      "unit_label": "m³",
+      "tolerance": 0.001,
+      "hints": [
+        "V = a · b · c.",
+        "1,5 · 0,8 · 0,5."
+      ],
+      "solution": "V = 1,5 · 0,8 · 0,5 = 0,6 m³.",
+      "misconceptions": [
+        {
+          "id": "komma_verschoben",
+          "value": 6,
+          "feedback": "1,5 · 0,8 = 1,2; mal 0,5 = 0,6 — nicht 6."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "quader"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP04-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Schwimmbecken ist 8 m lang, 4 m breit und 1,5 m tief. Wie viele Liter Wasser passen hinein?",
+      "answer": 48000,
+      "unit_label": "l",
+      "tolerance": 5,
+      "hints": [
+        "V = 8 · 4 · 1,5 = 48 m³.",
+        "1 m³ = 1000 l."
+      ],
+      "solution": "V = 8 · 4 · 1,5 = 48 m³ = 48 000 l.",
+      "misconceptions": [
+        {
+          "id": "nicht_in_liter",
+          "value": 48,
+          "feedback": "48 m³ ist richtig, aber gefragt sind Liter: · 1000 = 48 000 l."
+        },
+        {
+          "id": "faktor_100",
+          "value": 4800,
+          "feedback": "1 m³ = 1000 l, nicht 100. 48 · 1000 = 48 000."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "quader",
+        "liter",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP04-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "In eine Kiste (Innenmaß 30 cm · 30 cm · 30 cm) werden Würfel mit 10 cm Kante gepackt. Wie viele passen hinein?",
+      "answer": 27,
+      "unit_label": "Würfel",
+      "tolerance": 0.01,
+      "hints": [
+        "In jede Richtung passen 30 : 10 = 3 Würfel.",
+        "3 · 3 · 3."
+      ],
+      "solution": "Pro Kante 30 : 10 = 3 Würfel, also 3 · 3 · 3 = 27 Würfel.\nProbe über Volumen: 27 000 cm³ : 1000 cm³ = 27. ✓",
+      "misconceptions": [
+        {
+          "id": "nur_eine_richtung",
+          "value": 3,
+          "feedback": "3 ist nur eine Reihe. In drei Richtungen: 3 · 3 · 3 = 27."
+        },
+        {
+          "id": "flaeche_gedacht",
+          "value": 9,
+          "feedback": "9 wäre eine Schicht (3 · 3). Es gibt 3 Schichten: 27."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "wuerfel",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP04-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Goldbarren (Quader) misst 10 cm · 5 cm · 2 cm. Gold hat die Dichte 19,3 g/cm³. Wie schwer ist der Barren (in g)?",
+      "answer": 1930,
+      "unit_label": "g",
+      "tolerance": 1,
+      "hints": [
+        "Zuerst das Volumen: 10 · 5 · 2.",
+        "Masse = Volumen · Dichte = V · 19,3."
+      ],
+      "solution": "V = 10 · 5 · 2 = 100 cm³\nMasse = 100 cm³ · 19,3 g/cm³ = 1930 g",
+      "misconceptions": [
+        {
+          "id": "dichte_vergessen",
+          "value": 100,
+          "feedback": "100 cm³ ist erst das Volumen. Masse = Volumen · Dichte = 100 · 19,3."
+        },
+        {
+          "id": "geteilt_statt_mal",
+          "value": 5.18,
+          "feedback": "Masse = Volumen · Dichte, also mal 19,3, nicht geteilt."
+        }
+      ],
+      "tags": [
+        "volumen",
+        "quader",
+        "sachaufgabe",
+        "dichte",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO",
+        "W-EINH"
+      ]
+    }
+  ]
+}

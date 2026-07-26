@@ -16,6 +16,62 @@
     "B": "Du wendest p = W : G · 100 sicher an, auch mit Taschenrechner und Rundung.",
     "C": "Du bestimmst den Prozentsatz bei Veränderungen und beurteilst, ob die Angabe aussagekräftig ist."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Prozentsatz bei glatten Zahlen",
+      "hinfuehrung": "Wenn Teil und Ganzes gut zusammenpassen, siehst du den Prozentsatz fast ohne Rechnen.",
+      "erklaerung": [
+        "Der Prozentsatz sagt, wie viel Prozent der Teil vom Ganzen ist.",
+        "Bei glatten Verhältnissen hilft die Merkliste: die Hälfte = 50 %, ein Viertel = 25 %, ein Fünftel = 20 %, ein Zehntel = 10 %."
+      ],
+      "beispiel": {
+        "aufgabe": "15 von 60 Plätzen sind besetzt. Wie viel Prozent sind das?",
+        "schritte": [
+          "15 von 60 = 15/60",
+          "kürzen: 15/60 = 1/4",
+          "1/4 = 25 %"
+        ],
+        "ergebnis": "25 % der Plätze sind besetzt."
+      },
+      "merke": "1/2 = 50 %, 1/4 = 25 %, 1/5 = 20 %, 1/10 = 10 %."
+    },
+    "B": {
+      "titel": "Prozentsatz mit der Formel",
+      "hinfuehrung": "Auch bei krummen Zahlen gibt es einen sicheren Weg: p = W : G · 100.",
+      "erklaerung": [
+        "Teile den Prozentwert durch den Grundwert und nimm mal 100.",
+        "Mit dem Taschenrechner ergibt sich oft eine lange Zahl – runde sinnvoll und schreibe das %-Zeichen dazu."
+      ],
+      "beispiel": {
+        "aufgabe": "In einem Test wurden 34 von 40 Punkten erreicht. Wie viel Prozent sind das?",
+        "schritte": [
+          "p = W : G · 100",
+          "p = 34 : 40 · 100",
+          "p = 0,85 · 100 = 85 %"
+        ],
+        "ergebnis": "85 % der Punkte wurden erreicht."
+      },
+      "merke": "p = W : G · 100. Erst teilen, dann mal 100."
+    },
+    "C": {
+      "titel": "Prozentsatz bei Veränderungen beurteilen",
+      "hinfuehrung": "Wie viel Prozent hat sich etwas verändert? Und ist die Zahl überhaupt aussagekräftig? Beides gehört zusammen.",
+      "erklaerung": [
+        "Die prozentuale Veränderung berechnest du aus der Differenz geteilt durch den alten Wert: p = (neu − alt) : alt · 100.",
+        "Ein hoher Prozentwert bei winzigem Grundwert (2 → 3 Fälle = +50 %) klingt dramatisch, sagt aber wenig. Das darfst du einordnen."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Preis steigt von 40 € auf 46 €. Um wie viel Prozent?",
+        "schritte": [
+          "Differenz = 46 € − 40 € = 6 €",
+          "p = 6 : 40 · 100",
+          "p = 0,15 · 100 = 15 %"
+        ],
+        "ergebnis": "Der Preis ist um 15 % gestiegen."
+      },
+      "merke": "Prozentuale Veränderung: immer durch den ALTEN Wert teilen."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "p % = W : G · 100",

@@ -1,0 +1,570 @@
+{
+  "unit": "SK-10",
+  "title": "Die Kugel: Volumen und Oberfläche",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K3"
+  ],
+  "wortspeicher": [
+    "die Kugel",
+    "der Radius",
+    "der Durchmesser",
+    "das Volumen",
+    "die Oberfläche",
+    "die Kreiszahl π"
+  ],
+  "can_do": {
+    "A": "Du berechnest die Kugeloberfläche über 4 · π · r².",
+    "B": "Du berechnest das Kugelvolumen über 4/3 · π · r³.",
+    "C": "Du berechnest Volumen und Oberfläche der Kugel in Sachaufgaben."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Oberfläche der Kugel",
+      "hinfuehrung": "Die Kugel ist der rundeste Körper. Ihre Oberfläche hängt nur vom Radius ab.",
+      "erklaerung": [
+        "Oberfläche: O = 4 · π · r².",
+        "Nur der Radius wird gebraucht – kein h, kein s."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "kugel",
+        "labels": {
+          "r": "r"
+        },
+        "alt": "Kugel mit Radius r."
+      },
+      "beispiel": {
+        "aufgabe": "Kugel mit r = 5 cm. Oberfläche (π ≈ 3,14)?",
+        "schritte": [
+          "O = 4 · π · r²",
+          "= 4 · 3,14 · 25",
+          "= 314 cm²"
+        ],
+        "ergebnis": "O = 314 cm²."
+      },
+      "merke": "Kugel: O = 4 · π · r²."
+    },
+    "B": {
+      "titel": "Volumen der Kugel",
+      "hinfuehrung": "Beim Volumen kommt der Radius sogar dreimal vor: r hoch drei. Davor steht der Faktor 4/3.",
+      "erklaerung": [
+        "Volumen: V = 4/3 · π · r³ = (4 · π · r³) : 3.",
+        "Erst r³ (r · r · r), dann mit π multiplizieren, dann · 4 : 3."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "kugel",
+        "labels": {
+          "r": "r"
+        },
+        "alt": "Kugel mit Radius r."
+      },
+      "beispiel": {
+        "aufgabe": "Kugel mit r = 3 cm. Volumen (π ≈ 3,14)?",
+        "schritte": [
+          "r³ = 3 · 3 · 3 = 27",
+          "4 · π · r³ = 4 · 3,14 · 27 = 339,12",
+          "V = 339,12 : 3 = 113,04 cm³"
+        ],
+        "ergebnis": "V ≈ 113,04 cm³."
+      },
+      "merke": "Kugel: V = (4 · π · r³) : 3."
+    },
+    "C": {
+      "titel": "Kugel in Sachaufgaben",
+      "hinfuehrung": "Ob Ball, Murmel oder Tank: Ist nur der Durchmesser gegeben, halbiere zuerst; für Liter rechne in dm.",
+      "erklaerung": [
+        "r = d : 2 zuerst bestimmen.",
+        "Für Liter in dm rechnen (dm³ = l) und am Ende sinnvoll runden."
+      ],
+      "beispiel": {
+        "aufgabe": "Kugeltank mit d = 4 dm. Volumen in Litern (π ≈ 3,14)?",
+        "schritte": [
+          "r = 4 : 2 = 2 dm",
+          "r³ = 8;  4 · 3,14 · 8 = 100,48",
+          "V = 100,48 : 3 ≈ 33,5 dm³ = 33,5 l"
+        ],
+        "ergebnis": "V ≈ 33,5 l."
+      },
+      "merke": "Erst r = d : 2; in dm gerechnet ergibt dm³ = Liter."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Kugel-Oberfläche:  O = 4 · π · r²",
+      "Kugel-Volumen:  V = 4/3 · π · r³ = (4 · π · r³) : 3",
+      "Durchmesser d = 2·r   →   r = d : 2",
+      "r³ = r · r · r"
+    ],
+    "saetze": [
+      "Oberfläche: r², Volumen: r³ (dreimal r).",
+      "Bei Halbkugel: alles halbieren (Volumen) — Oberfläche extra überlegen."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "SK10-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Kugel: r = 3 cm (π ≈ 3,14). Oberfläche (zwei Nachkommastellen)?",
+      "visual": {
+        "type": "koerper",
+        "form": "kugel",
+        "labels": {
+          "r": "r = 3 cm"
+        },
+        "alt": "Eine Kugel mit r = 3 cm."
+      },
+      "answer": 113.04,
+      "unit_label": "cm²",
+      "tolerance": 1,
+      "hints": [
+        "O = 4 · π · r².",
+        "4 · 3,14 · 9."
+      ],
+      "solution": "O = 4 · π · r² = 4 · 3,14 · 9 = 113,04 cm².",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 37.68,
+          "feedback": "r quadrieren: 4·3,14·3² = 113,04, nicht 4·3,14·3."
+        },
+        {
+          "id": "faktor_vier_vergessen",
+          "value": 28.26,
+          "feedback": "Der Faktor 4 fehlt: 4 · 3,14 · 9 = 113,04."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Kugel: r = 5 cm (π ≈ 3,14). Oberfläche?",
+      "answer": 314,
+      "unit_label": "cm²",
+      "tolerance": 2,
+      "hints": [
+        "O = 4 · 3,14 · 25.",
+        "= 4 · 78,5."
+      ],
+      "solution": "O = 4 · 3,14 · 25 = 314 cm².",
+      "misconceptions": [
+        {
+          "id": "faktor_vier_vergessen",
+          "value": 78.5,
+          "feedback": "Der Faktor 4 fehlt: 4 · 78,5 = 314."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Berechne r³ für r = 3 cm.",
+      "answer": 27,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "r³ = r · r · r.",
+        "3 · 3 · 3."
+      ],
+      "solution": "r³ = 3 · 3 · 3 = 27 cm³.",
+      "misconceptions": [
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 9,
+          "feedback": "r³ heißt dreimal r: 3·3·3 = 27, nicht 3·3."
+        },
+        {
+          "id": "mal_drei",
+          "value": 9,
+          "feedback": "Nicht 3·3. r³ = 3·3·3 = 27."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "potenz"
+      ],
+      "spiral": [
+        "W-KOPF"
+      ]
+    },
+    {
+      "id": "SK10-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Kugel: r = 6 cm (π ≈ 3,14). Oberfläche (zwei Nachkommastellen)?",
+      "answer": 452.16,
+      "unit_label": "cm²",
+      "tolerance": 3,
+      "hints": [
+        "O = 4 · 3,14 · 36.",
+        "= 4 · 113,04."
+      ],
+      "solution": "O = 4 · 3,14 · 36 = 452,16 cm².",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 75.36,
+          "feedback": "r quadrieren: 4·3,14·6² = 452,16."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Kugel: r = 3 cm (π ≈ 3,14). Volumen (zwei Nachkommastellen)?",
+      "visual": {
+        "type": "koerper",
+        "form": "kugel",
+        "labels": {
+          "r": "r = 3 cm"
+        },
+        "alt": "Kugel r = 3 cm."
+      },
+      "answer": 113.04,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "V = 4/3 · π · r³.",
+        "(4 · 3,14 · 27) : 3."
+      ],
+      "solution": "V = (4 · 3,14 · 27) : 3 = 339,12 : 3 = 113,04 cm³.",
+      "misconceptions": [
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 37.68,
+          "feedback": "r hoch 3: 3·3·3 = 27, nicht 3·3 = 9."
+        },
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 339.12,
+          "feedback": "Durch 3 teilen: 339,12 : 3 = 113,04."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Kugel: r = 6 cm (π ≈ 3,14). Volumen (zwei Nachkommastellen)?",
+      "answer": 904.32,
+      "unit_label": "cm³",
+      "tolerance": 5,
+      "hints": [
+        "r³ = 216.",
+        "V = (4 · 3,14 · 216) : 3."
+      ],
+      "solution": "r³ = 216. V = (4 · 3,14 · 216) : 3 = 2712,96 : 3 = 904,32 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 2712.96,
+          "feedback": "Durch 3: 2712,96 : 3 = 904,32."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "multi",
+      "prompt": "Kugel mit Durchmesser d = 10 cm (π ≈ 3,14).",
+      "fields": [
+        {
+          "label": "Radius r",
+          "answer": 5,
+          "tolerance": 0.01,
+          "unit_label": "cm",
+          "misconceptions": [
+            {
+              "id": "durchmesser_als_radius",
+              "value": 10,
+              "feedback": "r = d:2 = 5 cm."
+            }
+          ]
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 314,
+          "tolerance": 2,
+          "unit_label": "cm²"
+        }
+      ],
+      "hints": [
+        "r = d:2 = 5 cm.",
+        "O = 4·3,14·25."
+      ],
+      "solution": "r = 5 cm. O = 4·3,14·25 = 314 cm².",
+      "tags": [
+        "kugel",
+        "oberflaeche",
+        "durchmesser",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Ball: r = 10 cm (π ≈ 3,14). Volumen (ganze cm³)?",
+      "answer": 4187,
+      "unit_label": "cm³",
+      "tolerance": 20,
+      "hints": [
+        "r³ = 1000.",
+        "V = (4·3,14·1000):3."
+      ],
+      "solution": "r³ = 1000. V = (4·3,14·1000):3 = 12560:3 = 4186,67 ≈ 4187 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 12560,
+          "feedback": "Durch 3: 12560:3 ≈ 4187."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "volumen",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Kugel: r = 2 cm (π ≈ 3,14). Oberfläche (zwei Nachkommastellen)?",
+      "answer": 50.24,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "O = 4·3,14·4.",
+        "= 50,24."
+      ],
+      "solution": "O = 4·3,14·2² = 4·3,14·4 = 50,24 cm².",
+      "tags": [
+        "kugel",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine Kugel: r = 5 cm (π ≈ 3,14). Volumen (zwei Nachkommastellen)?",
+      "answer": 523.33,
+      "unit_label": "cm³",
+      "tolerance": 4,
+      "hints": [
+        "r³ = 125.",
+        "V = (4·3,14·125):3."
+      ],
+      "solution": "r³ = 125. V = (4·3,14·125):3 = 1570:3 = 523,33 cm³.",
+      "misconceptions": [
+        {
+          "id": "quadrat_statt_kubik",
+          "value": 104.67,
+          "feedback": "r hoch 3: 5·5·5 = 125, nicht 25."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "volumen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Kugel: d = 12 cm (π ≈ 3,14). Volumen (zwei Nachkommastellen)?",
+      "answer": 904.32,
+      "unit_label": "cm³",
+      "tolerance": 5,
+      "hints": [
+        "r = 6 cm, r³ = 216.",
+        "V = (4·3,14·216):3."
+      ],
+      "solution": "r = 6 cm. V = (4·3,14·216):3 = 904,32 cm³.",
+      "misconceptions": [
+        {
+          "id": "durchmesser_als_radius",
+          "value": 7234.56,
+          "feedback": "Erst r = d:2 = 6 cm."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "volumen",
+        "durchmesser"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Eine Halbkugel mit r = 6 cm (π ≈ 3,14) — welches Volumen hat sie (zwei Nachkommastellen)?",
+      "answer": 452.16,
+      "unit_label": "cm³",
+      "tolerance": 3,
+      "hints": [
+        "Ganze Kugel = 904,32 cm³.",
+        "Halbkugel = Hälfte davon."
+      ],
+      "solution": "V_Kugel = 904,32 cm³. Halbkugel = 904,32 : 2 = 452,16 cm³.",
+      "misconceptions": [
+        {
+          "id": "nicht_halbiert",
+          "value": 904.32,
+          "feedback": "Nur die Hälfte: 904,32 : 2 = 452,16."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "volumen",
+        "halbkugel",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Wie viel Leder braucht man für einen Ball mit r = 11 cm (Oberfläche, π ≈ 3,14, ganze cm²)?",
+      "answer": 1520,
+      "unit_label": "cm²",
+      "tolerance": 8,
+      "hints": [
+        "O = 4·3,14·r².",
+        "4·3,14·121."
+      ],
+      "solution": "O = 4·3,14·121 = 1519,76 ≈ 1520 cm².",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 138,
+          "feedback": "r quadrieren: 4·3,14·11² = 1519."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "oberflaeche",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK10-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Eine Kugel hat den doppelten Radius einer zweiten. Um welchen Faktor ist ihr VOLUMEN größer?",
+      "options": [
+        "achtmal so groß",
+        "doppelt so groß",
+        "viermal so groß"
+      ],
+      "answer": 0,
+      "hints": [
+        "Volumen hängt von r³ ab.",
+        "Doppelter Radius → 2³."
+      ],
+      "solution": "V = 4/3·π·r³. Doppelter Radius bedeutet r³ um den Faktor 2³ = 8. Also achtmal so viel Volumen. (Die Oberfläche dagegen nur 2² = 4-fach.)",
+      "misconceptions": [
+        {
+          "id": "linear_gedacht",
+          "value": 1,
+          "feedback": "Nicht doppelt: das Volumen hängt von r³ ab, also 2³ = 8-fach."
+        },
+        {
+          "id": "oberflaechen_faktor",
+          "value": 2,
+          "feedback": "4-fach gilt für die Oberfläche (r²). Das Volumen (r³) ist 8-fach."
+        }
+      ],
+      "tags": [
+        "kugel",
+        "volumen",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

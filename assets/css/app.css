@@ -558,3 +558,77 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 }
 
 
+
+/* ============================================================
+   Lernkarte · Hinführung + Erklärung + Beispielrechnung je Niveau
+   Erscheint vor den Aufgaben, jederzeit über „📖 Erklärung" erreichbar.
+   ============================================================ */
+
+.lernkarte { line-height: 1.5; }
+
+.lk-titel {
+  font-family: var(--f-display); font-size: 21px; font-weight: 800;
+  color: var(--ink); margin: 0 0 10px; line-height: 1.2;
+}
+
+.lk-hin {
+  font-size: 17px; color: var(--ink);
+  background: var(--pfad-bg);
+  border-radius: var(--r);
+  padding: 12px 14px; margin: 0 0 16px;
+}
+
+.lk-erkl { font-size: 16px; margin: 0 0 12px; color: var(--ink); }
+.lk-erkl:last-of-type { margin-bottom: 4px; }
+
+/* Beispielrechnung */
+.lk-beispiel {
+  margin: 18px 0 6px;
+  border: 1px solid #E1E6E9;
+  border-left: 4px solid var(--pfad);
+  border-radius: var(--r);
+  background: var(--paper);
+  padding: 12px 14px;
+}
+.lk-beispiel-kopf {
+  font-family: var(--f-num); font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--pfad); font-weight: 700;
+  margin-bottom: 6px;
+}
+.lk-beispiel-aufgabe { font-size: 16px; margin: 0 0 10px; font-weight: 700; }
+.lk-rechenweg {
+  font-family: var(--f-num); font-size: 15px; line-height: 1.7;
+  white-space: pre-wrap;
+  background: var(--paper-hi);
+  border: 1px dashed #C8D2D8; border-radius: 8px;
+  padding: 10px 12px; overflow-x: auto;
+}
+.lk-ergebnis {
+  margin-top: 10px; font-size: 16px;
+  background: var(--ok-bg); border-radius: 8px;
+  padding: 8px 12px; color: var(--ink);
+}
+.lk-ergebnis b { color: var(--ok); }
+
+.lk-merke {
+  margin-top: 16px; font-size: 16px;
+  background: #FFF6E0; border-left: 4px solid #C98A12;
+  border-radius: var(--r); padding: 11px 14px;
+}
+.lk-merke b { color: #9A6B0C; }
+
+/* Wiederaufruf-Link in der Aufgabenzeile */
+.erklaerung-link {
+  margin-left: auto;
+  background: transparent; border: 1px solid #C8D2D8; border-radius: 999px;
+  color: var(--pfad); font-family: var(--f-body); font-weight: 700;
+  font-size: 12px; letter-spacing: .02em; text-transform: none;
+  padding: 4px 11px; cursor: pointer; white-space: nowrap;
+}
+.erklaerung-link:hover { background: var(--pfad-bg); }
+.erklaerung-link:focus-visible { outline: 3px solid var(--pfad); outline-offset: 1px; }
+
+@media print {
+  .lk-rechenweg { overflow: visible; }
+  .erklaerung-link { display: none; }
+}

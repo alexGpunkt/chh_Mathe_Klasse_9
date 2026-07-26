@@ -3,16 +3,16 @@
 Differenzierte Lernwege für Jahrgang 9, Campus Hannah Höch.
 Statische Website, keine Abhängigkeiten, kein Build-Step.
 
-**30 Einheiten à 60 Minuten · 420 Aufgaben.**
-**Spiral-Pool: 105 Generatoren in 7 Kategorien für das Warm-up „Altes Wissen".**
+**54 Einheiten à 60 Minuten · 756 Aufgaben.**
+**Spiral-Pool: 120 Generatoren in 8 Kategorien für das Warm-up „Altes Wissen".**
 **Prüfungstrainer, Arbeitsblatt-Druck, Kompetenzmatrix, Offline-Betrieb.**
 
 | Bereich | Einheiten | Stand |
 |---|---|---|
 | **PZ** Prozent & Zinsrechnung | 14 | vollständig |
 | **LF** Lineare Funktionen | 16 | vollständig |
-| **KP** Würfel, Quader, Prisma, Zylinder | 0 von 12 | offen |
-| **SK** Spitzkörper | 0 von 12 | offen |
+| **KP** Würfel, Quader, Prisma, Zylinder | 12 | vollständig |
+| **SK** Spitzkörper | 12 | vollständig |
 
 ## Einheiten · PZ
 
@@ -69,6 +69,56 @@ B: 0,25 €/min, Flat: 30 €). Die Schnittpunkte liegen bei 80, 120 und
 ist kein Zufall, sondern so gewählt: Ein Vergleich, bei dem eine Option nie
 sinnvoll ist, lehrt nichts.
 
+
+## Einheiten · KP (Würfel, Quader, Prisma, Zylinder)
+
+| | Einheit | Schwerpunkt |
+|---|---|---|
+| **Grundlagen** | KP-01 | Körper erkennen: Ecken, Kanten, Flächen, Netze |
+| | KP-02 | Einheiten: ·100 (Fläche) und ·1000 (Volumen), Liter |
+| **Würfel & Quader** | KP-03 | Oberfläche: 6 Rechtecke |
+| | KP-04 | Volumen: a·b·c |
+| | KP-05 | Rückwärts: fehlende Kante aus V oder O |
+| **Prisma** | KP-06 | Grundfläche · Höhe verstehen |
+| | KP-07 | Volumen (Dreieck, Trapez, L-Form) |
+| | KP-08 | Oberfläche = 2·G + Mantel, mit Pythagoras |
+| **Zylinder** | KP-09 | Volumen V = π·r²·h |
+| | KP-10 | Oberfläche: 2 Kreise + abgewickelter Mantel |
+| **Anwenden** | KP-11 | Zusammengesetzte Körper, Hohlkörper, Dichte |
+| **Prüfung** | KP-12 | Volumen oder Oberfläche selbst erkennen |
+
+**KP-08 und KP-09 sind mit W-GEO verzahnt** (Pythagoras für Dreiecksseiten,
+Kreisfläche) — vgl. `spiral/plan.json`. KP-02 zieht W-EINH hoch.
+
+## Einheiten · SK (Spitzkörper)
+
+| | Einheit | Schwerpunkt |
+|---|---|---|
+| **Pyramide** | SK-01 | Spitze, Grundkante, Höhe, Seitenhöhe |
+| | SK-02 | Höhe, Seitenhöhe, Grundkante mit Pythagoras |
+| | SK-03 | Volumen V = ⅓·G·h |
+| | SK-04 | Oberfläche = Grundfläche + 4 Dreiecke |
+| | SK-05 | Rückwärts & gemischt |
+| **Kegel** | SK-06 | Mantellinie s = √(r²+h²) |
+| | SK-07 | Volumen V = ⅓·π·r²·h |
+| | SK-08 | Oberfläche = Grundkreis + Mantelsektor |
+| | SK-09 | Rückwärts & gemischt |
+| **Kugel** | SK-10 | V = 4/3·π·r³, O = 4·π·r² |
+| **Anwenden** | SK-11 | Eistüte, Silo, Turm — zusammengesetzt |
+| **Prüfung** | SK-12 | Pyramide, Kegel, Kugel unterscheiden |
+
+**Der Faktor ⅓ ist der rote Faden der Spitzkörper:** SK-03 und SK-07 machen
+sichtbar, dass Pyramide bzw. Kegel je genau ein Drittel des Prismas bzw.
+Zylinders gleicher Grundfläche und Höhe sind. SK-04, SK-06 und SK-08 sind mit
+W-GEO verzahnt (Pythagoras). **Wichtig: Volumen braucht die senkrechte Höhe h,
+die Oberfläche die Seitenhöhe/Mantellinie s** — dieser Unterschied ist die
+häufigste Fehlerquelle und in jeder Einheit als Fehlvorstellung hinterlegt.
+
+Jede Körper-Einheit hat wie überall 4 Basis · 6 Standard · 4 Vertiefung über
+die Stufen Einstieg → Geführt → Frei → Transfer, mit gestuften Tipps,
+Rechenweg und Fehlvorstellungen. Aufgaben mit π geben π ≈ 3,14 vor; die
+Toleranz akzeptiert auch das Rechnen mit der π-Taste.
+
 ## Aufgabenbilder (`zeichnen.js`)
 
 Drei Typen, alle über das Feld `visual` an jeder Aufgabe:
@@ -90,7 +140,13 @@ Drei Typen, alle über das Feld `visual` an jeder Aufgabe:
 }
 
 "visual": { "type": "geogebra", "material_id": "abc123" }
+
+"visual": { "type": "koerper", "form": "quader",
+            "labels": { "a": "5 cm", "b": "3 cm", "c": "4 cm" },
+            "alt": "Ein Quader 5 × 3 × 4 cm." }
 ```
+
+Der Typ `koerper` zeichnet schematische Schrägbilder als Inline-SVG (wie das Koordinatensystem: sofort geladen, offline, druckt in Graustufen). Formen: `wuerfel`, `quader`, `prisma`, `zylinder`, `pyramide`, `kegel`, `kugel`. Die Zeichnung ist bewusst **nicht maßstäblich** — die Zahlen tragen die Beschriftungen (`labels`), genau wie im Schulbuch, damit dasselbe Bild für 4 cm und 40 cm passt. `alt` ist Pflicht.
 
 ### Warum kein GeoGebra für die Aufgabenbilder?
 
@@ -117,7 +173,7 @@ erreichbar, sagt die Seite das, statt stumm zu bleiben.
 ## Starten
 
 **Auf GitHub Pages:** Repo pushen, unter *Settings → Pages* die Quelle auf
-`main / (root)` stellen. Fertig.
+`master / (root)` stellen. Fertig.
 
 **Lokal:** Doppelklick funktioniert nicht — der Browser blockiert dann das
 Laden der JSON-Dateien. Stattdessen im Projektordner:
@@ -144,13 +200,13 @@ Für die Lehrkraft
 Code
   assets/css/app.css        ein Stylesheet, inkl. Druckansicht
   assets/js/store.js        Speicher, Zahlenparser, Fehlerprofil, SW-Registrierung
-  assets/js/zeichnen.js     Aufgabenbilder: Streifen, Koordinatensystem, GeoGebra
+  assets/js/zeichnen.js     Aufgabenbilder: Streifen, Koordinaten, Körper, GeoGebra
   assets/js/engine.js       Aufgabenlogik der Einheiten
   assets/js/spiral.js       Warm-up: Generatoren, Leitner-Kartei, Auswahl
   assets/js/pruefung.js     stellt Prüfungssets zusammen (nutzt engine.js)
   assets/js/arbeitsblatt.js Druckfassung
   assets/js/matrix.js       Kompetenzmatrix
-  assets/js/tracker.js      Supabase-Anbindung (aus)
+  assets/js/tracker.js      Supabase-Anbindung
   sw.js                     Service Worker (Offline)
 
 Inhalt
@@ -274,7 +330,7 @@ nach Fälligkeit.
 ### Generatoren statt Einzelaufgaben
 
 Warm-ups leben von Variation. Statt 60 Aufgaben pro Kategorie zu schreiben,
-stehen dort **105 Generatoren** (15 je Kategorie, 5 je Pfad), die jeweils
+stehen dort **120 Generatoren** (15 je Kategorie, 5 je Pfad), die jeweils
 hunderte Varianten erzeugen:
 
 ```jsonc
@@ -334,8 +390,8 @@ zurück auf Box 1, kommt morgen wieder.
 **2. Fehlerprofil.** Jede Fehlvorstellung aus den Einheiten wird lokal
 notiert (`mathe9.fehler`, nur IDs — keine Namen, keine Aufgabentexte). Wer
 gestern `komma_verschoben` produziert hat, bekommt heute W-BRUCH.
-Die Zuordnung steht in `plan.json` unter `fehlerprofil` — alle 162 IDs aus
-dem Pool sind zugeordnet.
+Die Zuordnung steht in `plan.json` unter `fehlerprofil` — alle 253 in den
+Aufgaben verwendeten IDs sind zugeordnet.
 
 Dazu kommt die **Verzahnung**: `plan.json` → `verzahnung` sagt, welche
 Kategorien eine Einheit braucht. Vor `pz-12` (Monats-/Tageszinsen) läuft
@@ -355,9 +411,9 @@ einseitig.
 | `W-SACH` | Sachrechnen (Dreisatz, Maßstab) | 15 Generatoren |
 | `W-FKT` | Funktionen | 15 Generatoren |
 | `W-TERM` | Terme & Gleichungen | 15 Generatoren |
-| `W-GEO` | Grundgeometrie, Pythagoras | geplant (trägt KP-08, SK-04) |
+| `W-GEO` | Grundgeometrie, Pythagoras & Körper | 15 Generatoren |
 
-Alle **162 Fehlvorstellungs-IDs** aus dem Pool zeigen auf eine gebaute
+Alle **253 in Aufgaben verwendeten Fehlvorstellungs-IDs** zeigen auf eine aktive
 Kategorie — es läuft keine ins Leere.
 
 Nicht jeder Generator hat Fehlvorstellungen. Ein Rechenfehler im Einmaleins
@@ -367,10 +423,9 @@ gelogen. Wo ein systematischer Fehler existiert, steht er drin —
 Differenz addieren statt über die Einheit zu rechnen), `rest_abgeschnitten`
 (23 : 2 = 11).
 
-Neue Kategorie: Datei `spiral/w-geo.json` anlegen, Code in `plan.json` unter
-`kategorien` eintragen. Fehlt eine Datei, überspringt `spiral.js` sie
-kommentarlos — der Plan darf also schon auf Kategorien zeigen, die es noch
-nicht gibt.
+Neue Kategorie: eine Datei `spiral/w-<code>.json` anlegen, den Code in
+`plan.json` unter `kategorien` eintragen und die Datei in `sw.js` cachen.
+Fehlt eine Datei, überspringt `spiral.js` sie kommentarlos.
 
 **Gleiche Anzahl auf allen Pfaden.** Ein Kind auf Pfad A bekommt fünf
 A-Aufgaben, nicht drei. Gleiche Zeit, gleiche Würde.
@@ -417,7 +472,7 @@ auch auf Papier Streifen (`print-color-adjust`).
 
 ## Kompetenzmatrix (`matrix.html`)
 
-Die „Ich kann"-Sätze stehen längst in jeder `tasks.json` unter `can_do` — 42
+Die „Ich kann"-Sätze stehen in jeder `tasks.json` unter `can_do` — 54
 Stück. Diese Seite macht sie pro Kind abhakbar und gibt sie als Text aus, der
 direkt in ein Zeugnis oder einen Förderplan wandern kann. Die A-Spalte ist
 bereits als Förderplanziel formuliert.
@@ -433,7 +488,7 @@ Rechner, an dem mehrere arbeiten, besser Kürzel als Klarnamen.
 ## Offline (`sw.js`)
 
 Das Schul-WLAN fällt aus, der Unterricht nicht. Der Service Worker cached alle
-56 Dateien — der ganze Pool ist unter 100 KB.
+84 Ressourcen. Das vollständige Projekt liegt bei rund 1 MB.
 
 - **JSON:** erst Netz, dann Cache. Korrekturen kommen an; fällt das Netz aus,
   merkt niemand etwas.
@@ -451,16 +506,16 @@ hilft niemandem. Mit dem Feld sagt sie, **welcher Denkfehler** passiert ist,
 und das Dashboard kann auszählen, welcher Fehler in der Klasse gehäuft
 auftritt.
 
-Im Pool: **162 IDs.** Die häufigsten aus den Einheiten:
+Im Pool werden **253 verschiedene IDs** in Aufgaben verwendet. Die häufigsten:
 
 | | ID | Bedeutung |
 |---|---|---|
+| 30× | `faktor_drittel_vergessen` | Pyramide oder Kegel wie ein Prisma bzw. Zylinder berechnet |
 | 30× | `bei_1prozent_gestoppt` | 1 % gerechnet, letzten Schritt vergessen |
-| 17× | `mal_statt_geteilt` | Grundwertaufgabe wie Prozentwertaufgabe gerechnet |
-| 15× | `mal_100_vergessen` | Dezimalzahl statt Prozent angegeben |
-| 15× | `nur_teil_berechnet` | Rabatt statt Endpreis angegeben |
-| 14× | `geteilt_vertauscht` | Ganzes : Teil statt Teil : Ganzes |
-| 14× | `bei_einheit_gestoppt` | Dreisatz nach Schritt 1 abgebrochen |
+| 29× | `geteilt_vertauscht` | Division in der falschen Richtung ausgeführt |
+| 22× | `mal_statt_geteilt` | Grundwertaufgabe wie Prozentwertaufgabe gerechnet |
+| 21× | `vorzeichen_fehlt` | negatives Vorzeichen beim Funktionsterm übersehen |
+| 16× | `grundflaeche_vergessen` | bei der Oberfläche eine Grundfläche ausgelassen |
 | 11× | `komma_verschoben` | Faktor 10 daneben (2,5 % als 25 % gerechnet) |
 | 9× | `rest_statt_teil` | Gegenanteil angegeben |
 | 9× | `zeitfaktor_vergessen` | Jahreszinsen statt Monatszinsen |

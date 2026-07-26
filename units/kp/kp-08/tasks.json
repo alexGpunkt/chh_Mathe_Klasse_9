@@ -1,0 +1,555 @@
+{
+  "unit": "KP-08",
+  "title": "Oberfläche des Prismas: Grundflächen + Mantel",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K2"
+  ],
+  "wortspeicher": [
+    "die Oberfläche",
+    "der Mantel",
+    "der Umfang",
+    "die Grundfläche",
+    "die Mantelfläche",
+    "der Satz des Pythagoras"
+  ],
+  "can_do": {
+    "A": "Du berechnest den Mantel eines Prismas über Umfang · Höhe.",
+    "B": "Du berechnest die Oberfläche = 2 · Grundfläche + Mantel.",
+    "C": "Du bestimmst fehlende Dreiecksseiten mit Pythagoras und berechnest die Oberfläche."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Der Mantel: Umfang mal Höhe",
+      "hinfuehrung": "Wickelt man den Mantel eines Prismas ab, entsteht ein Rechteck. Seine eine Seite ist der Umfang der Grundfläche, die andere die Höhe.",
+      "erklaerung": [
+        "Der Mantel umschließt das Prisma rundherum. Abgewickelt: ein Rechteck.",
+        "Mantel = Umfang der Grundfläche · Höhe."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "prisma",
+        "labels": {
+          "g": "g",
+          "hd": "h_d",
+          "h": "h"
+        },
+        "alt": "Dreiecksprisma; der Mantel besteht aus Rechtecken."
+      },
+      "beispiel": {
+        "aufgabe": "Dreiecksgrundfläche mit Seiten 3, 4, 5 cm, Höhe h = 10 cm. Mantel?",
+        "schritte": [
+          "Umfang = 3 + 4 + 5 = 12 cm",
+          "Mantel = Umfang · h = 12 · 10",
+          "Mantel = 120 cm²"
+        ],
+        "ergebnis": "Mantel = 120 cm²."
+      },
+      "merke": "Mantel = Umfang der Grundfläche · Höhe."
+    },
+    "B": {
+      "titel": "Oberfläche = 2 Grundflächen + Mantel",
+      "hinfuehrung": "Die ganze Oberfläche eines Prismas sind die beiden Grundflächen plus der Mantel rundherum.",
+      "erklaerung": [
+        "O = 2 · Grundfläche + Mantel.",
+        "Berechne die Grundfläche, verdopple sie, addiere den Mantel (Umfang · Höhe)."
+      ],
+      "beispiel": {
+        "aufgabe": "Dreieck: g = 4, h_d = 3, Seiten 3/4/5, Länge h = 10 cm. Oberfläche?",
+        "schritte": [
+          "G = (4 · 3) : 2 = 6 cm²  →  2·G = 12 cm²",
+          "Mantel = (3+4+5) · 10 = 120 cm²",
+          "O = 12 + 120 = 132 cm²"
+        ],
+        "ergebnis": "O = 132 cm²."
+      },
+      "merke": "Prisma: O = 2 · Grundfläche + Mantel."
+    },
+    "C": {
+      "titel": "Fehlende Dreiecksseite mit Pythagoras",
+      "hinfuehrung": "Manchmal fehlt eine Dreiecksseite für den Umfang. Im rechtwinkligen Dreieck hilft der Satz des Pythagoras.",
+      "erklaerung": [
+        "Im rechtwinkligen Dreieck gilt a² + b² = c² (c = längste Seite, Hypotenuse).",
+        "Fehlt die Hypotenuse: c = √(a² + b²). Fehlt eine Kathete: a = √(c² − b²). Danach den Umfang bilden."
+      ],
+      "beispiel": {
+        "aufgabe": "Rechtwinkliges Dreieck mit Katheten 6 und 8 cm. Wie lang ist die dritte Seite?",
+        "schritte": [
+          "c² = 6² + 8² = 36 + 64 = 100",
+          "c = √100 = 10 cm"
+        ],
+        "ergebnis": "Die dritte Seite (Hypotenuse) ist 10 cm."
+      },
+      "merke": "Rechtwinklig: c = √(a² + b²) für die Hypotenuse."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "O = 2 · Grundfläche + Mantel",
+      "Mantel = Umfang der Grundfläche · Höhe",
+      "Dreieck-Umfang: alle drei Seiten addieren",
+      "Pythagoras: c² = a² + b²   (rechtwinkliges Dreieck)"
+    ],
+    "saetze": [
+      "Der Mantel ist die Summe aller Seitenrechtecke.",
+      "Für den Umfang brauchst du manchmal Pythagoras."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP08-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Der Umfang der Grundfläche ist 12 cm, die Höhe 5 cm. Wie groß ist der Mantel?",
+      "answer": 60,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Mantel = Umfang · Höhe.",
+        "12 · 5."
+      ],
+      "solution": "Mantel = U · h = 12 · 5 = 60 cm².",
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 17,
+          "feedback": "Umfang und Höhe werden multipliziert: 12 · 5 = 60."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "oberflaeche",
+        "mantel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Eine dreieckige Grundfläche hat die Seiten 3 cm, 4 cm und 5 cm. Wie groß ist ihr Umfang?",
+      "answer": 12,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Umfang = alle Seiten addieren.",
+        "3 + 4 + 5."
+      ],
+      "solution": "U = 3 + 4 + 5 = 12 cm.",
+      "misconceptions": [
+        {
+          "id": "nur_zwei_seiten",
+          "value": 7,
+          "feedback": "Alle drei Seiten addieren: 3 + 4 + 5 = 12."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "umfang",
+        "dreieck"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Grundfläche 6 cm², Umfang 12 cm, Höhe 5 cm. Berechne die ganze Oberfläche.",
+      "answer": 72,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Mantel = 12 · 5 = 60.",
+        "O = 2 · 6 + 60."
+      ],
+      "solution": "Mantel = 12 · 5 = 60 cm². O = 2·G + Mantel = 2·6 + 60 = 72 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_eine_grundflaeche",
+          "value": 66,
+          "feedback": "Es gibt ZWEI Grundflächen: 2 · 6 = 12, plus 60 = 72."
+        },
+        {
+          "id": "grundflaeche_vergessen",
+          "value": 60,
+          "feedback": "Nur der Mantel. Die beiden Grundflächen (2·6 = 12) fehlen: 72."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Würfel hat 4 cm Kante. Berechne seine Oberfläche als Prisma-Sonderfall (2·G + Mantel).",
+      "answer": 96,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Grundfläche 4·4 = 16, Umfang 4·4 = 16, Höhe 4.",
+        "O = 2·16 + 16·4."
+      ],
+      "solution": "G = 16 cm², Umfang = 16 cm, Mantel = 16·4 = 64. O = 2·16 + 64 = 96 cm². (= 6 · 16 ✓)",
+      "tags": [
+        "prisma",
+        "oberflaeche",
+        "wuerfel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Dreiecksprisma: Grundfläche 6 cm², Seiten 3/4/5 cm, Höhe 10 cm. Rechne schrittweise.",
+      "visual": {
+        "type": "koerper",
+        "form": "prisma",
+        "labels": {
+          "g": "g = 4 cm",
+          "hd": "",
+          "h": "h = 10 cm"
+        },
+        "alt": "Dreiecksprisma 3/4/5."
+      },
+      "fields": [
+        {
+          "label": "Umfang der Grundfläche",
+          "answer": 12,
+          "tolerance": 0.01,
+          "unit_label": "cm"
+        },
+        {
+          "label": "Mantel",
+          "answer": 120,
+          "tolerance": 0.01,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 132,
+          "tolerance": 0.01,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_vergessen",
+              "value": 120,
+              "feedback": "Zum Mantel noch 2 Grundflächen: 2·6 = 12, macht 132."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Umfang = 3+4+5.",
+        "Mantel = Umfang · 10.",
+        "O = 2·6 + Mantel."
+      ],
+      "solution": "U = 12 cm. Mantel = 12·10 = 120 cm². O = 2·6 + 120 = 132 cm².",
+      "tags": [
+        "prisma",
+        "oberflaeche",
+        "dreieck"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Prisma: Grundfläche 20 cm², Umfang 18 cm, Höhe 8 cm. Oberfläche?",
+      "answer": 184,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "Mantel = 18·8 = 144.",
+        "O = 2·20 + 144."
+      ],
+      "solution": "Mantel = 18·8 = 144 cm². O = 2·20 + 144 = 184 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_eine_grundflaeche",
+          "value": 164,
+          "feedback": "Zwei Grundflächen: 2·20 = 40, plus 144 = 184."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Quaderprisma hat Grundfläche 6·5 = 30 cm², Umfang 22 cm, Höhe 10 cm. Oberfläche?",
+      "answer": 280,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "Mantel = 22·10 = 220.",
+        "O = 2·30 + 220."
+      ],
+      "solution": "Mantel = 22·10 = 220 cm². O = 2·30 + 220 = 280 cm².",
+      "tags": [
+        "prisma",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Rechtwinkliges Dreieck mit Katheten 6 cm und 8 cm. Wie lang ist die Hypotenuse (Pythagoras)?",
+      "answer": 10,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "c² = 6² + 8².",
+        "c² = 36 + 64 = 100, c = √100."
+      ],
+      "solution": "c² = 6² + 8² = 36 + 64 = 100. c = √100 = 10 cm.",
+      "misconceptions": [
+        {
+          "id": "wurzel_vergessen",
+          "value": 100,
+          "feedback": "100 ist c². Die Seite ist √100 = 10."
+        },
+        {
+          "id": "seiten_addiert",
+          "value": 14,
+          "feedback": "Nicht 6 + 8. Pythagoras: c² = 36 + 64 = 100, c = 10."
+        }
+      ],
+      "tags": [
+        "pythagoras",
+        "dreieck",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Dreiecksprisma: Grundfläche 24 cm², Umfang 24 cm (Seiten 6/8/10), Höhe 12 cm. Oberfläche?",
+      "answer": 336,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "Mantel = 24·12 = 288.",
+        "O = 2·24 + 288."
+      ],
+      "solution": "Mantel = 24·12 = 288 cm². O = 2·24 + 288 = 336 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_eine_grundflaeche",
+          "value": 312,
+          "feedback": "Zwei Grundflächen: 2·24 = 48, plus 288 = 336."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "oberflaeche",
+        "dreieck",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Zelt (Dreiecksprisma): Grundfläche 1,5 m², Umfang der Grundfläche 5 m, Länge 3 m. Wie viel Stoff (Oberfläche) braucht man?",
+      "answer": 18,
+      "unit_label": "m²",
+      "tolerance": 0.5,
+      "hints": [
+        "Mantel = 5·3 = 15 m².",
+        "O = 2·1,5 + 15."
+      ],
+      "solution": "Mantel = 5·3 = 15 m². O = 2·1,5 + 15 = 18 m².",
+      "tags": [
+        "prisma",
+        "oberflaeche",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Gleichschenkliges Dreiecksprisma: Grundseite 8 cm, Dreieckshöhe 3 cm. Erst die Schenkel mit Pythagoras (halbe Grundseite = 4 cm).",
+      "fields": [
+        {
+          "label": "ein Schenkel s",
+          "answer": 5,
+          "tolerance": 0.01,
+          "unit_label": "cm",
+          "misconceptions": [
+            {
+              "id": "halbe_grundseite_vergessen",
+              "value": 8.54,
+              "feedback": "Pythagoras mit der HALBEN Grundseite 4 cm: √(4²+3²) = √25 = 5."
+            }
+          ]
+        },
+        {
+          "label": "Umfang der Grundfläche",
+          "answer": 18,
+          "tolerance": 0.01,
+          "unit_label": "cm"
+        }
+      ],
+      "hints": [
+        "Schenkel = √( (halbe Grundseite)² + Dreieckshöhe² ) = √(4²+3²).",
+        "Umfang = 8 + 5 + 5."
+      ],
+      "solution": "Schenkel s = √(4² + 3²) = √25 = 5 cm.\nUmfang = 8 + 5 + 5 = 18 cm.",
+      "tags": [
+        "pythagoras",
+        "dreieck",
+        "umfang",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Dasselbe Dreieck (Grundseite 8 cm, Höhe 3 cm) als Grundfläche eines 10 cm langen Prismas. Grundflächeninhalt?",
+      "answer": 12,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Dreieck: (8·3):2.",
+        "= 12."
+      ],
+      "solution": "G = (8·3):2 = 12 cm².",
+      "misconceptions": [
+        {
+          "id": "dreieck_halbe_vergessen",
+          "value": 24,
+          "feedback": "Durch 2: (8·3):2 = 12."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "dreieck",
+        "flaeche",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Prisma: Grundfläche 12 cm², Umfang 18 cm, Länge 10 cm. Berechne die Oberfläche.",
+      "answer": 204,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "Mantel = 18·10 = 180.",
+        "O = 2·12 + 180."
+      ],
+      "solution": "Mantel = 18·10 = 180 cm². O = 2·12 + 180 = 204 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_eine_grundflaeche",
+          "value": 192,
+          "feedback": "Zwei Grundflächen: 2·12 = 24, plus 180 = 204."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "oberflaeche",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP08-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Warum zählt man bei der Oberfläche eines Prismas die Grundfläche zweimal, den Mantel aber nur einmal?",
+      "options": [
+        "Weil es zwei Grundflächen (oben und unten) gibt, der Mantel aber ringsum eine einzige Fläche ist.",
+        "Weil die Grundfläche wichtiger ist.",
+        "Das ist ein Rechentrick ohne Bedeutung."
+      ],
+      "answer": 0,
+      "hints": [
+        "Wie oft kommt die Grundfläche im Körper vor?",
+        "Der Mantel ist der ganze 'Ring' ringsum."
+      ],
+      "solution": "Ein Prisma hat oben und unten je eine Grundfläche — also zweimal. Der Mantel ist die eine zusammenhängende Fläche ringsum, deshalb Umfang · Höhe.",
+      "misconceptions": [
+        {
+          "id": "regel_ohne_grund",
+          "value": 2,
+          "feedback": "Es steckt Anschauung dahinter: oben + unten = zwei Grundflächen, ringsum = ein Mantel."
+        }
+      ],
+      "tags": [
+        "prisma",
+        "oberflaeche",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

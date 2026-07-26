@@ -1,0 +1,529 @@
+{
+  "unit": "KP-10",
+  "title": "Oberfläche des Zylinders",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K4"
+  ],
+  "wortspeicher": [
+    "die Oberfläche",
+    "der Mantel",
+    "der Kreisumfang",
+    "die Kreisfläche",
+    "abwickeln",
+    "das Rechteck"
+  ],
+  "can_do": {
+    "A": "Du weißt: der abgewickelte Zylindermantel ist ein Rechteck (Umfang · Höhe).",
+    "B": "Du berechnest die Oberfläche = 2 Kreise + Mantel.",
+    "C": "Du berechnest Zylinderoberflächen in Sachaufgaben, auch offene Behälter."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Der Zylindermantel ist ein Rechteck",
+      "hinfuehrung": "Schneidet man den Zylindermantel auf und rollt ihn aus, entsteht ein Rechteck: so lang wie der Kreisumfang, so hoch wie der Zylinder.",
+      "erklaerung": [
+        "Kreisumfang: U = 2 · π · r = π · d.",
+        "Mantel = U · h = 2 · π · r · h."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "zylinder",
+        "labels": {
+          "r": "r",
+          "h": "h"
+        },
+        "alt": "Zylinder; der Mantel lässt sich zu einem Rechteck abwickeln."
+      },
+      "beispiel": {
+        "aufgabe": "Zylinder mit r = 4 cm, h = 10 cm. Mantelfläche (π ≈ 3,14)?",
+        "schritte": [
+          "U = 2 · 3,14 · 4 = 25,12 cm",
+          "Mantel = U · h = 25,12 · 10",
+          "Mantel = 251,2 cm²"
+        ],
+        "ergebnis": "Mantel ≈ 251,2 cm²."
+      },
+      "merke": "Zylindermantel = 2 · π · r · h (Umfang · Höhe)."
+    },
+    "B": {
+      "titel": "Oberfläche = 2 Kreise + Mantel",
+      "hinfuehrung": "Die volle Oberfläche eines Zylinders sind Deckel und Boden (zwei Kreise) plus der Mantel rundherum.",
+      "erklaerung": [
+        "O = 2 · π · r² + 2 · π · r · h.",
+        "Berechne die Kreisfläche, verdopple sie, addiere den Mantel."
+      ],
+      "beispiel": {
+        "aufgabe": "Zylinder r = 4 cm, h = 10 cm. Oberfläche (π ≈ 3,14)?",
+        "schritte": [
+          "2 Kreise = 2 · 3,14 · 16 = 100,48 cm²",
+          "Mantel = 2 · 3,14 · 4 · 10 = 251,2 cm²",
+          "O = 100,48 + 251,2 = 351,68 cm²"
+        ],
+        "ergebnis": "O ≈ 351,7 cm²."
+      },
+      "merke": "Zylinder: O = 2 · π · r² + 2 · π · r · h."
+    },
+    "C": {
+      "titel": "Offene Behälter richtig rechnen",
+      "hinfuehrung": "Ein Eimer oder eine offene Dose hat keinen Deckel. Dann fehlt ein Kreis in der Oberfläche – das musst du erkennen.",
+      "erklaerung": [
+        "Offen oben: O = 1 Kreis (Boden) + Mantel. Ganz offen (Rohr): nur der Mantel.",
+        "Lies im Text genau, welche Flächen wirklich vorhanden sind, bevor du addierst."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein oben offener Becher: r = 3 cm, h = 8 cm. Materialfläche (π ≈ 3,14)?",
+        "schritte": [
+          "Boden = π · r² = 3,14 · 9 = 28,26 cm²",
+          "Mantel = 2 · 3,14 · 3 · 8 = 150,72 cm²",
+          "O = 28,26 + 150,72 = 178,98 cm²"
+        ],
+        "ergebnis": "O ≈ 179 cm² (nur 1 Kreis, weil oben offen)."
+      },
+      "merke": "Offener Behälter: fehlenden Deckel nicht mitrechnen."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Kreisumfang:  U = 2 · π · r = π · d",
+      "Kreisfläche:  A = π · r²",
+      "Mantel = U · h = 2 · π · r · h",
+      "O = 2 · π · r² + 2 · π · r · h   (2 Kreise + Mantel)"
+    ],
+    "saetze": [
+      "Der aufgeschnittene Mantel ist ein Rechteck: Umfang lang, h hoch.",
+      "Ohne Deckel: nur EIN Kreis mitzählen."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP10-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein Kreis hat r = 3 cm. Wie groß ist sein Umfang (π ≈ 3,14, eine Nachkommastelle)?",
+      "answer": 18.8,
+      "unit_label": "cm",
+      "tolerance": 0.3,
+      "hints": [
+        "U = 2 · π · r.",
+        "2 · 3,14 · 3."
+      ],
+      "solution": "U = 2 · π · r = 2 · 3,14 · 3 = 18,84 ≈ 18,8 cm.",
+      "misconceptions": [
+        {
+          "id": "umfang_als_flaeche",
+          "value": 28.3,
+          "feedback": "Das wäre die Fläche π·r². Umfang ist 2·π·r."
+        },
+        {
+          "id": "ohne_zwei",
+          "value": 9.4,
+          "feedback": "Umfang ist 2·π·r, die '2' fehlt: 18,8."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "kreis",
+        "umfang"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Der Mantel eines Zylinders wird aufgeschnitten und flach gelegt. Welche Form entsteht?",
+      "options": [
+        "ein Rechteck",
+        "ein Kreis",
+        "ein Dreieck"
+      ],
+      "answer": 0,
+      "hints": [
+        "Stell dir ein Etikett vor, das du von der Dose abziehst.",
+        "Es ist so lang wie der Umfang und so hoch wie der Zylinder."
+      ],
+      "solution": "Der abgewickelte Mantel ist ein Rechteck: so lang wie der Kreisumfang, so hoch wie der Zylinder.",
+      "misconceptions": [
+        {
+          "id": "mantel_als_kreis",
+          "value": 1,
+          "feedback": "Kreise sind nur Deckel und Boden. Der Mantel wird zu einem Rechteck."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "mantel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Umfang 18,8 cm, Höhe 10 cm. Wie groß ist der Mantel?",
+      "answer": 188,
+      "unit_label": "cm²",
+      "tolerance": 1,
+      "hints": [
+        "Mantel = Umfang · Höhe.",
+        "18,8 · 10."
+      ],
+      "solution": "Mantel = U · h = 18,8 · 10 = 188 cm².",
+      "tags": [
+        "zylinder",
+        "mantel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Zylinder: eine Kreisfläche 28,3 cm², Mantel 188 cm². Wie groß ist die Oberfläche?",
+      "answer": 244.6,
+      "unit_label": "cm²",
+      "tolerance": 1,
+      "hints": [
+        "Es gibt ZWEI Kreise.",
+        "O = 2 · 28,3 + 188."
+      ],
+      "solution": "O = 2 · Kreis + Mantel = 2 · 28,3 + 188 = 56,6 + 188 = 244,6 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_ein_kreis",
+          "value": 216.3,
+          "feedback": "Zwei Kreise (Deckel + Boden): 2 · 28,3 = 56,6, plus 188 = 244,6."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Zylinder: r = 4 cm, h = 10 cm (π ≈ 3,14). Rechne schrittweise.",
+      "visual": {
+        "type": "koerper",
+        "form": "zylinder",
+        "labels": {
+          "r": "r = 4 cm",
+          "h": "h = 10 cm"
+        },
+        "alt": "Zylinder r=4, h=10."
+      },
+      "fields": [
+        {
+          "label": "Kreisfläche (eine)",
+          "answer": 50.24,
+          "tolerance": 0.3,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Umfang",
+          "answer": 25.12,
+          "tolerance": 0.2,
+          "unit_label": "cm"
+        },
+        {
+          "label": "Mantel",
+          "answer": 251.2,
+          "tolerance": 1,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 351.68,
+          "tolerance": 2,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "nur_ein_kreis",
+              "value": 301.44,
+              "feedback": "Zwei Kreise: 2·50,24 = 100,48, plus Mantel 251,2 = 351,68."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "A = 3,14·16; U = 2·3,14·4.",
+        "Mantel = U·h. O = 2·A + Mantel."
+      ],
+      "solution": "A = 3,14·16 = 50,24 cm². U = 2·3,14·4 = 25,12 cm.\nMantel = 25,12·10 = 251,2 cm². O = 2·50,24 + 251,2 = 351,68 cm².",
+      "tags": [
+        "zylinder",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 5 cm, h = 8 cm. Oberfläche (π ≈ 3,14, eine Nachkommastelle)?",
+      "answer": 408.2,
+      "unit_label": "cm²",
+      "tolerance": 3,
+      "hints": [
+        "A = 3,14·25 = 78,5; U = 2·3,14·5 = 31,4.",
+        "O = 2·78,5 + 31,4·8."
+      ],
+      "solution": "A = 78,5 cm². Mantel = 31,4·8 = 251,2 cm². O = 2·78,5 + 251,2 = 408,2 cm².",
+      "misconceptions": [
+        {
+          "id": "nur_ein_kreis",
+          "value": 329.7,
+          "feedback": "Zwei Kreise: 2·78,5 = 157, plus 251,2 = 408,2."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Mantel: Umfang 30 cm, Höhe 12 cm. Fläche?",
+      "answer": 360,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "Mantel = Umfang · Höhe.",
+        "30 · 12."
+      ],
+      "solution": "Mantel = 30 · 12 = 360 cm².",
+      "tags": [
+        "zylinder",
+        "mantel",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Eine Konservendose: d = 8 cm, h = 11 cm. Oberfläche (π ≈ 3,14, ganze cm²)?",
+      "answer": 377,
+      "unit_label": "cm²",
+      "tolerance": 4,
+      "hints": [
+        "r = 4 cm.",
+        "O = 2·3,14·4² + 2·3,14·4·11."
+      ],
+      "solution": "r = 4 cm. Kreise: 2·3,14·16 = 100,48. Mantel: 2·3,14·4·11 = 276,32.\nO = 100,48 + 276,32 = 376,8 ≈ 377 cm².",
+      "misconceptions": [
+        {
+          "id": "durchmesser_als_radius",
+          "value": 1055,
+          "feedback": "Erst r = d:2 = 4 cm."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "oberflaeche",
+        "durchmesser",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 2 cm, h = 20 cm. Oberfläche (π ≈ 3,14, eine Nachkommastelle)?",
+      "answer": 276.3,
+      "unit_label": "cm²",
+      "tolerance": 3,
+      "hints": [
+        "A = 3,14·4 = 12,56; U = 2·3,14·2 = 12,56.",
+        "O = 2·12,56 + 12,56·20."
+      ],
+      "solution": "A = 12,56 cm². Mantel = 12,56·20 = 251,2 cm². O = 2·12,56 + 251,2 = 276,32 ≈ 276,3 cm².",
+      "tags": [
+        "zylinder",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine oben offene Dose (ohne Deckel): r = 5 cm, h = 10 cm. Wie viel Blech (π ≈ 3,14, ganze cm²)?",
+      "answer": 393,
+      "unit_label": "cm²",
+      "tolerance": 4,
+      "hints": [
+        "Nur EIN Kreis (Boden) + Mantel.",
+        "O = 3,14·25 + 2·3,14·5·10."
+      ],
+      "solution": "Boden: 3,14·25 = 78,5. Mantel: 2·3,14·5·10 = 314. O = 78,5 + 314 = 392,5 ≈ 393 cm².",
+      "misconceptions": [
+        {
+          "id": "deckel_mitgezaehlt",
+          "value": 471,
+          "feedback": "Ohne Deckel nur EIN Kreis: 78,5 + 314 = 392,5, nicht 2 Kreise."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "oberflaeche",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 6 cm, h = 15 cm. Oberfläche (π ≈ 3,14, ganze cm²)?",
+      "answer": 791,
+      "unit_label": "cm²",
+      "tolerance": 6,
+      "hints": [
+        "Kreise: 2·3,14·36. Mantel: 2·3,14·6·15.",
+        "Addieren."
+      ],
+      "solution": "Kreise: 2·3,14·36 = 226,08. Mantel: 2·3,14·6·15 = 565,2.\nO = 226,08 + 565,2 = 791,28 ≈ 791 cm².",
+      "tags": [
+        "zylinder",
+        "oberflaeche",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Etikett soll den Mantel einer Dose (d = 7 cm, h = 10 cm) genau umschließen. Wie lang muss es sein (π ≈ 3,14, eine Nachkommastelle)?",
+      "answer": 22.0,
+      "unit_label": "cm",
+      "tolerance": 0.3,
+      "hints": [
+        "Das Etikett ist so lang wie der Umfang.",
+        "U = π · d = 3,14 · 7."
+      ],
+      "solution": "Länge = Umfang = π · d = 3,14 · 7 = 21,98 ≈ 22,0 cm.",
+      "misconceptions": [
+        {
+          "id": "flaeche_statt_umfang",
+          "value": 38.5,
+          "feedback": "Gefragt ist die Länge = Umfang, nicht die Fläche."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "umfang",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Zylinder ist so hoch wie sein Durchmesser: r = 4 cm, h = 8 cm. Oberfläche (π ≈ 3,14, ganze cm²)?",
+      "answer": 301,
+      "unit_label": "cm²",
+      "tolerance": 4,
+      "hints": [
+        "Kreise: 2·3,14·16. Mantel: 2·3,14·4·8.",
+        "Addieren."
+      ],
+      "solution": "Kreise: 2·3,14·16 = 100,48. Mantel: 2·3,14·4·8 = 200,96.\nO = 100,48 + 200,96 = 301,44 ≈ 301 cm².",
+      "tags": [
+        "zylinder",
+        "oberflaeche",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP10-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Bei welcher Größe steckt π NICHT drin?",
+      "options": [
+        "bei der Höhe des Zylinders",
+        "beim Kreisumfang",
+        "bei der Kreisfläche"
+      ],
+      "answer": 0,
+      "hints": [
+        "π gehört zum Kreis.",
+        "Die Höhe ist eine gerade Strecke."
+      ],
+      "solution": "Die Höhe ist eine einfache Länge — kein Kreis, also kein π. Umfang (2πr) und Kreisfläche (πr²) enthalten π.",
+      "misconceptions": [
+        {
+          "id": "pi_ueberall_vermutet",
+          "value": 1,
+          "feedback": "Der Umfang enthält π. π gehört nur zum Kreis, nicht zur geraden Höhe."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

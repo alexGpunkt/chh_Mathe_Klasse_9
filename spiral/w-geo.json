@@ -1,0 +1,431 @@
+{
+  "category": "W-GEO",
+  "title": "Grundgeometrie & Körper",
+  "_hinweis": "15 Generatoren: Flächen, Umfänge, Pythagoras und Körper. Alle Ausdrücke bleiben innerhalb des sicheren Parsers von spiral.js.",
+  "generators": [
+    {
+      "id": "WGEO-A-rechteck-flaeche",
+      "level": "A",
+      "skill": "Fläche eines Rechtecks",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 12
+        },
+        "b": {
+          "von": 2,
+          "bis": 10
+        }
+      },
+      "template": "Ein Rechteck ist {a} cm lang und {b} cm breit. Wie groß ist die Fläche?",
+      "answer": "a*b",
+      "round": 0,
+      "unit_label": "cm²",
+      "hint": "Fläche = Länge · Breite.",
+      "solution": "A = {a} · {b} = {ergebnis} cm²",
+      "misconceptions": [
+        {
+          "id": "umfang_als_flaeche",
+          "value": "2*(a+b)",
+          "feedback": "Du hast den Umfang berechnet. Für die Fläche werden Länge und Breite multipliziert."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-A-rechteck-umfang",
+      "level": "A",
+      "skill": "Umfang eines Rechtecks",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 12
+        },
+        "b": {
+          "von": 2,
+          "bis": 10
+        }
+      },
+      "template": "Ein Rechteck ist {a} cm lang und {b} cm breit. Wie groß ist der Umfang?",
+      "answer": "2*(a+b)",
+      "round": 0,
+      "unit_label": "cm",
+      "hint": "Alle vier Seiten addieren: 2 · (Länge + Breite).",
+      "solution": "U = 2 · ({a} + {b}) = {ergebnis} cm",
+      "misconceptions": [
+        {
+          "id": "flaeche_statt_umfang",
+          "value": "a*b",
+          "feedback": "Du hast die Fläche berechnet. Beim Umfang werden die vier Seitenlängen addiert."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-A-quadrat-flaeche",
+      "level": "A",
+      "skill": "Fläche eines Quadrats",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 15
+        }
+      },
+      "template": "Ein Quadrat hat die Seitenlänge {a} cm. Wie groß ist seine Fläche?",
+      "answer": "a*a",
+      "round": 0,
+      "unit_label": "cm²",
+      "hint": "A = a · a.",
+      "solution": "A = {a} · {a} = {ergebnis} cm²",
+      "misconceptions": [
+        {
+          "id": "umfang_als_flaeche",
+          "value": "4*a",
+          "feedback": "4 · a ist der Umfang. Für die Fläche rechnest du a · a."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-A-wuerfel-volumen",
+      "level": "A",
+      "skill": "Volumen eines Würfels",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 10
+        }
+      },
+      "template": "Ein Würfel hat die Kantenlänge {a} cm. Wie groß ist sein Volumen?",
+      "answer": "a*a*a",
+      "round": 0,
+      "unit_label": "cm³",
+      "hint": "V = a · a · a.",
+      "solution": "V = {a} · {a} · {a} = {ergebnis} cm³",
+      "misconceptions": [
+        {
+          "id": "oberflaeche_statt_volumen",
+          "value": "6*a*a",
+          "feedback": "6 · a² ist die Oberfläche. Für das Volumen brauchst du drei Faktoren: a · a · a."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-A-quader-volumen",
+      "level": "A",
+      "skill": "Volumen eines Quaders",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 10
+        },
+        "b": {
+          "von": 2,
+          "bis": 9
+        },
+        "c": {
+          "von": 2,
+          "bis": 8
+        }
+      },
+      "template": "Ein Quader ist {a} cm lang, {b} cm breit und {c} cm hoch. Wie groß ist sein Volumen?",
+      "answer": "a*b*c",
+      "round": 0,
+      "unit_label": "cm³",
+      "hint": "V = Länge · Breite · Höhe.",
+      "solution": "V = {a} · {b} · {c} = {ergebnis} cm³",
+      "misconceptions": [
+        {
+          "id": "oberflaeche_statt_volumen",
+          "value": "2*(a*b+a*c+b*c)",
+          "feedback": "Du hast die Oberfläche berechnet. Beim Volumen werden Länge, Breite und Höhe multipliziert."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-B-dreieck-flaeche",
+      "level": "B",
+      "skill": "Fläche eines Dreiecks",
+      "vars": {
+        "g": {
+          "aus": [
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        },
+        "h": {
+          "von": 3,
+          "bis": 12
+        }
+      },
+      "template": "Ein Dreieck hat die Grundseite {g} cm und die zugehörige Höhe {h} cm. Wie groß ist seine Fläche?",
+      "answer": "g*h/2",
+      "round": 0,
+      "unit_label": "cm²",
+      "hint": "A = Grundseite · Höhe : 2.",
+      "solution": "A = {g} · {h} : 2 = {ergebnis} cm²",
+      "misconceptions": [
+        {
+          "id": "dreieck_halbe_vergessen",
+          "value": "g*h",
+          "feedback": "Das wäre die Fläche des umgebenden Rechtecks. Ein Dreieck ist davon die Hälfte."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-B-kreis-flaeche",
+      "level": "B",
+      "skill": "Fläche eines Kreises",
+      "vars": {
+        "r": {
+          "von": 2,
+          "bis": 10
+        }
+      },
+      "template": "Ein Kreis hat den Radius {r} cm. Berechne die Fläche mit π ≈ 3,14.",
+      "answer": "3.14*r*r",
+      "round": 2,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hint": "A = π · r² = 3,14 · r · r.",
+      "solution": "A = 3,14 · {r} · {r} = {ergebnis} cm²",
+      "misconceptions": [
+        {
+          "id": "umfang_als_flaeche",
+          "value": "2*3.14*r",
+          "feedback": "Du hast den Kreisumfang berechnet. Für die Fläche brauchst du r²."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-B-pythagoras-hypotenuse",
+      "level": "B",
+      "skill": "Pythagoras: Hypotenuse",
+      "vars": {
+        "k": {
+          "von": 1,
+          "bis": 8
+        }
+      },
+      "berechnet": {
+        "a": "3*k",
+        "b": "4*k"
+      },
+      "template": "Ein rechtwinkliges Dreieck hat die Katheten {a} cm und {b} cm. Wie lang ist die Hypotenuse?",
+      "answer": "5*k",
+      "round": 0,
+      "unit_label": "cm",
+      "hint": "a² + b² = c². Hier steckt ein 3-4-5-Dreieck.",
+      "solution": "{a}² + {b}² = {(3*k)*(3*k)} + {(4*k)*(4*k)} = {(5*k)*(5*k)}. Daher c = {ergebnis} cm.",
+      "misconceptions": [
+        {
+          "id": "wurzel_vergessen",
+          "value": "(3*k)*(3*k)+(4*k)*(4*k)",
+          "feedback": "Das ist c². Gesucht ist c — am Ende musst du die Quadratwurzel ziehen."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-B-prisma-volumen",
+      "level": "B",
+      "skill": "Volumen eines Prismas",
+      "vars": {
+        "G": {
+          "von": 6,
+          "bis": 40,
+          "schritt": 2
+        },
+        "h": {
+          "von": 3,
+          "bis": 12
+        }
+      },
+      "template": "Ein Prisma hat die Grundfläche G = {G} cm² und die Körperhöhe h = {h} cm. Wie groß ist sein Volumen?",
+      "answer": "G*h",
+      "round": 0,
+      "unit_label": "cm³",
+      "hint": "V = G · h.",
+      "solution": "V = {G} · {h} = {ergebnis} cm³",
+      "misconceptions": [
+        {
+          "id": "hoehe_vergessen",
+          "value": "G",
+          "feedback": "Du hast nur die Grundfläche angegeben. Für das Volumen muss sie noch mit der Körperhöhe multipliziert werden."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-B-zylinder-volumen",
+      "level": "B",
+      "skill": "Volumen eines Zylinders",
+      "vars": {
+        "r": {
+          "von": 2,
+          "bis": 8
+        },
+        "h": {
+          "von": 3,
+          "bis": 15
+        }
+      },
+      "template": "Ein Zylinder hat den Radius {r} cm und die Höhe {h} cm. Berechne sein Volumen mit π ≈ 3,14.",
+      "answer": "3.14*r*r*h",
+      "round": 2,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hint": "V = π · r² · h.",
+      "solution": "V = 3,14 · {r} · {r} · {h} = {ergebnis} cm³",
+      "misconceptions": [
+        {
+          "id": "hoehe_vergessen",
+          "value": "3.14*r*r",
+          "feedback": "Das ist nur die Kreisfläche der Grundfläche. Für das Volumen fehlt noch die Höhe."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-C-rechteck-seite",
+      "level": "C",
+      "skill": "Fehlende Rechteckseite",
+      "vars": {
+        "a": {
+          "von": 2,
+          "bis": 12
+        },
+        "b": {
+          "von": 2,
+          "bis": 10
+        }
+      },
+      "berechnet": {
+        "A": "a*b"
+      },
+      "template": "Ein Rechteck hat die Fläche {A} cm² und eine Seitenlänge von {a} cm. Wie lang ist die andere Seite?",
+      "answer": "A/a",
+      "round": 0,
+      "unit_label": "cm",
+      "hint": "Aus A = a · b folgt b = A : a.",
+      "solution": "b = {A} : {a} = {ergebnis} cm"
+    },
+    {
+      "id": "WGEO-C-pythagoras-kathete",
+      "level": "C",
+      "skill": "Pythagoras: fehlende Kathete",
+      "vars": {
+        "k": {
+          "von": 1,
+          "bis": 8
+        }
+      },
+      "berechnet": {
+        "a": "3*k",
+        "c": "5*k"
+      },
+      "template": "Ein rechtwinkliges Dreieck hat die Hypotenuse {c} cm und eine Kathete {a} cm. Wie lang ist die andere Kathete?",
+      "answer": "4*k",
+      "round": 0,
+      "unit_label": "cm",
+      "hint": "b² = c² − a². Hier steckt ein 3-4-5-Dreieck.",
+      "solution": "b² = {c}² − {a}² = {(5*k)*(5*k)} − {(3*k)*(3*k)} = {(4*k)*(4*k)}. Daher b = {ergebnis} cm."
+    },
+    {
+      "id": "WGEO-C-dreiecksprisma-volumen",
+      "level": "C",
+      "skill": "Volumen eines Dreiecksprismas",
+      "vars": {
+        "g": {
+          "aus": [
+            4,
+            6,
+            8,
+            10,
+            12
+          ]
+        },
+        "hd": {
+          "von": 3,
+          "bis": 10
+        },
+        "l": {
+          "von": 4,
+          "bis": 15
+        }
+      },
+      "template": "Die Grundfläche eines Prismas ist ein Dreieck mit g = {g} cm und h = {hd} cm. Das Prisma ist {l} cm lang. Berechne das Volumen.",
+      "answer": "g*hd*l/2",
+      "round": 0,
+      "unit_label": "cm³",
+      "hint": "Erst G = g · h : 2, dann V = G · l.",
+      "solution": "G = {g} · {hd} : 2 = {g*hd/2} cm². V = {g*hd/2} · {l} = {ergebnis} cm³.",
+      "misconceptions": [
+        {
+          "id": "dreieck_halbe_vergessen",
+          "value": "g*hd*l",
+          "feedback": "Bei der dreieckigen Grundfläche fehlt der Faktor 1/2."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-C-pyramide-volumen",
+      "level": "C",
+      "skill": "Volumen einer Pyramide",
+      "vars": {
+        "a": {
+          "von": 3,
+          "bis": 12
+        },
+        "h": {
+          "aus": [
+            3,
+            6,
+            9,
+            12
+          ]
+        }
+      },
+      "template": "Eine quadratische Pyramide hat die Grundkante {a} cm und die senkrechte Höhe {h} cm. Berechne das Volumen.",
+      "answer": "a*a*h/3",
+      "round": 0,
+      "unit_label": "cm³",
+      "hint": "V = G · h : 3 und G = a².",
+      "solution": "V = {a} · {a} · {h} : 3 = {ergebnis} cm³",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": "a*a*h",
+          "feedback": "Du hast wie bei einem Prisma gerechnet. Bei einer Pyramide wird noch durch 3 geteilt."
+        }
+      ]
+    },
+    {
+      "id": "WGEO-C-kegel-volumen",
+      "level": "C",
+      "skill": "Volumen eines Kegels",
+      "vars": {
+        "r": {
+          "von": 2,
+          "bis": 8
+        },
+        "h": {
+          "von": 3,
+          "bis": 15
+        }
+      },
+      "template": "Ein Kegel hat den Radius {r} cm und die senkrechte Höhe {h} cm. Berechne das Volumen mit π ≈ 3,14.",
+      "answer": "3.14*r*r*h/3",
+      "round": 2,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hint": "V = π · r² · h : 3.",
+      "solution": "V = 3,14 · {r} · {r} · {h} : 3 = {ergebnis} cm³",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": "3.14*r*r*h",
+          "feedback": "Du hast das Volumen des passenden Zylinders berechnet. Ein Kegel hat davon nur ein Drittel."
+        }
+      ]
+    }
+  ]
+}

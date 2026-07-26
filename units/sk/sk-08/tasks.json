@@ -1,0 +1,594 @@
+{
+  "unit": "SK-08",
+  "title": "Oberfläche des Kegels",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K4"
+  ],
+  "wortspeicher": [
+    "die Oberfläche",
+    "die Grundkreisfläche",
+    "der Mantel",
+    "die Mantellinie",
+    "der Kreissektor",
+    "die Kreiszahl π"
+  ],
+  "can_do": {
+    "A": "Du berechnest die Mantelfläche eines Kegels über π · r · s.",
+    "B": "Du berechnest die Oberfläche = Grundkreis + Mantel.",
+    "C": "Du bestimmst zuerst s mit Pythagoras und dann die Oberfläche."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Die Mantelfläche des Kegels",
+      "hinfuehrung": "Der Kegelmantel ist ein Kreisausschnitt. Seine Fläche berechnest du kurz mit π · r · s.",
+      "erklaerung": [
+        "Mantel M = π · r · s, mit dem Radius r und der Mantellinie s.",
+        "Verwechsle s nicht mit der Höhe h – für den Mantel zählt die schräge Mantellinie."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "kegel",
+        "labels": {
+          "r": "r",
+          "s": "s",
+          "h": "h"
+        },
+        "alt": "Kegel mit Radius r und Mantellinie s."
+      },
+      "beispiel": {
+        "aufgabe": "Kegel mit r = 3 cm, s = 5 cm. Mantelfläche (π ≈ 3,14)?",
+        "schritte": [
+          "M = π · r · s",
+          "= 3,14 · 3 · 5",
+          "= 47,1 cm²"
+        ],
+        "ergebnis": "M ≈ 47,1 cm²."
+      },
+      "merke": "Kegelmantel: M = π · r · s."
+    },
+    "B": {
+      "titel": "Oberfläche = Grundkreis + Mantel",
+      "hinfuehrung": "Die ganze Oberfläche des Kegels sind der Grundkreis und der Mantel zusammen.",
+      "erklaerung": [
+        "O = π · r² + π · r · s. Ausklammern ergibt O = π · r · (r + s).",
+        "Erst Grundkreis, dann Mantel, dann addieren."
+      ],
+      "beispiel": {
+        "aufgabe": "Kegel mit r = 3 cm, s = 5 cm. Oberfläche (π ≈ 3,14)?",
+        "schritte": [
+          "Grundkreis = 3,14 · 3² = 28,26 cm²",
+          "Mantel = 3,14 · 3 · 5 = 47,1 cm²",
+          "O = 28,26 + 47,1 = 75,36 cm²"
+        ],
+        "ergebnis": "O ≈ 75,36 cm²."
+      },
+      "merke": "Kegel: O = π · r² + π · r · s = π · r · (r + s)."
+    },
+    "C": {
+      "titel": "Erst die Mantellinie mit Pythagoras",
+      "hinfuehrung": "Ist nur r und h gegeben, berechnest du zuerst die Mantellinie s und danach die Oberfläche.",
+      "erklaerung": [
+        "s = √( r² + h² ).",
+        "Dann O = π · r · (r + s). Wieder zwei saubere Schritte."
+      ],
+      "beispiel": {
+        "aufgabe": "Kegel mit r = 6 cm, h = 8 cm. Oberfläche (π ≈ 3,14)?",
+        "schritte": [
+          "s = √(6² + 8²) = √(36 + 64) = √100 = 10 cm",
+          "O = π · r · (r + s) = 3,14 · 6 · (6 + 10)",
+          "O = 3,14 · 6 · 16 = 301,44 cm²"
+        ],
+        "ergebnis": "O ≈ 301,44 cm²."
+      },
+      "merke": "Erst s = √( r² + h² ), dann O = π · r · (r + s)."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Grundkreis:  A = π · r²",
+      "Mantel:  M = π · r · s     (s = Mantellinie)",
+      "O = π · r² + π · r · s = π · r · (r + s)",
+      "s zuerst: s = √( r² + h² )"
+    ],
+    "saetze": [
+      "Der Mantel braucht die Mantellinie s, nicht die Höhe h.",
+      "O = ein Grundkreis + ein Mantel."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "SK08-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Kegel: r = 3 cm, Mantellinie s = 5 cm (π ≈ 3,14). Mantelfläche?",
+      "answer": 47.1,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "Mantel = π · r · s.",
+        "3,14 · 3 · 5."
+      ],
+      "solution": "M = π · r · s = 3,14 · 3 · 5 = 47,1 cm².",
+      "misconceptions": [
+        {
+          "id": "hoehe_statt_mantellinie",
+          "value": 28.26,
+          "feedback": "Für den Mantel die Mantellinie s nehmen, nicht die Höhe."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "mantel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Kegel: r = 3 cm (π ≈ 3,14). Grundkreisfläche?",
+      "answer": 28.26,
+      "unit_label": "cm²",
+      "tolerance": 0.3,
+      "hints": [
+        "A = π · r².",
+        "3,14 · 9."
+      ],
+      "solution": "A = π · r² = 3,14 · 9 = 28,26 cm².",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 9.42,
+          "feedback": "r quadrieren: 3,14 · 3² = 28,26."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "kreis",
+        "flaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Kegel: Grundkreis 28,26 cm², Mantel 47,1 cm². Oberfläche?",
+      "visual": {
+        "type": "koerper",
+        "form": "kegel",
+        "labels": {
+          "r": "r = 3 cm",
+          "h": "",
+          "s": "s = 5 cm"
+        },
+        "alt": "Kegel r=3, s=5."
+      },
+      "answer": 75.36,
+      "unit_label": "cm²",
+      "tolerance": 0.5,
+      "hints": [
+        "O = Grundkreis + Mantel.",
+        "28,26 + 47,1."
+      ],
+      "solution": "O = 28,26 + 47,1 = 75,36 cm².",
+      "misconceptions": [
+        {
+          "id": "grundkreis_vergessen",
+          "value": 47.1,
+          "feedback": "Zum Mantel den Grundkreis addieren: 28,26 + 47,1 = 75,36."
+        },
+        {
+          "id": "mantel_vergessen",
+          "value": 28.26,
+          "feedback": "Der Mantel (47,1) fehlt: O = 75,36."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Kegel: r = 6 cm, s = 10 cm (π ≈ 3,14). Oberfläche (O = π·r² + π·r·s)?",
+      "answer": 301.44,
+      "unit_label": "cm²",
+      "tolerance": 3,
+      "hints": [
+        "Grundkreis 3,14·36 = 113,04.",
+        "Mantel 3,14·6·10 = 188,4. Addieren."
+      ],
+      "solution": "O = 3,14·36 + 3,14·6·10 = 113,04 + 188,4 = 301,44 cm².",
+      "misconceptions": [
+        {
+          "id": "grundkreis_vergessen",
+          "value": 188.4,
+          "feedback": "Grundkreis 113,04 dazu: 301,44."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Kegel: r = 5 cm, s = 13 cm (π ≈ 3,14). Rechne schrittweise.",
+      "visual": {
+        "type": "koerper",
+        "form": "kegel",
+        "labels": {
+          "r": "r = 5 cm",
+          "h": "",
+          "s": "s = 13 cm"
+        },
+        "alt": "Kegel r=5, s=13."
+      },
+      "fields": [
+        {
+          "label": "Grundkreis",
+          "answer": 78.5,
+          "tolerance": 0.5,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Mantel",
+          "answer": 204.1,
+          "tolerance": 1,
+          "unit_label": "cm²"
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 282.6,
+          "tolerance": 2,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundkreis_vergessen",
+              "value": 204.1,
+              "feedback": "Zum Mantel 204,1 den Grundkreis 78,5: O = 282,6."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "A = 3,14·25.",
+        "M = 3,14·5·13.",
+        "O = A + M."
+      ],
+      "solution": "A = 3,14·25 = 78,5 cm². M = 3,14·5·13 = 204,1 cm².\nO = 78,5 + 204,1 = 282,6 cm².",
+      "tags": [
+        "kegel",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Kegel: r = 8 cm, s = 17 cm (π ≈ 3,14). Oberfläche (ganze cm²)?",
+      "answer": 628,
+      "unit_label": "cm²",
+      "tolerance": 4,
+      "hints": [
+        "Grundkreis 3,14·64 = 200,96.",
+        "Mantel 3,14·8·17 = 427,04. Addieren."
+      ],
+      "solution": "O = 3,14·64 + 3,14·8·17 = 200,96 + 427,04 = 628 cm².",
+      "misconceptions": [
+        {
+          "id": "grundkreis_vergessen",
+          "value": 427,
+          "feedback": "Grundkreis 200,96 dazu: 628."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Kegel: r = 4 cm, s = 9 cm (π ≈ 3,14). Mantelfläche?",
+      "answer": 113.04,
+      "unit_label": "cm²",
+      "tolerance": 1,
+      "hints": [
+        "Mantel = π·r·s.",
+        "3,14·4·9."
+      ],
+      "solution": "M = 3,14·4·9 = 113,04 cm².",
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "mantel",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Kegel: r = 9 cm, s = 15 cm (π ≈ 3,14). Oberfläche (zwei Nachkommastellen)?",
+      "answer": 678.24,
+      "unit_label": "cm²",
+      "tolerance": 4,
+      "hints": [
+        "Grundkreis 3,14·81 = 254,34.",
+        "Mantel 3,14·9·15 = 423,9. Addieren."
+      ],
+      "solution": "O = 254,34 + 423,9 = 678,24 cm².",
+      "misconceptions": [
+        {
+          "id": "grundkreis_vergessen",
+          "value": 423.9,
+          "feedback": "Grundkreis 254,34 dazu: 678,24."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Partyhut (Kegel, ohne Boden): r = 7 cm, s = 20 cm (π ≈ 3,14). Wie viel Pappe (nur Mantel, ganze cm²)?",
+      "answer": 440,
+      "unit_label": "cm²",
+      "tolerance": 3,
+      "hints": [
+        "Nur der Mantel: π·r·s.",
+        "3,14·7·20."
+      ],
+      "solution": "M = 3,14·7·20 = 439,6 ≈ 440 cm². (Der Hut hat keinen Boden — nur der Mantel zählt.)",
+      "misconceptions": [
+        {
+          "id": "grundkreis_mitgezaehlt",
+          "value": 594,
+          "feedback": "Ein Hut hat keinen Boden — nur der Mantel: 440, ohne die Grundkreisfläche."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "mantel",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Kegel: r = 6 cm, s = 8 cm (π ≈ 3,14). Oberfläche (zwei Nachkommastellen)?",
+      "answer": 263.76,
+      "unit_label": "cm²",
+      "tolerance": 3,
+      "hints": [
+        "Grundkreis 3,14·36 = 113,04.",
+        "Mantel 3,14·6·8 = 150,72. Addieren."
+      ],
+      "solution": "O = 113,04 + 150,72 = 263,76 cm².",
+      "misconceptions": [
+        {
+          "id": "grundkreis_vergessen",
+          "value": 150.72,
+          "feedback": "Grundkreis 113,04 dazu: 263,76."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "multi",
+      "prompt": "Kegel: r = 3 cm, h = 4 cm (π ≈ 3,14). Erst s mit Pythagoras, dann die Oberfläche.",
+      "fields": [
+        {
+          "label": "Mantellinie s",
+          "answer": 5,
+          "tolerance": 0.01,
+          "unit_label": "cm",
+          "misconceptions": [
+            {
+              "id": "halber_radius",
+              "value": 4.27,
+              "feedback": "Ganzen Radius nehmen: s = √(3²+4²) = 5."
+            }
+          ]
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 75.36,
+          "tolerance": 0.6,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundkreis_vergessen",
+              "value": 47.1,
+              "feedback": "Zum Mantel 47,1 den Grundkreis 28,26: O = 75,36."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "s = √(r²+h²) = √(9+16) = 5.",
+        "O = 3,14·9 + 3,14·3·5."
+      ],
+      "solution": "s = √(9+16) = 5 cm. O = 3,14·9 + 3,14·3·5 = 28,26 + 47,1 = 75,36 cm².",
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "pythagoras",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "multi",
+      "prompt": "Kegel: r = 6 cm, h = 8 cm (π ≈ 3,14). Erst s, dann Oberfläche.",
+      "fields": [
+        {
+          "label": "Mantellinie s",
+          "answer": 10,
+          "tolerance": 0.01,
+          "unit_label": "cm"
+        },
+        {
+          "label": "Oberfläche",
+          "answer": 301.44,
+          "tolerance": 2,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundkreis_vergessen",
+              "value": 188.4,
+              "feedback": "Mantel 188,4 + Grundkreis 113,04 = 301,44."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "s = √(36+64) = 10.",
+        "O = 3,14·36 + 3,14·6·10."
+      ],
+      "solution": "s = √(36+64) = √100 = 10 cm. O = 113,04 + 188,4 = 301,44 cm².",
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "pythagoras",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Kegel hat den Grundkreis mit r = 5 cm und die Höhe h = 12 cm (π ≈ 3,14). Berechne den Mantel (s zuerst, ganze cm²).",
+      "answer": 204,
+      "unit_label": "cm²",
+      "tolerance": 2,
+      "hints": [
+        "s = √(25+144) = 13.",
+        "M = 3,14·5·13."
+      ],
+      "solution": "s = √(169) = 13 cm. M = 3,14·5·13 = 204,1 ≈ 204 cm².",
+      "misconceptions": [
+        {
+          "id": "hoehe_statt_mantellinie",
+          "value": 188,
+          "feedback": "Für den Mantel s = 13 nehmen, nicht h = 12: M = 3,14·5·13 = 204."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "mantel",
+        "pythagoras",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK08-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Der abgewickelte Kegelmantel ist kein Rechteck (wie beim Zylinder), sondern …?",
+      "options": [
+        "ein Kreissektor ('Tortenstück')",
+        "ein Dreieck",
+        "wieder ein voller Kreis"
+      ],
+      "answer": 0,
+      "hints": [
+        "Schneide einen Papierkegel auf und roll ihn flach.",
+        "Es entsteht ein gebogenes Stück mit Spitze."
+      ],
+      "solution": "Der aufgeschnittene Kegelmantel ergibt einen Kreissektor (ein 'Tortenstück') mit Radius s. Deshalb ist die Mantelformel π·r·s und nicht Umfang·Höhe.",
+      "misconceptions": [
+        {
+          "id": "mantel_als_rechteck",
+          "value": 1,
+          "feedback": "Ein Rechteck ist der ZYLINDER-Mantel. Der Kegelmantel wird zu einem Kreissektor."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "oberflaeche",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

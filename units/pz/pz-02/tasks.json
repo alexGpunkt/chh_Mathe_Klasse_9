@@ -17,6 +17,67 @@
     "B": "Du schätzt einen Prozentsatz auf 5 % genau und stützt die Schätzung auf einen Ankerwert.",
     "C": "Du benennst Schätzstrategien und wählst die für eine Aufgabe passendste aus."
   },
+  "lernkarten": {
+    "A": {
+      "titel": "Mehr oder weniger als die Hälfte?",
+      "hinfuehrung": "Oft musst du nicht genau rechnen – ein guter Blick genügt, um zu sagen, ob es mehr oder weniger als die Hälfte ist.",
+      "erklaerung": [
+        "Die Hälfte ist 50 %. Ist der gefärbte Teil größer als die Mitte, sind es mehr als 50 %. Ist er kleiner, sind es weniger als 50 %.",
+        "Die Markierung in der Mitte des Streifens hilft dir beim Vergleichen."
+      ],
+      "visual": {
+        "type": "streifen",
+        "fill": 40,
+        "alt": "Ein Streifen, etwas weniger als zur Hälfte gefärbt."
+      },
+      "beispiel": {
+        "aufgabe": "Der Streifen ist bis kurz vor die Mitte gefärbt. Mehr oder weniger als 50 %?",
+        "schritte": [
+          "Mitte des Streifens  = 50 %",
+          "Färbung endet davor  → kleiner"
+        ],
+        "ergebnis": "Weniger als 50 %."
+      },
+      "merke": "Bis zur Mitte = 50 %. Alles davor ist weniger, alles danach mehr."
+    },
+    "B": {
+      "titel": "Prozente mit Ankerwerten schätzen",
+      "hinfuehrung": "Du musst nicht raten. Nimm einen bekannten Ankerwert (25 %, 50 %, 75 %) und schätze von dort aus.",
+      "erklaerung": [
+        "Ankerwerte sind Prozentsätze, die du sofort siehst: 25 %, 50 %, 75 %, 10 %.",
+        "Suche den nächsten Anker und schätze, ob dein Anteil etwas darüber oder darunter liegt – auf 5 % genau reicht."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Glas ist etwas mehr als zur Hälfte, aber noch nicht zu drei Vierteln voll. Schätze den Prozentsatz.",
+        "schritte": [
+          "Anker Hälfte     = 50 %",
+          "Anker drei Viertel = 75 %",
+          "dazwischen, näher an der Hälfte → etwa 60 %"
+        ],
+        "ergebnis": "Schätzung: ungefähr 60 %."
+      },
+      "merke": "Erst den nächsten Ankerwert suchen, dann darüber/darunter abschätzen."
+    },
+    "C": {
+      "titel": "Schätzstrategie bewusst wählen",
+      "hinfuehrung": "Es gibt mehrere Wege zu schätzen. Der Profi wählt den, der zur Aufgabe passt, und kann seine Wahl begründen.",
+      "erklaerung": [
+        "Ankerstrategie: am nächsten bekannten Prozentsatz orientieren. Gut bei Bildern.",
+        "Zerlegen: 30 % = 3 · 10 %. Gut, wenn 10 % leicht zu bestimmen ist.",
+        "Vergleichen: „etwa jeder Fünfte“ → 20 %. Gut bei Anzahlen."
+      ],
+      "beispiel": {
+        "aufgabe": "In einer Klasse von 28 sind 6 krank. Schätze den Prozentsatz und begründe deine Strategie.",
+        "schritte": [
+          "6 von 28 ≈ 6 von 30",
+          "10 % von 30 = 3   →   6 sind etwa 2 · 10 %",
+          "also ungefähr 20 %"
+        ],
+        "ergebnis": "Etwa 20 % – über die Strategie „10 % zerlegen“."
+      },
+      "merke": "Nenne die Strategie, nicht nur die Zahl: Anker, Zerlegen oder Vergleichen."
+    }
+  },
   "formelkarte": {
     "formeln": [
       "Anker 50 %:  die Hälfte",

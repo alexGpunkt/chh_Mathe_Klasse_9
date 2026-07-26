@@ -1,0 +1,555 @@
+{
+  "unit": "KP-09",
+  "title": "Der Zylinder: Volumen berechnen",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K3"
+  ],
+  "wortspeicher": [
+    "der Zylinder",
+    "der Radius",
+    "der Durchmesser",
+    "die Kreisfläche",
+    "die Kreiszahl π",
+    "die Höhe"
+  ],
+  "can_do": {
+    "A": "Du berechnest die Kreisfläche mit π · r² und daraus V = π · r² · h.",
+    "B": "Du berechnest Zylindervolumen, auch wenn nur der Durchmesser gegeben ist.",
+    "C": "Du berechnest Zylindervolumen in Litern und in Sachaufgaben."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Volumen des Zylinders",
+      "hinfuehrung": "Ein Zylinder ist ein Prisma mit Kreis als Grundfläche. Zuerst die Kreisfläche, dann mal Höhe.",
+      "erklaerung": [
+        "Kreisfläche: A = π · r² (π ≈ 3,14).",
+        "Volumen: V = π · r² · h = Grundfläche · Höhe."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "zylinder",
+        "labels": {
+          "r": "r",
+          "h": "h"
+        },
+        "alt": "Zylinder mit Radius r und Höhe h."
+      },
+      "beispiel": {
+        "aufgabe": "Zylinder mit r = 5 cm, h = 10 cm. Volumen (π ≈ 3,14)?",
+        "schritte": [
+          "A = π · r² = 3,14 · 25 = 78,5 cm²",
+          "V = A · h = 78,5 · 10",
+          "V = 785 cm³"
+        ],
+        "ergebnis": "V ≈ 785 cm³."
+      },
+      "merke": "Zylinder: V = π · r² · h."
+    },
+    "B": {
+      "titel": "Wenn nur der Durchmesser gegeben ist",
+      "hinfuehrung": "In der Formel steht der Radius. Ist nur der Durchmesser d angegeben, halbierst du ihn zuerst.",
+      "erklaerung": [
+        "d = 2 · r, also r = d : 2.",
+        "Erst r bestimmen, dann V = π · r² · h. Häufiger Fehler: den Durchmesser statt des Radius quadrieren."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "zylinder",
+        "labels": {
+          "r": "r",
+          "h": "h"
+        },
+        "alt": "Zylinder; gegeben ist der Durchmesser."
+      },
+      "beispiel": {
+        "aufgabe": "Dose mit d = 8 cm, h = 12 cm. Volumen (π ≈ 3,14)?",
+        "schritte": [
+          "r = d : 2 = 8 : 2 = 4 cm",
+          "A = 3,14 · 4² = 3,14 · 16 = 50,24 cm²",
+          "V = 50,24 · 12 ≈ 602,9 cm³"
+        ],
+        "ergebnis": "V ≈ 602,9 cm³."
+      },
+      "merke": "Erst r = d : 2, dann rechnen – nie den Durchmesser quadrieren."
+    },
+    "C": {
+      "titel": "Zylindervolumen in Litern und Sachaufgaben",
+      "hinfuehrung": "Bei Tanks und Behältern ist die Antwort oft in Litern gefragt. Rechne in dm, dann ist das Ergebnis direkt in Litern.",
+      "erklaerung": [
+        "Wandle Radius und Höhe in dm um. Das Volumen in dm³ ist gleich der Literzahl.",
+        "Runde sinnvoll und prüfe die Größenordnung am Sachzusammenhang."
+      ],
+      "beispiel": {
+        "aufgabe": "Regentonne: r = 3 dm, h = 8 dm. Wie viele Liter (π ≈ 3,14)?",
+        "schritte": [
+          "A = 3,14 · 3² = 3,14 · 9 = 28,26 dm²",
+          "V = 28,26 · 8 = 226,08 dm³",
+          "1 dm³ = 1 l"
+        ],
+        "ergebnis": "V ≈ 226 l."
+      },
+      "merke": "In dm rechnen → dm³ = Liter."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Kreisfläche:  A = π · r²",
+      "Zylinder:  V = π · r² · h   ( = Grundfläche · Höhe )",
+      "Durchmesser d = 2 · r   →   r = d : 2",
+      "π ≈ 3,14   (oder die π-Taste)"
+    ],
+    "saetze": [
+      "Erst die Kreisfläche, dann mal die Höhe.",
+      "Immer prüfen: ist r oder d gegeben?"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "KP09-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Berechne die Kreisfläche mit r = 3 cm. Rechne mit π ≈ 3,14 und runde auf eine Nachkommastelle.",
+      "visual": {
+        "type": "koerper",
+        "form": "zylinder",
+        "labels": {
+          "r": "r = 3 cm",
+          "h": ""
+        },
+        "alt": "Grundkreis."
+      },
+      "answer": 28.3,
+      "unit_label": "cm²",
+      "tolerance": 0.3,
+      "hints": [
+        "A = π · r².",
+        "3,14 · 3²  =  3,14 · 9."
+      ],
+      "solution": "A = π · r² = 3,14 · 9 = 28,26 ≈ 28,3 cm².",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 9.4,
+          "feedback": "r wird quadriert: π · 3² = π · 9, nicht π · 3."
+        },
+        {
+          "id": "mal_zwei_statt_quadrat",
+          "value": 18.8,
+          "feedback": "3² heißt 3·3 = 9, nicht 3·2 = 6."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "kreis",
+        "flaeche"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Zylinder: Grundfläche 20 cm², Höhe 5 cm. Volumen?",
+      "answer": 100,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = Grundfläche · Höhe.",
+        "20 · 5."
+      ],
+      "solution": "V = 20 · 5 = 100 cm³.",
+      "tags": [
+        "zylinder",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 2 cm, h = 10 cm. Volumen mit π ≈ 3,14, gerundet auf ganze cm³?",
+      "answer": 126,
+      "unit_label": "cm³",
+      "tolerance": 2,
+      "hints": [
+        "Kreisfläche = 3,14 · 2² = 3,14 · 4 = 12,56.",
+        "V = 12,56 · 10."
+      ],
+      "solution": "A = 3,14 · 4 = 12,56 cm². V = 12,56 · 10 = 125,6 ≈ 126 cm³.",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 63,
+          "feedback": "r wird quadriert: 3,14 · 2² = 12,56, nicht 3,14 · 2."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 5 cm, h = 4 cm. Volumen mit π ≈ 3,14, auf ganze cm³?",
+      "answer": 314,
+      "unit_label": "cm³",
+      "tolerance": 3,
+      "hints": [
+        "A = 3,14 · 5² = 3,14 · 25 = 78,5.",
+        "V = 78,5 · 4."
+      ],
+      "solution": "A = 3,14 · 25 = 78,5 cm². V = 78,5 · 4 = 314 cm³.",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 63,
+          "feedback": "r wird quadriert: 3,14 · 25, nicht 3,14 · 5."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 3 cm, h = 10 cm. Volumen (π ≈ 3,14, ganze cm³)?",
+      "answer": 283,
+      "unit_label": "cm³",
+      "tolerance": 3,
+      "hints": [
+        "A = 3,14 · 9 = 28,26.",
+        "V = 28,26 · 10."
+      ],
+      "solution": "A = 3,14 · 9 = 28,26 cm². V = 28,26 · 10 = 282,6 ≈ 283 cm³.",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 94,
+          "feedback": "r quadrieren: 3,14 · 3² = 28,26, nicht 3,14 · 3."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "multi",
+      "prompt": "Ein Zylinder hat den Durchmesser d = 8 cm und die Höhe h = 5 cm (π ≈ 3,14).",
+      "visual": {
+        "type": "koerper",
+        "form": "zylinder",
+        "labels": {
+          "r": "d = 8 cm",
+          "h": "h = 5 cm"
+        },
+        "alt": "Zylinder, Durchmesser 8 cm."
+      },
+      "fields": [
+        {
+          "label": "Radius r",
+          "answer": 4,
+          "tolerance": 0.01,
+          "unit_label": "cm",
+          "misconceptions": [
+            {
+              "id": "durchmesser_als_radius",
+              "value": 8,
+              "feedback": "r ist die Hälfte des Durchmessers: r = 8 : 2 = 4."
+            }
+          ]
+        },
+        {
+          "label": "Volumen (ganze cm³)",
+          "answer": 251,
+          "tolerance": 3,
+          "unit_label": "cm³"
+        }
+      ],
+      "hints": [
+        "r = d : 2 = 4 cm.",
+        "V = 3,14 · 4² · 5."
+      ],
+      "solution": "r = 8 : 2 = 4 cm. A = 3,14 · 16 = 50,24 cm². V = 50,24 · 5 = 251,2 ≈ 251 cm³.",
+      "tags": [
+        "zylinder",
+        "volumen",
+        "durchmesser"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 6 cm, h = 10 cm. Volumen (π ≈ 3,14, ganze cm³)?",
+      "answer": 1130,
+      "unit_label": "cm³",
+      "tolerance": 6,
+      "hints": [
+        "A = 3,14 · 36 = 113,04.",
+        "V = 113,04 · 10."
+      ],
+      "solution": "A = 3,14 · 36 = 113,04 cm². V = 113,04 · 10 = 1130,4 ≈ 1130 cm³.",
+      "tags": [
+        "zylinder",
+        "volumen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Eine Konservendose: d = 10 cm, h = 12 cm. Volumen (π ≈ 3,14, ganze cm³)?",
+      "answer": 942,
+      "unit_label": "cm³",
+      "tolerance": 6,
+      "hints": [
+        "r = 5 cm.",
+        "V = 3,14 · 5² · 12."
+      ],
+      "solution": "r = 5 cm. A = 3,14 · 25 = 78,5 cm². V = 78,5 · 12 = 942 cm³.",
+      "misconceptions": [
+        {
+          "id": "durchmesser_als_radius",
+          "value": 3768,
+          "feedback": "Erst r = d:2 = 5. Mit d=10 als r würde vervierfacht."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "durchmesser",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Zylinder: r = 10 cm, h = 10 cm. Volumen (π ≈ 3,14, ganze cm³)?",
+      "answer": 3140,
+      "unit_label": "cm³",
+      "tolerance": 15,
+      "hints": [
+        "A = 3,14 · 100 = 314.",
+        "V = 314 · 10."
+      ],
+      "solution": "A = 3,14 · 100 = 314 cm². V = 314 · 10 = 3140 cm³.",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 314,
+          "feedback": "r quadrieren: 3,14 · 10² = 314, dann · 10 = 3140."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Wassertank (Zylinder): r = 0,5 m, h = 2 m. Volumen (π ≈ 3,14) in m³, auf zwei Nachkommastellen?",
+      "answer": 1.57,
+      "unit_label": "m³",
+      "tolerance": 0.05,
+      "hints": [
+        "A = 3,14 · 0,5² = 3,14 · 0,25 = 0,785.",
+        "V = 0,785 · 2."
+      ],
+      "solution": "A = 3,14 · 0,25 = 0,785 m². V = 0,785 · 2 = 1,57 m³.",
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 3.14,
+          "feedback": "r quadrieren: 0,5² = 0,25, nicht 0,5."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein zylindrischer Eimer: r = 15 cm, h = 30 cm. Wie viele Liter fasst er (π ≈ 3,14)? Runde auf ganze Liter.",
+      "answer": 21,
+      "unit_label": "l",
+      "tolerance": 1,
+      "hints": [
+        "V = 3,14 · 15² · 30 in cm³.",
+        "A = 3,14·225 = 706,5; V = 706,5·30 = 21195 cm³; :1000."
+      ],
+      "solution": "A = 3,14 · 225 = 706,5 cm². V = 706,5 · 30 = 21 195 cm³ = 21,195 l ≈ 21 l.",
+      "misconceptions": [
+        {
+          "id": "nicht_in_liter",
+          "value": 21195,
+          "feedback": "21 195 cm³ ist richtig, aber gefragt sind Liter: : 1000 ≈ 21 l."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "liter",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-EINH"
+      ]
+    },
+    {
+      "id": "KP09-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Rohr (Zylinder): d = 4 cm, Länge 100 cm. Wie viele cm³ Wasser passen hinein (π ≈ 3,14)?",
+      "answer": 1256,
+      "unit_label": "cm³",
+      "tolerance": 8,
+      "hints": [
+        "r = 2 cm.",
+        "V = 3,14 · 2² · 100."
+      ],
+      "solution": "r = 2 cm. A = 3,14 · 4 = 12,56 cm². V = 12,56 · 100 = 1256 cm³.",
+      "misconceptions": [
+        {
+          "id": "durchmesser_als_radius",
+          "value": 5024,
+          "feedback": "Erst r = d:2 = 2 cm."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "durchmesser",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Zylinder hat V = 400 cm³ und die Grundfläche 50 cm². Wie hoch ist er?",
+      "answer": 8,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "V = Grundfläche · Höhe rückwärts.",
+        "h = 400 : 50."
+      ],
+      "solution": "h = V : G = 400 : 50 = 8 cm.",
+      "misconceptions": [
+        {
+          "id": "mal_statt_geteilt",
+          "value": 20000,
+          "feedback": "Rückwärts wird geteilt: 400 : 50 = 8."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "rueckwaerts",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "KP09-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Zwei Zylinder sind gleich hoch. Der zweite hat den doppelten Radius. Um welchen Faktor ist sein Volumen größer?",
+      "answer": 4,
+      "unit_label": "-mal",
+      "tolerance": 0.01,
+      "hints": [
+        "V hängt von r² ab.",
+        "Wird r verdoppelt, wird r² viermal so groß (2²)."
+      ],
+      "solution": "V = π · r² · h. Wird r verdoppelt, wächst r² um den Faktor 2² = 4. Also viermal so viel Volumen.",
+      "misconceptions": [
+        {
+          "id": "linear_gedacht",
+          "value": 2,
+          "feedback": "Nicht 2-fach: das Volumen hängt von r² ab, also 2² = 4-fach."
+        }
+      ],
+      "tags": [
+        "zylinder",
+        "volumen",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

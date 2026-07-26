@@ -2,13 +2,13 @@
    sw.js · Offline-Betrieb
 
    Das Schul-WLAN fällt aus, der Unterricht nicht.
-   Der ganze Pool ist unter 100 KB — er passt komplett in den Cache.
+   Der vollständige Pool liegt bei rund 1 MB und passt komplett in den Cache.
 
    WICHTIG: Nach jeder inhaltlichen Änderung VERSION hochzählen.
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v8-devtools';
+const VERSION = 'mathe9-v11-kp-sk-animationen-develop';
 
 const SCHALE = [
   './',
@@ -18,15 +18,18 @@ const SCHALE = [
   'pruefung.html',
   'arbeitsblatt.html',
   'matrix.html',
+  'animationen.html',
   'pruefung-sets.json',
   'assets/js/dev-tools.js',
   'units/index.json',
   'spiral/plan.json',
   'assets/css/app.css',
+  'assets/css/anim.css',
   'assets/js/store.js',
   'assets/js/supabase-config.js',
   'assets/js/student-login.js',
   'assets/js/zeichnen.js',
+  'assets/js/animationen.js',
   'assets/js/tracker.js',
   'assets/js/engine.js',
   'assets/js/spiral.js',
@@ -65,7 +68,31 @@ const EINHEITEN = [
   'units/lf/lf-13/tasks.json',
   'units/lf/lf-14/tasks.json',
   'units/lf/lf-15/tasks.json',
-  'units/lf/lf-16/tasks.json'
+  'units/lf/lf-16/tasks.json',
+  'units/kp/kp-01/tasks.json',
+  'units/kp/kp-02/tasks.json',
+  'units/kp/kp-03/tasks.json',
+  'units/kp/kp-04/tasks.json',
+  'units/kp/kp-05/tasks.json',
+  'units/kp/kp-06/tasks.json',
+  'units/kp/kp-07/tasks.json',
+  'units/kp/kp-08/tasks.json',
+  'units/kp/kp-09/tasks.json',
+  'units/kp/kp-10/tasks.json',
+  'units/kp/kp-11/tasks.json',
+  'units/kp/kp-12/tasks.json',
+  'units/sk/sk-01/tasks.json',
+  'units/sk/sk-02/tasks.json',
+  'units/sk/sk-03/tasks.json',
+  'units/sk/sk-04/tasks.json',
+  'units/sk/sk-05/tasks.json',
+  'units/sk/sk-06/tasks.json',
+  'units/sk/sk-07/tasks.json',
+  'units/sk/sk-08/tasks.json',
+  'units/sk/sk-09/tasks.json',
+  'units/sk/sk-10/tasks.json',
+  'units/sk/sk-11/tasks.json',
+  'units/sk/sk-12/tasks.json'
 ];
 
 const SPIRAL = [
@@ -75,7 +102,8 @@ const SPIRAL = [
   'spiral/w-kopf.json',
   'spiral/w-sach.json',
   'spiral/w-fkt.json',
-  'spiral/w-term.json'
+  'spiral/w-term.json',
+  'spiral/w-geo.json'
 ];
 
 const ALLES = [...SCHALE, ...EINHEITEN, ...SPIRAL];

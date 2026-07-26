@@ -1,0 +1,535 @@
+{
+  "unit": "SK-06",
+  "title": "Der Kegel: Höhe, Radius und Mantellinie",
+  "leitidee": "L3",
+  "standards": [
+    "K2",
+    "K5"
+  ],
+  "wortspeicher": [
+    "der Kegel",
+    "die Spitze",
+    "der Grundkreis",
+    "der Radius",
+    "die Höhe",
+    "die Mantellinie",
+    "der Satz des Pythagoras"
+  ],
+  "can_do": {
+    "A": "Du benennst am Kegel Radius, Höhe und Mantellinie und erkennst das rechtwinklige Dreieck.",
+    "B": "Du berechnest die Mantellinie s aus r und h mit Pythagoras.",
+    "C": "Du bestimmst rückwärts r oder h aus zwei gegebenen Größen."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Der Kegel: Radius, Höhe, Mantellinie",
+      "hinfuehrung": "Ein Kegel hat einen Kreis als Grundfläche und läuft zu einer Spitze zusammen. Drei Größen musst du benennen können.",
+      "erklaerung": [
+        "Radius r: vom Kreismittelpunkt zum Rand. Höhe h: senkrecht von der Spitze zur Kreismitte.",
+        "Mantellinie s: die schräge Strecke von der Spitze zum Kreisrand. r, h und s bilden ein rechtwinkliges Dreieck."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "kegel",
+        "labels": {
+          "r": "r",
+          "h": "h",
+          "s": "s"
+        },
+        "alt": "Kegel mit Radius r, Höhe h und Mantellinie s."
+      },
+      "beispiel": {
+        "aufgabe": "Welche drei Größen bilden beim Kegel das rechtwinklige Dreieck?",
+        "schritte": [
+          "eine Kathete: Radius r",
+          "andere Kathete: Höhe h",
+          "Hypotenuse: Mantellinie s"
+        ],
+        "ergebnis": "r, h und s, mit dem rechten Winkel zwischen r und h."
+      },
+      "merke": "Kegel: r und h als Katheten, s als Hypotenuse."
+    },
+    "B": {
+      "titel": "Mantellinie s mit Pythagoras",
+      "hinfuehrung": "Wie bei der Pyramide steckt im Kegel ein rechtwinkliges Dreieck. Aus r und h berechnest du die Mantellinie s.",
+      "erklaerung": [
+        "Es gilt s² = r² + h².",
+        "Also s = √( r² + h² ). Erst quadrieren und addieren, dann die Wurzel."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "kegel",
+        "labels": {
+          "r": "r",
+          "h": "h",
+          "s": "s"
+        },
+        "alt": "Kegel mit dem rechtwinkligen Dreieck aus r, h und s."
+      },
+      "beispiel": {
+        "aufgabe": "Kegel mit r = 3 cm, h = 4 cm. Berechne die Mantellinie s.",
+        "schritte": [
+          "s² = r² + h² = 3² + 4² = 9 + 16 = 25",
+          "s = √25",
+          "s = 5 cm"
+        ],
+        "ergebnis": "s = 5 cm."
+      },
+      "merke": "Kegel: s = √( r² + h² )."
+    },
+    "C": {
+      "titel": "Rückwärts: r oder h bestimmen",
+      "hinfuehrung": "Die Beziehung s² = r² + h² lässt sich nach jeder Größe umstellen – so findest du auch r oder h.",
+      "erklaerung": [
+        "Nach der Höhe: h = √( s² − r² ). Nach dem Radius: r = √( s² − h² ).",
+        "s ist immer die längste Größe (Hypotenuse); unter der Wurzel steht das Große minus das Kleine."
+      ],
+      "beispiel": {
+        "aufgabe": "Kegel mit s = 13 cm, r = 5 cm. Berechne die Höhe h.",
+        "schritte": [
+          "h² = s² − r² = 13² − 5² = 169 − 25 = 144",
+          "h = √144",
+          "h = 12 cm"
+        ],
+        "ergebnis": "h = 12 cm."
+      },
+      "merke": "h = √( s² − r² ),   r = √( s² − h² )."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Kegel: Grundkreis (Radius r), Spitze, Höhe h senkrecht zur Mitte",
+      "Mantellinie s: von der Spitze zum Kreisrand (schräg)",
+      "rechtwinkliges Dreieck: r, h und s",
+      "s = √( r² + h² )      h = √( s² − r² )      r = √( s² − h² )"
+    ],
+    "saetze": [
+      "s ist die Hypotenuse (die längste Seite).",
+      "Hier zählt der ganze Radius r — nicht die Hälfte."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "SK06-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Was ist die Mantellinie s eines Kegels?",
+      "visual": {
+        "type": "koerper",
+        "form": "kegel",
+        "labels": {
+          "r": "r",
+          "h": "h",
+          "s": "s"
+        },
+        "alt": "Ein Kegel mit Höhe h und Mantellinie s."
+      },
+      "options": [
+        "die schräge Strecke von der Spitze zum Rand des Grundkreises",
+        "die senkrechte Höhe",
+        "der Radius des Grundkreises"
+      ],
+      "answer": 0,
+      "hints": [
+        "Sie läuft außen die Schräge hinab.",
+        "Sie endet am Kreisrand, nicht in der Mitte."
+      ],
+      "solution": "Die Mantellinie s verläuft schräg von der Spitze zum Rand des Grundkreises. Sie ist die Hypotenuse im Dreieck aus r, h und s.",
+      "misconceptions": [
+        {
+          "id": "hoehe_als_mantellinie",
+          "value": 1,
+          "feedback": "Das ist die Höhe h (senkrecht). s ist die schräge Strecke zum Kreisrand."
+        }
+      ],
+      "tags": [
+        "kegel"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Rechtwinkliges Dreieck: Katheten 3 cm und 4 cm. Hypotenuse?",
+      "answer": 5,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "c² = 3² + 4².",
+        "√(9 + 16) = √25."
+      ],
+      "solution": "c = √(3² + 4²) = √25 = 5 cm.",
+      "misconceptions": [
+        {
+          "id": "wurzel_vergessen",
+          "value": 25,
+          "feedback": "25 ist c². Die Seite ist √25 = 5."
+        }
+      ],
+      "tags": [
+        "pythagoras"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Kegel: r = 3 cm, h = 4 cm. Mantellinie s?",
+      "visual": {
+        "type": "koerper",
+        "form": "kegel",
+        "labels": {
+          "r": "r = 3 cm",
+          "h": "h = 4 cm",
+          "s": "s = ?"
+        },
+        "alt": "Kegel, gesucht s."
+      },
+      "answer": 5,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "s² = r² + h² = 3² + 4².",
+        "√(9 + 16) = √25."
+      ],
+      "solution": "s = √(r² + h²) = √(3² + 4²) = √25 = 5 cm.",
+      "misconceptions": [
+        {
+          "id": "halber_radius",
+          "value": 4.27,
+          "feedback": "Beim Kegel den GANZEN Radius r nehmen: √(3²+4²) = 5."
+        },
+        {
+          "id": "wurzel_vergessen",
+          "value": 25,
+          "feedback": "25 ist s². s = √25 = 5."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "pythagoras"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Kegel: r = 6 cm, h = 8 cm. Mantellinie s?",
+      "answer": 10,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "s² = 6² + 8².",
+        "√(36 + 64) = √100."
+      ],
+      "solution": "s = √(6² + 8²) = √100 = 10 cm.",
+      "misconceptions": [
+        {
+          "id": "wurzel_vergessen",
+          "value": 100,
+          "feedback": "100 ist s². s = √100 = 10."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "pythagoras"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Kegel: r = 5 cm, h = 12 cm. Mantellinie s?",
+      "answer": 13,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "s² = 5² + 12².",
+        "√(25 + 144) = √169."
+      ],
+      "solution": "s = √(25 + 144) = √169 = 13 cm.",
+      "misconceptions": [
+        {
+          "id": "wurzel_vergessen",
+          "value": 169,
+          "feedback": "169 ist s². s = √169 = 13."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "pythagoras"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Kegel: r = 8 cm, h = 15 cm. Mantellinie s?",
+      "answer": 17,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "s² = 8² + 15².",
+        "√(64 + 225) = √289."
+      ],
+      "solution": "s = √(64 + 225) = √289 = 17 cm.",
+      "tags": [
+        "kegel",
+        "pythagoras"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Kegel: r = 9 cm, h = 12 cm. Mantellinie s?",
+      "answer": 15,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "s² = 9² + 12².",
+        "√(81 + 144) = √225."
+      ],
+      "solution": "s = √(81 + 144) = √225 = 15 cm.",
+      "tags": [
+        "kegel",
+        "pythagoras",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Kegel: r = 6 cm, s = 10 cm. Wie hoch ist er (h)?",
+      "answer": 8,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "h = √(s² − r²).",
+        "√(100 − 36) = √64."
+      ],
+      "solution": "h = √(s² − r²) = √(100 − 36) = √64 = 8 cm.",
+      "misconceptions": [
+        {
+          "id": "addiert_statt_subtrahiert",
+          "value": 11.66,
+          "feedback": "Für h subtrahieren: √(100 − 36) = 8."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "pythagoras",
+        "hoehe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Kegel: h = 8 cm, s = 17 cm. Wie groß ist der Radius r?",
+      "answer": 15,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "r = √(s² − h²).",
+        "√(289 − 64) = √225."
+      ],
+      "solution": "r = √(s² − h²) = √(289 − 64) = √225 = 15 cm.",
+      "misconceptions": [
+        {
+          "id": "addiert_statt_subtrahiert",
+          "value": 18.79,
+          "feedback": "Für r subtrahieren: √(289 − 64) = 15."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "pythagoras",
+        "radius",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Eishörnchen (Kegel): r = 3 cm, h = 10 cm. Mantellinie s (eine Nachkommastelle)?",
+      "answer": 10.4,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "s = √(3² + 10²) = √(9 + 100) = √109.",
+        "√109 ≈ 10,44."
+      ],
+      "solution": "s = √(9 + 100) = √109 ≈ 10,4 cm.",
+      "tags": [
+        "kegel",
+        "pythagoras",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Kegel: r = 12 cm, h = 16 cm. Mantellinie s?",
+      "answer": 20,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "s² = 12² + 16².",
+        "√(144 + 256) = √400."
+      ],
+      "solution": "s = √(144 + 256) = √400 = 20 cm.",
+      "tags": [
+        "kegel",
+        "pythagoras"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Kegel: r = 7 cm, s = 25 cm. Höhe h?",
+      "answer": 24,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "h = √(s² − r²).",
+        "√(625 − 49) = √576."
+      ],
+      "solution": "h = √(625 − 49) = √576 = 24 cm.",
+      "misconceptions": [
+        {
+          "id": "addiert_statt_subtrahiert",
+          "value": 25.96,
+          "feedback": "Für h subtrahieren: √(625 − 49) = 24."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "pythagoras",
+        "hoehe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein kegelförmiger Hut: Mantellinie s = 20 cm, Höhe h = 16 cm. Wie groß ist der Radius r?",
+      "answer": 12,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "r = √(s² − h²).",
+        "√(400 − 256) = √144."
+      ],
+      "solution": "r = √(400 − 256) = √144 = 12 cm.",
+      "misconceptions": [
+        {
+          "id": "addiert_statt_subtrahiert",
+          "value": 25.6,
+          "feedback": "Für r subtrahieren: √(400 − 256) = 12."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "pythagoras",
+        "radius",
+        "sachaufgabe",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK06-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Worin unterscheidet sich das Pythagoras-Dreieck beim Kegel von dem bei der Pyramide?",
+      "options": [
+        "Beim Kegel zählt der ganze Radius r, bei der Pyramide nur die halbe Grundkante.",
+        "Beim Kegel gibt es kein rechtwinkliges Dreieck.",
+        "Es gibt keinen Unterschied."
+      ],
+      "answer": 0,
+      "hints": [
+        "Wo endet die schräge Strecke jeweils?",
+        "Beim Kegel am Kreisrand — Abstand zur Mitte ist r."
+      ],
+      "solution": "Beim Kegel geht die schräge Mantellinie bis zum Kreisrand — der Abstand zur Mitte ist der ganze Radius r. Bei der Pyramide reicht das Dreieck nur bis zur Kantenmitte, also a:2.",
+      "misconceptions": [
+        {
+          "id": "unterschied_nicht_erkannt",
+          "value": 2,
+          "feedback": "Kegel: ganzer Radius r. Pyramide: halbe Grundkante a:2. Das ist der Unterschied."
+        }
+      ],
+      "tags": [
+        "kegel",
+        "pyramide",
+        "pythagoras",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}

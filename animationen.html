@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#15233A">
+<title>Animationen · Lineare Funktionen · Mathe 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/anim.css">
+<style>
+  .anim-seite { max-width: 1000px; margin: 0 auto; padding: 0 16px 40px; }
+  .anim-intro { color: #4A5A70; font-size: 15px; line-height: 1.5; margin: 0 0 20px; max-width: 60ch; }
+  .anim-intro code { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: #EDF1F3; padding: 1px 5px; border-radius: 5px; }
+</style>
+</head>
+<body>
+
+<header class="kopf">
+  <div class="kopf-zeile">
+    <a class="zurueck" href="index.html" aria-label="Zurück zur Übersicht">←</a>
+    <div>
+      <div class="einheit-code">ANIMATIONEN</div>
+      <h1 class="einheit-titel">Lineare Funktionen in Bewegung</h1>
+    </div>
+  </div>
+</header>
+
+<main class="anim-seite">
+  <p class="anim-intro">
+    Zehn Kernideen der linearen Funktionen – jede in <b>drei Niveaustufen</b> (Basis · Standard ·
+    Vertiefung). Mit den Knöpfen über jeder Animation wechselst du die Stufe; jede läuft von selbst
+    und lässt sich mit <b>Abspielen / Pause</b> und teils per Regler steuern. Einbauen in jede Einheit
+    über <code>"visual": { "type": "animation", "name": "…", "stufe": "A" }</code> in der Lernkarte
+    oder Aufgabe – der Codeschnipsel steht unter jeder Karte.
+  </p>
+  <div class="anim-galerie" id="galerie"></div>
+</main>
+
+<script src="assets/js/supabase-config.js"></script>
+<script src="assets/js/dev-tools.js"></script>
+<script src="assets/js/student-login.js"></script>
+<script src="assets/js/tracker.js"></script>
+<script src="assets/js/animationen.js"></script>
+<script>
+  ANIM.galerie(document.getElementById('galerie'), { breite: 360 });
+</script>
+</body>
+</html>

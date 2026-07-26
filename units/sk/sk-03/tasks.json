@@ -1,0 +1,542 @@
+{
+  "unit": "SK-03",
+  "title": "Volumen der Pyramide",
+  "leitidee": "L2",
+  "standards": [
+    "K5",
+    "K4"
+  ],
+  "wortspeicher": [
+    "das Volumen",
+    "die Grundfläche",
+    "die Höhe",
+    "der Faktor ein Drittel",
+    "das Prisma"
+  ],
+  "can_do": {
+    "A": "Du berechnest das Pyramidenvolumen über V = ⅓ · G · h.",
+    "B": "Du berechnest die quadratische Grundfläche und daraus das Volumen.",
+    "C": "Du berechnest Pyramidenvolumen in Sachaufgaben und vergleichst mit dem Prisma."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Volumen der Pyramide",
+      "hinfuehrung": "Eine Pyramide fasst nur ein Drittel von dem, was ein Prisma mit gleicher Grundfläche und Höhe fasst.",
+      "erklaerung": [
+        "Volumen: V = ⅓ · Grundfläche · Höhe = (G · h) : 3.",
+        "Der Faktor ⅓ ist der ganze Unterschied zum Prisma."
+      ],
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a",
+          "h": "h"
+        },
+        "alt": "Quadratische Pyramide mit Grundkante a und Höhe h."
+      },
+      "beispiel": {
+        "aufgabe": "Pyramide mit G = 30 cm², h = 6 cm. Volumen?",
+        "schritte": [
+          "V = (G · h) : 3",
+          "V = (30 · 6) : 3 = 180 : 3",
+          "V = 60 cm³"
+        ],
+        "ergebnis": "V = 60 cm³."
+      },
+      "merke": "Pyramide: V = ⅓ · G · h."
+    },
+    "B": {
+      "titel": "Quadratische Grundfläche, dann Volumen",
+      "hinfuehrung": "Bei einer quadratischen Pyramide berechnest du zuerst die Grundfläche a² und setzt sie in die Volumenformel ein.",
+      "erklaerung": [
+        "Grundfläche: G = a · a = a².",
+        "Volumen: V = (a² · h) : 3."
+      ],
+      "beispiel": {
+        "aufgabe": "Quadratische Pyramide: a = 6 cm, h = 10 cm. Volumen?",
+        "schritte": [
+          "G = a² = 6² = 36 cm²",
+          "V = (36 · 10) : 3 = 360 : 3",
+          "V = 120 cm³"
+        ],
+        "ergebnis": "V = 120 cm³."
+      },
+      "merke": "Quadratische Pyramide: V = (a² · h) : 3."
+    },
+    "C": {
+      "titel": "Sachaufgaben und Vergleich mit dem Prisma",
+      "hinfuehrung": "Der Faktor ⅓ hat eine anschauliche Bedeutung: Drei gleiche Pyramiden füllen genau ein Prisma.",
+      "erklaerung": [
+        "Bei Sachaufgaben (Zelt, Dach, Spitze) zuerst Grundfläche und Höhe klären, dann V = (G · h) : 3.",
+        "Vergleich: Prisma V = G · h, Pyramide V = (G · h) : 3 – die Pyramide fasst genau ein Drittel."
+      ],
+      "beispiel": {
+        "aufgabe": "Ein Prisma und eine Pyramide haben G = 24 cm², h = 9 cm. Wie viel fasst jede?",
+        "schritte": [
+          "Prisma: V = 24 · 9 = 216 cm³",
+          "Pyramide: V = 216 : 3 = 72 cm³",
+          "Verhältnis 3 : 1"
+        ],
+        "ergebnis": "Prisma 216 cm³, Pyramide 72 cm³ – ein Drittel."
+      },
+      "merke": "Drei Pyramiden füllen ein Prisma gleicher Grundfläche und Höhe."
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Pyramide:  V = ⅓ · Grundfläche · Höhe = (G · h) : 3",
+      "quadratische Grundfläche:  G = a · a = a²",
+      "Merke: Eine Pyramide passt DREIMAL in ein Prisma gleicher Grundfläche & Höhe.",
+      "Höhe h ist die senkrechte Höhe, NICHT die Seitenhöhe s!"
+    ],
+    "saetze": [
+      "Erst Grundfläche · Höhe, dann durch 3.",
+      "Zum Rechnen die senkrechte Höhe h nehmen, nicht s."
+    ]
+  },
+  "tasks": [
+    {
+      "id": "SK03-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Pyramide: Grundfläche 30 cm², Höhe 6 cm. Volumen?",
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "",
+          "h": "h = 6 cm",
+          "s": ""
+        },
+        "alt": "Pyramide, G = 30 cm²."
+      },
+      "answer": 60,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = ⅓ · G · h.",
+        "(30 · 6) : 3."
+      ],
+      "solution": "V = (G · h) : 3 = (30 · 6) : 3 = 180 : 3 = 60 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 180,
+          "feedback": "Bei der Pyramide durch 3 teilen: 180 : 3 = 60."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Pyramide: Grundfläche 45 cm², Höhe 10 cm. Volumen?",
+      "answer": 150,
+      "unit_label": "cm³",
+      "tolerance": 0.01,
+      "hints": [
+        "V = (G · h) : 3.",
+        "(45 · 10) : 3."
+      ],
+      "solution": "V = (45 · 10) : 3 = 450 : 3 = 150 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 450,
+          "feedback": "Durch 3 teilen: 450 : 3 = 150."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "multi",
+      "prompt": "Quadratische Pyramide: Grundkante a = 6 cm, Höhe h = 5 cm.",
+      "visual": {
+        "type": "koerper",
+        "form": "pyramide",
+        "labels": {
+          "a": "a = 6 cm",
+          "h": "h = 5 cm",
+          "s": ""
+        },
+        "alt": "Quadratische Pyramide."
+      },
+      "fields": [
+        {
+          "label": "Grundfläche",
+          "answer": 36,
+          "tolerance": 0.01,
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "kante_nicht_quadriert",
+              "value": 12,
+              "feedback": "Grundfläche = a² = 6·6 = 36, nicht 6·2."
+            }
+          ]
+        },
+        {
+          "label": "Volumen",
+          "answer": 60,
+          "tolerance": 0.01,
+          "unit_label": "cm³"
+        }
+      ],
+      "hints": [
+        "G = a² = 6².",
+        "V = (G · 5) : 3."
+      ],
+      "solution": "G = 6² = 36 cm². V = (36 · 5) : 3 = 180 : 3 = 60 cm³.",
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 9 cm, h = 10 cm. Volumen?",
+      "answer": 270,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 9² = 81 cm².",
+        "V = (81 · 10) : 3."
+      ],
+      "solution": "G = 81 cm². V = (81 · 10) : 3 = 810 : 3 = 270 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 810,
+          "feedback": "Durch 3: 810 : 3 = 270."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-B1-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 10 cm, h = 12 cm. Volumen?",
+      "answer": 400,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 100 cm².",
+        "V = (100 · 12) : 3."
+      ],
+      "solution": "G = 100 cm². V = (100 · 12) : 3 = 1200 : 3 = 400 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 1200,
+          "feedback": "Durch 3: 1200 : 3 = 400."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-B2-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Pyramide mit rechteckiger Grundfläche 8 cm · 6 cm, Höhe 9 cm. Volumen?",
+      "answer": 144,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 8 · 6 = 48 cm².",
+        "V = (48 · 9) : 3."
+      ],
+      "solution": "G = 48 cm². V = (48 · 9) : 3 = 432 : 3 = 144 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 432,
+          "feedback": "Durch 3: 432 : 3 = 144."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-B3-007",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Pyramide: Grundfläche 60 cm², Höhe 8 cm. Volumen?",
+      "answer": 160,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "V = (60 · 8) : 3.",
+        "= 480 : 3."
+      ],
+      "solution": "V = (60 · 8) : 3 = 480 : 3 = 160 cm³.",
+      "tags": [
+        "pyramide",
+        "volumen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-B4-008",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Eine Glaspyramide: a = 12 cm, h = 15 cm. Volumen?",
+      "answer": 720,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "G = 144 cm².",
+        "V = (144 · 15) : 3."
+      ],
+      "solution": "G = 144 cm². V = (144 · 15) : 3 = 2160 : 3 = 720 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 2160,
+          "feedback": "Durch 3: 2160 : 3 = 720."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-B5-009",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Pyramide: a = 5 cm, h = 6 cm. Volumen?",
+      "answer": 50,
+      "unit_label": "cm³",
+      "tolerance": 0.5,
+      "hints": [
+        "G = 25 cm².",
+        "V = (25 · 6) : 3."
+      ],
+      "solution": "G = 25 cm². V = (25 · 6) : 3 = 150 : 3 = 50 cm³.",
+      "tags": [
+        "pyramide",
+        "volumen",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-B6-010",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein pyramidenförmiger Zeltaufsatz: Grundfläche 4 m², Höhe 3 m. Rauminhalt (m³)?",
+      "answer": 4,
+      "unit_label": "m³",
+      "tolerance": 0.05,
+      "hints": [
+        "V = (4 · 3) : 3.",
+        "= 12 : 3."
+      ],
+      "solution": "V = (4 · 3) : 3 = 12 : 3 = 4 m³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 12,
+          "feedback": "Durch 3: 12 : 3 = 4."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen",
+        "sachaufgabe",
+        "bbr"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-C1-011",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Quadratische Pyramide: a = 20 cm, h = 15 cm. Volumen (cm³)?",
+      "answer": 2000,
+      "unit_label": "cm³",
+      "tolerance": 5,
+      "hints": [
+        "G = 400 cm².",
+        "V = (400 · 15) : 3."
+      ],
+      "solution": "G = 400 cm². V = (400 · 15) : 3 = 6000 : 3 = 2000 cm³.",
+      "misconceptions": [
+        {
+          "id": "faktor_drittel_vergessen",
+          "value": 6000,
+          "feedback": "Durch 3: 6000 : 3 = 2000."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-C2-012",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Prisma und eine Pyramide haben dieselbe Grundfläche (36 cm²) und Höhe (10 cm). Um wie viel cm³ ist das Prisma größer?",
+      "answer": 240,
+      "unit_label": "cm³",
+      "tolerance": 1,
+      "hints": [
+        "Prisma = 36·10 = 360. Pyramide = 360:3 = 120.",
+        "Differenz = 360 − 120."
+      ],
+      "solution": "Prisma: 36·10 = 360 cm³. Pyramide: 360 : 3 = 120 cm³.\nUnterschied: 360 − 120 = 240 cm³ (die Pyramide ist genau ein Drittel).",
+      "misconceptions": [
+        {
+          "id": "nur_pyramide",
+          "value": 120,
+          "feedback": "Gefragt ist der Unterschied: 360 − 120 = 240."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "prisma",
+        "volumen",
+        "begruendung",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-C3-013",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Eine Pyramide hat V = 200 cm³ und die Grundfläche 60 cm². Wie hoch ist sie?",
+      "answer": 10,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "V = (G·h):3 rückwärts.",
+        "h = 3·V : G = 3·200 : 60."
+      ],
+      "solution": "h = 3 · V : G = 3 · 200 : 60 = 600 : 60 = 10 cm.",
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen_rueck",
+          "value": 3.33,
+          "feedback": "Rückwärts mal 3: h = 3·200 : 60 = 10."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen",
+        "rueckwaerts",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    },
+    {
+      "id": "SK03-C4-014",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine quadratische Pyramide hat V = 96 cm³ und h = 8 cm. Wie lang ist die Grundkante a?",
+      "answer": 6,
+      "unit_label": "cm",
+      "tolerance": 0.1,
+      "hints": [
+        "G = 3·V : h = 3·96 : 8 = 36.",
+        "a = √G = √36."
+      ],
+      "solution": "G = 3·V : h = 3·96 : 8 = 288 : 8 = 36 cm². a = √36 = 6 cm.",
+      "misconceptions": [
+        {
+          "id": "wurzel_vergessen",
+          "value": 36,
+          "feedback": "36 cm² ist die Grundfläche. Die Kante ist √36 = 6."
+        },
+        {
+          "id": "drittel_vergessen_rueck",
+          "value": 12,
+          "feedback": "Erst mal 3: G = 3·96:8 = 36, dann √36 = 6."
+        }
+      ],
+      "tags": [
+        "pyramide",
+        "volumen",
+        "rueckwaerts",
+        "wurzel",
+        "msa"
+      ],
+      "spiral": [
+        "W-GEO"
+      ]
+    }
+  ]
+}
