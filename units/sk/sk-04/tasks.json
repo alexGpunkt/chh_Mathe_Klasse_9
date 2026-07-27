@@ -28,14 +28,9 @@
         "Also eine Seitenfläche = (a · s) : 2."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "pyramide",
-        "labels": {
-          "a": "a",
-          "s": "s",
-          "h": "h"
-        },
-        "alt": "Pyramide mit Grundkante a und Seitenhöhe s."
+        "type": "animation",
+        "name": "obpyr",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Ein Seitendreieck mit a = 6 cm und s = 5 cm. Fläche?",
@@ -64,7 +59,12 @@
         ],
         "ergebnis": "O = 96 cm²."
       },
-      "merke": "Quadratische Pyramide: O = a² + 2 · a · s."
+      "merke": "Quadratische Pyramide: O = a² + 2 · a · s.",
+      "visual": {
+        "type": "animation",
+        "name": "obpyr",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Erst die Seitenhöhe, dann die Oberfläche",
@@ -82,7 +82,12 @@
         ],
         "ergebnis": "O = 96 cm²."
       },
-      "merke": "Erst s = √( h² + (a:2)² ), dann O = a² + 2·a·s."
+      "merke": "Erst s = √( h² + (a:2)² ), dann O = a² + 2·a·s.",
+      "visual": {
+        "type": "animation",
+        "name": "obpyr",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

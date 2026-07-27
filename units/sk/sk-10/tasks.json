@@ -28,12 +28,9 @@
         "Nur der Radius wird gebraucht – kein h, kein s."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "kugel",
-        "labels": {
-          "r": "r"
-        },
-        "alt": "Kugel mit Radius r."
+        "type": "animation",
+        "name": "kugel",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Kugel mit r = 5 cm. Oberfläche (π ≈ 3,14)?",
@@ -54,12 +51,9 @@
         "Erst r³ (r · r · r), dann mit π multiplizieren, dann · 4 : 3."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "kugel",
-        "labels": {
-          "r": "r"
-        },
-        "alt": "Kugel mit Radius r."
+        "type": "animation",
+        "name": "kugel",
+        "stufe": "B"
       },
       "beispiel": {
         "aufgabe": "Kugel mit r = 3 cm. Volumen (π ≈ 3,14)?",
@@ -88,7 +82,12 @@
         ],
         "ergebnis": "V ≈ 33,5 l."
       },
-      "merke": "Erst r = d : 2; in dm gerechnet ergibt dm³ = Liter."
+      "merke": "Erst r = d : 2; in dm gerechnet ergibt dm³ = Liter.",
+      "visual": {
+        "type": "animation",
+        "name": "kugel",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

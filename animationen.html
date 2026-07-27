@@ -30,10 +30,11 @@
 
 <main class="anim-seite">
   <p class="anim-intro">
-    Zentrale Ideen aus <b>Prozent &amp; Zinsrechnung</b> und <b>Linearen Funktionen</b> – jede in
-    <b>drei Niveaustufen</b> (Basis · Standard · Vertiefung). Mit den Knöpfen über jeder Animation
-    wechselst du die Stufe; jede läuft von selbst und lässt sich mit <b>Abspielen / Pause</b> und teils
-    per Regler steuern. Einbauen über
+    Zentrale Ideen aus <b>Prozent &amp; Zinsrechnung</b>, <b>Linearen Funktionen</b>,
+    <b>Körpern: Prismen &amp; Zylinder</b> und <b>Spitzkörpern</b> – jede in
+    <b>drei Niveaustufen</b> (Basis · Standard · Vertiefung). Mit den Knöpfen über jeder
+    Animation wechselst du die Stufe; jede läuft von selbst und lässt sich mit
+    <b>Abspielen / Pause</b> und teils per Regler steuern. Einbauen über
     <code>"visual": { "type": "animation", "name": "…", "stufe": "A" }</code>.
   </p>
   <div class="anim-galerie" id="galerie"></div>
@@ -48,7 +49,9 @@
   const bereich = new URLSearchParams(location.search).get('bereich');
   const namen = {
     PZ: 'Prozent & Zinsrechnung in Bewegung',
-    LF: 'Lineare Funktionen in Bewegung'
+    LF: 'Lineare Funktionen in Bewegung',
+    KP: 'Körper, Prismen & Zylinder in Bewegung',
+    SK: 'Spitzkörper in Bewegung'
   };
   if (namen[bereich]) {
     document.getElementById('anim-titel').textContent = namen[bereich];
@@ -56,7 +59,7 @@
   }
   ANIM.galerie(document.getElementById('galerie'), {
     breite: 360,
-    bereich: bereich === 'PZ' || bereich === 'LF' ? bereich : null
+    bereich: ['PZ', 'LF', 'KP', 'SK'].includes(bereich) ? bereich : null
   });
 </script>
 </body>

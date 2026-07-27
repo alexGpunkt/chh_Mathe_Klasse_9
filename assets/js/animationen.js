@@ -1153,3 +1153,951 @@
   });
 
 })();
+
+/* ============================================================
+   animationen.js · Teil 4a — Lernbereich KP (Körper: Prismen & Zylinder)
+   Schematische Schrägbild-Körper mit animierbaren Teilen:
+   Netze auffalten, Schichten stapeln, Mantel abwickeln.
+   Helfer + Konzepte 1–5.
+   ============================================================ */
+(function () {
+  'use strict';
+  const I = window.ANIM._intern;
+  const { Loop, steuerleiste, regler, abzeichen, register, FARBE, STUFE_FARBE, fmt, osz, h, el, stufeVon, REDUCED } = I;
+
+  function svgb(w, hh, alt) { return el('svg', { viewBox: `0 0 ${w} ${hh}`, class: 'anim-svg', role: 'img', 'aria-label': alt || 'Körper' }); }
+  function pfad(d, o) { o = o || {}; return el('path', { d, fill: o.fill || 'none', 'fill-opacity': o.fo != null ? o.fo : 1, stroke: o.stroke || FARBE.ink, 'stroke-width': o.sw || 1.5, 'stroke-linejoin': 'round', 'stroke-dasharray': o.dash || '' }); }
+  function txt(x, y, s, o) { o = o || {}; return el('text', { x, y, 'text-anchor': o.anchor || 'middle', 'font-family': 'monospace', 'font-size': o.size || 12, fill: o.farbe || FARBE.ink, 'font-weight': o.weight || 400 }, s); }
+
+  /* Schrägbild-Quader: gibt Flächenpfade, Ecken und Kanten zurück. */
+  function boxTeile(x, y, aw, ch, ox, oy) {
+    const E = {
+      D: [x, y], C: [x + aw, y], B: [x + aw, y + ch], A: [x, y + ch],
+      Dp: [x + ox, y - oy], Cp: [x + aw + ox, y - oy], Bp: [x + aw + ox, y + ch - oy], Ap: [x + ox, y + ch - oy]
+    };
+    const P = p => p[0] + ',' + p[1];
+    return {
+      ecken: E,
+      front: `M${P(E.D)} L${P(E.C)} L${P(E.B)} L${P(E.A)} Z`,
+      top: `M${P(E.D)} L${P(E.Dp)} L${P(E.Cp)} L${P(E.C)} Z`,
+      side: `M${P(E.C)} L${P(E.Cp)} L${P(E.Bp)} L${P(E.B)} Z`,
+      kanten: [[E.D, E.C], [E.C, E.B], [E.B, E.A], [E.A, E.D], [E.Dp, E.Cp], [E.Cp, E.Bp], [E.Bp, E.Ap], [E.Ap, E.Dp], [E.D, E.Dp], [E.C, E.Cp], [E.B, E.Bp], [E.A, E.Ap]]
+    };
+  }
+  function zeichneBox(parent, t, K) {
+    const g = el('g'); parent.appendChild(g);
+    const top = pfad(t.top, { fill: K, fo: .40 }); const side = pfad(t.side, { fill: K, fo: .52 }); const front = pfad(t.front, { fill: K, fo: .68 });
+    g.appendChild(top); g.appendChild(side); g.appendChild(front);
+    return { g, top, side, front };
+  }
+
+  /* 1 · Körper erkennen: Flächen, Kanten, Ecken (KP-01) */
+  register({
+    id: 'koerper', titel: 'Körper: Flächen, Kanten, Ecken', bezug: 'KP-01',
+    kurz: 'A: zählen (6/12/8) · B: Grundfläche, Mantel, Netz · C: n-Eck-Prisma (n+2, 3n, 2n).',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+
+      if (st === 'C') {
+        const svg = svgb(o.breite || 320, 190, 'n-Eck-Prisma');
+        const cxc = 130, cyB = 130, cyT = 66, rx = 52, ry = 20;
+        const basis = el('polygon', { fill: K, 'fill-opacity': .25, stroke: FARBE.ink, 'stroke-width': 1.5 });
+        const deck = el('polygon', { fill: K, 'fill-opacity': .45, stroke: FARBE.ink, 'stroke-width': 1.5 });
+        const seiten = el('g'); svg.appendChild(seiten); svg.appendChild(basis); svg.appendChild(deck);
+        let n = 4;
+        const zeichne = () => {
+          const B = [], T = [];
+          for (let i = 0; i < n; i++) { const a = -Math.PI / 2 + i * 2 * Math.PI / n; const px = cxc + rx * Math.cos(a), py = cyB + ry * Math.sin(a); B.push([px, py]); T.push([px, py - (cyB - cyT)]); }
+          basis.setAttribute('points', B.map(p => p.join(',')).join(' '));
+          deck.setAttribute('points', T.map(p => p.join(',')).join(' '));
+          seiten.innerHTML = '';
+          B.forEach((p, i) => seiten.appendChild(el('line', { x1: p[0], y1: p[1], x2: T[i][0], y2: T[i][1], stroke: FARBE.ink, 'stroke-width': 1.2, 'stroke-opacity': .5 })));
+          info.innerHTML = `n = ${n}: Flächen n+2 = <b>${n + 2}</b> · Kanten 3n = <b>${3 * n}</b> · Ecken 2n = <b>${2 * n}</b>`;
+        };
+        zeichne();
+        const loop = Loop(t => { const nn = 3 + Math.floor(osz(t, 8) * 3.99); if (nn !== n) { n = nn; zeichne(); } });
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      const svg = svgb(o.breite || 320, 200, 'Würfel');
+      const t = boxTeile(70, 70, 90, 90, 46, 46);
+      const box = zeichneBox(svg, t, K);
+      const marker = el('g'); svg.appendChild(marker);
+      const P = p => p[0] + ',' + p[1];
+
+      if (st === 'A') {
+        const phasen = [
+          () => { marker.innerHTML = ''; [box.top, box.side, box.front].forEach(f => f.setAttribute('fill-opacity', .8)); setTimeout(() => { }, 0); info.innerHTML = `Flächen: oben + unten + 4 Seiten = <b>6</b>`; },
+          () => { [box.top, box.side, box.front].forEach((f, i) => f.setAttribute('fill-opacity', [.40, .52, .68][i])); marker.innerHTML = ''; t.kanten.forEach(k => marker.appendChild(el('line', { x1: k[0][0], y1: k[0][1], x2: k[1][0], y2: k[1][1], stroke: FARBE.korr, 'stroke-width': 3 }))); info.innerHTML = `Kanten: 4 oben + 4 unten + 4 senkrecht = <b>12</b>`; },
+          () => { marker.innerHTML = ''; Object.values(t.ecken).forEach(p => marker.appendChild(el('circle', { cx: p[0], cy: p[1], r: 4.5, fill: FARBE.c }))); info.innerHTML = `Ecken: 4 oben + 4 unten = <b>8</b>`; }
+        ];
+        let pi = -1;
+        const loop = Loop(tt => { const k = Math.floor(tt / 2) % 3; if (k !== pi) { pi = k; phasen[k](); } });
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); else phasen[0]();
+        return loop;
+      }
+
+      // B: Grundfläche · Mantel · Deckfläche
+      const teile = [
+        { els: [box.front, box.side], txt: 'Mantel: die Seitenflächen rundherum', op: .85 },
+        { els: [box.top], txt: 'Deckfläche: oben (= Grundfläche)', op: .85 },
+        { els: [], txt: 'Grundfläche: unten – sie gibt dem Körper den Namen', op: .85 }
+      ];
+      const grund = pfad(`M${P(t.ecken.A)} L${P(t.ecken.B)} L${P(t.ecken.Bp)} L${P(t.ecken.Ap)} Z`, { fill: K, fo: .0, stroke: FARBE.korr, sw: 2, dash: '5 4' });
+      svg.appendChild(grund);
+      let pi = -1;
+      const zeige = k => {
+        [box.top, box.side, box.front].forEach((f, i) => f.setAttribute('fill-opacity', [.40, .52, .68][i]));
+        grund.setAttribute('fill-opacity', 0);
+        if (k === 0) teile[0].els.forEach(f => f.setAttribute('fill-opacity', .85));
+        else if (k === 1) box.top.setAttribute('fill-opacity', .85);
+        else grund.setAttribute('fill-opacity', .35);
+        info.innerHTML = teile[k].txt;
+      };
+      const loop = Loop(tt => { const k = Math.floor(tt / 2) % 3; if (k !== pi) { pi = k; zeige(k); } });
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); else zeige(2);
+      return loop;
+    }
+  });
+
+  /* 2 · Einheiten für Fläche und Volumen (KP-02) */
+  register({
+    id: 'einheiten', titel: 'Einheiten: Fläche ·100, Volumen ·1000', bezug: 'KP-02',
+    kurz: 'A: 1 dm³ = 1 l · B: dm² → cm² (·100), dm³ → cm³ (·1000) · C: zwischen l/dm³/cm³/m³ wechseln.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+
+      if (st === 'A') {
+        const svg = svgb(o.breite || 300, 190, 'Würfel mit 1 dm Kante');
+        const t = boxTeile(90, 70, 80, 80, 42, 42); const box = zeichneBox(svg, t, K);
+        svg.appendChild(txt(130, 165, '1 dm', { size: 12, weight: 700 }));
+        info.innerHTML = `Ein Würfel mit 1 dm Kante fasst genau <b>1 Liter</b> (1 dm³ = 1 l).`;
+        const loop = Loop(tt => { box.front.setAttribute('fill-opacity', .55 + 0.2 * osz(tt, 2)); });
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      if (st === 'B') {
+        const svg = svgb(o.breite || 300, 200, '1 dm² wird in 100 cm² geteilt');
+        const X0 = 60, Y0 = 30, S = 130;
+        svg.appendChild(el('rect', { x: X0, y: Y0, width: S, height: S, fill: K, 'fill-opacity': .18, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+        const grid = el('g'); svg.appendChild(grid);
+        const zeige = frac => {
+          grid.innerHTML = '';
+          const linien = Math.round(9 * frac);
+          for (let i = 1; i <= linien; i++) { const p = X0 + S * i / 10; grid.appendChild(el('line', { x1: p, y1: Y0, x2: p, y2: Y0 + S, stroke: FARBE.ink, 'stroke-width': .6, 'stroke-opacity': .5 })); grid.appendChild(el('line', { x1: X0, y1: Y0 + S * i / 10, x2: X0 + S, y2: Y0 + S * i / 10, stroke: FARBE.ink, 'stroke-width': .6, 'stroke-opacity': .5 })); }
+          const felder = Math.pow(Math.min(10, Math.round(linien) + 1), 2);
+          info.innerHTML = linien >= 9
+            ? `1 dm² = 10·10 = <b>100 cm²</b> &nbsp;·&nbsp; Volumen: 10·10·10 = <b>·1000</b>`
+            : `teile jede Seite in 10 → ${felder} Kästchen …`;
+        };
+        zeige(REDUCED ? 1 : 0);
+        const loop = Loop(tt => zeige(osz(tt, 5)));
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      // C: Einheitenkette
+      const ketten = [
+        `1 m³ = 1000 dm³ = <b>1000 l</b>`,
+        `1 dm³ = 1000 cm³ &nbsp;·&nbsp; 1 dm³ = <b>1 l</b>`,
+        `1,5 m³ = 1,5 · 1000 = <b>1500 l</b>`,
+        `250 cm³ = 250 : 1000 = <b>0,25 l</b>`
+      ];
+      const svg = svgb(o.breite || 320, 70, 'Einheitenkette');
+      const bandL = ['m³', 'dm³ = l', 'cm³'];
+      bandL.forEach((s, i) => { const x = 40 + i * 120; svg.appendChild(el('rect', { x: x - 30, y: 20, width: 60, height: 30, rx: 6, fill: K, 'fill-opacity': .2, stroke: FARBE.ink, 'stroke-width': 1.2 })); svg.appendChild(txt(x, 40, s, { size: 12, weight: 700 })); if (i < 2) svg.appendChild(txt(x + 60, 34, '·1000', { size: 10, farbe: FARBE.weich })); });
+      const zeige = k => info.innerHTML = ketten[k];
+      zeige(0);
+      const loop = Loop(tt => zeige(Math.floor(tt / 1.8) % ketten.length));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 3 · Oberfläche über das Netz (KP-03) */
+  register({
+    id: 'oberflaeche', titel: 'Oberfläche über das Netz', bezug: 'KP-03',
+    kurz: 'A: Würfel 6·a² · B: Quader 2·(ab+ac+bc) · C: mit gemischten Einheiten.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 320, 210, 'Netz');
+      // Würfel-/Quader-Netz als Kreuz: [oben, [links,vorne,rechts,hinten], unten]
+      const a = 4, b = 3, c = 2; // Quader; Würfel nutzt a=a=a mit a=5
+      const wA = st === 'A' ? 5 : a;
+      const felder = st === 'A'
+        ? [{ x: 1, y: 0, w: 1, hh: 1, l: 'a²' }, { x: 0, y: 1, w: 1, hh: 1, l: 'a²' }, { x: 1, y: 1, w: 1, hh: 1, l: 'a²' }, { x: 2, y: 1, w: 1, hh: 1, l: 'a²' }, { x: 3, y: 1, w: 1, hh: 1, l: 'a²' }, { x: 1, y: 2, w: 1, hh: 1, l: 'a²' }]
+        : [{ x: 1, y: 0, w: a, hh: b, l: 'a·b' }, { x: 0, y: 1, w: c, hh: a, l: 'b·c' }, { x: 1, y: 1, w: a, hh: a, l: 'a·c' }, { x: 1 + a, y: 1, w: c, hh: a, l: 'b·c' }, { x: 1, y: 2, w: a, hh: b, l: 'a·b' }];
+      // Für die Darstellung normieren wir auf eine Zellgröße
+      const U = st === 'A' ? 34 : 18, OX = 20, OY = 14;
+      const rects = felder.map(f => { const r = el('rect', { x: OX + f.x * U, y: OY + f.y * U, width: f.w * U, height: f.hh * U, fill: K, 'fill-opacity': .12, stroke: FARBE.ink, 'stroke-width': 1.2 }); svg.appendChild(r); return r; });
+      const oben = el('g'); svg.appendChild(oben);
+      const werte = st === 'A' ? felder.map(() => wA * wA) : [a * b, b * c, a * c, b * c, a * b];
+      const zeige = n => {
+        oben.innerHTML = '';
+        let summe = 0;
+        rects.forEach((r, i) => { const an = i < n; r.setAttribute('fill-opacity', an ? .5 : .12); if (an) summe += werte[i]; });
+        const ges = werte.reduce((x, y) => x + y, 0);
+        info.innerHTML = st === 'A'
+          ? (n >= 6 ? `O = 6 · a² = 6 · ${wA}² = <b>${ges} cm²</b>` : `Fläche ${n}/6 · a² …`)
+          : (n >= 5 ? `O = 2·(a·b + a·c + b·c) = <b>${ges} cm²</b>` : `Flächenpaar ${n}/5 …`);
+      };
+      zeige(REDUCED ? rects.length : 0);
+      const loop = Loop(tt => zeige(1 + Math.floor((tt % ((rects.length + 1) * 0.7)) / 0.7)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 4 · Volumen als Schichten (KP-04) */
+  register({
+    id: 'volumenbox', titel: 'Volumen: Schicht für Schicht', bezug: 'KP-04',
+    kurz: 'A: Würfel a³ · B: Quader a·b·c (= G·h), Liter · C: gemischte Einheiten.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 320, 210, 'Quader füllt sich schichtweise');
+      const a = st === 'A' ? 3 : 5, b = st === 'A' ? 3 : 3, c = st === 'A' ? 3 : 4;
+      const t = boxTeile(70, 60, 120, 110, 54, 54); const box = zeichneBox(svg, t, K);
+      // Füllung im Frontgesicht steigt
+      const clipId = 'flc' + Math.random().toString(36).slice(2, 6);
+      const defs = el('defs'); const cp = el('clipPath', { id: clipId }); cp.appendChild(el('path', { d: t.front })); defs.appendChild(cp); svg.appendChild(defs);
+      const fuell = el('rect', { x: 70, y: 170, width: 120, height: 0, fill: K, 'fill-opacity': .5, 'clip-path': `url(#${clipId})` });
+      box.g.insertBefore(fuell, box.front);
+      const zeige = frac => {
+        const hpx = 110 * frac; fuell.setAttribute('y', 60 + 110 - hpx); fuell.setAttribute('height', hpx);
+        const schicht = Math.min(c, Math.round(c * frac));
+        const V = a * b * c;
+        info.innerHTML = st === 'A'
+          ? (frac >= .99 ? `V = a·a·a = ${a}³ = <b>${V} cm³</b>` : `Schicht ${schicht}/${c} …`)
+          : (frac >= .99 ? `V = a·b·c = ${a}·${b}·${c} = <b>${V} dm³ = ${V} l</b>` : `Grundfläche ${a}·${b}=${a * b}, Schicht ${schicht}/${c}`);
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(tt => zeige(osz(tt, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 5 · Rückwärts: fehlende Kante (KP-05) */
+  register({
+    id: 'kante', titel: 'Rückwärts: fehlende Kante finden', bezug: 'KP-05',
+    kurz: 'A: Quaderkante = V:(a·b) · B: Würfelkante aus V (∛) oder O · C: rückwärts begründen.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 320, 200, 'Körper mit gesuchter Kante');
+
+      if (st === 'A') {
+        const V = 60, a = 5, bb = 4, cziel = V / (a * bb); // = 3
+        const zeige = frac => {
+          svg.innerHTML = '';
+          const cakt = 1 + (cziel - 1) * frac; const ch = 30 + cakt * 26;
+          const t = boxTeile(80, 170 - ch, 120, ch, 48, 48); const box = zeichneBox(svg, t, K);
+          svg.appendChild(txt(200 + 6, 170 - ch / 2, 'c = ?', { anchor: 'start', farbe: FARBE.korr, weight: 700, size: 12 }));
+          const Vakt = a * bb * cakt;
+          info.innerHTML = frac >= .99
+            ? `c = V : (a·b) = 60 : (5·4) = <b>3</b>` : `Volumen wächst: ${fmt(Math.round(Vakt))} / 60 cm³`;
+        };
+        zeige(REDUCED ? 1 : 0);
+        const loop = Loop(tt => zeige(osz(tt, 5)));
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      // B/C: Würfel wächst, bis V bzw. O den Zielwert erreicht
+      const ziel = st === 'B' ? { V: 64, a: 4, art: 'V' } : { O: 96, a: 4, art: 'O' };
+      const zeige = frac => {
+        svg.innerHTML = '';
+        const aakt = 1 + (ziel.a - 1) * frac; const s = 24 * aakt;
+        const t = boxTeile(110, 150 - s, s, s, s * .5, s * .5); zeichneBox(svg, t, K);
+        if (st === 'B') info.innerHTML = frac >= .99 ? `a = ∛V = ∛64 = <b>4 cm</b>` : `a³ = ${fmt(Math.round(aakt ** 3))} / 64`;
+        else info.innerHTML = frac >= .99 ? `O = 6·a² = 96 → a² = 16 → a = <b>4 cm</b>` : `6·a² = ${fmt(Math.round(6 * aakt * aakt))} / 96`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(tt => zeige(osz(tt, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  // Helfer für Teil 4b bereitstellen
+  window.ANIM._geo = { svgb, pfad, txt, boxTeile, zeichneBox };
+})();
+
+/* ============================================================
+   animationen.js · Teil 4b — KP-Konzepte 6–10
+   ============================================================ */
+(function () {
+  'use strict';
+  const I = window.ANIM._intern, G = window.ANIM._geo;
+  const { Loop, steuerleiste, abzeichen, register, FARBE, STUFE_FARBE, fmt, osz, h, el, stufeVon, REDUCED } = I;
+  const { svgb, txt } = G;
+
+  function poly(pts, o) { o = o || {}; return el('polygon', { points: pts.map(p => p.join(',')).join(' '), fill: o.fill || 'none', 'fill-opacity': o.fo != null ? o.fo : 1, stroke: o.stroke || FARBE.ink, 'stroke-width': o.sw || 1.5, 'stroke-linejoin': 'round' }); }
+  function extrude(parent, basePts, Hpx, K) {
+    const top = basePts.map(p => [p[0], p[1] - Hpx]);
+    parent.appendChild(poly(basePts, { fill: K, fo: .5 }));
+    basePts.forEach((p, i) => parent.appendChild(el('line', { x1: p[0], y1: p[1], x2: top[i][0], y2: top[i][1], stroke: FARBE.ink, 'stroke-width': 1.2, 'stroke-opacity': .6 })));
+    parent.appendChild(poly(top, { fill: K, fo: .34 }));
+  }
+  function zyl(parent, cx, topY, rx, hh, ry, K) {
+    const g = el('g');
+    g.appendChild(el('rect', { x: cx - rx, y: topY, width: rx * 2, height: hh, fill: K, 'fill-opacity': .3 }));
+    g.appendChild(el('ellipse', { cx, cy: topY + hh, rx, ry, fill: K, 'fill-opacity': .5, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+    g.appendChild(el('path', { d: `M${cx - rx},${topY} V${topY + hh} M${cx + rx},${topY} V${topY + hh}`, stroke: FARBE.ink, 'stroke-width': 1.5, fill: 'none' }));
+    g.appendChild(el('ellipse', { cx, cy: topY, rx, ry, fill: K, 'fill-opacity': .62, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+    parent.appendChild(g); return g;
+  }
+
+  /* 6 · Prisma: V = G · h durch Extrusion (KP-06/07) */
+  register({
+    id: 'prisma', titel: 'Prisma: Grundfläche · Höhe', bezug: 'KP-06',
+    kurz: 'A: V = G·h (Grundfläche hoch ziehen) · B: Dreiecksgrundfläche → G → V · C: zusammengesetzte Grundfläche.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 320, 210, 'Prisma entsteht durch Hochziehen der Grundfläche');
+      const bx = 90, by = 175, ox = 42, oy = 20;
+      const basen = {
+        A: { pts: [[bx, by], [bx + ox, by - oy], [bx + ox + 80, by - oy], [bx + 80, by]], G: 12, h: 5, txt: 'G = 12 cm²' },
+        B: { pts: [[bx, by], [bx + 90, by], [bx + 45 + ox, by - oy]], G: 12, h: 10, txt: 'G = (6·4):2 = 12 cm²' },
+        C: { pts: [[bx, by], [bx + 80, by], [bx + 80, by - 22], [bx + 40, by - 40], [bx, by - 22]], G: 25, h: 8, txt: 'G = 20 + 5 = 25 cm²' }
+      };
+      const cfg = basen[st];
+      const Hmax = st === 'B' ? 120 : (st === 'C' ? 95 : 70);
+      const zeige = frac => {
+        svg.innerHTML = '';
+        extrude(svg, cfg.pts.map(p => p.slice()), Hmax * frac, K);
+        const V = cfg.G * cfg.h;
+        info.innerHTML = frac < .96 ? `${cfg.txt} — Höhe ${fmt(Math.round(cfg.h * frac))} …`
+          : `V = G · h = ${cfg.G} · ${cfg.h} = <b>${V} cm³</b>`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 7 · Oberfläche Prisma: Mantel abwickeln (KP-08) */
+  register({
+    id: 'mantelprisma', titel: 'Prisma-Oberfläche: Mantel abwickeln', bezug: 'KP-08',
+    kurz: 'A: Mantel = Umfang · Höhe · B: O = 2·G + Mantel · C: fehlende Seite mit Pythagoras.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 340, 210, 'Mantel eines Dreiecksprismas wird abgewickelt');
+      const seiten = [3, 4, 5], U = seiten.reduce((a, b) => a + b, 0), hoehe = 10;
+      const HH = 70, skala = 12;
+      // Dreiecksprisma links
+      const drawPrisma = () => { const g = el('g'); const p1 = [40, 60], p2 = [40, 60 + 46], p3 = [40 + 34, 60 + 23]; extrude(g, [p1, p2, p3], 0, K); // flach? nein: zeichne kleines Prisma
+        g.innerHTML = ''; const bpts = [p1, p2, p3]; const top = bpts.map(p => [p[0] + 40, p[1] - 8]); g.appendChild(poly(bpts, { fill: K, fo: .5 })); bpts.forEach((p, i) => g.appendChild(el('line', { x1: p[0], y1: p[1], x2: top[i][0], y2: top[i][1], stroke: FARBE.ink, 'stroke-width': 1, 'stroke-opacity': .5 }))); g.appendChild(poly(top, { fill: K, fo: .34 })); return g; };
+      svg.appendChild(drawPrisma());
+      const strip = el('g'); svg.appendChild(strip);
+      const zeige = frac => {
+        strip.innerHTML = '';
+        const x0 = 150, y0 = 70, hpx = hoehe * skala * 0.5;
+        let x = x0, gezeigt = U * frac, sum = 0;
+        for (const s of seiten) { const w = s * skala; const anteil = Math.max(0, Math.min(w, (gezeigt - sum) * skala)); if (anteil > 0) { strip.appendChild(el('rect', { x, y: y0, width: anteil, height: hpx, fill: K, 'fill-opacity': .3, stroke: FARBE.ink, 'stroke-width': 1 })); if (anteil >= w - 0.5) strip.appendChild(txt(x + w / 2, y0 + hpx + 13, s + '', { size: 10, farbe: FARBE.weich })); } x += w; sum += s; }
+        const M = U * hoehe;
+        if (st === 'A') info.innerHTML = frac >= .96 ? `Mantel = Umfang · Höhe = ${U} · ${hoehe} = <b>${M} cm²</b>` : `Mantel abrollen … Umfang = 3+4+5 = ${U}`;
+        else if (st === 'B') info.innerHTML = frac >= .96 ? `O = 2·G + Mantel = 2·6 + ${M} = <b>${12 + M} cm²</b>` : `erst der Mantel (${U}·${hoehe}) …`;
+        else info.innerHTML = frac >= .96 ? `Hypotenuse c = √(3²+4²) = 5 → Umfang 12 → Mantel = <b>${M} cm²</b>` : `fehlende Seite: c = √(3²+4²) = 5`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 8 · Zylindervolumen (KP-09) */
+  register({
+    id: 'zylinder', titel: 'Zylindervolumen: π·r²·h', bezug: 'KP-09',
+    kurz: 'A: V = π·r²·h · B: aus dem Durchmesser (r = d:2) · C: in Litern.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 300, 210, 'Zylinder füllt sich');
+      const cx = 150, topY = 30, rx = 60, ry = 16, hh = 140;
+      zyl(svg, cx, topY, rx, hh, ry, '#C8D2D8');
+      const clipId = 'zc' + Math.random().toString(36).slice(2, 6);
+      const defs = el('defs'); const cp = el('clipPath', { id: clipId }); cp.appendChild(el('rect', { x: cx - rx, y: topY, width: rx * 2, height: hh })); defs.appendChild(cp); svg.appendChild(defs);
+      const fuellG = el('g', { 'clip-path': `url(#${clipId})` }); svg.appendChild(fuellG);
+      const rr = st === 'B' ? 4 : 5, r_h = st === 'C' ? 3 : 10; const V = Math.PI * rr * rr * (st === 'C' ? 3 : 10);
+      const zeige = frac => {
+        fuellG.innerHTML = '';
+        const hpx = hh * frac; fuellG.appendChild(el('rect', { x: cx - rx, y: topY + hh - hpx, width: rx * 2, height: hpx, fill: K, 'fill-opacity': .45 }));
+        if (hpx > 4) fuellG.appendChild(el('ellipse', { cx, cy: topY + hh - hpx, rx, ry, fill: K, 'fill-opacity': .7 }));
+        const Vc = st === 'C' ? Math.PI * 4 * 3 : (st === 'B' ? Math.PI * 16 * 12 : Math.PI * 25 * 10);
+        if (st === 'A') info.innerHTML = frac >= .96 ? `V = π·r²·h = 3,14·5²·10 = <b>${fmt(Math.round(Vc))} cm³</b>` : `Kreisfläche π·r² mal Höhe stapeln …`;
+        else if (st === 'B') info.innerHTML = frac >= .96 ? `r = d:2 = 8:2 = 4 → V = 3,14·4²·12 = <b>${fmt(Math.round(Vc))} cm³</b>` : `erst r = d:2 = 4 …`;
+        else info.innerHTML = frac >= .96 ? `in dm rechnen: V = 3,14·2²·3 ≈ <b>37,7 dm³ = 37,7 l</b>` : `in dm → dm³ = Liter …`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 9 · Zylinderoberfläche: Mantel abwickeln (KP-10) */
+  register({
+    id: 'zylinderflaeche', titel: 'Zylinder-Oberfläche: Mantel abrollen', bezug: 'KP-10',
+    kurz: 'A: Mantel = 2·π·r · h · B: O = 2 Kreise + Mantel · C: offener Behälter.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 340, 200, 'Zylindermantel wird zu einem Rechteck abgerollt');
+      const cx = 70, topY = 40, rx = 30, ry = 10, hh = 100;
+      zyl(svg, cx, topY, rx, hh, ry, K);
+      const strip = el('g'); svg.appendChild(strip);
+      const r = 4, hZ = 10, U = 2 * 3.14 * r; // 25,12
+      const zeige = frac => {
+        strip.innerHTML = '';
+        const x0 = 120, y0 = 50, wMax = 190, w = wMax * frac, hpx = hh;
+        strip.appendChild(el('rect', { x: x0, y: y0, width: w, height: hpx, fill: K, 'fill-opacity': .3, stroke: FARBE.ink, 'stroke-width': 1.2 }));
+        if (frac > .2) strip.appendChild(txt(x0 + w / 2, y0 + hpx + 14, 'Umfang = 2·π·r = ' + fmt(U), { size: 10, farbe: FARBE.weich }));
+        if (st === 'B') { strip.appendChild(el('ellipse', { cx: x0 + 20, cy: y0 - 14, rx: 18, ry: 6, fill: K, 'fill-opacity': .5, stroke: FARBE.ink, 'stroke-width': 1 })); strip.appendChild(el('ellipse', { cx: x0 + w - 20, cy: y0 - 14, rx: 18, ry: 6, fill: K, 'fill-opacity': .5, stroke: FARBE.ink, 'stroke-width': 1 })); }
+        if (st === 'C') strip.appendChild(el('ellipse', { cx: x0 + 20, cy: y0 - 14, rx: 18, ry: 6, fill: K, 'fill-opacity': .5, stroke: FARBE.ink, 'stroke-width': 1 }));
+        const M = 2 * 3.14 * r * hZ, Kr = 3.14 * r * r;
+        if (st === 'A') info.innerHTML = frac >= .96 ? `Mantel = 2·π·r·h = ${fmt(U)}·${hZ} = <b>${fmt(Math.round(M * 10) / 10)} cm²</b>` : `Mantel abrollen → Rechteck (Umfang · Höhe)`;
+        else if (st === 'B') info.innerHTML = frac >= .96 ? `O = 2·π·r² + Mantel = 2·${fmt(Kr)} + ${fmt(M)} ≈ <b>${fmt(Math.round((2 * Kr + M) * 10) / 10)} cm²</b>` : `Mantel + 2 Deckkreise …`;
+        else info.innerHTML = frac >= .96 ? `offen oben: O = 1 Kreis + Mantel = ${fmt(Kr)} + ${fmt(M)} ≈ <b>${fmt(Math.round((Kr + M) * 10) / 10)} cm²</b>` : `offener Becher → nur 1 Kreis`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 10 · Zusammengesetzte Körper & Masse (KP-11) */
+  register({
+    id: 'zusammengesetzt', titel: 'Zusammengesetzte Körper', bezug: 'KP-11',
+    kurz: 'A: zerlegen und Volumen addieren · B: Masse = Volumen · Dichte · C: Hohlkörper (außen − innen).',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const G4 = window.ANIM._geo;
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 320, 210, 'Zusammengesetzter Körper');
+
+      if (st === 'C') {
+        // Hohlkörper: außen minus innen (Rohr, Querschnitt)
+        const zeige = frac => {
+          svg.innerHTML = '';
+          svg.appendChild(el('rect', { x: 90, y: 40, width: 140, height: 120, fill: K, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+          const iw = 90 * frac, ih = 70 * frac;
+          svg.appendChild(el('rect', { x: 160 - iw / 2, y: 100 - ih / 2, width: iw, height: ih, fill: '#FFFFFF', stroke: FARBE.korr, 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }));
+          info.innerHTML = frac >= .96 ? `V = V<tspan>außen</tspan> − V<tspan>innen</tspan> = 785 − 502,4 = <b>282,6 cm³</b>` : `innen aushöhlen …`;
+          info.innerHTML = frac >= .96 ? `V = außen − innen = 785 − 502,4 = <b>282,6 cm³</b>` : `innen aushöhlen …`;
+        };
+        zeige(REDUCED ? 1 : 0);
+        const loop = Loop(t => zeige(osz(t, 5)));
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      // A/B: Quader unten + Würfel oben, der abhebt
+      const zeige = frac => {
+        svg.innerHTML = '';
+        const t1 = G4.boxTeile(80, 150, 140, 44, 40, 26); G4.zeichneBox(svg, t1, K);
+        const lift = 40 * frac;
+        const t2 = G4.boxTeile(120, 128 - lift, 44, 44, 24, 24); G4.zeichneBox(svg, t2, FARBE.c);
+        if (st === 'A') info.innerHTML = frac >= .5 ? `V = Quader + Würfel = 32 + 8 = <b>40 cm³</b>` : `in Grundformen zerlegen …`;
+        else info.innerHTML = frac >= .5 ? `V = 50 cm³ · Dichte 7,8 g/cm³ → Masse = <b>390 g</b>` : `erst das Volumen, dann · Dichte …`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+})();
+
+/* ============================================================
+   animationen.js · Teil 5a — Lernbereich SK (Spitzkörper: Pyramide, Kegel, Kugel)
+   Schrägbild-Spitzkörper mit animierbaren Teilen. Helfer + Konzepte 1–5.
+   ============================================================ */
+(function () {
+  'use strict';
+  const I = window.ANIM._intern, GE = window.ANIM._geo;
+  const { Loop, steuerleiste, abzeichen, register, FARBE, STUFE_FARBE, fmt, osz, h, el, stufeVon, REDUCED } = I;
+  const { svgb, txt } = GE;
+
+  function poly(pts, o) { o = o || {}; return el('polygon', { points: pts.map(p => p.join(',')).join(' '), fill: o.fill || 'none', 'fill-opacity': o.fo != null ? o.fo : 1, stroke: o.stroke || FARBE.ink, 'stroke-width': o.sw || 1.5, 'stroke-linejoin': 'round', 'stroke-dasharray': o.dash || '' }); }
+  function line(x1, y1, x2, y2, o) { o = o || {}; return el('line', { x1, y1, x2, y2, stroke: o.farbe || FARBE.ink, 'stroke-width': o.sw || 1.5, 'stroke-dasharray': o.dash || '', 'stroke-opacity': o.op != null ? o.op : 1 }); }
+
+  /* Schrägbild-Pyramide (quadratische Grundfläche als Raute). */
+  function mkPyramide(parent, cx, cyB, bw, bd, H, K) {
+    const F = [cx, cyB + bd], R = [cx + bw, cyB], Ba = [cx, cyB - bd], L = [cx - bw, cyB], S = [cx, cyB - H], C = [cx, cyB];
+    parent.appendChild(poly([F, R, Ba, L], { fill: K, fo: .22, stroke: FARBE.ink, sw: 1.3 }));
+    // hintere Kanten gestrichelt
+    parent.appendChild(line(S[0], S[1], Ba[0], Ba[1], { dash: '4 3', op: .5 }));
+    parent.appendChild(line(S[0], S[1], L[0], L[1], { dash: '4 3', op: .5 }));
+    // vordere Kanten solide
+    parent.appendChild(line(S[0], S[1], F[0], F[1]));
+    parent.appendChild(line(S[0], S[1], R[0], R[1]));
+    return { F, R, Ba, L, S, C, mFR: [(F[0] + R[0]) / 2, (F[1] + R[1]) / 2] };
+  }
+  /* Schrägbild-Kegel. */
+  function mkKegel(parent, cx, cyB, rx, ry, H, K, opt) {
+    opt = opt || {};
+    const S = [cx, cyB - H], Lp = [cx - rx, cyB], Rp = [cx + rx, cyB], C = [cx, cyB];
+    if (opt.fill !== false) parent.appendChild(el('path', { d: `M${Lp[0]},${Lp[1]} L${S[0]},${S[1]} L${Rp[0]},${Rp[1]}`, fill: K, 'fill-opacity': .3, stroke: 'none' }));
+    parent.appendChild(el('ellipse', { cx, cy: cyB, rx, ry, fill: K, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.4 }));
+    parent.appendChild(line(Lp[0], Lp[1], S[0], S[1]));
+    parent.appendChild(line(Rp[0], Rp[1], S[0], S[1]));
+    return { S, Lp, Rp, C };
+  }
+  function mkKugel(parent, cx, cy, r, K) {
+    parent.appendChild(el('circle', { cx, cy, r, fill: K, 'fill-opacity': .28, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+    parent.appendChild(el('ellipse', { cx, cy, rx: r, ry: r * 0.32, fill: 'none', stroke: FARBE.ink, 'stroke-width': 1, 'stroke-dasharray': '3 3', 'stroke-opacity': .6 }));
+    return { C: [cx, cy], r };
+  }
+  function mkZyl(parent, cx, topY, rx, hh, ry, K) {
+    parent.appendChild(el('rect', { x: cx - rx, y: topY, width: rx * 2, height: hh, fill: K, 'fill-opacity': .18 }));
+    parent.appendChild(el('ellipse', { cx, cy: topY + hh, rx, ry, fill: K, 'fill-opacity': .35, stroke: FARBE.ink, 'stroke-width': 1.4 }));
+    parent.appendChild(el('path', { d: `M${cx - rx},${topY} V${topY + hh} M${cx + rx},${topY} V${topY + hh}`, stroke: FARBE.ink, 'stroke-width': 1.4, fill: 'none' }));
+    parent.appendChild(el('ellipse', { cx, cy: topY, rx, ry, fill: K, 'fill-opacity': .45, stroke: FARBE.ink, 'stroke-width': 1.4 }));
+  }
+  window.ANIM._geo2 = { poly, line, mkPyramide, mkKegel, mkKugel, mkZyl };
+
+  const rechtwinkel = (parent, px, py, dx1, dy1, dx2, dy2) => { const s = 8; parent.appendChild(el('path', { d: `M${px + dx1 * s},${py + dy1 * s} L${px + dx1 * s + dx2 * s},${py + dy1 * s + dy2 * s} L${px + dx2 * s},${py + dy2 * s}`, fill: 'none', stroke: FARBE.korr, 'stroke-width': 1.2 })); };
+
+  /* 1 · Pyramide kennenlernen (SK-01) */
+  register({
+    id: 'pyramide', titel: 'Die Pyramide: Teile benennen', bezug: 'SK-01',
+    kurz: 'A: Spitze, Grundfläche, Grundkante, Höhe · B: Höhe vs. Seitenhöhe · C: n-Eck-Pyramide (n Seiten, n+1 Flächen).',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+
+      if (st === 'C') {
+        const svg = svgb(o.breite || 320, 200, 'n-Eck-Pyramide');
+        const cx = 150, cyB = 150, rx = 60, ry = 22, S = [cx, 40];
+        const basis = el('polygon', { fill: K, 'fill-opacity': .25, stroke: FARBE.ink, 'stroke-width': 1.4 });
+        const kanten = el('g'); svg.appendChild(basis); svg.appendChild(kanten);
+        let n = 4;
+        const zeichne = () => {
+          const pts = [];
+          for (let i = 0; i < n; i++) { const a = -Math.PI / 2 + i * 2 * Math.PI / n; pts.push([cx + rx * Math.cos(a), cyB + ry * Math.sin(a)]); }
+          basis.setAttribute('points', pts.map(p => p.join(',')).join(' '));
+          kanten.innerHTML = '';
+          pts.forEach(p => kanten.appendChild(line(p[0], p[1], S[0], S[1], { op: .6 })));
+          info.innerHTML = `n = ${n}: <b>${n} Seitendreiecke</b> · Flächen n+1 = <b>${n + 1}</b>`;
+        };
+        zeichne();
+        const loop = Loop(t => { const nn = 3 + Math.floor(osz(t, 8) * 3.99); if (nn !== n) { n = nn; zeichne(); } });
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      const svg = svgb(o.breite || 300, 200, 'Pyramide');
+      const P = mkPyramide(svg, 150, 150, 75, 26, 110, K);
+      const mark = el('g'); svg.appendChild(mark);
+
+      if (st === 'B') {
+        // Höhe h (innen) vs Seitenhöhe s (auf der Fläche)
+        svg.appendChild(line(P.S[0], P.S[1], P.C[0], P.C[1], { farbe: FARBE.b, sw: 2.5 }));
+        svg.appendChild(txt(P.C[0] - 6, (P.S[1] + P.C[1]) / 2, 'h', { anchor: 'end', farbe: FARBE.b, weight: 700 }));
+        svg.appendChild(line(P.S[0], P.S[1], P.mFR[0], P.mFR[1], { farbe: FARBE.c, sw: 2.5 }));
+        svg.appendChild(txt(P.mFR[0] + 8, (P.S[1] + P.mFR[1]) / 2, 's', { anchor: 'start', farbe: FARBE.c, weight: 700 }));
+        info.innerHTML = `<b style="color:${FARBE.b}">Höhe h</b> steht innen senkrecht · <b style="color:${FARBE.c}">Seitenhöhe s</b> liegt auf der Fläche (s > h)`;
+        host.appendChild(svg); host.appendChild(info);
+        return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+      }
+
+      const teile = [
+        { txt: 'Spitze: der oberste Punkt', zeig: () => { mark.innerHTML = ''; mark.appendChild(el('circle', { cx: P.S[0], cy: P.S[1], r: 6, fill: FARBE.korr })); } },
+        { txt: 'Grundfläche: die Fläche unten', zeig: () => { mark.innerHTML = ''; mark.appendChild(poly([P.F, P.R, P.Ba, P.L], { fill: FARBE.korr, fo: .3 })); } },
+        { txt: 'Grundkante a: eine Kante der Grundfläche', zeig: () => { mark.innerHTML = ''; mark.appendChild(line(P.F[0], P.F[1], P.R[0], P.R[1], { farbe: FARBE.korr, sw: 4 })); } },
+        { txt: 'Höhe h: senkrecht zur Mitte', zeig: () => { mark.innerHTML = ''; mark.appendChild(line(P.S[0], P.S[1], P.C[0], P.C[1], { farbe: FARBE.korr, sw: 3 })); } }
+      ];
+      let pi = -1;
+      const loop = Loop(t => { const k = Math.floor(t / 1.6) % 4; if (k !== pi) { pi = k; teile[k].zeig(); info.innerHTML = teile[k].txt; } });
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); else { teile[0].zeig(); info.innerHTML = teile[0].txt; }
+      return loop;
+    }
+  });
+
+  /* 2 · Höhe/Seitenhöhe/Grundkante mit Pythagoras (SK-02) */
+  register({
+    id: 'pythpyr', titel: 'Pyramide: das rechtwinklige Dreieck', bezug: 'SK-02',
+    kurz: 'A: das Dreieck aus h, a:2 und s erkennen · B: s = √(h²+(a:2)²) · C: h oder a rückwärts.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+
+      if (st === 'A') {
+        const svg = svgb(o.breite || 300, 200, 'rechtwinkliges Dreieck in der Pyramide');
+        const P = mkPyramide(svg, 150, 150, 75, 26, 110, K);
+        // Dreieck S - C - mFR
+        svg.appendChild(el('path', { d: `M${P.S[0]},${P.S[1]} L${P.C[0]},${P.C[1]} L${P.mFR[0]},${P.mFR[1]} Z`, fill: FARBE.korr, 'fill-opacity': .18, stroke: FARBE.korr, 'stroke-width': 2 }));
+        svg.appendChild(txt(P.C[0] - 6, (P.S[1] + P.C[1]) / 2, 'h', { anchor: 'end', farbe: FARBE.b, weight: 700 }));
+        svg.appendChild(txt((P.C[0] + P.mFR[0]) / 2, P.C[1] + 14, 'a:2', { farbe: FARBE.a, weight: 700, size: 11 }));
+        svg.appendChild(txt((P.S[0] + P.mFR[0]) / 2 + 8, (P.S[1] + P.mFR[1]) / 2, 's', { anchor: 'start', farbe: FARBE.c, weight: 700 }));
+        rechtwinkel(svg, P.C[0], P.C[1], 0, -1, 1, 0);
+        info.innerHTML = `Katheten <b style="color:${FARBE.b}">h</b> und <b style="color:${FARBE.a}">a:2</b>, Hypotenuse <b style="color:${FARBE.c}">s</b>`;
+        host.appendChild(svg); host.appendChild(info);
+        return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+      }
+
+      // B/C: flaches rechtwinkliges Dreieck mit Zahlen
+      const svg = svgb(o.breite || 300, 170, 'Pythagoras am Dreieck');
+      const bekannt = st === 'B' ? { h: 4, a2: 3, s: 5, ges: 's' } : { h: 12, a2: 5, s: 13, ges: 'h' };
+      const Ox = 70, Oy = 130, sc = 9;
+      const A0 = [Ox, Oy], B0 = [Ox + bekannt.a2 * sc, Oy], Cc = [Ox, Oy - bekannt.h * sc];
+      const zeichne = () => {
+        svg.innerHTML = '';
+        svg.appendChild(el('path', { d: `M${A0} L${B0} L${Cc} Z`, fill: K, 'fill-opacity': .2, stroke: FARBE.ink, 'stroke-width': 1.6 }));
+        rechtwinkel(svg, A0[0], A0[1], 1, 0, 0, -1);
+        svg.appendChild(txt((A0[0] + B0[0]) / 2, A0[1] + 15, 'a:2 = ' + bekannt.a2, { farbe: FARBE.a, size: 11 }));
+        svg.appendChild(txt(A0[0] - 8, (A0[1] + Cc[1]) / 2, 'h = ' + bekannt.h, { anchor: 'end', farbe: FARBE.b, size: 11 }));
+        svg.appendChild(txt((B0[0] + Cc[0]) / 2 + 6, (B0[1] + Cc[1]) / 2 - 4, 's = ' + bekannt.s, { anchor: 'start', farbe: FARBE.c, size: 11 }));
+      };
+      zeichne();
+      info.innerHTML = st === 'B'
+        ? `s = √(h² + (a:2)²) = √(4² + 3²) = √25 = <b>5 cm</b>`
+        : `h = √(s² − (a:2)²) = √(13² − 5²) = √144 = <b>12 cm</b>`;
+      const loop = Loop(() => { }); const bar = steuerleiste(loop, { reset: false });
+      host.appendChild(svg); host.appendChild(info);
+      return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+    }
+  });
+
+  /* 3 · Volumen der Pyramide (SK-03) */
+  register({
+    id: 'volpyr', titel: 'Pyramidenvolumen: ⅓ · G · h', bezug: 'SK-03',
+    kurz: 'A: V = ⅓·G·h · B: quadratische Grundfläche · C: 3 Pyramiden füllen 1 Prisma.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+
+      if (st === 'C') {
+        const svg = svgb(o.breite || 300, 210, 'Drei Pyramiden füllen ein Prisma');
+        const t = GE.boxTeile(90, 60, 120, 120, 46, 46);
+        const clipId = 'pc' + Math.random().toString(36).slice(2, 6);
+        const defs = el('defs'); const cp = el('clipPath', { id: clipId }); cp.appendChild(el('path', { d: t.front })); defs.appendChild(cp); svg.appendChild(defs);
+        GE.zeichneBox(svg, t, '#C8D2D8');
+        const fuell = el('rect', { x: 90, y: 180, width: 120, height: 0, fill: K, 'fill-opacity': .5, 'clip-path': `url(#${clipId})` });
+        svg.appendChild(fuell);
+        const zeige = frac => {
+          const stufe3 = Math.min(3, Math.floor(frac * 3) + (frac >= 1 ? 0 : 1)); const f = Math.min(1, frac);
+          const hpx = 120 * f; fuell.setAttribute('y', 60 + 120 - hpx); fuell.setAttribute('height', hpx);
+          info.innerHTML = f >= .99 ? `3 Pyramiden = 1 Prisma → V = <b>⅓ · G · h</b>` : `Pyramide ${Math.min(3, Math.ceil(f * 3))} von 3 …`;
+        };
+        zeige(REDUCED ? 1 : 0);
+        const loop = Loop(t2 => zeige(osz(t2, 5)));
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      const svg = svgb(o.breite || 300, 200, 'Pyramide');
+      const P = mkPyramide(svg, 150, 155, 75, 26, 115, K);
+      const G = st === 'A' ? 30 : 36, hh = st === 'A' ? 6 : 10, a = 6;
+      const V = G * hh / 3;
+      info.innerHTML = st === 'A'
+        ? `V = ⅓ · G · h = (30 · 6) : 3 = <b>${V} cm³</b>`
+        : `G = a² = 6² = 36 → V = (36 · 10) : 3 = <b>${36 * 10 / 3} cm³</b>`;
+      const loop = Loop(t => { P.S && 0; });
+      const bar = steuerleiste(loop, { reset: false });
+      host.appendChild(svg); host.appendChild(info);
+      return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+    }
+  });
+
+  /* 4 · Oberfläche der Pyramide (SK-04) */
+  register({
+    id: 'obpyr', titel: 'Pyramiden-Oberfläche: Netz', bezug: 'SK-04',
+    kurz: 'A: ein Seitendreieck (a·s):2 · B: O = a² + 4 Dreiecke · C: erst s mit Pythagoras.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 300, 220, 'Netz der Pyramide');
+      const cx = 150, cy = 110, u = 30; // halbe Grundkante in px-Einheiten
+      // Grundquadrat + 4 Dreiecke
+      const sq = [[cx - u, cy - u], [cx + u, cy - u], [cx + u, cy + u], [cx - u, cy + u]];
+      const sh = 46; // Seitenhöhe in px
+      const drei = [
+        [sq[0], sq[1], [cx, cy - u - sh]],
+        [sq[1], sq[2], [cx + u + sh, cy]],
+        [sq[2], sq[3], [cx, cy + u + sh]],
+        [sq[3], sq[0], [cx - u - sh, cy]]
+      ];
+      const quad = poly(sq, { fill: K, fo: .3 }); svg.appendChild(quad);
+      const dreiEls = drei.map(d => { const e = poly(d, { fill: K, fo: .12 }); svg.appendChild(e); return e; });
+      const zeige = n => {
+        dreiEls.forEach((e, i) => e.setAttribute('fill-opacity', i < n ? .5 : .12));
+        if (st === 'A') info.innerHTML = `ein Seitendreieck: (a · s) : 2 = (6 · 5) : 2 = <b>15 cm²</b>`;
+        else if (st === 'B') info.innerHTML = n >= 4 ? `O = a² + 2·a·s = 36 + 60 = <b>96 cm²</b>` : `Grundfläche + ${n} von 4 Dreiecken …`;
+        else info.innerHTML = n >= 4 ? `s = √(h²+(a:2)²) = 5 → O = a² + 2·a·s = <b>96 cm²</b>` : `erst s = √(4²+3²) = 5 …`;
+      };
+      zeige(REDUCED ? 4 : 0);
+      const loop = Loop(t => zeige(1 + Math.floor((t % 5) / 1)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 5 · Rückwärts & gemischt (SK-05 / SK-09) */
+  register({
+    id: 'rueckwaerts', titel: 'Rückwärts & gemischt', bezug: 'SK-05',
+    kurz: 'A: Volumen oder Oberfläche? · B: fehlende Größe (h) aus dem Volumen · C: mehrschrittig.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 300, 200, 'Spitzkörper');
+
+      if (st === 'A') {
+        const P = mkPyramide(svg, 150, 150, 70, 24, 105, K);
+        const signale = [
+          { t: `„Wie viel passt hinein?“ → Rauminhalt → <b>Volumen</b>`, mark: () => svg.querySelectorAll('polygon') },
+          { t: `„Wie viel Material?“ → Außenhaut → <b>Oberfläche</b>`, mark: () => null }
+        ];
+        let pi = -1;
+        const loop = Loop(t => { const k = Math.floor(t / 2) % 2; if (k !== pi) { pi = k; info.innerHTML = signale[k].t; } });
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); else info.innerHTML = signale[0].t;
+        return loop;
+      }
+
+      // B/C: Höhe wächst, bis V den Zielwert erreicht (V=(a²·h)/3, a=5, Ziel 100 → h=12)
+      const a = 5, Vziel = 100, hziel = 3 * Vziel / (a * a);
+      const zeige = frac => {
+        svg.innerHTML = '';
+        const hakt = 1 + (hziel - 1) * frac; const Hpx = 12 * hakt;
+        mkPyramide(svg, 150, 165, 60, 22, Hpx, K);
+        const Vakt = a * a * hakt / 3;
+        info.innerHTML = st === 'B'
+          ? (frac >= .98 ? `h = 3·V : a² = 3·100 : 25 = <b>12 cm</b>` : `Volumen ${fmt(Math.round(Vakt))} / 100 cm³`)
+          : (frac >= .98 ? `erst h = 3·V:a² = 12, dann s = √(12²+2,5²) …` : `mehrschrittig: erst h aus V …`);
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+})();
+
+/* ============================================================
+   animationen.js · Teil 5b — SK-Konzepte 6–10
+   ============================================================ */
+(function () {
+  'use strict';
+  const I = window.ANIM._intern, GE = window.ANIM._geo, G2 = window.ANIM._geo2;
+  const { Loop, steuerleiste, abzeichen, register, FARBE, STUFE_FARBE, fmt, osz, h, el, stufeVon, REDUCED } = I;
+  const { svgb, txt } = GE; const { mkKegel, mkKugel, mkZyl, line, poly } = G2;
+  const rwk = (p, px, py, dx1, dy1, dx2, dy2) => { const s = 8; p.appendChild(el('path', { d: `M${px + dx1 * s},${py + dy1 * s} L${px + dx1 * s + dx2 * s},${py + dy1 * s + dy2 * s} L${px + dx2 * s},${py + dy2 * s}`, fill: 'none', stroke: FARBE.korr, 'stroke-width': 1.2 })); };
+
+  /* 6 · Kegel: Radius, Höhe, Mantellinie (SK-06) */
+  register({
+    id: 'kegel', titel: 'Der Kegel: r, h, s', bezug: 'SK-06',
+    kurz: 'A: benennen + rechtwinkliges Dreieck · B: s = √(r²+h²) · C: r oder h rückwärts.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+
+      if (st === 'A') {
+        const svg = svgb(o.breite || 300, 200, 'Kegel mit r, h, s');
+        const kg = mkKegel(svg, 150, 150, 65, 18, 115, K);
+        svg.appendChild(line(kg.C[0], kg.C[1], kg.S[0], kg.S[1], { farbe: FARBE.b, sw: 2.5 }));
+        svg.appendChild(line(kg.C[0], kg.C[1], kg.Rp[0], kg.Rp[1], { farbe: FARBE.a, sw: 2.5 }));
+        svg.appendChild(el('path', { d: `M${kg.S} L${kg.C} L${kg.Rp} Z`, fill: FARBE.korr, 'fill-opacity': .12, stroke: 'none' }));
+        svg.appendChild(txt(kg.C[0] - 6, (kg.S[1] + kg.C[1]) / 2, 'h', { anchor: 'end', farbe: FARBE.b, weight: 700 }));
+        svg.appendChild(txt((kg.C[0] + kg.Rp[0]) / 2, kg.C[1] + 14, 'r', { farbe: FARBE.a, weight: 700 }));
+        svg.appendChild(txt((kg.S[0] + kg.Rp[0]) / 2 + 8, (kg.S[1] + kg.Rp[1]) / 2, 's', { anchor: 'start', farbe: FARBE.c, weight: 700 }));
+        rwk(svg, kg.C[0], kg.C[1], 0, -1, 1, 0);
+        info.innerHTML = `Katheten <b style="color:${FARBE.a}">r</b> und <b style="color:${FARBE.b}">h</b>, Hypotenuse <b style="color:${FARBE.c}">s</b> (Mantellinie)`;
+        host.appendChild(svg); host.appendChild(info);
+        return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+      }
+      const svg = svgb(o.breite || 300, 170, 'Pythagoras am Kegel-Dreieck');
+      const bk = st === 'B' ? { r: 3, hh: 4, s: 5, } : { r: 5, hh: 12, s: 13 };
+      const Ox = 80, Oy = 130, sc = 8;
+      const A0 = [Ox, Oy], B0 = [Ox + bk.r * sc, Oy], Cc = [Ox, Oy - bk.hh * sc];
+      svg.appendChild(el('path', { d: `M${A0} L${B0} L${Cc} Z`, fill: K, 'fill-opacity': .2, stroke: FARBE.ink, 'stroke-width': 1.6 }));
+      rwk(svg, A0[0], A0[1], 1, 0, 0, -1);
+      svg.appendChild(txt((A0[0] + B0[0]) / 2, A0[1] + 15, 'r = ' + bk.r, { farbe: FARBE.a, size: 11 }));
+      svg.appendChild(txt(A0[0] - 8, (A0[1] + Cc[1]) / 2, 'h = ' + bk.hh, { anchor: 'end', farbe: FARBE.b, size: 11 }));
+      svg.appendChild(txt((B0[0] + Cc[0]) / 2 + 6, (B0[1] + Cc[1]) / 2 - 4, 's = ' + bk.s, { anchor: 'start', farbe: FARBE.c, size: 11 }));
+      info.innerHTML = st === 'B' ? `s = √(r²+h²) = √(3²+4²) = √25 = <b>5 cm</b>` : `h = √(s²−r²) = √(13²−5²) = √144 = <b>12 cm</b>`;
+      host.appendChild(svg); host.appendChild(info);
+      return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+    }
+  });
+
+  /* 7 · Volumen des Kegels (SK-07) */
+  register({
+    id: 'volkegel', titel: 'Kegelvolumen: ⅓·π·r²·h', bezug: 'SK-07',
+    kurz: 'A: V = ⅓·π·r²·h · B: aus dem Durchmesser · C: 3 Kegel füllen 1 Zylinder.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+
+      if (st === 'C') {
+        const svg = svgb(o.breite || 300, 210, 'Drei Kegel füllen einen Zylinder');
+        const cx = 150, topY = 30, rx = 60, ry = 16, hh = 150;
+        mkZyl(svg, cx, topY, rx, hh, ry, '#C8D2D8');
+        const clipId = 'kc' + Math.random().toString(36).slice(2, 6);
+        const defs = el('defs'); const cp = el('clipPath', { id: clipId }); cp.appendChild(el('rect', { x: cx - rx, y: topY, width: rx * 2, height: hh })); defs.appendChild(cp); svg.appendChild(defs);
+        const fuellG = el('g', { 'clip-path': `url(#${clipId})` }); svg.appendChild(fuellG);
+        const zeige = frac => {
+          fuellG.innerHTML = '';
+          const hpx = hh * frac; fuellG.appendChild(el('rect', { x: cx - rx, y: topY + hh - hpx, width: rx * 2, height: hpx, fill: K, 'fill-opacity': .45 }));
+          if (hpx > 4) fuellG.appendChild(el('ellipse', { cx, cy: topY + hh - hpx, rx, ry, fill: K, 'fill-opacity': .7 }));
+          info.innerHTML = frac >= .99 ? `3 Kegel = 1 Zylinder → V = <b>⅓·π·r²·h</b>` : `Kegel ${Math.min(3, Math.ceil(frac * 3))} von 3 …`;
+        };
+        zeige(REDUCED ? 1 : 0);
+        const loop = Loop(t => zeige(osz(t, 5)));
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      const svg = svgb(o.breite || 300, 200, 'Kegel');
+      mkKegel(svg, 150, 155, 60, 16, 120, K);
+      info.innerHTML = st === 'A'
+        ? `V = ⅓·π·r²·h = (3,14·5²·10):3 ≈ <b>261,7 cm³</b>`
+        : `r = d:2 = 6:2 = 3 → V = (3,14·3²·7):3 ≈ <b>65,9 cm³</b>`;
+      host.appendChild(svg); host.appendChild(info);
+      return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+    }
+  });
+
+  /* 8 · Oberfläche des Kegels: Mantel als Sektor (SK-08) */
+  register({
+    id: 'obkegel', titel: 'Kegel-Oberfläche: Mantel als Sektor', bezug: 'SK-08',
+    kurz: 'A: Mantel = π·r·s (abwickeln) · B: O = Grundkreis + Mantel · C: erst s mit Pythagoras.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 340, 200, 'Kegelmantel wird zu einem Kreissektor abgewickelt');
+      const r = 3, s = 5, R = 74, theta = (r / s) * 2 * Math.PI;
+      mkKegel(svg, 75, 130, 34, 10, 78, K);
+      const scx = 230, scy = 120;
+      const sektor = el('path', { fill: K, 'fill-opacity': .32, stroke: FARBE.ink, 'stroke-width': 1.4 }); svg.appendChild(sektor);
+      const grund = st !== 'A' ? el('circle', { cx: 75, cy: 130, r: 0, fill: 'none' }) : null;
+      const zeige = frac => {
+        const a0 = -Math.PI / 2, a1 = a0 + theta * frac;
+        const p0 = [scx + R * Math.cos(a0), scy + R * Math.sin(a0)];
+        const p1 = [scx + R * Math.cos(a1), scy + R * Math.sin(a1)];
+        const large = theta * frac > Math.PI ? 1 : 0;
+        sektor.setAttribute('d', `M${scx},${scy} L${p0[0]},${p0[1]} A${R},${R} 0 ${large} 1 ${p1[0]},${p1[1]} Z`);
+        const M = 3.14 * r * s, Kr = 3.14 * r * r;
+        if (st === 'A') info.innerHTML = frac >= .98 ? `Mantel = π·r·s = 3,14·3·5 = <b>${fmt(M)} cm²</b>` : `Mantel abrollen → Kreissektor (Radius s)`;
+        else if (st === 'B') info.innerHTML = frac >= .98 ? `O = π·r² + π·r·s = ${fmt(Kr)} + ${fmt(M)} = <b>${fmt(Math.round((Kr + M) * 100) / 100)} cm²</b>` : `Mantel + Grundkreis …`;
+        else info.innerHTML = frac >= .98 ? `s = √(r²+h²) zuerst, dann O = π·r·(r+s) = <b>${fmt(Math.round((Kr + M) * 100) / 100)} cm²</b>` : `erst s mit Pythagoras …`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 9 · Die Kugel (SK-10) */
+  register({
+    id: 'kugel', titel: 'Die Kugel: O und V', bezug: 'SK-10',
+    kurz: 'A: O = 4·π·r² · B: V = 4/3·π·r³ · C: in Sachaufgaben (aus d, Liter).',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 300, 190, 'Kugel mit Radius r');
+      const cx = 150, cy = 95, r = 68;
+      mkKugel(svg, cx, cy, r, K);
+      const rad = line(cx, cy, cx + r, cy, { farbe: FARBE.korr, sw: 2 }); svg.appendChild(rad);
+      svg.appendChild(txt(cx + r / 2, cy - 6, 'r', { farbe: FARBE.korr, weight: 700 }));
+      const loop = Loop(t => { const puls = 0.28 + 0.12 * osz(t, 2.5); svg.querySelector('circle').setAttribute('fill-opacity', puls); });
+      info.innerHTML = st === 'A'
+        ? `O = 4·π·r² = 4·3,14·5² = <b>314 cm²</b>`
+        : (st === 'B' ? `V = 4/3·π·r³ = (4·3,14·3³):3 ≈ <b>113,04 cm³</b>` : `r = d:2 zuerst; in dm rechnen → dm³ = <b>Liter</b>`);
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+  /* 10 · Zusammengesetzte Spitzkörper (SK-11) */
+  register({
+    id: 'zusammensk', titel: 'Zusammengesetzte Körper', bezug: 'SK-11',
+    kurz: 'A: Eistüte = Kegel + Halbkugel (zerlegen) · B: Silo = Zylinder + Kegel (addieren) · C: mehrschrittig.',
+    bauen(host, o) {
+      const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const info = h('div', 'anim-ables');
+      const svg = svgb(o.breite || 300, 220, 'Zusammengesetzter Körper');
+
+      if (st === 'A' || st === 'C') {
+        // Eistüte: Kegel (Spitze unten) + Halbkugel oben
+        const cx = 150, topY = 90, rx = 40, apex = 200;
+        const zeige = frac => {
+          svg.innerHTML = '';
+          // Waffel (Kegel nach unten)
+          svg.appendChild(el('path', { d: `M${cx - rx},${topY} L${cx},${apex} L${cx + rx},${topY}`, fill: K, 'fill-opacity': .3, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+          svg.appendChild(el('ellipse', { cx, cy: topY, rx, ry: 12, fill: K, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.4 }));
+          // Halbkugel, hebt ab
+          const lift = 60 * frac;
+          svg.appendChild(el('path', { d: `M${cx - rx},${topY - lift} A${rx},${rx} 0 0 1 ${cx + rx},${topY - lift} Z`, fill: FARBE.c, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+          info.innerHTML = frac >= .5
+            ? (st === 'A' ? `Eistüte = <b>Kegel + Halbkugel</b> — beide Volumen einzeln, dann addieren` : `mehrschrittig: erst h/s, dann Kegel + Halbkugel, dann addieren`)
+            : `in Grundkörper zerlegen …`;
+        };
+        zeige(REDUCED ? 1 : 0);
+        const loop = Loop(t => zeige(osz(t, 5)));
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      // B: Silo = Zylinder + Kegeldach
+      const cx = 150, topY = 90, rx = 46, ry = 14, hh = 90;
+      const zeige = frac => {
+        svg.innerHTML = '';
+        mkZyl(svg, cx, topY, rx, hh, ry, K);
+        const lift = 46 * frac;
+        svg.appendChild(el('path', { d: `M${cx - rx},${topY - lift} L${cx},${topY - 46 - lift} L${cx + rx},${topY - lift} Z`, fill: FARBE.c, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+        info.innerHTML = frac >= .5 ? `Silo: V = <b>Zylinder + Kegel</b> = 62,8 + 6,28 = <b>69,08 m³</b>` : `Dach abheben → Teile erkennen …`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
+    }
+  });
+
+})();

@@ -173,17 +173,26 @@ erreichbar, sagt die Seite das, statt stumm zu bleiben.
 
 ## Interaktive Animationen
 
-Die Anwendung enthält nun **20 interaktive Animationen** in jeweils drei
+Die Anwendung enthält jetzt **40 interaktive Animationen** in jeweils drei
 Niveaustufen:
 
 - 10 zu Prozent- und Zinsrechnung (`PZ-01` bis `PZ-13`, thematisch gebündelt)
 - 10 zu linearen Funktionen
+- 10 zu Körpern, Prismen und Zylindern (`KP-01` bis `KP-11`, thematisch gebündelt)
+- 10 zu Spitzkörpern (`SK-01` bis `SK-11`, thematisch gebündelt)
 
-Die PZ-Lernkarten verwenden 39 Animationsverweise: je eine Animation für die
-Pfade A, B und C in `PZ-01` bis `PZ-13`. `PZ-14` bleibt als gemischtes
-Prüfungstraining bewusst ohne eigene Animation. Die Galerie kann über
-`animationen.html?bereich=PZ` beziehungsweise `animationen.html?bereich=LF`
-gefiltert geöffnet werden.
+Die Lernkarten verwenden insgesamt **138 Animationsverweise**:
+
+- 39 in `PZ-01` bis `PZ-13`
+- 33 in den Einheiten zu linearen Funktionen
+- 33 in `KP-01` bis `KP-11`
+- 33 in `SK-01` bis `SK-11`
+
+`PZ-14`, `KP-12` und `SK-12` bleiben als gemischte Trainings-, Anwendungs-
+beziehungsweise Prüfungseinheiten bewusst ohne eigene Animation. Die Galerie
+kann über `animationen.html?bereich=PZ`, `animationen.html?bereich=LF`,
+`animationen.html?bereich=KP` oder `animationen.html?bereich=SK` gefiltert
+geöffnet werden.
 
 ## Starten
 

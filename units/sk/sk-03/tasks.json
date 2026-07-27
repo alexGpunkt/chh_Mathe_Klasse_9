@@ -27,13 +27,9 @@
         "Der Faktor ⅓ ist der ganze Unterschied zum Prisma."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "pyramide",
-        "labels": {
-          "a": "a",
-          "h": "h"
-        },
-        "alt": "Quadratische Pyramide mit Grundkante a und Höhe h."
+        "type": "animation",
+        "name": "volpyr",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Pyramide mit G = 30 cm², h = 6 cm. Volumen?",
@@ -62,7 +58,12 @@
         ],
         "ergebnis": "V = 120 cm³."
       },
-      "merke": "Quadratische Pyramide: V = (a² · h) : 3."
+      "merke": "Quadratische Pyramide: V = (a² · h) : 3.",
+      "visual": {
+        "type": "animation",
+        "name": "volpyr",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Sachaufgaben und Vergleich mit dem Prisma",
@@ -80,7 +81,12 @@
         ],
         "ergebnis": "Prisma 216 cm³, Pyramide 72 cm³ – ein Drittel."
       },
-      "merke": "Drei Pyramiden füllen ein Prisma gleicher Grundfläche und Höhe."
+      "merke": "Drei Pyramiden füllen ein Prisma gleicher Grundfläche und Höhe.",
+      "visual": {
+        "type": "animation",
+        "name": "volpyr",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

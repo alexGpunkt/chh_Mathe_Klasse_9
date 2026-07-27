@@ -29,14 +29,9 @@
         "Mantellinie s: die schräge Strecke von der Spitze zum Kreisrand. r, h und s bilden ein rechtwinkliges Dreieck."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "kegel",
-        "labels": {
-          "r": "r",
-          "h": "h",
-          "s": "s"
-        },
-        "alt": "Kegel mit Radius r, Höhe h und Mantellinie s."
+        "type": "animation",
+        "name": "kegel",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Welche drei Größen bilden beim Kegel das rechtwinklige Dreieck?",
@@ -57,14 +52,9 @@
         "Also s = √( r² + h² ). Erst quadrieren und addieren, dann die Wurzel."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "kegel",
-        "labels": {
-          "r": "r",
-          "h": "h",
-          "s": "s"
-        },
-        "alt": "Kegel mit dem rechtwinkligen Dreieck aus r, h und s."
+        "type": "animation",
+        "name": "kegel",
+        "stufe": "B"
       },
       "beispiel": {
         "aufgabe": "Kegel mit r = 3 cm, h = 4 cm. Berechne die Mantellinie s.",
@@ -93,7 +83,12 @@
         ],
         "ergebnis": "h = 12 cm."
       },
-      "merke": "h = √( s² − r² ),   r = √( s² − h² )."
+      "merke": "h = √( s² − r² ),   r = √( s² − h² ).",
+      "visual": {
+        "type": "animation",
+        "name": "kegel",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

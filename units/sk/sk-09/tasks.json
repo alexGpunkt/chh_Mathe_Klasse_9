@@ -35,7 +35,12 @@
         ],
         "ergebnis": "Volumen: V = (π · r² · h) : 3."
       },
-      "merke": "Erst Volumen/Oberfläche entscheiden, dann rechnen."
+      "merke": "Erst Volumen/Oberfläche entscheiden, dann rechnen.",
+      "visual": {
+        "type": "animation",
+        "name": "rueckwaerts",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Fehlende Höhe aus dem Volumen",
@@ -53,7 +58,12 @@
         ],
         "ergebnis": "h = 10 cm."
       },
-      "merke": "h = 3 · V : (π · r²)."
+      "merke": "h = 3 · V : (π · r²).",
+      "visual": {
+        "type": "animation",
+        "name": "rueckwaerts",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Mehrschrittige Kegelaufgaben",
@@ -71,7 +81,12 @@
         ],
         "ergebnis": "h = 4 cm, V ≈ 37,7 cm³."
       },
-      "merke": "Reihenfolge planen, Zwischenergebnisse festhalten, Plausibilität prüfen."
+      "merke": "Reihenfolge planen, Zwischenergebnisse festhalten, Plausibilität prüfen.",
+      "visual": {
+        "type": "animation",
+        "name": "rueckwaerts",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

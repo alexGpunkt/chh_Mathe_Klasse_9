@@ -28,13 +28,9 @@
         "Der Faktor ⅓ ist wie bei der Pyramide."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "kegel",
-        "labels": {
-          "r": "r",
-          "h": "h"
-        },
-        "alt": "Kegel mit Radius r und Höhe h."
+        "type": "animation",
+        "name": "volkegel",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Kegel mit r = 3 cm, h = 10 cm. Volumen (π ≈ 3,14)?",
@@ -63,7 +59,12 @@
         ],
         "ergebnis": "V ≈ 65,9 cm³."
       },
-      "merke": "Erst r = d : 2, dann V = (π · r² · h) : 3."
+      "merke": "Erst r = d : 2, dann V = (π · r² · h) : 3.",
+      "visual": {
+        "type": "animation",
+        "name": "volkegel",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "In Litern und Vergleich mit dem Zylinder",
@@ -81,7 +82,12 @@
         ],
         "ergebnis": "V ≈ 12,56 l (ein Drittel des Zylinders)."
       },
-      "merke": "Drei Kegel füllen einen Zylinder gleicher Grundfläche und Höhe."
+      "merke": "Drei Kegel füllen einen Zylinder gleicher Grundfläche und Höhe.",
+      "visual": {
+        "type": "animation",
+        "name": "volkegel",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

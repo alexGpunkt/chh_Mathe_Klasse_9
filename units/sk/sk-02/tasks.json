@@ -28,14 +28,9 @@
         "Die Seitenhöhe s verbindet Spitze und Kantenmitte – sie ist die schräge Seite (Hypotenuse) dieses Dreiecks."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "pyramide",
-        "labels": {
-          "a": "a",
-          "h": "h",
-          "s": "s"
-        },
-        "alt": "Pyramide mit dem rechtwinkligen Dreieck aus h, a:2 und s."
+        "type": "animation",
+        "name": "pythpyr",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Welche drei Größen bilden das rechtwinklige Dreieck?",
@@ -64,7 +59,12 @@
         ],
         "ergebnis": "s = 5 cm."
       },
-      "merke": "s = √( h² + (a:2)² )."
+      "merke": "s = √( h² + (a:2)² ).",
+      "visual": {
+        "type": "animation",
+        "name": "pythpyr",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Fehlende Größe (h oder a) berechnen",
@@ -82,7 +82,12 @@
         ],
         "ergebnis": "h = 12 cm."
       },
-      "merke": "h = √( s² − (a:2)² ). s ist stets die längste Seite."
+      "merke": "h = √( s² − (a:2)² ). s ist stets die längste Seite.",
+      "visual": {
+        "type": "animation",
+        "name": "pythpyr",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

@@ -28,14 +28,9 @@
         "Verwechsle s nicht mit der Höhe h – für den Mantel zählt die schräge Mantellinie."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "kegel",
-        "labels": {
-          "r": "r",
-          "s": "s",
-          "h": "h"
-        },
-        "alt": "Kegel mit Radius r und Mantellinie s."
+        "type": "animation",
+        "name": "obkegel",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Kegel mit r = 3 cm, s = 5 cm. Mantelfläche (π ≈ 3,14)?",
@@ -64,7 +59,12 @@
         ],
         "ergebnis": "O ≈ 75,36 cm²."
       },
-      "merke": "Kegel: O = π · r² + π · r · s = π · r · (r + s)."
+      "merke": "Kegel: O = π · r² + π · r · s = π · r · (r + s).",
+      "visual": {
+        "type": "animation",
+        "name": "obkegel",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Erst die Mantellinie mit Pythagoras",
@@ -82,7 +82,12 @@
         ],
         "ergebnis": "O ≈ 301,44 cm²."
       },
-      "merke": "Erst s = √( r² + h² ), dann O = π · r · (r + s)."
+      "merke": "Erst s = √( r² + h² ), dann O = π · r · (r + s).",
+      "visual": {
+        "type": "animation",
+        "name": "obkegel",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

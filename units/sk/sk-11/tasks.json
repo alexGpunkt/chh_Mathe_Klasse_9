@@ -36,7 +36,12 @@
         ],
         "ergebnis": "Kegel plus Halbkugel – beide Volumen addieren."
       },
-      "merke": "Zusammengesetzt: in Grundkörper zerlegen, Formeln zuordnen."
+      "merke": "Zusammengesetzt: in Grundkörper zerlegen, Formeln zuordnen.",
+      "visual": {
+        "type": "animation",
+        "name": "zusammensk",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Teilvolumen addieren",
@@ -54,7 +59,12 @@
         ],
         "ergebnis": "V ≈ 131,88 cm³."
       },
-      "merke": "Halbkugel = halbes Kugelvolumen; Teile addieren."
+      "merke": "Halbkugel = halbes Kugelvolumen; Teile addieren.",
+      "visual": {
+        "type": "animation",
+        "name": "zusammensk",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Mehrschrittige Anwendungsaufgaben",
@@ -72,7 +82,12 @@
         ],
         "ergebnis": "V ≈ 69,08 m³."
       },
-      "merke": "Erst fehlende Größen, dann Teilkörper, dann addieren."
+      "merke": "Erst fehlende Größen, dann Teilkörper, dann addieren.",
+      "visual": {
+        "type": "animation",
+        "name": "zusammensk",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

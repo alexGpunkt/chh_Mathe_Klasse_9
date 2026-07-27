@@ -35,7 +35,12 @@
         ],
         "ergebnis": "Volumen: V = (a² · h) : 3."
       },
-      "merke": "Erst Volumen/Oberfläche klären, dann Formel wählen."
+      "merke": "Erst Volumen/Oberfläche klären, dann Formel wählen.",
+      "visual": {
+        "type": "animation",
+        "name": "rueckwaerts",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Fehlende Größen aus Volumen oder Oberfläche",
@@ -53,7 +58,12 @@
         ],
         "ergebnis": "h = 12 cm."
       },
-      "merke": "h = 3·V : a²,   a = √(3·V : h)."
+      "merke": "h = 3·V : a²,   a = √(3·V : h).",
+      "visual": {
+        "type": "animation",
+        "name": "rueckwaerts",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Mehrschrittige gemischte Aufgaben",
@@ -71,7 +81,12 @@
         ],
         "ergebnis": "O = 360 cm²."
       },
-      "merke": "Reihenfolge planen: s zuerst, dann Fläche/Oberfläche."
+      "merke": "Reihenfolge planen: s zuerst, dann Fläche/Oberfläche.",
+      "visual": {
+        "type": "animation",
+        "name": "rueckwaerts",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

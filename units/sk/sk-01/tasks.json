@@ -29,14 +29,9 @@
         "Höhe h: der senkrechte Abstand von der Spitze zur Mitte der Grundfläche."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "pyramide",
-        "labels": {
-          "a": "a",
-          "h": "h",
-          "s": "s"
-        },
-        "alt": "Quadratische Pyramide mit Grundkante a, Höhe h und Seitenhöhe s."
+        "type": "animation",
+        "name": "pyramide",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Benenne bei einer quadratischen Pyramide die vier Grundbegriffe.",
@@ -57,14 +52,9 @@
         "Seitenhöhe s: die Höhe eines Seitendreiecks, gemessen auf der schrägen Außenfläche. s ist immer länger als h."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "pyramide",
-        "labels": {
-          "a": "a",
-          "h": "h",
-          "s": "s"
-        },
-        "alt": "Pyramide mit eingezeichneter Höhe h (innen) und Seitenhöhe s (außen)."
+        "type": "animation",
+        "name": "pyramide",
+        "stufe": "B"
       },
       "beispiel": {
         "aufgabe": "Welche Größe brauchst du für die Fläche eines Seitendreiecks – h oder s?",
@@ -93,7 +83,12 @@
         ],
         "ergebnis": "7 Flächen (6 Dreiecke + Grundfläche)."
       },
-      "merke": "n-Eck-Pyramide: n Seitendreiecke, n + 1 Flächen."
+      "merke": "n-Eck-Pyramide: n Seitendreiecke, n + 1 Flächen.",
+      "visual": {
+        "type": "animation",
+        "name": "pyramide",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
