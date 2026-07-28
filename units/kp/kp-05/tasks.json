@@ -27,14 +27,9 @@
         "Rechne zuerst das Produkt der bekannten Kanten aus, dann teile das Volumen dadurch."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "quader",
-        "labels": {
-          "a": "a",
-          "b": "b",
-          "c": "?"
-        },
-        "alt": "Quader, bei dem eine Kante gesucht ist."
+        "type": "animation",
+        "name": "kante",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "V = 60 cm³, a = 5 cm, b = 4 cm. Wie lang ist c?",
@@ -63,7 +58,12 @@
         ],
         "ergebnis": "Die Kante ist a = 4 cm."
       },
-      "merke": "Würfel: a = ∛V. Aus O: erst O : 6, dann √."
+      "merke": "Würfel: a = ∛V. Aus O: erst O : 6, dann √.",
+      "visual": {
+        "type": "animation",
+        "name": "kante",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Rückwärtsaufgaben begründen",
@@ -81,7 +81,12 @@
         ],
         "ergebnis": "a = 4 cm (durch Probe bestätigt)."
       },
-      "merke": "Formel notieren, umstellen, einsetzen, Probe machen."
+      "merke": "Formel notieren, umstellen, einsetzen, Probe machen.",
+      "visual": {
+        "type": "animation",
+        "name": "kante",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

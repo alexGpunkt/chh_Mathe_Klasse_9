@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v18-learningapps-develop';
+const VERSION = 'mathe9-v19-functional-fix-develop';
 
 const SCHALE = [
   './',

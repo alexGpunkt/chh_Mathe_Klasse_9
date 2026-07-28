@@ -27,12 +27,9 @@
         "Der Würfel hat 6 solche Quadrate, also O = 6 · a²."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "wuerfel",
-        "labels": {
-          "a": "a"
-        },
-        "alt": "Würfel mit Kante a."
+        "type": "animation",
+        "name": "oberflaeche",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Berechne die Oberfläche eines Würfels mit a = 5 cm.",
@@ -52,14 +49,9 @@
         "O = 2 · (a·b + a·c + b·c) – die drei Rechtecke einmal berechnen, verdoppeln, addieren."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "quader",
-        "labels": {
-          "a": "a",
-          "b": "b",
-          "c": "c"
-        },
-        "alt": "Quader mit Kanten a, b und c."
+        "type": "animation",
+        "name": "oberflaeche",
+        "stufe": "B"
       },
       "beispiel": {
         "aufgabe": "Quader mit a = 4 cm, b = 3 cm, c = 2 cm. Berechne O.",
@@ -88,7 +80,12 @@
         ],
         "ergebnis": "O = 3,4 m²."
       },
-      "merke": "Erst alle Längen gleichnamig, dann die Oberfläche berechnen."
+      "merke": "Erst alle Längen gleichnamig, dann die Oberfläche berechnen.",
+      "visual": {
+        "type": "animation",
+        "name": "oberflaeche",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

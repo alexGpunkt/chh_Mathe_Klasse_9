@@ -35,7 +35,12 @@
         ],
         "ergebnis": "Er fasst 1 Liter (1 dm³ = 1 l)."
       },
-      "merke": "² = Fläche, ³ = Volumen. 1 l = 1 dm³."
+      "merke": "² = Fläche, ³ = Volumen. 1 l = 1 dm³.",
+      "visual": {
+        "type": "animation",
+        "name": "einheiten",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Flächen ·100, Volumen ·1000 umrechnen",
@@ -53,7 +58,12 @@
         ],
         "ergebnis": "2 dm³ = 2000 cm³."
       },
-      "merke": "Längen ·10, Flächen ·100, Volumen ·1000 je Stufe."
+      "merke": "Längen ·10, Flächen ·100, Volumen ·1000 je Stufe.",
+      "visual": {
+        "type": "animation",
+        "name": "einheiten",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Zwischen l, dm³, cm³ und m³ wechseln",
@@ -70,7 +80,12 @@
         ],
         "ergebnis": "1,5 m³ = 1500 l."
       },
-      "merke": "1 l = 1 dm³, 1 m³ = 1000 l. Der Faktor 1000 kommt von 10³."
+      "merke": "1 l = 1 dm³, 1 m³ = 1000 l. Der Faktor 1000 kommt von 10³.",
+      "visual": {
+        "type": "animation",
+        "name": "einheiten",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {

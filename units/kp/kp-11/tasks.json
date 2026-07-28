@@ -36,7 +36,12 @@
         ],
         "ergebnis": "V = 40 cm³."
       },
-      "merke": "Zusammengesetzt: in Grundkörper zerlegen, Volumen addieren."
+      "merke": "Zusammengesetzt: in Grundkörper zerlegen, Volumen addieren.",
+      "visual": {
+        "type": "animation",
+        "name": "zusammengesetzt",
+        "stufe": "A"
+      }
     },
     "B": {
       "titel": "Masse über Volumen mal Dichte",
@@ -54,7 +59,12 @@
         ],
         "ergebnis": "Die Masse beträgt 390 g."
       },
-      "merke": "Masse = Volumen · Dichte (cm³ · g/cm³ = g)."
+      "merke": "Masse = Volumen · Dichte (cm³ · g/cm³ = g).",
+      "visual": {
+        "type": "animation",
+        "name": "zusammengesetzt",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Hohlkörper und Einheitenwechsel",
@@ -72,7 +82,12 @@
         ],
         "ergebnis": "Materialvolumen ≈ 282,6 cm³."
       },
-      "merke": "Hohlkörper: außen minus innen."
+      "merke": "Hohlkörper: außen minus innen.",
+      "visual": {
+        "type": "animation",
+        "name": "zusammengesetzt",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
