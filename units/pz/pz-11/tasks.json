@@ -561,5 +561,12 @@
         "W-PROZ"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Zinsrechnung: Begriffe und Formeln",
+      "url": "https://learningapps.org/watch.php?v=pbur6782j18",
+      "typ": "app"
+    }
   ]
 }

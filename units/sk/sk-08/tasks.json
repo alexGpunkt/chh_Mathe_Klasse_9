@@ -595,5 +595,12 @@
         "W-GEO"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Volumen und Oberfläche des Kegels",
+      "url": "https://learningapps.org/1418658",
+      "typ": "app"
+    }
   ]
 }

@@ -28,13 +28,9 @@
         "Mantel = U · h = 2 · π · r · h."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "zylinder",
-        "labels": {
-          "r": "r",
-          "h": "h"
-        },
-        "alt": "Zylinder; der Mantel lässt sich zu einem Rechteck abwickeln."
+        "type": "animation",
+        "name": "zylinderflaeche",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Zylinder mit r = 4 cm, h = 10 cm. Mantelfläche (π ≈ 3,14)?",
@@ -63,7 +59,12 @@
         ],
         "ergebnis": "O ≈ 351,7 cm²."
       },
-      "merke": "Zylinder: O = 2 · π · r² + 2 · π · r · h."
+      "merke": "Zylinder: O = 2 · π · r² + 2 · π · r · h.",
+      "visual": {
+        "type": "animation",
+        "name": "zylinderflaeche",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Offene Behälter richtig rechnen",
@@ -81,7 +82,12 @@
         ],
         "ergebnis": "O ≈ 179 cm² (nur 1 Kreis, weil oben offen)."
       },
-      "merke": "Offener Behälter: fehlenden Deckel nicht mitrechnen."
+      "merke": "Offener Behälter: fehlenden Deckel nicht mitrechnen.",
+      "visual": {
+        "type": "animation",
+        "name": "zylinderflaeche",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
@@ -524,6 +530,13 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Formeln: Oberfläche und Volumen von Prisma und Zylinder",
+      "url": "https://learningapps.org/383012",
+      "typ": "app"
     }
   ]
 }

@@ -709,5 +709,17 @@
         "W-TERM"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Steigung ablesen",
+      "url": "https://learningapps.org/view5452529",
+      "typ": "app"
+    },
+    {
+      "titel": "Bedeutung von Steigung und y-Achsenabschnitt",
+      "url": "https://learningapps.org/2145590",
+      "typ": "app"
+    }
   ]
 }

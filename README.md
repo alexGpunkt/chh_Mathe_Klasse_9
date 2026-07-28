@@ -194,6 +194,38 @@ kann über `animationen.html?bereich=PZ`, `animationen.html?bereich=LF`,
 `animationen.html?bereich=KP` oder `animationen.html?bereich=SK` gefiltert
 geöffnet werden.
 
+
+## Externe Übungen mit LearningApps
+
+Zu passenden Einheiten können zusätzliche Übungen über den Top-Level-Schlüssel
+`uebungslinks` in der jeweiligen `tasks.json` hinterlegt werden:
+
+```json
+"uebungslinks": [
+  {
+    "titel": "Steigung ablesen",
+    "url": "https://learningapps.org/view5452529",
+    "typ": "app"
+  },
+  {
+    "titel": "Sammlung „Lineare Funktionen“",
+    "url": "https://learningapps.org/user/…",
+    "typ": "sammlung"
+  }
+]
+```
+
+Die Einheitsseite zeigt daraus automatisch eine aufklappbare Karte
+**„Üben & Wiederholen · LearningApps“**. Zulässig sind ausschließlich
+HTTPS-Links zu `learningapps.org`; sie öffnen in einem neuen Tab. Fehlt
+`uebungslinks`, wird keine Karte angezeigt.
+
+Die Übersichtsseite `uebungen.html` gruppiert die Links nach PZ, LF, KP und SK.
+Auf der Startseite sowie im Entwicklermenü kann direkt zum gewählten
+Lernbereich gesprungen werden. Die LearningApps selbst sind externe,
+nutzergenerierte Inhalte und werden nicht offline gespeichert; die Links und
+die Übersichtsseite sind dagegen Teil des Offlinecaches.
+
 ## Starten
 
 **Auf GitHub Pages:** Repo pushen, unter *Settings → Pages* die Quelle auf
@@ -512,11 +544,11 @@ Rechner, an dem mehrere arbeiten, besser Kürzel als Klarnamen.
 ## Offline (`sw.js`)
 
 Das Schul-WLAN fällt aus, der Unterricht nicht. Der Service Worker cached alle
-84 Ressourcen. Das vollständige Projekt liegt bei rund 1 MB.
+91 lokalen Ressourcen. Das vollständige Projekt liegt bei rund 1 MB.
 
-- **JSON:** erst Netz, dann Cache. Korrekturen kommen an; fällt das Netz aus,
-  merkt niemand etwas.
-- **Schale (HTML/CSS/JS):** erst Cache (schnell), Auffrischung im Hintergrund.
+- **HTML/CSS/JS/JSON:** bei bestehender Verbindung zuerst die aktuelle Netzfassung,
+  offline Rückfall auf den vollständigen Cache. Dadurch werden keine alten und neuen
+  Skriptversionen gemischt.
 - Fremde Hosts (Google Fonts, Supabase) werden nie aus dem Cache bedient.
 
 **Nach jeder inhaltlichen Änderung `VERSION` in `sw.js` hochzählen.** Sonst

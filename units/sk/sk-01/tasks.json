@@ -541,5 +541,12 @@
         "W-GEO"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Eigenschaften von Körpern (Pyramide, Kegel, Zylinder …)",
+      "url": "https://learningapps.org/view1855042",
+      "typ": "app"
+    }
   ]
 }

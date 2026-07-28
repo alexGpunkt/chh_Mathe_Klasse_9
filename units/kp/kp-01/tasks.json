@@ -29,12 +29,9 @@
         "Zähle systematisch und immer in derselben Reihenfolge, damit du nichts doppelt oder gar nicht zählst."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "wuerfel",
-        "labels": {
-          "a": "a"
-        },
-        "alt": "Schrägbild eines Würfels."
+        "type": "animation",
+        "name": "koerper",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Wie viele Flächen, Kanten und Ecken hat ein Würfel?",
@@ -55,14 +52,9 @@
         "Der Mantel ist die Fläche rundherum zwischen den beiden Grundflächen. Im Netz liegt er als zusammenhängendes Rechteck (bzw. gebogenes Rechteck beim Zylinder) neben den Grundflächen."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "prisma",
-        "labels": {
-          "g": "g",
-          "hd": "h_d",
-          "h": "h"
-        },
-        "alt": "Schrägbild eines Dreiecksprismas mit Grundfläche und Länge."
+        "type": "animation",
+        "name": "koerper",
+        "stufe": "B"
       },
       "beispiel": {
         "aufgabe": "Beschreibe Grundfläche und Mantel eines Dreiecksprismas.",
@@ -91,7 +83,12 @@
         ],
         "ergebnis": "8 Flächen, 18 Kanten, 12 Ecken."
       },
-      "merke": "n-Eck-Prisma: n + 2 Flächen, 3n Kanten, 2n Ecken."
+      "merke": "n-Eck-Prisma: n + 2 Flächen, 3n Kanten, 2n Ecken.",
+      "visual": {
+        "type": "animation",
+        "name": "koerper",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
@@ -610,6 +607,18 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Eigenschaften von Körpern (Würfel, Quader, Prisma, Pyramide, Kegel, Zylinder)",
+      "url": "https://learningapps.org/1855042",
+      "typ": "app"
+    },
+    {
+      "titel": "Sammlung „Geometrische Körper“ (Lehrer-Ordner)",
+      "url": "https://learningapps.org/user/barbara%20007?displayfolder=105708",
+      "typ": "sammlung"
     }
   ]
 }

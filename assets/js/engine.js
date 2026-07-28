@@ -53,6 +53,7 @@ async function start() {
   Tracker.setContext({ page: S.daten.pruefung ? 'pruefung' : 'einheit', unit: S.daten.unit, path: S.pfad });
   kopfBauen();
   formelkarteBauen();
+  uebungskarteBauen();
   pfadSetzen(S.daten.pfad_fest || S.pfad);
 }
 
@@ -690,6 +691,83 @@ function formelkarteBauen() {
     k.saetze.forEach(s => ul.append(el('li', null, s)));
     i.append(ul);
   }
+}
+
+
+/* ---------- Externe Übungen (LearningApps) ----------
+   Datengetrieben aus tasks.json:
+   "uebungslinks": [
+     { "titel": "...", "url": "https://learningapps.org/...", "typ": "app"|"sammlung" }
+   ]
+   Fehlt der Schlüssel, bleibt die Karte vollständig ausgeblendet. */
+function uebungskarteBauen() {
+  const box = $('#uebungskarte');
+  const inhalt = $('#uebung-inhalt');
+  if (!box || !inhalt) return;
+
+  const liste = Array.isArray(S.daten.uebungslinks)
+    ? S.daten.uebungslinks
+    : [];
+
+  inhalt.innerHTML = '';
+  if (!liste.length) {
+    box.hidden = true;
+    return;
+  }
+
+  const gueltigeLinks = liste.map(eintrag => {
+    try {
+      const url = new URL(String(eintrag?.url || ''), location.href);
+      const istLearningApps =
+        url.protocol === 'https:' &&
+        (url.hostname === 'learningapps.org' ||
+         url.hostname.endsWith('.learningapps.org'));
+
+      if (!istLearningApps || !String(eintrag?.titel || '').trim()) return null;
+      return {
+        titel: String(eintrag.titel).trim(),
+        url: url.href,
+        typ: eintrag.typ === 'sammlung' ? 'sammlung' : 'app'
+      };
+    } catch {
+      return null;
+    }
+  }).filter(Boolean);
+
+  if (!gueltigeLinks.length) {
+    box.hidden = true;
+    return;
+  }
+
+  box.hidden = false;
+  inhalt.append(el(
+    'p',
+    'ua-hinweis',
+    'Interaktive Übungen auf LearningApps.org öffnen in einem neuen Tab. Die Inhalte sind nutzergeneriert – bitte vor dem Unterricht kurz prüfen.'
+  ));
+
+  const ul = el('ul', 'ua-liste');
+  gueltigeLinks.forEach(eintrag => {
+    const li = el('li');
+    const a = el('a', 'ua-link', eintrag.titel);
+    a.href = eintrag.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.addEventListener('click', () => {
+      Tracker.track('external_practice_open', {
+        provider: 'learningapps',
+        title: eintrag.titel,
+        link_type: eintrag.typ
+      });
+    });
+    li.append(a);
+
+    if (eintrag.typ === 'sammlung') {
+      li.append(el('span', 'ua-tag', 'Sammlung'));
+    }
+    ul.append(li);
+  });
+  inhalt.append(ul);
 }
 
 /* Auch dann starten, wenn dieses Skript erst nach DOMContentLoaded

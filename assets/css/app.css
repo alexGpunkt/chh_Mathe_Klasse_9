@@ -653,3 +653,103 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   overflow-wrap: anywhere;
 }
 
+/* ============================================================
+   Üben & Wiederholen · externe LearningApps
+   Die Karte ist bewusst nicht fixed, damit sie die Formelkarte nicht überlagert.
+   ============================================================ */
+
+.uebungskarte {
+  max-width: 688px;
+  margin: 4px auto 18px;
+  background: var(--paper-hi);
+  border: 1px solid #E1E6E9;
+  border-left: 4px solid var(--pfad);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.uebungskarte[hidden] { display: none; }
+
+.uebungskarte summary {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-family: var(--f-display);
+  font-weight: 700;
+  color: var(--ink);
+  list-style: none;
+}
+
+.uebungskarte summary::-webkit-details-marker { display: none; }
+.uebungskarte summary::after {
+  content: "▼";
+  margin-left: auto;
+  font-family: var(--f-num);
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+.uebungskarte[open] summary::after { content: "▲"; }
+
+.uebung-inhalt {
+  padding: 0 14px 14px;
+  border-top: 1px solid #EDF1F3;
+}
+
+.ua-hinweis {
+  margin: 12px 0 10px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.ua-liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+}
+
+.ua-liste li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ua-link {
+  color: var(--b);
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 1px solid transparent;
+  overflow-wrap: anywhere;
+}
+
+.ua-link:hover { border-bottom-color: var(--b); }
+.ua-link:focus-visible {
+  outline: 3px solid var(--pfad);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.ua-tag {
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--c);
+  background: var(--c-bg);
+  border-radius: 999px;
+  padding: 2px 7px;
+}
+
+@media (max-width: 720px) {
+  .uebungskarte { margin-left: 16px; margin-right: 16px; }
+}
+
+@media print {
+  .uebungskarte { display: none !important; }
+}
+

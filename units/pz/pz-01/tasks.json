@@ -612,5 +612,12 @@
         "W-BRUCH"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Prozentrechnung – Einführung",
+      "url": "https://learningapps.org/26815",
+      "typ": "app"
+    }
   ]
 }

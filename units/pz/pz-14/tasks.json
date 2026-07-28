@@ -551,5 +551,12 @@
         "W-PROZ"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Sammlung „Prozent“ (Kategorie Mathematik)",
+      "url": "https://learningapps.org/index.php?category=2&subcategory=1253",
+      "typ": "sammlung"
+    }
   ]
 }

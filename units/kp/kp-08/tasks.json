@@ -28,14 +28,9 @@
         "Mantel = Umfang der Grundfläche · Höhe."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "prisma",
-        "labels": {
-          "g": "g",
-          "hd": "h_d",
-          "h": "h"
-        },
-        "alt": "Dreiecksprisma; der Mantel besteht aus Rechtecken."
+        "type": "animation",
+        "name": "mantelprisma",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Dreiecksgrundfläche mit Seiten 3, 4, 5 cm, Höhe h = 10 cm. Mantel?",
@@ -64,7 +59,12 @@
         ],
         "ergebnis": "O = 132 cm²."
       },
-      "merke": "Prisma: O = 2 · Grundfläche + Mantel."
+      "merke": "Prisma: O = 2 · Grundfläche + Mantel.",
+      "visual": {
+        "type": "animation",
+        "name": "mantelprisma",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Fehlende Dreiecksseite mit Pythagoras",
@@ -81,7 +81,12 @@
         ],
         "ergebnis": "Die dritte Seite (Hypotenuse) ist 10 cm."
       },
-      "merke": "Rechtwinklig: c = √(a² + b²) für die Hypotenuse."
+      "merke": "Rechtwinklig: c = √(a² + b²) für die Hypotenuse.",
+      "visual": {
+        "type": "animation",
+        "name": "mantelprisma",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
@@ -550,6 +555,18 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Prismen – Oberfläche, Volumen, Umkehraufgaben",
+      "url": "https://learningapps.org/12769288",
+      "typ": "app"
+    },
+    {
+      "titel": "Formeln: Oberfläche und Volumen von Prisma und Zylinder",
+      "url": "https://learningapps.org/383012",
+      "typ": "app"
     }
   ]
 }

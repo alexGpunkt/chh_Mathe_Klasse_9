@@ -641,5 +641,17 @@
         "W-FKT"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Lineare Funktionen – Das Wissensquiz",
+      "url": "https://learningapps.org/view3846001",
+      "typ": "app"
+    },
+    {
+      "titel": "Sammlung „Lineare Funktionen“ (Lehrer-Ordner)",
+      "url": "https://learningapps.org/user/mbraun&displayfolder=514302&bookmark=1",
+      "typ": "sammlung"
+    }
   ]
 }

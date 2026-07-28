@@ -28,14 +28,9 @@
         "Volumen: V = G · h, wobei h die Länge des Prismas ist."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "prisma",
-        "labels": {
-          "g": "g",
-          "hd": "h_d",
-          "h": "h"
-        },
-        "alt": "Dreiecksprisma mit Grundseite g, Dreieckshöhe h_d und Länge h."
+        "type": "animation",
+        "name": "prisma",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "g = 8 cm, h_d = 3 cm, Länge h = 12 cm. Volumen?",
@@ -64,7 +59,12 @@
         ],
         "ergebnis": "V = 150 cm³."
       },
-      "merke": "Trapez: G = (a + c) : 2 · h_d, dann V = G · h."
+      "merke": "Trapez: G = (a + c) : 2 · h_d, dann V = G · h.",
+      "visual": {
+        "type": "animation",
+        "name": "prisma",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Zusammengesetzte Prismen und Sachaufgaben",
@@ -82,7 +82,12 @@
         ],
         "ergebnis": "V = 240 m³."
       },
-      "merke": "In Teilprismen zerlegen, Volumen addieren."
+      "merke": "In Teilprismen zerlegen, Volumen addieren.",
+      "visual": {
+        "type": "animation",
+        "name": "prisma",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
@@ -528,6 +533,13 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Prismen – Oberfläche, Volumen, Umkehraufgaben",
+      "url": "https://learningapps.org/12769288",
+      "typ": "app"
     }
   ]
 }

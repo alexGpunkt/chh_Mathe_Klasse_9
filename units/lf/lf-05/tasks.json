@@ -604,5 +604,12 @@
         "W-FKT"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Bedeutung von Steigung und y-Achsenabschnitt",
+      "url": "https://learningapps.org/2145590",
+      "typ": "app"
+    }
   ]
 }

@@ -560,5 +560,12 @@
         "W-PROZ"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Prozentrechnung: verminderter und vermehrter Grundwert",
+      "url": "https://learningapps.org/view7892631",
+      "typ": "app"
+    }
   ]
 }

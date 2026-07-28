@@ -559,5 +559,17 @@
         "W-BRUCH"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Übungen zur Prozentrechnung (Wertepaare verbinden)",
+      "url": "https://learningapps.org/view4404641",
+      "typ": "app"
+    },
+    {
+      "titel": "Prozentrechnung (Übungssammlung in Reihenfolge)",
+      "url": "https://learningapps.org/view14890616",
+      "typ": "app"
+    }
   ]
 }

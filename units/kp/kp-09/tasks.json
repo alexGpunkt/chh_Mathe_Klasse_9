@@ -28,13 +28,9 @@
         "Volumen: V = π · r² · h = Grundfläche · Höhe."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "zylinder",
-        "labels": {
-          "r": "r",
-          "h": "h"
-        },
-        "alt": "Zylinder mit Radius r und Höhe h."
+        "type": "animation",
+        "name": "zylinder",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Zylinder mit r = 5 cm, h = 10 cm. Volumen (π ≈ 3,14)?",
@@ -55,13 +51,9 @@
         "Erst r bestimmen, dann V = π · r² · h. Häufiger Fehler: den Durchmesser statt des Radius quadrieren."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "zylinder",
-        "labels": {
-          "r": "r",
-          "h": "h"
-        },
-        "alt": "Zylinder; gegeben ist der Durchmesser."
+        "type": "animation",
+        "name": "zylinder",
+        "stufe": "B"
       },
       "beispiel": {
         "aufgabe": "Dose mit d = 8 cm, h = 12 cm. Volumen (π ≈ 3,14)?",
@@ -90,7 +82,12 @@
         ],
         "ergebnis": "V ≈ 226 l."
       },
-      "merke": "In dm rechnen → dm³ = Liter."
+      "merke": "In dm rechnen → dm³ = Liter.",
+      "visual": {
+        "type": "animation",
+        "name": "zylinder",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
@@ -550,6 +547,13 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Formeln: Oberfläche und Volumen von Prisma und Zylinder",
+      "url": "https://learningapps.org/383012",
+      "typ": "app"
     }
   ]
 }

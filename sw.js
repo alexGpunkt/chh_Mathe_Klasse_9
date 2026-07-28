@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v17-sk-animationen-develop';
+const VERSION = 'mathe9-v18-learningapps-develop';
 
 const SCHALE = [
   './',
@@ -19,6 +19,7 @@ const SCHALE = [
   'arbeitsblatt.html',
   'matrix.html',
   'animationen.html',
+  'uebungen.html',
   'dashboard/index.html',
   'dashboard/dashboard.css',
   'dashboard/dashboard.js',

@@ -897,5 +897,12 @@
         "W-FKT"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Lineare Funktionen – Graphen und Gleichungen zuordnen",
+      "url": "https://learningapps.org/view16465351",
+      "typ": "app"
+    }
   ]
 }

@@ -572,5 +572,22 @@
         "W-PROZ"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Prozent – Grundbegriffe zuordnen (G, W, p %)",
+      "url": "https://learningapps.org/view12455937",
+      "typ": "app"
+    },
+    {
+      "titel": "Welche Werte der Prozentrechnung sind gegeben?",
+      "url": "https://learningapps.org/2110414",
+      "typ": "app"
+    },
+    {
+      "titel": "Nach Grundwert, Prozentwert und Prozentsatz ordnen",
+      "url": "https://learningapps.org/11886636",
+      "typ": "app"
+    }
   ]
 }

@@ -87,6 +87,33 @@ bauen(host, opts){ const st = stufeVon(opts); … } })`-Block anlegen und in
 `bauen` auf `st` ('A'|'B'|'C') verzweigen. Sie erscheint dann automatisch in
 der Galerie (mit Umschalter) und ist sofort über ihren `name` einbindbar.
 
+
+## Externe Übungen: LearningApps
+
+Zusätzliche externe Übungsangebote werden datengetrieben über den
+Top-Level-Schlüssel `uebungslinks` in einer `tasks.json` eingebunden:
+
+```json
+"uebungslinks": [
+  { "titel": "Steigung ablesen", "url": "https://learningapps.org/view5452529", "typ": "app" },
+  { "titel": "Sammlung „Lineare Funktionen“", "url": "https://learningapps.org/user/…", "typ": "sammlung" }
+]
+```
+
+`engine.js` erzeugt daraus mit `uebungskarteBauen()` eine aufklappbare Karte
+auf der Einheitsseite. Der Renderer akzeptiert nur HTTPS-Adressen von
+`learningapps.org`, setzt `target="_blank"` und `rel="noopener noreferrer"`
+und protokolliert das Öffnen als `external_practice_open`.
+
+Die Seite `uebungen.html` enthält eine nach PZ, LF, KP und SK gegliederte
+Gesamtübersicht. Sie verwendet denselben Schülerlogin und dasselbe
+Entwicklermenü wie die übrigen Schülerseiten. Das Entwicklermenü bietet
+zusätzlich den Knopf „LearningApps“ für den aktuell ausgewählten Lernbereich.
+
+Die externen Inhalte selbst werden nicht vom Service Worker gespeichert.
+`uebungen.html`, die Einheitsdaten und der dazugehörige Code liegen jedoch
+im lokalen Offlinecache.
+
 ## Branch-Hinweis
 
 Diese Fassung ist für den Test im Branch `develop` vorbereitet. In

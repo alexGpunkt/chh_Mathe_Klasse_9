@@ -28,14 +28,9 @@
         "Das Volumen ist V = G · h – so viele Schichten der Grundfläche, wie der Körper hoch ist."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "prisma",
-        "labels": {
-          "g": "g",
-          "hd": "h_d",
-          "h": "h"
-        },
-        "alt": "Dreiecksprisma mit Grundfläche und Höhe h."
+        "type": "animation",
+        "name": "prisma",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Ein Prisma hat die Grundfläche G = 12 cm² und die Höhe h = 5 cm. Volumen?",
@@ -56,14 +51,9 @@
         "Trapez: G = (a + c) : 2 · h_d. Danach immer V = G · h."
       ],
       "visual": {
-        "type": "koerper",
-        "form": "prisma",
-        "labels": {
-          "g": "g",
-          "hd": "h_d",
-          "h": "h"
-        },
-        "alt": "Dreiecksprisma; die Grundfläche ist ein Dreieck."
+        "type": "animation",
+        "name": "prisma",
+        "stufe": "B"
       },
       "beispiel": {
         "aufgabe": "Dreiecksprisma: g = 6 cm, h_d = 4 cm, Länge h = 10 cm. Volumen?",
@@ -92,7 +82,12 @@
         ],
         "ergebnis": "V = 200 cm³."
       },
-      "merke": "Grundfläche in Teilflächen zerlegen, addieren, dann V = G · h."
+      "merke": "Grundfläche in Teilflächen zerlegen, addieren, dann V = G · h.",
+      "visual": {
+        "type": "animation",
+        "name": "prisma",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
@@ -532,6 +527,13 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Das Prisma – Eigenschaften, Oberfläche, Volumen",
+      "url": "https://learningapps.org/15751424",
+      "typ": "app"
     }
   ]
 }

@@ -597,5 +597,12 @@
         "W-GEO"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Volumen und Oberfläche einer Pyramide",
+      "url": "https://learningapps.org/1362557",
+      "typ": "app"
+    }
   ]
 }

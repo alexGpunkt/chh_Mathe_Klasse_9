@@ -502,5 +502,12 @@
         "W-GEO"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Suche „Oberfläche“ (Mathematik)",
+      "url": "https://learningapps.org/index.php?s=Oberfläche",
+      "typ": "sammlung"
+    }
   ]
 }
