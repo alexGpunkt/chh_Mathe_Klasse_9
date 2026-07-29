@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v20-external-exercises-develop';
+const VERSION = 'mathe9-v22-book-mode-develop';
 
 const SCHALE = [
   './',
@@ -29,6 +29,7 @@ const SCHALE = [
   'spiral/plan.json',
   'assets/css/app.css',
   'assets/css/anim.css',
+  'assets/css/buch.css',
   'assets/js/store.js',
   'assets/js/supabase-config.js',
   'assets/js/student-login.js',
@@ -36,6 +37,7 @@ const SCHALE = [
   'assets/js/animationen.js',
   'assets/js/tracker.js',
   'assets/js/engine.js',
+  'assets/js/buch.js',
   'assets/js/spiral.js',
   'assets/js/pruefung.js',
   'assets/js/arbeitsblatt.js',

@@ -583,35 +583,37 @@ hilft niemandem. Mit dem Feld sagt sie, **welcher Denkfehler** passiert ist,
 und das Dashboard kann auszählen, welcher Fehler in der Klasse gehäuft
 auftritt.
 
-Im Pool werden **253 verschiedene IDs** in Aufgaben verwendet. Die häufigsten:
+Im Pool werden **253 verschiedene Fehlvorstellungs-IDs** in Aufgaben verwendet.
+In den Warm-up-Pools kommen 63 verschiedene IDs vor; über Aufgaben und Warm-up
+zusammen werden 269 unterschiedliche IDs verwendet. Die häufigsten Aufgaben-IDs:
 
-| | ID | Bedeutung |
-|---|---|---|
-| 30× | `faktor_drittel_vergessen` | Pyramide oder Kegel wie ein Prisma bzw. Zylinder berechnet |
+| Häufigkeit | ID | Bedeutung |
+|---:|---|---|
 | 30× | `bei_1prozent_gestoppt` | 1 % gerechnet, letzten Schritt vergessen |
+| 30× | `faktor_drittel_vergessen` | Pyramide oder Kegel wie ein Prisma bzw. Zylinder berechnet |
 | 29× | `geteilt_vertauscht` | Division in der falschen Richtung ausgeführt |
 | 22× | `mal_statt_geteilt` | Grundwertaufgabe wie Prozentwertaufgabe gerechnet |
 | 21× | `vorzeichen_fehlt` | negatives Vorzeichen beim Funktionsterm übersehen |
 | 16× | `grundflaeche_vergessen` | bei der Oberfläche eine Grundfläche ausgelassen |
-| 11× | `komma_verschoben` | Faktor 10 daneben (2,5 % als 25 % gerechnet) |
-| 9× | `rest_statt_teil` | Gegenanteil angegeben |
-| 9× | `zeitfaktor_vergessen` | Jahreszinsen statt Monatszinsen |
-| 8× | `neuer_als_grundwert` | bei Veränderungen durch den neuen Wert geteilt |
-| 7× | `proportional_gerechnet` | Zuordnungsart nicht geprüft |
-| 7× | `einfacher_zins` | Zinseszins übersehen |
+| 15× | `mal_100_vergessen` | Dezimalzahl nicht in Prozent umgerechnet |
+| 15× | `nur_teil_berechnet` | nur einen benötigten Teilwert berechnet |
+| 14× | `bei_einheit_gestoppt` | beim Dreisatz nach dem Wert für eine Einheit aufgehört |
+| 12× | `komma_verschoben` | Dezimalkomma um die falsche Stellenzahl verschoben |
+| 12× | `dreieck_halbe_vergessen` | Faktor 1/2 bei der Dreiecksfläche vergessen |
+| 12× | `radius_nicht_quadriert` | Radius in einer Kreisformel nicht quadriert |
 
-28 IDs kommen nur einmal vor. Das ist Absicht: Sie gehören zu einzelnen
-Begründungsaufgaben, wo der Denkfehler wirklich einmalig ist
-(`bank_zahlt_mehr`, `monotonie_reicht`, `name_missverstanden`). Für alles,
-was mehrfach vorkommt, gilt: **dieselbe ID verwenden** — sonst lässt sich
-nichts auszählen.
+**128 IDs kommen nur einmal vor.** Das ist bei stark spezialisierten
+Begründungs- und Diagnoseaufgaben erwartbar. Wiederkehrende Denkfehler sollten
+dagegen stets dieselbe ID verwenden, damit das Dashboard sie zuverlässig
+bündeln kann.
 
 ## Tracking einschalten
 
-In `assets/js/tracker.js` oben `url`, `key` und `aktiv: true` setzen. Ohne
-Konfiguration läuft alles normal weiter, die Ereignisse landen nur in der
-Konsole. Ereignisse werden 3 Sekunden gesammelt und dann gebündelt gesendet —
-sonst erzeugt eine Klasse mit 28 Geräten zu viele Einzelrequests.
+Die Verbindung wird zentral in `assets/js/supabase-config.js` konfiguriert:
+`url`, `anonKey` und `enabled: true`. `tracker.js` übernimmt diese Werte
+automatisch. Ohne aktive Konfiguration läuft die Lernanwendung weiter; Ereignisse
+werden dann nicht an Supabase gesendet. Netzfehler landen zunächst in einer
+lokalen Warteschlange und werden später erneut übertragen.
 
 Gesendet wird pro Antwort:
 
@@ -622,8 +624,9 @@ Gesendet wird pro Antwort:
   "student": "…", "ts": "…" }
 ```
 
-Der Schülername wird aus `localStorage['mathe9.name']` gelesen — setze ihn
-über dein vorhandenes Namens-Modal, nicht über `prompt()`.
+Die Schüleridentität wird aus `localStorage['mathe9.student']` gelesen. Der
+Datensatz enthält insbesondere `student_id`, Anzeigename und Klassencode und wird
+vom Schülerlogin beziehungsweise im Develop-Modus vom Testschüler-Bypass gesetzt.
 
 ## Mobile
 
@@ -636,6 +639,20 @@ Der Schülername wird aus `localStorage['mathe9.name']` gelesen — setze ihn
   Aufgabe zu verlassen
 - `prefers-reduced-motion` wird respektiert
 - Druckansicht (`@media print`) zeigt die Aufgaben ohne Tipps
+
+### Buchähnliche Navigation auf Einheitenseiten
+
+`einheit.html` lädt zusätzlich `assets/css/buch.css` und
+`assets/js/buch.js`. Der Modus zeigt immer nur eine Einheit als vertikal
+scrollbare Lernseite und ergänzt große Zurück-/Weiter-Schaltflächen, eine
+Buchpositionsanzeige, ein Inhaltsverzeichnis, Seitensprung und lokale
+Lesezeichen. Auf Smartphones wird nur eine dezente Seitwärtsbewegung verwendet;
+der angedeutete 3-D-Blättereffekt beginnt erst ab 820 px.
+
+Die Buchnavigation greift nicht in die Aufgaben-Engine ein. Die beiden
+Buchdateien sind im Service Worker vorab gecacht. Layoutverschiebungen werden
+erst aktiviert, nachdem `units/index.json` erfolgreich geladen und die aktuelle
+Einheit darin gefunden wurde.
 
 ## Fonts
 

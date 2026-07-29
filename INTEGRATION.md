@@ -125,3 +125,37 @@ Diese Fassung ist für den Test im Branch `develop` vorbereitet. In
 `assets/js/supabase-config.js` steht daher `devMode: true`. Vor einem
 Pull Request nach `master` muss der Wert wieder auf `false` gesetzt und die
 Cache-Version in `sw.js` erneut erhöht werden.
+
+## V21 · Geprüfte Zusammenführung des neuen Anpassungspakets
+
+Das erneut bereitgestellte Anpassungspaket wurde dateiweise mit V20 verglichen.
+Es enthielt keine zusätzliche Datei und keine noch nicht integrierte Funktion,
+sondern überwiegend ältere Varianten bereits vorhandener Systemdateien.
+Deshalb wurden keine Regressionen übernommen. Erhalten bleiben insbesondere:
+
+- vollständige Entwicklernavigation inklusive Lehrerdashboard,
+- `devMode: true` im Branch `develop`,
+- 40 Animationen und 138 gültige Animationsverweise,
+- sicherer Visualisierungs-Fallback und robuste Wortspeicher-Markierung,
+- HTTPS-Allowlist und Quellenprüfung für externe Übungen,
+- korrigierte LearningApps-Sammlungsadressen,
+- Network-first-Aktualisierung mit vollständigem Offline-Rückfall.
+
+Zusätzlich wurden veraltete Statistik- und Trackingangaben im README korrigiert.
+Die Cache-Version lautet `mathe9-v21-verified-merge-develop`.
+
+
+## V22 · Mobil optimierter Buchmodus
+
+Die Einheitenseite erhielt eine gekapselte Buchnavigation mit 54 Einheitsseiten,
+Inhaltsverzeichnis, Seitensprung, Lesezeichen und reduzierter Umblätteranimation.
+Die bestehende Aufgaben-Engine blieb unverändert. Bei der Integration wurden
+folgende Punkte gegenüber dem Anpassungspaket korrigiert:
+
+- auf V21 aufgebaut, ohne README- und Dokumentationsregressionen,
+- eindeutige neue Cache-Version `mathe9-v22-book-mode-develop`,
+- `buch.css` und `buch.js` vollständig in den Offlinecache aufgenommen,
+- Überlagerung zwischen Formelkarte und Buchnavigation inklusive Safe Area behoben,
+- Layout nur bei erfolgreich initialisiertem Buchmodus aktiviert,
+- Dialogfokus, Tastaturbedienung und `aria-current` verbessert,
+- Lesezeichenspeicher gegen ungültige lokale Daten abgesichert.
