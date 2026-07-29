@@ -536,7 +536,14 @@
     {
       "titel": "Formeln: Oberfläche und Volumen von Prisma und Zylinder",
       "url": "https://learningapps.org/383012",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Zylinder – Artikel mit Aufgaben",
+      "url": "https://de.serlo.org/mathe/1555/zylinder",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ]
 }

@@ -539,7 +539,14 @@
     {
       "titel": "Prismen – Oberfläche, Volumen, Umkehraufgaben",
       "url": "https://learningapps.org/12769288",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Prisma – Artikel mit Aufgabenordner",
+      "url": "https://de.serlo.org/mathe/1625/prisma",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ]
 }

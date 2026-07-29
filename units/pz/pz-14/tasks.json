@@ -556,7 +556,20 @@
     {
       "titel": "Sammlung „Prozent“ (Kategorie Mathematik)",
       "url": "https://learningapps.org/index.php?category=2&subcategory=1253",
-      "typ": "sammlung"
+      "typ": "sammlung",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben zur Prozentrechnung (gemischt)",
+      "url": "https://de.serlo.org/mathe/23869/aufgaben-zur-prozentrechnung",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)",
+      "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
+      "typ": "sammlung",
+      "quelle": "ZUM"
     }
   ]
 }

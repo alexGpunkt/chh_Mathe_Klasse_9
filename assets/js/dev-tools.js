@@ -397,7 +397,7 @@
         <div class="m9-dev-actions">
           <button type="button" class="primary" data-open-unit>Einheit öffnen</button>
           <button type="button" data-open-animations>Animationen</button>
-          <button type="button" data-open-exercises>LearningApps</button>
+          <button type="button" data-open-exercises>Externe Übungen</button>
           <a href="${appUrl('index.html')}">Gesamtübersicht</a>
           <a href="${appUrl('dashboard/')}">Lehrerdashboard</a>
         </div>

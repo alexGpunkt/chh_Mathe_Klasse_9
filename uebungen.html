@@ -1,140 +1,222 @@
 <!DOCTYPE html>
+
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#15233A">
-<title>Üben &amp; Wiederholen · LearningApps · Mathe 9</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#15233A" name="theme-color"/>
+<title>Üben &amp; Wiederholen · Externe Übungen · Mathe 9</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/app.css" rel="stylesheet"/>
 <style>
   .ua-seite { max-width: 900px; margin: 0 auto; padding: 0 16px 40px; }
-  .ua-intro { color: var(--ink-soft); font-size: 15px; line-height: 1.5; margin: 0 0 20px; max-width: 62ch; }
+  .ua-intro { color: var(--ink-soft); font-size: 15px; line-height: 1.5; margin: 0 0 16px; max-width: 64ch; }
+  .ua-legende { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
   .ua-bereich { margin: 22px 0; }
   .ua-bereich-titel { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 20px; font-weight: 800; color: var(--ink); margin: 0 0 8px; padding-left: 10px; border-left: 5px solid var(--b); }
   .ua-thema { font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 14px; font-weight: 700; color: var(--b); margin: 14px 0 4px; }
-  .ua-seite .ua-liste { display: grid; gap: 6px; margin: 0 0 6px; padding-left: 4px; }
-  .ua-seite .ua-liste li { font-size: 15px; }
+  .ua-seite .ua-liste { display: grid; gap: 7px; margin: 0 0 6px; padding-left: 4px; }
+  .ua-seite .ua-liste li { font-size: 15px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
 </style>
 </head>
 <body>
 <header class="kopf">
-  <div class="kopf-zeile">
-    <a class="zurueck" href="index.html" aria-label="Zurück zur Übersicht">←</a>
-    <div>
-      <div class="einheit-code">ÜBEN &amp; WIEDERHOLEN</div>
-      <h1 class="einheit-titel">Interaktive LearningApps</h1>
-    </div>
-  </div>
+<div class="kopf-zeile">
+<a aria-label="Zurück zur Übersicht" class="zurueck" href="index.html">←</a>
+<div>
+<div class="einheit-code">ÜBEN &amp; WIEDERHOLEN</div>
+<h1 class="einheit-titel">Externe interaktive Übungen</h1>
+</div>
+</div>
 </header>
 <main class="ua-seite">
-  <p class="ua-intro">
-    Passende interaktive Übungen auf <b>LearningApps.org</b> zu den vier Lernbereichen – zum
-    Wiederholen und Festigen. Die Apps öffnen in einem neuen Tab. Dieselben Links erscheinen auch
-    direkt in den Einheiten unter „Üben &amp; Wiederholen“. <b>Hinweis:</b> LearningApps sind
-    nutzergenerierte Inhalte – Qualität und Umfang schwanken; bitte jede App vor dem Einsatz kurz
-    prüfen. Einträge mit „Sammlung“ sind Ordner bzw. Suchergebnisse mit mehreren Apps.
+<p class="ua-intro">
+    Passende kostenlose Übungen zu den vier Lernbereichen – zum Wiederholen und Festigen, geordnet
+    nach Bereich, Thema und Quelle. Alle öffnen in einem neuen Tab. Dieselben Links erscheinen auch
+    direkt in den Einheiten unter „Üben &amp; Wiederholen“. <b>Hinweis:</b> Die Inhalte stammen von
+    externen Plattformen und sind teils nutzergeneriert – Qualität und Verfügbarkeit können schwanken;
+    bitte vor dem Einsatz kurz prüfen. Einträge mit „Sammlung“ bündeln mehrere Übungen.
   </p>
+<div class="ua-legende">
+<span class="ua-q ua-q-learningapps">LearningApps</span>
+<span class="ua-q ua-q-serlo">Serlo (CC BY-SA)</span>
+<span class="ua-q ua-q-h5p">H5P / Bildungsserver</span>
+<span class="ua-q ua-q-learningsnacks">Learningsnacks</span>
+<span class="ua-q ua-q-quizlet">Quizlet</span>
+<span class="ua-q ua-q-zum">ZUM</span>
+</div>
 <section class="ua-bereich" id="pz">
-  <h2 class="ua-bereich-titel" style="border-color:var(--a)">PZ · Prozent- und Zinsrechnung</h2>
-  <h3 class="ua-thema">Grundbegriffe: Grundwert, Prozentwert, Prozentsatz</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/view12455937" target="_blank" rel="noopener noreferrer">Prozent – Grundbegriffe zuordnen (G, W, p %)</a></li>
-    <li><a class="ua-link" href="https://learningapps.org/2110414" target="_blank" rel="noopener noreferrer">Welche Werte der Prozentrechnung sind gegeben?</a></li>
-    <li><a class="ua-link" href="https://learningapps.org/11886636" target="_blank" rel="noopener noreferrer">Nach Grundwert, Prozentwert und Prozentsatz ordnen</a></li>
-  </ul>
-  <h3 class="ua-thema">Anteile &amp; Einführung (Bruch – Dezimalzahl – Prozent)</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/26815" target="_blank" rel="noopener noreferrer">Prozentrechnung – Einführung</a></li>
-  </ul>
-  <h3 class="ua-thema">Prozentwert / Prozentsatz / Grundwert berechnen</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/view4404641" target="_blank" rel="noopener noreferrer">Übungen zur Prozentrechnung (Wertepaare verbinden)</a></li>
-    <li><a class="ua-link" href="https://learningapps.org/view14890616" target="_blank" rel="noopener noreferrer">Prozentrechnung (Übungssammlung in Reihenfolge)</a></li>
-  </ul>
-  <h3 class="ua-thema">Vermehrter und verminderter Grundwert</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/view7892631" target="_blank" rel="noopener noreferrer">Prozentrechnung: verminderter und vermehrter Grundwert</a></li>
-  </ul>
-  <h3 class="ua-thema">Dreisatz / proportionale und antiproportionale Zuordnungen</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/view2505509" target="_blank" rel="noopener noreferrer">Dreisatz (proportionale Zuordnung) 1</a></li>
-    <li><a class="ua-link" href="https://learningapps.org/15408891" target="_blank" rel="noopener noreferrer">Dreisatz (antiproportionale Zuordnung) 1</a></li>
-  </ul>
-  <h3 class="ua-thema">Zinsrechnung</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/watch.php?v=pbur6782j18" target="_blank" rel="noopener noreferrer">Zinsrechnung: Begriffe und Formeln</a></li>
-  </ul>
-  <h3 class="ua-thema">Sammlung</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/index.php?category=2&amp;subcategory=1253" target="_blank" rel="noopener noreferrer">Sammlung „Prozent“ (Kategorie Mathematik)</a><span class="ua-tag">Sammlung</span></li>
-  </ul>
+<h2 class="ua-bereich-titel" style="border-color:var(--a)">PZ · Prozent- und Zinsrechnung</h2>
+<h3 class="ua-thema">Grundbegriffe: Grundwert, Prozentwert, Prozentsatz</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view12455937" rel="noopener noreferrer" target="_blank">Prozent – Grundbegriffe zuordnen (G, W, p %)</a></li>
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/2110414" rel="noopener noreferrer" target="_blank">Welche Werte der Prozentrechnung sind gegeben?</a></li>
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/11886636" rel="noopener noreferrer" target="_blank">Nach Grundwert, Prozentwert und Prozentsatz ordnen</a></li>
+</ul>
+<h3 class="ua-thema">Anteile &amp; Einführung (Bruch – Dezimalzahl – Prozent)</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/26815" rel="noopener noreferrer" target="_blank">Prozentrechnung – Einführung</a></li>
+</ul>
+<h3 class="ua-thema">Prozentwert / Prozentsatz / Grundwert berechnen</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view4404641" rel="noopener noreferrer" target="_blank">Übungen zur Prozentrechnung (Wertepaare verbinden)</a></li>
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view14890616" rel="noopener noreferrer" target="_blank">Prozentrechnung (Übungssammlung in Reihenfolge)</a></li>
+</ul>
+<h3 class="ua-thema">Vermehrter und verminderter Grundwert</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view7892631" rel="noopener noreferrer" target="_blank">Prozentrechnung: verminderter und vermehrter Grundwert</a></li>
+</ul>
+<h3 class="ua-thema">Dreisatz / proportionale und antiproportionale Zuordnungen</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view2505509" rel="noopener noreferrer" target="_blank">Dreisatz (proportionale Zuordnung) 1</a></li>
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/15408891" rel="noopener noreferrer" target="_blank">Dreisatz (antiproportionale Zuordnung) 1</a></li>
+</ul>
+<h3 class="ua-thema">Zinsrechnung</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/watch.php?v=pbur6782j18" rel="noopener noreferrer" target="_blank">Zinsrechnung: Begriffe und Formeln</a></li>
+</ul>
+<h3 class="ua-thema">Sammlung</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/index.php?category=2&amp;subcategory=1253" rel="noopener noreferrer" target="_blank">Sammlung „Prozent“ (Kategorie Mathematik)</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
+<h3 class="ua-thema">Serlo – Aufgaben mit Lösungsweg</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/174189/aufgaben-zur-berechnung-von-prozentwert-grundwert-und-prozentsatz" rel="noopener noreferrer" target="_blank">Aufgaben: Prozentwert, Grundwert und Prozentsatz berechnen</a></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/23869/aufgaben-zur-prozentrechnung" rel="noopener noreferrer" target="_blank">Aufgaben zur Prozentrechnung (gemischt)</a></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/38066/%C3%BCbersicht" rel="noopener noreferrer" target="_blank">Anwendungen &amp; Vertiefung der Prozentrechnung (inkl. Zinsen)</a></li>
+</ul>
+<h3 class="ua-thema">H5P / Landesbildungsserver</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-h5p">H5P</span> <a class="ua-link" data-provider="h5p" href="https://www.schule-bw.de/faecher-und-schularten/mathematisch-naturwissenschaftliche-faecher/mathematik/unterrichtsmaterialien/sekundarstufe1/zahl/prozent/links/hotpotproz" rel="noopener noreferrer" target="_blank">Interaktive Zuordnungsübungen zum Prozentrechnen (Dreisatz)</a></li>
+</ul>
+<h3 class="ua-thema">Learningsnacks – Wiederholung im Chat-Format</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningsnacks">Learningsnacks</span> <a class="ua-link" data-provider="learningsnacks" href="https://www.learningsnacks.de/share/57694" rel="noopener noreferrer" target="_blank">Grundlagen Zinsrechnung</a></li>
+</ul>
+<h3 class="ua-thema">ZUM / H5P – gemischte Sammlung</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-zum">ZUM</span> <a class="ua-link" data-provider="zum" href="https://projekte.zum.de/wiki/Kategorie:H5P" rel="noopener noreferrer" target="_blank">ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
 </section>
 <section class="ua-bereich" id="lf">
-  <h2 class="ua-bereich-titel" style="border-color:var(--b)">LF · Lineare Funktionen</h2>
-  <h3 class="ua-thema">Steigung und y-Achsenabschnitt</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/view5452529" target="_blank" rel="noopener noreferrer">Steigung ablesen</a></li>
-    <li><a class="ua-link" href="https://learningapps.org/2145590" target="_blank" rel="noopener noreferrer">Bedeutung von Steigung und y-Achsenabschnitt</a></li>
-  </ul>
-  <h3 class="ua-thema">Graph und Gleichung zuordnen</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/view16465351" target="_blank" rel="noopener noreferrer">Lineare Funktionen – Graphen und Gleichungen zuordnen</a></li>
-  </ul>
-  <h3 class="ua-thema">Gemischte Wiederholung</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/view3846001" target="_blank" rel="noopener noreferrer">Lineare Funktionen – Das Wissensquiz</a></li>
-  </ul>
-  <h3 class="ua-thema">Sammlung (Nullstellen, Schnittpunkte, Basics)</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/user/mbraun&amp;displayfolder=514302&amp;bookmark=1" target="_blank" rel="noopener noreferrer">Sammlung „Lineare Funktionen“ (Lehrer-Ordner)</a><span class="ua-tag">Sammlung</span></li>
-  </ul>
+<h2 class="ua-bereich-titel" style="border-color:var(--b)">LF · Lineare Funktionen</h2>
+<h3 class="ua-thema">Steigung und y-Achsenabschnitt</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view5452529" rel="noopener noreferrer" target="_blank">Steigung ablesen</a></li>
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/2145590" rel="noopener noreferrer" target="_blank">Bedeutung von Steigung und y-Achsenabschnitt</a></li>
+</ul>
+<h3 class="ua-thema">Graph und Gleichung zuordnen</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view16465351" rel="noopener noreferrer" target="_blank">Lineare Funktionen – Graphen und Gleichungen zuordnen</a></li>
+</ul>
+<h3 class="ua-thema">Gemischte Wiederholung</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view3846001" rel="noopener noreferrer" target="_blank">Lineare Funktionen – Das Wissensquiz</a></li>
+</ul>
+<h3 class="ua-thema">Sammlung (Nullstellen, Schnittpunkte, Basics)</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/user/mbraun?displayfolder=514302&amp;bookmark=1" rel="noopener noreferrer" target="_blank">Sammlung „Lineare Funktionen“ (Lehrer-Ordner)</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
+<h3 class="ua-thema">Serlo – Aufgaben mit Lösungsweg</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/31911/aufgaben-zu-linearen-funktionen-als-geraden-im-koordinatensystem" rel="noopener noreferrer" target="_blank">Aufgaben: Geraden im Koordinatensystem (Steigung, y-Abschnitt)</a></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/174384/aufgaben-zu-geradengleichungen-nullstellen-und-schnittpunkten" rel="noopener noreferrer" target="_blank">Aufgaben: Geradengleichungen, Nullstellen und Schnittpunkte</a></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/55235/gemischte-aufgaben-zu-linearen-funktionen-geraden" rel="noopener noreferrer" target="_blank">Gemischte Aufgaben zu linearen Funktionen</a></li>
+</ul>
+<h3 class="ua-thema">H5P – interaktive Grundlagen</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-h5p">H5P</span> <a class="ua-link" data-provider="h5p" href="https://h5p.org/h5p/embed/154407" rel="noopener noreferrer" target="_blank">Einführung lineare Funktionen (H5P)</a></li>
+<li><span class="ua-q ua-q-h5p">H5P</span> <a class="ua-link" data-provider="h5p" href="https://h5p.org/h5p/embed/143883" rel="noopener noreferrer" target="_blank">Lineare Funktionen – Grundlagen (H5P)</a></li>
+</ul>
+<h3 class="ua-thema">Learningsnacks – Wiederholung im Chat-Format</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningsnacks">Learningsnacks</span> <a class="ua-link" data-provider="learningsnacks" href="https://www.learningsnacks.de/share/65120" rel="noopener noreferrer" target="_blank">Wiederholung: Lineare Funktionen</a></li>
+<li><span class="ua-q ua-q-learningsnacks">Learningsnacks</span> <a class="ua-link" data-provider="learningsnacks" href="https://www.learningsnacks.de/share/121056" rel="noopener noreferrer" target="_blank">Lineare Funktionen – Punktprobe</a></li>
+</ul>
+<h3 class="ua-thema">ZUM – Lernpfad (Sachkontext)</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-zum">ZUM</span> <a class="ua-link" data-provider="zum" href="https://unterrichten.zum.de/wiki/Lineare_Funktionen_im_Aktiv-Urlaub" rel="noopener noreferrer" target="_blank">Lernpfad „Lineare Funktionen im Aktiv-Urlaub“</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
+<h3 class="ua-thema">ZUM / H5P – gemischte Sammlung</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-zum">ZUM</span> <a class="ua-link" data-provider="zum" href="https://projekte.zum.de/wiki/Kategorie:H5P" rel="noopener noreferrer" target="_blank">ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
 </section>
 <section class="ua-bereich" id="kp">
-  <h2 class="ua-bereich-titel" style="border-color:var(--c)">KP · Würfel, Quader, Prisma, Zylinder</h2>
-  <h3 class="ua-thema">Körper erkennen und benennen</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/1855042" target="_blank" rel="noopener noreferrer">Eigenschaften von Körpern (Würfel, Quader, Prisma, Pyramide, Kegel, Zylinder)</a></li>
-  </ul>
-  <h3 class="ua-thema">Volumen Würfel / Quader</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/2347385" target="_blank" rel="noopener noreferrer">Volumen vom Quader berechnen!</a></li>
-  </ul>
-  <h3 class="ua-thema">Prisma – Oberfläche und Volumen</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/15751424" target="_blank" rel="noopener noreferrer">Das Prisma – Eigenschaften, Oberfläche, Volumen</a></li>
-    <li><a class="ua-link" href="https://learningapps.org/12769288" target="_blank" rel="noopener noreferrer">Prismen – Oberfläche, Volumen, Umkehraufgaben</a></li>
-  </ul>
-  <h3 class="ua-thema">Formeln Prisma &amp; Zylinder</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/383012" target="_blank" rel="noopener noreferrer">Formeln: Oberfläche und Volumen von Prisma und Zylinder</a></li>
-  </ul>
-  <h3 class="ua-thema">Sammlungen</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/index.php?s=Oberfläche" target="_blank" rel="noopener noreferrer">Suche „Oberfläche“ (Mathematik)</a><span class="ua-tag">Sammlung</span></li>
-    <li><a class="ua-link" href="https://learningapps.org/user/barbara%20007?displayfolder=105708" target="_blank" rel="noopener noreferrer">Sammlung „Geometrische Körper“ (Lehrer-Ordner)</a><span class="ua-tag">Sammlung</span></li>
-  </ul>
+<h2 class="ua-bereich-titel" style="border-color:var(--c)">KP · Würfel, Quader, Prisma, Zylinder</h2>
+<h3 class="ua-thema">Körper erkennen und benennen</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/1855042" rel="noopener noreferrer" target="_blank">Eigenschaften von Körpern (Würfel, Quader, Prisma, Pyramide, Kegel, Zylinder)</a></li>
+</ul>
+<h3 class="ua-thema">Volumen Würfel / Quader</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/2347385" rel="noopener noreferrer" target="_blank">Volumen vom Quader berechnen!</a></li>
+</ul>
+<h3 class="ua-thema">Prisma – Oberfläche und Volumen</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/15751424" rel="noopener noreferrer" target="_blank">Das Prisma – Eigenschaften, Oberfläche, Volumen</a></li>
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/12769288" rel="noopener noreferrer" target="_blank">Prismen – Oberfläche, Volumen, Umkehraufgaben</a></li>
+</ul>
+<h3 class="ua-thema">Formeln Prisma &amp; Zylinder</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/383012" rel="noopener noreferrer" target="_blank">Formeln: Oberfläche und Volumen von Prisma und Zylinder</a></li>
+</ul>
+<h3 class="ua-thema">Sammlungen</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/index.php?s=Oberfläche" rel="noopener noreferrer" target="_blank">Suche „Oberfläche“ (Mathematik)</a> <span class="ua-tag">Sammlung</span></li>
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/user/barbara%20007?displayfolder=105708" rel="noopener noreferrer" target="_blank">Sammlung „Geometrische Körper“ (Lehrer-Ordner)</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
+<h3 class="ua-thema">Serlo – Artikel &amp; Aufgabenordner</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/16156/raumgeometrie" rel="noopener noreferrer" target="_blank">Raumgeometrie: Netz, Oberfläche &amp; Volumen (Übersicht)</a> <span class="ua-tag">Sammlung</span></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/1625/prisma" rel="noopener noreferrer" target="_blank">Prisma – Artikel mit Aufgabenordner</a></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/1555/zylinder" rel="noopener noreferrer" target="_blank">Zylinder – Artikel mit Aufgaben</a></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/55209/gemischte-aufgaben-zur-volumenberechung" rel="noopener noreferrer" target="_blank">Gemischte Aufgaben zur Volumenberechnung</a></li>
+</ul>
+<h3 class="ua-thema">Quizlet – Formelkarten</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-quizlet">Quizlet</span> <a class="ua-link" data-provider="quizlet" href="https://quizlet.com/de/275885753/mathe-korper-formeln-flash-cards/" rel="noopener noreferrer" target="_blank">Mathe Körper-Formeln (Karteikarten)</a></li>
+</ul>
+<h3 class="ua-thema">ZUM / H5P – gemischte Sammlung</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-zum">ZUM</span> <a class="ua-link" data-provider="zum" href="https://projekte.zum.de/wiki/Kategorie:H5P" rel="noopener noreferrer" target="_blank">ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
 </section>
 <section class="ua-bereich" id="sk">
-  <h2 class="ua-bereich-titel" style="border-color:var(--c)">SK · Spitzkörper: Pyramide, Kegel, Kugel</h2>
-  <h3 class="ua-thema">Pyramide – Volumen und Oberfläche</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/1362557" target="_blank" rel="noopener noreferrer">Volumen und Oberfläche einer Pyramide</a></li>
-  </ul>
-  <h3 class="ua-thema">Kegel – Volumen und Oberfläche</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/1418658" target="_blank" rel="noopener noreferrer">Volumen und Oberfläche des Kegels</a></li>
-  </ul>
-  <h3 class="ua-thema">Körper-Eigenschaften (auch Spitzkörper)</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/view1855042" target="_blank" rel="noopener noreferrer">Eigenschaften von Körpern (Pyramide, Kegel, Zylinder …)</a></li>
-  </ul>
-  <h3 class="ua-thema">Sammlung (inkl. Kugel, Drehkegel, Kegel-Quiz)</h3>
-  <ul class="ua-liste">
-    <li><a class="ua-link" href="https://learningapps.org/user/plaschke&amp;displayfolder=3637252&amp;bookmark=1" target="_blank" rel="noopener noreferrer">Sammlung „Spitzkörper &amp; Kugel“ (Lehrer-Ordner)</a><span class="ua-tag">Sammlung</span></li>
-  </ul>
+<h2 class="ua-bereich-titel" style="border-color:var(--c)">SK · Spitzkörper: Pyramide, Kegel, Kugel</h2>
+<h3 class="ua-thema">Pyramide – Volumen und Oberfläche</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/1362557" rel="noopener noreferrer" target="_blank">Volumen und Oberfläche einer Pyramide</a></li>
+</ul>
+<h3 class="ua-thema">Kegel – Volumen und Oberfläche</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/1418658" rel="noopener noreferrer" target="_blank">Volumen und Oberfläche des Kegels</a></li>
+</ul>
+<h3 class="ua-thema">Körper-Eigenschaften (auch Spitzkörper)</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/view1855042" rel="noopener noreferrer" target="_blank">Eigenschaften von Körpern (Pyramide, Kegel, Zylinder …)</a></li>
+</ul>
+<h3 class="ua-thema">Sammlung (inkl. Kugel, Drehkegel, Kegel-Quiz)</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-learningapps">LearningApps</span> <a class="ua-link" data-provider="learningapps" href="https://learningapps.org/user/plaschke?displayfolder=3637252&amp;bookmark=1" rel="noopener noreferrer" target="_blank">Sammlung „Spitzkörper &amp; Kugel“ (Lehrer-Ordner)</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
+<h3 class="ua-thema">Serlo – Aufgaben mit Lösungsweg</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/65267/aufgaben-zur-pyramide" rel="noopener noreferrer" target="_blank">Aufgaben zur Pyramide (Volumen, Kantenlänge, Netz)</a></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/1561/kegel" rel="noopener noreferrer" target="_blank">Kegel – Artikel mit Aufgabenordner</a></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/59099/volumenformeln" rel="noopener noreferrer" target="_blank">Volumenformeln aller Körper (Übersicht)</a> <span class="ua-tag">Sammlung</span></li>
+<li><span class="ua-q ua-q-serlo">Serlo</span> <a class="ua-link" data-provider="serlo" href="https://de.serlo.org/mathe/62625/schwierigere-aufgaben-zu-einzelnen-grundkoerpern" rel="noopener noreferrer" target="_blank">Schwierigere Aufgaben zu einzelnen Grundkörpern</a></li>
+</ul>
+<h3 class="ua-thema">Quizlet – Formelkarten</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-quizlet">Quizlet</span> <a class="ua-link" data-provider="quizlet" href="https://quizlet.com/de/384212942/mathe-formeln-korper-berechnung-flash-cards/" rel="noopener noreferrer" target="_blank">Mathe Formeln Körper-Berechnung (Zylinder, Pyramide, Kegel, Kugel)</a></li>
+</ul>
+<h3 class="ua-thema">ZUM / H5P – gemischte Sammlung</h3>
+<ul class="ua-liste">
+<li><span class="ua-q ua-q-zum">ZUM</span> <a class="ua-link" data-provider="zum" href="https://projekte.zum.de/wiki/Kategorie:H5P" rel="noopener noreferrer" target="_blank">ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)</a> <span class="ua-tag">Sammlung</span></li>
+</ul>
 </section>
 </main>
 
@@ -142,5 +224,19 @@
 <script src="assets/js/dev-tools.js"></script>
 <script src="assets/js/student-login.js"></script>
 <script src="assets/js/tracker.js"></script>
+<script>
+document.addEventListener('click', event => {
+  const link = event.target.closest('a.ua-link');
+  if (!link) return;
+  if (window.Tracker && typeof window.Tracker.track === 'function') {
+    window.Tracker.track('external_practice_open', {
+      provider: link.dataset.provider || 'external',
+      title: link.textContent.trim(),
+      link_type: link.parentElement?.querySelector('.ua-tag') ? 'sammlung' : 'app',
+      source: 'overview'
+    });
+  }
+});
+</script>
 </body>
 </html>

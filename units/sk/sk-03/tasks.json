@@ -549,7 +549,14 @@
     {
       "titel": "Volumen und Oberfläche einer Pyramide",
       "url": "https://learningapps.org/1362557",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben zur Pyramide (Volumen, Kantenlänge, Netz)",
+      "url": "https://de.serlo.org/mathe/65267/aufgaben-zur-pyramide",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ]
 }

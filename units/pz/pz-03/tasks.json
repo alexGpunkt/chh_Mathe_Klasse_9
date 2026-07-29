@@ -568,7 +568,14 @@
     {
       "titel": "Dreisatz (proportionale Zuordnung) 1",
       "url": "https://learningapps.org/view2505509",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Interaktive Zuordnungsübungen zum Prozentrechnen (Dreisatz)",
+      "url": "https://www.schule-bw.de/faecher-und-schularten/mathematisch-naturwissenschaftliche-faecher/mathematik/unterrichtsmaterialien/sekundarstufe1/zahl/prozent/links/hotpotproz",
+      "typ": "app",
+      "quelle": "H5P"
     }
   ]
 }

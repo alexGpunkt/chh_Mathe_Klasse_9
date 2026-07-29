@@ -714,12 +714,20 @@
     {
       "titel": "Steigung ablesen",
       "url": "https://learningapps.org/view5452529",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
     },
     {
       "titel": "Bedeutung von Steigung und y-Achsenabschnitt",
       "url": "https://learningapps.org/2145590",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben: Geraden im Koordinatensystem (Steigung, y-Abschnitt)",
+      "url": "https://de.serlo.org/mathe/31911/aufgaben-zu-linearen-funktionen-als-geraden-im-koordinatensystem",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ]
 }

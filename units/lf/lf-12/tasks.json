@@ -818,7 +818,14 @@
     {
       "titel": "Sammlung „Lineare Funktionen“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/mbraun?displayfolder=514302&bookmark=1",
-      "typ": "sammlung"
+      "typ": "sammlung",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben: Geradengleichungen, Nullstellen und Schnittpunkte",
+      "url": "https://de.serlo.org/mathe/174384/aufgaben-zu-geradengleichungen-nullstellen-und-schnittpunkten",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ]
 }

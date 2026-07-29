@@ -558,7 +558,20 @@
     {
       "titel": "Sammlung „Spitzkörper & Kugel“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/plaschke?displayfolder=3637252&bookmark=1",
-      "typ": "sammlung"
+      "typ": "sammlung",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Schwierigere Aufgaben zu einzelnen Grundkörpern",
+      "url": "https://de.serlo.org/mathe/62625/schwierigere-aufgaben-zu-einzelnen-grundkoerpern",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)",
+      "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
+      "typ": "sammlung",
+      "quelle": "ZUM"
     }
   ]
 }

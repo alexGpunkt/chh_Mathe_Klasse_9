@@ -507,7 +507,26 @@
     {
       "titel": "Suche „Oberfläche“ (Mathematik)",
       "url": "https://learningapps.org/index.php?s=Oberfläche",
-      "typ": "sammlung"
+      "typ": "sammlung",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Gemischte Aufgaben zur Volumenberechnung",
+      "url": "https://de.serlo.org/mathe/55209/gemischte-aufgaben-zur-volumenberechung",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Mathe Körper-Formeln (Karteikarten)",
+      "url": "https://quizlet.com/de/275885753/mathe-korper-formeln-flash-cards/",
+      "typ": "app",
+      "quelle": "Quizlet"
+    },
+    {
+      "titel": "ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)",
+      "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
+      "typ": "sammlung",
+      "quelle": "ZUM"
     }
   ]
 }

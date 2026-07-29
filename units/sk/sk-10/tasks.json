@@ -570,7 +570,20 @@
     {
       "titel": "Sammlung „Spitzkörper & Kugel“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/plaschke?displayfolder=3637252&bookmark=1",
-      "typ": "sammlung"
+      "typ": "sammlung",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Volumenformeln aller Körper (Übersicht)",
+      "url": "https://de.serlo.org/mathe/59099/volumenformeln",
+      "typ": "sammlung",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Mathe Formeln Körper-Berechnung (Zylinder, Pyramide, Kegel, Kugel)",
+      "url": "https://quizlet.com/de/384212942/mathe-formeln-korper-berechnung-flash-cards/",
+      "typ": "app",
+      "quelle": "Quizlet"
     }
   ]
 }

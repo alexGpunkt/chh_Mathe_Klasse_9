@@ -646,12 +646,38 @@
     {
       "titel": "Lineare Funktionen – Das Wissensquiz",
       "url": "https://learningapps.org/view3846001",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
     },
     {
       "titel": "Sammlung „Lineare Funktionen“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/mbraun?displayfolder=514302&bookmark=1",
-      "typ": "sammlung"
+      "typ": "sammlung",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Gemischte Aufgaben zu linearen Funktionen",
+      "url": "https://de.serlo.org/mathe/55235/gemischte-aufgaben-zu-linearen-funktionen-geraden",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Wiederholung: Lineare Funktionen",
+      "url": "https://www.learningsnacks.de/share/65120",
+      "typ": "app",
+      "quelle": "Learningsnacks"
+    },
+    {
+      "titel": "Lernpfad „Lineare Funktionen im Aktiv-Urlaub“",
+      "url": "https://unterrichten.zum.de/wiki/Lineare_Funktionen_im_Aktiv-Urlaub",
+      "typ": "sammlung",
+      "quelle": "ZUM"
+    },
+    {
+      "titel": "ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)",
+      "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
+      "typ": "sammlung",
+      "quelle": "ZUM"
     }
   ]
 }

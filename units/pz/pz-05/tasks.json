@@ -577,17 +577,32 @@
     {
       "titel": "Prozent – Grundbegriffe zuordnen (G, W, p %)",
       "url": "https://learningapps.org/view12455937",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
     },
     {
       "titel": "Welche Werte der Prozentrechnung sind gegeben?",
       "url": "https://learningapps.org/2110414",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
     },
     {
       "titel": "Nach Grundwert, Prozentwert und Prozentsatz ordnen",
       "url": "https://learningapps.org/11886636",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben zur Prozentrechnung (gemischt)",
+      "url": "https://de.serlo.org/mathe/23869/aufgaben-zur-prozentrechnung",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Interaktive Zuordnungsübungen zum Prozentrechnen (Dreisatz)",
+      "url": "https://www.schule-bw.de/faecher-und-schularten/mathematisch-naturwissenschaftliche-faecher/mathematik/unterrichtsmaterialien/sekundarstufe1/zahl/prozent/links/hotpotproz",
+      "typ": "app",
+      "quelle": "H5P"
     }
   ]
 }

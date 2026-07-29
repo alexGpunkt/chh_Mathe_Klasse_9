@@ -600,7 +600,14 @@
     {
       "titel": "Volumen und Oberfläche des Kegels",
       "url": "https://learningapps.org/1418658",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Kegel – Artikel mit Aufgabenordner",
+      "url": "https://de.serlo.org/mathe/1561/kegel",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ]
 }

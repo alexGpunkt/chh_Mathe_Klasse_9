@@ -843,5 +843,19 @@
         "W-FKT"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Einführung lineare Funktionen (H5P)",
+      "url": "https://h5p.org/h5p/embed/154407",
+      "typ": "app",
+      "quelle": "H5P"
+    },
+    {
+      "titel": "Lineare Funktionen – Grundlagen (H5P)",
+      "url": "https://h5p.org/h5p/embed/143883",
+      "typ": "app",
+      "quelle": "H5P"
+    }
   ]
 }

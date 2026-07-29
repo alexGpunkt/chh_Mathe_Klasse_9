@@ -657,5 +657,13 @@
         "W-FKT"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Lernpfad „Lineare Funktionen im Aktiv-Urlaub“",
+      "url": "https://unterrichten.zum.de/wiki/Lineare_Funktionen_im_Aktiv-Urlaub",
+      "typ": "sammlung",
+      "quelle": "ZUM"
+    }
   ]
 }

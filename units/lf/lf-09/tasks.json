@@ -740,5 +740,13 @@
         "W-FKT"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Aufgaben: Geradengleichungen, Nullstellen und Schnittpunkte",
+      "url": "https://de.serlo.org/mathe/174384/aufgaben-zu-geradengleichungen-nullstellen-und-schnittpunkten",
+      "typ": "app",
+      "quelle": "Serlo"
+    }
   ]
 }

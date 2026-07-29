@@ -549,7 +549,14 @@
     {
       "titel": "Zinsrechnung: Begriffe und Formeln",
       "url": "https://learningapps.org/watch.php?v=pbur6782j18",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Anwendungen & Vertiefung der Prozentrechnung (inkl. Zinsen)",
+      "url": "https://de.serlo.org/mathe/38066/%C3%BCbersicht",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ]
 }

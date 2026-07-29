@@ -564,12 +564,20 @@
     {
       "titel": "Übungen zur Prozentrechnung (Wertepaare verbinden)",
       "url": "https://learningapps.org/view4404641",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
     },
     {
       "titel": "Prozentrechnung (Übungssammlung in Reihenfolge)",
       "url": "https://learningapps.org/view14890616",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben: Prozentwert, Grundwert und Prozentsatz berechnen",
+      "url": "https://de.serlo.org/mathe/174189/aufgaben-zur-berechnung-von-prozentwert-grundwert-und-prozentsatz",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ]
 }

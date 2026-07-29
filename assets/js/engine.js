@@ -694,12 +694,38 @@ function formelkarteBauen() {
 }
 
 
-/* ---------- Externe Übungen (LearningApps) ----------
+/* ---------- Externe Übungen ----------
    Datengetrieben aus tasks.json:
    "uebungslinks": [
-     { "titel": "...", "url": "https://learningapps.org/...", "typ": "app"|"sammlung" }
+     {
+       "titel": "...",
+       "url": "https://...",
+       "typ": "app"|"sammlung",
+       "quelle": "LearningApps"|"Serlo"|"H5P"|"Learningsnacks"|"Quizlet"|"ZUM"
+     }
    ]
-   Fehlt der Schlüssel, bleibt die Karte vollständig ausgeblendet. */
+   Fehlt der Schlüssel, bleibt die Karte vollständig ausgeblendet.
+   Nur bekannte HTTPS-Plattformen werden gerendert. */
+const UEBUNGSQUELLEN = [
+  { key: 'learningapps', label: 'LearningApps', hosts: ['learningapps.org'] },
+  { key: 'serlo', label: 'Serlo', hosts: ['serlo.org'] },
+  { key: 'h5p', label: 'H5P', hosts: ['h5p.org', 'schule-bw.de'] },
+  { key: 'learningsnacks', label: 'Learningsnacks', hosts: ['learningsnacks.de'] },
+  { key: 'quizlet', label: 'Quizlet', hosts: ['quizlet.com'] },
+  { key: 'zum', label: 'ZUM', hosts: ['zum.de'] }
+];
+
+function hostPasst(host, basis) {
+  return host === basis || host.endsWith('.' + basis);
+}
+
+function uebungsquelleFuerUrl(url) {
+  const host = String(url.hostname || '').toLowerCase();
+  return UEBUNGSQUELLEN.find(quelle =>
+    quelle.hosts.some(basis => hostPasst(host, basis))
+  ) || null;
+}
+
 function uebungskarteBauen() {
   const box = $('#uebungskarte');
   const inhalt = $('#uebung-inhalt');
@@ -715,19 +741,25 @@ function uebungskarteBauen() {
     return;
   }
 
+  const gesehen = new Set();
   const gueltigeLinks = liste.map(eintrag => {
     try {
       const url = new URL(String(eintrag?.url || ''), location.href);
-      const istLearningApps =
-        url.protocol === 'https:' &&
-        (url.hostname === 'learningapps.org' ||
-         url.hostname.endsWith('.learningapps.org'));
+      const quelle = uebungsquelleFuerUrl(url);
+      const titel = String(eintrag?.titel || '').trim();
+      const typ = eintrag?.typ === 'sammlung' ? 'sammlung' : 'app';
+      const schluessel = `${titel}\n${url.href}\n${typ}`;
 
-      if (!istLearningApps || !String(eintrag?.titel || '').trim()) return null;
+      if (url.protocol !== 'https:' || !quelle || !titel || gesehen.has(schluessel)) {
+        return null;
+      }
+      gesehen.add(schluessel);
+
       return {
-        titel: String(eintrag.titel).trim(),
+        titel,
         url: url.href,
-        typ: eintrag.typ === 'sammlung' ? 'sammlung' : 'app'
+        typ,
+        quelle
       };
     } catch {
       return null;
@@ -743,19 +775,27 @@ function uebungskarteBauen() {
   inhalt.append(el(
     'p',
     'ua-hinweis',
-    'Interaktive Übungen auf LearningApps.org öffnen in einem neuen Tab. Die Inhalte sind nutzergeneriert – bitte vor dem Unterricht kurz prüfen.'
+    'Externe interaktive Übungen öffnen in einem neuen Tab. Inhalte und Verfügbarkeit können sich ändern – bitte vor dem Unterricht kurz prüfen.'
   ));
 
   const ul = el('ul', 'ua-liste');
   gueltigeLinks.forEach(eintrag => {
     const li = el('li');
+
+    const quelle = el(
+      'span',
+      `ua-q ua-q-${eintrag.quelle.key}`,
+      eintrag.quelle.label
+    );
+    li.append(quelle);
+
     const a = el('a', 'ua-link', eintrag.titel);
     a.href = eintrag.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
     a.addEventListener('click', () => {
       Tracker.track('external_practice_open', {
-        provider: 'learningapps',
+        provider: eintrag.quelle.key,
         title: eintrag.titel,
         link_type: eintrag.typ
       });

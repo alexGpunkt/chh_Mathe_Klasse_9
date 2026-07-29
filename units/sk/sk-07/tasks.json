@@ -563,7 +563,20 @@
     {
       "titel": "Volumen und Oberfläche des Kegels",
       "url": "https://learningapps.org/1418658",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Kegel – Artikel mit Aufgabenordner",
+      "url": "https://de.serlo.org/mathe/1561/kegel",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Mathe Formeln Körper-Berechnung (Zylinder, Pyramide, Kegel, Kugel)",
+      "url": "https://quizlet.com/de/384212942/mathe-formeln-korper-berechnung-flash-cards/",
+      "typ": "app",
+      "quelle": "Quizlet"
     }
   ]
 }

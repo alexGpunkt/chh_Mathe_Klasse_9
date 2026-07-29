@@ -88,31 +88,36 @@ bauen(host, opts){ const st = stufeVon(opts); … } })`-Block anlegen und in
 der Galerie (mit Umschalter) und ist sofort über ihren `name` einbindbar.
 
 
-## Externe Übungen: LearningApps
+## Externe Übungen auf mehreren Plattformen
 
-Zusätzliche externe Übungsangebote werden datengetrieben über den
-Top-Level-Schlüssel `uebungslinks` in einer `tasks.json` eingebunden:
+Die bisherigen LearningApps-Verweise wurden um Serlo, H5P beziehungsweise
+Landesbildungsserver, Learningsnacks, Quizlet und ZUM ergänzt. Jeder Eintrag
+enthält `titel`, `url`, `typ` und `quelle`.
 
-```json
-"uebungslinks": [
-  { "titel": "Steigung ablesen", "url": "https://learningapps.org/view5452529", "typ": "app" },
-  { "titel": "Sammlung „Lineare Funktionen“", "url": "https://learningapps.org/user/…", "typ": "sammlung" }
-]
-```
+`engine.js` prüft die URL gegen eine feste HTTPS-Allowlist, leitet die Quelle
+aus dem Hostnamen ab, zeigt einen farbigen Quellenchip und protokolliert das
+Öffnen als `external_practice_open`. Der Renderer behält den sicheren
+Visualisierungs-Fallback und die robuste Wortspeicher-Markierung bei.
 
-`engine.js` erzeugt daraus mit `uebungskarteBauen()` eine aufklappbare Karte
-auf der Einheitsseite. Der Renderer akzeptiert nur HTTPS-Adressen von
-`learningapps.org`, setzt `target="_blank"` und `rel="noopener noreferrer"`
-und protokolliert das Öffnen als `external_practice_open`.
+`uebungen.html` enthält die Gesamtübersicht und lädt weiterhin
+`supabase-config.js`, `dev-tools.js`, `student-login.js` und `tracker.js`.
+Die Entwicklernavigation bleibt vollständig erhalten.
 
-Die Seite `uebungen.html` enthält eine nach PZ, LF, KP und SK gegliederte
-Gesamtübersicht. Sie verwendet denselben Schülerlogin und dasselbe
-Entwicklermenü wie die übrigen Schülerseiten. Das Entwicklermenü bietet
-zusätzlich den Knopf „LearningApps“ für den aktuell ausgewählten Lernbereich.
+Aktueller Datenstand:
 
-Die externen Inhalte selbst werden nicht vom Service Worker gespeichert.
-`uebungen.html`, die Einheitsdaten und der dazugehörige Code liegen jedoch
-im lokalen Offlinecache.
+- 88 Verweise in 39 Einheiten
+- 51 unterschiedliche Zieladressen
+- LearningApps: 43
+- Serlo: 29
+- ZUM: 6
+- H5P/Landesbildungsserver: 4
+- Learningsnacks: 3
+- Quizlet: 3
+
+Fünf fehlerhaft zusammengesetzte LearningApps-Sammlungsadressen aus dem
+Anpassungspaket wurden beim Zusammenführen korrigiert (`?displayfolder=`
+statt `&displayfolder=` unmittelbar hinter dem Benutzernamen).
+
 
 ## Branch-Hinweis
 

@@ -538,5 +538,13 @@
         "W-GEO"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Schwierigere Aufgaben zu einzelnen Grundkörpern",
+      "url": "https://de.serlo.org/mathe/62625/schwierigere-aufgaben-zu-einzelnen-grundkoerpern",
+      "typ": "app",
+      "quelle": "Serlo"
+    }
   ]
 }

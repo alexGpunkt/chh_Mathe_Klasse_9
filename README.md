@@ -195,36 +195,57 @@ kann über `animationen.html?bereich=PZ`, `animationen.html?bereich=LF`,
 geöffnet werden.
 
 
-## Externe Übungen mit LearningApps
+## Externe Übungen auf mehreren Plattformen
 
-Zu passenden Einheiten können zusätzliche Übungen über den Top-Level-Schlüssel
-`uebungslinks` in der jeweiligen `tasks.json` hinterlegt werden:
+Zu passenden Einheiten können zusätzliche Übungsangebote über den
+Top-Level-Schlüssel `uebungslinks` in der jeweiligen `tasks.json` hinterlegt
+werden:
 
 ```json
 "uebungslinks": [
   {
-    "titel": "Steigung ablesen",
-    "url": "https://learningapps.org/view5452529",
-    "typ": "app"
+    "titel": "Aufgaben zur Prozentrechnung",
+    "url": "https://de.serlo.org/mathe/23869/aufgaben-zur-prozentrechnung",
+    "typ": "app",
+    "quelle": "Serlo"
   },
   {
     "titel": "Sammlung „Lineare Funktionen“",
-    "url": "https://learningapps.org/user/…",
-    "typ": "sammlung"
+    "url": "https://learningapps.org/user/…?displayfolder=…",
+    "typ": "sammlung",
+    "quelle": "LearningApps"
   }
 ]
 ```
 
-Die Einheitsseite zeigt daraus automatisch eine aufklappbare Karte
-**„Üben & Wiederholen · LearningApps“**. Zulässig sind ausschließlich
-HTTPS-Links zu `learningapps.org`; sie öffnen in einem neuen Tab. Fehlt
-`uebungslinks`, wird keine Karte angezeigt.
+Die Einheitsseite zeigt daraus automatisch die aufklappbare Karte
+**„Üben & Wiederholen · externe Übungen“**. Unterstützt werden ausschließlich
+HTTPS-Adressen der freigegebenen Plattformen:
 
-Die Übersichtsseite `uebungen.html` gruppiert die Links nach PZ, LF, KP und SK.
-Auf der Startseite sowie im Entwicklermenü kann direkt zum gewählten
-Lernbereich gesprungen werden. Die LearningApps selbst sind externe,
-nutzergenerierte Inhalte und werden nicht offline gespeichert; die Links und
-die Übersichtsseite sind dagegen Teil des Offlinecaches.
+- LearningApps
+- Serlo
+- H5P beziehungsweise der Landesbildungsserver Baden-Württemberg
+- Learningsnacks
+- Quizlet
+- ZUM
+
+Die Plattform wird aus der tatsächlichen Zieladresse bestimmt und als
+farbiger Quellenchip angezeigt. Unbekannte Hosts, unvollständige Einträge und
+unsichere Protokolle werden nicht gerendert. Alle Links öffnen mit
+`target="_blank"` und `rel="noopener noreferrer"`; das Öffnen wird als
+`external_practice_open` protokolliert.
+
+Aktuell sind **88 Verweise in 39 Einheiten** hinterlegt:
+43 LearningApps, 29 Serlo,
+6 ZUM, 4 H5P,
+3 Learningsnacks und 3 Quizlet.
+
+Die Übersichtsseite `uebungen.html` gruppiert die Angebote nach PZ, LF, KP und
+SK und zeigt eine Quellenlegende. Auf der Startseite sowie im Entwicklermenü
+kann direkt zum gewählten Lernbereich gesprungen werden. Die externen Inhalte
+selbst werden nicht offline gespeichert; die Verweise, Einheitsdaten und die
+Übersichtsseite liegen dagegen im Offlinecache.
+
 
 ## Starten
 

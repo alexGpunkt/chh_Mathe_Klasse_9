@@ -538,5 +538,13 @@
         "W-FKT"
       ]
     }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Lineare Funktionen – Punktprobe",
+      "url": "https://www.learningsnacks.de/share/121056",
+      "typ": "app",
+      "quelle": "Learningsnacks"
+    }
   ]
 }

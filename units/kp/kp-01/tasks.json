@@ -613,12 +613,20 @@
     {
       "titel": "Eigenschaften von Körpern (Würfel, Quader, Prisma, Pyramide, Kegel, Zylinder)",
       "url": "https://learningapps.org/1855042",
-      "typ": "app"
+      "typ": "app",
+      "quelle": "LearningApps"
     },
     {
       "titel": "Sammlung „Geometrische Körper“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/barbara%20007?displayfolder=105708",
-      "typ": "sammlung"
+      "typ": "sammlung",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Raumgeometrie: Netz, Oberfläche & Volumen (Übersicht)",
+      "url": "https://de.serlo.org/mathe/16156/raumgeometrie",
+      "typ": "sammlung",
+      "quelle": "Serlo"
     }
   ]
 }
