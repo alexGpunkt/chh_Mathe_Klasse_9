@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Volumen des Dreiecksprismas",
-      "hinfuehrung": "Beim Dreiecksprisma ist die Grundfläche ein Dreieck. Zuerst seine Fläche, dann mal Höhe – fertig ist das Volumen.",
+      "hinfuehrung": "Hier ist die Grundfläche ein Dreieck.",
       "erklaerung": [
-        "Dreiecksfläche: G = (g · h_d) : 2.",
-        "Volumen: V = G · h, wobei h die Länge des Prismas ist."
+        "Rechne zuerst die Dreiecksfläche: G = (g · h_d) : 2.",
+        "Nimm G dann mal die Länge h."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "g = 8 cm, h_d = 3 cm, Länge h = 12 cm. Volumen?",
+        "aufgabe": "g = 8 cm, h_d = 3 cm, Länge h = 12 cm. Wie groß ist das Volumen?",
         "schritte": [
           "G = (8 · 3) : 2 = 12 cm²",
           "V = G · h = 12 · 12",
@@ -41,7 +41,7 @@
         ],
         "ergebnis": "V = 144 cm³."
       },
-      "merke": "Dreiecksprisma: G = (g · h_d) : 2, dann V = G · h."
+      "merke": "Erst G = (g · h_d) : 2. Dann V = G · h."
     },
     "B": {
       "titel": "Auch mit trapezförmiger Grundfläche",

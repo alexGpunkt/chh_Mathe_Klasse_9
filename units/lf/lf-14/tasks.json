@@ -20,13 +20,13 @@
   "lernkarten": {
     "A": {
       "titel": "Tarife ausrechnen und vergleichen",
-      "hinfuehrung": "Welcher Tarif ist günstiger? Für eine bestimmte Nutzung rechnest du beide Kosten aus und vergleichst.",
+      "hinfuehrung": "Rechne beide Tarife aus.",
       "erklaerung": [
-        "Setze die gegebene Menge in beide Tarife ein und berechne die Kosten.",
-        "Der kleinere Betrag gewinnt – für diese Menge."
+        "Setze die Menge in Tarif A ein und rechne die Kosten aus.",
+        "Mache das Gleiche mit Tarif B. Der kleinere Preis gewinnt."
       ],
       "beispiel": {
-        "aufgabe": "Tarif A: 10 € + 2 €/Std. Tarif B: 4 €/Std. Was ist bei 8 Stunden günstiger?",
+        "aufgabe": "Tarif A: 10 € + 2 € pro Stunde. Tarif B: 4 € pro Stunde. Was ist bei 8 Stunden günstiger?",
         "schritte": [
           "A: 10 + 2·8 = 26 €",
           "B: 4·8 = 32 €",
@@ -34,7 +34,7 @@
         ],
         "ergebnis": "Bei 8 Stunden ist Tarif A günstiger."
       },
-      "merke": "Menge in beide Tarife einsetzen, Kosten vergleichen.",
+      "merke": "Beide Preise ausrechnen. Dann vergleichen.",
       "visual": {
         "type": "animation",
         "name": "tarifvergleich",

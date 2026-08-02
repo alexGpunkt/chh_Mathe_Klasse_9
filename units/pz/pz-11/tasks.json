@@ -20,13 +20,13 @@
   "lernkarten": {
     "A": {
       "titel": "Jahreszinsen mit der Formel",
-      "hinfuehrung": "Zinsen sind die „Miete“ fürs Geld. Für ein Jahr rechnest du sie wie einen Prozentwert vom Kapital.",
+      "hinfuehrung": "Zinsen sind das Geld für ein Jahr.",
       "erklaerung": [
-        "Das Kapital K ist der Grundwert, der Zinssatz p der Prozentsatz, die Zinsen Z der Prozentwert.",
-        "Formel: Z = K · p : 100."
+        "Das Kapital K ist der Grundwert. Der Zinssatz p ist der Prozentsatz.",
+        "Rechne Z = K · p : 100."
       ],
       "beispiel": {
-        "aufgabe": "2000 € werden zu 3 % pro Jahr angelegt. Wie viel Zinsen in einem Jahr?",
+        "aufgabe": "2000 € liegen ein Jahr zu 3 %. Wie viel Zinsen gibt es?",
         "schritte": [
           "Z = K · p : 100",
           "Z = 2000 € · 3 : 100",
@@ -34,11 +34,12 @@
         ],
         "ergebnis": "Die Jahreszinsen betragen 60 €."
       },
-      "merke": "Z = K · p : 100 (Kapital = Grundwert).",
+      "merke": "Z = K · p : 100.",
       "visual": {
         "type": "animation",
         "name": "zinsen",
-        "stufe": "A"
+        "stufe": "A",
+        "thema": "jahr"
       }
     },
     "B": {
@@ -61,7 +62,8 @@
       "visual": {
         "type": "animation",
         "name": "zinsen",
-        "stufe": "B"
+        "stufe": "B",
+        "thema": "jahr"
       }
     },
     "C": {
@@ -84,7 +86,8 @@
       "visual": {
         "type": "animation",
         "name": "zinsen",
-        "stufe": "C"
+        "stufe": "C",
+        "thema": "jahr"
       }
     }
   },

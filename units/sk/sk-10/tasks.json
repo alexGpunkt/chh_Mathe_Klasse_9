@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Oberfläche der Kugel",
-      "hinfuehrung": "Die Kugel ist der rundeste Körper. Ihre Oberfläche hängt nur vom Radius ab.",
+      "hinfuehrung": "Bei der Kugel brauchst du nur den Radius.",
       "erklaerung": [
-        "Oberfläche: O = 4 · π · r².",
-        "Nur der Radius wird gebraucht – kein h, kein s."
+        "Rechne zuerst r · r.",
+        "Nimm das Ergebnis mal 4 und mal π."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Kugel mit r = 5 cm. Oberfläche (π ≈ 3,14)?",
+        "aufgabe": "Eine Kugel hat r = 5 cm. Oberfläche mit π ≈ 3,14?",
         "schritte": [
           "O = 4 · π · r²",
           "= 4 · 3,14 · 25",

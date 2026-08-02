@@ -20,10 +20,10 @@
   "lernkarten": {
     "A": {
       "titel": "Mehr oder weniger als die Hälfte?",
-      "hinfuehrung": "Oft musst du nicht genau rechnen – ein guter Blick genügt, um zu sagen, ob es mehr oder weniger als die Hälfte ist.",
+      "hinfuehrung": "Du musst nicht rechnen. Du schaust.",
       "erklaerung": [
-        "Die Hälfte ist 50 %. Ist der gefärbte Teil größer als die Mitte, sind es mehr als 50 %. Ist er kleiner, sind es weniger als 50 %.",
-        "Die Markierung in der Mitte des Streifens hilft dir beim Vergleichen."
+        "Die Hälfte sind 50 %. In der Mitte steht eine Marke.",
+        "Endet die Farbe vor der Mitte, sind es weniger als 50 %."
       ],
       "visual": {
         "type": "animation",
@@ -38,7 +38,7 @@
         ],
         "ergebnis": "Weniger als 50 %."
       },
-      "merke": "Bis zur Mitte = 50 %. Alles davor ist weniger, alles danach mehr."
+      "merke": "Bis zur Mitte sind 50 %. Davor weniger, danach mehr."
     },
     "B": {
       "titel": "Prozente mit Ankerwerten schätzen",

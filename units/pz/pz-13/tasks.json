@@ -20,24 +20,25 @@
   "lernkarten": {
     "A": {
       "titel": "Zinstabelle Jahr für Jahr",
-      "hinfuehrung": "Bleibt Geld mehrere Jahre liegen, verzinst sich im nächsten Jahr auch der Zins mit. Eine Tabelle macht das sichtbar.",
+      "hinfuehrung": "Auch die Zinsen bekommen im nächsten Jahr Zinsen.",
       "erklaerung": [
-        "Jede Zeile: Startkapital + Zinsen = neues Kapital.",
-        "Das neue Kapital ist das Startkapital der nächsten Zeile."
+        "Jede Zeile: Kapital + Zinsen = neues Kapital.",
+        "Das neue Kapital startet die nächste Zeile."
       ],
       "beispiel": {
-        "aufgabe": "1000 € zu 2 % über 2 Jahre. Fülle die Tabelle.",
+        "aufgabe": "1000 € liegen 2 Jahre zu 2 %. Fülle die Tabelle aus.",
         "schritte": [
           "Jahr 1: 1000 € + 2 % = 1000 + 20 = 1020 €",
           "Jahr 2: 1020 € + 2 % = 1020 + 20,40 = 1040,40 €"
         ],
         "ergebnis": "Nach 2 Jahren: 1040,40 €."
       },
-      "merke": "Neues Kapital = altes Kapital + Zinsen. Damit weiter in die nächste Zeile.",
+      "merke": "Neues Kapital = altes Kapital + Zinsen.",
       "visual": {
         "type": "animation",
         "name": "zinsen",
-        "stufe": "A"
+        "stufe": "A",
+        "thema": "eszins"
       }
     },
     "B": {
@@ -60,7 +61,8 @@
       "visual": {
         "type": "animation",
         "name": "zinsen",
-        "stufe": "B"
+        "stufe": "B",
+        "thema": "eszins"
       }
     },
     "C": {
@@ -82,7 +84,8 @@
       "visual": {
         "type": "animation",
         "name": "zinsen",
-        "stufe": "C"
+        "stufe": "C",
+        "thema": "eszins"
       }
     }
   },

@@ -20,10 +20,10 @@
   "lernkarten": {
     "A": {
       "titel": "Die Steigung am Dreieck ablesen",
-      "hinfuehrung": "Die Steigung sagt, wie steil eine Gerade ist: so viele Schritte nach rechts, so viele nach oben. Das Steigungsdreieck zeigt es dir.",
+      "hinfuehrung": "Die Steigung sagt, wie steil die Gerade ist.",
       "erklaerung": [
-        "Gehe vom einen Punkt eine bestimmte Zahl nach rechts (Δx) und zähle, wie viele nach oben (Δy).",
-        "1 nach rechts und 2 nach oben bedeutet Steigung 2."
+        "Gehe vom Punkt 1 Kästchen nach rechts.",
+        "Zähle, wie viele Kästchen es nach oben geht. Das ist m."
       ],
       "visual": {
         "type": "animation",
@@ -31,7 +31,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Am Dreieck: 1 nach rechts, 2 nach oben. Wie groß ist m?",
+        "aufgabe": "1 nach rechts, 2 nach oben. Wie groß ist m?",
         "schritte": [
           "Δx = 1 (nach rechts)",
           "Δy = 2 (nach oben)",
@@ -39,7 +39,7 @@
         ],
         "ergebnis": "Die Steigung ist m = 2."
       },
-      "merke": "m = so viele nach oben je 1 nach rechts."
+      "merke": "m = Kästchen nach oben je 1 nach rechts."
     },
     "B": {
       "titel": "m = Δy : Δx berechnen",

@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Der Zylindermantel ist ein Rechteck",
-      "hinfuehrung": "Schneidet man den Zylindermantel auf und rollt ihn aus, entsteht ein Rechteck: so lang wie der Kreisumfang, so hoch wie der Zylinder.",
+      "hinfuehrung": "Rolle den Mantel aus. Es entsteht ein Rechteck.",
       "erklaerung": [
-        "Kreisumfang: U = 2 · π · r = π · d.",
-        "Mantel = U · h = 2 · π · r · h."
+        "Die eine Seite ist der Kreisumfang: U = 2 · π · r.",
+        "Die andere Seite ist die Höhe h."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Zylinder mit r = 4 cm, h = 10 cm. Mantelfläche (π ≈ 3,14)?",
+        "aufgabe": "Ein Zylinder hat r = 4 cm und h = 10 cm. Mantelfläche mit π ≈ 3,14?",
         "schritte": [
           "U = 2 · 3,14 · 4 = 25,12 cm",
           "Mantel = U · h = 25,12 · 10",
@@ -41,7 +41,7 @@
         ],
         "ergebnis": "Mantel ≈ 251,2 cm²."
       },
-      "merke": "Zylindermantel = 2 · π · r · h (Umfang · Höhe)."
+      "merke": "Zylindermantel = 2 · π · r · h."
     },
     "B": {
       "titel": "Oberfläche = 2 Kreise + Mantel",

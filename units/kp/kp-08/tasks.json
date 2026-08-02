@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Der Mantel: Umfang mal Höhe",
-      "hinfuehrung": "Wickelt man den Mantel eines Prismas ab, entsteht ein Rechteck. Seine eine Seite ist der Umfang der Grundfläche, die andere die Höhe.",
+      "hinfuehrung": "Rolle den Mantel ab. Es entsteht ein Rechteck.",
       "erklaerung": [
-        "Der Mantel umschließt das Prisma rundherum. Abgewickelt: ein Rechteck.",
-        "Mantel = Umfang der Grundfläche · Höhe."
+        "Rechne den Umfang der Grundfläche aus.",
+        "Nimm den Umfang mal die Höhe."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Dreiecksgrundfläche mit Seiten 3, 4, 5 cm, Höhe h = 10 cm. Mantel?",
+        "aufgabe": "Die Grundfläche ist ein Dreieck mit 3, 4 und 5 cm. Die Höhe ist 10 cm. Wie groß ist der Mantel?",
         "schritte": [
           "Umfang = 3 + 4 + 5 = 12 cm",
           "Mantel = Umfang · h = 12 · 10",

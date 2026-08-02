@@ -64,16 +64,34 @@
     };
   }
 
+  /* Nette Achsenschritte: höchstens etwa zehn Beschriftungen, und zwar
+     bei 1, 2, 5, 10, 20, 50 … statt bei krummen Zwischenwerten. */
+  function nettSchritt(spanne) {
+    const roh = spanne / 10;
+    const pot = Math.pow(10, Math.floor(Math.log10(roh)));
+    const n = roh / pot;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * pot;
+  }
+
   /* ---------- Koordinatenfeld ---------- */
   function Feld(opt) {
     opt = opt || {};
     const xmin = opt.xmin ?? -1, xmax = opt.xmax ?? 7;
     const ymin = opt.ymin ?? -1, ymax = opt.ymax ?? 7;
     const breite = opt.breite ?? 320, R = 20;
-    const E = (breite - 2 * R) / (xmax - xmin);
-    const W = breite, Hh = (ymax - ymin) * E + 2 * R;
-    const X = x => R + (x - xmin) * E;
-    const Y = y => Hh - R - (y - ymin) * E;
+    /* Ein Feld darf nicht beliebig hoch werden. Bei 0…100 Litern über
+       0…7 Stunden ergäbe eine gemeinsame Skala ein Bild im Verhältnis
+       1 : 20 — auf dem Handy unbrauchbar. Solange das Verhältnis passt,
+       bleiben die Kästchen quadratisch (nötig fürs Steigungsdreieck);
+       erst darüber skalieren die Achsen getrennt, wie im Schulbuch bei
+       Sachkontexten mit Stunden und Euro. */
+    const MAXV = opt.maxVerhaeltnis ?? 1.6;
+    const Ex = (breite - 2 * R) / (xmax - xmin);
+    const verh = (ymax - ymin) / (xmax - xmin);
+    const Ey = verh > MAXV ? Ex * MAXV / verh : Ex;
+    const W = breite, Hh = (ymax - ymin) * Ey + 2 * R;
+    const X = x => R + (x - xmin) * Ex;
+    const Y = y => Hh - R - (y - ymin) * Ey;
     const uid = 'a' + Math.random().toString(36).slice(2, 7);
 
     const svg = el('svg', { viewBox: `0 0 ${W} ${Hh}`, class: 'anim-svg', preserveAspectRatio: 'xMidYMid meet', role: 'img', 'aria-label': opt.alt || 'Animiertes Koordinatensystem zu linearen Funktionen.' });
@@ -84,9 +102,12 @@
     clip.appendChild(el('rect', { x: R, y: R, width: W - 2 * R, height: Hh - 2 * R })); defs.appendChild(clip);
     svg.appendChild(defs);
 
-    for (let i = Math.ceil(xmin); i <= Math.floor(xmax); i++)
+    /* Gitter im Achsenschritt — sonst zeichnet ein Feld von 0 bis 100
+       Litern 140 Linien übereinander und wird zur grauen Fläche. */
+    const sx = nettSchritt(xmax - xmin), sy = nettSchritt(ymax - ymin);
+    for (let i = Math.ceil(xmin / sx) * sx; i <= xmax + 1e-9; i += sx)
       svg.appendChild(el('line', { x1: X(i), y1: R, x2: X(i), y2: Hh - R, stroke: FARBE.gitter, 'stroke-width': 1 }));
-    for (let j = Math.ceil(ymin); j <= Math.floor(ymax); j++)
+    for (let j = Math.ceil(ymin / sy) * sy; j <= ymax + 1e-9; j += sy)
       svg.appendChild(el('line', { x1: R, y1: Y(j), x2: W - R, y2: Y(j), stroke: FARBE.gitter, 'stroke-width': 1 }));
 
     const nx = xmin <= 0 && xmax >= 0, ny = ymin <= 0 && ymax >= 0;
@@ -96,9 +117,8 @@
     svg.appendChild(el('text', { x: W - R + 2, y: ax - 6, fill: FARBE.ink, 'font-family': 'monospace', 'font-size': 12 }, opt.xlabel || 'x'));
     svg.appendChild(el('text', { x: ay + 6, y: R - 8, fill: FARBE.ink, 'font-family': 'monospace', 'font-size': 12 }, opt.ylabel || 'y'));
 
-    const sx = Math.ceil((xmax - xmin) / 10) || 1, sy = Math.ceil((ymax - ymin) / 10) || 1;
-    if (ny) for (let i = Math.ceil(xmin); i <= Math.floor(xmax); i++) { if (i === 0 || i % sx) continue; svg.appendChild(el('text', { x: X(i), y: +Y(0) + 13, fill: FARBE.weich, 'font-family': 'monospace', 'font-size': 10, 'text-anchor': 'middle' }, i)); }
-    if (nx) for (let j = Math.ceil(ymin); j <= Math.floor(ymax); j++) { if (j === 0 || j % sy) continue; svg.appendChild(el('text', { x: +X(0) - 5, y: +Y(j) + 3.5, fill: FARBE.weich, 'font-family': 'monospace', 'font-size': 10, 'text-anchor': 'end' }, j)); }
+    if (ny) for (let i = Math.ceil(xmin / sx) * sx; i <= xmax + 1e-9; i += sx) { if (Math.abs(i) < 1e-9) continue; svg.appendChild(el('text', { x: X(i), y: +Y(0) + 13, fill: FARBE.weich, 'font-family': 'monospace', 'font-size': 10, 'text-anchor': 'middle' }, fmt(i))); }
+    if (nx) for (let j = Math.ceil(ymin / sy) * sy; j <= ymax + 1e-9; j += sy) { if (Math.abs(j) < 1e-9) continue; svg.appendChild(el('text', { x: +X(0) - 5, y: +Y(j) + 3.5, fill: FARBE.weich, 'font-family': 'monospace', 'font-size': 10, 'text-anchor': 'end' }, fmt(j))); }
 
     const plot = el('g', { 'clip-path': `url(#cl${uid})` }); svg.appendChild(plot);
     const oben = el('g'); svg.appendChild(oben);
@@ -587,14 +607,17 @@
       const g2 = F.gerade(m2, 5, { farbe: FARBE.c });
       const sp = F.punkt(2, 3, { fill: FARBE.korr, r: 6 }); sp.style.opacity = 0;
       const spText = F.text(2, 3, '', { dx: 9, dy: -8, farbe: FARBE.korr, size: 12, weight: 700 });
-      const rechnung = st === 'B' ? h('div', 'anim-rechnung') : null;
+      /* LF-12 liest den Schnittpunkt ab, LF-13 rechnet ihn aus. Damit die
+         Basisstufe von LF-13 nicht bloß das Ablesen zeigt, lässt sich die
+         Rechenzeile über "rechnung": true auch auf Stufe A einschalten. */
+      const rechnung = (st === 'B' || (o && o.rechnung)) ? h('div', 'anim-rechnung') : null;
       const zeichne = b2 => {
         F.setGerade(g2, m2, b2);
         const xs = (b2 - b1) / (m1 - m2), ys = m1 * xs + b1, nah = Math.abs(b2 - 5) < 0.15;
         sp.style.opacity = nah ? 1 : 0.25; F.setPunkt(sp, xs, ys);
         F.setText(spText, nah ? `S(${fmt(xs)} | ${fmt(ys)})` : ''); F.setTextPos(spText, xs, ys, 9, -8);
-        if (st === 'B' && rechnung) rechnung.innerHTML = `x + 1 = −x + ${fmt(b2)} → 2x = ${fmt(b2 - 1)} → x = <b>${fmt(xs)}</b>`;
-        ables.innerHTML = nah ? `Schnittpunkt <b style="color:${FARBE.korr}">S(${fmt(xs)} | ${fmt(ys)})</b>` : (st === 'A' ? 'Kreuzung suchen …' : 'beide Geraden noch getrennt …');
+        if (rechnung) rechnung.innerHTML = `x + 1 = −x + ${fmt(b2)} → 2x = ${fmt(b2 - 1)} → x = <b>${fmt(xs)}</b>`;
+        ables.innerHTML = nah ? `Schnittpunkt <b style="color:${FARBE.korr}">S(${fmt(xs)} | ${fmt(ys)})</b>` : (rechnung ? 'beide Geraden noch getrennt …' : 'Kreuzung suchen …');
       };
       zeichne(REDUCED ? 5 : 6.5);
       const loop = Loop(t => zeichne(5 + Math.cos(t * 1.1) * 1.8));
@@ -646,6 +669,10 @@
       const zeichne = x => {
         F.setLinie(scan, x, 0, x, 30); F.setPunkt(pA, x, A(x)); F.setPunkt(pB, x, B(x)); if (pC) F.setPunkt(pC, x, C);
         const g = guenstigster(x);
+        /* Genau im Schnittpunkt kosten beide gleich viel. Dort einen Sieger
+           auszurufen wäre falsch — und es ist die Stelle, um die es geht. */
+        const gleich = Math.abs(A(x) - B(x)) < 0.05;
+        if (gleich) { ables.innerHTML = `bei ${fmt(x)} Std kosten A und B <b>gleich viel</b> (${fmt(A(x))} €) — das ist die Grenze`; return; }
         if (st === 'A') ables.innerHTML = `bei ${fmt(x)} Std: A = ${fmt(A(x))} € · B = ${fmt(B(x))} € → <b style="color:${g[2]}">Tarif ${g[0]} günstiger</b>`;
         else if (st === 'B') ables.innerHTML = `bei ${fmt(x)} Std → <b style="color:${g[2]}">Tarif ${g[0]}</b> &nbsp;(Grenze: Schnittpunkt bei 5 Std)`;
         else ables.innerHTML = `bei ${fmt(x)} Std ist <b style="color:${g[2]}">Tarif ${g[0]}</b> am günstigsten`;
@@ -682,6 +709,11 @@
       const schaleR = el('text', { x: 205, y: 62, 'text-anchor': 'middle', 'font-family': 'monospace', 'font-size': 18, fill: FARBE.a, 'font-weight': 700 }); svg.appendChild(schaleR);
       svg.appendChild(el('line', { x1: 95, y1: 30, x2: 95, y2: 50, stroke: FARBE.faint, 'stroke-width': 1.5 }));
       svg.appendChild(el('line', { x1: 205, y1: 30, x2: 205, y2: 50, stroke: FARBE.faint, 'stroke-width': 1.5 }));
+      /* Die Waage stand vorher nur als Bild daneben. Der Kern des Modells
+         ist aber, dass auf BEIDEN Schalen dasselbe passiert — deshalb steht
+         die Umformung jetzt unter beiden Schalen, nicht nur in der Randnotiz. */
+      const opL = el('text', { x: 95, y: 84, 'text-anchor': 'middle', 'font-family': 'monospace', 'font-size': 13, fill: FARBE.korr, 'font-weight': 700 }); svg.appendChild(opL);
+      const opR = el('text', { x: 205, y: 84, 'text-anchor': 'middle', 'font-family': 'monospace', 'font-size': 13, fill: FARBE.korr, 'font-weight': 700 }); svg.appendChild(opR);
 
       let schritte, fazit;
       if (st === 'A') {
@@ -700,7 +732,10 @@
         schaleL.textContent = s[0]; schaleR.textContent = s[1];
         balken.setAttribute('transform', ''); // Gleichgewicht (Äquivalenzumformung)
         zeile.innerHTML = `${s[0]} <span class="op">=</span> ${s[1]}`;
-        rechnung.innerHTML = i === 0 ? 'Gleichung im Gleichgewicht' : `Schritt ${i}: <b>${s[2]}</b>`;
+        const op = (s[2] || '').replace('|', '').trim();
+        const zeigOp = i > 0 && op && op !== 'wahr';
+        opL.textContent = zeigOp ? op : ''; opR.textContent = zeigOp ? op : '';
+        rechnung.innerHTML = i === 0 ? 'Gleichung im Gleichgewicht' : `Schritt ${i}: links und rechts <b>${op}</b>`;
         ables.innerHTML = i >= schritte.length - 1 ? fazit : '&nbsp;';
       };
       zeig(0);
@@ -717,15 +752,40 @@
   /* ============================================================
      Öffentliche API
      ============================================================ */
+  /* Eine Animation, die niemand sieht, muss auch nicht laufen. Auf der
+     Einheitenseite standen bisher mehrere Endlosschleifen gleichzeitig im
+     Speicher — das kostet Akku und zieht die Aufmerksamkeit von der Aufgabe
+     ab, an der gerade gearbeitet wird. Wer selbst auf Pause drückt, behält
+     die Pause auch beim Zurückscrollen. */
+  function nurSichtbarLaufen(fig, ctrl) {
+    if (!ctrl || typeof ctrl.play !== 'function' || REDUCED) return;
+    if (!window.IntersectionObserver) return;
+    const sync = () => { const b = fig.querySelector('.anim-steuer'); if (b && b._sync) b._sync(); };
+    let vomNutzerGestoppt = false;
+    const btn = fig.querySelector('.anim-play');
+    if (btn) btn.addEventListener('click', () => { vomNutzerGestoppt = !ctrl.running; });
+    const io = new IntersectionObserver(eintraege => {
+      eintraege.forEach(e => {
+        if (e.isIntersecting) { if (!vomNutzerGestoppt && !ctrl.running) { ctrl.play(); sync(); } }
+        else if (ctrl.running) { ctrl.pause(); sync(); }
+      });
+    }, { threshold: 0.2 });
+    io.observe(fig);
+  }
+
   function baueIn(id, host, opts) {
     const def = NACH_ID[id]; host.innerHTML = '';
     if (!def) { host.appendChild(h('div', 'anim-fehlt', 'Animation „' + id + '“ nicht gefunden.')); return null; }
-    const fig = h('figure', 'anim'); const ctrl = def.bauen(fig, opts || {}); host.appendChild(fig); return ctrl;
+    const fig = h('figure', 'anim'); const ctrl = def.bauen(fig, opts || {}); host.appendChild(fig);
+    nurSichtbarLaufen(fig, ctrl); return ctrl;
   }
 
   window.ANIM.block = function (v) {
     const box = h('div', 'bild anim-bild');
-    requestAnimationFrame(() => baueIn(v.name, box, { stufe: v.stufe, breite: v.breite }));
+    /* Das ganze visual-Objekt durchreichen: manche Animationen bedienen
+       mehrere Einheiten und brauchen dafür ein „thema" oder eine „form"
+       (z. B. dieselbe Rückwärts-Animation für Pyramide und Kegel). */
+    requestAnimationFrame(() => baueIn(v.name, box, v));
     return box;
   };
   window.ANIM.einbetten = baueIn;
@@ -815,8 +875,11 @@
       svg, PX, y0, hoehe, R, innerW, max,
       setFill(p, farbe) { fuell.setAttribute('width', Math.max(0.001, PX(p) - R)); if (farbe) fuell.setAttribute('fill', farbe); },
       add(e) { oben.appendChild(e); return e; },
-      tick(p, label, o) { o = o || {}; const x = PX(p); const l = el('line', { x1: x, y1: y0 - 5, x2: x, y2: y0 + hoehe + 5, stroke: o.farbe || FARBE.c, 'stroke-width': 2 }); oben.appendChild(l); let tx = null; if (label != null) { tx = el('text', { x: x, y: y0 - 8, 'text-anchor': 'middle', 'font-family': 'monospace', 'font-size': 11, fill: o.farbe || FARBE.c, 'font-weight': 700 }, label); oben.appendChild(tx); } return { l, tx }; },
-      setTick(ref, p, label) { const x = this.PX(p); ref.l.setAttribute('x1', x); ref.l.setAttribute('x2', x); if (ref.tx) { ref.tx.setAttribute('x', x); if (label != null) ref.tx.textContent = label; } }
+      /* Beschriftungen am Rand mittig zu setzen schnitt sie ab — deshalb
+         richtet sich die Ausrichtung nach der Lage auf dem Streifen. */
+      anker(p) { return p >= max * 0.88 ? 'end' : (p <= max * 0.12 ? 'start' : 'middle'); },
+      tick(p, label, o) { o = o || {}; const x = PX(p); const l = el('line', { x1: x, y1: y0 - 5, x2: x, y2: y0 + hoehe + 5, stroke: o.farbe || FARBE.c, 'stroke-width': 2 }); oben.appendChild(l); let tx = null; if (label != null) { tx = el('text', { x: x, y: y0 - 8, 'text-anchor': o.anchor || this.anker(p), 'font-family': 'monospace', 'font-size': 11, fill: o.farbe || FARBE.c, 'font-weight': 700 }, label); oben.appendChild(tx); } return { l, tx }; },
+      setTick(ref, p, label) { const x = this.PX(p); ref.l.setAttribute('x1', x); ref.l.setAttribute('x2', x); if (ref.tx) { ref.tx.setAttribute('x', x); ref.tx.setAttribute('text-anchor', this.anker(p)); if (label != null) ref.tx.textContent = label; } }
     };
   }
 
@@ -883,7 +946,17 @@
       const zeig = p => {
         S.setFill(p, FARBE.a);
         if (st === 'A') info.innerHTML = p < 49 ? `weniger als die Hälfte (< 50 %)` : (p > 51 ? `mehr als die Hälfte (> 50 %)` : `etwa die Hälfte (50 %)`);
-        else if (st === 'B') { const anker = [0, 25, 50, 75, 100].reduce((a, b) => Math.abs(b - p) < Math.abs(a - p) ? b : a); info.innerHTML = `nächster Ankerwert: ${anker} % → Schätzung ≈ <b>${Math.round(p / 5) * 5} %</b>`; }
+        else if (st === 'B') {
+          /* Der Ankerwert soll die Schätzung tragen, nicht nur daneben
+             stehen: erst einordnen (zwischen welchen Marken?), dann auf
+             5 % genau schätzen. */
+          const A = [0, 25, 50, 75, 100];
+          const unten = A.filter(x => x <= p).pop(), oben = A.find(x => x >= p);
+          const nah = Math.abs(p - unten) <= Math.abs(oben - p) ? unten : oben;
+          info.innerHTML = unten === oben
+            ? `genau auf der Marke <b>${unten} %</b>`
+            : `zwischen ${unten} % und ${oben} %, näher an ${nah} % → Schätzung ≈ <b>${Math.round(p / 5) * 5} %</b>`;
+        }
         else { const z = Math.round(p / 10); info.innerHTML = `≈ ${z} · 10 % = <b>${z * 10} %</b>`; }
       };
       zeig(40);
@@ -977,14 +1050,27 @@
       S.setFill(W, FARBE.a);
       const tG = S.tick(100, 'G = 100 %', { farbe: FARBE.b });
       const tW = st !== 'A' ? S.tick(W, 'W', { farbe: FARBE.a }) : null;
+      /* Vorher stand hier auf A und B nur ein fester Satz — der Abspielknopf
+         bewegte nichts. Jetzt wandert die Markierung zwischen „das Ganze"
+         und „der Teil", denn genau diese Unterscheidung ist der Lernkern. */
+      const phasenA = [
+        { fill: 100, farbe: FARBE.b, txt: `der <b style="color:${FARBE.b}">ganze</b> Streifen = <b>Grundwert G</b> = 100 %` },
+        { fill: W, farbe: FARBE.a, txt: `nur der gefärbte <b style="color:${FARBE.a}">Teil</b> = <b>Prozentwert W</b> = ${W} %` }
+      ];
+      const phasenB = [
+        { fill: 100, farbe: FARBE.b, txt: `<b style="color:${FARBE.b}">G</b> = das Ganze = 100 %` },
+        { fill: W, farbe: FARBE.a, txt: `<b style="color:${FARBE.a}">W</b> = der Teil davon (in € oder Stück)` },
+        { fill: W, farbe: FARBE.c, txt: `<b style="color:${FARBE.c}">p %</b> = ${W} % — wie viel Prozent der Teil ausmacht` }
+      ];
       const zeig = phase => {
-        if (st === 'A') info.innerHTML = `der ganze Streifen ist der <b style="color:${FARBE.b}">Grundwert G</b> = 100 %`;
-        else if (st === 'B') info.innerHTML = `<b style="color:${FARBE.b}">G</b> = das Ganze (100 %) · <b style="color:${FARBE.a}">W</b> = der Teil · <b style="color:${FARBE.c}">p %</b> = ${W} %`;
-        else info.innerHTML = phase % 2 ? `<b style="color:${FARBE.b}">G = ?</b> — der Grundwert ist nicht genannt` : `nur der Teil W und p % sind bekannt`;
+        if (st === 'C') { info.innerHTML = phase % 2 ? `<b style="color:${FARBE.b}">G = ?</b> — der Grundwert ist nicht genannt` : `nur der Teil W und p % sind bekannt`; return; }
+        const ph = (st === 'A' ? phasenA : phasenB);
+        const p = ph[phase % ph.length];
+        S.setFill(p.fill, p.farbe); info.innerHTML = p.txt;
       };
       if (st === 'C') S.setTick(tG, 100, 'G = ?');
       zeig(0);
-      const loop = Loop(t => zeig(Math.floor(t / 1.6)));
+      const loop = Loop(t => zeig(Math.floor(t / 1.8)));
       const bar = steuerleiste(loop);
       host.appendChild(S.svg); host.appendChild(info); host.appendChild(bar);
       if (!REDUCED) loop.play(), bar._sync(); return loop;
@@ -1066,16 +1152,22 @@
     }
   });
 
-  /* 9 · Vermehrter/verminderter Grundwert & Wachstumsfaktor (PZ-09/10) */
+  /* 9 · Vermehrter/verminderter Grundwert & Wachstumsfaktor (PZ-09/10)
+     Zwei Einheiten teilen sich diese Animation, deshalb das Feld "thema":
+       thema "rabatt"   → PZ-09 (Rabatt/Aufschlag, zurück vom Endpreis)
+       thema "richtung" → PZ-10 (gestiegen/gefallen, Faktor, Faktorkette)
+     Ohne Angabe bleibt es beim bisherigen Verhalten (Rabatt). */
   register({
     id: 'veraenderung', titel: 'Vermehren, vermindern, Wachstumsfaktor', bezug: 'PZ-09',
-    kurz: 'A: erst Betrag, dann ±  · B: in einem Schritt (Faktor 1 ± p) · C: Faktorkette +10 % / −10 %.',
+    kurz: 'A: erst Betrag, dann ±  · B: in einem Schritt (Faktor 1 ± p) · C: zurück vom Endpreis bzw. Faktorkette.',
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
+      const thema = (o && o.thema) === 'richtung' ? 'richtung' : 'rabatt';
       const S = Streifen({ breite: o.breite || 360, max: 150, mitte: false, legende: false });
       const info = h('div', 'anim-ables');
       S.tick(100, '100 %', { farbe: FARBE.ink });
-      if (st === 'C') {
+
+      if (thema === 'richtung' && st === 'C') {
         // 100 → +10% =110 → −10% =99
         const marke = S.tick(100, '', { farbe: FARBE.c });
         const phasen = [{ v: 100, t: `Start: 100 €` }, { v: 110, t: `+10 % → · 1,10 = 110 €` }, { v: 99, t: `−10 % → · 0,90 = <b>99 €</b> (nicht 100 €!)` }];
@@ -1086,6 +1178,37 @@
         host.appendChild(S.svg); host.appendChild(info); host.appendChild(bar);
         if (!REDUCED) loop.play(), bar._sync(); return loop;
       }
+
+      if (thema === 'rabatt' && st === 'C') {
+        // Vom Endpreis zurück: 119 € sind 119 %, also : 1,19 statt − 19 %
+        const marke = S.tick(119, '', { farbe: FARBE.c });
+        const zeig = frac => {
+          const v = 119 - 19 * frac; S.setFill(v, FARBE.c); S.setTick(marke, v, fmt(Math.round(v)) + ' %');
+          info.innerHTML = `Endpreis 119 € = <b>119 %</b> → : 1,19 = <b>100 €</b> netto &nbsp;(nicht 119 € − 19 %)`;
+        };
+        zeig(REDUCED ? 1 : 0);
+        const loop = Loop(t => zeig(osz(t, 5)));
+        const bar = steuerleiste(loop);
+        host.appendChild(S.svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      if (thema === 'richtung') {
+        // A/B: 50 € → 58 €  (Richtung, Differenz, Prozentsatz, Faktor)
+        const marke = S.tick(100, '', { farbe: FARBE.a });
+        const zeig = frac => {
+          const v = 100 + 16 * frac; S.setFill(v, FARBE.a); S.setTick(marke, v, fmt(Math.round(v)) + ' %');
+          info.innerHTML = st === 'A'
+            ? `alt 50 € → neu 58 €: <b>gestiegen</b> · Differenz = 58 − 50 = <b>8 €</b>`
+            : `p = (58 − 50) : 50 · 100 = <b>16 %</b> → Faktor q = <b>1,16</b>`;
+        };
+        zeig(REDUCED ? 1 : 0);
+        const loop = Loop(t => zeig(osz(t, 4)));
+        const bar = steuerleiste(loop);
+        host.appendChild(S.svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
       // A/B: 200 € − 15 % = 170 €  (dargestellt in %)
       const p = 15, ziel = 100 - p;
       const marke = S.tick(ziel, '', { farbe: FARBE.a });
@@ -1102,48 +1225,113 @@
     }
   });
 
-  /* 10 · Zinsen & Zinseszins (PZ-11/12/13) */
+  /* 10 · Zinsen & Zinseszins (PZ-11/12/13)
+     Drei Einheiten, ein Bildvorrat — getrennt über "thema", damit die
+     Stufe wirklich die Niveaustufe meint und nicht heimlich das Thema:
+       thema "jahr"   → PZ-11 Jahreszinsen (A: Z · B: p · C: K)
+       thema "zeit"   → PZ-12 Teile eines Jahres (A: halbes Jahr · B: m/12 · C: Laufzeit zurück)
+       thema "eszins" → PZ-13 Zinseszins (A: Tabelle · B: K·qⁿ · C: Vergleich) */
   register({
     id: 'zinsen', titel: 'Zinsen & Zinseszins', bezug: 'PZ-11',
-    kurz: 'A: Jahreszinsen Z = K·p:100 · B: unterjährig (m/12) · C: Zinseszins K·qⁿ.',
+    kurz: 'Jahreszinsen, Teile eines Jahres und Zinseszins — je Einheit über „thema“ gewählt.',
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
+      const thema = ['jahr', 'zeit', 'eszins'].indexOf((o && o.thema) || '') >= 0 ? o.thema : 'jahr';
       const info = h('div', 'anim-ables');
 
-      if (st === 'C') {
-        // Zinseszins vs. einfacher Zins, K=100, p=10 %, 5 Jahre
-        const K = 100, q = 1.1, n = 5;
-        const zins = [], einf = [];
-        for (let j = 0; j <= n; j++) { zins.push(K * Math.pow(q, j)); einf.push(K + K * 0.1 * j); }
-        const Sa = Saeulen({ breite: o.breite || 340, hoehe: 190, max: 170 });
-        const bw = ((o.breite || 340) - 46) / (n + 1);
-        const rects = [], refs = [];
-        for (let j = 0; j <= n; j++) {
-          const x = Sa.links + 6 + j * bw;
-          rects.push(Sa.saeule(x, bw * 0.5, FARBE.c));
-          Sa.text(x + bw * 0.25, Sa.basis + 12, j + '', { size: 9, farbe: FARBE.weich });
-          refs.push(el('line', { x1: x, y1: Sa.YH(einf[j]), x2: x + bw * 0.5, y2: Sa.YH(einf[j]), stroke: FARBE.ink, 'stroke-width': 1.5, 'stroke-dasharray': '3 2' }));
-          Sa.add ? null : null; Sa.svg.appendChild(refs[j]); refs[j].style.opacity = 0;
+      /* ---- PZ-13 · Zinseszins ---- */
+      if (thema === 'eszins') {
+        if (st === 'C') {
+          // Zinseszins vs. einfacher Zins, K=100, p=10 %, 5 Jahre
+          const K = 100, q = 1.1, n = 5;
+          const zins = [], einf = [];
+          for (let j = 0; j <= n; j++) { zins.push(K * Math.pow(q, j)); einf.push(K + K * 0.1 * j); }
+          const Sa = Saeulen({ breite: o.breite || 340, hoehe: 190, max: 170 });
+          const bw = ((o.breite || 340) - 46) / (n + 1);
+          const rects = [], refs = [];
+          for (let j = 0; j <= n; j++) {
+            const x = Sa.links + 6 + j * bw;
+            rects.push(Sa.saeule(x, bw * 0.5, FARBE.c));
+            Sa.text(x + bw * 0.25, Sa.basis + 12, j + '', { size: 9, farbe: FARBE.weich });
+            refs.push(el('line', { x1: x, y1: Sa.YH(einf[j]), x2: x + bw * 0.5, y2: Sa.YH(einf[j]), stroke: FARBE.ink, 'stroke-width': 1.5, 'stroke-dasharray': '3 2' }));
+            Sa.svg.appendChild(refs[j]); refs[j].style.opacity = 0;
+          }
+          const setz = k => {
+            rects.forEach((r, j) => { Sa.setSaeule(r, j <= k ? zins[j] : 0); refs[j].style.opacity = j <= k ? 1 : 0; });
+            info.innerHTML = `Jahr ${k}: Zinseszins ${fmt(Math.round(zins[k]))} € vs. einfach ${fmt(einf[k])} € — <b style="color:${FARBE.c}">wächst schneller</b>`;
+          };
+          setz(REDUCED ? n : 0);
+          const loop = Loop(t => setz(Math.floor((t % ((n + 1) * 0.9)) / 0.9)));
+          const bar = steuerleiste(loop);
+          /* Die gestrichelten Striche sind der einfache Zins — ohne Legende
+             blieb im Bild unklar, wogegen die Säulen antreten. */
+          const leg = h('div', 'anim-legende');
+          leg.innerHTML = `<span><i style="background:${FARBE.c}"></i>Zinseszins</span><span><i style="background:${FARBE.ink}"></i>einfacher Zins (gestrichelt)</span>`;
+          host.appendChild(Sa.svg); host.appendChild(leg); host.appendChild(info); host.appendChild(bar);
+          if (!REDUCED) loop.play(), bar._sync(); return loop;
         }
-        const setz = k => {
-          rects.forEach((r, j) => { Sa.setSaeule(r, j <= k ? zins[j] : 0); refs[j].style.opacity = j <= k ? 1 : 0; });
-          info.innerHTML = `Jahr ${k}: Zinseszins ${fmt(Math.round(zins[k]))} € vs. einfach ${fmt(einf[k])} € — <b style="color:${FARBE.c}">wächst schneller</b>`;
+        // A: Tabelle Jahr für Jahr · B: dieselbe Rechnung als K · qⁿ
+        const box = h('div', 'anim-schema');
+        const zeilen = [
+          { l: 'Start', r: '1000,00 €' },
+          { l: 'Jahr 1: + 2 %', r: '1020,00 €' },
+          { l: 'Jahr 2: + 2 %', r: '1040,40 €' }
+        ].map((rw, i) => {
+          const z = h('div', 'anim-schema-zeile');
+          z.appendChild(h('span', 'anim-schema-op', i === 0 ? '' : '+ ' + (i === 1 ? '20,00' : '20,40') + ' €'));
+          z.appendChild(h('span', 'anim-schema-l', rw.l));
+          z.appendChild(h('span', 'anim-schema-pf', '→'));
+          z.appendChild(h('span', 'anim-schema-r', rw.r));
+          z.style.opacity = i === 0 ? 1 : 0;
+          box.appendChild(z); return z;
+        });
+        const setz = n => {
+          zeilen.forEach((z, i) => z.style.opacity = i < n ? 1 : 0);
+          if (st === 'A') info.innerHTML = n >= 3
+            ? `Jahr 2 verzinst <b>1020 €</b>, nicht mehr 1000 € → <b>1040,40 €</b>`
+            : `neues Kapital = altes Kapital + Zinsen`;
+          else info.innerHTML = n >= 3
+            ? `kurz: K · qⁿ = 1000 · 1,02² = <b>1040,40 €</b>`
+            : `q = 1 + 2/100 = <b>1,02</b>`;
         };
-        setz(REDUCED ? n : 0);
-        const loop = Loop(t => setz(Math.floor((t % ((n + 1) * 0.9)) / 0.9)));
+        setz(REDUCED ? 3 : 1);
+        const loop = Loop(t => setz(1 + Math.floor((t % 5.4) / 1.8)));
         const bar = steuerleiste(loop);
-        host.appendChild(Sa.svg); host.appendChild(info); host.appendChild(bar);
+        host.appendChild(box); host.appendChild(info); host.appendChild(bar);
         if (!REDUCED) loop.play(), bar._sync(); return loop;
       }
 
-      // A/B: Zinsen als p%-Anteil des Kapitals auf dem Streifen
-      const S = Streifen({ breite: o.breite || 340, mitte: false });
-      const K = 1200, p = 5, Zjahr = K * p / 100;
-      S.tick(100, 'K = 1200 €', { farbe: FARBE.b });
-      const zeig = frac => {
-        if (st === 'A') { S.setFill(p * frac, FARBE.a); info.innerHTML = `Z = K · p : 100 = 1200 · 5 : 100 = <b>${fmt(Zjahr)} €</b> pro Jahr`; }
-        else { const m = 3; const Zt = Zjahr * m / 12; S.setFill(p * (m / 12) * frac, FARBE.a); info.innerHTML = `3 Monate: Z = ${fmt(Zjahr)} € · 3/12 = <b>${fmt(Zt)} €</b>`; }
+      /* ---- PZ-12 · Teile eines Jahres ---- */
+      if (thema === 'zeit') {
+        const K = 1200, p = 5, Zjahr = K * p / 100;      // 60 € im Jahr
+        const monate = st === 'A' ? 6 : 3;
+        const S = Streifen({ breite: o.breite || 340, max: 12, mitte: false, legende: false });
+        S.tick(12, '1 Jahr = ' + fmt(Zjahr) + ' €', { farbe: FARBE.b });
+        const marke = S.tick(monate, '', { farbe: FARBE.a });
+        const Zteil = Zjahr * monate / 12;
+        const zeig = frac => {
+          const m = monate * frac; S.setFill(m, FARBE.a); S.setTick(marke, m, fmt(Math.round(m)) + ' Mon.');
+          if (st === 'A') info.innerHTML = `halbes Jahr = <b>6 von 12</b> Monaten → ${fmt(Zjahr)} € : 2 = <b>${fmt(Zteil)} €</b>`;
+          else if (st === 'B') info.innerHTML = `3 Monate → Zeitfaktor 3/12 → ${fmt(Zjahr)} € · 3/12 = <b>${fmt(Zteil)} €</b>`;
+          else info.innerHTML = `rückwärts: ${fmt(Zteil)} € : ${fmt(Zjahr)} € = 1/4 Jahr → <b>3 Monate</b> (= 90 Tage)`;
+        };
+        zeig(REDUCED ? 1 : 0);
+        const loop = Loop(t => zeig(osz(t, 4)));
+        const bar = steuerleiste(loop);
+        host.appendChild(S.svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      /* ---- PZ-11 · Jahreszinsen: A sucht Z, B sucht p, C sucht K ---- */
+      const faelle = {
+        A: { K: 1200, p: 5, Z: 60, txt: `Z = K · p : 100 = 1200 · 5 : 100 = <b>60 €</b> im Jahr` },
+        B: { K: 2000, p: 3, Z: 60, txt: `gesucht ist <b>p</b>: p = Z : K · 100 = 60 : 2000 · 100 = <b>3 %</b>` },
+        C: { K: 2500, p: 4, Z: 100, txt: `gesucht ist <b>K</b>: K = Z · 100 : p = 100 · 100 : 4 = <b>2500 €</b>` }
       };
+      const f = faelle[st] || faelle.A;
+      const S = Streifen({ breite: o.breite || 340, mitte: false });
+      S.tick(100, 'K = ' + fmt(f.K) + ' €', { farbe: FARBE.b });
+      const zeig = frac => { S.setFill(f.p * frac, FARBE.a); info.innerHTML = f.txt; };
       zeig(REDUCED ? 1 : 0);
       const loop = Loop(t => zeig(osz(t, 4)));
       const bar = steuerleiste(loop);
@@ -1334,25 +1522,39 @@
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
       const svg = svgb(o.breite || 320, 210, 'Netz');
-      // Würfel-/Quader-Netz als Kreuz: [oben, [links,vorne,rechts,hinten], unten]
-      const a = 4, b = 3, c = 2; // Quader; Würfel nutzt a=a=a mit a=5
-      const wA = st === 'A' ? 5 : a;
+      /* Kreuznetz. Mittlere Reihe (Höhe c): links · vorne · rechts · hinten,
+         darüber der Deckel, darunter der Boden — beide a·b. So liegen die
+         sechs Flächen überschneidungsfrei nebeneinander und die Summe der
+         gezeigten Rechtecke ist wirklich die Oberfläche. */
+      const a = 4, b = 3, c = 2; // Quader; Würfel nutzt a = b = c = 5
+      const wA = 5;
       const felder = st === 'A'
         ? [{ x: 1, y: 0, w: 1, hh: 1, l: 'a²' }, { x: 0, y: 1, w: 1, hh: 1, l: 'a²' }, { x: 1, y: 1, w: 1, hh: 1, l: 'a²' }, { x: 2, y: 1, w: 1, hh: 1, l: 'a²' }, { x: 3, y: 1, w: 1, hh: 1, l: 'a²' }, { x: 1, y: 2, w: 1, hh: 1, l: 'a²' }]
-        : [{ x: 1, y: 0, w: a, hh: b, l: 'a·b' }, { x: 0, y: 1, w: c, hh: a, l: 'b·c' }, { x: 1, y: 1, w: a, hh: a, l: 'a·c' }, { x: 1 + a, y: 1, w: c, hh: a, l: 'b·c' }, { x: 1, y: 2, w: a, hh: b, l: 'a·b' }];
+        : [{ x: b, y: 0, w: a, hh: b, l: 'a·b' },
+           { x: 0, y: b, w: b, hh: c, l: 'b·c' },
+           { x: b, y: b, w: a, hh: c, l: 'a·c' },
+           { x: b + a, y: b, w: b, hh: c, l: 'b·c' },
+           { x: 2 * b + a, y: b, w: a, hh: c, l: 'a·c' },
+           { x: b, y: b + c, w: a, hh: b, l: 'a·b' }];
       // Für die Darstellung normieren wir auf eine Zellgröße
-      const U = st === 'A' ? 34 : 18, OX = 20, OY = 14;
+      const U = st === 'A' ? 40 : 19, OX = st === 'A' ? 70 : 18, OY = st === 'A' ? 40 : 30;
       const rects = felder.map(f => { const r = el('rect', { x: OX + f.x * U, y: OY + f.y * U, width: f.w * U, height: f.hh * U, fill: K, 'fill-opacity': .12, stroke: FARBE.ink, 'stroke-width': 1.2 }); svg.appendChild(r); return r; });
       const oben = el('g'); svg.appendChild(oben);
-      const werte = st === 'A' ? felder.map(() => wA * wA) : [a * b, b * c, a * c, b * c, a * b];
+      const werte = st === 'A' ? felder.map(() => wA * wA) : [a * b, b * c, a * c, b * c, a * c, a * b];
+      const ges = werte.reduce((x, y) => x + y, 0);
       const zeige = n => {
         oben.innerHTML = '';
         let summe = 0;
-        rects.forEach((r, i) => { const an = i < n; r.setAttribute('fill-opacity', an ? .5 : .12); if (an) summe += werte[i]; });
-        const ges = werte.reduce((x, y) => x + y, 0);
+        rects.forEach((r, i) => {
+          const an = i < n; r.setAttribute('fill-opacity', an ? .5 : .12);
+          if (!an) return;
+          summe += werte[i];
+          const f = felder[i];
+          oben.appendChild(txt(OX + (f.x + f.w / 2) * U, OY + (f.y + f.hh / 2) * U + 4, f.l, { size: st === 'A' ? 12 : 10, farbe: FARBE.weich }));
+        });
         info.innerHTML = st === 'A'
-          ? (n >= 6 ? `O = 6 · a² = 6 · ${wA}² = <b>${ges} cm²</b>` : `Fläche ${n}/6 · a² …`)
-          : (n >= 5 ? `O = 2·(a·b + a·c + b·c) = <b>${ges} cm²</b>` : `Flächenpaar ${n}/5 …`);
+          ? (n >= 6 ? `O = 6 · a² = 6 · ${wA}² = <b>${ges} cm²</b>` : `Fläche ${n} von 6: je a² = ${wA * wA} cm² — Summe ${summe} cm²`)
+          : (n >= 6 ? `O = 2·(a·b + a·c + b·c) = 2·(${a * b} + ${a * c} + ${b * c}) = <b>${ges} cm²</b>` : `Fläche ${n} von 6 — Summe ${summe} cm²`);
       };
       zeige(REDUCED ? rects.length : 0);
       const loop = Loop(tt => zeige(1 + Math.floor((tt % ((rects.length + 1) * 0.7)) / 0.7)));
@@ -1411,7 +1613,7 @@
           svg.appendChild(txt(200 + 6, 170 - ch / 2, 'c = ?', { anchor: 'start', farbe: FARBE.korr, weight: 700, size: 12 }));
           const Vakt = a * bb * cakt;
           info.innerHTML = frac >= .99
-            ? `c = V : (a·b) = 60 : (5·4) = <b>3</b>` : `Volumen wächst: ${fmt(Math.round(Vakt))} / 60 cm³`;
+            ? `c = V : (a·b) = 60 : (5·4) = <b>3 cm</b>` : `Volumen wächst: ${fmt(Math.round(Vakt))} / 60 cm³`;
         };
         zeige(REDUCED ? 1 : 0);
         const loop = Loop(tt => zeige(osz(tt, 5)));
@@ -1604,14 +1806,19 @@
       const svg = svgb(o.breite || 320, 210, 'Zusammengesetzter Körper');
 
       if (st === 'C') {
-        // Hohlkörper: außen minus innen (Rohr, Querschnitt)
+        /* Die Zahlen der Lernkarte gehören zu einem Rohr (außen r = 5 cm,
+           innen r = 4 cm, Länge 10 cm). Vorher stand daneben ein Quader mit
+           rechteckigem Loch — Bild und Rechnung passten nicht zusammen. */
         const zeige = frac => {
           svg.innerHTML = '';
-          svg.appendChild(el('rect', { x: 90, y: 40, width: 140, height: 120, fill: K, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.5 }));
-          const iw = 90 * frac, ih = 70 * frac;
-          svg.appendChild(el('rect', { x: 160 - iw / 2, y: 100 - ih / 2, width: iw, height: ih, fill: '#FFFFFF', stroke: FARBE.korr, 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }));
-          info.innerHTML = frac >= .96 ? `V = V<tspan>außen</tspan> − V<tspan>innen</tspan> = 785 − 502,4 = <b>282,6 cm³</b>` : `innen aushöhlen …`;
-          info.innerHTML = frac >= .96 ? `V = außen − innen = 785 − 502,4 = <b>282,6 cm³</b>` : `innen aushöhlen …`;
+          const cx = 160, topY = 50, rx = 62, ry = 18, hh = 105;
+          zyl(svg, cx, topY, rx, hh, ry, K);
+          const irx = rx * 0.8 * frac, iry = ry * 0.8 * frac;
+          if (irx > 1.5) svg.appendChild(el('ellipse', { cx, cy: topY, rx: irx, ry: iry, fill: FARBE.weiss, stroke: FARBE.korr, 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }));
+          svg.appendChild(txt(cx, 28, 'Rohr: außen r = 5 cm · innen r = 4 cm · Länge 10 cm', { size: 9, farbe: FARBE.weich }));
+          info.innerHTML = frac >= .96
+            ? `V = außen − innen = 785 − 502,4 = <b>282,6 cm³</b>`
+            : `nur das Material zählt — innen aushöhlen …`;
         };
         zeige(REDUCED ? 1 : 0);
         const loop = Loop(t => zeige(osz(t, 5)));
@@ -1620,14 +1827,38 @@
         if (!REDUCED) loop.play(), bar._sync(); return loop;
       }
 
-      // A/B: Quader unten + Würfel oben, der abhebt
+      if (st === 'B') {
+        /* Ein Vollquader mit 50 cm³ — genau der Körper aus der Lernkarte.
+           Vorher lief hier derselbe zusammengesetzte Körper wie auf A, der
+           40 cm³ hat: dasselbe Bild mit zwei verschiedenen Volumen. */
+        const zeige = frac => {
+          svg.innerHTML = '';
+          const t1 = G4.boxTeile(70, 80, 140, 56, 44, 30); G4.zeichneBox(svg, t1, K);
+          svg.appendChild(txt(140, 165, 'a = 5 cm · b = 5 cm · c = 2 cm → V = 50 cm³', { size: 10, farbe: FARBE.weich }));
+          const g = Math.round(390 * frac);
+          svg.appendChild(el('rect', { x: 250, y: 150 - 100 * frac, width: 34, height: 100 * frac, fill: FARBE.c, 'fill-opacity': .5, stroke: FARBE.ink, 'stroke-width': 1 }));
+          svg.appendChild(el('line', { x1: 246, y1: 150, x2: 288, y2: 150, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+          svg.appendChild(txt(267, 145 - 100 * frac, g + ' g', { size: 10, farbe: FARBE.c, weight: 700 }));
+          info.innerHTML = frac >= .96
+            ? `Masse = V · Dichte = 50 cm³ · 7,8 g/cm³ = <b>390 g</b>`
+            : `erst das Volumen (50 cm³), dann · Dichte …`;
+        };
+        zeige(REDUCED ? 1 : 0);
+        const loop = Loop(t => zeige(osz(t, 5)));
+        const bar = steuerleiste(loop);
+        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+        if (!REDUCED) loop.play(), bar._sync(); return loop;
+      }
+
+      // A: Quader unten + Würfel oben, der abhebt
       const zeige = frac => {
         svg.innerHTML = '';
         const t1 = G4.boxTeile(80, 150, 140, 44, 40, 26); G4.zeichneBox(svg, t1, K);
         const lift = 40 * frac;
         const t2 = G4.boxTeile(120, 128 - lift, 44, 44, 24, 24); G4.zeichneBox(svg, t2, FARBE.c);
-        if (st === 'A') info.innerHTML = frac >= .5 ? `V = Quader + Würfel = 32 + 8 = <b>40 cm³</b>` : `in Grundformen zerlegen …`;
-        else info.innerHTML = frac >= .5 ? `V = 50 cm³ · Dichte 7,8 g/cm³ → Masse = <b>390 g</b>` : `erst das Volumen, dann · Dichte …`;
+        info.innerHTML = frac >= .5
+          ? `V = Quader + Würfel = 32 + 8 = <b>40 cm³</b>`
+          : `in Grundformen zerlegen …`;
       };
       zeige(REDUCED ? 1 : 0);
       const loop = Loop(t => zeige(osz(t, 5)));
@@ -1801,37 +2032,34 @@
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
 
-      if (st === 'C') {
-        const svg = svgb(o.breite || 300, 210, 'Drei Pyramiden füllen ein Prisma');
-        const t = GE.boxTeile(90, 60, 120, 120, 46, 46);
-        const clipId = 'pc' + Math.random().toString(36).slice(2, 6);
-        const defs = el('defs'); const cp = el('clipPath', { id: clipId }); cp.appendChild(el('path', { d: t.front })); defs.appendChild(cp); svg.appendChild(defs);
-        GE.zeichneBox(svg, t, '#C8D2D8');
-        const fuell = el('rect', { x: 90, y: 180, width: 120, height: 0, fill: K, 'fill-opacity': .5, 'clip-path': `url(#${clipId})` });
-        svg.appendChild(fuell);
-        const zeige = frac => {
-          const stufe3 = Math.min(3, Math.floor(frac * 3) + (frac >= 1 ? 0 : 1)); const f = Math.min(1, frac);
-          const hpx = 120 * f; fuell.setAttribute('y', 60 + 120 - hpx); fuell.setAttribute('height', hpx);
-          info.innerHTML = f >= .99 ? `3 Pyramiden = 1 Prisma → V = <b>⅓ · G · h</b>` : `Pyramide ${Math.min(3, Math.ceil(f * 3))} von 3 …`;
-        };
-        zeige(REDUCED ? 1 : 0);
-        const loop = Loop(t2 => zeige(osz(t2, 5)));
-        const bar = steuerleiste(loop);
-        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
-        if (!REDUCED) loop.play(), bar._sync(); return loop;
-      }
-
-      const svg = svgb(o.breite || 300, 200, 'Pyramide');
-      const P = mkPyramide(svg, 150, 155, 75, 26, 115, K);
-      const G = st === 'A' ? 30 : 36, hh = st === 'A' ? 6 : 10, a = 6;
-      const V = G * hh / 3;
-      info.innerHTML = st === 'A'
-        ? `V = ⅓ · G · h = (30 · 6) : 3 = <b>${V} cm³</b>`
-        : `G = a² = 6² = 36 → V = (36 · 10) : 3 = <b>${36 * 10 / 3} cm³</b>`;
-      const loop = Loop(t => { P.S && 0; });
-      const bar = steuerleiste(loop, { reset: false });
-      host.appendChild(svg); host.appendChild(info);
-      return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+      /* Bisher bekam ausgerechnet die Basisstufe nur ein Standbild mit der
+         Formel, während die Vertiefung das Einfüllen zeigte. Der Faktor ⅓
+         ist aber genau das, was man sehen muss — also läuft die Füllung
+         jetzt auf allen drei Stufen, und nur der Rechenweg unterscheidet
+         sich. */
+      const svg = svgb(o.breite || 300, 215, 'Drei Pyramiden füllen ein Prisma gleicher Grundfläche und Höhe');
+      const t = GE.boxTeile(90, 62, 120, 120, 46, 46);
+      const clipId = 'pc' + Math.random().toString(36).slice(2, 6);
+      const defs = el('defs'); const cp = el('clipPath', { id: clipId }); cp.appendChild(el('path', { d: t.front })); defs.appendChild(cp); svg.appendChild(defs);
+      GE.zeichneBox(svg, t, '#C8D2D8');
+      const fuell = el('rect', { x: 90, y: 182, width: 120, height: 0, fill: K, 'fill-opacity': .5, 'clip-path': `url(#${clipId})` });
+      svg.appendChild(fuell);
+      svg.appendChild(txt(150, 205, 'Prisma: gleiche Grundfläche G, gleiche Höhe h', { size: 9, farbe: FARBE.weich }));
+      const fertig = {
+        A: `3 Pyramiden füllen 1 Prisma → V = (30 · 6) : 3 = <b>60 cm³</b>`,
+        B: `G = a² = 6² = 36 → V = (36 · 10) : 3 = <b>120 cm³</b>`,
+        C: `Prisma 24 · 9 = 216 cm³ · Pyramide 216 : 3 = <b>72 cm³</b>`
+      };
+      const zeige = frac => {
+        const f = Math.min(1, frac);
+        const hpx = 120 * f; fuell.setAttribute('y', 62 + 120 - hpx); fuell.setAttribute('height', hpx);
+        info.innerHTML = f >= .99 ? (fertig[st] || fertig.A) : `Pyramide ${Math.min(3, Math.ceil(f * 3) || 1)} von 3 wird eingefüllt …`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t2 => zeige(osz(t2, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
     }
   });
 
@@ -1855,13 +2083,21 @@
       ];
       const quad = poly(sq, { fill: K, fo: .3 }); svg.appendChild(quad);
       const dreiEls = drei.map(d => { const e = poly(d, { fill: K, fo: .12 }); svg.appendChild(e); return e; });
+      /* Auf Stufe A geht es um EIN Seitendreieck. Vorher leuchteten sie
+         nacheinander alle vier auf, während der Text von einem sprach —
+         jetzt ist immer genau eines hervorgehoben, reihum. */
       const zeige = n => {
+        if (st === 'A') {
+          const k = (n - 1) % 4;
+          dreiEls.forEach((e, i) => e.setAttribute('fill-opacity', i === k ? .55 : .12));
+          info.innerHTML = `ein Seitendreieck: (a · s) : 2 = (6 · 5) : 2 = <b>15 cm²</b> — alle vier sind gleich groß`;
+          return;
+        }
         dreiEls.forEach((e, i) => e.setAttribute('fill-opacity', i < n ? .5 : .12));
-        if (st === 'A') info.innerHTML = `ein Seitendreieck: (a · s) : 2 = (6 · 5) : 2 = <b>15 cm²</b>`;
-        else if (st === 'B') info.innerHTML = n >= 4 ? `O = a² + 2·a·s = 36 + 60 = <b>96 cm²</b>` : `Grundfläche + ${n} von 4 Dreiecken …`;
+        if (st === 'B') info.innerHTML = n >= 4 ? `O = a² + 2·a·s = 36 + 60 = <b>96 cm²</b>` : `Grundfläche + ${n} von 4 Dreiecken …`;
         else info.innerHTML = n >= 4 ? `s = √(h²+(a:2)²) = 5 → O = a² + 2·a·s = <b>96 cm²</b>` : `erst s = √(4²+3²) = 5 …`;
       };
-      zeige(REDUCED ? 4 : 0);
+      zeige(REDUCED ? 4 : 1);
       const loop = Loop(t => zeige(1 + Math.floor((t % 5) / 1)));
       const bar = steuerleiste(loop);
       host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
@@ -1869,39 +2105,73 @@
     }
   });
 
-  /* 5 · Rückwärts & gemischt (SK-05 / SK-09) */
+  /* 5 · Rückwärts & gemischt (SK-05 / SK-09)
+     SK-05 rechnet an der Pyramide, SK-09 am Kegel — deshalb "form".
+     Ohne Angabe bleibt es bei der Pyramide. */
   register({
     id: 'rueckwaerts', titel: 'Rückwärts & gemischt', bezug: 'SK-05',
-    kurz: 'A: Volumen oder Oberfläche? · B: fehlende Größe (h) aus dem Volumen · C: mehrschrittig.',
+    kurz: 'A: Volumen oder Oberfläche? · B: fehlende Höhe aus dem Volumen · C: mehrschrittig.',
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
+      const form = (o && o.form) === 'kegel' ? 'kegel' : 'pyramide';
       const info = h('div', 'anim-ables');
-      const svg = svgb(o.breite || 300, 200, 'Spitzkörper');
+      const svg = svgb(o.breite || 300, 200, form === 'kegel' ? 'Kegel' : 'Pyramide');
 
       if (st === 'A') {
-        const P = mkPyramide(svg, 150, 150, 70, 24, 105, K);
-        const signale = [
-          { t: `„Wie viel passt hinein?“ → Rauminhalt → <b>Volumen</b>`, mark: () => svg.querySelectorAll('polygon') },
-          { t: `„Wie viel Material?“ → Außenhaut → <b>Oberfläche</b>`, mark: () => null }
-        ];
-        let pi = -1;
-        const loop = Loop(t => { const k = Math.floor(t / 2) % 2; if (k !== pi) { pi = k; info.innerHTML = signale[k].t; } });
+        /* Vorher wechselte nur der Text, das Bild stand still. Jetzt zeigt
+           Phase 1 den Rauminhalt (der Körper füllt sich) und Phase 2 die
+           Außenhaut (die Umrisslinie wird nachgezogen) — die Unterscheidung,
+           um die es auf dieser Stufe überhaupt geht. */
+        const cx = 150, cyB = 155, H = 108, rx = 64, ry = 20;
+        const silhouette = () => form === 'kegel'
+          ? `M${cx - rx},${cyB} L${cx},${cyB - H} L${cx + rx},${cyB} A${rx},${ry} 0 0 1 ${cx - rx},${cyB} Z`
+          : `M${cx},${cyB - H} L${cx - rx},${cyB} L${cx},${cyB + ry} L${cx + rx},${cyB} Z`;
+        const clipId = 'rw' + Math.random().toString(36).slice(2, 6);
+        const zeichne = (k, frac) => {
+          svg.innerHTML = '';
+          const defs = el('defs'); const cp = el('clipPath', { id: clipId });
+          cp.appendChild(el('path', { d: silhouette() })); defs.appendChild(cp); svg.appendChild(defs);
+          if (form === 'kegel') mkKegel(svg, cx, cyB, rx, ry, H, K);
+          else mkPyramide(svg, cx, cyB, rx, ry, H, K);
+          if (k === 0) {
+            const hpx = (H + ry) * frac;
+            svg.appendChild(el('rect', { x: cx - rx - 2, y: cyB + ry - hpx, width: rx * 2 + 4, height: hpx, fill: FARBE.korr, 'fill-opacity': .35, 'clip-path': `url(#${clipId})` }));
+            info.innerHTML = `„Wie viel passt hinein?“ → Rauminhalt → <b>Volumen</b>`;
+          } else {
+            svg.appendChild(el('path', { d: silhouette(), fill: 'none', stroke: FARBE.korr, 'stroke-width': 3.5, 'stroke-dasharray': '600', 'stroke-dashoffset': String(600 * (1 - frac)) }));
+            info.innerHTML = `„Wie viel Material?“ → Außenhaut → <b>Oberfläche</b>`;
+          }
+        };
+        zeichne(0, REDUCED ? 1 : 0);
+        const loop = Loop(t => { const per = 3.6, k = Math.floor(t / per) % 2; zeichne(k, Math.min(1, (t % per) / per * 1.4)); });
         const bar = steuerleiste(loop);
         host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
-        if (!REDUCED) loop.play(), bar._sync(); else info.innerHTML = signale[0].t;
+        if (!REDUCED) loop.play(), bar._sync();
         return loop;
       }
 
-      // B/C: Höhe wächst, bis V den Zielwert erreicht (V=(a²·h)/3, a=5, Ziel 100 → h=12)
-      const a = 5, Vziel = 100, hziel = 3 * Vziel / (a * a);
+      // B/C: Höhe wächst, bis V den Zielwert erreicht
+      //   Pyramide: V = (a²·h):3, a = 5, Ziel 100 cm³ → h = 12
+      //   Kegel:    V = (π·r²·h):3, r = 3, Ziel 94,2 cm³ → h = 10
+      const kegel = form === 'kegel';
+      const grund = kegel ? 3.14 * 9 : 25;                 // Grundfläche
+      const Vziel = kegel ? 94.2 : 100;
+      const hziel = 3 * Vziel / grund;
       const zeige = frac => {
         svg.innerHTML = '';
-        const hakt = 1 + (hziel - 1) * frac; const Hpx = 12 * hakt;
-        mkPyramide(svg, 150, 165, 60, 22, Hpx, K);
-        const Vakt = a * a * hakt / 3;
+        const hakt = 1 + (hziel - 1) * frac; const Hpx = 11 * hakt;
+        if (kegel) mkKegel(svg, 150, 168, 58, 16, Hpx, K);
+        else mkPyramide(svg, 150, 168, 60, 22, Hpx, K);
+        const Vakt = grund * hakt / 3;
+        const fertigB = kegel
+          ? `h = 3·V : (π·r²) = 3·94,2 : 28,26 = <b>10 cm</b>`
+          : `h = 3·V : a² = 3·100 : 25 = <b>12 cm</b>`;
+        const fertigC = kegel
+          ? `erst r = d:2 = 3, dann h = √(s²−r²) = 4, dann V ≈ 37,7 cm³`
+          : `erst h = 3·V : a² = 12, dann s = √(12² + 2,5²) …`;
         info.innerHTML = st === 'B'
-          ? (frac >= .98 ? `h = 3·V : a² = 3·100 : 25 = <b>12 cm</b>` : `Volumen ${fmt(Math.round(Vakt))} / 100 cm³`)
-          : (frac >= .98 ? `erst h = 3·V:a² = 12, dann s = √(12²+2,5²) …` : `mehrschrittig: erst h aus V …`);
+          ? (frac >= .98 ? fertigB : `Volumen ${fmt(Math.round(Vakt))} / ${fmt(Vziel)} cm³`)
+          : (frac >= .98 ? fertigC : `mehrschrittig: erst die fehlende Größe …`);
       };
       zeige(REDUCED ? 1 : 0);
       const loop = Loop(t => zeige(osz(t, 5)));
@@ -1968,33 +2238,31 @@
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
 
-      if (st === 'C') {
-        const svg = svgb(o.breite || 300, 210, 'Drei Kegel füllen einen Zylinder');
-        const cx = 150, topY = 30, rx = 60, ry = 16, hh = 150;
-        mkZyl(svg, cx, topY, rx, hh, ry, '#C8D2D8');
-        const clipId = 'kc' + Math.random().toString(36).slice(2, 6);
-        const defs = el('defs'); const cp = el('clipPath', { id: clipId }); cp.appendChild(el('rect', { x: cx - rx, y: topY, width: rx * 2, height: hh })); defs.appendChild(cp); svg.appendChild(defs);
-        const fuellG = el('g', { 'clip-path': `url(#${clipId})` }); svg.appendChild(fuellG);
-        const zeige = frac => {
-          fuellG.innerHTML = '';
-          const hpx = hh * frac; fuellG.appendChild(el('rect', { x: cx - rx, y: topY + hh - hpx, width: rx * 2, height: hpx, fill: K, 'fill-opacity': .45 }));
-          if (hpx > 4) fuellG.appendChild(el('ellipse', { cx, cy: topY + hh - hpx, rx, ry, fill: K, 'fill-opacity': .7 }));
-          info.innerHTML = frac >= .99 ? `3 Kegel = 1 Zylinder → V = <b>⅓·π·r²·h</b>` : `Kegel ${Math.min(3, Math.ceil(frac * 3))} von 3 …`;
-        };
-        zeige(REDUCED ? 1 : 0);
-        const loop = Loop(t => zeige(osz(t, 5)));
-        const bar = steuerleiste(loop);
-        host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
-        if (!REDUCED) loop.play(), bar._sync(); return loop;
-      }
-
-      const svg = svgb(o.breite || 300, 200, 'Kegel');
-      mkKegel(svg, 150, 155, 60, 16, 120, K);
-      info.innerHTML = st === 'A'
-        ? `V = ⅓·π·r²·h = (3,14·5²·10):3 ≈ <b>261,7 cm³</b>`
-        : `r = d:2 = 6:2 = 3 → V = (3,14·3²·7):3 ≈ <b>65,9 cm³</b>`;
-      host.appendChild(svg); host.appendChild(info);
-      return { play() {}, pause() {}, reset() {}, toggle() {}, get running() { return false; } };
+      /* Wie bei der Pyramide: das Einfüllen zeigt den Faktor ⅓ und gehört
+         deshalb auf jede Stufe, nicht nur in die Vertiefung. */
+      const svg = svgb(o.breite || 300, 215, 'Drei Kegel füllen einen Zylinder gleicher Grundfläche und Höhe');
+      const cx = 150, topY = 32, rx = 60, ry = 16, hh = 148;
+      mkZyl(svg, cx, topY, rx, hh, ry, '#C8D2D8');
+      const clipId = 'kc' + Math.random().toString(36).slice(2, 6);
+      const defs = el('defs'); const cp = el('clipPath', { id: clipId }); cp.appendChild(el('rect', { x: cx - rx, y: topY, width: rx * 2, height: hh })); defs.appendChild(cp); svg.appendChild(defs);
+      const fuellG = el('g', { 'clip-path': `url(#${clipId})` }); svg.appendChild(fuellG);
+      svg.appendChild(txt(cx, 205, 'Zylinder: gleicher Grundkreis, gleiche Höhe', { size: 9, farbe: FARBE.weich }));
+      const fertig = {
+        A: `3 Kegel füllen 1 Zylinder → V = (3,14·5²·10) : 3 ≈ <b>261,7 cm³</b>`,
+        B: `r = d : 2 = 6 : 2 = 3 → V = (3,14·3²·7) : 3 ≈ <b>65,9 cm³</b>`,
+        C: `Zylinder 37,68 dm³ · Kegel 37,68 : 3 = <b>12,56 dm³ = 12,56 l</b>`
+      };
+      const zeige = frac => {
+        fuellG.innerHTML = '';
+        const hpx = hh * frac; fuellG.appendChild(el('rect', { x: cx - rx, y: topY + hh - hpx, width: rx * 2, height: hpx, fill: K, 'fill-opacity': .45 }));
+        if (hpx > 4) fuellG.appendChild(el('ellipse', { cx, cy: topY + hh - hpx, rx, ry, fill: K, 'fill-opacity': .7 }));
+        info.innerHTML = frac >= .99 ? (fertig[st] || fertig.A) : `Kegel ${Math.min(3, Math.ceil(frac * 3) || 1)} von 3 wird eingefüllt …`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
+      const bar = steuerleiste(loop);
+      host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
+      if (!REDUCED) loop.play(), bar._sync(); return loop;
     }
   });
 
@@ -2037,15 +2305,28 @@
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
-      const svg = svgb(o.breite || 300, 190, 'Kugel mit Radius r');
-      const cx = 150, cy = 95, r = 68;
-      mkKugel(svg, cx, cy, r, K);
-      const rad = line(cx, cy, cx + r, cy, { farbe: FARBE.korr, sw: 2 }); svg.appendChild(rad);
-      svg.appendChild(txt(cx + r / 2, cy - 6, 'r', { farbe: FARBE.korr, weight: 700 }));
-      const loop = Loop(t => { const puls = 0.28 + 0.12 * osz(t, 2.5); svg.querySelector('circle').setAttribute('fill-opacity', puls); });
-      info.innerHTML = st === 'A'
-        ? `O = 4·π·r² = 4·3,14·5² = <b>314 cm²</b>`
-        : (st === 'B' ? `V = 4/3·π·r³ = (4·3,14·3³):3 ≈ <b>113,04 cm³</b>` : `r = d:2 zuerst; in dm rechnen → dm³ = <b>Liter</b>`);
+      const svg = svgb(o.breite || 300, 190, 'Kugel mit wachsendem Radius r');
+      const cx = 150, cy = 95, RPX = 68;
+      /* Statt eines sinnlosen Aufleuchtens wächst der Radius: so wird
+         sichtbar, dass die Oberfläche mit r² und das Volumen mit r³
+         zunimmt — und die Beschriftung nennt denselben Radius wie die
+         Lernkarte der jeweiligen Stufe. */
+      const rZ = st === 'A' ? 5 : (st === 'B' ? 3 : 2);   // cm bzw. dm
+      const einh = st === 'C' ? 'dm' : 'cm';
+      const zeige = frac => {
+        svg.innerHTML = '';
+        const rr = Math.max(rZ * 0.12, rZ * frac), px = RPX * rr / rZ;
+        mkKugel(svg, cx, cy, px, K);
+        svg.appendChild(line(cx, cy, cx + px, cy, { farbe: FARBE.korr, sw: 2 }));
+        svg.appendChild(txt(cx + px / 2, cy - 6, 'r', { farbe: FARBE.korr, weight: 700 }));
+        svg.appendChild(txt(cx, cy + RPX + 22, 'r = ' + fmt(Math.round(rr * 10) / 10) + ' ' + einh, { size: 11, farbe: FARBE.korr, weight: 700 }));
+        const O = 4 * 3.14 * rr * rr, V = 4 * 3.14 * rr * rr * rr / 3;
+        if (st === 'A') info.innerHTML = `O = 4·π·r² = 4·3,14·${fmt(Math.round(rr * 10) / 10)}² = <b>${fmt(Math.round(O * 10) / 10)} cm²</b>`;
+        else if (st === 'B') info.innerHTML = `V = (4·π·r³):3 = <b>${fmt(Math.round(V * 100) / 100)} cm³</b>`;
+        else info.innerHTML = `r = d:2 = 2 dm → V = <b>${fmt(Math.round(V * 10) / 10)} dm³ = ${fmt(Math.round(V * 10) / 10)} l</b>`;
+      };
+      zeige(REDUCED ? 1 : 0);
+      const loop = Loop(t => zeige(osz(t, 5)));
       const bar = steuerleiste(loop);
       host.appendChild(svg); host.appendChild(info); host.appendChild(bar);
       if (!REDUCED) loop.play(), bar._sync(); return loop;
@@ -2061,20 +2342,26 @@
       const info = h('div', 'anim-ables');
       const svg = svgb(o.breite || 300, 220, 'Zusammengesetzter Körper');
 
-      if (st === 'A' || st === 'C') {
-        // Eistüte: Kegel (Spitze unten) + Halbkugel oben
-        const cx = 150, topY = 90, rx = 40, apex = 200;
+      /* Zuordnung nach den Lernkarten: A und B sind die Eistüte (zerlegen,
+         dann addieren), C ist das Silo aus der Vertiefungskarte. Vorher
+         zeigte B das Silo, während die Karte die Eistüte rechnete. */
+      if (st === 'A' || st === 'B') {
+        // Eistüte: Kegel (Spitze unten) + Halbkugel oben — r = 3 cm, h = 8 cm
+        const cx = 150, topY = 100, rx = 40, apex = 205;
         const zeige = frac => {
           svg.innerHTML = '';
           // Waffel (Kegel nach unten)
           svg.appendChild(el('path', { d: `M${cx - rx},${topY} L${cx},${apex} L${cx + rx},${topY}`, fill: K, 'fill-opacity': .3, stroke: FARBE.ink, 'stroke-width': 1.5 }));
           svg.appendChild(el('ellipse', { cx, cy: topY, rx, ry: 12, fill: K, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.4 }));
           // Halbkugel, hebt ab
-          const lift = 60 * frac;
+          const lift = 55 * frac;
           svg.appendChild(el('path', { d: `M${cx - rx},${topY - lift} A${rx},${rx} 0 0 1 ${cx + rx},${topY - lift} Z`, fill: FARBE.c, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.5 }));
-          info.innerHTML = frac >= .5
-            ? (st === 'A' ? `Eistüte = <b>Kegel + Halbkugel</b> — beide Volumen einzeln, dann addieren` : `mehrschrittig: erst h/s, dann Kegel + Halbkugel, dann addieren`)
-            : `in Grundkörper zerlegen …`;
+          svg.appendChild(txt(cx + rx + 8, topY + 40, 'h = 8 cm', { anchor: 'start', size: 10, farbe: FARBE.weich }));
+          svg.appendChild(txt(cx + rx + 8, topY - 4, 'r = 3 cm', { anchor: 'start', size: 10, farbe: FARBE.weich }));
+          info.innerHTML = frac < .5 ? `in Grundkörper zerlegen …`
+            : (st === 'A'
+              ? `Eistüte = <b>Kegel + Halbkugel</b> — beide Volumen einzeln, dann addieren`
+              : `Kegel 75,36 cm³ + Halbkugel 56,52 cm³ = <b>131,88 cm³</b>`);
         };
         zeige(REDUCED ? 1 : 0);
         const loop = Loop(t => zeige(osz(t, 5)));
@@ -2083,13 +2370,16 @@
         if (!REDUCED) loop.play(), bar._sync(); return loop;
       }
 
-      // B: Silo = Zylinder + Kegeldach
-      const cx = 150, topY = 90, rx = 46, ry = 14, hh = 90;
+      // C: Silo = Zylinder + Kegeldach (r = 2 m, h = 5 m, Dach h = 1,5 m)
+      const cx = 150, topY = 100, rx = 46, ry = 14, hh = 90;
       const zeige = frac => {
         svg.innerHTML = '';
         mkZyl(svg, cx, topY, rx, hh, ry, K);
         const lift = 46 * frac;
         svg.appendChild(el('path', { d: `M${cx - rx},${topY - lift} L${cx},${topY - 46 - lift} L${cx + rx},${topY - lift} Z`, fill: FARBE.c, 'fill-opacity': .4, stroke: FARBE.ink, 'stroke-width': 1.5 }));
+        svg.appendChild(txt(cx + rx + 8, topY + hh / 2, 'h = 5 m', { anchor: 'start', size: 10, farbe: FARBE.weich }));
+        svg.appendChild(txt(cx + rx + 8, topY - lift - 14, 'Dach h = 1,5 m', { anchor: 'start', size: 10, farbe: FARBE.weich }));
+        svg.appendChild(txt(cx, topY + hh + 24, 'r = 2 m', { size: 10, farbe: FARBE.weich }));
         info.innerHTML = frac >= .5 ? `Silo: V = <b>Zylinder + Kegel</b> = 62,8 + 6,28 = <b>69,08 m³</b>` : `Dach abheben → Teile erkennen …`;
       };
       zeige(REDUCED ? 1 : 0);

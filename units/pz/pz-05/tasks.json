@@ -20,13 +20,13 @@
   "lernkarten": {
     "A": {
       "titel": "Den Grundwert finden – das Ganze",
-      "hinfuehrung": "In fast jeder Prozentaufgabe steckt ein „Ganzes“. Dieses Ganze heißt Grundwert. Ihn zuerst zu finden, ist der halbe Weg.",
+      "hinfuehrung": "Der Grundwert ist das Ganze.",
       "erklaerung": [
-        "Der Grundwert G ist die Menge, die 100 % entspricht – der Preis vor dem Rabatt, die ganze Klasse, das volle Glas.",
-        "Frage dich: Wovon werden hier die Prozente genommen? Das ist der Grundwert."
+        "Der Grundwert G sind 100 %.",
+        "Frage dich: Wovon werden die Prozente genommen?"
       ],
       "beispiel": {
-        "aufgabe": "„20 % von 60 € Rabatt.“ Was ist hier der Grundwert?",
+        "aufgabe": "„20 % von 60 € Rabatt.“ Was ist der Grundwert?",
         "schritte": [
           "Wovon werden die 20 % genommen?",
           "Von den 60 € (dem vollen Preis).",
@@ -34,7 +34,7 @@
         ],
         "ergebnis": "Grundwert G = 60 € (das Ganze = 100 %)."
       },
-      "merke": "Der Grundwert ist das, was 100 % entspricht.",
+      "merke": "Der Grundwert ist das, was 100 % ist.",
       "visual": {
         "type": "animation",
         "name": "grundgroessen",

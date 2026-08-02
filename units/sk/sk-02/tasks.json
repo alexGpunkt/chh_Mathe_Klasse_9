@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Das rechtwinklige Dreieck in der Pyramide",
-      "hinfuehrung": "Höhe, halbe Grundkante und Seitenhöhe bilden zusammen ein rechtwinkliges Dreieck – versteckt im Inneren der Pyramide.",
+      "hinfuehrung": "In der Pyramide steckt ein rechtwinkliges Dreieck.",
       "erklaerung": [
-        "Die Höhe h steht senkrecht in der Mitte. Von dort geht es die halbe Grundkante (a : 2) nach außen bis zur Kantenmitte.",
-        "Die Seitenhöhe s verbindet Spitze und Kantenmitte – sie ist die schräge Seite (Hypotenuse) dieses Dreiecks."
+        "Die Höhe h steht senkrecht in der Mitte. Daneben liegt die halbe Grundkante a : 2.",
+        "Die Seitenhöhe s ist die schräge Seite."
       ],
       "visual": {
         "type": "animation",
@@ -41,7 +41,7 @@
         ],
         "ergebnis": "h, a : 2 und s – mit dem rechten Winkel zwischen h und a : 2."
       },
-      "merke": "Rechtwinkliges Dreieck: h und (a:2) als Katheten, s als Hypotenuse."
+      "merke": "Katheten: h und a : 2. Hypotenuse: s."
     },
     "B": {
       "titel": "Seitenhöhe s mit Pythagoras",

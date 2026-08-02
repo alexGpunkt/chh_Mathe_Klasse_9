@@ -20,10 +20,10 @@
   "lernkarten": {
     "A": {
       "titel": "Anteile als Prozent lesen",
-      "hinfuehrung": "Der ganze Streifen ist immer 100 %. Wenn du weißt, welcher Teil gefärbt ist, kannst du den Prozentsatz nennen.",
+      "hinfuehrung": "Der ganze Streifen ist immer 100 %.",
       "erklaerung": [
-        "Ein Anteil sagt, wie viel von einem Ganzen gemeint ist. Prozent heißt „von hundert“: 100 % ist alles, 50 % ist die Hälfte, 25 % ist ein Viertel.",
-        "Teile den Streifen in gleiche Stücke und zähle, wie viele gefärbt sind."
+        "Prozent heißt: von hundert.",
+        "Zähle, wie viel vom Streifen gefärbt ist."
       ],
       "visual": {
         "type": "animation",

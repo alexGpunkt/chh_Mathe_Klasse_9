@@ -21,10 +21,10 @@
   "lernkarten": {
     "A": {
       "titel": "Volumen der Pyramide",
-      "hinfuehrung": "Eine Pyramide fasst nur ein Drittel von dem, was ein Prisma mit gleicher Grundfläche und Höhe fasst.",
+      "hinfuehrung": "Die Pyramide fasst ein Drittel vom Prisma.",
       "erklaerung": [
-        "Volumen: V = ⅓ · Grundfläche · Höhe = (G · h) : 3.",
-        "Der Faktor ⅓ ist der ganze Unterschied zum Prisma."
+        "Rechne die Grundfläche mal die Höhe.",
+        "Teile das Ergebnis durch 3."
       ],
       "visual": {
         "type": "animation",
@@ -32,7 +32,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Pyramide mit G = 30 cm², h = 6 cm. Volumen?",
+        "aufgabe": "Eine Pyramide hat G = 30 cm² und h = 6 cm. Wie groß ist das Volumen?",
         "schritte": [
           "V = (G · h) : 3",
           "V = (30 · 6) : 3 = 180 : 3",
@@ -40,7 +40,7 @@
         ],
         "ergebnis": "V = 60 cm³."
       },
-      "merke": "Pyramide: V = ⅓ · G · h."
+      "merke": "Pyramide: V = (G · h) : 3."
     },
     "B": {
       "titel": "Quadratische Grundfläche, dann Volumen",

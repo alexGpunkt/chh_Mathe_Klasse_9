@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Fläche eines Seitendreiecks",
-      "hinfuehrung": "Jede Seitenfläche der Pyramide ist ein Dreieck. Seine Fläche berechnest du mit Grundkante und Seitenhöhe.",
+      "hinfuehrung": "Jede Seitenfläche der Pyramide ist ein Dreieck.",
       "erklaerung": [
-        "Dreiecksfläche = (Grundseite · Höhe) : 2. Hier: Grundkante a und Seitenhöhe s.",
-        "Also eine Seitenfläche = (a · s) : 2."
+        "Die Grundseite des Dreiecks ist die Grundkante a.",
+        "Die Höhe im Dreieck ist die Seitenhöhe s. Rechne (a · s) : 2."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Ein Seitendreieck mit a = 6 cm und s = 5 cm. Fläche?",
+        "aufgabe": "Ein Seitendreieck hat a = 6 cm und s = 5 cm. Wie groß ist die Fläche?",
         "schritte": [
           "Fläche = (a · s) : 2",
           "= (6 · 5) : 2 = 30 : 2",

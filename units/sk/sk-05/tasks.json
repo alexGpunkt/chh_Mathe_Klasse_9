@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Volumen oder Oberfläche der Pyramide?",
-      "hinfuehrung": "Bei gemischten Aufgaben klärst du zuerst, welche Größe gefragt ist, und wählst dann die passende Formel.",
+      "hinfuehrung": "Lies zuerst, was gesucht ist.",
       "erklaerung": [
-        "Rauminhalt („fasst“, „Liter“) → Volumen V = (a² · h) : 3.",
-        "Außenhaut („anstreichen“, „Material“) → Oberfläche O = a² + 2 · a · s."
+        "„passt hinein“ oder „Liter“ → Volumen: V = (a² · h) : 3.",
+        "„Material“ oder „anstreichen“ → Oberfläche: O = a² + 2 · a · s."
       ],
       "beispiel": {
         "aufgabe": "„Wie viel Sand passt in die Pyramide?“ Welche Formel?",
@@ -35,11 +35,12 @@
         ],
         "ergebnis": "Volumen: V = (a² · h) : 3."
       },
-      "merke": "Erst Volumen/Oberfläche klären, dann Formel wählen.",
+      "merke": "Erst entscheiden. Dann die Formel wählen.",
       "visual": {
         "type": "animation",
         "name": "rueckwaerts",
-        "stufe": "A"
+        "stufe": "A",
+        "form": "pyramide"
       }
     },
     "B": {
@@ -62,7 +63,8 @@
       "visual": {
         "type": "animation",
         "name": "rueckwaerts",
-        "stufe": "B"
+        "stufe": "B",
+        "form": "pyramide"
       }
     },
     "C": {
@@ -85,7 +87,8 @@
       "visual": {
         "type": "animation",
         "name": "rueckwaerts",
-        "stufe": "C"
+        "stufe": "C",
+        "form": "pyramide"
       }
     }
   },

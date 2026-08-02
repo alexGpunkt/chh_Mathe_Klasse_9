@@ -20,13 +20,13 @@
   "lernkarten": {
     "A": {
       "titel": "Prozentwert über den 1-%-Schritt",
-      "hinfuehrung": "Wenn du erst weißt, was 1 % ist, ist jeder Prozentwert nur noch ein Malnehmen entfernt.",
+      "hinfuehrung": "Rechne zuerst 1 % aus.",
       "erklaerung": [
-        "1 % ist der hundertste Teil des Grundwerts. Du bekommst ihn mit G : 100.",
-        "Danach multiplizierst du mit dem gesuchten Prozentsatz."
+        "1 % ist der Grundwert geteilt durch 100.",
+        "Dann nimm 1 % mal den Prozentsatz."
       ],
       "beispiel": {
-        "aufgabe": "Berechne 20 % von 250 € über den 1-%-Schritt.",
+        "aufgabe": "Berechne 20 % von 250 €.",
         "schritte": [
           "1 %  = 250 € : 100 = 2,50 €",
           "20 % = 2,50 € · 20 = 50 €"

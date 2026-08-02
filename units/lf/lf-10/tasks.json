@@ -19,10 +19,10 @@
   "lernkarten": {
     "A": {
       "titel": "Die Nullstelle ablesen",
-      "hinfuehrung": "Die Nullstelle ist der Punkt, an dem die Gerade die waagerechte Achse kreuzt – dort ist y = 0.",
+      "hinfuehrung": "An der Nullstelle ist y = 0.",
       "erklaerung": [
-        "Suche den Schnittpunkt der Geraden mit der x-Achse.",
-        "Der x-Wert dieses Punktes ist die Nullstelle."
+        "Suche den Schnittpunkt mit der waagerechten Achse.",
+        "Der x-Wert an dieser Stelle ist die Nullstelle."
       ],
       "visual": {
         "type": "animation",
@@ -37,7 +37,7 @@
         ],
         "ergebnis": "Die Nullstelle ist bei x = 2."
       },
-      "merke": "Nullstelle = Schnitt mit der x-Achse, dort ist y = 0."
+      "merke": "Nullstelle = Schnitt mit der x-Achse."
     },
     "B": {
       "titel": "Die Nullstelle berechnen",

@@ -21,10 +21,10 @@
   "lernkarten": {
     "A": {
       "titel": "Fehlende Quaderkante finden",
-      "hinfuehrung": "Manchmal kennst du das Volumen und zwei Kanten und suchst die dritte. Dann drehst du die Volumenformel um.",
+      "hinfuehrung": "Du kennst das Volumen und suchst eine Kante.",
       "erklaerung": [
-        "Aus V = a · b · c folgt: die fehlende Kante = V geteilt durch das Produkt der beiden anderen.",
-        "Rechne zuerst das Produkt der bekannten Kanten aus, dann teile das Volumen dadurch."
+        "Nimm die zwei bekannten Kanten mal.",
+        "Teile das Volumen durch dieses Ergebnis."
       ],
       "visual": {
         "type": "animation",
@@ -40,7 +40,7 @@
         ],
         "ergebnis": "Die fehlende Kante c = 3 cm."
       },
-      "merke": "Fehlende Kante = V : (Produkt der anderen beiden)."
+      "merke": "Fehlende Kante = V : (die anderen beiden Kanten mal)."
     },
     "B": {
       "titel": "Würfelkante aus Volumen oder Oberfläche",

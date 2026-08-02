@@ -194,6 +194,42 @@ kann über `animationen.html?bereich=PZ`, `animationen.html?bereich=LF`,
 `animationen.html?bereich=KP` oder `animationen.html?bereich=SK` gefiltert
 geöffnet werden.
 
+### Wenn mehrere Einheiten sich eine Animation teilen
+
+Dann trennt ein **eigenes Feld** die Themen — nicht die Niveaustufe. `stufe`
+meint immer die Niveaustufe, nie den Inhalt:
+
+```jsonc
+"visual": { "type": "animation", "name": "zinsen", "stufe": "A", "thema": "zeit" }
+```
+
+| Animation | Feld | Werte |
+|---|---|---|
+| `zinsen` | `thema` | `jahr` (PZ-11) · `zeit` (PZ-12) · `eszins` (PZ-13) |
+| `veraenderung` | `thema` | `rabatt` (PZ-09) · `richtung` (PZ-10) |
+| `rueckwaerts` | `form` | `pyramide` (SK-05) · `kegel` (SK-09) |
+| `schnittpunkt` | `rechnung` | `true` blendet die Rechenzeile auch auf Stufe A ein (LF-13) |
+
+`ANIM.block()` reicht das ganze `visual`-Objekt durch; fehlt eine Option, bleibt
+es beim Standardverhalten.
+
+### Bewegung nur im Blickfeld
+
+Ein `IntersectionObserver` startet jede Animation beim Einscrollen und pausiert
+sie beim Verlassen — sonst laufen auf einer Einheitenseite mehrere Endlos-
+schleifen gleichzeitig, auch weit außerhalb des Bildschirms. Wer selbst auf
+Pause drückt, behält die Pause. `prefers-reduced-motion` gilt vorrangig: dann
+gibt es keinen Autostart, nur ein Standbild.
+
+### Koordinatenfelder auf dem Handy
+
+`Feld()` hält die Kästchen quadratisch, solange Höhe zu Breite unter 1,6 bleibt —
+das braucht das Steigungsdreieck. Erst darüber skalieren die Achsen getrennt, wie
+im Schulbuch bei Sachkontexten mit Stunden und Euro. Ohne diese Grenze ergäbe
+ein Tankgraph über 0…100 Liter ein Bild im Verhältnis 1 : 18. Gitter und
+Achsenbeschriftung laufen in Schritten von 1, 2, 5, 10, 20 …, damit aus 140
+Gitterlinien keine graue Fläche wird.
+
 
 ## Externe Übungen auf mehreren Plattformen
 
@@ -324,10 +360,34 @@ funktioniert sofort, weil der Bereich aus dem Präfix der ID abgeleitet wird.
     "A": "Du berechnest den Grundwert über den 1-%-Schritt.",
     "B": "…", "C": "…"
   },
+  "lernkarten": { "A": { … }, "B": { … }, "C": { … } },   // siehe unten
   "formelkarte": { "formeln": ["…"], "saetze": ["…"] },
   "tasks": [ /* siehe unten */ ]
 }
 ```
+
+### Lernkarten · was die Niveaustufe sprachlich bedeutet
+
+Jede Einheit hat drei Lernkarten (`lernkarten.A/B/C`) mit `titel`,
+`hinfuehrung`, `erklaerung[]`, `beispiel`, `merke` und optional `visual`. Die
+Karte erscheint vor der ersten Aufgabe und später jederzeit über „📖 Erklärung“.
+
+**Pfad A liegt auf Niveaustufe D–E, mit hohem DaZ-Anteil.** Die Stufe muss
+sich deshalb in der Sprache zeigen, nicht nur in der Mathematik — sonst ist die
+Hürde der Satzbau, bevor die Aufgabe überhaupt beginnt. Für Stufe A gilt:
+
+- **Hinführung: genau ein kurzer Hauptsatz.** Keine Metapher, kein Bild.
+  „Rechne zuerst 1 % aus.“ statt „Wenn du erst weißt, was 1 % ist, ist jeder
+  Prozentwert nur noch ein Malnehmen entfernt.“
+- **Erklärung: zwei Einträge, je ein bis zwei kurze Hauptsätze.**
+- keine Nebensätze, keine Einschübe in Klammern, keine Gedankenstriche
+- keine Abkürzungen („bzw.“, „z. B.“, „ca.“)
+- **Fachwörter bleiben** — sie stehen im Wortspeicher und sind das Lernziel.
+  Alles andere ist Alltagssprache.
+
+Richtwert: rund **170 Zeichen** für Hinführung, Erklärung und Merksatz
+zusammen, im Mittel **6 Wörter je Satz**. B liegt bei etwa 300 Zeichen,
+C bei etwa 360. Wenn A so lang ist wie B, ist A noch nicht Stufe A.
 
 ### Aufgabentypen
 

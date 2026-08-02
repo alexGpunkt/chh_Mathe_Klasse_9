@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Volumen oder Oberfläche des Kegels?",
-      "hinfuehrung": "Bei gemischten Kegelaufgaben entscheidest du zuerst: Rauminhalt oder Außenhaut?",
+      "hinfuehrung": "Lies zuerst, was gesucht ist.",
       "erklaerung": [
-        "Volumen („fasst“, „Liter“): V = (π · r² · h) : 3.",
-        "Oberfläche („Material“, „anstreichen“): O = π · r · (r + s)."
+        "„passt hinein“ oder „Liter“ → Volumen: V = (π · r² · h) : 3.",
+        "„Material“ oder „anstreichen“ → Oberfläche: O = π · r · (r + s)."
       ],
       "beispiel": {
         "aufgabe": "„Wie viel Eis passt in die Waffel?“ Welche Formel?",
@@ -35,11 +35,12 @@
         ],
         "ergebnis": "Volumen: V = (π · r² · h) : 3."
       },
-      "merke": "Erst Volumen/Oberfläche entscheiden, dann rechnen.",
+      "merke": "Erst entscheiden. Dann rechnen.",
       "visual": {
         "type": "animation",
         "name": "rueckwaerts",
-        "stufe": "A"
+        "stufe": "A",
+        "form": "kegel"
       }
     },
     "B": {
@@ -62,7 +63,8 @@
       "visual": {
         "type": "animation",
         "name": "rueckwaerts",
-        "stufe": "B"
+        "stufe": "B",
+        "form": "kegel"
       }
     },
     "C": {
@@ -85,7 +87,8 @@
       "visual": {
         "type": "animation",
         "name": "rueckwaerts",
-        "stufe": "C"
+        "stufe": "C",
+        "form": "kegel"
       }
     }
   },

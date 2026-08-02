@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Volumen des Kegels",
-      "hinfuehrung": "Wie die Pyramide fasst der Kegel nur ein Drittel des passenden Zylinders. Grundkreis mal Höhe, geteilt durch 3.",
+      "hinfuehrung": "Der Kegel fasst ein Drittel vom Zylinder.",
       "erklaerung": [
-        "Grundkreis: A = π · r². Volumen: V = ⅓ · π · r² · h = (π · r² · h) : 3.",
-        "Der Faktor ⅓ ist wie bei der Pyramide."
+        "Rechne die Kreisfläche mal die Höhe.",
+        "Teile das Ergebnis durch 3."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Kegel mit r = 3 cm, h = 10 cm. Volumen (π ≈ 3,14)?",
+        "aufgabe": "Ein Kegel hat r = 3 cm und h = 10 cm. Volumen mit π ≈ 3,14?",
         "schritte": [
           "π · r² = 3,14 · 9 = 28,26",
           "· h = 28,26 · 10 = 282,6",

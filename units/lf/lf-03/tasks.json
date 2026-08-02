@@ -20,10 +20,10 @@
   "lernkarten": {
     "A": {
       "titel": "Ursprungsgerade y = m · x",
-      "hinfuehrung": "Geht eine Gerade genau durch den Nullpunkt, ist sie proportional. Dann gilt die einfache Regel y = m · x.",
+      "hinfuehrung": "Die Gerade geht durch den Punkt (0 | 0).",
       "erklaerung": [
-        "Proportional heißt: doppeltes x → doppeltes y. Die Gerade startet bei (0 | 0).",
-        "m ist der feste Faktor. Du berechnest y, indem du x mit m multiplizierst."
+        "Doppeltes x gibt doppeltes y.",
+        "Du rechnest y = m · x."
       ],
       "visual": {
         "type": "animation",
@@ -39,7 +39,7 @@
         ],
         "ergebnis": "Zu x = 3 gehört y = 6."
       },
-      "merke": "Proportional = Gerade durch (0 | 0): y = m · x."
+      "merke": "Proportional: Gerade durch (0 | 0). y = m · x."
     },
     "B": {
       "titel": "m aus einer Wertetabelle bestimmen",

@@ -19,10 +19,10 @@
   "lernkarten": {
     "A": {
       "titel": "Den y-Achsenabschnitt b ablesen",
-      "hinfuehrung": "b ist die Starthöhe: die Stelle, an der die Gerade die senkrechte Achse kreuzt. Sie steht sofort ins Auge.",
+      "hinfuehrung": "b ist die Starthöhe der Geraden.",
       "erklaerung": [
-        "Suche den Punkt, an dem die Gerade die y-Achse (senkrecht) schneidet.",
-        "Die Höhe dieses Punktes ist b."
+        "Suche die senkrechte Achse. Das ist die y-Achse.",
+        "Lies ab, in welcher Höhe die Gerade sie schneidet."
       ],
       "visual": {
         "type": "animation",
@@ -37,7 +37,7 @@
         ],
         "ergebnis": "b = 2."
       },
-      "merke": "b = Höhe, in der die Gerade die y-Achse schneidet (bei x = 0)."
+      "merke": "b = Höhe am Schnitt mit der y-Achse."
     },
     "B": {
       "titel": "b aus Graph, Tabelle und Sachkontext",

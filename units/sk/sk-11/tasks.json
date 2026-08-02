@@ -22,13 +22,13 @@
   "lernkarten": {
     "A": {
       "titel": "Zusammengesetzte Körper zerlegen",
-      "hinfuehrung": "Eine Eistüte oder ein Silo besteht aus mehreren Grundkörpern. Erkenne die Teile und ihre Formeln.",
+      "hinfuehrung": "Eine Eistüte besteht aus zwei Teilen.",
       "erklaerung": [
-        "Zerlege den Körper in Spitzkörper (Kegel, Pyramide), Rundkörper (Halbkugel) und Säulen (Zylinder, Prisma).",
-        "Ordne jedem Teil seine Volumenformel zu, bevor du rechnest."
+        "Suche die einfachen Körper: Kegel, Halbkugel, Zylinder.",
+        "Schreibe zu jedem Teil die passende Formel auf."
       ],
       "beispiel": {
-        "aufgabe": "Eine Eistüte ist ein Kegel mit Halbkugel oben. In welche Teile zerlegst du?",
+        "aufgabe": "Eine Eistüte ist ein Kegel mit einer Halbkugel oben. In welche Teile zerlegst du sie?",
         "schritte": [
           "unten: Kegel → V = (π·r²·h):3",
           "oben: Halbkugel → halbes Kugelvolumen",
@@ -36,7 +36,7 @@
         ],
         "ergebnis": "Kegel plus Halbkugel – beide Volumen addieren."
       },
-      "merke": "Zusammengesetzt: in Grundkörper zerlegen, Formeln zuordnen.",
+      "merke": "Zerlegen. Formeln zuordnen. Addieren.",
       "visual": {
         "type": "animation",
         "name": "zusammensk",

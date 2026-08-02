@@ -23,10 +23,10 @@
   "lernkarten": {
     "A": {
       "titel": "Der Kegel: Radius, Höhe, Mantellinie",
-      "hinfuehrung": "Ein Kegel hat einen Kreis als Grundfläche und läuft zu einer Spitze zusammen. Drei Größen musst du benennen können.",
+      "hinfuehrung": "Der Kegel hat unten einen Kreis und oben eine Spitze.",
       "erklaerung": [
-        "Radius r: vom Kreismittelpunkt zum Rand. Höhe h: senkrecht von der Spitze zur Kreismitte.",
-        "Mantellinie s: die schräge Strecke von der Spitze zum Kreisrand. r, h und s bilden ein rechtwinkliges Dreieck."
+        "Der Radius r geht von der Mitte zum Rand. Die Höhe h steht senkrecht.",
+        "Die Mantellinie s läuft schräg zur Spitze."
       ],
       "visual": {
         "type": "animation",
@@ -42,7 +42,7 @@
         ],
         "ergebnis": "r, h und s, mit dem rechten Winkel zwischen r und h."
       },
-      "merke": "Kegel: r und h als Katheten, s als Hypotenuse."
+      "merke": "Katheten: r und h. Hypotenuse: s."
     },
     "B": {
       "titel": "Mantellinie s mit Pythagoras",

@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Volumen des Zylinders",
-      "hinfuehrung": "Ein Zylinder ist ein Prisma mit Kreis als Grundfläche. Zuerst die Kreisfläche, dann mal Höhe.",
+      "hinfuehrung": "Der Zylinder hat einen Kreis als Grundfläche.",
       "erklaerung": [
-        "Kreisfläche: A = π · r² (π ≈ 3,14).",
-        "Volumen: V = π · r² · h = Grundfläche · Höhe."
+        "Rechne zuerst die Kreisfläche: A = π · r².",
+        "Nimm die Kreisfläche dann mal die Höhe."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Zylinder mit r = 5 cm, h = 10 cm. Volumen (π ≈ 3,14)?",
+        "aufgabe": "Ein Zylinder hat r = 5 cm und h = 10 cm. Volumen mit π ≈ 3,14?",
         "schritte": [
           "A = π · r² = 3,14 · 25 = 78,5 cm²",
           "V = A · h = 78,5 · 10",

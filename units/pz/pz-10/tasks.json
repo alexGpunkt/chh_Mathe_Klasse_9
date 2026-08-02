@@ -20,24 +20,25 @@
   "lernkarten": {
     "A": {
       "titel": "Gestiegen oder gefallen?",
-      "hinfuehrung": "Bevor du Prozente rechnest, klärst du die Richtung: Ist der Wert größer oder kleiner geworden – und um wie viel absolut?",
+      "hinfuehrung": "Vergleiche zuerst den alten und den neuen Wert.",
       "erklaerung": [
-        "Vergleiche neuen und alten Wert. Größer = gestiegen, kleiner = gefallen.",
-        "Die Differenz ist der absolute Unterschied: neu − alt (bzw. alt − neu)."
+        "Neu ist größer: gestiegen. Neu ist kleiner: gefallen.",
+        "Die Differenz ist neu minus alt."
       ],
       "beispiel": {
-        "aufgabe": "Ein Preis war 50 €, jetzt 58 €. Gestiegen oder gefallen und um wie viel?",
+        "aufgabe": "Ein Preis war 50 €. Jetzt sind es 58 €. Gestiegen oder gefallen?",
         "schritte": [
           "58 € > 50 €  → gestiegen",
           "Differenz = 58 € − 50 € = 8 €"
         ],
         "ergebnis": "Gestiegen um 8 €."
       },
-      "merke": "Erst Richtung (größer/kleiner), dann Differenz.",
+      "merke": "Erst die Richtung. Dann die Differenz.",
       "visual": {
         "type": "animation",
         "name": "veraenderung",
-        "stufe": "A"
+        "stufe": "A",
+        "thema": "richtung"
       }
     },
     "B": {
@@ -59,7 +60,8 @@
       "visual": {
         "type": "animation",
         "name": "veraenderung",
-        "stufe": "B"
+        "stufe": "B",
+        "thema": "richtung"
       }
     },
     "C": {
@@ -82,7 +84,8 @@
       "visual": {
         "type": "animation",
         "name": "veraenderung",
-        "stufe": "C"
+        "stufe": "C",
+        "thema": "richtung"
       }
     }
   },

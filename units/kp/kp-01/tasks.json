@@ -23,10 +23,10 @@
   "lernkarten": {
     "A": {
       "titel": "Körper erkennen und benennen",
-      "hinfuehrung": "Würfel, Quader, Prisma, Zylinder – jeder Körper hat einen Namen und lässt sich an seinen Ecken, Kanten und Flächen erkennen.",
+      "hinfuehrung": "Jeder Körper hat Flächen, Kanten und Ecken.",
       "erklaerung": [
-        "Eine Fläche ist eine Begrenzung (z. B. eine Seite des Würfels), eine Kante die Linie, wo zwei Flächen zusammenstoßen, eine Ecke der Punkt, wo Kanten zusammenlaufen.",
-        "Zähle systematisch und immer in derselben Reihenfolge, damit du nichts doppelt oder gar nicht zählst."
+        "Eine Fläche ist eine Seite. Eine Kante ist eine Linie zwischen zwei Flächen.",
+        "Eine Ecke ist ein Punkt. Zähle immer in der gleichen Reihenfolge."
       ],
       "visual": {
         "type": "animation",

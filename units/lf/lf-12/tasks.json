@@ -19,10 +19,10 @@
   "lernkarten": {
     "A": {
       "titel": "Schnittpunkt ablesen",
-      "hinfuehrung": "Wo sich zwei Geraden kreuzen, ist der Schnittpunkt. Seine Koordinaten liest du ab und schreibst sie als Paar.",
+      "hinfuehrung": "Der Schnittpunkt ist die Kreuzung.",
       "erklaerung": [
-        "Suche den Kreuzungspunkt der beiden Geraden.",
-        "Lies x und y ab: S(x | y)."
+        "Suche die Stelle, wo sich die beiden Geraden kreuzen.",
+        "Lies dort den x-Wert und den y-Wert ab."
       ],
       "visual": {
         "type": "animation",
@@ -37,7 +37,7 @@
         ],
         "ergebnis": "S(2 | 3)."
       },
-      "merke": "Schnittpunkt = Kreuzung; als Paar S(x | y) schreiben."
+      "merke": "Schnittpunkt als Paar schreiben: S(x | y)."
     },
     "B": {
       "titel": "Schnittpunkt aus den Gleichungen und am Bild prüfen",

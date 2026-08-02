@@ -19,10 +19,10 @@
   "lernkarten": {
     "A": {
       "titel": "Prozentsatz bei glatten Zahlen",
-      "hinfuehrung": "Wenn Teil und Ganzes gut zusammenpassen, siehst du den Prozentsatz fast ohne Rechnen.",
+      "hinfuehrung": "Bei glatten Zahlen siehst du den Prozentsatz sofort.",
       "erklaerung": [
-        "Der Prozentsatz sagt, wie viel Prozent der Teil vom Ganzen ist.",
-        "Bei glatten Verhältnissen hilft die Merkliste: die Hälfte = 50 %, ein Viertel = 25 %, ein Fünftel = 20 %, ein Zehntel = 10 %."
+        "Schreibe den Teil als Bruch vom Ganzen.",
+        "Kürze den Bruch. Dann liest du den Prozentsatz ab."
       ],
       "beispiel": {
         "aufgabe": "15 von 60 Plätzen sind besetzt. Wie viel Prozent sind das?",

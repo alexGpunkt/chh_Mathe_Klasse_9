@@ -23,10 +23,10 @@
   "lernkarten": {
     "A": {
       "titel": "Die Pyramide kennenlernen",
-      "hinfuehrung": "Eine Pyramide hat eine Grundfläche und Seitendreiecke, die alle in einer Spitze zusammenlaufen. Ihre Teile haben feste Namen.",
+      "hinfuehrung": "Die Pyramide läuft oben in einer Spitze zusammen.",
       "erklaerung": [
-        "Spitze: der oberste Punkt. Grundfläche: die Fläche unten (z. B. Quadrat). Grundkante a: eine Kante der Grundfläche.",
-        "Höhe h: der senkrechte Abstand von der Spitze zur Mitte der Grundfläche."
+        "Unten liegt die Grundfläche. Eine Seite davon ist die Grundkante a.",
+        "Die Höhe h geht von der Spitze senkrecht zur Mitte."
       ],
       "visual": {
         "type": "animation",
@@ -34,7 +34,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Benenne bei einer quadratischen Pyramide die vier Grundbegriffe.",
+        "aufgabe": "Benenne die vier Teile der Pyramide.",
         "schritte": [
           "Spitze: oberster Punkt",
           "Grundfläche: das Quadrat unten",
@@ -42,7 +42,7 @@
         ],
         "ergebnis": "Spitze, Grundfläche, Grundkante a, Höhe h."
       },
-      "merke": "Höhe h: senkrecht von der Spitze zur Mitte der Grundfläche."
+      "merke": "Die Höhe h steht senkrecht in der Mitte."
     },
     "B": {
       "titel": "Höhe und Seitenhöhe unterscheiden",

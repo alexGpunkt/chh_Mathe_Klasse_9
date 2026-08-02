@@ -21,10 +21,10 @@
   "lernkarten": {
     "A": {
       "titel": "Koordinaten eines Punktes ablesen",
-      "hinfuehrung": "Jeder Punkt hat zwei Zahlen: erst nach rechts, dann nach oben. Diese Reihenfolge ist wie ein Türcode – nie vertauschen.",
+      "hinfuehrung": "Ein Punkt hat zwei Zahlen.",
       "erklaerung": [
-        "Die erste Zahl ist der x-Wert (waagerecht), die zweite der y-Wert (senkrecht).",
-        "Man schreibt sie als Paar: P(x | y)."
+        "Die erste Zahl ist der x-Wert. Er geht nach rechts.",
+        "Die zweite Zahl ist der y-Wert. Er geht nach oben."
       ],
       "visual": {
         "type": "animation",

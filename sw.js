@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v22-book-mode-develop';
+const VERSION = 'mathe9-v23-stufe-a-animationen-develop';
 
 const SCHALE = [
   './',

@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Die Mantelfläche des Kegels",
-      "hinfuehrung": "Der Kegelmantel ist ein Kreisausschnitt. Seine Fläche berechnest du kurz mit π · r · s.",
+      "hinfuehrung": "Für den Mantel brauchst du r und s.",
       "erklaerung": [
-        "Mantel M = π · r · s, mit dem Radius r und der Mantellinie s.",
-        "Verwechsle s nicht mit der Höhe h – für den Mantel zählt die schräge Mantellinie."
+        "Rechne M = π · r · s.",
+        "Nimm die Mantellinie s. Die Höhe h ist hier falsch."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Kegel mit r = 3 cm, s = 5 cm. Mantelfläche (π ≈ 3,14)?",
+        "aufgabe": "Ein Kegel hat r = 3 cm und s = 5 cm. Mantelfläche mit π ≈ 3,14?",
         "schritte": [
           "M = π · r · s",
           "= 3,14 · 3 · 5",

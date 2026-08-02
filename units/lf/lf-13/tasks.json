@@ -20,10 +20,10 @@
   "lernkarten": {
     "A": {
       "titel": "Gleichsetzen mit vorgegebenen Schritten",
-      "hinfuehrung": "Den Schnittpunkt rechnest du ohne Zeichnung: Setze beide Terme gleich und bestimme x Schritt für Schritt.",
+      "hinfuehrung": "Im Schnittpunkt ist y bei beiden Geraden gleich.",
       "erklaerung": [
-        "Beide Gleichungen sind nach y aufgelöst. Weil im Schnittpunkt beide y gleich sind, setzt du die rechten Seiten gleich.",
-        "Dann löst du die entstehende Gleichung nach x."
+        "Beide Gleichungen fangen mit y = an.",
+        "Schreibe die beiden rechten Seiten gleich. Löse dann nach x auf."
       ],
       "beispiel": {
         "aufgabe": "Setze gleich und bestimme x: y = 2x und y = x + 3.",
@@ -33,11 +33,12 @@
         ],
         "ergebnis": "x = 3 (der y-Wert folgt im nächsten Schritt)."
       },
-      "merke": "Gleichsetzen: rechte Seiten gleich setzen, nach x lösen.",
+      "merke": "Gleichsetzen. Dann nach x lösen.",
       "visual": {
         "type": "animation",
         "name": "schnittpunkt",
-        "stufe": "A"
+        "stufe": "A",
+        "rechnung": true
       }
     },
     "B": {

@@ -21,13 +21,13 @@
   "lernkarten": {
     "A": {
       "titel": "Steigt der Wert oder fällt er?",
-      "hinfuehrung": "Nicht immer gilt „mehr → mehr“. Manchmal führt mehr zu weniger. Erst überlegen, dann rechnen.",
+      "hinfuehrung": "Manchmal führt mehr zu weniger.",
       "erklaerung": [
-        "Proportional: mehr Arbeiter → mehr Lohn. Beide Größen wachsen zusammen.",
-        "Antiproportional: mehr Arbeiter → weniger Zeit. Die eine Größe wächst, die andere schrumpft."
+        "Mehr Arbeiter, mehr Lohn. Das ist proportional.",
+        "Mehr Arbeiter, weniger Zeit. Das ist antiproportional."
       ],
       "beispiel": {
-        "aufgabe": "6 Maler brauchen 8 Tage. Wenn mehr Maler kommen: steigt oder fällt die Tagezahl?",
+        "aufgabe": "6 Maler brauchen 8 Tage. Es kommen mehr Maler. Mehr oder weniger Tage?",
         "schritte": [
           "Mehr Maler teilen sich die Arbeit.",
           "Jeder Einzelne muss weniger tun.",
@@ -35,7 +35,7 @@
         ],
         "ergebnis": "Mehr Maler → weniger Tage (antiproportional)."
       },
-      "merke": "Mehr → mehr ist proportional. Mehr → weniger ist antiproportional.",
+      "merke": "Mehr → mehr: proportional. Mehr → weniger: antiproportional.",
       "visual": {
         "type": "animation",
         "name": "antiproportional",

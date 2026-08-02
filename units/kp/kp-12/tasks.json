@@ -23,10 +23,10 @@
   "lernkarten": {
     "A": {
       "titel": "Volumen oder Oberfläche?",
-      "hinfuehrung": "In der Prüfung steht nicht dabei, was gesucht ist. Der erste Schritt: Geht es um den Rauminhalt (Volumen) oder um die Außenhaut (Oberfläche)?",
+      "hinfuehrung": "Lies zuerst, was gesucht ist.",
       "erklaerung": [
-        "Signalwörter für Volumen: „passt hinein“, „fasst“, „Liter“, „Rauminhalt“.",
-        "Signalwörter für Oberfläche: „anstreichen“, „Material“, „einwickeln“, „Fläche“."
+        "„fasst“, „Liter“, „passt hinein“ → Volumen.",
+        "„anstreichen“, „Material“, „einwickeln“ → Oberfläche."
       ],
       "beispiel": {
         "aufgabe": "„Wie viel Liter fasst der Tank?“ Volumen oder Oberfläche?",
@@ -36,7 +36,7 @@
         ],
         "ergebnis": "Gesucht ist das Volumen."
       },
-      "merke": "„fasst/Liter“ → Volumen. „anstreichen/Material“ → Oberfläche."
+      "merke": "„Liter“ → Volumen. „Material“ → Oberfläche."
     },
     "B": {
       "titel": "Gemischte Aufgaben zu Prismen und Zylindern",

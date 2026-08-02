@@ -19,10 +19,10 @@
   "lernkarten": {
     "A": {
       "titel": "Gerade durch zwei Punkte zeichnen",
-      "hinfuehrung": "Zwei Punkte legen genau eine Gerade fest. Zeichne sie ein, verbinde sie – und lies m und b ab.",
+      "hinfuehrung": "Zwei Punkte geben genau eine Gerade.",
       "erklaerung": [
-        "Trage beide Punkte ins Koordinatensystem ein und ziehe die Linie durch.",
-        "Dann liest du b (Schnitt mit y-Achse) und m (Steigungsdreieck) ab."
+        "Trage beide Punkte ein. Ziehe eine Linie durch.",
+        "Lies dann b und m ab."
       ],
       "visual": {
         "type": "koordinaten",
@@ -49,7 +49,7 @@
         "alt": "Zwei Punkte P und Q, durch die eine Gerade verläuft."
       },
       "beispiel": {
-        "aufgabe": "Zeichne die Gerade durch P(1 | 2) und Q(3 | 4) und lies ab.",
+        "aufgabe": "Zeichne die Gerade durch P(1 | 2) und Q(3 | 4). Lies m und b ab.",
         "schritte": [
           "P und Q eintragen, Linie ziehen",
           "b (y-Achse): 1",

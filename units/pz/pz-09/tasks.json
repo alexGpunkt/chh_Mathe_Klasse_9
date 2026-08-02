@@ -20,24 +20,25 @@
   "lernkarten": {
     "A": {
       "titel": "Endpreis in zwei Schritten",
-      "hinfuehrung": "Rabatt und Aufschlag rechnest du zuerst getrennt aus und ziehst dann ab oder addierst. Zwei klare Schritte.",
+      "hinfuehrung": "Rechne den Rabatt zuerst in Euro aus.",
       "erklaerung": [
-        "Schritt 1: den Prozentwert des Rabatts/Aufschlags berechnen (W = G · p : 100).",
-        "Schritt 2: bei Rabatt abziehen, bei Aufschlag addieren."
+        "Schritt 1: Rabatt = G · p : 100.",
+        "Schritt 2: Rabatt abziehen. Einen Aufschlag addierst du."
       ],
       "beispiel": {
-        "aufgabe": "Ein Rad kostet 200 €, es gibt 15 % Rabatt. Was ist der Endpreis?",
+        "aufgabe": "Ein Rad kostet 200 €. Es gibt 15 % Rabatt. Was ist der Endpreis?",
         "schritte": [
           "Rabatt = 200 € · 15 : 100 = 30 €",
           "Endpreis = 200 € − 30 € = 170 €"
         ],
         "ergebnis": "Der Endpreis beträgt 170 €."
       },
-      "merke": "Erst den Rabatt in Euro, dann abziehen.",
+      "merke": "Erst den Rabatt in Euro. Dann abziehen.",
       "visual": {
         "type": "animation",
         "name": "veraenderung",
-        "stufe": "A"
+        "stufe": "A",
+        "thema": "rabatt"
       }
     },
     "B": {
@@ -59,7 +60,8 @@
       "visual": {
         "type": "animation",
         "name": "veraenderung",
-        "stufe": "B"
+        "stufe": "B",
+        "thema": "rabatt"
       }
     },
     "C": {
@@ -82,7 +84,8 @@
       "visual": {
         "type": "animation",
         "name": "veraenderung",
-        "stufe": "C"
+        "stufe": "C",
+        "thema": "rabatt"
       }
     }
   },

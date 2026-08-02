@@ -19,10 +19,10 @@
   "lernkarten": {
     "A": {
       "titel": "Dreisatz über die Einheit",
-      "hinfuehrung": "Beim Dreisatz gehst du erst auf 1 herunter und dann auf die gesuchte Menge hoch. Zwei Pfeile, ein Weg.",
+      "hinfuehrung": "Rechne zuerst den Preis für 1 Stück aus.",
       "erklaerung": [
-        "Proportional heißt: doppelt so viel Ware kostet doppelt so viel. Mehr → mehr.",
-        "Rechne zuerst den Preis für 1 Stück aus (: Anzahl). Dann multiplizierst du auf die gesuchte Anzahl (· Anzahl)."
+        "Mehr Ware kostet mehr Geld.",
+        "Teile durch die Anzahl. Dann nimm mal die neue Anzahl."
       ],
       "beispiel": {
         "aufgabe": "5 Brötchen kosten 2,00 €. Was kosten 8 Brötchen?",
@@ -33,7 +33,7 @@
         ],
         "ergebnis": "8 Brötchen kosten 3,20 €."
       },
-      "merke": "Erst : auf 1 herunter, dann · auf die gesuchte Menge hoch.",
+      "merke": "Erst : auf 1 Stück. Dann · auf die neue Anzahl.",
       "visual": {
         "type": "animation",
         "name": "dreisatz",

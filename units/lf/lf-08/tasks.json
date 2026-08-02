@@ -21,13 +21,13 @@
   "lernkarten": {
     "A": {
       "titel": "Einen x-Wert einsetzen",
-      "hinfuehrung": "Die Punktprobe klärt: Liegt ein Punkt auf der Geraden? Der erste Schritt ist einfaches Einsetzen des x-Werts.",
+      "hinfuehrung": "Setze den x-Wert in die Gleichung ein.",
       "erklaerung": [
-        "Nimm die Gleichung und ersetze x durch den x-Wert des Punktes.",
-        "Rechne die rechte Seite aus – das ist der y-Wert, den die Gerade an dieser Stelle hat."
+        "Schreibe die Gleichung ab. Ersetze x durch die Zahl.",
+        "Rechne aus. Das Ergebnis ist der y-Wert."
       ],
       "beispiel": {
-        "aufgabe": "Gleichung y = 2x + 1. Welchen y-Wert liefert x = 3?",
+        "aufgabe": "Die Gleichung ist y = 2x + 1. Welchen y-Wert gibt x = 3?",
         "schritte": [
           "y = 2 · x + 1",
           "y = 2 · 3 + 1",
@@ -35,7 +35,7 @@
         ],
         "ergebnis": "Bei x = 3 liefert die Gerade y = 7."
       },
-      "merke": "Punktprobe beginnt mit: x einsetzen, y ausrechnen.",
+      "merke": "x einsetzen, y ausrechnen.",
       "visual": {
         "type": "animation",
         "name": "punktprobe",

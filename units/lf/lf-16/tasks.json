@@ -24,13 +24,13 @@
   "lernkarten": {
     "A": {
       "titel": "Die vier Grundaufgaben mit der Formelkarte",
-      "hinfuehrung": "Im Prüfungstraining kehren vier Typen immer wieder: ablesen, zeichnen, Punktprobe, Nullstelle. Mit der Formelkarte gehst du sie sicher an.",
+      "hinfuehrung": "Vier Aufgaben kommen immer wieder.",
       "erklaerung": [
-        "Ablesen: b am y-Achsenschnitt, m am Steigungsdreieck. Zeichnen: b markieren, Dreieck, Linie.",
-        "Punktprobe: x einsetzen, mit y vergleichen. Nullstelle: y = 0 setzen, nach x lösen."
+        "Ablesen: b an der y-Achse, m am Steigungsdreieck. Zeichnen: b, Dreieck, Linie.",
+        "Punktprobe: x einsetzen und mit y vergleichen. Nullstelle: y = 0 setzen."
       ],
       "beispiel": {
-        "aufgabe": "Bestimme die Nullstelle von y = 2x − 4 (Grundaufgabe „Nullstelle“).",
+        "aufgabe": "Bestimme die Nullstelle von y = 2x − 4.",
         "schritte": [
           "0 = 2x − 4   | + 4",
           "4 = 2x  | : 2 → x = 2"

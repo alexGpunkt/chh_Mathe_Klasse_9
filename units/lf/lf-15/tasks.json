@@ -19,10 +19,10 @@
   "lernkarten": {
     "A": {
       "titel": "Gleichsetzungsverfahren – die Grundlage",
-      "hinfuehrung": "Ein Gleichungssystem sind zwei Bedingungen für x und y zugleich. Sind beide nach y aufgelöst, nutzt du das vertraute Gleichsetzen.",
+      "hinfuehrung": "Zwei Gleichungen, eine Lösung.",
       "erklaerung": [
-        "Zwei Gleichungen, beide y = … . Setze die rechten Seiten gleich und löse nach x.",
-        "Setze x in eine Gleichung ein und erhalte y. Die Lösung ist ein Zahlenpaar (x | y)."
+        "Beide Gleichungen fangen mit y = an. Setze die rechten Seiten gleich.",
+        "Rechne x aus. Setze x ein und rechne y aus."
       ],
       "beispiel": {
         "aufgabe": "Löse: y = x + 2 und y = 3x − 4.",
@@ -33,7 +33,7 @@
         ],
         "ergebnis": "L = (3 | 5)."
       },
-      "merke": "Beide nach y? → gleichsetzen, x lösen, y einsetzen."
+      "merke": "x ausrechnen, x einsetzen, y ausrechnen."
     },
     "B": {
       "titel": "Das Einsetzungsverfahren",

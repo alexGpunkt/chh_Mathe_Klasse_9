@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Welche Größe ist gesucht?",
-      "hinfuehrung": "In der Prüfung steht nicht dabei, welche Formel gilt. Der erste Schritt ist immer: Was ist gegeben, was ist gesucht?",
+      "hinfuehrung": "Frage dich zuerst: Was ist gegeben? Was ist gesucht?",
       "erklaerung": [
-        "Unterstreiche im Text: Grundwert, Prozentwert, Prozentsatz – welche zwei sind gegeben?",
-        "Die dritte ist gesucht. Dann greifst du zur passenden Formel von der Formelkarte."
+        "Unterstreiche im Text den Grundwert, den Prozentwert und den Prozentsatz.",
+        "Zwei Größen sind gegeben. Die dritte suchst du."
       ],
       "beispiel": {
         "aufgabe": "„18 € sind 30 % wovon?“ Welche Größe fehlt?",
@@ -36,7 +36,7 @@
         ],
         "ergebnis": "Gesucht war der Grundwert: 60 €."
       },
-      "merke": "Erst gegeben/gesucht klären, dann die Formel wählen."
+      "merke": "Erst gegeben und gesucht. Dann die Formel."
     },
     "B": {
       "titel": "Gemischte Aufgaben ohne Ansage",

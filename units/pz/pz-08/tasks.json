@@ -21,10 +21,10 @@
   "lernkarten": {
     "A": {
       "titel": "Grundwert über den 1-%-Schritt",
-      "hinfuehrung": "Diesmal ist das Ganze gesucht. Du gehst über 1 % – nur andersherum als beim Prozentwert.",
+      "hinfuehrung": "Jetzt ist das Ganze gesucht.",
       "erklaerung": [
-        "Du kennst den Prozentwert W und den Prozentsatz p. Zuerst rechnest du auf 1 % herunter: W : p.",
-        "Dann mal 100, denn das Ganze sind 100 %."
+        "Teile den Prozentwert durch den Prozentsatz. Das ist 1 %.",
+        "Dann nimm mal 100. Das ist das Ganze."
       ],
       "beispiel": {
         "aufgabe": "12 € sind 20 % eines Preises. Wie hoch ist der ganze Preis?",
@@ -35,7 +35,7 @@
         ],
         "ergebnis": "Der ganze Preis beträgt 60 €."
       },
-      "merke": "Erst : p auf 1 %, dann · 100 auf das Ganze.",
+      "merke": "Erst : p auf 1 %. Dann · 100.",
       "visual": {
         "type": "animation",
         "name": "grundwert",

@@ -19,10 +19,10 @@
   "lernkarten": {
     "A": {
       "titel": "Die passende Gleichung auswählen",
-      "hinfuehrung": "Zu einem Graphen gibt es genau eine passende Gleichung. Mit zwei Blicken – Starthöhe und Richtung – findest du sie.",
+      "hinfuehrung": "Zwei Blicke reichen: Starthöhe und Richtung.",
       "erklaerung": [
-        "Schau auf b: Wo schneidet die Gerade die y-Achse? Das schließt schon Gleichungen aus.",
-        "Schau auf die Richtung: steigend → m positiv, fallend → m negativ."
+        "Lies b ab. Wo schneidet die Gerade die y-Achse?",
+        "Steigt die Gerade, ist m positiv. Fällt sie, ist m negativ."
       ],
       "visual": {
         "type": "koordinaten",
@@ -44,7 +44,7 @@
         ],
         "ergebnis": "Es passt y = x + 2."
       },
-      "merke": "Erst b (Schnittpunkt y-Achse), dann Richtung (steigt/fällt)."
+      "merke": "Erst b. Dann steigt oder fällt."
     },
     "B": {
       "titel": "m und b ablesen und die Gleichung aufschreiben",

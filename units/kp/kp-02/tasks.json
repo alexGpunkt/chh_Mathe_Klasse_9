@@ -22,13 +22,13 @@
   "lernkarten": {
     "A": {
       "titel": "Einheiten für Fläche und Volumen lesen",
-      "hinfuehrung": "Fläche misst man in Quadrat-Einheiten (cm²), Volumen in Kubik-Einheiten (cm³). Und ein wichtiger Merksatz: 1 Liter = 1 dm³.",
+      "hinfuehrung": "Die kleine Zahl oben zeigt dir die Art der Einheit.",
       "erklaerung": [
-        "Das kleine ² steht für Fläche (zwei Richtungen), das ³ für Volumen (drei Richtungen: Länge, Breite, Höhe).",
-        "Rauminhalte gibt man oft in Litern an. 1 l passt genau in einen Würfel von 1 dm Kantenlänge: 1 l = 1 dm³."
+        "cm² ist eine Fläche. cm³ ist ein Volumen.",
+        "In einen Würfel mit 1 dm Kante passt genau 1 Liter."
       ],
       "beispiel": {
-        "aufgabe": "Ein Würfel von 1 dm Kante fasst wie viel Liter?",
+        "aufgabe": "Ein Würfel hat 1 dm Kantenlänge. Wie viel Liter fasst er?",
         "schritte": [
           "Volumen = 1 dm · 1 dm · 1 dm = 1 dm³",
           "1 dm³ = 1 l"

@@ -23,20 +23,20 @@
   "lernkarten": {
     "A": {
       "titel": "Die richtige Formel wählen",
-      "hinfuehrung": "Im Prüfungstraining der Spitzkörper erkennst du zuerst den Körper – Pyramide, Kegel oder Kugel – und greifst zur passenden Formel.",
+      "hinfuehrung": "Erkenne zuerst den Körper.",
       "erklaerung": [
-        "Pyramide: eckige Grundfläche, Spitze. Kegel: runder Grundkreis, Spitze. Kugel: rundum gleich.",
-        "Dann von der Formelkarte die Volumen- oder Oberflächenformel wählen."
+        "Eckig unten mit Spitze: Pyramide. Rund unten mit Spitze: Kegel.",
+        "Überall rund: Kugel. Dann nimmst du die Formel von der Formelkarte."
       ],
       "beispiel": {
-        "aufgabe": "Ein Körper mit Grundkreis und Spitze – welche Volumenformel?",
+        "aufgabe": "Ein Körper hat einen Grundkreis und eine Spitze. Welche Volumenformel?",
         "schritte": [
           "Grundkreis + Spitze → Kegel",
           "Volumen des Kegels"
         ],
         "ergebnis": "V = (π · r² · h) : 3."
       },
-      "merke": "Erst Körper erkennen (eckig/rund/Kugel), dann Formel."
+      "merke": "Erst den Körper erkennen. Dann die Formel."
     },
     "B": {
       "titel": "Gemischte Prüfungsaufgaben",

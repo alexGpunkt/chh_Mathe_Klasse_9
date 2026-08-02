@@ -22,10 +22,10 @@
   "lernkarten": {
     "A": {
       "titel": "Das Prisma: Grundfläche mal Höhe",
-      "hinfuehrung": "Ein Prisma ist ein Körper, bei dem sich die Grundfläche wie ein Stapel wiederholt. Sein Volumen ist Grundfläche mal Höhe.",
+      "hinfuehrung": "Ein Prisma ist ein Stapel aus gleichen Flächen.",
       "erklaerung": [
-        "Die Grundfläche G ist die Fläche, die unten und oben gleich aussieht.",
-        "Das Volumen ist V = G · h – so viele Schichten der Grundfläche, wie der Körper hoch ist."
+        "Die Grundfläche G sieht unten und oben gleich aus.",
+        "Rechne V = G · h."
       ],
       "visual": {
         "type": "animation",
@@ -33,7 +33,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Ein Prisma hat die Grundfläche G = 12 cm² und die Höhe h = 5 cm. Volumen?",
+        "aufgabe": "Ein Prisma hat G = 12 cm² und h = 5 cm. Wie groß ist das Volumen?",
         "schritte": [
           "V = G · h",
           "V = 12 cm² · 5 cm",
@@ -41,7 +41,7 @@
         ],
         "ergebnis": "V = 60 cm³."
       },
-      "merke": "Prisma: V = Grundfläche · Höhe = G · h."
+      "merke": "Prisma: V = G · h."
     },
     "B": {
       "titel": "Grundfläche berechnen, dann Volumen",

@@ -21,10 +21,10 @@
   "lernkarten": {
     "A": {
       "titel": "Oberfläche des Würfels",
-      "hinfuehrung": "Die Oberfläche ist die Summe aller Außenflächen. Beim Würfel ist das leicht: sechs gleiche Quadrate.",
+      "hinfuehrung": "Der Würfel hat 6 gleiche Quadrate.",
       "erklaerung": [
-        "Ein Quadrat der Kante a hat den Flächeninhalt a · a = a².",
-        "Der Würfel hat 6 solche Quadrate, also O = 6 · a²."
+        "Ein Quadrat hat die Fläche a · a.",
+        "Nimm diese Fläche mal 6."
       ],
       "visual": {
         "type": "animation",
@@ -32,7 +32,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Berechne die Oberfläche eines Würfels mit a = 5 cm.",
+        "aufgabe": "Berechne die Oberfläche von einem Würfel mit a = 5 cm.",
         "schritte": [
           "eine Fläche = a² = 5 cm · 5 cm = 25 cm²",
           "O = 6 · 25 cm² = 150 cm²"

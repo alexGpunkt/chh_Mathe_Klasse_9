@@ -22,13 +22,13 @@
   "lernkarten": {
     "A": {
       "titel": "Zusammengesetzte Körper zerlegen",
-      "hinfuehrung": "Viele echte Gegenstände bestehen aus mehreren Grundkörpern. Zerlege sie und addiere die Einzelvolumen.",
+      "hinfuehrung": "Viele Körper bestehen aus einfachen Teilen.",
       "erklaerung": [
-        "Suche die einfachen Teilkörper (Quader, Zylinder, Prisma).",
-        "Berechne jedes Volumen einzeln und addiere sie zum Gesamtvolumen."
+        "Suche die einfachen Teile: Quader, Würfel, Zylinder.",
+        "Rechne jedes Volumen einzeln aus. Zähle alles zusammen."
       ],
       "beispiel": {
-        "aufgabe": "Ein Sockel: Quader (4·4·2) mit aufgesetztem Würfel (a = 2). Gesamtvolumen?",
+        "aufgabe": "Ein Quader 4 · 4 · 2 hat einen Würfel mit a = 2 darauf. Wie groß ist das Volumen?",
         "schritte": [
           "Quader = 4 · 4 · 2 = 32 cm³",
           "Würfel = 2³ = 8 cm³",
@@ -36,7 +36,7 @@
         ],
         "ergebnis": "V = 40 cm³."
       },
-      "merke": "Zusammengesetzt: in Grundkörper zerlegen, Volumen addieren.",
+      "merke": "Zerlegen. Einzeln rechnen. Addieren.",
       "visual": {
         "type": "animation",
         "name": "zusammengesetzt",

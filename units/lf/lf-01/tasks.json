@@ -21,10 +21,10 @@
   "lernkarten": {
     "A": {
       "titel": "y-Wert zum x-Wert ablesen",
-      "hinfuehrung": "Ein Graph erzählt eine Geschichte in Bildern. Zu jedem x-Wert (rechts) gehört ein y-Wert (oben) – den liest du am Graphen ab.",
+      "hinfuehrung": "Zu jedem x-Wert gehört ein y-Wert.",
       "erklaerung": [
-        "Suche den x-Wert auf der waagerechten Achse. Gehe von dort senkrecht nach oben bis zum Graphen.",
-        "Von diesem Punkt gehst du waagerecht nach links zur y-Achse und liest den Wert ab."
+        "Suche den x-Wert unten. Gehe von dort nach oben bis zur Linie.",
+        "Gehe dann nach links. Lies den y-Wert ab."
       ],
       "visual": {
         "type": "koordinaten",
@@ -54,7 +54,7 @@
         ],
         "ergebnis": "Zu x = 3 gehört y = 4."
       },
-      "merke": "Erst nach rechts (x), dann nach oben zum Graphen, dann links ablesen (y)."
+      "merke": "Erst nach rechts (x), dann hoch, dann links ablesen (y)."
     },
     "B": {
       "titel": "Graphen beschreiben und in beide Richtungen ablesen",

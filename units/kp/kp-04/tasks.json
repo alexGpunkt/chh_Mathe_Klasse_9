@@ -21,10 +21,10 @@
   "lernkarten": {
     "A": {
       "titel": "Volumen des Würfels",
-      "hinfuehrung": "Das Volumen sagt, wie viel in den Körper hineinpasst. Beim Würfel multiplizierst du die Kante dreimal mit sich selbst.",
+      "hinfuehrung": "Das Volumen sagt, wie viel hineinpasst.",
       "erklaerung": [
-        "Volumen = Länge · Breite · Höhe. Beim Würfel sind alle drei gleich a.",
-        "Also V = a · a · a = a³."
+        "Volumen = Länge · Breite · Höhe.",
+        "Beim Würfel sind alle drei Kanten gleich lang."
       ],
       "visual": {
         "type": "animation",
@@ -32,7 +32,7 @@
         "stufe": "A"
       },
       "beispiel": {
-        "aufgabe": "Berechne das Volumen eines Würfels mit a = 3 cm.",
+        "aufgabe": "Berechne das Volumen von einem Würfel mit a = 3 cm.",
         "schritte": [
           "V = a · a · a",
           "V = 3 · 3 · 3",
@@ -40,7 +40,7 @@
         ],
         "ergebnis": "V = 27 cm³."
       },
-      "merke": "Würfel: V = a³ = a · a · a."
+      "merke": "Würfel: V = a · a · a."
     },
     "B": {
       "titel": "Volumen des Quaders und Liter",
