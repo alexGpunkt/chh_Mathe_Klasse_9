@@ -39,6 +39,11 @@
           "Z = 2000 € · 3 : 100",
           "Z = 60 €"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 60,
+          "einheit": "€"
+        },
         "ergebnis": "Die Jahreszinsen betragen 60 €."
       },
       "merke": "Z = K · p : 100.",
@@ -413,7 +418,10 @@
         {
           "id": "mal_statt_geteilt",
           "value": 4.41,
-          "feedback": "Du hast 3,5 % von 126 € gerechnet. Gesucht ist das Kapital — es ist viel größer."
+          "feedback": "Du hast 3,5 % von 126 € gerechnet. Gesucht ist das Kapital — es ist viel größer.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "bei_1prozent_gestoppt",

@@ -1,0 +1,238 @@
+Weitere sinnvolle Anpassungen
+Priorität 1: vor der Produktivveröffentlichung
+1. Bearbeitungsstand dauerhaft speichern
+
+Der wichtigste nächste Schritt wäre, pro Schüler und Einheit zu speichern:
+
+aktuelle Aufgabe,
+bereits gelöste Aufgaben,
+eingegebene, aber noch nicht geprüfte Antworten,
+genutzte Tipps,
+gewählter Pfad,
+letzter Bearbeitungszeitpunkt.
+
+Beim erneuten Öffnen könnte die Anwendung anzeigen:
+
+Du warst bei Aufgabe 4 von 6. Dort weiterlernen?
+
+Der aktuelle DOM-Parkmechanismus schützt den Zustand beim kurzfristigen Wechsel zur Erklärung, aber noch nicht beim Neuladen, Schließen des Tabs oder Wechsel zu einer anderen Einheit.
+
+2. Eindeutige Aufgaben-Sitzungs-ID
+
+Beim Anzeigen einer Aufgabe sollte eine task_session_id erzeugt und mit jedem Antwortversuch übertragen werden.
+
+Das würde die Dashboard-Auswertung zuverlässig machen bei:
+
+Offline-Synchronisation,
+mehreren Browser-Tabs,
+Seitenneuladen,
+wiederholter Bearbeitung derselben Aufgabe,
+verzögert eintreffenden Ereignissen.
+3. Lücken explizit in den JSON-Daten definieren
+
+Das automatische Auswählen der letzten Zahl ist grundsätzlich fehleranfällig. Besser wäre beispielsweise:
+
+"luecke": {
+  "schritt": 2,
+  "wert": 60,
+  "einheit": "€"
+}
+
+Dann entscheidet die fachliche Autorenschaft, was tatsächlich ergänzt werden soll.
+
+4. Fehlvorstellungen gezielt mit Erklärabsätzen verbinden
+
+Technisch unterstützt das Projekt bereits:
+
+"verweis": {
+  "absatz": 1
+}
+
+In den aktuellen Aufgabendaten sind solche konkreten Absatzverweise jedoch noch nicht hinterlegt. Deshalb führt der Knopf häufig nur allgemein zur Animation oder zum Merksatz.
+
+Jede häufige Fehlvorstellung sollte mit genau der Erklärstelle verbunden werden, die diesen Denkfehler behandelt.
+
+5. Abdeckung der Nachfassaufgaben erhöhen
+
+Eine passende Nachfassaufgabe ist derzeit ungefähr verfügbar für:
+
+Pfad	abgedeckte Fehlvorstellungs-/Pfad-Paare
+A	33 %
+B	47 %
+C	38 %
+
+Die Erweiterung erfordert nicht zwingend neue Programmierung. Weitere vorhandene Aufgaben können mit passenden Fehlvorstellungs-IDs versehen oder gezielte Varianten ergänzt werden.
+
+6. Automatischer Updatehinweis
+
+Statt die Schüler oder Lehrkräfte zum manuellen Löschen des Offlinecaches aufzufordern, sollte die Anwendung erkennen:
+
+Eine neue Version ist verfügbar.
+
+Nach Zustimmung könnten alle Tabs kontrolliert aktualisiert werden. Das würde gemischte Cache-Stände deutlich zuverlässiger verhindern.
+
+7. Reale Smartphone-Testmatrix
+
+Vor master sollten mindestens geprüft werden:
+
+iPhone mit Safari,
+aktuelles Android mit Chrome,
+Android mit Firefox,
+günstiges oder älteres Android-Gerät,
+Tablet im Hoch- und Querformat,
+langsame Verbindung und vollständiger Offlinebetrieb.
+
+Besonders wichtig sind dabei Bildschirmtastatur, feste Navigation, Animationen, Wischgesten und Dark Mode.
+
+Priorität 2: Qualität und Wartbarkeit
+8. JSON-Schema einführen
+
+Ein maschinenlesbares Schema könnte automatisch prüfen:
+
+Aufgabentypen,
+gültige Antwortfelder,
+Auswahlindex innerhalb der Optionen,
+Pflichtfelder für Animationen,
+Fehlvorstellungsstruktur,
+Worterklärungen,
+externe Links,
+Lückenmetadaten.
+
+Fehler würden bereits beim Commit auffallen und nicht erst in der Anwendung.
+
+9. Automatische GitHub-Actions-Prüfung
+
+Bei jedem Push auf develop sollte automatisch geprüft werden:
+
+alle JSON-Dateien,
+JavaScript-Syntax,
+doppelte Aufgaben-IDs,
+ungültige Animationsnamen,
+fehlende Service-Worker-Dateien,
+kaputte lokale Links,
+nicht erlaubte externe Hosts,
+devMode passend zum Branch,
+erhöhte Cache-Version bei geänderten Programmdateien.
+10. Buch- und Aufgabenfortschritt klarer trennen
+
+Die Anwendung besitzt inzwischen zwei Fortschrittskonzepte. Diese sollten ausdrücklich bezeichnet werden:
+
+Buchseite 18 von 54
+Aufgabenfortschritt 3 von 6
+
+Das verhindert, dass Schüler die Buchseite mit dem Bearbeitungsstand innerhalb einer Einheit verwechseln.
+
+11. Eigene Bewegungseinstellung
+
+Zusätzlich zur Betriebssystemeinstellung prefers-reduced-motion sollte es einen sichtbaren Schalter geben:
+
+Animationen automatisch starten: Ein / Aus
+
+Die Wahl könnte pro Schüler gespeichert werden.
+
+12. Barrierefreiheit systematisch testen
+
+Zu prüfen wären insbesondere:
+
+Screenreader-Navigation,
+Fokusreihenfolge,
+Bedienung ausschließlich per Tastatur,
+Zoom auf 200 und 400 Prozent,
+Farbkontraste,
+Touchflächen von mindestens etwa 44 × 44 Pixeln,
+verständliche Alternativtexte,
+Statusmeldungen nach Antworten und Animationen.
+13. Lehrer-Deep-Links
+
+Lehrkräfte könnten Links erstellen wie:
+
+einheit.html?u=lf-04&p=B&aufgabe=LF04-B2-003
+
+oder:
+
+einheit.html?u=pz-05&p=A&abschnitt=beispiel
+
+Damit ließen sich Schüler im Unterricht direkt an eine bestimmte Stelle schicken.
+
+14. Automatische Prüfung externer Übungen
+
+Ein regelmäßiger Prozess könnte melden:
+
+Link nicht erreichbar,
+Weiterleitung auf eine andere Domain,
+Inhalt entfernt,
+HTTP-Fehler,
+Plattform nicht mehr freigegeben.
+
+Die fachliche Qualität muss weiterhin manuell geprüft werden.
+
+15. Diagnoseexport im Entwicklermodus
+
+Ein Button könnte eine kleine Textdatei erzeugen mit:
+
+Projektversion,
+Service-Worker-Version,
+Browser und Betriebssystem,
+aktuelle Einheit und Aufgabe,
+letzte JavaScriptfehler,
+Cache-Status,
+Offline-/Onlinezustand.
+
+Das würde Fehlermeldungen von Schülergeräten wesentlich leichter nachvollziehbar machen.
+
+Priorität 3: pädagogischer Ausbau
+16. Unsicherheit der Pfadempfehlung anzeigen
+
+Bei wenigen Kernaufgaben oder vielen genutzten Tipps sollte die Empfehlung nicht zu bestimmt formuliert werden.
+
+Beispiel:
+
+Dein Ergebnis spricht eher für Pfad B. Bearbeite noch eine kurze Einstufungsaufgabe, um die Empfehlung zu bestätigen.
+
+17. Lernstatus im Inhaltsverzeichnis
+
+Mögliche Kennzeichnungen:
+
+○ noch nicht begonnen,
+● begonnen,
+✓ abgeschlossen,
+↻ Wiederholung fällig,
+! häufige Schwierigkeiten.
+18. „Weiterlernen“-Kachel auf der Startseite
+
+Eine prominent sichtbare Kachel könnte direkt zur zuletzt bearbeiteten Stelle führen:
+
+Weiterlernen: LF-04 · Steigung · Aufgabe 3 von 6
+
+19. Vorhersagen im Lehrerdashboard auswerten
+
+Die Animationserwartungen könnten getrennt von den Aufgabenleistungen dargestellt werden:
+
+Anteil richtiger Vorhersagen je Konzept,
+Vorhersage falsch, anschließende Aufgabe richtig,
+wiederholt falsche Grundvorstellung.
+
+Das könnte zeigen, ob die Animation tatsächlich zu einer Konzeptänderung beiträgt.
+
+20. Datenschutz und Löschfristen
+
+Für den späteren Regelbetrieb sollten dokumentiert und technisch festgelegt werden:
+
+welche Ereignisse gespeichert werden,
+wie lange sie gespeichert bleiben,
+wer sie sehen darf,
+wie Schülerdaten gelöscht werden,
+ob Rohereignisse später aggregiert und entfernt werden,
+wie Exporte und Auskunftsanfragen behandelt werden.
+Einbau in GitHub Desktop
+
+Für den bisherigen V22-Stand das Patch entpacken und dessen Inhalt in die Repository-Wurzel kopieren. Danach:
+
+Commit to develop
+→ Push origin
+
+Passende Commit-Nachricht:
+
+Integrate learning-impact update and fix mobile stability
+
+Anschließend im Entwicklermenü zuerst Offlinecache löschen, danach Service Worker aktualisieren und die Testseite neu öffnen.

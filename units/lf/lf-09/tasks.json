@@ -61,6 +61,10 @@
           "b (y-Achse): 1",
           "Dreieck P→Q: 2 rechts, 2 hoch → m = 1"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 1
+        },
         "ergebnis": "y = x + 1."
       },
       "merke": "Zwei Punkte → eine Gerade → m und b ablesen."

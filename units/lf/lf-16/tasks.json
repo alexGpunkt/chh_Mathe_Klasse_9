@@ -42,6 +42,10 @@
           "0 = 2x − 4   | + 4",
           "4 = 2x  | : 2 → x = 2"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 2
+        },
         "ergebnis": "Nullstelle bei x = 2."
       },
       "merke": "Vier Typen: ablesen · zeichnen · Punktprobe · Nullstelle."

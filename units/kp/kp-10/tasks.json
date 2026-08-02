@@ -47,6 +47,11 @@
           "Mantel = U · h = 25,12 · 10",
           "Mantel = 251,2 cm²"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 251.2,
+          "einheit": "cm²"
+        },
         "ergebnis": "Mantel ≈ 251,2 cm²."
       },
       "merke": "Zylindermantel = 2 · π · r · h."

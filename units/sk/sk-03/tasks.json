@@ -45,6 +45,11 @@
           "V = (30 · 6) : 3 = 180 : 3",
           "V = 60 cm³"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 60,
+          "einheit": "cm³"
+        },
         "ergebnis": "V = 60 cm³."
       },
       "merke": "Pyramide: V = (G · h) : 3."

@@ -41,6 +41,10 @@
           "Kreuzungspunkt suchen",
           "x = 2, y = 3"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 3
+        },
         "ergebnis": "S(2 | 3)."
       },
       "merke": "Schnittpunkt als Paar schreiben: S(x | y)."
@@ -583,7 +587,10 @@
         {
           "id": "nullstelle_verwechselt",
           "value": 2,
-          "feedback": "Das wären die Nullstellen. Der Schnittpunkt der beiden Geraden liegt bei (2|3), nicht auf der x-Achse."
+          "feedback": "Das wären die Nullstellen. Der Schnittpunkt der beiden Geraden liegt bei (2|3), nicht auf der x-Achse.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -726,7 +733,10 @@
         {
           "id": "identisch_uebersehen",
           "value": 1,
-          "feedback": "Kein Schnittpunkt gäbe es bei parallelen Geraden mit VERSCHIEDENEM b. Hier ist auch b gleich — sie liegen aufeinander."
+          "feedback": "Kein Schnittpunkt gäbe es bei parallelen Geraden mit VERSCHIEDENEM b. Hier ist auch b gleich — sie liegen aufeinander.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "identisch_uebersehen",
@@ -764,7 +774,10 @@
         {
           "id": "b_statt_m",
           "value": 1,
-          "feedback": "Gegenbeispiel: y = 2x + 1 und y = 2x + 5 haben verschiedene b, sind aber parallel — kein Schnittpunkt. Es kommt auf m an."
+          "feedback": "Gegenbeispiel: y = 2x + 1 und y = 2x + 5 haben verschiedene b, sind aber parallel — kein Schnittpunkt. Es kommt auf m an.",
+          "verweis": {
+            "absatz": 0
+          }
         },
         {
           "id": "monotonie_reicht",

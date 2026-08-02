@@ -39,6 +39,11 @@
           "B: 4·8 = 32 €",
           "26 € < 32 €"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 32,
+          "einheit": "€"
+        },
         "ergebnis": "Bei 8 Stunden ist Tarif A günstiger."
       },
       "merke": "Beide Preise ausrechnen. Dann vergleichen.",

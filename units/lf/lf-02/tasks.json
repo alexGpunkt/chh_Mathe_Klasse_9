@@ -44,6 +44,10 @@
           "nach rechts: 4  → x = 4",
           "nach oben:   2  → y = 2"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 2
+        },
         "ergebnis": "P(4 | 2)."
       },
       "merke": "Erst rechts (x), dann hoch (y): P(x | y)."
@@ -186,7 +190,10 @@
         {
           "id": "koordinaten_vertauscht",
           "value": 1,
-          "feedback": "Du hast die Zahlen vertauscht. Die erste Zahl ist immer x — also rechts. P(5|2) läge ganz woanders."
+          "feedback": "Du hast die Zahlen vertauscht. Die erste Zahl ist immer x — also rechts. P(5|2) läge ganz woanders.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [

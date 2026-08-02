@@ -47,6 +47,11 @@
           "V = G · h = 12 · 12",
           "V = 144 cm³"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 144,
+          "einheit": "cm³"
+        },
         "ergebnis": "V = 144 cm³."
       },
       "merke": "Erst G = (g · h_d) : 2. Dann V = G · h."

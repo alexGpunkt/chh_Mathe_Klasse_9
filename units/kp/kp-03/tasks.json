@@ -44,6 +44,11 @@
           "eine Fläche = a² = 5 cm · 5 cm = 25 cm²",
           "O = 6 · 25 cm² = 150 cm²"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 150,
+          "einheit": "cm²"
+        },
         "ergebnis": "O = 150 cm²."
       },
       "merke": "Würfel: O = 6 · a²."
@@ -354,7 +359,10 @@
         {
           "id": "nur_drei_flaechen",
           "value": 44,
-          "feedback": "44 cm² sind drei Flächen. Verdoppeln: 88."
+          "feedback": "44 cm² sind drei Flächen. Verdoppeln: 88.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "volumen_statt_oberflaeche",
@@ -423,7 +431,10 @@
         {
           "id": "nur_drei_flaechen",
           "value": 79,
-          "feedback": "79 cm² sind drei Flächen. Verdoppeln: 158."
+          "feedback": "79 cm² sind drei Flächen. Verdoppeln: 158.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

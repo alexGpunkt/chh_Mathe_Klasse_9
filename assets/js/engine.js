@@ -32,8 +32,22 @@ const S = {
   kernAufAnhieb: 0,
   /* Beim Sprung zur Erklärung bleibt die laufende Aufgabe mitsamt Eingaben,
      Versuchen, Tipps, Rückmeldungen und Zeitmessung erhalten. */
-  rueckkehrDom: null
+  rueckkehrDom: null,
+  /* Eine ID je gezeigter Aufgabe. Ohne sie lassen sich Antwortversuche nicht
+     sicher zuordnen, sobald offline nachgeliefert wird, mehrere Tabs offen
+     sind oder dieselbe Aufgabe erneut bearbeitet wird. */
+  taskSession: null,
+  /* Abgeschlossene Pfade dieser Einheit */
+  fertig: new Set(),
+  entwurfWartet: null
 };
+
+function neueId() {
+  try {
+    if (crypto?.randomUUID) return crypto.randomUUID();
+  } catch { /* ältere Browser */ }
+  return 'ts-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+}
 
 const $ = (s, w = document) => w.querySelector(s);
 const el = (tag, klasse, text) => {
@@ -106,6 +120,122 @@ function aufgabeZurueckholen() {
   requestAnimationFrame(() => window.scrollTo({ top: gespeichert.scrollY, behavior: 'smooth' }));
 }
 
+/* ============================================================
+   Bearbeitungsstand · dauerhaft
+   Gespeichert wird, was zum Weitermachen nötig ist: Pfad, Position,
+   gelöste Aufgaben, genutzte Tipps, Selbsteinschätzung und die bereits
+   getippten, aber noch nicht geprüften Eingaben. Prüfungssets speichern
+   nichts — dort wäre ein Zwischenstand eine Einladung zum Nachbessern.
+   ============================================================ */
+function standSpeichern() {
+  if (!S.daten || S.daten.pruefung) return;
+  try {
+    Stand.schreib(S.daten.unit, {
+      unit: S.daten.unit,
+      titel: S.daten.title || '',
+      pfad: S.pfad,
+      index: S.index,
+      gesamt: S.reihe.length,
+      aufgabe: S.aufgabe?.id || null,
+      geloest: [...S.geloest],
+      auf_anhieb: S.aufAnhieb,
+      kern_auf_anhieb: S.kernAufAnhieb,
+      versuche_gesamt: S.versucheGesamt,
+      tipps: S.tippsGenutzt,
+      selbst: S.selbst,
+      /* Welche Pfade dieser Einheit schon durch sind — davon leben der
+         Lernstatus im Inhaltsverzeichnis und die Startseitenkachel. */
+      fertig: [...S.fertig],
+      entwurf: entwurfLesen()
+    });
+  } catch (error) {
+    console.warn('[Mathe9 Stand]', error);
+  }
+}
+
+/* Die bereits getippten Zahlen der laufenden Aufgabe. */
+function entwurfLesen() {
+  const felder = [...document.querySelectorAll('#buehne .zahl-feld:not(.lk-luecke-feld)')];
+  if (felder.length) return { typ: 'zahlen', werte: felder.map(f => f.value) };
+  const gewaehlt = [...document.querySelectorAll('#buehne .slot')].map(s => {
+    const o = s.querySelector('.opt[aria-pressed="true"]');
+    return o ? Number(o.dataset.i) : null;
+  });
+  if (gewaehlt.length) return { typ: 'zuordnung', werte: gewaehlt };
+  const eine = document.querySelector('#buehne .optionen .opt[aria-pressed="true"]');
+  if (eine) return { typ: 'auswahl', werte: [Number(eine.dataset.i)] };
+  return null;
+}
+
+function entwurfSetzen(entwurf) {
+  if (!entwurf || !entwurf.werte) return;
+  if (entwurf.typ === 'zahlen') {
+    const felder = [...document.querySelectorAll('#buehne .zahl-feld:not(.lk-luecke-feld)')];
+    entwurf.werte.forEach((w, i) => { if (felder[i] && w) felder[i].value = w; });
+    return;
+  }
+  if (entwurf.typ === 'zuordnung') {
+    document.querySelectorAll('#buehne .slot').forEach((s, i) => {
+      const wahl = entwurf.werte[i];
+      if (wahl == null) return;
+      const o = s.querySelector(`.opt[data-i="${wahl}"]`);
+      if (o) { s.querySelectorAll('.opt').forEach(x => x.setAttribute('aria-pressed', 'false')); o.setAttribute('aria-pressed', 'true'); }
+    });
+    return;
+  }
+  if (entwurf.typ === 'auswahl') {
+    const o = document.querySelector(`#buehne .optionen .opt[data-i="${entwurf.werte[0]}"]`);
+    if (o) { document.querySelectorAll('#buehne .optionen .opt').forEach(x => x.setAttribute('aria-pressed', 'false')); o.setAttribute('aria-pressed', 'true'); }
+  }
+}
+
+/* Nicht bei jedem Tastendruck schreiben — das Gerät hat Besseres zu tun. */
+let standTimer = null;
+function standSpeichernBald() {
+  clearTimeout(standTimer);
+  standTimer = setTimeout(standSpeichern, 500);
+}
+
+document.addEventListener('input', e => {
+  if (e.target.closest?.('#buehne')) standSpeichernBald();
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') standSpeichern();
+});
+window.addEventListener('pagehide', standSpeichern);
+
+/* Wiederaufnahme anbieten statt stillschweigend fortzusetzen: Wer die
+   Einheit bewusst neu beginnen will, soll das auch können. */
+function standAbfrage(stand) {
+  const b = $('#buehne');
+  buehneLeeren(b);
+  const karte = el('div', 'karte stand-karte');
+  karte.append(el('h2', 'frage', 'Weiterlernen?'));
+  const wann = new Date(stand.ts);
+  const p = el('p');
+  p.innerHTML = `Du warst zuletzt bei <b>Aufgabe ${Math.min(stand.index + 1, stand.gesamt || 1)} von ${stand.gesamt || '?'}</b> `
+    + `auf Pfad <b>${stand.pfad}</b> (${wann.toLocaleDateString('de-DE')}, ${wann.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })} Uhr).`;
+  karte.append(p);
+
+  const akt = el('div', 'aktionen');
+  const weiter = el('button', 'btn btn-haupt', 'Dort weiterlernen');
+  weiter.addEventListener('click', () => {
+    Tracker.track('stand_fortgesetzt', { unit: S.daten.unit, path: stand.pfad, index: stand.index });
+    pfadSetzen(stand.pfad, stand);
+  });
+  akt.append(weiter);
+
+  const neu = el('button', 'btn btn-neben', 'Von vorn beginnen');
+  neu.addEventListener('click', () => {
+    Stand.loesche(S.daten.unit);
+    Tracker.track('stand_verworfen', { unit: S.daten.unit, path: stand.pfad });
+    pfadSetzen(S.daten.pfad_fest || stand.pfad || S.pfad);
+  });
+  akt.append(neu);
+  karte.append(akt);
+  b.append(karte);
+}
+
 /* ---------- Start ----------
    Normalfall: eine Einheit über ?u= laden.
    Der Prüfungstrainer setzt vorher window.QUELLE und liefert seine eigenen
@@ -128,7 +258,35 @@ async function start() {
   kopfBauen();
   formelkarteBauen();
   uebungskarteBauen();
-  pfadSetzen(S.daten.pfad_fest || S.pfad);
+
+  /* Ein Deep-Link der Lehrkraft schlägt den gespeicherten Stand: Wer per
+     Link an eine bestimmte Stelle geschickt wird, soll dort landen. */
+  const ziel = deepLink();
+  if (ziel.pfad && !S.daten.pfad_fest && S.daten.lernkarten?.[ziel.pfad]) S.pfad = ziel.pfad;
+
+  const stand = S.daten.pruefung ? null : Stand.lies(S.daten.unit);
+  /* Abgeschlossene Pfade gelten für die ganze Einheit — sie bleiben auch
+     dann bekannt, wenn gar keine Wiederaufnahme angeboten wird. */
+  if (stand) S.fertig = new Set(stand.fertig || []);
+  const lohntSich = stand && (stand.index > 0 || (stand.geloest || []).length > 0);
+  if (lohntSich && !ziel.aufgabe && !ziel.abschnitt) { standAbfrage(stand); return; }
+
+  pfadSetzen(S.daten.pfad_fest || S.pfad, null, ziel);
+}
+
+/* ---------- Deep-Links für die Lehrkraft ----------
+   einheit.html?u=lf-04&p=B&aufgabe=LF04-B2-003
+   einheit.html?u=pz-05&p=A&abschnitt=beispiel
+   Damit lässt sich eine Klasse im Unterricht an eine bestimmte Stelle
+   schicken, ohne dass alle erst hinklicken müssen. */
+function deepLink() {
+  const q = new URLSearchParams(location.search);
+  const pfad = String(q.get('p') || '').toUpperCase();
+  return {
+    pfad: ['A', 'B', 'C'].includes(pfad) ? pfad : null,
+    aufgabe: q.get('aufgabe') || null,
+    abschnitt: q.get('abschnitt') || null
+  };
 }
 
 function zeigeFehler(pfad, e) {
@@ -163,7 +321,7 @@ function kopfBauen() {
   });
 }
 
-function pfadSetzen(p) {
+function pfadSetzen(p, stand, ziel) {
   geparkteAufgabeVerwerfen();
   S.pfad = p;
   if (!S.daten.pfad_fest) Speicher.schreib('mathe9.pfad', p);
@@ -200,11 +358,38 @@ function pfadSetzen(p) {
     attempts: 0,
     status: 'active'
   });
+  /* Gespeicherten Stand einspielen — danach geht es direkt an der Aufgabe
+     weiter, an der zuletzt gearbeitet wurde. */
+  if (stand && stand.pfad === p) {
+    S.geloest = new Set((stand.geloest || []).filter(id => S.reihe.some(t => t.id === id)));
+    S.index = Math.min(Math.max(0, stand.index | 0), S.reihe.length);
+    S.aufAnhieb = stand.auf_anhieb | 0;
+    S.kernAufAnhieb = stand.kern_auf_anhieb | 0;
+    S.versucheGesamt = stand.versuche_gesamt | 0;
+    S.selbst = stand.selbst || null;
+    S.fertig = new Set(stand.fertig || []);
+    S.entwurfWartet = stand.entwurf || null;
+    aufgabeZeigen();
+    return;
+  }
+
+  /* Deep-Link auf eine bestimmte Aufgabe: dorthin springen. */
+  if (ziel && ziel.aufgabe) {
+    const i = S.reihe.findIndex(t => t.id === ziel.aufgabe);
+    if (i > -1) {
+      S.index = i;
+      Tracker.track('deeplink_aufgabe', { path: p, task: ziel.aufgabe });
+      aufgabeZeigen();
+      return;
+    }
+  }
+
   /* Vor den Aufgaben: die Lernkarte dieser Niveaustufe — Hinführung,
      Erklärung, Bild, Beispielrechnung. Nur wenn sie hinterlegt ist und
      wir nicht im Prüfungsset stecken. */
-  if (!S.daten.pruefung && S.daten.lernkarten && S.daten.lernkarten[p]) lernkarteZeigen('start');
-  else aufgabeZeigen();
+  if (!S.daten.pruefung && S.daten.lernkarten && S.daten.lernkarten[p]) {
+    lernkarteZeigen('start', ziel && ziel.abschnitt ? { abschnitt: ziel.abschnitt } : null);
+  } else aufgabeZeigen();
 }
 
 /* ---------- Lernkarte (Hinführung je Niveaustufe) ----------
@@ -258,7 +443,7 @@ function lernkarteZeigen(modus, ziel) {
 
   if (lk.visual && lk.bild_oben === false) sprungziele.animation = karte.appendChild(visualBlockSicher(lk.visual));
 
-  if (lk.beispiel) karte.append(beispielBlock(lk.beispiel));
+  if (lk.beispiel) sprungziele.beispiel = karte.appendChild(beispielBlock(lk.beispiel));
 
   if (lk.merke) {
     const m = el('div', 'lk-merke');
@@ -294,9 +479,15 @@ function lernkarteZeigen(modus, ziel) {
 
   /* Kam der Aufruf aus einer Rückmeldung, wird die passende Stelle
      hervorgehoben und angesteuert — sonst beginnt die Karte oben. */
-  const sprung = ziel && (Number.isInteger(ziel.absatz) ? sprungziele['absatz' + ziel.absatz]
+  /* `abschnitt` kommt aus einem Lehrer-Deep-Link (…&abschnitt=beispiel),
+     `absatz`/`animation`/`merke` aus einer Rückmeldung. */
+  const abschnitt = ziel && ziel.abschnitt
+    ? ({ beispiel: sprungziele.beispiel, merke: sprungziele.merke,
+         animation: sprungziele.animation, erklaerung: sprungziele.absatz0 }[ziel.abschnitt] || null)
+    : null;
+  const sprung = abschnitt || (ziel && (Number.isInteger(ziel.absatz) ? sprungziele['absatz' + ziel.absatz]
     : ziel.animation ? (sprungziele.animation || sprungziele.merke)
-    : ziel.merke ? sprungziele.merke : null);
+    : ziel.merke ? sprungziele.merke : null));
   if (sprung) {
     sprung.classList.add('lk-hervor');
     requestAnimationFrame(() => sprung.scrollIntoView({ block: 'center', behavior: 'smooth' }));
@@ -320,21 +511,25 @@ function beispielBlock(bsp) {
   }
 
   const schritte = (bsp.schritte || []).slice();
-  const luecke = S.pfad === 'A' && !S.daten.pruefung ? lueckeAusSchritt(schritte[schritte.length - 1]) : null;
+  const luecke = S.pfad === 'A' && !S.daten.pruefung ? lueckeBestimmen(bsp) : null;
 
   if (schritte.length) {
-    const rw = el('div', 'lk-rechenweg');
-    rw.textContent = (luecke ? schritte.slice(0, -1) : schritte).join('\n');
-    box.append(rw);
+    const vor = luecke ? schritte.slice(0, luecke.index) : schritte;
+    if (vor.length) {
+      const rw = el('div', 'lk-rechenweg');
+      rw.textContent = vor.join('\n');
+      box.append(rw);
+    }
   }
 
   if (luecke) {
     const zeile = el('div', 'lk-luecke');
-    zeile.append(el('span', 'lk-luecke-text', luecke.vorne + ' ='));
+    zeile.append(el('span', 'lk-luecke-text', luecke.vorne));
     const inp = el('input', 'zahl-feld lk-luecke-feld');
     inp.type = 'text'; inp.inputMode = 'decimal'; inp.autocomplete = 'off';
-    inp.setAttribute('aria-label', 'Fehlendes Ergebnis des letzten Schritts');
+    inp.setAttribute('aria-label', 'Fehlende Zahl in der Rechnung');
     zeile.append(inp);
+    if (luecke.einheit) zeile.append(el('span', 'einheit-label', luecke.einheit));
     const knopf = el('button', 'btn btn-neben', 'Prüfen');
     knopf.type = 'button';
     const zeigen = el('button', 'btn btn-neben', 'Schritt zeigen');
@@ -359,6 +554,14 @@ function beispielBlock(bsp) {
     const knoepfe = el('div', 'lk-luecke-knoepfe');
     knoepfe.append(knopf); knoepfe.append(zeigen);
     box.append(zeile); box.append(knoepfe); box.append(echo);
+
+    /* Steht die Lücke nicht am Ende, folgen die restlichen Schritte darunter. */
+    const rest = schritte.slice(luecke.index + 1);
+    if (rest.length) {
+      const rw = el('div', 'lk-rechenweg');
+      rw.textContent = rest.join('\n');
+      box.append(rw);
+    }
   }
 
   if (bsp.ergebnis && !luecke) {
@@ -367,6 +570,54 @@ function beispielBlock(bsp) {
     box.append(e);
   }
   return box;
+}
+
+/* ---------- Welche Zahl fehlt? ----------
+   Vorrang hat die Angabe der fachlichen Autorenschaft in der tasks.json:
+
+     "beispiel": { "schritte": [...],
+                   "luecke": { "schritt": 2, "wert": 60, "einheit": "€" } }
+
+   Damit entscheidet nicht mehr eine Zeichenkettenregel, welcher Wert
+   ergänzt werden soll. Fehlt das Feld, greift wie bisher die Heuristik auf
+   den letzten Schritt — so funktionieren neue Einheiten sofort, ohne dass
+   die Lücke pflicht wäre. Wo beides nichts liefert (Benennungs- und
+   Zuordnungsbeispiele ohne Rechenergebnis), gibt es bewusst keine Lücke. */
+function lueckeBestimmen(bsp) {
+  const schritte = bsp.schritte || [];
+  const vorgabe = bsp.luecke;
+
+  if (vorgabe && typeof vorgabe.wert === 'number' && Number.isFinite(vorgabe.wert)) {
+    const i = Number.isInteger(vorgabe.schritt) ? vorgabe.schritt : schritte.length - 1;
+    const zeile = schritte[i];
+    if (typeof zeile === 'string') {
+      const teil = letzteZahlTrennen(zeile);
+      return {
+        index: i,
+        vorne: teil ? teil.vorne : zeile,
+        wert: vorgabe.wert,
+        einheit: vorgabe.einheit || (teil ? teil.nach : ''),
+        ganz: zeile
+      };
+    }
+  }
+
+  const alt = lueckeAusSchritt(schritte[schritte.length - 1]);
+  return alt
+    ? { index: schritte.length - 1, vorne: alt.vorne + ' =', wert: alt.wert, einheit: '', ganz: alt.ganz }
+    : null;
+}
+
+/* Trennt die letzte Zahl einer Zeile ab — funktioniert bei „= 15 cm²"
+   genauso wie bei „· 8   8 Brötchen → 3,20 €". */
+function letzteZahlTrennen(zeile) {
+  const treffer = [...String(zeile).matchAll(/[−-]?\d[\d.,]*/g)];
+  if (!treffer.length) return null;
+  const letzter = treffer[treffer.length - 1];
+  return {
+    vorne: zeile.slice(0, letzter.index).replace(/\s+$/, ' '),
+    nach: zeile.slice(letzter.index + letzter[0].length).trim()
+  };
 }
 
 /* Der letzte Schritt wird nur dann zur Lücke, wenn rechts vom letzten
@@ -429,8 +680,16 @@ function aufgabeZeigen() {
   S.tippsGenutzt = 0;
   S.versuche = 0;
   S.start = Date.now();
+  /* Neue Aufgabe, neue Sitzungs-ID. Sie hängt an jedem Ereignis dieser
+     Bearbeitung und macht die Auswertung auch dann eindeutig, wenn
+     Ereignisse verspätet, doppelt oder aus einem zweiten Tab eintreffen. */
+  S.taskSession = neueId();
 
-  Tracker.setContext({ unit: S.daten.unit, path: t.path, task: t.id, progress: Math.round(S.geloest.size / (S.reihe.length || 1) * 100) });
+  Tracker.setContext({
+    unit: S.daten.unit, path: t.path, task: t.id,
+    task_session_id: S.taskSession,
+    progress: Math.round(S.geloest.size / (S.reihe.length || 1) * 100)
+  });
   Tracker.track('task_view', { step: t.step, index: S.index + 1, total: S.reihe.length, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
 
   const zeile = el('div', 'stufe-zeile');
@@ -491,8 +750,12 @@ function aufgabeZeigen() {
   rueck.id = 'rueck';
   karte.append(rueck);
 
+  /* Bereits getippte, aber noch nicht geprüfte Eingaben zurückholen. */
+  if (S.entwurfWartet) { entwurfSetzen(S.entwurfWartet); S.entwurfWartet = null; }
+
   const feld = $('.zahl-feld');
   if (feld) feld.focus({ preventScroll: true });
+  standSpeichern();
 }
 
 /* Optionale Bilder dürfen nie die Aufgabe oder Erklärung blockieren. */
@@ -845,6 +1108,7 @@ function melden(richtig, fehlvorstellung) {
     $('#pruefen').addEventListener('click', () => { S.index++; aufgabeZeigen(); });
     if ($('#tipp')) $('#tipp').disabled = true;
     streifenAktualisieren();
+    standSpeichern();
     return;
   }
 
@@ -901,36 +1165,46 @@ function erklaerungsverweis(fehlvorstellung) {
   $('#rueck').append(b);
 }
 
-/* ---------- Nachfassen: dieselbe Sache, andere Zahlen ---------- */
-function fehlvorstellungIn(t, id) {
-  if ((t.misconceptions || []).some(m => m.id === id)) return true;
-  return (t.fields || []).some(f => (f.misconceptions || []).some(m => m.id === id));
+/* ---------- Nachfassen: dieselbe Sache, andere Zahlen ----------
+   Manche Denkfehler tragen kontextbedingt leicht verschiedene IDs
+   (`mal_statt_geteilt` und `mal_statt_geteilt_vol`, `vorzeichen` und
+   `vorzeichen_fehlt`). Für die Diagnose bleiben sie getrennt — für die
+   Nachfassaufgabe zählen sie als dieselbe Sache. Zusammengeführt wird nur
+   über den gemeinsamen Wortstamm, nicht über Vermutungen. */
+function fehlerStamm(id) {
+  return String(id || '').replace(
+    /_(vol|volumen|flaeche|bei_volumen|bei_flaeche|fehlt|uebersehen|vertauscht|beim_teilen)$/, '');
+}
+
+function fehlvorstellungIn(t, id, weit) {
+  const passt = m => weit ? fehlerStamm(m.id) === fehlerStamm(id) : m.id === id;
+  if ((t.misconceptions || []).some(passt)) return true;
+  return (t.fields || []).some(f => (f.misconceptions || []).some(passt));
 }
 
 const LEICHTER = { A: [], B: ['A'], C: ['B', 'A'] };
 
 function nachfassEinreihen(id) {
   if (!id || S.daten.pruefung || S.nachgefasst.has(id)) return;
-  const passt = (t, pfad) => t !== S.aufgabe && t.path === pfad
-    && !S.geloest.has(t.id) && fehlvorstellungIn(t, id);
+  const passt = (t, pfad, weit) => t !== S.aufgabe && t.path === pfad
+    && !S.geloest.has(t.id) && fehlvorstellungIn(t, id, weit);
 
-  /* Zuerst in der eigenen Reihe: dann bleibt die Gesamtzahl gleich und die
-     Aufgabe rückt nur nach vorn. */
-  const idx = S.reihe.findIndex((t, i) => i > S.index && passt(t, S.pfad));
   let treffer = null, leichter = false;
-  if (idx > -1) {
-    treffer = S.reihe.splice(idx, 1)[0];
-  } else {
-    treffer = (S.daten.tasks || []).find(t => passt(t, S.pfad) && !S.reihe.includes(t)) || null;
+  /* Suchreihenfolge: erst die exakt gleiche ID, dann der gleiche Wortstamm;
+     jeweils erst der eigene Pfad, dann eine Stufe darunter. */
+  for (const weit of [false, true]) {
+    const idx = S.reihe.findIndex((t, i) => i > S.index && passt(t, S.pfad, weit));
+    if (idx > -1) { treffer = S.reihe.splice(idx, 1)[0]; break; }
+    treffer = (S.daten.tasks || []).find(t => passt(t, S.pfad, weit) && !S.reihe.includes(t)) || null;
+    if (treffer) break;
     /* Kein passender Zwilling auf dem eigenen Pfad? Dann tut es eine Aufgabe
        eine Stufe darunter — nach einem Denkfehler ist das ohnehin der
        bessere Ansatz als dasselbe Niveau noch einmal. */
-    if (!treffer) {
-      for (const p of (LEICHTER[S.pfad] || [])) {
-        treffer = (S.daten.tasks || []).find(t => passt(t, p) && !S.reihe.includes(t)) || null;
-        if (treffer) { leichter = true; break; }
-      }
+    for (const p of (LEICHTER[S.pfad] || [])) {
+      treffer = (S.daten.tasks || []).find(t => passt(t, p, weit) && !S.reihe.includes(t)) || null;
+      if (treffer) { leichter = true; break; }
     }
+    if (treffer) break;
   }
   /* Führt der Pool zu dieser Fehlvorstellung keine zweite Aufgabe, bleibt
      alles wie bisher — lieber keine Nachfassaufgabe als eine unpassende. */
@@ -986,6 +1260,8 @@ function abschluss() {
   }
 
   karte.append(el('h2', 'frage', `Pfad ${S.pfad} geschafft.`));
+  S.fertig.add(S.pfad);
+  standSpeichern();
 
   const satz = S.daten.can_do[S.pfad];
   const p = el('p');

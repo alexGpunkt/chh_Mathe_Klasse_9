@@ -47,6 +47,11 @@
           "= (6 · 5) : 2 = 30 : 2",
           "= 15 cm²"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 15,
+          "einheit": "cm²"
+        },
         "ergebnis": "Ein Seitendreieck hat 15 cm²."
       },
       "merke": "Seitendreieck = (a · s) : 2."
@@ -404,7 +409,10 @@
         {
           "id": "grundflaeche_mitgezaehlt",
           "value": 40,
-          "feedback": "Nur die 4 Seiten zählen (der Boden ist offen): Mantel = 24, ohne die 16 m² Grundfläche."
+          "feedback": "Nur die 4 Seiten zählen (der Boden ist offen): Mantel = 24, ohne die 16 m² Grundfläche.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

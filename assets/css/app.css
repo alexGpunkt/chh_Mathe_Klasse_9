@@ -352,6 +352,33 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   white-space: pre-wrap;
 }
 
+/* ---------- Updatehinweis ----------
+   Sitzt unten, aber über der Formelkarte, und verschwindet erst, wenn
+   entschieden wurde. */
+.update-leiste {
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 12px 14px;
+  background: var(--kopf-bg); color: var(--kopf-text);
+  border-radius: var(--r);
+  box-shadow: 0 10px 30px -12px rgba(0,0,0,.7);
+  font-size: 15px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+}
+.update-leiste span { flex: 1 1 auto; min-width: 0; }
+.update-btn {
+  min-height: 44px; padding: 0 16px; flex: 0 0 auto;
+  border: 2px solid var(--kopf-text); border-radius: var(--r);
+  background: var(--kopf-text); color: #15233A;
+  font-family: var(--f-body); font-weight: 700; font-size: 15px; cursor: pointer;
+}
+.update-btn-neben { background: transparent; color: var(--kopf-text); }
+.update-btn:disabled { opacity: .6; cursor: default; }
+@media print { .update-leiste { display: none; } }
+
+/* ---------- Wiederaufnahme ---------- */
+.stand-karte .aktionen { margin-top: 18px; }
+
 /* ---------- Wortspeicher ---------- */
 
 .wort {

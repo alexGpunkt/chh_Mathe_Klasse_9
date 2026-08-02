@@ -45,6 +45,11 @@
           "c = V : (a·b) = 60 : 20",
           "c = 3 cm"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 3,
+          "einheit": "cm"
+        },
         "ergebnis": "Die fehlende Kante c = 3 cm."
       },
       "merke": "Fehlende Kante = V : (die anderen beiden Kanten mal)."
@@ -156,7 +161,10 @@
         {
           "id": "nur_durch_eine",
           "value": 20,
-          "feedback": "Durch beide bekannten Kanten teilen: 120 : (6·5) = 120 : 30 = 4."
+          "feedback": "Durch beide bekannten Kanten teilen: 120 : (6·5) = 120 : 30 = 4.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [

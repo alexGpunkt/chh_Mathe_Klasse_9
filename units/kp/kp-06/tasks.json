@@ -47,6 +47,11 @@
           "V = 12 cm² · 5 cm",
           "V = 60 cm³"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 60,
+          "einheit": "cm³"
+        },
         "ergebnis": "V = 60 cm³."
       },
       "merke": "Prisma: V = G · h."
@@ -194,7 +199,10 @@
         {
           "id": "groesste_flaeche",
           "value": 2,
-          "feedback": "Nicht die größte Fläche, sondern die, die oben und unten gleich ist: das Dreieck."
+          "feedback": "Nicht die größte Fläche, sondern die, die oben und unten gleich ist: das Dreieck.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [

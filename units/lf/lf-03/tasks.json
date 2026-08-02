@@ -44,6 +44,10 @@
           "y = 2 · 3",
           "y = 6"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 6
+        },
         "ergebnis": "Zu x = 3 gehört y = 6."
       },
       "merke": "Proportional: Gerade durch (0 | 0). y = m · x."

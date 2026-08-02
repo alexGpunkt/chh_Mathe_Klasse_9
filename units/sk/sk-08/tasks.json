@@ -47,6 +47,11 @@
           "= 3,14 · 3 · 5",
           "= 47,1 cm²"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 47.1,
+          "einheit": "cm²"
+        },
         "ergebnis": "M ≈ 47,1 cm²."
       },
       "merke": "Kegelmantel: M = π · r · s."
@@ -129,7 +134,10 @@
         {
           "id": "hoehe_statt_mantellinie",
           "value": 28.26,
-          "feedback": "Für den Mantel die Mantellinie s nehmen, nicht die Höhe."
+          "feedback": "Für den Mantel die Mantellinie s nehmen, nicht die Höhe.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -282,7 +290,10 @@
             {
               "id": "grundkreis_vergessen",
               "value": 204.1,
-              "feedback": "Zum Mantel 204,1 den Grundkreis 78,5: O = 282,6."
+              "feedback": "Zum Mantel 204,1 den Grundkreis 78,5: O = 282,6.",
+              "verweis": {
+                "absatz": 1
+              }
             }
           ]
         }

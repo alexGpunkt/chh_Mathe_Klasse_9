@@ -299,7 +299,10 @@
         {
           "id": "hoehe_seitenhoehe_verwechselt",
           "value": 1,
-          "feedback": "Das ist die Körperhöhe h. Die Seitenhöhe s liegt auf der schrägen Fläche."
+          "feedback": "Das ist die Körperhöhe h. Die Seitenhöhe s liegt auf der schrägen Fläche.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

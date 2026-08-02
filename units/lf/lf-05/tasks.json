@@ -41,6 +41,10 @@
           "Blick auf die y-Achse (x = 0)",
           "Gerade kreuzt bei Höhe 2"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 2
+        },
         "ergebnis": "b = 2."
       },
       "merke": "b = Höhe am Schnitt mit der y-Achse."

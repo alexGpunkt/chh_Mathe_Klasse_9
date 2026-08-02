@@ -40,6 +40,11 @@
           "1 %   = 12 € : 20 = 0,60 €",
           "100 % = 0,60 € · 100 = 60 €"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 60,
+          "einheit": "€"
+        },
         "ergebnis": "Der ganze Preis beträgt 60 €."
       },
       "merke": "Erst : p auf 1 %. Dann · 100.",
@@ -303,7 +308,10 @@
         {
           "id": "mal_statt_geteilt",
           "value": 6.48,
-          "feedback": "Du hast 12 % von 54 € gerechnet. Es muss geteilt werden: 54 : 12 · 100."
+          "feedback": "Du hast 12 % von 54 € gerechnet. Es muss geteilt werden: 54 : 12 · 100.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "bei_1prozent_gestoppt",
@@ -404,7 +412,10 @@
         {
           "id": "mal_statt_geteilt",
           "value": 12.15,
-          "feedback": "Du hast 45 % von 27 km gerechnet. Das Ganze muss größer als 27 km sein."
+          "feedback": "Du hast 45 % von 27 km gerechnet. Das Ganze muss größer als 27 km sein.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "bei_1prozent_gestoppt",
@@ -439,7 +450,10 @@
         {
           "id": "mal_statt_geteilt",
           "value": 0.135,
-          "feedback": "Du hast 3 % von 4,50 € gerechnet. Der Grundwert muss viel größer sein als 4,50 €."
+          "feedback": "Du hast 3 % von 4,50 € gerechnet. Der Grundwert muss viel größer sein als 4,50 €.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "bei_1prozent_gestoppt",
@@ -550,7 +564,10 @@
         {
           "id": "endwert_als_grundwert",
           "value": 12.8,
-          "feedback": "Du hast 20 % von 64 € gerechnet. Das ist der Rabatt bezogen auf den falschen Grundwert."
+          "feedback": "Du hast 20 % von 64 € gerechnet. Das ist der Rabatt bezogen auf den falschen Grundwert.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

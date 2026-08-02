@@ -39,6 +39,10 @@
           "3x = 15         | : 3",
           "x = 5"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 5
+        },
         "ergebnis": "x = 5."
       },
       "merke": "Erst + oder −. Dann : .",
@@ -451,12 +455,18 @@
         {
           "id": "sonderfall_uebersehen",
           "value": 1,
-          "feedback": "Prüf x = 0: links 5, rechts 3. Das stimmt nicht. Es gibt gar keine Lösung."
+          "feedback": "Prüf x = 0: links 5, rechts 3. Das stimmt nicht. Es gibt gar keine Lösung.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "sonderfall_vertauscht",
           "value": 2,
-          "feedback": "Unendlich viele Lösungen gäbe es, wenn eine WAHRE Aussage übrig bliebe (z. B. 0 = 0). Hier bleibt 5 = 3 — das ist falsch."
+          "feedback": "Unendlich viele Lösungen gäbe es, wenn eine WAHRE Aussage übrig bliebe (z. B. 0 = 0). Hier bleibt 5 = 3 — das ist falsch.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -489,7 +499,10 @@
         {
           "id": "sonderfall_vertauscht",
           "value": 1,
-          "feedback": "Keine Lösung gäbe es bei einer FALSCHEN Aussage. Hier bleibt 6 = 6 — das ist wahr, also passt jedes x."
+          "feedback": "Keine Lösung gäbe es bei einer FALSCHEN Aussage. Hier bleibt 6 = 6 — das ist wahr, also passt jedes x.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "sonderfall_uebersehen",

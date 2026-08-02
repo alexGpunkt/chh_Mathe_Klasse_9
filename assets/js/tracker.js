@@ -247,10 +247,18 @@ const Tracker = (() => {
   }
 
   function enqueue(type, payload = {}) {
+    /* Die Aufgaben-Sitzungs-ID reist in der Nutzlast mit — so braucht es
+       keine Änderung am Tabellenschema, und die Auswertung bleibt trotzdem
+       eindeutig, wenn Ereignisse verspätet, doppelt oder aus einem zweiten
+       Tab eintreffen. Ein Index auf diesen Schlüssel steht in setup.sql. */
+    const angereichert = currentContext.task_session_id
+      ? { task_session_id: currentContext.task_session_id, ...payload }
+      : payload;
+
     const event = {
       event_type: type,
       ...common(),
-      payload
+      payload: angereichert
     };
 
     if (!configured()) {

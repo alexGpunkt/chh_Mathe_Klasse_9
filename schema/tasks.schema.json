@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campus-hannah-hoech.example/mathe9/tasks.schema.json",
+  "title": "Mathe 9 · Einheit (tasks.json)",
+  "type": "object",
+  "required": ["unit", "title", "leitidee", "standards", "wortspeicher", "can_do", "lernkarten", "formelkarte", "tasks"],
+  "additionalProperties": false,
+
+  "properties": {
+    "unit": { "type": "string", "pattern": "^(PZ|LF|KP|SK)-\\d{2}$" },
+    "title": { "type": "string", "minLength": 3 },
+    "leitidee": { "type": "string" },
+    "standards": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+
+    "wortspeicher": { "type": "array", "items": { "type": "string" } },
+    "worterklaerungen": {
+      "type": "object",
+      "description": "Ein Satz je Begriff, Alltagssprache. Schlüssel ohne Artikel.",
+      "additionalProperties": { "type": "string", "minLength": 5 }
+    },
+
+    "can_do": {
+      "type": "object",
+      "required": ["A", "B", "C"],
+      "additionalProperties": false,
+      "properties": { "A": { "type": "string" }, "B": { "type": "string" }, "C": { "type": "string" } }
+    },
+
+    "lernkarten": {
+      "type": "object",
+      "required": ["A", "B", "C"],
+      "additionalProperties": false,
+      "properties": {
+        "A": { "$ref": "#/$defs/lernkarte" },
+        "B": { "$ref": "#/$defs/lernkarte" },
+        "C": { "$ref": "#/$defs/lernkarte" }
+      }
+    },
+
+    "formelkarte": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "formeln": { "type": "array", "items": { "type": "string" } },
+        "saetze": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "uebungslinks": { "type": "array", "items": { "$ref": "#/$defs/uebungslink" } },
+
+    "tasks": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/aufgabe" } },
+
+    "pruefung": { "type": ["object", "null"] },
+    "pfad_fest": { "type": "string", "enum": ["A", "B", "C"] },
+    "reihenfolge_fest": { "type": "boolean" },
+    "hilfen": { "type": "boolean" }
+  },
+
+  "$defs": {
+    "lernkarte": {
+      "type": "object",
+      "required": ["titel", "hinfuehrung", "erklaerung", "merke"],
+      "additionalProperties": false,
+      "properties": {
+        "titel": { "type": "string" },
+        "hinfuehrung": { "type": "string" },
+        "erklaerung": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "merke": { "type": "string" },
+        "bild_oben": { "type": "boolean" },
+        "visual": { "$ref": "#/$defs/visual" },
+        "beispiel": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "titel": { "type": "string" },
+            "aufgabe": { "type": "string" },
+            "schritte": { "type": "array", "items": { "type": "string" } },
+            "ergebnis": { "type": "string" },
+            "luecke": {
+              "type": "object",
+              "description": "Welche Zahl im Rechenweg ergänzt werden soll (nur Pfad A).",
+              "required": ["schritt", "wert"],
+              "additionalProperties": false,
+              "properties": {
+                "schritt": { "type": "integer", "minimum": 0 },
+                "wert": { "type": "number" },
+                "einheit": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "visual": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["streifen", "koordinaten", "koerper", "geogebra", "animation"] }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "animation" } }, "required": ["type"] },
+          "then": {
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "stufe": { "enum": ["A", "B", "C"] },
+              "thema": { "type": "string" },
+              "form": { "type": "string" },
+              "bereich": { "enum": ["pz", "lf", "kp", "sk"] },
+              "rechnung": { "type": "boolean" },
+              "breite": { "type": "number" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "koerper" } }, "required": ["type"] },
+          "then": { "required": ["form", "alt"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "streifen" } }, "required": ["type"] },
+          "then": { "required": ["fill"] }
+        }
+      ]
+    },
+
+    "fehlvorstellung": {
+      "type": "object",
+      "required": ["id", "value", "feedback"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "value": { "type": ["number", "string"] },
+        "feedback": { "type": "string", "minLength": 5 },
+        "verweis": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "absatz": { "type": "integer", "minimum": 0 },
+            "animation": { "type": "boolean" },
+            "merke": { "type": "boolean" }
+          }
+        }
+      }
+    },
+
+    "aufgabe": {
+      "type": "object",
+      "required": ["id", "path", "step", "type", "prompt"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 3 },
+        "path": { "enum": ["A", "B", "C"] },
+        "step": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "type": { "enum": ["numeric", "choice", "assign", "multi"] },
+        "prompt": { "type": "string", "minLength": 3 },
+        "answer": { "type": ["number", "integer", "array"] },
+        "options": { "type": "array", "items": { "type": "string" } },
+        "slots": { "type": "array", "items": { "type": "string" } },
+        "values": { "type": "array", "items": { "type": "string" } },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "answer"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string" },
+              "answer": { "type": "number" },
+              "unit_label": { "type": "string" },
+              "tolerance": { "type": "number" },
+              "misconceptions": { "type": "array", "items": { "$ref": "#/$defs/fehlvorstellung" } }
+            }
+          }
+        },
+        "unit_label": { "type": "string" },
+        "tolerance": { "type": "number", "minimum": 0 },
+        "hints": { "type": "array", "items": { "type": "string" } },
+        "solution": { "type": "string" },
+        "misconceptions": { "type": "array", "items": { "$ref": "#/$defs/fehlvorstellung" } },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "spiral": { "type": "array", "items": { "type": "string" } },
+        "visual": { "$ref": "#/$defs/visual" },
+        "herkunft": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "numeric" } }, "required": ["type"] },
+          "then": { "required": ["answer"], "properties": { "answer": { "type": "number" } } }
+        },
+        {
+          "if": { "properties": { "type": { "const": "choice" } }, "required": ["type"] },
+          "then": { "required": ["options", "answer"], "properties": { "answer": { "type": "integer", "minimum": 0 } } }
+        },
+        {
+          "if": { "properties": { "type": { "const": "assign" } }, "required": ["type"] },
+          "then": { "required": ["slots", "values", "answer"], "properties": { "answer": { "type": "array", "items": { "type": "integer" } } } }
+        },
+        {
+          "if": { "properties": { "type": { "const": "multi" } }, "required": ["type"] },
+          "then": { "required": ["fields"] }
+        }
+      ]
+    },
+
+    "uebungslink": {
+      "type": "object",
+      "required": ["titel", "url", "typ", "quelle"],
+      "additionalProperties": false,
+      "properties": {
+        "titel": { "type": "string", "minLength": 3 },
+        "url": { "type": "string", "pattern": "^https://" },
+        "typ": { "enum": ["app", "sammlung"] },
+        "quelle": { "enum": ["LearningApps", "Serlo", "H5P", "Learningsnacks", "Quizlet", "ZUM"] }
+      }
+    }
+  }
+}

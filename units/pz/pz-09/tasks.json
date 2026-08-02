@@ -38,6 +38,11 @@
           "Rabatt = 200 € · 15 : 100 = 30 €",
           "Endpreis = 200 € − 30 € = 170 €"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 170,
+          "einheit": "€"
+        },
         "ergebnis": "Der Endpreis beträgt 170 €."
       },
       "merke": "Erst den Rabatt in Euro. Dann abziehen.",
@@ -132,7 +137,10 @@
         {
           "id": "addiert_statt_abgezogen",
           "value": 44,
-          "feedback": "Du hast den Rabatt dazugerechnet. Ein Rabatt macht den Preis günstiger — also abziehen."
+          "feedback": "Du hast den Rabatt dazugerechnet. Ein Rabatt macht den Preis günstiger — also abziehen.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -194,7 +202,10 @@
         {
           "id": "nur_teil_berechnet",
           "value": 12,
-          "feedback": "Das ist der Rabatt. Jetzt noch von 60 € abziehen."
+          "feedback": "Das ist der Rabatt. Jetzt noch von 60 € abziehen.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -518,7 +529,10 @@
         {
           "id": "regel_ohne_grund",
           "value": 1,
-          "feedback": "Prozentwerte darf man durchaus abziehen — nur muss der Grundwert stimmen. Hier ist der Grundwert der Nettopreis."
+          "feedback": "Prozentwerte darf man durchaus abziehen — nur muss der Grundwert stimmen. Hier ist der Grundwert der Nettopreis.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "satz_falsch_erinnert",

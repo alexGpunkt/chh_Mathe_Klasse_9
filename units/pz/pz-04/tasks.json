@@ -258,7 +258,10 @@
         {
           "id": "proportional_gerechnet",
           "value": 16,
-          "feedback": "Du hast proportional gerechnet (12 : 3 · 4). Aber mehr Maler brauchen weniger Zeit, nicht mehr. Bei antiproportional wird erst mal genommen, dann geteilt."
+          "feedback": "Du hast proportional gerechnet (12 : 3 · 4). Aber mehr Maler brauchen weniger Zeit, nicht mehr. Bei antiproportional wird erst mal genommen, dann geteilt.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "bei_einheit_gestoppt",
@@ -432,7 +435,10 @@
         {
           "id": "produktprobe_uebersehen",
           "value": 2,
-          "feedback": "Mach die Produktprobe: 4 · 9 = 36 und 6 · 6 = 36. Das Produkt bleibt gleich — also antiproportional."
+          "feedback": "Mach die Produktprobe: 4 · 9 = 36 und 6 · 6 = 36. Das Produkt bleibt gleich — also antiproportional.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -533,7 +539,10 @@
         {
           "id": "prop_antiprop_vertauscht",
           "value": 1,
-          "feedback": "Der konstante Quotient gehört zur PROPORTIONALEN Zuordnung. Bei antiproportional ist das Produkt konstant."
+          "feedback": "Der konstante Quotient gehört zur PROPORTIONALEN Zuordnung. Bei antiproportional ist das Produkt konstant.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "summe_vermutet",

@@ -45,6 +45,11 @@
           "V = 3 · 3 · 3",
           "V = 27 cm³"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 27,
+          "einheit": "cm³"
+        },
         "ergebnis": "V = 27 cm³."
       },
       "merke": "Würfel: V = a · a · a."
@@ -274,7 +279,10 @@
         {
           "id": "nur_zwei_kanten",
           "value": 48,
-          "feedback": "48 cm² ist die Grundfläche. Mal Höhe 5: 240."
+          "feedback": "48 cm² ist die Grundfläche. Mal Höhe 5: 240.",
+          "verweis": {
+            "absatz": 0
+          }
         },
         {
           "id": "oberflaeche_statt_volumen",

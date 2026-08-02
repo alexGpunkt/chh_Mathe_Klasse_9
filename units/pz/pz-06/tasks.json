@@ -38,6 +38,11 @@
           "1 %  = 250 € : 100 = 2,50 €",
           "20 % = 2,50 € · 20 = 50 €"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 50,
+          "einheit": "€"
+        },
         "ergebnis": "20 % von 250 € sind 50 €."
       },
       "merke": "1 % = G : 100. Dann mal p.",

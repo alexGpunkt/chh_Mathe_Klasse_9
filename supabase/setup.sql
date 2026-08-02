@@ -351,6 +351,19 @@ on public.mathe9_events (
 );
 
 
+-- Aufgaben-Sitzung: Alle Ereignisse EINER Bearbeitung tragen dieselbe ID in
+-- der Nutzlast. Damit lassen sich Versuche auch dann korrekt bündeln, wenn
+-- offline nachgeliefert wird, mehrere Tabs offen sind oder dieselbe Aufgabe
+-- ein zweites Mal bearbeitet wird.
+create index if not exists
+  mathe9_events_task_session_idx
+
+on public.mathe9_events (
+  (payload ->> 'task_session_id'),
+  ts
+);
+
+
 create index if not exists
   mathe9_progress_updated_idx
 

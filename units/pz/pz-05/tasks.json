@@ -39,6 +39,11 @@
           "Von den 60 € (dem vollen Preis).",
           "→ 100 % = 60 €"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 60,
+          "einheit": "€"
+        },
         "ergebnis": "Grundwert G = 60 € (das Ganze = 100 %)."
       },
       "merke": "Der Grundwert ist das, was 100 % ist.",
@@ -390,7 +395,10 @@
         {
           "id": "satz_als_wert",
           "value": 2,
-          "feedback": "20 % ist der Prozentsatz, kein Geldbetrag. Der Grundwert ist immer eine Größe wie €, kg oder Personen."
+          "feedback": "20 % ist der Prozentsatz, kein Geldbetrag. Der Grundwert ist immer eine Größe wie €, kg oder Personen.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -427,7 +435,10 @@
         {
           "id": "differenz_als_grundwert",
           "value": 2,
-          "feedback": "50 € ist die Zunahme, also der Prozentwert. Der Grundwert ist der Startwert 200 €."
+          "feedback": "50 € ist die Zunahme, also der Prozentwert. Der Grundwert ist der Startwert 200 €.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -495,7 +506,10 @@
         {
           "id": "endwert_als_grundwert",
           "value": 0,
-          "feedback": "1 080 € ist die neue Miete — also mehr als 100 %. Der Grundwert ist die alte Miete."
+          "feedback": "1 080 € ist die neue Miete — also mehr als 100 %. Der Grundwert ist die alte Miete.",
+          "verweis": {
+            "absatz": 0
+          }
         },
         {
           "id": "vorzeichen_vertauscht",
@@ -562,12 +576,18 @@
         {
           "id": "grundwert_uebersehen",
           "value": 0,
-          "feedback": "Hier steht der Grundwert: 400 Fahrgäste sind das Ganze."
+          "feedback": "Hier steht der Grundwert: 400 Fahrgäste sind das Ganze.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "grundwert_uebersehen",
           "value": 2,
-          "feedback": "Hier steht der Grundwert: Das Kapital von 2 000 € ist das Ganze."
+          "feedback": "Hier steht der Grundwert: Das Kapital von 2 000 € ist das Ganze.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

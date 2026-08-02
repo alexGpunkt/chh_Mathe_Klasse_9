@@ -40,6 +40,10 @@
           "y = 2 · 3 + 1",
           "y = 7"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 7
+        },
         "ergebnis": "Bei x = 3 liefert die Gerade y = 7."
       },
       "merke": "x einsetzen, y ausrechnen.",
@@ -257,7 +261,10 @@
         {
           "id": "fast_als_ja",
           "value": 2,
-          "feedback": "Bei der Punktprobe gibt es kein „ungefähr\". 9 ist nicht 10 — der Punkt liegt daneben, wenn auch nur knapp."
+          "feedback": "Bei der Punktprobe gibt es kein „ungefähr\". 9 ist nicht 10 — der Punkt liegt daneben, wenn auch nur knapp.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

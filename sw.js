@@ -121,8 +121,15 @@ self.addEventListener('install', e => {
     await Promise.all(ALLES.map(u =>
       c.add(new Request(u, { cache: 'reload' })).catch(err =>
         console.warn('[sw] nicht gecacht:', u, err.message))));
-    self.skipWaiting();
+    /* Bewusst KEIN skipWaiting: Eine neue Fassung, die mitten in einer
+       Aufgabe übernimmt, kann alte und neue Dateien mischen. Die Seite
+       fragt stattdessen nach (siehe aktualisierungBeobachten in store.js)
+       und schickt dann die Nachricht „uebernehmen". */
   })());
+});
+
+self.addEventListener('message', e => {
+  if (e.data && e.data.typ === 'uebernehmen') self.skipWaiting();
 });
 
 self.addEventListener('activate', e => {

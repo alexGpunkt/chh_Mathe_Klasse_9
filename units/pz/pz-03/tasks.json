@@ -37,6 +37,11 @@
           ": 5   1 Brötchen → 0,40 €",
           "· 8   8 Brötchen → 3,20 €"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 3.2,
+          "einheit": "€"
+        },
         "ergebnis": "8 Brötchen kosten 3,20 €."
       },
       "merke": "Erst : auf 1 Stück. Dann · auf die neue Anzahl.",
@@ -452,7 +457,10 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 1.74,
-          "feedback": "Das ist der Preis pro Liter."
+          "feedback": "Das ist der Preis pro Liter.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [

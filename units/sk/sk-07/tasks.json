@@ -47,6 +47,11 @@
           "· h = 28,26 · 10 = 282,6",
           "V = 282,6 : 3 = 94,2 cm³"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 94.2,
+          "einheit": "cm³"
+        },
         "ergebnis": "V ≈ 94,2 cm³."
       },
       "merke": "Kegel: V = (π · r² · h) : 3."

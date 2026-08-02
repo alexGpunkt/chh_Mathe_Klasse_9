@@ -47,6 +47,11 @@
           "= 4 · 3,14 · 25",
           "= 314 cm²"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 314,
+          "einheit": "cm²"
+        },
         "ergebnis": "O = 314 cm²."
       },
       "merke": "Kugel: O = 4 · π · r²."

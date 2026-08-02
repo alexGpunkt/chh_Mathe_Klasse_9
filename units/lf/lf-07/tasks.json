@@ -266,7 +266,10 @@
         {
           "id": "vorzeichen_uebersehen",
           "value": 1,
-          "feedback": "y = x + 4 würde steigen. Diese Gerade fällt — m muss negativ sein."
+          "feedback": "y = x + 4 würde steigen. Diese Gerade fällt — m muss negativ sein.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "m_und_b_vertauscht",
@@ -324,7 +327,10 @@
         {
           "id": "m_vergessen",
           "value": 2,
-          "feedback": "y = 3 wäre eine waagerechte Gerade auf Höhe 3. Diese Gerade steigt steil."
+          "feedback": "y = 3 wäre eine waagerechte Gerade auf Höhe 3. Diese Gerade steigt steil.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

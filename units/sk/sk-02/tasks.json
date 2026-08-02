@@ -194,7 +194,10 @@
         {
           "id": "volle_grundkante",
           "value": 7.21,
-          "feedback": "Nur die HALBE Grundkante nehmen: √(4² + 3²) = 5."
+          "feedback": "Nur die HALBE Grundkante nehmen: √(4² + 3²) = 5.",
+          "verweis": {
+            "absatz": 0
+          }
         },
         {
           "id": "wurzel_vergessen",
@@ -229,7 +232,10 @@
         {
           "id": "volle_grundkante",
           "value": 8.54,
-          "feedback": "Halbe Grundkante 4 cm nehmen: √(9+16) = 5."
+          "feedback": "Halbe Grundkante 4 cm nehmen: √(9+16) = 5.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [

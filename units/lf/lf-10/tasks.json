@@ -41,6 +41,10 @@
           "Blick auf die x-Achse (y = 0)",
           "Gerade kreuzt bei x = 2"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 2
+        },
         "ergebnis": "Die Nullstelle ist bei x = 2."
       },
       "merke": "Nullstelle = Schnitt mit der x-Achse."
@@ -147,7 +151,10 @@
         {
           "id": "b_als_nullstelle",
           "value": -3,
-          "feedback": "−3 ist der Schnittpunkt mit der SENKRECHTEN Achse — das ist b. Die Nullstelle liegt auf der waagerechten Achse."
+          "feedback": "−3 ist der Schnittpunkt mit der SENKRECHTEN Achse — das ist b. Die Nullstelle liegt auf der waagerechten Achse.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -242,7 +249,10 @@
         {
           "id": "b_als_nullstelle",
           "value": -4,
-          "feedback": "−4 ist b, der Schnittpunkt mit der senkrechten Achse. Die Nullstelle liegt bei x = 2."
+          "feedback": "−4 ist b, der Schnittpunkt mit der senkrechten Achse. Die Nullstelle liegt bei x = 2.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -323,7 +333,10 @@
         {
           "id": "vorzeichen",
           "value": -3,
-          "feedback": "Aus 0 = 2x − 6 folgt 6 = 2x, also x = +3. Die −6 wandert als +6 auf die andere Seite."
+          "feedback": "Aus 0 = 2x − 6 folgt 6 = 2x, also x = +3. Die −6 wandert als +6 auf die andere Seite.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

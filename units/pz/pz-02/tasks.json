@@ -190,7 +190,10 @@
         {
           "id": "anker_verwechselt",
           "value": 1,
-          "feedback": "50 % wären bis zum schwarzen Strich in der Mitte. Die Farbe endet viel früher."
+          "feedback": "50 % wären bis zum schwarzen Strich in der Mitte. Die Farbe endet viel früher.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

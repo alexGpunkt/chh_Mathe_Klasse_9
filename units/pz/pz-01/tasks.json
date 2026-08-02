@@ -44,6 +44,11 @@
           "Die Hälfte davon    = 100 % : 2",
           "                    = 50 %"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 50,
+          "einheit": "%"
+        },
         "ergebnis": "Die Hälfte sind 50 %."
       },
       "merke": "1/2 = 50 %   1/4 = 25 %   1/10 = 10 %"
@@ -139,7 +144,10 @@
         {
           "id": "ganzes_statt_teil",
           "value": 2,
-          "feedback": "100 % ist der ganze Streifen. Gefärbt ist nur die Hälfte."
+          "feedback": "100 % ist der ganze Streifen. Gefärbt ist nur die Hälfte.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -218,7 +226,10 @@
         {
           "id": "zaehler_als_prozent",
           "value": 2,
-          "feedback": "3 % wäre fast nichts. Der Streifen ist aber weit über der Hälfte gefärbt."
+          "feedback": "3 % wäre fast nichts. Der Streifen ist aber weit über der Hälfte gefärbt.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -535,7 +546,10 @@
         {
           "id": "falsch_gerundet",
           "value": 28,
-          "feedback": "28,57 wird auf ganze Prozent gerundet zu 29 %, nicht 28 %. Die erste Nachkommastelle ist 5 — also aufrunden."
+          "feedback": "28,57 wird auf ganze Prozent gerundet zu 29 %, nicht 28 %. Die erste Nachkommastelle ist 5 — also aufrunden.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [

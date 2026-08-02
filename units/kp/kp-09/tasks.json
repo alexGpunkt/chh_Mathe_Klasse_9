@@ -47,6 +47,11 @@
           "V = A · h = 78,5 · 10",
           "V = 785 cm³"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 785,
+          "einheit": "cm³"
+        },
         "ergebnis": "V ≈ 785 cm³."
       },
       "merke": "Zylinder: V = π · r² · h."

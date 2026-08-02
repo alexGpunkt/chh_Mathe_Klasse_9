@@ -38,6 +38,11 @@
           "Jahr 1: 1000 € + 2 % = 1000 + 20 = 1020 €",
           "Jahr 2: 1020 € + 2 % = 1020 + 20,40 = 1040,40 €"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 1040.4,
+          "einheit": "€"
+        },
         "ergebnis": "Nach 2 Jahren: 1040,40 €."
       },
       "merke": "Neues Kapital = altes Kapital + Zinsen.",
@@ -499,12 +504,18 @@
         {
           "id": "zu_frueh_gestoppt",
           "value": 3,
-          "feedback": "Nach 3 Jahren sind es erst 3 374,59 € — das ist noch unter 3 500 €. Probiere ein Jahr weiter."
+          "feedback": "Nach 3 Jahren sind es erst 3 374,59 € — das ist noch unter 3 500 €. Probiere ein Jahr weiter.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "einfacher_zins",
           "value": 5,
-          "feedback": "Mit einfachem Zins (120 € pro Jahr) wären es tatsächlich erst nach 5 Jahren über 3 500 €. Beim Zinseszins geht es schneller."
+          "feedback": "Mit einfachem Zins (120 € pro Jahr) wären es tatsächlich erst nach 5 Jahren über 3 500 €. Beim Zinseszins geht es schneller.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -534,12 +545,18 @@
         {
           "id": "zu_frueh_gestoppt",
           "value": 10,
-          "feedback": "Nach 10 Jahren ist der Faktor erst 1,967 — knapp unter 2. Ein Jahr fehlt noch."
+          "feedback": "Nach 10 Jahren ist der Faktor erst 1,967 — knapp unter 2. Ein Jahr fehlt noch.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "einfacher_zins",
           "value": 15,
-          "feedback": "Mit einfachem Zins bräuchte es rund 15 Jahre (100 : 7 ≈ 14,3). Der Zinseszins ist deutlich schneller."
+          "feedback": "Mit einfachem Zins bräuchte es rund 15 Jahre (100 : 7 ≈ 14,3). Der Zinseszins ist deutlich schneller.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -570,12 +587,18 @@
         {
           "id": "falsche_groesse_angegeben",
           "value": 1628.89,
-          "feedback": "Das ist das Endkapital mit Zinseszins. Gefragt ist die Differenz zum einfachen Zins (1 500 €)."
+          "feedback": "Das ist das Endkapital mit Zinseszins. Gefragt ist die Differenz zum einfachen Zins (1 500 €).",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "falsche_groesse_angegeben",
           "value": 628.89,
-          "feedback": "Das sind die gesamten Zinsen beim Zinseszins. Gefragt ist nur, wie viel MEHR das gegenüber 500 € einfachem Zins ist."
+          "feedback": "Das sind die gesamten Zinsen beim Zinseszins. Gefragt ist nur, wie viel MEHR das gegenüber 500 € einfachem Zins ist.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

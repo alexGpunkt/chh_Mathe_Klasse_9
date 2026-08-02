@@ -49,6 +49,10 @@
           "Kanten: 4 oben, 4 unten, 4 senkrecht = 12",
           "Ecken: 4 oben, 4 unten = 8"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 8
+        },
         "ergebnis": "Würfel: 6 Flächen, 12 Kanten, 8 Ecken."
       },
       "merke": "Würfel und Quader: 6 Flächen, 12 Kanten, 8 Ecken."
@@ -304,7 +308,10 @@
         {
           "id": "mantel_als_grundflaeche",
           "value": 1,
-          "feedback": "Das Rechteck ist der aufgerollte Mantel, nicht die Grundfläche."
+          "feedback": "Das Rechteck ist der aufgerollte Mantel, nicht die Grundfläche.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -500,7 +507,10 @@
         {
           "id": "ecken_statt_flaechen",
           "value": 2,
-          "feedback": "10 sind die Ecken (2 · 5), nicht die Flächen."
+          "feedback": "10 sind die Ecken (2 · 5), nicht die Flächen.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -530,7 +540,10 @@
         {
           "id": "nur_grundflaeche_gezaehlt",
           "value": 6,
-          "feedback": "6 sind nur die Kanten einer Grundfläche. Es gibt oben, unten und senkrecht — also 3 · 6."
+          "feedback": "6 sind nur die Kanten einer Grundfläche. Es gibt oben, unten und senkrecht — also 3 · 6.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "ohne_senkrechte",

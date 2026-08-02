@@ -324,6 +324,97 @@
     await Promise.all(registrations.map(registration => registration.update()));
   }
 
+  /* ---------- Diagnosebericht ----------
+     Eine Fehlermeldung wie „geht nicht" ist von einem Schülergerät kaum
+     nachvollziehbar. Dieser Bericht sammelt genau das, was zur Eingrenzung
+     nötig ist — und bewusst nichts darüber hinaus: kein Klarname, keine
+     Antworten, keine Aufgabentexte. */
+  const letzteFehler = [];
+  window.addEventListener('error', e => {
+    letzteFehler.push({
+      art: 'error', zeit: new Date().toISOString(),
+      text: String(e.message || ''),
+      quelle: String(e.filename || '').split('/').pop() + ':' + (e.lineno || 0)
+    });
+    if (letzteFehler.length > 20) letzteFehler.shift();
+  });
+  window.addEventListener('unhandledrejection', e => {
+    letzteFehler.push({
+      art: 'promise', zeit: new Date().toISOString(),
+      text: String(e.reason && e.reason.message ? e.reason.message : e.reason)
+    });
+    if (letzteFehler.length > 20) letzteFehler.shift();
+  });
+
+  async function diagnoseSammeln() {
+    const caches_ = 'caches' in window ? await caches.keys() : [];
+    let swZustand = 'nicht unterstützt';
+    let swSkript = '';
+    if ('serviceWorker' in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      swZustand = regs.length
+        ? regs.map(r => [r.active && 'aktiv', r.waiting && 'wartet', r.installing && 'installiert']
+            .filter(Boolean).join('+')).join(', ')
+        : 'nicht registriert';
+      swSkript = regs[0]?.active?.scriptURL || '';
+    }
+    const q = new URLSearchParams(location.search);
+    let schuelerKennung = '(keine)';
+    try {
+      const s = JSON.parse(localStorage.getItem('mathe9.student') || 'null');
+      /* Nur die technische Kennung, nicht der Anzeigename. */
+      schuelerKennung = s?.student_id ? String(s.student_id).slice(0, 8) + '…' : '(keine)';
+    } catch { /* egal */ }
+
+    return [
+      'Mathe 9 · Diagnosebericht',
+      'erstellt: ' + new Date().toLocaleString('de-DE'),
+      '',
+      '--- Anwendung ---',
+      'Seite:            ' + location.pathname,
+      'Einheit:          ' + (q.get('u') || '—'),
+      'Pfad:             ' + (localStorage.getItem('mathe9.pfad') || '—').replace(/"/g, ''),
+      'aktuelle Aufgabe: ' + (window.S && window.S.aufgabe ? window.S.aufgabe.id : '—'),
+      'Aufgabensitzung:  ' + (window.S && window.S.taskSession ? window.S.taskSession : '—'),
+      'Schülerkennung:   ' + schuelerKennung,
+      '',
+      '--- Fassung ---',
+      'Service Worker:   ' + swZustand,
+      'SW-Skript:        ' + swSkript,
+      'Caches:           ' + (caches_.join(', ') || '(keiner)'),
+      'devMode:          ' + String(!!(window.MATHE9_SUPABASE && window.MATHE9_SUPABASE.devMode)),
+      '',
+      '--- Gerät ---',
+      'User-Agent:       ' + navigator.userAgent,
+      'Sprache:          ' + navigator.language,
+      'Bildschirm:       ' + window.innerWidth + '×' + window.innerHeight +
+        ' (Gerät ' + screen.width + '×' + screen.height + ', DPR ' + (window.devicePixelRatio || 1) + ')',
+      'Ausrichtung:      ' + (window.innerWidth > window.innerHeight ? 'quer' : 'hoch'),
+      'online:           ' + navigator.onLine,
+      'dunkler Modus:    ' + (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'ja' : 'nein'),
+      'Bewegung reduz.:  ' + (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'ja' : 'nein'),
+      'Speicher nutzbar: ' + (typeof Speicher !== 'undefined' ? String(Speicher.nutzbar) : '?'),
+      '',
+      '--- letzte JavaScript-Fehler (' + letzteFehler.length + ') ---',
+      letzteFehler.length
+        ? letzteFehler.map(f => `${f.zeit} [${f.art}] ${f.text}${f.quelle ? ' @ ' + f.quelle : ''}`).join('\n')
+        : '(keine)',
+      ''
+    ].join('\n');
+  }
+
+  function diagnoseSpeichern(text) {
+    const datei = 'mathe9-diagnose-' + new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-') + '.txt';
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = datei;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    return datei;
+  }
+
   async function generateTestData() {
     if (CONFIG.devTrackerDisabled) {
       throw new Error('Der Tracker ist deaktiviert. Aktiviere ihn zuerst.');
@@ -422,6 +513,7 @@
         <button type="button" data-testdata>Testdaten erzeugen</button>
         <button type="button" data-clearcache>Offlinecache löschen</button>
         <button type="button" data-updatesw>Service Worker aktualisieren</button>
+        <button type="button" data-diagnose>Diagnose speichern</button>
         <button type="button" data-real-login>Echten Schülerlogin testen</button>
         <a href="${appUrl('warmup.html')}">Warm-up öffnen</a>
       </div>
@@ -481,6 +573,20 @@
       writeBool('trackerDisabled', false);
       clearStudent();
       location.href = appUrl('index.html');
+    });
+
+    panel.querySelector('[data-diagnose]').addEventListener('click', async () => {
+      setStatus('Diagnose wird gesammelt …');
+      try {
+        const text = await diagnoseSammeln();
+        const datei = diagnoseSpeichern(text);
+        /* Zusätzlich in die Zwischenablage — auf Mobilgeräten ist das oft
+           der schnellere Weg in eine Nachricht. */
+        try { await navigator.clipboard.writeText(text); } catch { /* ohne */ }
+        setStatus('Gespeichert als ' + datei + ' (und in der Zwischenablage).');
+      } catch (error) {
+        setStatus(error.message, true);
+      }
     });
 
     const testDataButton = panel.querySelector('[data-testdata]');

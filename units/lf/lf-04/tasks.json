@@ -44,6 +44,11 @@
           "Δy = 2 (nach oben)",
           "m = 2 nach oben je 1 nach rechts"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 1,
+          "einheit": "nach rechts"
+        },
         "ergebnis": "Die Steigung ist m = 2."
       },
       "merke": "m = Kästchen nach oben je 1 nach rechts."
@@ -358,7 +363,10 @@
         {
           "id": "vorzeichen_fehlt",
           "value": 2,
-          "feedback": "Der Betrag stimmt, aber das Vorzeichen fehlt. Die Gerade FÄLLT — also ist m negativ."
+          "feedback": "Der Betrag stimmt, aber das Vorzeichen fehlt. Die Gerade FÄLLT — also ist m negativ.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -449,7 +457,10 @@
         {
           "id": "vorzeichen_fehlt",
           "value": 0.5,
-          "feedback": "Der Betrag stimmt. Die Gerade fällt aber — m muss negativ sein."
+          "feedback": "Der Betrag stimmt. Die Gerade fällt aber — m muss negativ sein.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "geteilt_vertauscht",

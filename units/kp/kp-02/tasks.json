@@ -41,6 +41,11 @@
           "Volumen = 1 dm · 1 dm · 1 dm = 1 dm³",
           "1 dm³ = 1 l"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 1,
+          "einheit": "l"
+        },
         "ergebnis": "Er fasst 1 Liter (1 dm³ = 1 l)."
       },
       "merke": "² = Fläche, ³ = Volumen. 1 l = 1 dm³.",
@@ -249,7 +254,10 @@
         {
           "id": "mal_statt_geteilt_vol",
           "value": 3500000,
-          "feedback": "Nach oben (cm³ → dm³) wird geteilt, nicht multipliziert: : 1000."
+          "feedback": "Nach oben (cm³ → dm³) wird geteilt, nicht multipliziert: : 1000.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "faktor_100",
@@ -322,7 +330,10 @@
         {
           "id": "mal_statt_geteilt",
           "value": 25000,
-          "feedback": "Nach oben wird geteilt: : 100."
+          "feedback": "Nach oben wird geteilt: : 100.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -440,7 +451,10 @@
         {
           "id": "nur_bis_dm3",
           "value": 96,
-          "feedback": "96 dm³ ist erst der Zwischenschritt. In cm³: · 1000 = 96 000."
+          "feedback": "96 dm³ ist erst der Zwischenschritt. In cm³: · 1000 = 96 000.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [

@@ -1,0 +1,43 @@
+name: Projekt prüfen
+
+# Läuft bei jedem Push auf develop und master sowie bei Pull Requests.
+# Die Prüfung braucht kein npm install — sie kommt ohne Abhängigkeiten aus.
+
+on:
+  push:
+    branches: [develop, master]
+  pull_request:
+    branches: [develop, master]
+  workflow_dispatch:
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Quellcode holen
+        uses: actions/checkout@v4
+        with:
+          # Zwei Commits, damit „Cache-Version hochgezählt?" prüfbar ist.
+          fetch-depth: 2
+
+      - name: Node bereitstellen
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gesamtprüfung
+        run: node werkzeuge/pruefen.js
+
+  # Externe Übungen brauchen Netz und ändern sich ohne unser Zutun.
+  # Deshalb getrennt, planmäßig und ohne den Push zu blockieren.
+  externe-links:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Externe Übungen anfragen
+        run: node werkzeuge/links-pruefen.js

@@ -47,6 +47,11 @@
           "Mantel = Umfang · h = 12 · 10",
           "Mantel = 120 cm²"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 120,
+          "einheit": "cm²"
+        },
         "ergebnis": "Mantel = 120 cm²."
       },
       "merke": "Mantel = Umfang der Grundfläche · Höhe."
@@ -128,7 +133,10 @@
         {
           "id": "addiert_statt_mal",
           "value": 17,
-          "feedback": "Umfang und Höhe werden multipliziert: 12 · 5 = 60."
+          "feedback": "Umfang und Höhe werden multipliziert: 12 · 5 = 60.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

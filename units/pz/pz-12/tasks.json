@@ -38,6 +38,11 @@
           "Jahreszinsen = 1200 € · 5 : 100 = 60 €",
           "halbes Jahr = 60 € : 2 = 30 €"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 30,
+          "einheit": "€"
+        },
         "ergebnis": "Für ein halbes Jahr gibt es 30 € Zinsen."
       },
       "merke": "Halbes Jahr → : 2. Viertel Jahr → : 4.",
@@ -164,7 +169,10 @@
         {
           "id": "zeitfaktor_vergessen",
           "value": 24,
-          "feedback": "Das sind die Zinsen für ein ganzes Jahr. Gefragt sind nur 6 Monate — also die Hälfte."
+          "feedback": "Das sind die Zinsen für ein ganzes Jahr. Gefragt sind nur 6 Monate — also die Hälfte.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -192,12 +200,18 @@
         {
           "id": "zeitfaktor_vergessen",
           "value": 80,
-          "feedback": "Das sind die Zinsen für ein ganzes Jahr. 3 Monate sind nur ein Viertel davon."
+          "feedback": "Das sind die Zinsen für ein ganzes Jahr. 3 Monate sind nur ein Viertel davon.",
+          "verweis": {
+            "absatz": 0
+          }
         },
         {
           "id": "zeitfaktor_verwechselt",
           "value": 40,
-          "feedback": "Du hast halbiert. 3 Monate sind aber ein Viertel Jahr, nicht ein halbes."
+          "feedback": "Du hast halbiert. 3 Monate sind aber ein Viertel Jahr, nicht ein halbes.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -225,7 +239,10 @@
         {
           "id": "zeitfaktor_vergessen",
           "value": 12,
-          "feedback": "Das ist ein ganzes Jahr. Gefragt sind 6 Monate."
+          "feedback": "Das ist ein ganzes Jahr. Gefragt sind 6 Monate.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
@@ -317,12 +334,18 @@
         {
           "id": "zeitfaktor_vergessen",
           "value": 360,
-          "feedback": "Das sind die Jahreszinsen. 90 Tage sind nur ein Viertel Jahr."
+          "feedback": "Das sind die Jahreszinsen. 90 Tage sind nur ein Viertel Jahr.",
+          "verweis": {
+            "absatz": 1
+          }
         },
         {
           "id": "tage_365",
           "value": 88.77,
-          "feedback": "Du hast mit 365 Tagen gerechnet. Banken rechnen mit dem Bankjahr: 360 Tage."
+          "feedback": "Du hast mit 365 Tagen gerechnet. Banken rechnen mit dem Bankjahr: 360 Tage.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -443,7 +466,10 @@
         {
           "id": "geteilt_vertauscht",
           "value": 24,
-          "feedback": "Du hast 150 : 75 · 12 gerechnet. Die aufgelaufenen Zinsen kommen zuerst: 75 : 150 · 12."
+          "feedback": "Du hast 150 : 75 · 12 gerechnet. Die aufgelaufenen Zinsen kommen zuerst: 75 : 150 · 12.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -477,7 +503,10 @@
         {
           "id": "geteilt_vertauscht",
           "value": 1080,
-          "feedback": "Du hast 300 : 100 · 360 gerechnet. Das ergäbe drei Jahre — unmöglich, wenn die Zinsen kleiner als die Jahreszinsen sind."
+          "feedback": "Du hast 300 : 100 · 360 gerechnet. Das ergäbe drei Jahre — unmöglich, wenn die Zinsen kleiner als die Jahreszinsen sind.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

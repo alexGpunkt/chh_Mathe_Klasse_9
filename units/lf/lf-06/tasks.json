@@ -279,7 +279,10 @@
             {
               "id": "vorzeichen_fehlt",
               "value": 8,
-              "feedback": "m ist negativ — es geht nach UNTEN: 6 − 2 = 4."
+              "feedback": "m ist negativ — es geht nach UNTEN: 6 − 2 = 4.",
+              "verweis": {
+                "absatz": 1
+              }
             }
           ]
         }

@@ -144,7 +144,10 @@
         {
           "id": "hoehe_als_mantellinie",
           "value": 1,
-          "feedback": "Das ist die Höhe h (senkrecht). s ist die schräge Strecke zum Kreisrand."
+          "feedback": "Das ist die Höhe h (senkrecht). s ist die schräge Strecke zum Kreisrand.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [

@@ -38,6 +38,11 @@
           "58 € > 50 €  → gestiegen",
           "Differenz = 58 € − 50 € = 8 €"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 8,
+          "einheit": "€"
+        },
         "ergebnis": "Gestiegen um 8 €."
       },
       "merke": "Erst die Richtung. Dann die Differenz.",
@@ -128,7 +133,10 @@
         {
           "id": "richtung_vertauscht",
           "value": -15,
-          "feedback": "Fast — du hast alt minus neu gerechnet. Bei einer Zunahme: neu minus alt."
+          "feedback": "Fast — du hast alt minus neu gerechnet. Bei einer Zunahme: neu minus alt.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [

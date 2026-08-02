@@ -37,6 +37,10 @@
           "2x = x + 3      | − x",
           "x = 3"
         ],
+        "luecke": {
+          "schritt": 1,
+          "wert": 3
+        },
         "ergebnis": "x = 3 (der y-Wert folgt im nächsten Schritt)."
       },
       "merke": "Gleichsetzen. Dann nach x lösen.",
@@ -518,7 +522,10 @@
         {
           "id": "sonderfall_uebersehen",
           "value": 2,
-          "feedback": "Die −2 ist kein x-Wert, sondern der Rest der Gleichung. Es gibt nicht einen Schnittpunkt, sondern unendlich viele."
+          "feedback": "Die −2 ist kein x-Wert, sondern der Rest der Gleichung. Es gibt nicht einen Schnittpunkt, sondern unendlich viele.",
+          "verweis": {
+            "absatz": 1
+          }
         }
       ],
       "tags": [
@@ -585,7 +592,10 @@
         {
           "id": "folge_statt_grund",
           "value": 1,
-          "feedback": "Das ist nur die Schreibweise. Der Grund liegt im Schnittpunkt selbst: Dort ist y auf beiden Geraden gleich."
+          "feedback": "Das ist nur die Schreibweise. Der Grund liegt im Schnittpunkt selbst: Dort ist y auf beiden Geraden gleich.",
+          "verweis": {
+            "absatz": 0
+          }
         },
         {
           "id": "regel_ohne_grund",

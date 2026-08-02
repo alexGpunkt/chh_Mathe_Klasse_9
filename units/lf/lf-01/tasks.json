@@ -60,6 +60,10 @@
           "Graph getroffen bei Höhe 4",
           "nach links zur y-Achse: y = 4"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 4
+        },
         "ergebnis": "Zu x = 3 gehört y = 4."
       },
       "merke": "Erst nach rechts (x), dann hoch, dann links ablesen (y)."

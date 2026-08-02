@@ -37,6 +37,10 @@
           "2 = 2x − 4  | +4  | :2 → x = 3",
           "y = 3 + 2 = 5"
         ],
+        "luecke": {
+          "schritt": 2,
+          "wert": 5
+        },
         "ergebnis": "L = (3 | 5)."
       },
       "merke": "x ausrechnen, x einsetzen, y ausrechnen."
@@ -546,7 +550,10 @@
         {
           "id": "verfahren_ungeschickt",
           "value": 2,
-          "feedback": "Auch möglich, aber du müsstest beide Gleichungen erst durch 3 teilen. Addieren geht in einem Schritt."
+          "feedback": "Auch möglich, aber du müsstest beide Gleichungen erst durch 3 teilen. Addieren geht in einem Schritt.",
+          "verweis": {
+            "absatz": 0
+          }
         }
       ],
       "tags": [
