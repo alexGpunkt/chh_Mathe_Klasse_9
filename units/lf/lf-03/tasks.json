@@ -12,6 +12,13 @@
     "der Faktor",
     "der Graph"
   ],
+  "worterklaerungen": {
+    "proportional": "Doppelt so viel auf der einen Seite heißt doppelt so viel auf der anderen.",
+    "Ursprung": "Der Punkt (0 | 0). Dort kreuzen sich die Achsen.",
+    "Steigung": "Wie steil die Gerade ist. Sie heißt m.",
+    "Faktor": "Die Zahl, mit der du malnimmst.",
+    "Graph": "Die Linie im Koordinatensystem."
+  },
   "can_do": {
     "A": "Du erkennst eine Gerade durch den Ursprung und rechnest y = m · x aus.",
     "B": "Du bestimmst m aus einer Wertetabelle (y : x) und schreibst die Gleichung auf.",

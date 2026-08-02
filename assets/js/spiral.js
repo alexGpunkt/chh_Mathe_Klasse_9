@@ -336,7 +336,11 @@ async function starte() {
   document.documentElement.style.setProperty('--pfad-bg', `var(--${SP.level.toLowerCase()}-bg)`);
 
   Tracker.setContext({ page: 'warmup', unit: 'WARMUP', path: SP.level, progress: 0 });
-  SP.reihe = waehle(5).map(baue);
+  /* Standard sind fünf Aufgaben zu Stundenbeginn. Am Stundenende ruft die
+     Einheitenseite dieselbe Auswahl mit ?n=3 auf — verteiltes Wiederholen
+     wirkt besser als geballtes, und drei Aufgaben passen ans Ende. */
+  const gewuenscht = Math.min(8, Math.max(1, parseInt(p.get('n'), 10) || 5));
+  SP.reihe = waehle(gewuenscht).map(baue);
   if (!SP.reihe.length) {
     $$('#buehne').innerHTML = `<div class="karte"><p class="frage">Für Pfad ${SP.level}
       sind noch keine Wiederholungsaufgaben hinterlegt.</p></div>`;

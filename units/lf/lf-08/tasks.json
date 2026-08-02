@@ -13,6 +13,13 @@
     "die rechte Seite",
     "erfüllen"
   ],
+  "worterklaerungen": {
+    "Punktprobe": "Du setzt den Punkt ein und prüfst, ob er auf der Geraden liegt.",
+    "einsetzen": "Eine Zahl an die Stelle vom Buchstaben schreiben.",
+    "linke Seite": "Alles, was links vom Gleichheitszeichen steht.",
+    "rechte Seite": "Alles, was rechts vom Gleichheitszeichen steht.",
+    "erfüllen": "Die Gleichung stimmt mit dieser Zahl."
+  },
   "can_do": {
     "A": "Du setzt einen x-Wert in die Gleichung ein und rechnest aus, was herauskommt.",
     "B": "Du führst die Punktprobe sauber durch und schreibst das Ergebnis als Satz.",

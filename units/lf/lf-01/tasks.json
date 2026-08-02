@@ -13,6 +13,14 @@
     "steigen",
     "fallen"
   ],
+  "worterklaerungen": {
+    "Graph": "Die Linie im Koordinatensystem.",
+    "Achse": "Eine der beiden Linien am Rand des Koordinatensystems.",
+    "Punkt": "Eine Stelle im Koordinatensystem mit zwei Zahlen.",
+    "Zuordnung": "Zu jedem Wert links gehört ein Wert rechts.",
+    "steigen": "Der Wert wird größer.",
+    "fallen": "Der Wert wird kleiner."
+  },
   "can_do": {
     "A": "Du liest zu einem x-Wert den passenden y-Wert am Graphen ab.",
     "B": "Du beschreibst einen Graphen in Worten und liest in beide Richtungen ab.",

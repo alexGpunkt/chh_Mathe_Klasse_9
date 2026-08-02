@@ -14,6 +14,14 @@
     "das Trapez",
     "zerlegen"
   ],
+  "worterklaerungen": {
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Grundfläche": "Die Fläche unten am Körper. Sie gibt dem Körper den Namen.",
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht.",
+    "Dreieck": "Eine Fläche mit drei Ecken.",
+    "Trapez": "Eine Fläche mit vier Ecken. Zwei Seiten liegen parallel.",
+    "zerlegen": "In einfache Teile aufteilen."
+  },
   "can_do": {
     "A": "Du berechnest das Volumen eines Prismas mit dreieckiger Grundfläche.",
     "B": "Du berechnest Volumen bei dreieckiger und trapezförmiger Grundfläche sicher.",

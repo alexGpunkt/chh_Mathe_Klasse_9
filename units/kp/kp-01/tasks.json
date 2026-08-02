@@ -15,6 +15,15 @@
     "der Mantel",
     "das Netz"
   ],
+  "worterklaerungen": {
+    "Körper": "Etwas mit Länge, Breite und Höhe.",
+    "Ecke": "Ein Punkt, an dem Kanten zusammentreffen.",
+    "Kante": "Die Linie, an der zwei Flächen zusammenstoßen.",
+    "Fläche": "Eine ebene Seite von einem Körper.",
+    "Grundfläche": "Die Fläche unten am Körper. Sie gibt dem Körper den Namen.",
+    "Mantel": "Alle Seitenflächen zusammen, ohne oben und unten.",
+    "Netz": "Der aufgeklappte Körper, flach auf dem Papier."
+  },
   "can_do": {
     "A": "Du erkennst Würfel, Quader, Prisma und Zylinder und zählst Ecken, Kanten und Flächen.",
     "B": "Du ordnest jedem Körper seine Grundfläche und sein Netz zu und beschreibst die Mantelfläche.",

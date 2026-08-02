@@ -14,6 +14,14 @@
     "abwickeln",
     "das Rechteck"
   ],
+  "worterklaerungen": {
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Mantel": "Alle Seitenflächen zusammen, ohne oben und unten.",
+    "Kreisumfang": "Wie lang der Rand vom Kreis ist.",
+    "Kreisfläche": "Wie groß ein Kreis ist. Du rechnest π · r · r.",
+    "abwickeln": "Den Mantel aufschneiden und flach hinlegen.",
+    "Rechteck": "Eine Fläche mit vier rechten Winkeln."
+  },
   "can_do": {
     "A": "Du weißt: der abgewickelte Zylindermantel ist ein Rechteck (Umfang · Höhe).",
     "B": "Du berechnest die Oberfläche = 2 Kreise + Mantel.",

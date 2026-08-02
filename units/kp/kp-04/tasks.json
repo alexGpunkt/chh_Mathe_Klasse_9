@@ -13,6 +13,13 @@
     "der Kubikzentimeter",
     "die Grundfläche"
   ],
+  "worterklaerungen": {
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Rauminhalt": "Wie viel in einen Körper hineinpasst.",
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht.",
+    "Kubikzentimeter": "Ein Würfel mit 1 cm Kante.",
+    "Grundfläche": "Die Fläche unten am Körper. Sie gibt dem Körper den Namen."
+  },
   "can_do": {
     "A": "Du berechnest das Volumen eines Würfels über a · a · a.",
     "B": "Du berechnest das Volumen eines Quaders über a · b · c und gibst Liter an.",

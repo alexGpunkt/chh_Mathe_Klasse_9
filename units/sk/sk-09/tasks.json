@@ -14,6 +14,14 @@
     "die Mantellinie",
     "umstellen"
   ],
+  "worterklaerungen": {
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Radius": "Die Strecke von der Kreismitte bis zum Rand.",
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht.",
+    "Mantellinie": "Die schräge Strecke von der Spitze zum Kreisrand.",
+    "umstellen": "Die Formel so umschreiben, dass die gesuchte Größe allein steht."
+  },
   "can_do": {
     "A": "Du entscheidest, ob Volumen oder Oberfläche gefragt ist.",
     "B": "Du bestimmst fehlende Größen (h) aus dem Volumen des Kegels.",

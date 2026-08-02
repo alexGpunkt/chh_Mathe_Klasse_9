@@ -14,6 +14,14 @@
     "das rechtwinklige Dreieck",
     "die Hypotenuse"
   ],
+  "worterklaerungen": {
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht.",
+    "Seitenhöhe": "Die Höhe im Seitendreieck, von der Spitze zur Kantenmitte.",
+    "halbe Grundkante": "Die Grundkante geteilt durch 2.",
+    "Satz des Pythagoras": "Im rechtwinkligen Dreieck gilt: a² + b² = c².",
+    "rechtwinklige Dreieck": "Ein Dreieck mit einem rechten Winkel.",
+    "Hypotenuse": "Die längste Seite im rechtwinkligen Dreieck. Sie liegt gegenüber vom rechten Winkel."
+  },
   "can_do": {
     "A": "Du erkennst das rechtwinklige Dreieck aus Höhe, halber Grundkante und Seitenhöhe.",
     "B": "Du berechnest die Seitenhöhe s aus h und a mit Pythagoras.",

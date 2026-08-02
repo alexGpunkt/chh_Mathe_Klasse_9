@@ -17,6 +17,24 @@ html.buch-aktiv body { padding-bottom: calc(92px + var(--buch-nav-total)); }
 /* Formelkarte sitzt jetzt oberhalb der Buch-Navigation. */
 html.buch-aktiv .formelkarte { bottom: var(--buch-nav-total); }
 
+/* Buchnavigation, Formelkarte und Tastatur teilen sich denselben Rand.
+   Beim Tippen in ein Zahlenfeld weicht die Navigation nach unten aus —
+   sonst bleiben auf einem 5-Zoll-Gerät vom Aufgabentext ein paar Zeilen. */
+.buch-nav { transition: transform .22s ease; }
+body:has(input.zahl-feld:focus) .buch-nav,
+body.tastatur-aktiv .buch-nav { transform: translateY(105%); }
+
+/* Querformat: flachere Leiste, damit die Aufgabe sichtbar bleibt. */
+@media (orientation: landscape) and (max-height: 560px) {
+  :root { --buch-nav-h: 52px; }
+  .buch-btn { height: 40px; font-size: 15px; }
+  html.buch-aktiv body { padding-bottom: calc(72px + var(--buch-nav-total)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buch-nav { transition: none; }
+}
+
 /* ---------- Werkzeuge im Kopf (Lesezeichen · Inhalt) ---------- */
 .buch-kopf-tools { margin-left: auto; display: flex; gap: 6px; }
 html.buch-aktiv .kopf-zeile > div:not(.buch-kopf-tools) { min-width: 0; flex: 1 1 auto; }
@@ -36,7 +54,7 @@ html.buch-aktiv .einheit-titel { overflow-wrap: anywhere; }
 .buch-nav {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
   background: var(--paper-hi);
-  border-top: 1px solid #E1E6E9;
+  border-top: 1px solid var(--linie);
   box-shadow: 0 -6px 20px -12px rgba(21,35,58,.5);
   padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
@@ -53,14 +71,14 @@ html.buch-aktiv .einheit-titel { overflow-wrap: anywhere; }
 .buch-btn {
   flex: 1 1 0; min-width: 0; height: 48px;
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  border: 1px solid #D5DCE1; border-radius: 12px;
+  border: 1px solid var(--linie-kraeftig); border-radius: 12px;
   background: var(--paper); color: var(--ink);
   font-family: var(--f-display); font-weight: 700; font-size: 16px;
   cursor: pointer; -webkit-tap-highlight-color: transparent;
 }
 .buch-btn:hover { border-color: var(--pfad); }
 .buch-btn:disabled { opacity: .38; cursor: default; }
-.buch-btn:disabled:hover { border-color: #D5DCE1; }
+.buch-btn:disabled:hover { border-color: var(--linie-kraeftig); }
 .buch-btn .pfeil { font-size: 22px; line-height: 1; }
 .buch-next { background: var(--pfad); color: #fff; border-color: var(--pfad); }
 .buch-next:disabled { background: var(--paper); color: var(--ink); }
@@ -104,19 +122,19 @@ html.buch-aktiv .einheit-titel { overflow-wrap: anywhere; }
 
 .buch-toc-kopf {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 16px; background: var(--ink); color: var(--paper-hi);
+  padding: 14px 16px; background: var(--kopf-bg); color: var(--kopf-text);
 }
 .buch-toc-kopf strong { font-family: var(--f-display); font-size: 18px; }
 .buch-toc-x {
   width: 40px; height: 40px; border: none; background: transparent;
-  color: var(--paper-hi); font-size: 20px; cursor: pointer; border-radius: 8px;
+  color: var(--kopf-text); font-size: 20px; cursor: pointer; border-radius: 8px;
 }
 .buch-toc-x:hover { background: rgba(255,255,255,.12); }
 
-.buch-sprung { display: flex; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #E1E6E9; }
+.buch-sprung { display: flex; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--linie); }
 .buch-sprung input {
   flex: 1 1 auto; min-width: 0; height: 42px; padding: 0 12px;
-  border: 1px solid #D5DCE1; border-radius: 10px;
+  border: 1px solid var(--linie-kraeftig); border-radius: 10px;
   font-family: var(--f-body); font-size: 15px; color: var(--ink);
   background: var(--paper);
 }
@@ -133,7 +151,7 @@ html.buch-aktiv .einheit-titel { overflow-wrap: anywhere; }
   font-family: var(--f-num); font-size: 12px; letter-spacing: .08em;
   text-transform: uppercase; color: var(--ink-soft);
 }
-.buch-lz { padding: 4px 0 6px; border-bottom: 1px dashed #E1E6E9; margin-bottom: 6px; }
+.buch-lz { padding: 4px 0 6px; border-bottom: 1px dashed var(--linie); margin-bottom: 6px; }
 .buch-lz-titel { padding: 6px 16px 2px; }
 
 .buch-grp { border: none; }

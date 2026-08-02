@@ -11,6 +11,12 @@
     "das Additionsverfahren",
     "die Lösung"
   ],
+  "worterklaerungen": {
+    "Gleichungssystem": "Zwei Gleichungen, die zusammen gelten sollen.",
+    "Einsetzungsverfahren": "Eine Gleichung wird in die andere eingesetzt.",
+    "Additionsverfahren": "Zwei Gleichungen werden addiert, damit eine Variable wegfällt.",
+    "Lösung": "Die Zahl, die die Gleichung wahr macht."
+  },
   "can_do": {
     "A": "Du wiederholst das Gleichsetzungsverfahren sicher — das ist die Grundlage.",
     "B": "Du löst ein Gleichungssystem durch Einsetzen, wenn eine Gleichung nach y aufgelöst ist.",

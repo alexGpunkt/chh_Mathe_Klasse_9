@@ -12,6 +12,13 @@
     "die Dezimalzahl",
     "der Prozentsatz"
   ],
+  "worterklaerungen": {
+    "Anteil": "Ein Teil von einem Ganzen.",
+    "Ganze": "Alles zusammen. Das Ganze sind 100 %.",
+    "Bruch": "Eine Zahl mit Bruchstrich, zum Beispiel 3/4.",
+    "Dezimalzahl": "Eine Zahl mit Komma, zum Beispiel 0,75.",
+    "Prozentsatz": "Die Zahl mit dem Prozentzeichen, zum Beispiel 20 %."
+  },
   "can_do": {
     "A": "Du nennst zu einem Bild den passenden Prozentsatz bei einfachen Anteilen.",
     "B": "Du wandelst zwischen Bruch, Dezimalzahl und Prozent um.",

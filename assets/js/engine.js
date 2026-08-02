@@ -19,7 +19,20 @@ const S = {
   versucheGesamt: 0,
   start: 0,
   geloest: new Set(),
-  aufAnhieb: 0
+  aufAnhieb: 0,
+  /* Fehlvorstellungen, zu denen bereits nachgefasst wurde — jede Diagnose
+     bekommt genau eine Nachfassaufgabe, sonst dreht sich das Kind im Kreis. */
+  nachgefasst: new Set(),
+  selbst: null,           // Selbsteinschätzung vor den Aufgaben
+  /* Die Leistungsrückmeldung soll nur die ursprünglich gewählten Aufgaben
+     bewerten. Eingeschobene Nachfassaufgaben sind Lernhilfe, keine heimliche
+     Verschärfung der Empfehlung. */
+  kernIds: new Set(),
+  kernGesamt: 0,
+  kernAufAnhieb: 0,
+  /* Beim Sprung zur Erklärung bleibt die laufende Aufgabe mitsamt Eingaben,
+     Versuchen, Tipps, Rückmeldungen und Zeitmessung erhalten. */
+  rueckkehrDom: null
 };
 
 const $ = (s, w = document) => w.querySelector(s);
@@ -31,6 +44,67 @@ const el = (tag, klasse, text) => {
 };
 
 const STUFEN = { 1: 'Einstieg', 2: 'Geführt', 3: 'Frei', 4: 'Transfer' };
+
+function htmlSicher(text) {
+  return String(text ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function attrSicher(text) {
+  return htmlSicher(text).replace(/`/g, '&#96;');
+}
+
+function animationenAufraeumen(root) {
+  try { window.ANIM?.aufraeumen?.(root); }
+  catch (error) { console.warn('[Mathe9 Animation aufräumen]', error); }
+}
+
+function buehneLeeren(root = $('#buehne')) {
+  if (!root) return;
+  animationenAufraeumen(root);
+  root.replaceChildren();
+}
+
+function geparkteAufgabeVerwerfen() {
+  if (!S.rueckkehrDom) return;
+  animationenAufraeumen(S.rueckkehrDom.fragment);
+  S.rueckkehrDom = null;
+}
+
+function aufgabeParken() {
+  const b = $('#buehne');
+  if (!b || S.rueckkehrDom) return;
+  try { window.ANIM?.pausieren?.(b); } catch { /* optional */ }
+  const fragment = document.createDocumentFragment();
+  while (b.firstChild) fragment.appendChild(b.firstChild);
+  S.rueckkehrDom = {
+    fragment,
+    scrollY: window.scrollY,
+    task: S.aufgabe?.id || null,
+    index: S.index
+  };
+}
+
+function aufgabeZurueckholen() {
+  const gespeichert = S.rueckkehrDom;
+  if (!gespeichert) { aufgabeZeigen(); return; }
+  const b = $('#buehne');
+  buehneLeeren(b);
+  b.appendChild(gespeichert.fragment);
+  S.rueckkehrDom = null;
+  streifenAktualisieren();
+  Tracker.track('task_return', {
+    task: gespeichert.task,
+    index: gespeichert.index + 1,
+    attempts: S.versuche,
+    hints_used: S.tippsGenutzt
+  });
+  requestAnimationFrame(() => window.scrollTo({ top: gespeichert.scrollY, behavior: 'smooth' }));
+}
 
 /* ---------- Start ----------
    Normalfall: eine Einheit über ?u= laden.
@@ -58,7 +132,7 @@ async function start() {
 }
 
 function zeigeFehler(pfad, e) {
-  $('#buehne').innerHTML = '';
+  buehneLeeren($('#buehne'));
   const box = el('div', 'fehler');
   box.append(el('strong', null, 'Die Aufgaben konnten nicht geladen werden.'));
   const p = el('p');
@@ -90,6 +164,7 @@ function kopfBauen() {
 }
 
 function pfadSetzen(p) {
+  geparkteAufgabeVerwerfen();
   S.pfad = p;
   if (!S.daten.pfad_fest) Speicher.schreib('mathe9.pfad', p);
   document.documentElement.style.setProperty('--pfad', `var(--${p.toLowerCase()})`);
@@ -100,10 +175,18 @@ function pfadSetzen(p) {
   S.reihe = S.daten.tasks.filter(t => t.path === p);
   /* Der Prüfungstrainer hat seine Reihenfolge schon festgelegt. */
   if (!S.daten.reihenfolge_fest) S.reihe.sort((a, b) => a.step - b.step);
+  S.kernIds = new Set(S.reihe.map(t => t.id));
+  S.kernGesamt = S.reihe.length;
+  S.kernAufAnhieb = 0;
   S.index = 0;
   S.geloest = new Set();
   S.aufAnhieb = 0;
   S.versucheGesamt = 0;
+  S.nachgefasst = new Set();
+  S.selbst = null;
+  /* Über alle Aufgaben, nicht nur die aktuelle Reihe: die Objekte werden
+     zwischen den Pfaden wiederverwendet, sonst bliebe die Markierung kleben. */
+  (S.daten.tasks || []).forEach(t => { delete t.nachfass; delete t.nachfass_leichter; });
   Tracker.setContext({ unit: S.daten.unit, path: p, task: null, progress: 0 });
   Tracker.track('path_selected', { path: p, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
   Tracker.progress({
@@ -132,12 +215,17 @@ function pfadSetzen(p) {
                       Aufgabe zurück, ohne den Fortschritt zu verlieren. */
 const NIVEAU = { A: 'Basis', B: 'Standard', C: 'Vertiefung' };
 
-function lernkarteZeigen(modus) {
+function lernkarteZeigen(modus, ziel) {
   const lk = S.daten.lernkarten && S.daten.lernkarten[S.pfad];
-  if (!lk) { aufgabeZeigen(); return; }
+  if (!lk) {
+    if (modus === 'wieder') aufgabeZurueckholen(); else aufgabeZeigen();
+    return;
+  }
+  const sprungziele = {};
 
   const b = $('#buehne');
-  b.innerHTML = '';
+  if (modus === 'wieder') aufgabeParken();
+  else buehneLeeren(b);
   streifenAktualisieren();
   Tracker.track('lernkarte_view', { path: S.pfad, modus });
 
@@ -159,48 +247,40 @@ function lernkarteZeigen(modus) {
     karte.append(p);
   }
 
-  if (lk.visual && lk.bild_oben !== false) karte.append(visualBlockSicher(lk.visual));
+  if (lk.visual && lk.bild_oben !== false) sprungziele.animation = karte.appendChild(visualBlockSicher(lk.visual));
 
-  (lk.erklaerung || []).forEach(absatz => {
+  (lk.erklaerung || []).forEach((absatz, i) => {
     const p = el('p', 'lk-erkl');
     p.innerHTML = markiereWorte(absatz);
     karte.append(p);
+    sprungziele['absatz' + i] = p;
   });
 
-  if (lk.visual && lk.bild_oben === false) karte.append(visualBlockSicher(lk.visual));
+  if (lk.visual && lk.bild_oben === false) sprungziele.animation = karte.appendChild(visualBlockSicher(lk.visual));
 
-  if (lk.beispiel) {
-    const bsp = lk.beispiel;
-    const box = el('div', 'lk-beispiel');
-    box.append(el('div', 'lk-beispiel-kopf', bsp.titel || 'Beispiel'));
-    if (bsp.aufgabe) {
-      const a = el('p', 'lk-beispiel-aufgabe');
-      a.innerHTML = markiereWorte(bsp.aufgabe);
-      box.append(a);
-    }
-    if (bsp.schritte && bsp.schritte.length) {
-      const rw = el('div', 'lk-rechenweg');
-      rw.textContent = bsp.schritte.join('\n');
-      box.append(rw);
-    }
-    if (bsp.ergebnis) {
-      const e = el('div', 'lk-ergebnis');
-      e.innerHTML = '<b>Ergebnis:</b> ' + markiereWorte(bsp.ergebnis);
-      box.append(e);
-    }
-    karte.append(box);
-  }
+  if (lk.beispiel) karte.append(beispielBlock(lk.beispiel));
 
   if (lk.merke) {
     const m = el('div', 'lk-merke');
     m.innerHTML = '<b>Merke:</b> ' + markiereWorte(lk.merke);
     karte.append(m);
+    sprungziele.merke = m;
+  }
+
+  /* Selbsteinschätzung vor den Aufgaben — am Ende wird sie mit dem
+     tatsächlichen Ergebnis verglichen. Wer sich unterschätzt hat, soll das
+     schwarz auf weiß sehen; das ist oft der eigentliche Zugewinn. */
+  if (modus === 'start' && !S.daten.pruefung && S.daten.can_do && S.daten.can_do[S.pfad]) {
+    karte.append(selbstcheckBlock());
   }
 
   const akt = el('div', 'aktionen');
   const los = el('button', 'btn btn-haupt',
     modus === 'wieder' ? 'Zurück zu den Aufgaben' : "Los geht's – Aufgaben starten");
-  los.addEventListener('click', () => aufgabeZeigen());
+  los.addEventListener('click', () => {
+    if (modus === 'wieder') aufgabeZurueckholen();
+    else aufgabeZeigen();
+  });
   akt.append(los);
 
   /* Auf einen anderen Pfad wechseln, ohne erst durch die Aufgaben zu müssen. */
@@ -211,7 +291,118 @@ function lernkarteZeigen(modus) {
     akt.append(w);
   }
   karte.append(akt);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  /* Kam der Aufruf aus einer Rückmeldung, wird die passende Stelle
+     hervorgehoben und angesteuert — sonst beginnt die Karte oben. */
+  const sprung = ziel && (Number.isInteger(ziel.absatz) ? sprungziele['absatz' + ziel.absatz]
+    : ziel.animation ? (sprungziele.animation || sprungziele.merke)
+    : ziel.merke ? sprungziele.merke : null);
+  if (sprung) {
+    sprung.classList.add('lk-hervor');
+    requestAnimationFrame(() => sprung.scrollIntoView({ block: 'center', behavior: 'smooth' }));
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+/* ---------- Beispielrechnung ----------
+   Auf Pfad A wird der letzte Schritt zur Lücke. Ein fertig vorgerechnetes
+   Beispiel liest man; ein Beispiel mit einer Lücke rechnet man mit. Das
+   Ergebnis bleibt jederzeit über „Schritt zeigen" erreichbar — die Lücke
+   darf niemanden aussperren. */
+function beispielBlock(bsp) {
+  const box = el('div', 'lk-beispiel');
+  box.append(el('div', 'lk-beispiel-kopf', bsp.titel || 'Beispiel'));
+  if (bsp.aufgabe) {
+    const a = el('p', 'lk-beispiel-aufgabe');
+    a.innerHTML = markiereWorte(bsp.aufgabe);
+    box.append(a);
+  }
+
+  const schritte = (bsp.schritte || []).slice();
+  const luecke = S.pfad === 'A' && !S.daten.pruefung ? lueckeAusSchritt(schritte[schritte.length - 1]) : null;
+
+  if (schritte.length) {
+    const rw = el('div', 'lk-rechenweg');
+    rw.textContent = (luecke ? schritte.slice(0, -1) : schritte).join('\n');
+    box.append(rw);
+  }
+
+  if (luecke) {
+    const zeile = el('div', 'lk-luecke');
+    zeile.append(el('span', 'lk-luecke-text', luecke.vorne + ' ='));
+    const inp = el('input', 'zahl-feld lk-luecke-feld');
+    inp.type = 'text'; inp.inputMode = 'decimal'; inp.autocomplete = 'off';
+    inp.setAttribute('aria-label', 'Fehlendes Ergebnis des letzten Schritts');
+    zeile.append(inp);
+    const knopf = el('button', 'btn btn-neben', 'Prüfen');
+    knopf.type = 'button';
+    const zeigen = el('button', 'btn btn-neben', 'Schritt zeigen');
+    zeigen.type = 'button';
+    const echo = el('div', 'lk-luecke-echo');
+
+    const aufloesen = (selbst) => {
+      zeile.replaceWith(Object.assign(el('div', 'lk-rechenweg lk-luecke-fertig'), { textContent: luecke.ganz }));
+      echo.className = 'lk-luecke-echo ' + (selbst ? 'gut' : 'neutral');
+      echo.textContent = selbst ? 'Richtig — genau dieser Schritt fehlte.' : 'So geht der letzte Schritt.';
+      Tracker.track('lueckenbeispiel', { path: S.pfad, geloest: !!selbst });
+    };
+    knopf.addEventListener('click', () => {
+      const k = lesarten(inp.value.trim()).filter(z => !Number.isNaN(z));
+      if (!k.length) { echo.className = 'lk-luecke-echo neutral'; echo.textContent = 'Schreib nur die Zahl.'; return; }
+      if (k.some(z => Math.abs(z - luecke.wert) <= Math.max(0.01, Math.abs(luecke.wert) * 0.001))) aufloesen(true);
+      else { echo.className = 'lk-luecke-echo schlecht'; echo.textContent = 'Noch nicht. Schau dir die Zeile darüber an.'; }
+    });
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') knopf.click(); });
+    zeigen.addEventListener('click', () => aufloesen(false));
+
+    const knoepfe = el('div', 'lk-luecke-knoepfe');
+    knoepfe.append(knopf); knoepfe.append(zeigen);
+    box.append(zeile); box.append(knoepfe); box.append(echo);
+  }
+
+  if (bsp.ergebnis && !luecke) {
+    const e = el('div', 'lk-ergebnis');
+    e.innerHTML = '<b>Ergebnis:</b> ' + markiereWorte(bsp.ergebnis);
+    box.append(e);
+  }
+  return box;
+}
+
+/* Der letzte Schritt wird nur dann zur Lücke, wenn rechts vom letzten
+   Gleichheitszeichen wirklich eine Zahl steht. Sonst bleibt alles beim Alten. */
+function lueckeAusSchritt(zeile) {
+  if (!zeile || typeof zeile !== 'string') return null;
+  const pos = zeile.lastIndexOf('=');
+  if (pos < 1) return null;
+  const rechts = zeile.slice(pos + 1).trim();
+  const zahl = rechts.match(/^[−-]?[\d.,]+/);
+  if (!zahl) return null;
+  const werte = lesarten(zahl[0]).filter(z => !Number.isNaN(z));
+  if (!werte.length) return null;
+  return { vorne: zeile.slice(0, pos).trimEnd(), wert: werte[0], ganz: zeile };
+}
+
+/* ---------- Selbsteinschätzung ---------- */
+function selbstcheckBlock() {
+  const box = el('div', 'selbstcheck');
+  box.append(el('div', 'selbstcheck-frage', 'Kannst du das schon?'));
+  box.append(el('div', 'selbstcheck-satz', S.daten.can_do[S.pfad]));
+  const wahl = el('div', 'selbstcheck-wahl');
+  [['ja', 'Ja, das kann ich'], ['teils', 'Ein bisschen'], ['nein', 'Noch nicht']].forEach(([wert, text]) => {
+    const b = el('button', 'opt selbstcheck-opt', text);
+    b.type = 'button';
+    b.setAttribute('aria-pressed', String(S.selbst === wert));
+    b.addEventListener('click', () => {
+      S.selbst = wert;
+      wahl.querySelectorAll('.selbstcheck-opt').forEach(x => x.setAttribute('aria-pressed', 'false'));
+      b.setAttribute('aria-pressed', 'true');
+      Tracker.track('selbstcheck_vorher', { path: S.pfad, wert });
+    });
+    wahl.append(b);
+  });
+  box.append(wahl);
+  return box;
 }
 
 /* ---------- Prozentstreifen = Fortschritt ---------- */
@@ -226,8 +417,9 @@ function streifenAktualisieren() {
 
 /* ---------- Aufgabe rendern ---------- */
 function aufgabeZeigen() {
+  geparkteAufgabeVerwerfen();
   const b = $('#buehne');
-  b.innerHTML = '';
+  buehneLeeren(b);
   streifenAktualisieren();
 
   if (S.index >= S.reihe.length) { abschluss(); return; }
@@ -258,6 +450,18 @@ function aufgabeZeigen() {
   /* Sofort einhängen: Ein Fehler in einer optionalen Visualisierung
      darf die eigentliche Aufgabe nicht unsichtbar machen. */
   b.append(karte);
+
+  /* Nachfassaufgabe: Der Grund, warum sie jetzt kommt, gehört dazu.
+     Sonst wirkt sie wie eine Strafe statt wie eine zweite Chance. */
+  if (t.nachfass) {
+    const hinweis = el('div', 'nachfass-hinweis');
+    hinweis.innerHTML = t.nachfass_leichter
+      ? '<b>Noch einmal dasselbe</b> — eine Stufe einfacher. '
+        + 'Hier ist eben der Denkfehler passiert; so wird er sichtbar.'
+      : '<b>Noch einmal dasselbe</b> — mit anderen Zahlen. '
+        + 'Hier ist eben der Denkfehler passiert; jetzt sitzt er wahrscheinlich.';
+    karte.append(hinweis);
+  }
 
   const frage = el('p', 'frage');
   frage.innerHTML = markiereWorte(t.prompt);
@@ -321,7 +525,23 @@ function regexSicher(text) {
   return String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-/* Wortspeicher-Begriffe im Text markieren */
+/* ---------- Wortspeicher ----------
+   Die Begriffe waren schon markiert, aber die Erklärung steckte in einem
+   `title`-Attribut — auf dem Handy unerreichbar, und sie wiederholte nur
+   das Wort selbst. Jetzt lässt sich jedes markierte Wort antippen und
+   erklärt sich in einem Satz. Die Sätze stehen in der tasks.json:
+
+     "wortspeicher": ["der Grundwert", …],
+     "worterklaerungen": { "Grundwert": "Das Ganze. Der Grundwert sind 100 %." }
+
+   Fehlt eine Erklärung, bleibt es beim reinen Hervorheben. */
+function worterklaerung(kern) {
+  const q = S.daten.worterklaerungen || {};
+  if (q[kern]) return String(q[kern]);
+  const treffer = Object.keys(q).find(k => k.toLowerCase() === kern.toLowerCase());
+  return treffer ? String(q[treffer]) : null;
+}
+
 function markiereWorte(text) {
   let out = String(text ?? '')
     .replace(/&/g, '&amp;')
@@ -333,10 +553,16 @@ function markiereWorte(text) {
     const kern = w.replace(/^(der|die|das)\s+/i, '').trim();
     if (!kern) return;
 
+    const erkl = worterklaerung(kern);
+    const titel = attrSicher(erkl || w);
+    const klasse = erkl ? 'wort wort-tippbar' : 'wort';
+    const tag = erkl ? 'button' : 'span';
+    const zusatz = erkl ? ` type="button" data-wort="${attrSicher(kern)}"` : '';
+
     try {
       out = out.replace(
         new RegExp(`\\b(${regexSicher(kern)})\\b`, 'gi'),
-        `<span class="wort" title="${w.replace(/"/g, '&quot;')}">$1</span>`
+        `<${tag} class="${klasse}" title="${titel}"${zusatz}>$1</${tag}>`
       );
     } catch (error) {
       console.warn('[Mathe9 Wortspeicher]', kern, error);
@@ -345,6 +571,34 @@ function markiereWorte(text) {
 
   return out;
 }
+
+/* Ein Tipp auf ein markiertes Wort zeigt den Satz direkt darunter —
+   nicht als Systemtooltip, den ein Touchgerät nie anzeigt. */
+document.addEventListener('click', e => {
+  const knopf = e.target.closest('.wort-tippbar');
+  if (!knopf || !S.daten) return;
+  const kern = knopf.dataset.wort;
+  const erkl = worterklaerung(kern);
+  if (!erkl) return;
+
+  const offen = document.querySelector('.wort-erklaerung');
+  const warSelbes = offen && offen.dataset.wort === kern;
+  if (offen) offen.remove();
+  if (warSelbes) return;
+
+  const box = el('div', 'wort-erklaerung');
+  box.dataset.wort = kern;
+  box.append(el('b', null, kern + ':'), document.createTextNode(' ' + erkl));
+  const zu = el('button', 'wort-erklaerung-x', '✕');
+  zu.type = 'button';
+  zu.setAttribute('aria-label', 'Erklärung schließen');
+  zu.addEventListener('click', () => box.remove());
+  box.append(zu);
+
+  const traeger = knopf.closest('p, div, li') || knopf.parentElement;
+  traeger.after(box);
+  Tracker.track('wort_erklaerung', { wort: kern, unit: S.daten.unit, path: S.pfad });
+});
 
 function numerischesFeld(t) {
   const zeile = el('div', 'eingabe-zeile');
@@ -564,7 +818,12 @@ function melden(richtig, fehlvorstellung) {
 
   if (richtig) {
     S.geloest.add(t.id);
-    if (S.versuche === 1) S.aufAnhieb++;
+    if (S.versuche === 1) {
+      S.aufAnhieb++;
+      if (S.kernIds.has(t.id)) S.kernAufAnhieb++;
+    }
+    const aktiv = document.activeElement;
+    if (aktiv && aktiv.matches?.('.zahl-feld')) aktiv.blur();
     const percent = Math.round(S.geloest.size / (S.reihe.length || 1) * 100);
     Tracker.setContext({ progress: percent });
     Tracker.progress({
@@ -592,6 +851,12 @@ function melden(richtig, fehlvorstellung) {
   /* Der Kern: falsch heißt nicht "leider falsch", sondern Diagnose. */
   if (fehlvorstellung) {
     melde('nope', `<b>Fast.</b> ${fehlvorstellung.feedback}`);
+    erklaerungsverweis(fehlvorstellung);
+    /* Bisher wurde der Denkfehler nur notiert und tauchte frühestens im
+       Warm-up der nächsten Stunde wieder auf. Jetzt kommt direkt danach
+       dieselbe Sache mit anderen Zahlen — dort, wo der Fehler noch frisch
+       ist und die Korrektur wirklich ankommt. */
+    nachfassEinreihen(fehlvorstellung.id);
   } else if (S.versuche === 1) {
     melde('nope', 'Noch nicht richtig. Schau dir deinen Rechenweg noch einmal an.');
   }
@@ -608,6 +873,77 @@ function melden(richtig, fehlvorstellung) {
       akt.append(w);
     }
   }
+}
+
+/* ---------- Verweis auf die passende Erklärstelle ----------
+   „📖 Erklärung" öffnete bisher immer die ganze Lernkarte. Die Rückmeldung
+   weiß aber genau, worum es geht — also springt sie an die Stelle, die zu
+   diesem Denkfehler gehört. Optional steuerbar über das Feld
+
+     "misconceptions": [{ "id": "…", "value": …, "feedback": "…",
+                          "verweis": { "absatz": 1 } }]
+
+   Ohne Angabe wird die Animation der eigenen Niveaustufe angesteuert; hat
+   die Karte keine, der Merksatz. */
+function erklaerungsverweis(fehlvorstellung) {
+  const lk = S.daten.lernkarten && S.daten.lernkarten[S.pfad];
+  if (!lk) return;
+  const v = fehlvorstellung.verweis || {};
+  const ziel = Number.isInteger(v.absatz) ? { absatz: v.absatz }
+    : (v.animation === true || lk.visual) ? { animation: true }
+    : { merke: true };
+  const b = el('button', 'btn btn-neben verweis-btn', '📖 Dazu die Erklärung');
+  b.type = 'button';
+  b.addEventListener('click', () => {
+    Tracker.track('erklaerung_verweis', { path: S.pfad, misconception: fehlvorstellung.id });
+    lernkarteZeigen('wieder', ziel);
+  });
+  $('#rueck').append(b);
+}
+
+/* ---------- Nachfassen: dieselbe Sache, andere Zahlen ---------- */
+function fehlvorstellungIn(t, id) {
+  if ((t.misconceptions || []).some(m => m.id === id)) return true;
+  return (t.fields || []).some(f => (f.misconceptions || []).some(m => m.id === id));
+}
+
+const LEICHTER = { A: [], B: ['A'], C: ['B', 'A'] };
+
+function nachfassEinreihen(id) {
+  if (!id || S.daten.pruefung || S.nachgefasst.has(id)) return;
+  const passt = (t, pfad) => t !== S.aufgabe && t.path === pfad
+    && !S.geloest.has(t.id) && fehlvorstellungIn(t, id);
+
+  /* Zuerst in der eigenen Reihe: dann bleibt die Gesamtzahl gleich und die
+     Aufgabe rückt nur nach vorn. */
+  const idx = S.reihe.findIndex((t, i) => i > S.index && passt(t, S.pfad));
+  let treffer = null, leichter = false;
+  if (idx > -1) {
+    treffer = S.reihe.splice(idx, 1)[0];
+  } else {
+    treffer = (S.daten.tasks || []).find(t => passt(t, S.pfad) && !S.reihe.includes(t)) || null;
+    /* Kein passender Zwilling auf dem eigenen Pfad? Dann tut es eine Aufgabe
+       eine Stufe darunter — nach einem Denkfehler ist das ohnehin der
+       bessere Ansatz als dasselbe Niveau noch einmal. */
+    if (!treffer) {
+      for (const p of (LEICHTER[S.pfad] || [])) {
+        treffer = (S.daten.tasks || []).find(t => passt(t, p) && !S.reihe.includes(t)) || null;
+        if (treffer) { leichter = true; break; }
+      }
+    }
+  }
+  /* Führt der Pool zu dieser Fehlvorstellung keine zweite Aufgabe, bleibt
+     alles wie bisher — lieber keine Nachfassaufgabe als eine unpassende. */
+  if (!treffer) return;
+
+  treffer.nachfass = id;
+  treffer.nachfass_leichter = leichter;
+  S.reihe.splice(S.index + 1, 0, treffer);
+  S.nachgefasst.add(id);
+  Tracker.track('nachfass_eingereiht', { path: S.pfad, misconception: id, task: treffer.id, leichter });
+  melde('tipp', leichter
+    ? 'Gleich danach kommt <b>dieselbe Sache noch einmal</b> — eine Stufe einfacher.'
+    : 'Gleich danach kommt <b>dieselbe Sache noch einmal</b> — mit anderen Zahlen.');
 }
 
 /* ---------- Abschluss ---------- */
@@ -656,16 +992,64 @@ function abschluss() {
   p.innerHTML = `Das kannst du jetzt:<br><b>${satz}</b>`;
   karte.append(p);
 
+  const gesamt = S.kernGesamt || S.reihe.length || 1;
+  const aufAnhieb = S.kernGesamt ? S.kernAufAnhieb : S.aufAnhieb;
+  const quote = aufAnhieb / gesamt;
+
+  /* Selbsteinschätzung gegen das Ergebnis halten. Wer sich unterschätzt
+     hat, erfährt es hier — das ist häufig der eigentliche Zugewinn. */
+  if (S.selbst) {
+    const kasten = el('div', 'selbstcheck selbstcheck-fazit');
+    const stark = quote >= .8, schwach = quote < .5;
+    let text;
+    if (S.selbst === 'nein' && stark) text = 'Vorhin hast du „noch nicht“ angekreuzt — und dann <b>' + aufAnhieb + ' von ' + gesamt + '</b> auf Anhieb richtig gehabt. Du kannst mehr, als du dachtest.';
+    else if (S.selbst === 'teils' && stark) text = 'Du warst dir unsicher, hattest aber <b>' + aufAnhieb + ' von ' + gesamt + '</b> auf Anhieb richtig. Das saß besser als gedacht.';
+    else if (S.selbst === 'ja' && schwach) text = 'Du warst dir sicher, auf Anhieb saßen aber <b>' + aufAnhieb + ' von ' + gesamt + '</b>. Schau dir die Erklärung noch einmal an — dann passt es.';
+    else text = 'Deine Einschätzung vorher und dein Ergebnis (<b>' + aufAnhieb + ' von ' + gesamt + '</b> auf Anhieb) passen zusammen.';
+    kasten.innerHTML = text;
+    karte.append(kasten);
+    Tracker.track('selbstcheck_nachher', { path: S.pfad, vorher: S.selbst, auf_anhieb: aufAnhieb, gesamt });
+  }
+
+  /* Empfehlung statt bloßer Wahlmöglichkeit: Die App weiß, wie es lief. */
   const naechster = { A: 'B', B: 'C', C: null }[S.pfad];
+  const vorheriger = { A: null, B: 'A', C: 'B' }[S.pfad];
+  const hoch = naechster && quote >= .8 && S.daten.lernkarten && S.daten.lernkarten[naechster];
+  const runter = vorheriger && quote < .5 && S.daten.lernkarten && S.daten.lernkarten[vorheriger];
+  if (hoch || runter) {
+    const rat = el('div', 'empfehlung');
+    rat.innerHTML = hoch
+      ? `<b>Vorschlag:</b> ${aufAnhieb} von ${gesamt} auf Anhieb — Pfad ${naechster} passt jetzt zu dir.`
+      : `<b>Vorschlag:</b> Das war zäh (${aufAnhieb} von ${gesamt} auf Anhieb). Auf Pfad ${vorheriger} wird die Grundlage noch einmal ruhig aufgebaut.`;
+    karte.append(rat);
+  }
+
   const akt = el('div', 'aktionen');
   if (naechster) {
-    const w = el('button', 'btn btn-haupt', `Weiter auf Pfad ${naechster}`);
+    const w = el('button', 'btn ' + (hoch ? 'btn-haupt' : 'btn-neben'), `Weiter auf Pfad ${naechster}`);
     w.addEventListener('click', () => pfadSetzen(naechster));
     akt.append(w);
+  }
+  if (runter) {
+    const z = el('button', 'btn btn-haupt', `Zurück auf Pfad ${vorheriger}`);
+    z.addEventListener('click', () => pfadSetzen(vorheriger));
+    akt.append(z);
   }
   const n = el('button', 'btn btn-neben', 'Noch einmal üben');
   n.addEventListener('click', () => pfadSetzen(S.pfad));
   akt.append(n);
+
+  /* Verteiltes Wiederholen: drei Aufgaben von früher gehören ans Ende der
+     Stunde, nicht nur an den Anfang der nächsten. Auswahl, Leitner-Kartei
+     und Fehlerprofil kommen unverändert aus dem Warm-up. */
+  if (!S.daten.pruefung) {
+    const w = el('a', 'btn btn-neben', '3 Aufgaben von früher');
+    w.href = 'warmup.html?n=3&u=' + encodeURIComponent(String(S.daten.unit || '').toLowerCase());
+    w.style.textDecoration = 'none';
+    w.addEventListener('click', () => Tracker.track('wiederholung_am_ende', { unit: S.daten.unit, path: S.pfad }));
+    akt.append(w);
+  }
+
   karte.append(akt);
   b.append(karte);
 }
@@ -682,7 +1066,20 @@ function formelkarteBauen() {
   if (S.daten.wortspeicher) {
     i.append(el('h3', null, 'Wortspeicher'));
     const ul = el('ul');
-    S.daten.wortspeicher.forEach(w => ul.append(el('li', null, w)));
+    S.daten.wortspeicher.forEach(w => {
+      const k = String(w).replace(/^(der|die|das)\s+/i, '').trim();
+      const erkl = worterklaerung(k);
+      const li = el('li');
+      /* Der Wortspeicher listete bisher nur die Begriffe. Wer sie nicht
+         kennt, hat davon nichts — deshalb steht die Erklärung gleich dabei. */
+      if (erkl) {
+        li.append(el('b', null, w), document.createElement('br'));
+        li.append(el('span', 'fk-erkl', erkl));
+      } else {
+        li.textContent = String(w);
+      }
+      ul.append(li);
+    });
     i.append(ul);
   }
   if (k.saetze) {
@@ -809,6 +1206,20 @@ function uebungskarteBauen() {
   });
   inhalt.append(ul);
 }
+
+/* Fallback für ältere Android-WebViews ohne zuverlässiges :has().
+   Während die Bildschirmtastatur offen ist, fahren die festen unteren
+   Leisten aus dem Weg. */
+document.addEventListener('focusin', e => {
+  if (e.target?.matches?.('.zahl-feld')) document.body.classList.add('tastatur-aktiv');
+});
+document.addEventListener('focusout', () => {
+  setTimeout(() => {
+    if (!document.activeElement?.matches?.('.zahl-feld')) {
+      document.body.classList.remove('tastatur-aktiv');
+    }
+  }, 0);
+});
 
 /* Auch dann starten, wenn dieses Skript erst nach DOMContentLoaded
    nachgeladen wurde — der Prüfungstrainer lädt engine.js dynamisch. */

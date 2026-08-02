@@ -14,6 +14,14 @@
     "der Kreissektor",
     "die Kreiszahl π"
   ],
+  "worterklaerungen": {
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Grundkreisfläche": "Wie groß der Kreis unten ist.",
+    "Mantel": "Alle Seitenflächen zusammen, ohne oben und unten.",
+    "Mantellinie": "Die schräge Strecke von der Spitze zum Kreisrand.",
+    "Kreissektor": "Ein Stück von einem Kreis, wie ein Tortenstück.",
+    "Kreiszahl π": "Eine feste Zahl für Kreise. Du rechnest meist mit 3,14."
+  },
   "can_do": {
     "A": "Du berechnest die Mantelfläche eines Kegels über π · r · s.",
     "B": "Du berechnest die Oberfläche = Grundkreis + Mantel.",

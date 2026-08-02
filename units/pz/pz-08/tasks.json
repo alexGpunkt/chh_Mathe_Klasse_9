@@ -13,6 +13,13 @@
     "das Kapital",
     "der Rabatt"
   ],
+  "worterklaerungen": {
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %.",
+    "Prozentwert": "Der Teil in Euro, Stück oder Kilogramm.",
+    "Prozentsatz": "Die Zahl mit dem Prozentzeichen, zum Beispiel 20 %.",
+    "Kapital": "Das Geld, das auf der Bank liegt.",
+    "Rabatt": "Der Betrag, den du weniger zahlst."
+  },
   "can_do": {
     "A": "Du berechnest den Grundwert über den 1-%-Schritt.",
     "B": "Du bestimmst den Grundwert selbstständig und prüfst, ob er größer als der Prozentwert ist.",

@@ -13,6 +13,13 @@
     "der Dreisatz",
     "die Produktprobe"
   ],
+  "worterklaerungen": {
+    "Zuordnung": "Zu jedem Wert links gehört ein Wert rechts.",
+    "proportional": "Doppelt so viel auf der einen Seite heißt doppelt so viel auf der anderen.",
+    "antiproportional": "Mehr auf der einen Seite heißt weniger auf der anderen.",
+    "Dreisatz": "Erst auf 1 herunterrechnen, dann auf die gesuchte Menge hoch.",
+    "Produktprobe": "Du prüfst, ob das Produkt aus beiden Zahlen immer gleich bleibt."
+  },
   "can_do": {
     "A": "Du sagst bei einer Situation voraus, ob der zweite Wert steigt oder fällt.",
     "B": "Du unterscheidest proportional und antiproportional und rechnest beide Dreisätze.",

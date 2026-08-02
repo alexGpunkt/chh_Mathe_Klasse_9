@@ -15,6 +15,14 @@
     "die Oberfläche",
     "der Satz des Pythagoras"
   ],
+  "worterklaerungen": {
+    "Pyramide": "Ein Körper mit einer eckigen Grundfläche und einer Spitze.",
+    "Kegel": "Ein Körper mit einem Kreis unten und einer Spitze oben.",
+    "Kugel": "Ein Körper, der überall gleich rund ist.",
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Satz des Pythagoras": "Im rechtwinkligen Dreieck gilt: a² + b² = c²."
+  },
   "can_do": {
     "A": "Du wählst zwischen Pyramide, Kegel und Kugel die richtige Formel.",
     "B": "Du löst gemischte Prüfungsaufgaben zu Spitzkörpern.",
@@ -36,7 +44,13 @@
         ],
         "ergebnis": "V = (π · r² · h) : 3."
       },
-      "merke": "Erst den Körper erkennen. Dann die Formel."
+      "merke": "Erst den Körper erkennen. Dann die Formel.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "A",
+        "bereich": "sk"
+      }
     },
     "B": {
       "titel": "Gemischte Prüfungsaufgaben",
@@ -54,7 +68,13 @@
         ],
         "ergebnis": "O ≈ 452,16 cm²."
       },
-      "merke": "Körper und Größe erkennen, fehlende Stücke per Pythagoras."
+      "merke": "Körper und Größe erkennen, fehlende Stücke per Pythagoras.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "B",
+        "bereich": "sk"
+      }
     },
     "C": {
       "titel": "Begründen und Plausibilität prüfen",
@@ -72,7 +92,13 @@
         ],
         "ergebnis": "Nein, nur ≈ 0,31 l – weniger als ein halber Liter."
       },
-      "merke": "Formel + Begründung + Einheiten, dann Größenordnung prüfen."
+      "merke": "Formel + Begründung + Einheiten, dann Größenordnung prüfen.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "C",
+        "bereich": "sk"
+      }
     }
   },
   "formelkarte": {

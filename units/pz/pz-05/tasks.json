@@ -12,6 +12,13 @@
     "der Rabatt",
     "der Anteil"
   ],
+  "worterklaerungen": {
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %.",
+    "Prozentwert": "Der Teil in Euro, Stück oder Kilogramm.",
+    "Prozentsatz": "Die Zahl mit dem Prozentzeichen, zum Beispiel 20 %.",
+    "Rabatt": "Der Betrag, den du weniger zahlst.",
+    "Anteil": "Ein Teil von einem Ganzen."
+  },
   "can_do": {
     "A": "Du findest in einem Text den Grundwert — das Ganze.",
     "B": "Du benennst in einer Sachaufgabe Grundwert, Prozentwert und Prozentsatz.",
@@ -30,7 +37,7 @@
         "schritte": [
           "Wovon werden die 20 % genommen?",
           "Von den 60 € (dem vollen Preis).",
-          "→ 60 € = 100 %"
+          "→ 100 % = 60 €"
         ],
         "ergebnis": "Grundwert G = 60 € (das Ganze = 100 %)."
       },

@@ -11,6 +11,12 @@
     "die Grundgebühr",
     "der Schnittpunkt"
   ],
+  "worterklaerungen": {
+    "y-Achsenabschnitt": "Die Höhe, in der die Gerade die y-Achse schneidet. Er heißt b.",
+    "Startwert": "Der Wert, mit dem du anfängst.",
+    "Grundgebühr": "Der feste Betrag, den du auch ohne Nutzung zahlst.",
+    "Schnittpunkt": "Die Stelle, an der sich zwei Linien kreuzen."
+  },
   "can_do": {
     "A": "Du liest b am Graphen ab: die Höhe, auf der die Gerade die senkrechte Achse schneidet.",
     "B": "Du bestimmst b aus Graph, Tabelle und Sachkontext („Grundgebühr“).",

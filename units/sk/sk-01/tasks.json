@@ -15,6 +15,15 @@
     "das Seitendreieck",
     "das Netz"
   ],
+  "worterklaerungen": {
+    "Pyramide": "Ein Körper mit einer eckigen Grundfläche und einer Spitze.",
+    "Spitze": "Der oberste Punkt vom Körper.",
+    "Grundkante": "Eine Kante der Grundfläche.",
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht.",
+    "Seitenhöhe": "Die Höhe im Seitendreieck, von der Spitze zur Kantenmitte.",
+    "Seitendreieck": "Eine der schrägen Flächen an der Pyramide.",
+    "Netz": "Der aufgeklappte Körper, flach auf dem Papier."
+  },
   "can_do": {
     "A": "Du erkennst eine Pyramide und benennst Spitze, Grundfläche, Grundkante und Höhe.",
     "B": "Du unterscheidest Höhe und Seitenhöhe und beschreibst das Netz der Pyramide.",

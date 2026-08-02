@@ -12,6 +12,13 @@
     "die Lösung",
     "umformen"
   ],
+  "worterklaerungen": {
+    "Gleichung": "Zwei Rechnungen mit einem Gleichheitszeichen dazwischen.",
+    "Waage": "Ein Bild für die Gleichung. Links und rechts muss gleich viel sein.",
+    "Probe": "Die Kontrolle, ob dein Ergebnis stimmt.",
+    "Lösung": "Die Zahl, die die Gleichung wahr macht.",
+    "umformen": "Die Gleichung Schritt für Schritt umschreiben."
+  },
   "can_do": {
     "A": "Du löst Gleichungen der Form ax + b = c mit dem Waagemodell.",
     "B": "Du löst Gleichungen mit x auf beiden Seiten und machst die Probe.",

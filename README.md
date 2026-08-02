@@ -173,23 +173,27 @@ erreichbar, sagt die Seite das, statt stumm zu bleiben.
 
 ## Interaktive Animationen
 
-Die Anwendung enthält jetzt **40 interaktive Animationen** in jeweils drei
+Die Anwendung enthält jetzt **41 interaktive Animationen** in jeweils drei
 Niveaustufen:
 
 - 10 zu Prozent- und Zinsrechnung (`PZ-01` bis `PZ-13`, thematisch gebündelt)
 - 10 zu linearen Funktionen
 - 10 zu Körpern, Prismen und Zylindern (`KP-01` bis `KP-11`, thematisch gebündelt)
 - 10 zu Spitzkörpern (`SK-01` bis `SK-11`, thematisch gebündelt)
+- 1 bereichsübergreifende Signalwort-Animation für PZ-14, KP-12 und SK-12
 
-Die Lernkarten verwenden insgesamt **138 Animationsverweise**:
+Die Lernkarten verwenden insgesamt **147 Animationsverweise**:
 
 - 39 in `PZ-01` bis `PZ-13`
 - 33 in den Einheiten zu linearen Funktionen
 - 33 in `KP-01` bis `KP-11`
 - 33 in `SK-01` bis `SK-11`
+- 9 in den drei Prüfungseinheiten PZ-14, KP-12 und SK-12
 
-`PZ-14`, `KP-12` und `SK-12` bleiben als gemischte Trainings-, Anwendungs-
-beziehungsweise Prüfungseinheiten bewusst ohne eigene Animation. Die Galerie
+`PZ-14`, `KP-12` und `SK-12` sind keine Themeneinheiten, sondern gemischte
+Trainings- und Prüfungsstunden. Ihr erster Schritt ist deshalb immer derselbe:
+Was ist überhaupt gesucht? Genau das zeigt die Animation `signalwoerter` — ein
+Signalwort erscheint, der passende Kasten leuchtet auf. Die Galerie
 kann über `animationen.html?bereich=PZ`, `animationen.html?bereich=LF`,
 `animationen.html?bereich=KP` oder `animationen.html?bereich=SK` gefiltert
 geöffnet werden.
@@ -208,10 +212,18 @@ meint immer die Niveaustufe, nie den Inhalt:
 | `zinsen` | `thema` | `jahr` (PZ-11) · `zeit` (PZ-12) · `eszins` (PZ-13) |
 | `veraenderung` | `thema` | `rabatt` (PZ-09) · `richtung` (PZ-10) |
 | `rueckwaerts` | `form` | `pyramide` (SK-05) · `kegel` (SK-09) |
+| `signalwoerter` | `bereich` | `pz` (PZ-14) · `kp` (KP-12) · `sk` (SK-12) |
 | `schnittpunkt` | `rechnung` | `true` blendet die Rechenzeile auch auf Stufe A ein (LF-13) |
 
 `ANIM.block()` reicht das ganze `visual`-Objekt durch; fehlt eine Option, bleibt
 es beim Standardverhalten.
+
+### Vorhersage vor dem Start
+
+18 Animationen tragen eine kurze Frage über dem Bild („Was passiert mit der
+Geraden, wenn m größer wird?“). **Das Bild startet erst nach der Antwort** —
+wer nur zusieht, prüft nichts. Die Fragen stehen zentral in der Tabelle `FRAGEN`
+in `animationen.js`; eine Animation ohne Eintrag startet wie bisher sofort.
 
 ### Bewegung nur im Blickfeld
 
@@ -356,6 +368,9 @@ funktioniert sofort, weil der Bereich aus dem Präfix der ID abgeleitet wird.
   "leitidee": "L1",
   "standards": ["K2", "K5"],
   "wortspeicher": ["der Grundwert", "der Prozentwert"],
+  "worterklaerungen": {             // ein Satz je Begriff, Alltagssprache
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %."
+  },
   "can_do": {                       // erscheint am Ende jedes Pfades
     "A": "Du berechnest den Grundwert über den 1-%-Schritt.",
     "B": "…", "C": "…"
@@ -389,6 +404,29 @@ Richtwert: rund **170 Zeichen** für Hinführung, Erklärung und Merksatz
 zusammen, im Mittel **6 Wörter je Satz**. B liegt bei etwa 300 Zeichen,
 C bei etwa 360. Wenn A so lang ist wie B, ist A noch nicht Stufe A.
 
+**Auf Pfad A wird der letzte Schritt der Beispielrechnung zur Lücke.** Ein
+fertig vorgerechnetes Beispiel liest man, ein Beispiel mit einer Lücke rechnet
+man mit. Die Engine erkennt das selbst: Steht hinter dem letzten
+Gleichheitszeichen eine Zahl, wird daraus ein Eingabefeld. „Schritt zeigen“
+löst jederzeit auf — die Lücke darf niemanden aussperren. B und C bleiben
+unverändert vollständig.
+
+### Wenn eine Antwort falsch ist
+
+Drei Dinge geschehen, sobald eine **Fehlvorstellung** erkannt wird:
+
+1. Sie wird lokal notiert — daraus zieht das Warm-up der nächsten Stunde.
+2. Die Rückmeldung bekommt den Knopf **„📖 Dazu die Erklärung“** und springt an
+   die passende Stelle der Lernkarte (steuerbar über `verweis`).
+3. Direkt hinter die aktuelle Aufgabe rückt eine **Nachfassaufgabe**: dieselbe
+   Fehlvorstellungs-ID, andere Zahlen. Gesucht wird zuerst im eigenen Pfad, dann
+   eine Stufe darunter. Je Fehlvorstellung genau eine pro Durchlauf.
+
+Ob eine Nachfassaufgabe gefunden wird, hängt allein am Pool: Es braucht eine
+zweite Aufgabe mit derselben ID. Derzeit ist das für **33 % (A) · 47 % (B) ·
+38 % (C)** aller Fehlvorstellungen der Fall. Wer die Quote heben will, taggt
+weitere Aufgaben mit bereits vorhandenen IDs — Code ist dafür nicht nötig.
+
 ### Aufgabentypen
 
 **numeric** — Zahleneingabe
@@ -407,7 +445,8 @@ C bei etwa 360. Wenn A so lang ist wie B, ist A noch nicht Stufe A.
   "solution": "1 % = 68 : 17 = 4 €\n100 % = 4 · 100 = 400 €",
   "misconceptions": [
     { "id": "mal_statt_geteilt", "value": 11.56,
-      "feedback": "Du hast 17 % von 68 € gerechnet …" }
+      "feedback": "Du hast 17 % von 68 € gerechnet …",
+      "verweis": { "absatz": 1 } }    // optional: Sprungziel in der Lernkarte
   ],
   "tags": ["grundwert", "bbr"],
   "spiral": ["W-PROZ"]
@@ -691,6 +730,16 @@ vom Schülerlogin beziehungsweise im Develop-Modus vom Testschüler-Bypass geset
 ## Mobile
 
 - Touchziele ≥ 44 px, Zahlenfeld ist `inputmode="decimal"`, nie `type="number"`
+- Grafiken sind auf **46 svh** begrenzt (Tablet 52, Querformat 62), damit
+  Aufgabe und Eingabefeld sichtbar bleiben; eigene Regeln für
+  `(orientation: landscape) and (max-height: 560px)`
+- Sobald ein Zahlenfeld den Fokus hat, weichen Formelkarte und Buchnavigation
+  nach unten aus — sonst konkurrieren sie mit der Tastatur um denselben Rand
+- **Dunkler Modus:** Alle Farben liegen als Token in `:root`; ein
+  `prefers-color-scheme`-Zweig tauscht sie. Kopf, Hero und Formelkarte haben
+  eigene Token (`--kopf-bg`, `--kopf-text`), weil sie immer dunkel sind.
+  `animationen.js` führt zwei Paletten und baut die Bilder bei einem Wechsel
+  während der Sitzung neu auf. Der Druck setzt alles auf hell zurück.
 - Eingaben werden mit Komma **und** Punkt akzeptiert. Ohne Komma ist `1.250`
   mehrdeutig (1250 oder 1,25?) — die Engine prüft beide Lesarten, statt eine
   zu raten. Die Lesarten unterscheiden sich um Faktor 1000, ein Fehltreffer
@@ -722,3 +771,22 @@ Schwierigkeiten entwickelt, unterscheidet klar zwischen 0/O und 1/l/I — das
 ist bei Zahlenaufgaben und DaZ kein Luxus. Falls das Schulnetz Google Fonts
 blockiert, greifen die Fallbacks; besser ist, die Dateien nach
 `assets/fonts/` zu legen und lokal einzubinden.
+
+
+## Aktueller Develop-Stand V25
+
+V23 senkt die sprachliche Hürde auf Pfad A und korrigiert mehrere fachliche
+Animationen. V24 ergänzt Nachfassaufgaben, gezielte Erklärungsverweise,
+Vorhersagefragen, antippbare Fachbegriffe, Selbsteinschätzung und mobile
+Optimierungen. V25 integriert diese Änderungen in die bestehende Buch-,
+Tracking- und Offline-Struktur und behebt dabei insbesondere:
+
+- vollständige Rückkehr aus der Lernkarte ohne Verlust von Eingaben und Versuchen,
+- sauberes Stoppen ersetzter Animationen und ihrer Beobachter,
+- zufällige Reihenfolge der Vorhersageantworten,
+- korrekte Aufgaben-Sitzungen und Verweildauern im Lehrerdashboard,
+- Offlineaufrufe von `einheit.html?u=…`,
+- Tastatur-Fallback für ältere Android-WebViews,
+- Empfehlungen auf Grundlage der ursprünglichen Kernaufgaben statt zusätzlicher Nachfassaufgaben.
+
+Cache-Version: `mathe9-v25-integration-stability-develop`.

@@ -11,6 +11,12 @@
     "der y-Achsenabschnitt",
     "der Graph"
   ],
+  "worterklaerungen": {
+    "Gleichung": "Zwei Rechnungen mit einem Gleichheitszeichen dazwischen.",
+    "Steigung": "Wie steil die Gerade ist. Sie heißt m.",
+    "y-Achsenabschnitt": "Die Höhe, in der die Gerade die y-Achse schneidet. Er heißt b.",
+    "Graph": "Die Linie im Koordinatensystem."
+  },
   "can_do": {
     "A": "Du wählst zu einem Graphen aus mehreren Gleichungen die richtige aus.",
     "B": "Du liest m und b ab und schreibst die Gleichung selbst auf.",

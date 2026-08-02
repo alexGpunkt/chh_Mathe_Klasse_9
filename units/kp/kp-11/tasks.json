@@ -14,6 +14,14 @@
     "das Fassungsvermögen",
     "aufteilen"
   ],
+  "worterklaerungen": {
+    "zusammengesetzt": "Aus mehreren einfachen Körpern gebaut.",
+    "Hohlkörper": "Ein Körper mit einem Loch innen, zum Beispiel ein Rohr.",
+    "Dichte": "Wie schwer ein Kubikzentimeter von einem Stoff ist.",
+    "Masse": "Wie schwer etwas ist. Man gibt sie in Gramm oder Kilogramm an.",
+    "Fassungsvermögen": "Wie viel in einen Körper hineinpasst.",
+    "aufteilen": "In gleich große Teile zerlegen."
+  },
   "can_do": {
     "A": "Du zerlegst einen zusammengesetzten Körper in Grundformen und addierst die Volumen.",
     "B": "Du berechnest Füllmengen und Massen über Volumen · Dichte.",

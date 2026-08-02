@@ -13,6 +13,13 @@
     "der Faktor ein Drittel",
     "das Prisma"
   ],
+  "worterklaerungen": {
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Grundfläche": "Die Fläche unten am Körper. Sie gibt dem Körper den Namen.",
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht.",
+    "Faktor ein Drittel": "Du teilst am Ende durch 3.",
+    "Prisma": "Ein Körper wie ein Stapel aus gleichen Flächen."
+  },
   "can_do": {
     "A": "Du berechnest das Pyramidenvolumen über V = ⅓ · G · h.",
     "B": "Du berechnest die quadratische Grundfläche und daraus das Volumen.",

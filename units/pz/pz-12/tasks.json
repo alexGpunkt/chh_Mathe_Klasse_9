@@ -12,6 +12,13 @@
     "die Laufzeit",
     "das Bankjahr"
   ],
+  "worterklaerungen": {
+    "Kapital": "Das Geld, das auf der Bank liegt.",
+    "Zinssatz": "Wie viel Prozent Zinsen es pro Jahr gibt.",
+    "Zinsen": "Das Geld, das du fürs Sparen bekommst oder fürs Leihen zahlst.",
+    "Laufzeit": "Wie lange das Geld liegt.",
+    "Bankjahr": "Ein Rechenjahr mit 360 Tagen. Jeder Monat hat 30 Tage."
+  },
   "can_do": {
     "A": "Du berechnest Zinsen für ein halbes oder ein viertel Jahr.",
     "B": "Du wendest den Zeitfaktor m/12 bzw. t/360 sicher an.",

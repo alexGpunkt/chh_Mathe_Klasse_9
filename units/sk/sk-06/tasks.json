@@ -15,6 +15,15 @@
     "die Mantellinie",
     "der Satz des Pythagoras"
   ],
+  "worterklaerungen": {
+    "Kegel": "Ein Körper mit einem Kreis unten und einer Spitze oben.",
+    "Spitze": "Der oberste Punkt vom Körper.",
+    "Grundkreis": "Der Kreis unten am Kegel oder Zylinder.",
+    "Radius": "Die Strecke von der Kreismitte bis zum Rand.",
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht.",
+    "Mantellinie": "Die schräge Strecke von der Spitze zum Kreisrand.",
+    "Satz des Pythagoras": "Im rechtwinkligen Dreieck gilt: a² + b² = c²."
+  },
   "can_do": {
     "A": "Du benennst am Kegel Radius, Höhe und Mantellinie und erkennst das rechtwinklige Dreieck.",
     "B": "Du berechnest die Mantellinie s aus r und h mit Pythagoras.",

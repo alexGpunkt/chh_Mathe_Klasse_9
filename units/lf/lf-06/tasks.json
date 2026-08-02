@@ -11,6 +11,12 @@
     "der y-Achsenabschnitt",
     "das Steigungsdreieck"
   ],
+  "worterklaerungen": {
+    "Gerade": "Eine gerade Linie ohne Anfang und Ende.",
+    "Steigung": "Wie steil die Gerade ist. Sie heißt m.",
+    "y-Achsenabschnitt": "Die Höhe, in der die Gerade die y-Achse schneidet. Er heißt b.",
+    "Steigungsdreieck": "Das Dreieck an der Geraden. Es zeigt dir m."
+  },
   "can_do": {
     "A": "Du zeichnest mit der Anleitungskarte: b markieren, Steigungsdreieck, Linie.",
     "B": "Du zeichnest jede Gerade — auch mit m als Bruch und negativem m.",

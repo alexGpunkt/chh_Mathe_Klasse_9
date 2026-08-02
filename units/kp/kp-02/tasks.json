@@ -14,6 +14,14 @@
     "der Kubikmeter",
     "umrechnen"
   ],
+  "worterklaerungen": {
+    "Quadratzentimeter": "Ein Quadrat mit 1 cm Seitenlänge.",
+    "Kubikzentimeter": "Ein Würfel mit 1 cm Kante.",
+    "Kubikdezimeter": "Ein Würfel mit 1 dm Kante. Das ist genau 1 Liter.",
+    "Liter": "Ein Maß für Flüssigkeit. 1 Liter ist 1 Kubikdezimeter.",
+    "Kubikmeter": "Ein Würfel mit 1 m Kante.",
+    "umrechnen": "In eine andere Einheit übertragen."
+  },
   "can_do": {
     "A": "Du liest Flächen- und Volumeneinheiten und weißt: 1 l = 1 dm³.",
     "B": "Du rechnest Flächeneinheiten (·100) und Volumeneinheiten (·1000) sicher um.",

@@ -14,6 +14,14 @@
     "die dritte Wurzel",
     "die Seitenhöhe"
   ],
+  "worterklaerungen": {
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Grundkante": "Eine Kante der Grundfläche.",
+    "umstellen": "Die Formel so umschreiben, dass die gesuchte Größe allein steht.",
+    "dritte Wurzel": "Die Zahl, die dreimal mit sich selbst malgenommen das Ergebnis gibt.",
+    "Seitenhöhe": "Die Höhe im Seitendreieck, von der Spitze zur Kantenmitte."
+  },
   "can_do": {
     "A": "Du entscheidest, ob Volumen oder Oberfläche gefragt ist, und wählst die richtige Formel.",
     "B": "Du bestimmst fehlende Größen (h, a) aus Volumen oder Oberfläche.",

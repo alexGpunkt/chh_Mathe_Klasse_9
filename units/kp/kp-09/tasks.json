@@ -14,6 +14,14 @@
     "die Kreiszahl π",
     "die Höhe"
   ],
+  "worterklaerungen": {
+    "Zylinder": "Ein Körper wie eine Dose. Unten und oben ist ein Kreis.",
+    "Radius": "Die Strecke von der Kreismitte bis zum Rand.",
+    "Durchmesser": "Die Strecke quer durch den Kreis, genau durch die Mitte. Sie ist doppelt so lang wie der Radius.",
+    "Kreisfläche": "Wie groß ein Kreis ist. Du rechnest π · r · r.",
+    "Kreiszahl π": "Eine feste Zahl für Kreise. Du rechnest meist mit 3,14.",
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht."
+  },
   "can_do": {
     "A": "Du berechnest die Kreisfläche mit π · r² und daraus V = π · r² · h.",
     "B": "Du berechnest Zylindervolumen, auch wenn nur der Durchmesser gegeben ist.",

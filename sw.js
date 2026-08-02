@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v23-stufe-a-animationen-develop';
+const VERSION = 'mathe9-v25-integration-stability-develop';
 
 const SCHALE = [
   './',
@@ -141,6 +141,11 @@ self.addEventListener('fetch', e => {
 
   e.respondWith((async () => {
     const cache = await caches.open(VERSION);
+    /* Queryparameter wie ?u=pz-05 gehören zur Navigation, nicht zu einer
+       eigenen Datei. Offline muss deshalb einheit.html aus dem vorab
+       gefüllten Cache gefunden werden, auch wenn die konkrete URL noch nie
+       online geöffnet wurde. */
+    const cacheKey = new Request(url.origin + url.pathname, { method: 'GET' });
 
     /* Programmcode und Inhalte: online immer die aktuelle Fassung laden,
        offline auf den vollständigen Cache zurückfallen. Das verhindert nach
@@ -155,22 +160,22 @@ self.addEventListener('fetch', e => {
     if (istAktualitaetskritisch) {
       try {
         const netz = await fetch(e.request, { cache: 'no-store' });
-        if (netz.ok) cache.put(e.request, netz.clone());
+        if (netz.ok) cache.put(cacheKey, netz.clone());
         return netz;
       } catch {
-        const c = await cache.match(e.request);
+        const c = await cache.match(cacheKey, { ignoreSearch: true });
         if (c) return c;
         return new Response('Offline und nicht im Cache', { status: 503 });
       }
     }
 
     /* Sonstige lokale Ressourcen: Cache zuerst, Netz als Rückfall. */
-    const c = await cache.match(e.request);
+    const c = await cache.match(cacheKey, { ignoreSearch: true });
     if (c) return c;
 
     try {
       const netz = await fetch(e.request);
-      if (netz.ok) cache.put(e.request, netz.clone());
+      if (netz.ok) cache.put(cacheKey, netz.clone());
       return netz;
     } catch {
       return new Response('Offline', { status: 503 });

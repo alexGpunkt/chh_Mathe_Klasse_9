@@ -12,6 +12,12 @@
     "die gemeinsame Lösung",
     "einsetzen"
   ],
+  "worterklaerungen": {
+    "gleichsetzen": "Zwei Rechnungen mit einem Gleichheitszeichen verbinden.",
+    "Schnittpunkt": "Die Stelle, an der sich zwei Linien kreuzen.",
+    "gemeinsame Lösung": "Ein Zahlenpaar, das in beide Gleichungen passt.",
+    "einsetzen": "Eine Zahl an die Stelle vom Buchstaben schreiben."
+  },
   "can_do": {
     "A": "Du setzt die beiden Terme gleich und bestimmst x mit vorgegebenen Schritten.",
     "B": "Du führst das Gleichsetzungsverfahren vollständig durch — x und y.",

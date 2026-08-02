@@ -14,6 +14,14 @@
     "die Oberfläche",
     "die Kreiszahl π"
   ],
+  "worterklaerungen": {
+    "Kugel": "Ein Körper, der überall gleich rund ist.",
+    "Radius": "Die Strecke von der Kreismitte bis zum Rand.",
+    "Durchmesser": "Die Strecke quer durch den Kreis, genau durch die Mitte. Sie ist doppelt so lang wie der Radius.",
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Kreiszahl π": "Eine feste Zahl für Kreise. Du rechnest meist mit 3,14."
+  },
   "can_do": {
     "A": "Du berechnest die Kugeloberfläche über 4 · π · r².",
     "B": "Du berechnest das Kugelvolumen über 4/3 · π · r³.",

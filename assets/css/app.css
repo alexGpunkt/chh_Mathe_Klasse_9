@@ -31,12 +31,67 @@
   --pfad:     var(--b);
   --pfad-bg:  var(--b-bg);
 
+  /* Flächen, Linien und Merkkästen — als Token, damit der dunkle Modus
+     sie an einer Stelle umschalten kann statt an vierzig. */
+  --linie:          #E1E6E9;
+  --linie-kraeftig: #C8D2D8;
+  --flaeche:        #EDF1F3;
+  --flaeche-2:      #E8EDF0;
+  --treffer-bg:     #F4F8F6;
+  --merk-bg:        #FFF6E0;
+  --merk-linie:     #C98A12;
+  --merk-text:      #9A6B0C;
+  --skala:          rgba(21,35,58,.28);
+
+  /* Kopf, Hero und Formelkarte sind immer dunkel — auch im hellen Modus.
+     Sie brauchen deshalb eigene Token, sonst dreht der dunkle Modus sie
+     auf hell-auf-hell. */
+  --kopf-bg:   #15233A;
+  --kopf-text: #FFFFFF;
+
   --r: 10px;
   --shadow: 0 1px 0 rgba(21,35,58,.08), 0 6px 18px -10px rgba(21,35,58,.35);
 
   --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
   --f-num: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+
+  color-scheme: light dark;
+}
+
+/* ---------- Dunkler Modus ----------
+   Nur Token werden getauscht. Die Pfadfarben werden aufgehellt, damit sie
+   auf dunklem Grund denselben Kontrast tragen wie vorher auf hellem. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:      #121820;
+    --paper-hi:   #1A222C;
+    --karo:       #1F2A35;
+    --ink:        #E7EDF3;
+    --ink-soft:   #B0BDC9;
+    --ink-faint:  #8595A3;
+
+    --a:      #5CBE92;   --a-bg:   #16302A;
+    --b:      #6FA8E8;   --b-bg:   #16283C;
+    --c:      #B08CE0;   --c-bg:   #261C38;
+
+    --korr:   #F08A82;   --korr-bg: #3A1E1C;
+    --ok:     #5CBE92;   --ok-bg:   #16302A;
+
+    --linie:          #2A3642;
+    --linie-kraeftig: #3A4855;
+    --flaeche:        #212B36;
+    --flaeche-2:      #263140;
+    --treffer-bg:     #1B2C25;
+    --merk-bg:        #33290F;
+    --merk-linie:     #D9A227;
+    --merk-text:      #F0C465;
+    --skala:          rgba(231,237,243,.32);
+
+    --kopf-bg:   #0C1219;
+
+    --shadow: 0 1px 0 rgba(0,0,0,.5), 0 6px 18px -10px rgba(0,0,0,.85);
+  }
 }
 
 * { box-sizing: border-box; }
@@ -61,8 +116,8 @@ body {
 /* ---------- Kopf ---------- */
 
 .kopf {
-  background: var(--ink);
-  color: var(--paper-hi);
+  background: var(--kopf-bg);
+  color: var(--kopf-text);
   padding: 14px 16px 18px;
 }
 .kopf a { color: inherit; }
@@ -82,7 +137,7 @@ body {
 .einheit-code {
   font-family: var(--f-num);
   font-size: 12px; letter-spacing: .12em;
-  color: var(--paper-hi); opacity: .6;
+  color: var(--kopf-text); opacity: .6;
 }
 .einheit-titel {
   font-family: var(--f-display);
@@ -124,11 +179,11 @@ body {
 .streifen-legende {
   display: flex; justify-content: space-between;
   font-family: var(--f-num); font-size: 11px;
-  color: var(--paper-hi); opacity: .55;
+  color: var(--kopf-text); opacity: .55;
   margin-top: 5px;
 }
 .streifen-legende b {
-  font-weight: 700; opacity: 1; color: var(--paper-hi);
+  font-weight: 700; opacity: 1; color: var(--kopf-text);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -144,7 +199,7 @@ body {
 .pfad-btn {
   min-height: 52px; padding: 6px 4px;
   border: 1px solid rgba(255,255,255,.22);
-  background: transparent; color: var(--paper-hi);
+  background: transparent; color: var(--kopf-text);
   border-radius: var(--r);
   font-family: var(--f-body); font-size: 13px; line-height: 1.2;
   cursor: pointer;
@@ -157,8 +212,8 @@ body {
 .pfad-btn[data-p="B"] .punkt { background: var(--b); }
 .pfad-btn[data-p="C"] .punkt { background: var(--c); }
 .pfad-btn[aria-pressed="true"] {
-  background: var(--paper-hi); color: var(--ink);
-  border-color: var(--paper-hi); font-weight: 700;
+  background: var(--kopf-text); color: #15233A;
+  border-color: var(--kopf-text); font-weight: 700;
 }
 
 /* ---------- Inhalt ---------- */
@@ -179,7 +234,7 @@ main { padding: 16px; max-width: 720px; margin: 0 auto; }
 
 .karte {
   background: var(--paper-hi);
-  border: 1px solid #E1E6E9;
+  border: 1px solid var(--linie);
   border-left: 4px solid var(--pfad);
   border-radius: var(--r);
   box-shadow: var(--shadow);
@@ -196,7 +251,7 @@ input.zahl-feld {
   flex: 1 1 auto; min-width: 0;
   height: 52px; padding: 0 12px;
   font-family: var(--f-num); font-size: 20px;
-  border: 2px solid #C8D2D8; border-radius: var(--r);
+  border: 2px solid var(--linie-kraeftig); border-radius: var(--r);
   background: var(--paper-hi); color: var(--ink);
 }
 input.zahl-feld:focus-visible {
@@ -213,7 +268,7 @@ input.zahl-feld:focus-visible {
 .opt {
   min-height: 52px; padding: 12px 14px;
   text-align: left;
-  border: 2px solid #C8D2D8; border-radius: var(--r);
+  border: 2px solid var(--linie-kraeftig); border-radius: var(--r);
   background: var(--paper-hi); color: var(--ink);
   font-family: var(--f-body); font-size: 16px; line-height: 1.35;
   cursor: pointer;
@@ -238,14 +293,14 @@ input.zahl-feld:focus-visible {
 .bild { margin: 0 0 16px; }
 .aufg-streifen {
   position: relative; height: 44px;
-  background: #E8EDF0; border: 1px solid #C8D2D8; border-radius: 4px;
+  background: var(--flaeche-2); border: 1px solid var(--linie-kraeftig); border-radius: 4px;
   overflow: hidden;
 }
 .aufg-fuell { position: absolute; inset: 0 auto 0 0; background: var(--pfad); }
 .aufg-skala {
   position: absolute; inset: 0; pointer-events: none;
   background-image: repeating-linear-gradient(
-    90deg, rgba(21,35,58,.28) 0 1px, transparent 1px 10%);
+    90deg, var(--skala) 0 1px, transparent 1px 10%);
 }
 .aufg-marke {
   position: absolute; top: 0; bottom: 0; left: 50%;
@@ -277,7 +332,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 }
 .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 .btn-haupt { background: var(--pfad); color: #fff; flex: 1 1 auto; justify-content: center; }
-.btn-neben { background: transparent; color: var(--ink-soft); border-color: #C8D2D8; }
+.btn-neben { background: transparent; color: var(--ink-soft); border-color: var(--linie-kraeftig); }
 .btn:disabled { opacity: .45; cursor: default; }
 
 /* ---------- Rückmeldung ---------- */
@@ -289,11 +344,11 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 }
 .rueck.ok    { background: var(--ok-bg);   border-color: var(--ok); }
 .rueck.nope  { background: var(--korr-bg); border-color: var(--korr); }
-.rueck.tipp  { background: #FFF6E0;        border-color: #C98A12; }
+.rueck.tipp  { background: var(--merk-bg);        border-color: var(--merk-linie); }
 .rueck b { font-weight: 700; }
 .rueck .rechenweg {
   font-family: var(--f-num); font-size: 15px;
-  margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(21,35,58,.2);
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--linie-kraeftig);
   white-space: pre-wrap;
 }
 
@@ -304,11 +359,49 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   cursor: help;
 }
 
+/* Begriffe mit hinterlegter Erklärung sind antippbar. Ein `title` allein
+   erreicht auf dem Handy niemanden. */
+button.wort-tippbar {
+  font: inherit; color: inherit; background: transparent;
+  border: 0; border-bottom: 2px dotted var(--pfad);
+  padding: 2px 0; margin: 0; cursor: pointer;
+  /* Das Wort steht mitten im Satz — der Knopf darf den Zeilenfluss nicht
+     brechen, muss aber trotzdem gut zu treffen sein. */
+  line-height: inherit;
+}
+button.wort-tippbar:hover { background: var(--pfad-bg); }
+button.wort-tippbar:focus-visible { outline: 3px solid var(--pfad); outline-offset: 2px; }
+
+.wort-erklaerung {
+  position: relative;
+  margin: 8px 0 12px;
+  padding: 10px 40px 10px 12px;
+  background: var(--pfad-bg);
+  border-left: 4px solid var(--pfad);
+  border-radius: var(--r);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.wort-erklaerung-x {
+  position: absolute; top: 4px; right: 4px;
+  width: 32px; height: 32px;
+  border: 0; background: transparent; color: var(--ink-soft);
+  font-size: 15px; cursor: pointer; border-radius: 8px;
+}
+.wort-erklaerung-x:hover { background: var(--paper-hi); }
+
+.fk-erkl { opacity: .75; font-size: 13px; }
+
+@media print {
+  button.wort-tippbar { border-bottom-style: dotted; }
+  .wort-erklaerung { display: none; }
+}
+
 /* ---------- Formelkarte (Sticky-Schublade) ---------- */
 
 .formelkarte {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
-  background: var(--ink); color: var(--paper-hi);
+  background: var(--kopf-bg); color: var(--kopf-text);
   border-radius: 14px 14px 0 0;
   box-shadow: 0 -8px 24px -12px rgba(21,35,58,.6);
   max-height: 70vh; overflow: hidden;
@@ -337,6 +430,27 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 .formel-inhalt ul { margin: 0; padding-left: 18px; font-size: 15px; }
 .formel-inhalt li { margin-bottom: 4px; }
 
+/* ---------- Unterer Bildschirmrand entlasten ----------
+   Formelkarte, Buchnavigation und die eingeblendete Tastatur greifen alle
+   nach demselben Rand. Sobald in ein Zahlenfeld getippt wird, tritt die
+   Formelkarte zur Seite; beim Verlassen des Feldes (spätestens beim Tippen
+   auf „Prüfen") kommt sie zurück. */
+.formelkarte { transition: transform .22s ease; }
+body:has(input.zahl-feld:focus) .formelkarte,
+body.tastatur-aktiv .formelkarte { transform: translateY(105%); }
+
+/* Im Querformat ist der Rand ohnehin knapp: flachere Schublade. */
+@media (orientation: landscape) and (max-height: 560px) {
+  .formelkarte summary { height: 44px; font-size: 14px; }
+  .formel-inhalt { max-height: calc(85vh - 44px); padding-bottom: 14px; }
+  .formelkarte { max-height: 85vh; }
+  body { padding-bottom: 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formelkarte { transition: none; }
+}
+
 /* ============================================================
    Lehrkraft-Werkzeuge: Arbeitsblatt & Kompetenzmatrix
    ============================================================ */
@@ -351,7 +465,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 .ab-check {
   display: flex; align-items: center; gap: 10px;
   min-height: 48px; padding: 8px 12px;
-  background: var(--paper-hi); border: 1px solid #E1E6E9; border-radius: var(--r);
+  background: var(--paper-hi); border: 1px solid var(--linie); border-radius: var(--r);
   font-size: 15px; cursor: pointer;
 }
 .ab-check input { width: 20px; height: 20px; flex: 0 0 auto; accent-color: var(--pfad); }
@@ -438,7 +552,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 /* ---------- Kompetenzmatrix ---------- */
 
 .mx-leiste {
-  background: var(--paper-hi); border: 1px solid #E1E6E9;
+  background: var(--paper-hi); border: 1px solid var(--linie);
   border-radius: var(--r); padding: 14px; margin-bottom: 20px;
   box-shadow: var(--shadow);
 }
@@ -448,13 +562,13 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 }
 
 .mx-einheit {
-  background: var(--paper-hi); border: 1px solid #E1E6E9;
+  background: var(--paper-hi); border: 1px solid var(--linie);
   border-radius: var(--r); margin-bottom: 10px; overflow: hidden;
   page-break-inside: avoid;
 }
 .mx-kopf {
   display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
-  padding: 10px 12px; background: #EDF1F3; border-bottom: 1px solid #E1E6E9;
+  padding: 10px 12px; background: var(--flaeche); border-bottom: 1px solid var(--linie);
 }
 .mx-code { font-family: var(--f-num); font-size: 12px; font-weight: 700; }
 .mx-titel { font-weight: 700; font-size: 15px; }
@@ -463,12 +577,12 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 }
 .mx-zeile {
   display: flex; align-items: flex-start; gap: 10px;
-  padding: 10px 12px; border-top: 1px solid #EDF1F3; cursor: pointer;
+  padding: 10px 12px; border-top: 1px solid var(--flaeche); cursor: pointer;
   font-size: 15px;
 }
 .mx-zeile:first-of-type { border-top: 0; }
 .mx-zeile input { width: 20px; height: 20px; flex: 0 0 auto; margin-top: 1px; }
-.mx-zeile:has(input:checked) { background: #F4F8F6; }
+.mx-zeile:has(input:checked) { background: var(--treffer-bg); }
 .mx-zeile:has(input:checked) .mx-satz { font-weight: 700; }
 .mx-pfad {
   font-family: var(--f-num); font-size: 11px; color: var(--ink-soft);
@@ -477,12 +591,30 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 .mx-satz { flex: 1 1 auto; }
 .mx-ausgabe {
   width: 100%; margin-top: 8px; font-family: var(--f-num); font-size: 12px;
-  border: 1px solid #C8D2D8; border-radius: 6px; padding: 8px;
+  border: 1px solid var(--linie-kraeftig); border-radius: 6px; padding: 8px;
 }
 
 /* ---------- Druck ---------- */
 
 @media print {
+  /* Papier ist immer hell. Läuft das Gerät im dunklen Modus, würden sonst
+     helle Schrift und dunkle Flächen in den Drucker wandern. */
+  :root {
+    color-scheme: light;
+    --paper: #FFFFFF; --paper-hi: #FFFFFF; --karo: #FFFFFF;
+    --ink: #000000; --ink-soft: #333333; --ink-faint: #777777;
+    --a: #2E7D5B; --a-bg: #FFFFFF;
+    --b: #2563A8; --b-bg: #FFFFFF;
+    --c: #6B3FA0; --c-bg: #FFFFFF;
+    --korr: #000000; --korr-bg: #FFFFFF;
+    --ok: #000000; --ok-bg: #FFFFFF;
+    --linie: #999999; --linie-kraeftig: #666666;
+    --flaeche: #EEEEEE; --flaeche-2: #EEEEEE; --treffer-bg: #F2F2F2;
+    --merk-bg: #FFFFFF; --merk-linie: #666666; --merk-text: #000000;
+    --skala: rgba(0,0,0,.4);
+    --kopf-bg: #FFFFFF; --kopf-text: #000000;
+    --shadow: none;
+  }
   body {
     background: #fff; padding: 0; font-size: 11pt;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
@@ -510,7 +642,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 
 /* ---------- Startseite ---------- */
 
-.hero { padding: 28px 16px 22px; background: var(--ink); color: var(--paper-hi); }
+.hero { padding: 28px 16px 22px; background: var(--kopf-bg); color: var(--kopf-text); }
 .hero .schule {
   font-family: var(--f-num); font-size: 11px; letter-spacing: .16em;
   text-transform: uppercase; opacity: .55;
@@ -525,7 +657,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 .liste { display: grid; gap: 10px; }
 .eintrag {
   display: flex; align-items: center; gap: 12px;
-  background: var(--paper-hi); border: 1px solid #E1E6E9;
+  background: var(--paper-hi); border: 1px solid var(--linie);
   border-radius: var(--r); padding: 14px; min-height: 64px;
   text-decoration: none; color: var(--ink); box-shadow: var(--shadow);
 }
@@ -546,7 +678,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 
 .hinweis {
   font-size: 14px; color: var(--ink-soft);
-  background: #FFF6E0; border-left: 4px solid #C98A12;
+  background: var(--merk-bg); border-left: 4px solid var(--merk-linie);
   padding: 12px 14px; border-radius: var(--r); margin-top: 18px;
 }
 
@@ -554,7 +686,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 .fehler { background: var(--korr-bg); border-left: 4px solid var(--korr); border-radius: var(--r); }
 .fehler code {
   font-family: var(--f-num); font-size: 14px;
-  background: rgba(21,35,58,.08); padding: 2px 5px; border-radius: 4px;
+  background: var(--flaeche); padding: 2px 5px; border-radius: 4px;
 }
 
 
@@ -584,7 +716,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 /* Beispielrechnung */
 .lk-beispiel {
   margin: 18px 0 6px;
-  border: 1px solid #E1E6E9;
+  border: 1px solid var(--linie);
   border-left: 4px solid var(--pfad);
   border-radius: var(--r);
   background: var(--paper);
@@ -600,7 +732,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   font-family: var(--f-num); font-size: 15px; line-height: 1.7;
   white-space: pre-wrap;
   background: var(--paper-hi);
-  border: 1px dashed #C8D2D8; border-radius: 8px;
+  border: 1px dashed var(--linie-kraeftig); border-radius: 8px;
   padding: 10px 12px; overflow-x: auto;
 }
 .lk-ergebnis {
@@ -612,15 +744,65 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 
 .lk-merke {
   margin-top: 16px; font-size: 16px;
-  background: #FFF6E0; border-left: 4px solid #C98A12;
+  background: var(--merk-bg); border-left: 4px solid var(--merk-linie);
   border-radius: var(--r); padding: 11px 14px;
 }
-.lk-merke b { color: #9A6B0C; }
+.lk-merke b { color: var(--merk-text); }
+
+/* ---------- Lückenbeispiel (Pfad A) ----------
+   Der letzte Rechenschritt fehlt und wird selbst eingetragen. */
+.lk-luecke {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-family: var(--f-num); font-size: 15px;
+  background: var(--paper-hi);
+  border: 1px dashed var(--pfad); border-radius: 8px;
+  padding: 10px 12px; margin-top: 6px;
+}
+.lk-luecke-text { white-space: pre-wrap; }
+input.zahl-feld.lk-luecke-feld { flex: 1 1 120px; height: 46px; font-size: 18px; }
+.lk-luecke-knoepfe { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.lk-luecke-fertig { margin-top: 6px; }
+.lk-luecke-echo { font-size: 14px; margin-top: 6px; min-height: 1.2em; color: var(--ink-soft); }
+.lk-luecke-echo.gut { color: var(--ok); font-weight: 700; }
+.lk-luecke-echo.schlecht { color: var(--korr); }
+
+/* Hervorgehobene Stelle nach einem Verweis aus der Rückmeldung */
+.lk-hervor {
+  outline: 3px solid var(--pfad); outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* ---------- Selbsteinschätzung ---------- */
+.selbstcheck {
+  margin-top: 18px; padding: 12px 14px;
+  border: 1px solid var(--linie); border-radius: var(--r);
+  background: var(--paper);
+  font-size: 15px;
+}
+.selbstcheck-frage { font-weight: 700; margin-bottom: 4px; }
+.selbstcheck-satz { color: var(--ink-soft); margin-bottom: 10px; }
+.selbstcheck-wahl { display: grid; gap: 6px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+.opt.selbstcheck-opt { min-height: 46px; padding: 8px 12px; font-size: 15px; text-align: center; }
+.selbstcheck-fazit { background: var(--pfad-bg); border-color: var(--pfad); }
+
+/* ---------- Nachfassaufgabe und Empfehlung ---------- */
+.nachfass-hinweis {
+  margin: -4px 0 12px;
+  padding: 10px 12px;
+  background: var(--merk-bg); border-left: 4px solid var(--merk-linie);
+  border-radius: var(--r); font-size: 15px;
+}
+.empfehlung {
+  margin-top: 14px; padding: 12px 14px;
+  background: var(--pfad-bg); border-left: 4px solid var(--pfad);
+  border-radius: var(--r); font-size: 15px;
+}
+.verweis-btn { margin-top: 10px; }
 
 /* Wiederaufruf-Link in der Aufgabenzeile */
 .erklaerung-link {
   margin-left: auto;
-  background: transparent; border: 1px solid #C8D2D8; border-radius: 999px;
+  background: transparent; border: 1px solid var(--linie-kraeftig); border-radius: 999px;
   color: var(--pfad); font-family: var(--f-body); font-weight: 700;
   font-size: 12px; letter-spacing: .02em; text-transform: none;
   padding: 4px 11px; cursor: pointer; white-space: nowrap;
@@ -637,9 +819,9 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 /* Eine ausgefallene optionale Visualisierung darf die Aufgabe nicht sperren. */
 .visual-fehler {
   padding: 10px 12px;
-  border: 1px dashed #C98A12;
+  border: 1px dashed var(--merk-linie);
   border-radius: var(--r);
-  background: #FFF6E0;
+  background: var(--merk-bg);
   color: var(--ink-soft);
   font-size: 14px;
 }
@@ -649,7 +831,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   margin-top: 6px;
   font-family: var(--f-num);
   font-size: 11px;
-  color: #8A5B00;
+  color: var(--merk-text);
   overflow-wrap: anywhere;
 }
 
@@ -662,7 +844,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
   max-width: 688px;
   margin: 4px auto 18px;
   background: var(--paper-hi);
-  border: 1px solid #E1E6E9;
+  border: 1px solid var(--linie);
   border-left: 4px solid var(--pfad);
   border-radius: var(--r);
   box-shadow: var(--shadow);
@@ -696,7 +878,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 
 .uebung-inhalt {
   padding: 0 14px 14px;
-  border-top: 1px solid #EDF1F3;
+  border-top: 1px solid var(--flaeche);
 }
 
 .ua-hinweis {

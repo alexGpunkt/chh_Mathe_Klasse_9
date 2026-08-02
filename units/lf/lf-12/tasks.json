@@ -11,6 +11,12 @@
     "identisch",
     "die gemeinsame Lösung"
   ],
+  "worterklaerungen": {
+    "Schnittpunkt": "Die Stelle, an der sich zwei Linien kreuzen.",
+    "parallel": "Zwei Geraden mit gleicher Steigung. Sie kreuzen sich nie.",
+    "identisch": "Genau gleich. Beide Geraden liegen aufeinander.",
+    "gemeinsame Lösung": "Ein Zahlenpaar, das in beide Gleichungen passt."
+  },
   "can_do": {
     "A": "Du liest den Schnittpunkt zweier gezeichneter Geraden ab und schreibst ihn als Paar.",
     "B": "Du bestimmst den Schnittpunkt aus den Gleichungen und prüfst ihn am Bild.",

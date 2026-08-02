@@ -14,6 +14,14 @@
     "die Mantelfläche",
     "der Satz des Pythagoras"
   ],
+  "worterklaerungen": {
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Mantel": "Alle Seitenflächen zusammen, ohne oben und unten.",
+    "Umfang": "Wie lang der Rand einer Fläche ist.",
+    "Grundfläche": "Die Fläche unten am Körper. Sie gibt dem Körper den Namen.",
+    "Mantelfläche": "Wie groß der Mantel ist.",
+    "Satz des Pythagoras": "Im rechtwinkligen Dreieck gilt: a² + b² = c²."
+  },
   "can_do": {
     "A": "Du berechnest den Mantel eines Prismas über Umfang · Höhe.",
     "B": "Du berechnest die Oberfläche = 2 · Grundfläche + Mantel.",

@@ -12,6 +12,13 @@
     "die Empfehlung",
     "sich lohnen"
   ],
+  "worterklaerungen": {
+    "Tarif": "Ein Preismodell, zum Beispiel für Handy oder Strom.",
+    "Grundgebühr": "Der feste Betrag, den du auch ohne Nutzung zahlst.",
+    "Schnittpunkt": "Die Stelle, an der sich zwei Linien kreuzen.",
+    "Empfehlung": "Ein Rat, was sich in diesem Fall lohnt.",
+    "sich lohnen": "Günstiger sein als die andere Möglichkeit."
+  },
   "can_do": {
     "A": "Du rechnest für beide Tarife die Kosten aus und sagst, welcher günstiger ist.",
     "B": "Du schreibst beide Tarife als Gleichung, berechnest den Schnittpunkt und formulierst eine Empfehlung.",

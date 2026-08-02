@@ -12,6 +12,13 @@
     "die Mehrwertsteuer",
     "der Prozentsatz"
   ],
+  "worterklaerungen": {
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %.",
+    "Rabatt": "Der Betrag, den du weniger zahlst.",
+    "Aufschlag": "Der Betrag, der zum Preis dazukommt.",
+    "Mehrwertsteuer": "Ein Aufschlag auf den Preis. In Deutschland meist 19 %.",
+    "Prozentsatz": "Die Zahl mit dem Prozentzeichen, zum Beispiel 20 %."
+  },
   "can_do": {
     "A": "Du berechnest einen Endpreis in zwei Schritten: erst den Rabatt, dann abziehen.",
     "B": "Du berechnest Endpreise in einem Schritt über 100 % ± p %.",

@@ -15,6 +15,14 @@
     "die Grundfläche",
     "die Einheit"
   ],
+  "worterklaerungen": {
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Zylinder": "Ein Körper wie eine Dose. Unten und oben ist ein Kreis.",
+    "Prisma": "Ein Körper wie ein Stapel aus gleichen Flächen.",
+    "Grundfläche": "Die Fläche unten am Körper. Sie gibt dem Körper den Namen.",
+    "Einheit": "Die Angabe hinter der Zahl, zum Beispiel cm, kg oder Euro."
+  },
   "can_do": {
     "A": "Du erkennst selbst, ob Volumen oder Oberfläche gefragt ist, und rechnest sicher.",
     "B": "Du löst gemischte Prüfungsaufgaben zu Prismen und Zylindern.",
@@ -36,7 +44,13 @@
         ],
         "ergebnis": "Gesucht ist das Volumen."
       },
-      "merke": "„Liter“ → Volumen. „Material“ → Oberfläche."
+      "merke": "„Liter“ → Volumen. „Material“ → Oberfläche.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "A",
+        "bereich": "kp"
+      }
     },
     "B": {
       "titel": "Gemischte Aufgaben zu Prismen und Zylindern",
@@ -54,7 +68,13 @@
         ],
         "ergebnis": "V = 62,8 cm³."
       },
-      "merke": "Erst Körper und Größe erkennen, dann passende Formel."
+      "merke": "Erst Körper und Größe erkennen, dann passende Formel.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "B",
+        "bereich": "kp"
+      }
     },
     "C": {
       "titel": "Rechenweg begründen und prüfen",
@@ -72,7 +92,13 @@
         ],
         "ergebnis": "Er fasst mehr als 5 Liter (≈ 6,3 l) – plausibel für einen Eimer."
       },
-      "merke": "Begründen, Einheiten mitführen, Größenordnung prüfen."
+      "merke": "Begründen, Einheiten mitführen, Größenordnung prüfen.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "C",
+        "bereich": "kp"
+      }
     }
   },
   "formelkarte": {

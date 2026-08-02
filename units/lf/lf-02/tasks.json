@@ -13,6 +13,13 @@
     "der Graph",
     "linear"
   ],
+  "worterklaerungen": {
+    "Wertetabelle": "Eine Tabelle mit x-Werten und den passenden y-Werten.",
+    "Punkt": "Eine Stelle im Koordinatensystem mit zwei Zahlen.",
+    "Koordinate": "Eine der beiden Zahlen von einem Punkt.",
+    "Graph": "Die Linie im Koordinatensystem.",
+    "linear": "Gleiche Schritte bei x geben gleiche Sprünge bei y."
+  },
   "can_do": {
     "A": "Du liest die Koordinaten eines Punktes ab: erst nach rechts, dann nach oben.",
     "B": "Du füllst eine Wertetabelle zu y = mx + b aus, auch mit negativen Werten.",

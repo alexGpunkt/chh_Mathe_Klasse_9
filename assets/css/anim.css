@@ -1,15 +1,72 @@
 /* ============================================================
-   anim.css · Stile für die Animationen zu linearen Funktionen
-   Vollständig eigenständig: hartkodierte Farben (identisch zu den
-   App-Tokens), damit die Animationen auch ohne app.css korrekt aussehen.
+   anim.css · Stile für die Animationen
+   Eigenständig: eigene Token mit denselben Werten wie app.css, damit die
+   Animationen auch ohne app.css korrekt aussehen — inklusive dunklem Modus.
    ============================================================ */
 
+:root {
+  --an-flaeche: #FFFFFF;
+  --an-linie:   #E1E6E9;
+  --an-linie-2: #C8D2D8;
+  --an-grund:   #F3F5F4;
+  --an-ink:     #15233A;
+  --an-soft:    #4A5A70;
+  --an-faint:   #8C99A8;
+  --an-b:       #2563A8;
+  --an-b-bg:    #E2EBF6;
+  --an-b-tief:  #1E5390;
+  --an-a:       #2E7D5B;
+  --an-a-bg:    #E4F1EA;
+  --an-c:       #6B3FA0;
+  --an-gelb:    #C98A12;
+}
+
+/* Dunkler Modus: dieselben Rollen, aufgehellte Akzente. Die Farben der
+   SVG-Zeichnungen setzt animationen.js selbst — sie folgen derselben
+   Systemeinstellung, damit Bild und Rahmen zusammenpassen. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --an-flaeche: #1A222C;
+    --an-linie:   #2A3642;
+    --an-linie-2: #3A4855;
+    --an-grund:   #212B36;
+    --an-ink:     #E7EDF3;
+    --an-soft:    #B0BDC9;
+    --an-faint:   #8595A3;
+    --an-b:       #6FA8E8;
+    --an-b-bg:    #16283C;
+    --an-b-tief:  #8FBEF2;
+    --an-a:       #5CBE92;
+    --an-a-bg:    #16302A;
+    --an-c:       #B08CE0;
+    --an-gelb:    #E3B14C;
+  }
+}
+
 .anim {
+  display: flex;
+  flex-direction: column;
   margin: 0 0 16px;
   padding: 12px;
-  border: 1px solid #E1E6E9;
+  border: 1px solid var(--an-linie);
   border-radius: 12px;
-  background: #FFFFFF;
+  background: var(--an-flaeche);
+}
+
+/* Nur für Screenreader: feste Bildbeschreibung und ruhige Statuszeile.
+   Die mitlaufende Zeile unter dem Bild ist dafür stumm geschaltet. */
+.anim-sr {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+}
+
+/* Auf schmalen Geräten liegt die Grafik oft im Bild, der Pause-Knopf aber
+   nicht mehr. Dort wandert die Bedienleiste über die Grafik. */
+@media (max-width: 560px) {
+  .anim-stufe  { order: -3; }
+  .anim-frage  { order: -2; }
+  .anim-steuer { order: -1; margin: 0 0 10px; }
 }
 .anim-bild { margin: 0 0 16px; }
 
@@ -19,7 +76,31 @@
   max-width: 360px;
   margin: 0 auto;
   height: auto;
+  /* Ein Koordinatenfeld darf den Bildschirm nicht füllen: sonst stehen
+     Aufgabe und Eingabefeld unterhalb des sichtbaren Bereichs. Der Inhalt
+     wird durch preserveAspectRatio sauber eingepasst, es geht nichts
+     verloren. svh statt vh, weil vh auf Mobilgeräten die eingeblendete
+     Adressleiste ignoriert. */
+  max-height: 46vh;
+  max-height: 46svh;
   touch-action: manipulation;
+}
+
+/* Auf Tablets ist Platz — dort darf das Bild größer werden. */
+@media (min-width: 700px) {
+  .anim-svg { max-width: 460px; max-height: 52svh; }
+}
+@media (min-width: 1000px) {
+  .anim-svg { max-width: 520px; }
+}
+
+/* Querformat auf dem Handy: sehr wenig Höhe, dafür Breite. */
+@media (orientation: landscape) and (max-height: 560px) {
+  .anim { padding: 8px; }
+  .anim-svg { max-height: 62svh; max-width: 300px; }
+  .anim-ables, .anim-rechnung { font-size: 13px; margin: 4px 0 2px; }
+  .anim-steuer { margin-top: 6px; }
+  .anim-stufe { margin-bottom: 4px; }
 }
 
 /* Große Live-Gleichung (Geradenbaukasten) */
@@ -27,25 +108,25 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 22px;
   text-align: center;
-  color: #15233A;
+  color: var(--an-ink);
   margin: 2px 0 10px;
   letter-spacing: .5px;
 }
 .anim-gleichung b { font-weight: 700; }
-.anim-gleichung .m { color: #6B3FA0; }
-.anim-gleichung .b { color: #C98A12; }
-.anim-gleichung .op { color: #8C99A8; }
+.anim-gleichung .m { color: var(--an-c); }
+.anim-gleichung .b { color: var(--an-gelb); }
+.anim-gleichung .op { color: var(--an-faint); }
 
 /* Ablesung / Rechnung unter dem Bild */
 .anim-ables, .anim-rechnung {
   font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   text-align: center;
-  color: #15233A;
+  color: var(--an-ink);
   margin: 8px 0 4px;
   min-height: 1.3em;
 }
-.anim-rechnung { color: #4A5A70; font-size: 13px; margin-bottom: 2px; }
+.anim-rechnung { color: var(--an-soft); font-size: 13px; margin-bottom: 2px; }
 .anim-ables b { font-weight: 700; }
 
 /* Bedienleiste */
@@ -62,16 +143,16 @@
   font-size: 14px;
   padding: 7px 15px;
   border-radius: 999px;
-  border: 1px solid #C8D2D8;
-  background: #F3F5F4;
-  color: #15233A;
+  border: 1px solid var(--an-linie-2);
+  background: var(--an-grund);
+  color: var(--an-ink);
   cursor: pointer;
   transition: background .15s, border-color .15s;
 }
-.anim-btn:hover { background: #E2EBF6; border-color: #2563A8; }
-.anim-btn:focus-visible { outline: 3px solid #2563A8; outline-offset: 1px; }
-.anim-play { background: #2563A8; border-color: #2563A8; color: #FFFFFF; }
-.anim-play:hover { background: #1E5390; border-color: #1E5390; }
+.anim-btn:hover { background: var(--an-b-bg); border-color: var(--an-b); }
+.anim-btn:focus-visible { outline: 3px solid var(--an-b); outline-offset: 1px; }
+.anim-play { background: var(--an-b); border-color: var(--an-b); color: var(--an-flaeche); }
+.anim-play:hover { background: var(--an-b-tief); border-color: var(--an-b-tief); }
 
 /* Schieberegler */
 .anim-regler, .anim-regler-paar { display: block; margin: 8px auto 0; max-width: 340px; }
@@ -79,33 +160,92 @@
 .anim-regler-txt {
   display: block;
   font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
-  font-size: 13px; font-weight: 700; color: #4A5A70;
+  font-size: 13px; font-weight: 700; color: var(--an-soft);
   margin-bottom: 2px;
 }
-.anim-regler input[type=range] { width: 100%; accent-color: #2563A8; height: 22px; }
+/* Der Reglerdaumen ist ein Touchziel und muss die 44 px erreichen, die
+   das Projekt für alle Bedienelemente ansetzt. Der Standarddaumen ist auf
+   vielen Android-Geräten deutlich kleiner. */
+.anim-regler input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  accent-color: var(--an-b);
+  cursor: pointer;
+  touch-action: pan-y;
+}
+.anim-regler input[type=range]::-webkit-slider-runnable-track {
+  height: 6px; border-radius: 999px; background: var(--an-linie-2);
+}
+.anim-regler input[type=range]::-moz-range-track {
+  height: 6px; border-radius: 999px; background: var(--an-linie-2);
+}
+.anim-regler input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--an-b); border: 3px solid var(--an-flaeche);
+  box-shadow: 0 1px 3px rgba(21,35,58,.4);
+  margin-top: -11px;            /* mittig auf der 6-px-Schiene */
+}
+.anim-regler input[type=range]::-moz-range-thumb {
+  width: 28px; height: 28px; border-radius: 50%; border: 3px solid var(--an-flaeche);
+  background: var(--an-b); box-shadow: 0 1px 3px rgba(21,35,58,.4);
+}
+.anim-regler input[type=range]:focus-visible {
+  outline: 3px solid var(--an-b); outline-offset: 2px; border-radius: 999px;
+}
+
+/* ---------- Vorhersage vor dem Start ----------
+   Erst tippen, dann abspielen. Ohne diese Frage schaut man der Animation
+   nur zu; mit ihr prüft man die eigene Erwartung. */
+.anim-frage {
+  max-width: 340px; margin: 0 auto 10px;
+  border: 1px dashed var(--an-linie-2); border-radius: 10px;
+  padding: 10px 12px; background: var(--an-grund);
+}
+.anim-frage-text {
+  display: block; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-size: 14px; font-weight: 700; color: var(--an-ink); margin-bottom: 8px;
+}
+.anim-frage-wahl { display: grid; gap: 6px; }
+.anim-tipp-btn {
+  min-height: 44px; padding: 8px 12px; text-align: left;
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 14px;
+  border: 1px solid var(--an-linie-2); border-radius: 8px;
+  background: var(--an-flaeche); color: var(--an-ink); cursor: pointer;
+}
+.anim-tipp-btn:hover { border-color: var(--an-b); }
+.anim-tipp-btn:focus-visible { outline: 3px solid var(--an-b); outline-offset: 1px; }
+.anim-tipp-btn[aria-pressed="true"] { border-color: var(--an-b); background: var(--an-b-bg); font-weight: 700; }
+.anim-frage-echo {
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-size: 13px; color: var(--an-soft); margin-top: 8px; min-height: 1.2em;
+}
 
 /* Wertetabelle-Animation */
 .anim-tabellenreihe { display: flex; justify-content: center; margin-bottom: 8px; }
 .anim-tabelle { border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
 .anim-tabelle th, .anim-tabelle td {
-  border: 1px solid #D3DAE0; padding: 4px 10px; text-align: center; min-width: 34px;
+  border: 1px solid var(--an-linie-2); padding: 4px 10px; text-align: center; min-width: 34px;
   transition: background .2s, color .2s;
 }
-.anim-tabelle th { background: #EDF1F3; color: #4A5A70; }
-.anim-tabelle td.an { background: #E4F1EA; color: #2E7D5B; font-weight: 700; }
+.anim-tabelle th { background: var(--an-grund); color: var(--an-soft); }
+.anim-tabelle td.an { background: var(--an-a-bg); color: var(--an-a); font-weight: 700; }
 
 /* Legende (Tarifvergleich) */
 .anim-legende {
   display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 12px; color: #4A5A70;
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 12px; color: var(--an-soft);
   margin: 6px 0 2px;
 }
 .anim-legende span { display: inline-flex; align-items: center; gap: 5px; }
 .anim-legende i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
 
 .anim-fehlt, .anim-poster {
-  font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5A70;
-  padding: 20px; text-align: center; border: 1px dashed #C8D2D8; border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--an-soft);
+  padding: 20px; text-align: center; border: 1px dashed var(--an-linie-2); border-radius: 10px;
 }
 
 /* ---------- Galerie-Seite (animationen.html) ---------- */
@@ -116,33 +256,42 @@
 @media (min-width: 720px) { .anim-galerie { grid-template-columns: 1fr 1fr; } }
 
 .anim-karte {
-  border: 1px solid #E1E6E9; border-radius: 16px; background: #FFFFFF;
+  border: 1px solid var(--an-linie); border-radius: 16px; background: var(--an-flaeche);
   padding: 16px; box-shadow: 0 1px 3px rgba(21,35,58,.06);
 }
 .anim-karte-kopf { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
 .anim-bezug {
   font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
-  color: #2563A8; background: #E2EBF6; padding: 2px 8px; border-radius: 999px;
+  color: var(--an-b); background: var(--an-b-bg); padding: 2px 8px; border-radius: 999px;
 }
 .anim-karte-titel {
   font-family: 'Bricolage Grotesque', system-ui, sans-serif;
-  font-size: 18px; font-weight: 800; color: #15233A; margin: 0; line-height: 1.2;
+  font-size: 18px; font-weight: 800; color: var(--an-ink); margin: 0; line-height: 1.2;
 }
-.anim-karte-kurz { font-size: 14px; color: #4A5A70; margin: 4px 0 12px; line-height: 1.45; }
+.anim-karte-kurz { font-size: 14px; color: var(--an-soft); margin: 4px 0 12px; line-height: 1.45; }
 .anim-buehne { min-height: 40px; }
-.anim-karte-fuss { margin-top: 10px; border-top: 1px solid #EDF1F3; padding-top: 10px; }
+.anim-karte-fuss { margin-top: 10px; border-top: 1px solid var(--an-grund); padding-top: 10px; }
 .anim-wege {
   display: block; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
-  font-size: 12px; color: #8C99A8; margin-bottom: 6px;
+  font-size: 12px; color: var(--an-faint); margin-bottom: 6px;
 }
 .anim-code {
   display: block; font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
-  color: #4A5A70; background: #F3F5F4; border: 1px dashed #C8D2D8; border-radius: 8px;
+  color: var(--an-soft); background: var(--an-grund); border: 1px dashed var(--an-linie-2); border-radius: 8px;
   padding: 7px 9px; overflow-x: auto; white-space: pre;
 }
 
 @media print {
-  .anim-steuer, .anim-regler, .anim-regler-paar { display: none; }
+  /* Auf Papier immer hell — sonst wandert der dunkle Modus in den Drucker. */
+  :root {
+    --an-flaeche: #FFFFFF; --an-linie: #999999; --an-linie-2: #666666;
+    --an-grund: #FFFFFF; --an-ink: #000000; --an-soft: #333333;
+    --an-faint: #666666; --an-b: #2563A8; --an-b-bg: #FFFFFF;
+    --an-b-tief: #1E5390; --an-a: #2E7D5B; --an-a-bg: #FFFFFF;
+    --an-c: #6B3FA0; --an-gelb: #C98A12;
+  }
+  .anim-steuer, .anim-regler, .anim-regler-paar, .anim-frage { display: none; }
+  .anim-svg { max-height: none; }
   .anim, .anim-karte { break-inside: avoid; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -165,8 +314,8 @@
 /* ---------- A/B/C-Umschalter (Galerie) ---------- */
 .anim-schalter {
   display: inline-flex; gap: 0; margin: 0 auto 10px;
-  border: 1px solid #C8D2D8; border-radius: 999px; overflow: hidden;
-  background: #F3F5F4;
+  border: 1px solid var(--an-linie-2); border-radius: 999px; overflow: hidden;
+  background: var(--an-grund);
 }
 .anim-karte { text-align: center; }
 .anim-karte > * { text-align: left; }
@@ -175,23 +324,46 @@
   font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
   font-weight: 700; font-size: 13px;
   padding: 6px 16px; border: 0; background: transparent; cursor: pointer;
-  color: #4A5A70; border-right: 1px solid #E1E6E9;
+  color: var(--an-soft); border-right: 1px solid var(--an-linie);
 }
 .anim-schalt:last-child { border-right: 0; }
-.anim-schalt:hover { background: #E9EEF1; }
-.anim-schalt[aria-pressed="true"].anim-schalt-a { background: #2E7D5B; color: #fff; }
-.anim-schalt[aria-pressed="true"].anim-schalt-b { background: #2563A8; color: #fff; }
-.anim-schalt[aria-pressed="true"].anim-schalt-c { background: #6B3FA0; color: #fff; }
-.anim-schalt:focus-visible { outline: 3px solid #2563A8; outline-offset: -2px; }
+.anim-schalt:hover { background: var(--an-grund); }
+.anim-schalt[aria-pressed="true"].anim-schalt-a { background: var(--an-a); color: #fff; }
+.anim-schalt[aria-pressed="true"].anim-schalt-b { background: var(--an-b); color: #fff; }
+.anim-schalt[aria-pressed="true"].anim-schalt-c { background: var(--an-c); color: #fff; }
+.anim-schalt:focus-visible { outline: 3px solid var(--an-b); outline-offset: -2px; }
 
 /* ---------- Gruppenüberschrift in der Galerie ---------- */
 .anim-gruppe {
   font-family: 'Bricolage Grotesque', system-ui, sans-serif;
-  font-size: 20px; font-weight: 800; color: #15233A;
+  font-size: 20px; font-weight: 800; color: var(--an-ink);
   margin: 26px 0 12px; padding-bottom: 6px;
-  border-bottom: 2px solid #E1E6E9;
+  border-bottom: 2px solid var(--an-linie);
 }
 .anim-gruppe:first-child { margin-top: 4px; }
+
+/* ---------- Signalwörter (Prüfungseinheiten) ---------- */
+.anim-signal { max-width: 340px; margin: 4px auto 0; }
+.anim-signal-karte {
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-size: 16px; font-weight: 700; text-align: center; color: var(--an-ink);
+  border: 2px solid var(--an-linie-2); border-radius: 10px;
+  background: var(--an-grund); padding: 12px 10px; min-height: 62px;
+  display: flex; align-items: center; justify-content: center;
+}
+.anim-signal-pfeil { text-align: center; font-size: 20px; color: var(--an-faint); line-height: 1.3; }
+.anim-signal-reihe { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); }
+.anim-signal-kasten {
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-size: 14px; font-weight: 700; text-align: center;
+  border: 2px solid var(--an-linie-2); border-radius: 10px;
+  padding: 12px 6px; color: var(--an-soft); background: var(--an-flaeche);
+  transition: background .25s, border-color .25s, color .25s;
+}
+.anim-signal-kasten.an {
+  border-color: var(--an-a); background: var(--an-a-bg); color: var(--an-a);
+}
+@media (prefers-reduced-motion: reduce) { .anim-signal-kasten { transition: none; } }
 
 /* ---------- Schema-Animationen (Dreisatz, Antiproportional) ---------- */
 .anim-schema {
@@ -203,10 +375,16 @@
   gap: 4px; padding: 5px 0; transition: opacity .35s;
 }
 .anim-schema-tab .anim-schema-zeile { grid-template-columns: 1fr 1fr 1fr; text-align: center; }
-.anim-schema-op { color: #6B3FA0; font-weight: 700; font-size: 13px; text-align: right; }
-.anim-schema-l { color: #15233A; }
-.anim-schema-pf { color: #8C99A8; text-align: center; }
-.anim-schema-r { color: #2E7D5B; font-weight: 700; text-align: right; }
-.anim-schema-kopf { font-weight: 700; color: #4A5A70; border-bottom: 1px solid #E1E6E9; opacity: 1 !important; }
+.anim-schema-op { color: var(--an-c); font-weight: 700; font-size: 13px; text-align: right; }
+.anim-schema-l { color: var(--an-ink); }
+.anim-schema-pf { color: var(--an-faint); text-align: center; }
+.anim-schema-r { color: var(--an-a); font-weight: 700; text-align: right; }
+.anim-schema-kopf { font-weight: 700; color: var(--an-soft); border-bottom: 1px solid var(--an-linie); opacity: 1 !important; }
 .anim-schema-z { text-align: center; }
-.anim-prod { color: #6B3FA0; font-weight: 700; }
+.anim-prod { color: var(--an-c); font-weight: 700; }
+
+/* Eine Vorhersage zählt nur einmal. Nach der Auswahl bleiben die Optionen
+   sichtbar, sind aber gesperrt, damit die Rückmeldung eindeutig bleibt. */
+.anim-tipp-btn:disabled { cursor: default; opacity: .72; }
+.anim-tipp-btn[aria-pressed="true"]:disabled { opacity: 1; }
+.anim-fehlt-detail { display: block; margin-top: 6px; font-family: monospace; }

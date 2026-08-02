@@ -14,6 +14,14 @@
     "die Seitenhöhe",
     "der Satz des Pythagoras"
   ],
+  "worterklaerungen": {
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Grundfläche": "Die Fläche unten am Körper. Sie gibt dem Körper den Namen.",
+    "Mantel": "Alle Seitenflächen zusammen, ohne oben und unten.",
+    "Seitendreieck": "Eine der schrägen Flächen an der Pyramide.",
+    "Seitenhöhe": "Die Höhe im Seitendreieck, von der Spitze zur Kantenmitte.",
+    "Satz des Pythagoras": "Im rechtwinkligen Dreieck gilt: a² + b² = c²."
+  },
   "can_do": {
     "A": "Du berechnest die Fläche eines Seitendreiecks über (a · s) : 2.",
     "B": "Du berechnest die Oberfläche = Grundfläche + Mantel (4 Dreiecke).",

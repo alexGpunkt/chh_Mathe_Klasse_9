@@ -11,6 +11,12 @@
     "der Prozentsatz",
     "der Anteil"
   ],
+  "worterklaerungen": {
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %.",
+    "Prozentwert": "Der Teil in Euro, Stück oder Kilogramm.",
+    "Prozentsatz": "Die Zahl mit dem Prozentzeichen, zum Beispiel 20 %.",
+    "Anteil": "Ein Teil von einem Ganzen."
+  },
   "can_do": {
     "A": "Du bestimmst den Prozentsatz, wenn Teil und Ganzes gut teilbar sind.",
     "B": "Du wendest p = W : G · 100 sicher an, auch mit Taschenrechner und Rundung.",

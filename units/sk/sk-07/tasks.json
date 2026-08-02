@@ -14,6 +14,14 @@
     "der Faktor ein Drittel",
     "die Kreiszahl π"
   ],
+  "worterklaerungen": {
+    "Kegel": "Ein Körper mit einem Kreis unten und einer Spitze oben.",
+    "Volumen": "Wie viel in einen Körper hineinpasst. Man gibt es in cm³ an.",
+    "Radius": "Die Strecke von der Kreismitte bis zum Rand.",
+    "Höhe": "Wie hoch ein Körper ist. Sie steht immer senkrecht.",
+    "Faktor ein Drittel": "Du teilst am Ende durch 3.",
+    "Kreiszahl π": "Eine feste Zahl für Kreise. Du rechnest meist mit 3,14."
+  },
   "can_do": {
     "A": "Du berechnest das Kegelvolumen über V = ⅓ · π · r² · h.",
     "B": "Du berechnest das Volumen, auch wenn nur der Durchmesser gegeben ist.",

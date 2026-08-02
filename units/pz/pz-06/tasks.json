@@ -12,6 +12,13 @@
     "der Rabatt",
     "die Mehrwertsteuer"
   ],
+  "worterklaerungen": {
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %.",
+    "Prozentwert": "Der Teil in Euro, Stück oder Kilogramm.",
+    "Prozentsatz": "Die Zahl mit dem Prozentzeichen, zum Beispiel 20 %.",
+    "Rabatt": "Der Betrag, den du weniger zahlst.",
+    "Mehrwertsteuer": "Ein Aufschlag auf den Preis. In Deutschland meist 19 %."
+  },
   "can_do": {
     "A": "Du berechnest den Prozentwert über den 1-%-Schritt.",
     "B": "Du berechnest W = G · p : 100 und prüfst dein Ergebnis am Streifen.",

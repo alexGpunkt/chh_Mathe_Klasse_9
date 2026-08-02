@@ -13,6 +13,13 @@
     "die Grundfläche",
     "teilen"
   ],
+  "worterklaerungen": {
+    "gesuchte Kante": "Die Kante, deren Länge du ausrechnen sollst.",
+    "umstellen": "Die Formel so umschreiben, dass die gesuchte Größe allein steht.",
+    "dritte Wurzel": "Die Zahl, die dreimal mit sich selbst malgenommen das Ergebnis gibt.",
+    "Grundfläche": "Die Fläche unten am Körper. Sie gibt dem Körper den Namen.",
+    "teilen": "Durch eine Zahl dividieren."
+  },
   "can_do": {
     "A": "Du findest eine fehlende Kante eines Quaders, wenn Volumen und zwei Kanten gegeben sind.",
     "B": "Du findest die Kantenlänge eines Würfels aus Volumen oder Oberfläche.",

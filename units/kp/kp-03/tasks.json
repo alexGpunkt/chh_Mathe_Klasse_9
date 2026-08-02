@@ -13,6 +13,13 @@
     "das Rechteck",
     "der Flächeninhalt"
   ],
+  "worterklaerungen": {
+    "Oberfläche": "Alle Außenflächen zusammen.",
+    "Seitenfläche": "Eine Fläche an der Seite vom Körper.",
+    "Kantenlänge": "Wie lang eine Kante ist.",
+    "Rechteck": "Eine Fläche mit vier rechten Winkeln.",
+    "Flächeninhalt": "Wie groß eine Fläche ist. Man gibt ihn in cm² an."
+  },
   "can_do": {
     "A": "Du berechnest die Oberfläche eines Würfels über 6 · a · a.",
     "B": "Du berechnest die Oberfläche eines Quaders über die drei Flächenpaare.",

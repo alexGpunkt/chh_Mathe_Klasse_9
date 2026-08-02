@@ -12,6 +12,12 @@
     "das Ganze",
     "der Ankerwert"
   ],
+  "worterklaerungen": {
+    "Anteil": "Ein Teil von einem Ganzen.",
+    "Prozentsatz": "Die Zahl mit dem Prozentzeichen, zum Beispiel 20 %.",
+    "Ganze": "Alles zusammen. Das Ganze sind 100 %.",
+    "Ankerwert": "Ein bekannter Wert zum Vergleichen, zum Beispiel 25 %, 50 % oder 75 %."
+  },
   "can_do": {
     "A": "Du erkennst, ob ein Anteil größer oder kleiner als die Hälfte ist.",
     "B": "Du schätzt einen Prozentsatz auf 5 % genau und stützt die Schätzung auf einen Ankerwert.",

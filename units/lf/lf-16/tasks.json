@@ -16,6 +16,13 @@
     "die Punktprobe",
     "der Schnittpunkt"
   ],
+  "worterklaerungen": {
+    "Steigung": "Wie steil die Gerade ist. Sie heißt m.",
+    "y-Achsenabschnitt": "Die Höhe, in der die Gerade die y-Achse schneidet. Er heißt b.",
+    "Nullstelle": "Die Stelle, an der die Gerade die x-Achse schneidet. Dort ist y = 0.",
+    "Punktprobe": "Du setzt den Punkt ein und prüfst, ob er auf der Geraden liegt.",
+    "Schnittpunkt": "Die Stelle, an der sich zwei Linien kreuzen."
+  },
   "can_do": {
     "A": "Du löst die vier Grundaufgaben — ablesen, zeichnen, Punktprobe, Nullstelle — mit der Formelkarte.",
     "B": "Du löst einen gemischten Aufgabensatz, ohne dass die Aufgabenart genannt wird.",

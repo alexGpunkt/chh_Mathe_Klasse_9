@@ -12,6 +12,13 @@
     "der Zinseszins",
     "der Wachstumsfaktor"
   ],
+  "worterklaerungen": {
+    "Kapital": "Das Geld, das auf der Bank liegt.",
+    "Zinssatz": "Wie viel Prozent Zinsen es pro Jahr gibt.",
+    "Zinsen": "Das Geld, das du fürs Sparen bekommst oder fürs Leihen zahlst.",
+    "Zinseszins": "Auch die Zinsen bekommen im nächsten Jahr Zinsen.",
+    "Wachstumsfaktor": "Die Zahl, mit der du malnimmst. Bei +10 % ist es 1,1."
+  },
   "can_do": {
     "A": "Du füllst eine Zinstabelle Jahr für Jahr aus: Kapital plus Zinsen gleich neues Kapital.",
     "B": "Du berechnest das Endkapital über die Tabelle und über K · q^n und vergleichst beide Wege.",

@@ -11,6 +11,12 @@
     "der y-Achsenabschnitt",
     "einsetzen"
   ],
+  "worterklaerungen": {
+    "Gleichung": "Zwei Rechnungen mit einem Gleichheitszeichen dazwischen.",
+    "Steigung": "Wie steil die Gerade ist. Sie heißt m.",
+    "y-Achsenabschnitt": "Die Höhe, in der die Gerade die y-Achse schneidet. Er heißt b.",
+    "einsetzen": "Eine Zahl an die Stelle vom Buchstaben schreiben."
+  },
   "can_do": {
     "A": "Du zeichnest die Gerade durch zwei Punkte und liest m und b ab.",
     "B": "Du berechnest m mit der Formel und b durch Einsetzen — ohne zu zeichnen.",

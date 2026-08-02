@@ -12,6 +12,13 @@
     "die Laufzeit",
     "der Kredit"
   ],
+  "worterklaerungen": {
+    "Kapital": "Das Geld, das auf der Bank liegt.",
+    "Zinssatz": "Wie viel Prozent Zinsen es pro Jahr gibt.",
+    "Zinsen": "Das Geld, das du fürs Sparen bekommst oder fürs Leihen zahlst.",
+    "Laufzeit": "Wie lange das Geld liegt.",
+    "Kredit": "Geliehenes Geld. Dafür zahlst du Zinsen."
+  },
   "can_do": {
     "A": "Du berechnest die Jahreszinsen mit der Formelkarte.",
     "B": "Du erkennst, ob K, p oder Z gesucht ist, und rechnest entsprechend.",

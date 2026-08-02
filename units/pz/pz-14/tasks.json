@@ -14,6 +14,14 @@
     "der Rabatt",
     "die Mehrwertsteuer"
   ],
+  "worterklaerungen": {
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %.",
+    "Prozentwert": "Der Teil in Euro, Stück oder Kilogramm.",
+    "Prozentsatz": "Die Zahl mit dem Prozentzeichen, zum Beispiel 20 %.",
+    "Kapital": "Das Geld, das auf der Bank liegt.",
+    "Rabatt": "Der Betrag, den du weniger zahlst.",
+    "Mehrwertsteuer": "Ein Aufschlag auf den Preis. In Deutschland meist 19 %."
+  },
   "can_do": {
     "A": "Du erkennst, welche Größe gesucht ist, und rechnest dann mit der Formelkarte.",
     "B": "Du löst einen gemischten Aufgabensatz, ohne dass die Aufgabenart genannt wird.",
@@ -36,7 +44,13 @@
         ],
         "ergebnis": "Gesucht war der Grundwert: 60 €."
       },
-      "merke": "Erst gegeben und gesucht. Dann die Formel."
+      "merke": "Erst gegeben und gesucht. Dann die Formel.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "A",
+        "bereich": "pz"
+      }
     },
     "B": {
       "titel": "Gemischte Aufgaben ohne Ansage",
@@ -54,7 +68,13 @@
         ],
         "ergebnis": "Der Endpreis beträgt 240 €."
       },
-      "merke": "Signalwörter verraten den Aufgabentyp."
+      "merke": "Signalwörter verraten den Aufgabentyp.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "B",
+        "bereich": "pz"
+      }
     },
     "C": {
       "titel": "Mehrschrittig modellieren und empfehlen",
@@ -72,7 +92,13 @@
         ],
         "ergebnis": "Angebot A ist günstiger – zwei Rabatte nacheinander ergeben nicht 25 %."
       },
-      "merke": "Zwischenergebnisse festhalten, dann begründet empfehlen."
+      "merke": "Zwischenergebnisse festhalten, dann begründet empfehlen.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "C",
+        "bereich": "pz"
+      }
     }
   },
   "formelkarte": {

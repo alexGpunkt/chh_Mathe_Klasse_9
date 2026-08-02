@@ -14,6 +14,14 @@
     "aufteilen",
     "addieren"
   ],
+  "worterklaerungen": {
+    "zusammengesetzt": "Aus mehreren einfachen Körpern gebaut.",
+    "Halbkugel": "Eine halbierte Kugel.",
+    "Aufsatz": "Ein Körper, der oben auf einem anderen sitzt.",
+    "Silo": "Ein hoher Behälter für Getreide oder Futter.",
+    "aufteilen": "In gleich große Teile zerlegen.",
+    "addieren": "Zusammenzählen."
+  },
   "can_do": {
     "A": "Du zerlegst einen zusammengesetzten Körper in Spitz-, Rund- und Säulenkörper.",
     "B": "Du addierst die Teilvolumen (z. B. Eistüte, Silo).",

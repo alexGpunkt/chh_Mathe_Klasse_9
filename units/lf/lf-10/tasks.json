@@ -11,6 +11,12 @@
     "der Schnittpunkt",
     "das Modell"
   ],
+  "worterklaerungen": {
+    "Nullstelle": "Die Stelle, an der die Gerade die x-Achse schneidet. Dort ist y = 0.",
+    "x-Achse": "Die waagerechte Achse.",
+    "Schnittpunkt": "Die Stelle, an der sich zwei Linien kreuzen.",
+    "Modell": "Eine Rechnung, die die Wirklichkeit vereinfacht."
+  },
   "can_do": {
     "A": "Du liest die Nullstelle am Graphen ab: wo die Gerade die waagerechte Achse schneidet.",
     "B": "Du berechnest die Nullstelle aus 0 = mx + b.",

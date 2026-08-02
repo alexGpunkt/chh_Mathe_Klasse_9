@@ -11,6 +11,12 @@
     "der Dreisatz",
     "die Einheit"
   ],
+  "worterklaerungen": {
+    "Zuordnung": "Zu jedem Wert links gehört ein Wert rechts.",
+    "proportional": "Doppelt so viel auf der einen Seite heißt doppelt so viel auf der anderen.",
+    "Dreisatz": "Erst auf 1 herunterrechnen, dann auf die gesuchte Menge hoch.",
+    "Einheit": "Die Angabe hinter der Zahl, zum Beispiel cm, kg oder Euro."
+  },
   "can_do": {
     "A": "Du rechnest den Dreisatz im vorgegebenen Schema über die Einheit.",
     "B": "Du schreibst das Dreisatz-Schema selbst auf und beschriftest die Pfeile.",

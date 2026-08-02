@@ -12,6 +12,13 @@
     "der Wachstumsfaktor",
     "die Faktorkette"
   ],
+  "worterklaerungen": {
+    "Zunahme": "Der Wert wird größer.",
+    "Abnahme": "Der Wert wird kleiner.",
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %.",
+    "Wachstumsfaktor": "Die Zahl, mit der du malnimmst. Bei +10 % ist es 1,1.",
+    "Faktorkette": "Mehrere Faktoren nacheinander malnehmen."
+  },
   "can_do": {
     "A": "Du erkennst, ob ein Wert gestiegen oder gefallen ist, und berechnest die Differenz.",
     "B": "Du berechnest die prozentuale Veränderung und schreibst sie als Faktor.",
