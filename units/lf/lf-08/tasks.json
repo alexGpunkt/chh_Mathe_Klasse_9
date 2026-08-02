@@ -188,7 +188,8 @@
         {
           "id": "vorzeichen",
           "value": 7,
-          "feedback": "Du hast addiert. In der Gleichung steht − 1."
+          "feedback": "Du hast addiert. In der Gleichung steht − 1.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -329,7 +330,8 @@
         {
           "id": "vorzeichen",
           "value": 1,
-          "feedback": "Du hast −3 · 2 = +6 gerechnet. Minus mal Plus ergibt Minus: −3 · 2 = −6."
+          "feedback": "Du hast −3 · 2 = +6 gerechnet. Minus mal Plus ergibt Minus: −3 · 2 = −6.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -497,7 +499,8 @@
         {
           "id": "vorzeichen_beim_teilen",
           "value": -4,
-          "feedback": "Beim Teilen durch −2 dreht sich das Vorzeichen: −8 : (−2) = +4. Minus geteilt durch Minus ergibt Plus."
+          "feedback": "Beim Teilen durch −2 dreht sich das Vorzeichen: −8 : (−2) = +4. Minus geteilt durch Minus ergibt Plus.",
+          "konzeptfehler": "vorzeichen"
         },
         {
           "id": "eingesetzt_statt_geloest",
@@ -559,6 +562,24 @@
       "url": "https://www.learningsnacks.de/share/121056",
       "typ": "app",
       "quelle": "Learningsnacks"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Punktprobe: Liegt der Punkt auf der Geraden?",
+      "url": "https://www.youtube.com/watch?v=aadTRN1b0KE",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Punktprobe durch Ablesen",
+      "url": "https://www.youtube.com/watch?v=JaZ6y3UVd-A",
+      "quelle": "Lehrerschmidt",
+      "pfad": "A"
+    },
+    {
+      "titel": "Punktprobe bei einer linearen Gleichung",
+      "url": "https://www.youtube.com/watch?v=EL8nFhYfVSw",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

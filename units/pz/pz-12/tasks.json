@@ -469,7 +469,8 @@
           "feedback": "Du hast 150 : 75 · 12 gerechnet. Die aufgelaufenen Zinsen kommen zuerst: 75 : 150 · 12.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -506,7 +507,8 @@
           "feedback": "Du hast 300 : 100 · 360 gerechnet. Das ergäbe drei Jahre — unmöglich, wenn die Zinsen kleiner als die Jahreszinsen sind.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -535,7 +537,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 20.57,
-          "feedback": "Du hast 240 : 140 · 12 gerechnet. Die aufgelaufenen Zinsen stehen vorn."
+          "feedback": "Du hast 240 : 140 · 12 gerechnet. Die aufgelaufenen Zinsen stehen vorn.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -596,6 +599,24 @@
       "url": "https://de.serlo.org/mathe/38066/%C3%BCbersicht",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Zinsen berechnen — die Formel für Zinsmonate",
+      "url": "https://www.youtube.com/watch?v=aC-d4gJ837Q",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zinsen berechnen — die Formel für Zinstage",
+      "url": "https://www.youtube.com/watch?v=zv7cC4oG3gE",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zinstage angegeben — sechs Übungen mit Lösungen",
+      "url": "https://www.youtube.com/watch?v=knuYC5N4Tq4",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

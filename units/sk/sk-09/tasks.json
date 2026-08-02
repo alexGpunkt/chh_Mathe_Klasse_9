@@ -163,7 +163,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 904.3,
-          "feedback": "Durch 3: 904,32:3 = 301,4."
+          "feedback": "Durch 3: 904,32:3 = 301,4.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -192,7 +193,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 4,
-          "feedback": "Rückwärts mal 3: 3·200 : 50 = 12."
+          "feedback": "Rückwärts mal 3: 3·200 : 50 = 12.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -251,7 +253,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 301.44,
-          "feedback": "Durch 3: 301,44:3 = 100,48."
+          "feedback": "Durch 3: 301,44:3 = 100,48.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -280,7 +283,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 3,
-          "feedback": "Mal 3: 3·150 : 50 = 9."
+          "feedback": "Mal 3: 3·150 : 50 = 9.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -334,7 +338,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 7536,
-          "feedback": "Durch 3: 7536:3 = 2512."
+          "feedback": "Durch 3: 7536:3 = 2512.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -364,7 +369,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 4,
-          "feedback": "Mal 3: 3·314 : 78,5 = 12."
+          "feedback": "Mal 3: 3·314 : 78,5 = 12.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -460,7 +466,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 33.33,
-          "feedback": "Mal 3: G = 3·400 : 12 = 100."
+          "feedback": "Mal 3: G = 3·400 : 12 = 100.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -491,7 +498,8 @@
         {
           "id": "durchmesser_als_radius",
           "value": 1206,
-          "feedback": "Erst r = d:2 = 6 cm."
+          "feedback": "Erst r = d:2 = 6 cm.",
+          "konzeptfehler": "radius_durchmesser"
         }
       ],
       "tags": [
@@ -538,6 +546,18 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Kegel — Radius und Durchmesser aus dem Volumen",
+      "url": "https://www.youtube.com/watch?v=0L6I6b6CA0E",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Kegel — Höhe aus dem Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=L8XNBmjdZeY",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

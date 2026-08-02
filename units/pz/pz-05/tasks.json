@@ -514,7 +514,8 @@
         {
           "id": "vorzeichen_vertauscht",
           "value": 2,
-          "feedback": "92 % wäre richtig, wenn die Miete um 8 % SINKEN würde. Sie steigt."
+          "feedback": "92 % wäre richtig, wenn die Miete um 8 % SINKEN würde. Sie steigt.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -630,6 +631,18 @@
       "url": "https://www.schule-bw.de/faecher-und-schularten/mathematisch-naturwissenschaftliche-faecher/mathematik/unterrichtsmaterialien/sekundarstufe1/zahl/prozent/links/hotpotproz",
       "typ": "app",
       "quelle": "H5P"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Das Formeldreieck: G, W und p sicher notieren",
+      "url": "https://www.youtube.com/watch?v=o8B-kKVSuiU",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Grundwert, Prozentwert und Prozentsatz auseinanderhalten",
+      "url": "https://www.youtube.com/watch?v=tsAZSNrwJLE",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

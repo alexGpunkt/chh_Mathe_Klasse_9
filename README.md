@@ -295,6 +295,61 @@ selbst werden nicht offline gespeichert; die Verweise, Einheitsdaten und die
 Übersichtsseite liegen dagegen im Offlinecache.
 
 
+## Erklärvideos
+
+Die Lernkarte erklärt eine Sache genau einmal. Kommt genau diese Erklärung
+nicht an, hilft es wenig, sie noch einmal zu lesen — dann hilft eine andere
+Stimme. Dafür steht über der Übungskarte die Karte **„Erklärvideos · noch
+einmal von jemand anderem erklärt"**, gespeist aus dem Top-Level-Schlüssel
+`videos`:
+
+```json
+"videos": [
+  {
+    "titel": "Grundwert berechnen — Prozentrechnung mit Formel",
+    "url": "https://www.youtube.com/watch?v=gtEAmp8-K-8",
+    "quelle": "Lehrerschmidt"
+  },
+  {
+    "titel": "Grundwert berechnen — schwierige Übungen",
+    "url": "https://www.youtube.com/watch?v=xVtp8ZmR9Xk",
+    "quelle": "Lehrerschmidt",
+    "pfad": "C"
+  }
+]
+```
+
+**135 Verweise in allen 54 Einheiten**, zwei bis drei je Einheit. Mit `pfad`
+lässt sich ein Video an einen Lernweg binden — ein Video für die Vertiefung
+gehört nicht auf den Basispfad, dort verunsichert es nur. Ohne `pfad`
+erscheint es überall.
+
+Drei Festlegungen, die bewusst so sind:
+
+1. **Verlinkt, nicht eingebettet.** Ein eingebettetes YouTube-Fenster lädt
+   beim Öffnen der Einheit Skripte und setzt Kennungen — auch bei Kindern,
+   die das Video gar nicht ansehen. Die Content-Security-Policy verbietet es
+   deshalb (`frame-src 'none'`), und `pruefen.js` setzt das durch. Siehe
+   `DATENSCHUTZ.md` Abschnitt 1.2b.
+2. **Nur die kanonische Watch-Adresse.** Keine Playlists, keine Zeitmarken,
+   keine Kurzlinks — sonst lässt sich weder prüfen noch nachvollziehen,
+   worauf verwiesen wird.
+3. **Der `titel` beschreibt den Inhalt, er ist nicht der Originaltitel.** Die
+   Titel auf YouTube sind teilweise automatisch übersetzt („Calculating base
+   value…") und passen dann weder zur Sprache der Einheit noch zum Begriff,
+   der hier verwendet wird.
+
+Die Auswahl stammt aus `youtube_videos_lehrerschmitt.csv` (1949 Videos des
+Kanals Lehrerschmidt). `pruefen.js` stellt sicher, dass jeder verwendete
+Verweis dort steht, dass keine Einheit dasselbe Video zweimal führt und dass
+ein pfadgebundenes Video zu einem Pfad gehört, den es in dieser Einheit gibt.
+Ein Video in mehr als drei Einheiten ergibt einen Hinweis — dann erklärt es
+vermutlich keine davon genau.
+
+Offline funktioniert das nicht; die Karte sagt das auch. Die Videos sind ein
+Angebot für zu Hause.
+
+
 ## Starten
 
 **Auf GitHub Pages:** Repo pushen, unter *Settings → Pages* die Quelle auf
@@ -404,11 +459,22 @@ Richtwert: rund **170 Zeichen** für Hinführung, Erklärung und Merksatz
 zusammen, im Mittel **6 Wörter je Satz**. B liegt bei etwa 300 Zeichen,
 C bei etwa 360. Wenn A so lang ist wie B, ist A noch nicht Stufe A.
 
-**Auf Pfad A wird der letzte Schritt der Beispielrechnung zur Lücke.** Ein
-fertig vorgerechnetes Beispiel liest man, ein Beispiel mit einer Lücke rechnet
-man mit. Die Engine erkennt das selbst: Steht hinter dem letzten
-Gleichheitszeichen eine Zahl, wird daraus ein Eingabefeld. „Schritt zeigen“
-löst jederzeit auf — die Lücke darf niemanden aussperren. B und C bleiben
+**Auf Pfad A wird ein Schritt der Beispielrechnung zur Lücke.** Ein fertig
+vorgerechnetes Beispiel liest man, ein Beispiel mit einer Lücke rechnet man
+mit. **Welcher** Schritt das ist, entscheidet die fachliche Autorenschaft:
+
+```jsonc
+"beispiel": {
+  "schritte": ["Fläche = (a · s) : 2", "= (6 · 5) : 2 = 30 : 2", "= 15 cm²"],
+  "luecke": { "schritt": 2, "wert": 15, "einheit": "cm²" }
+}
+```
+
+Fehlt das Feld, greift eine Heuristik auf den letzten Schritt — so
+funktionieren neue Einheiten sofort. Wo weder das eine noch das andere etwas
+liefert (Benennungs- und Zuordnungsbeispiele ohne Rechenergebnis), gibt es
+bewusst keine Lücke: derzeit bei 12 der 54 Einheiten. „Schritt zeigen" löst
+jederzeit auf — die Lücke darf niemanden aussperren. B und C bleiben
 unverändert vollständig.
 
 ### Wenn eine Antwort falsch ist
@@ -727,6 +793,82 @@ Die Schüleridentität wird aus `localStorage['mathe9.student']` gelesen. Der
 Datensatz enthält insbesondere `student_id`, Anzeigename und Klassencode und wird
 vom Schülerlogin beziehungsweise im Develop-Modus vom Testschüler-Bypass gesetzt.
 
+## Bearbeitungsstand
+
+Pro Schüler und Einheit liegt im localStorage, was zum Weitermachen nötig ist:
+Pfad, Position, gelöste Aufgaben, genutzte Tipps, Selbsteinschätzung, die
+abgeschlossenen Pfade und **die bereits getippten, noch nicht geprüften
+Eingaben**. Beim Öffnen fragt die Seite: „Du warst zuletzt bei Aufgabe 2 von 4
+— dort weiterlernen?" Wer von vorn beginnen will, kann das.
+
+Der Stand verfällt nach 45 Tagen. Prüfungssets speichern nichts — dort wäre ein
+Zwischenstand eine Einladung zum Nachbessern. Auf geteilten Geräten hängt der
+Stand an der Schülerkennung; siehe `DATENSCHUTZ.md`.
+
+Aus demselben Speicher lebt die Kachel **„Weiterlernen"** auf der Startseite und
+der Lernstatus im Inhaltsverzeichnis (○ offen · ● begonnen · ✓ fertig ·
+↻ Wiederholung fällig).
+
+## Lehrer-Deep-Links
+
+```
+einheit.html?u=lf-04&p=B                        Pfad vorwählen
+einheit.html?u=lf-04&p=B&aufgabe=LF04-B2-003    direkt zu einer Aufgabe
+einheit.html?u=pz-05&p=A&abschnitt=beispiel     direkt zu einer Stelle der Erklärung
+```
+
+`abschnitt` kennt `erklaerung`, `beispiel`, `animation` und `merke`. Ein
+Deep-Link schlägt den gespeicherten Bearbeitungsstand — wer per Link geschickt
+wird, soll dort landen.
+
+## Prüfen vor dem Push
+
+```bash
+node werkzeuge/pruefen.js        # Schema, IDs, Animationen, Cache, CSP, Links, Syntax, SQL
+node werkzeuge/a11y-pruefen.js   # statisch prüfbare Barrierefreiheit
+node werkzeuge/budget-pruefen.js # Performancebudget für günstige Smartphones
+node werkzeuge/nachfass-luecken.js [PZ|LF|KP|SK]   # Arbeitsliste Nachfassaufgaben
+node werkzeuge/verweise-pruefen.js [PZ|LF|KP|SK]   # Absatzverweise zur Durchsicht
+node werkzeuge/fehlvorstellungen-sichten.js --offen # Denkfehler ohne Kategorie
+node werkzeuge/links-pruefen.js  # externe Übungen anfragen (braucht Netz)
+```
+
+Die ersten drei laufen bei jedem Push über GitHub Actions
+(`.github/workflows/pruefen.yml`), dazu die Playwright-Smoke-Tests in
+`tests/`. Das Schema steht in `schema/tasks.schema.json`; geprüft wird es von
+einem abhängigkeitsfreien Mini-Prüfer, damit das Projekt ohne Build-Step
+bleibt.
+
+Der wöchentliche Linkcheck schreibt seinen Befund nicht nur ins Protokoll: Er
+führt ein Sammel-Issue, aktualisiert es bei neuen Fehlern und schließt es,
+sobald wieder alles erreichbar ist.
+
+Damit nichts ungeprüft nach `master` gelangt, muss der Branchschutz einmalig
+gesetzt werden — er liegt außerhalb des Repositorys. Die genauen Einstellungen
+stehen in `.github/BRANCHSCHUTZ.md`.
+
+### Sicherheitsrichtlinie
+
+Jede Seite trägt dieselbe Content-Security-Policy als `<meta>`-Tag;
+`pruefen.js` besteht darauf. `script-src 'self'` bedeutet: **kein**
+Inline-`<script>`. Wer eine Seite um ein paar Zeilen JavaScript ergänzt, legt
+sie in `assets/js/` ab und trägt sie in `sw.js` nach — sonst führt der Browser
+sie stillschweigend nicht aus.
+
+Zwei Dinge lassen sich per `<meta>` nicht setzen und fehlen deshalb auf GitHub
+Pages: `frame-ancestors` und `X-Frame-Options`. Bei eigenem Hosting gehören
+beide als HTTP-Kopfzeilen dazu. Für die Google-Fonts-Datei gibt es keine
+Subresource Integrity — ihre Antwort unterscheidet sich je nach Browser, ein
+fester Hash würde die Schrift zufällig blockieren.
+
+## Neue Fassung ausrollen
+
+Der Service Worker übernimmt **nicht mehr von selbst**. Eine neue Fassung wartet,
+meldet sich unten als Leiste („Eine neue Fassung ist da") und übernimmt erst nach
+Zustimmung — dann in allen offenen Tabs gleichzeitig. Damit können alte und neue
+Dateien nicht mehr mitten in einer Aufgabe aufeinandertreffen.
+
+
 ## Mobile
 
 - Touchziele ≥ 44 px, Zahlenfeld ist `inputmode="decimal"`, nie `type="number"`
@@ -773,20 +915,51 @@ blockiert, greifen die Fallbacks; besser ist, die Dateien nach
 `assets/fonts/` zu legen und lokal einzubinden.
 
 
-## Aktueller Develop-Stand V25
+## Aktueller Develop-Stand V29
 
-V23 senkt die sprachliche Hürde auf Pfad A und korrigiert mehrere fachliche
-Animationen. V24 ergänzt Nachfassaufgaben, gezielte Erklärungsverweise,
-Vorhersagefragen, antippbare Fachbegriffe, Selbsteinschätzung und mobile
-Optimierungen. V25 integriert diese Änderungen in die bestehende Buch-,
-Tracking- und Offline-Struktur und behebt dabei insbesondere:
+V26 ergänzt dauerhafte Zwischenstände, Aufgaben-Sitzungs-IDs, explizite
+Beispiellücken, Erklärverweise, Nachfassaufgaben, Updatehinweis, JSON-Schema,
+GitHub-Actions-Prüfung, Deep-Links, Diagnoseexport, Lernstatus,
+Weiterlernen-Kachel, Vorhersageauswertung und Datenschutzwerkzeuge.
 
-- vollständige Rückkehr aus der Lernkarte ohne Verlust von Eingaben und Versuchen,
-- sauberes Stoppen ersetzter Animationen und ihrer Beobachter,
-- zufällige Reihenfolge der Vorhersageantworten,
-- korrekte Aufgaben-Sitzungen und Verweildauern im Lehrerdashboard,
-- Offlineaufrufe von `einheit.html?u=…`,
-- Tastatur-Fallback für ältere Android-WebViews,
-- Empfehlungen auf Grundlage der ursprünglichen Kernaufgaben statt zusätzlicher Nachfassaufgaben.
+V27 integrierte diese Erweiterungen in die bestehende V25-Struktur und härtete
+insbesondere folgende Punkte:
 
-Cache-Version: `mathe9-v25-integration-stability-develop`.
+- vollständige Wiederaufnahme derselben Aufgabe mit Eingaben, Fehlversuchen,
+  Tipps, Zeit, Nachfassreihenfolge und derselben `task_session_id`,
+- getrennte lokale Zwischenstände, Lesezeichen und Fehlerprofile je Schüler,
+- Deep-Links, die gespeicherte Stände sicher überstimmen und den Pfad aus der
+  Aufgaben-ID ableiten,
+- atomare Service-Worker-Installation und Löschen ausschließlich eigener
+  `mathe9-*`-Caches,
+- datensparsamer Diagnoseexport ohne vollständigen internen Zustand oder
+  Schülerkennung,
+- präzisere Dashboard-Zuordnung von Animation und Folgeantwort,
+- strengere Projektprüfung einschließlich Einheitenverzeichnis,
+  Sollverteilung 4/6/4, echter Animationsdefinitionen und SQL-Struktur,
+- Wiederherstellung fehlender Integrationsdokumente und Entfernung lokaler
+  `.git`-, `.claude`- und Planungsdateien aus dem Verteilerpaket.
+
+V28 ergänzt darauf aufbauend eine wiederverwendete und serverseitig prüfbare Schüler-Sitzung, ausdrückliche Rechteprüfungen in allen SECURITY-DEFINER-Verwaltungsfunktionen, bereinigte Konzeptfehler-Kategorien, stärkere Farbkontraste und verbindliche Browser-Smoke-Tests in GitHub Actions. Der vollständige interne Aufgabenstatus wird nicht mehr über `window.S` veröffentlicht.
+
+V29 kümmert sich um den Betrieb: Content-Security-Policy auf allen Seiten,
+zentrale Migration der lokalen Datenstände, Betriebsanzeige im
+Entwicklermenü, protokollierte Aufräumläufe und Lehrkraftfreigaben,
+Performancebudget, bereichsübergreifende Denkfehler-Kategorien und ein
+Linkcheck, der ein Issue führt statt eines Protokolls. Dabei kamen drei
+Fehler ans Licht, die nur im echten Betrieb auffallen:
+
+- Der Service Worker ließ die Seite beim **ersten** Besuch grundlos neu laden
+  (`clients.claim()` löste denselben Reload aus wie ein Update) — wer gerade
+  tippte, verlor die Eingabe.
+- Der Benutzer-Chip lag über „Weiter" in der Buchnavigation und über
+  „Jetzt aktualisieren" in der Update-Leiste. Beide waren sichtbar, aber auf
+  dem Handy nicht bedienbar.
+- „Abmelden und Lernstände löschen" ließ eine Kopie zurück: Ein noch
+  laufender, entprellter Speichervorgang schrieb den Stand danach erneut —
+  unter der Kennung `lokal`, also sichtbar für das nächste Kind am Gerät.
+
+Alle Fassungen mit Änderungen, Migration, Einschränkungen und Rückkehrpunkt
+stehen in `CHANGELOG.md`.
+
+Cache-Version: `mathe9-v29-betrieb-develop`.

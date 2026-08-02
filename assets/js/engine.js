@@ -30,6 +30,10 @@ const S = {
   kernIds: new Set(),
   kernGesamt: 0,
   kernAufAnhieb: 0,
+  /* Nicht nur wie viele, sondern in welcher Reihenfolge: true = auf Anhieb.
+     Eine Quote von 4 aus 6 heißt etwas anderes, wenn die letzten beiden
+     danebengingen, als wenn es die ersten beiden waren. */
+  kernVerlauf: [],
   /* Beim Sprung zur Erklärung bleibt die laufende Aufgabe mitsamt Eingaben,
      Versuchen, Tipps, Rückmeldungen und Zeitmessung erhalten. */
   rueckkehrDom: null,
@@ -39,8 +43,27 @@ const S = {
   taskSession: null,
   /* Abgeschlossene Pfade dieser Einheit */
   fertig: new Set(),
-  entwurfWartet: null
+  /* Wie oft insgesamt ein Tipp geholt wurde — geht in die Frage ein,
+     wie belastbar die Pfadempfehlung ist. */
+  tippsInsgesamt: 0,
+  einstufung: false,
+  entwurfWartet: null,
+  /* Laufender Aufgabenstand, der nach einem Neuladen auf genau dieselbe
+     Aufgabe zurückgespielt wird (Versuche, Tipps, Zeit und Sitzungs-ID). */
+  aufgabenStandWartet: null,
+  letzteFehlvorstellung: null
 };
+
+/* Datensparsame Schnittstelle für den Diagnoseexport. Der vollständige
+   interne Zustand bleibt gekapselt. */
+window.MATHE9_DIAGNOSE_STATE = () => ({
+  unit: S.daten?.unit || null,
+  path: S.pfad || null,
+  task: S.aufgabe?.id || null,
+  task_session_id: S.taskSession || null,
+  index: S.index,
+  total: S.reihe.length
+});
 
 function neueId() {
   try {
@@ -130,23 +153,42 @@ function aufgabeZurueckholen() {
 function standSpeichern() {
   if (!S.daten || S.daten.pruefung) return;
   try {
+    const aktuelleId = S.reihe[S.index]?.id || null;
+    const schonGeloest = Boolean(aktuelleId && S.geloest.has(aktuelleId));
+    const amEnde = S.index >= S.reihe.length;
+    const speicherIndex = schonGeloest ? Math.min(S.index + 1, S.reihe.length) : S.index;
+    const nachfassMeta = {};
+    S.reihe.forEach(t => {
+      if (t.nachfass) nachfassMeta[t.id] = {
+        misconception: t.nachfass,
+        leichter: t.nachfass_leichter === true
+      };
+    });
     Stand.schreib(S.daten.unit, {
+      version: 2,
       unit: S.daten.unit,
       titel: S.daten.title || '',
       pfad: S.pfad,
-      index: S.index,
+      index: speicherIndex,
       gesamt: S.reihe.length,
-      aufgabe: S.aufgabe?.id || null,
+      aufgabe: schonGeloest || amEnde ? null : (S.aufgabe?.id || aktuelleId),
+      reihe_ids: S.reihe.map(t => t.id),
+      nachgefasst: [...S.nachgefasst],
+      nachfass_meta: nachfassMeta,
       geloest: [...S.geloest],
       auf_anhieb: S.aufAnhieb,
       kern_auf_anhieb: S.kernAufAnhieb,
+      kern_verlauf: S.kernVerlauf,
       versuche_gesamt: S.versucheGesamt,
-      tipps: S.tippsGenutzt,
+      versuche_aktuell: schonGeloest || amEnde ? 0 : S.versuche,
+      tipps_aktuell: schonGeloest || amEnde ? 0 : S.tippsGenutzt,
+      tipps_insgesamt: S.tippsInsgesamt,
+      elapsed_ms: schonGeloest || amEnde || !S.start ? 0 : Math.max(0, Date.now() - S.start),
+      task_session_id: schonGeloest || amEnde ? null : S.taskSession,
+      letzte_fehlvorstellung: schonGeloest || amEnde ? null : S.letzteFehlvorstellung,
       selbst: S.selbst,
-      /* Welche Pfade dieser Einheit schon durch sind — davon leben der
-         Lernstatus im Inhaltsverzeichnis und die Startseitenkachel. */
       fertig: [...S.fertig],
-      entwurf: entwurfLesen()
+      entwurf: schonGeloest || amEnde ? null : entwurfLesen()
     });
   } catch (error) {
     console.warn('[Mathe9 Stand]', error);
@@ -171,7 +213,7 @@ function entwurfSetzen(entwurf) {
   if (!entwurf || !entwurf.werte) return;
   if (entwurf.typ === 'zahlen') {
     const felder = [...document.querySelectorAll('#buehne .zahl-feld:not(.lk-luecke-feld)')];
-    entwurf.werte.forEach((w, i) => { if (felder[i] && w) felder[i].value = w; });
+    entwurf.werte.forEach((w, i) => { if (felder[i] && w != null) felder[i].value = String(w); });
     return;
   }
   if (entwurf.typ === 'zuordnung') {
@@ -228,6 +270,10 @@ function standAbfrage(stand) {
   const neu = el('button', 'btn btn-neben', 'Von vorn beginnen');
   neu.addEventListener('click', () => {
     Stand.loesche(S.daten.unit);
+    S.fertig = new Set();
+    S.entwurfWartet = null;
+    S.aufgabenStandWartet = null;
+    S.letzteFehlvorstellung = null;
     Tracker.track('stand_verworfen', { unit: S.daten.unit, path: stand.pfad });
     pfadSetzen(S.daten.pfad_fest || stand.pfad || S.pfad);
   });
@@ -258,18 +304,32 @@ async function start() {
   kopfBauen();
   formelkarteBauen();
   uebungskarteBauen();
+  videokarteBauen();
 
   /* Ein Deep-Link der Lehrkraft schlägt den gespeicherten Stand: Wer per
      Link an eine bestimmte Stelle geschickt wird, soll dort landen. */
   const ziel = deepLink();
+  /* Die eindeutige Aufgaben-ID verrät ihren Pfad. Dadurch funktioniert ein
+     Lehrerlink auch ohne zusätzliches `p=`. */
+  if (ziel.aufgabe) {
+    const zielAufgabe = (S.daten.tasks || []).find(t => t.id === ziel.aufgabe);
+    if (zielAufgabe) ziel.pfad = zielAufgabe.path;
+  }
   if (ziel.pfad && !S.daten.pfad_fest && S.daten.lernkarten?.[ziel.pfad]) S.pfad = ziel.pfad;
 
   const stand = S.daten.pruefung ? null : Stand.lies(S.daten.unit);
   /* Abgeschlossene Pfade gelten für die ganze Einheit — sie bleiben auch
      dann bekannt, wenn gar keine Wiederaufnahme angeboten wird. */
   if (stand) S.fertig = new Set(stand.fertig || []);
-  const lohntSich = stand && (stand.index > 0 || (stand.geloest || []).length > 0);
-  if (lohntSich && !ziel.aufgabe && !ziel.abschnitt) { standAbfrage(stand); return; }
+  const lohntSich = stand && (stand.index > 0 || (stand.geloest || []).length > 0 || stand.aufgabe || stand.entwurf || (stand.versuche_aktuell | 0) > 0 || (stand.tipps_aktuell | 0) > 0);
+  /* Ein Deep-Link auf eine Aufgabe oder eine Stelle der Erklärung schlägt den
+     gespeicherten Stand — dorthin soll man ja geschickt werden. Ein reines
+     `?p=` tut das nicht: Es wählt nur den Pfad vor, und wer auf genau diesem
+     Pfad einen Stand hat, soll ihn trotzdem angeboten bekommen. Zeigt der
+     Link dagegen auf einen anderen Pfad, ist das eine bewusste Umleitung. */
+  const linkUebersteuert = !!(ziel.aufgabe || ziel.abschnitt
+    || (ziel.pfad && stand && ziel.pfad !== stand.pfad));
+  if (lohntSich && !linkUebersteuert) { standAbfrage(stand); return; }
 
   pfadSetzen(S.daten.pfad_fest || S.pfad, null, ziel);
 }
@@ -329,6 +389,8 @@ function pfadSetzen(p, stand, ziel) {
   document.documentElement.style.setProperty('--pfad-bg', `var(--${p.toLowerCase()}-bg)`);
   document.querySelectorAll('.pfad-btn').forEach(b =>
     b.setAttribute('aria-pressed', String(b.dataset.p === p)));
+  /* Videos können an einen Lernweg gebunden sein — beim Wechsel neu bauen. */
+  videokarteBauen();
 
   S.reihe = S.daten.tasks.filter(t => t.path === p);
   /* Der Prüfungstrainer hat seine Reihenfolge schon festgelegt. */
@@ -336,42 +398,83 @@ function pfadSetzen(p, stand, ziel) {
   S.kernIds = new Set(S.reihe.map(t => t.id));
   S.kernGesamt = S.reihe.length;
   S.kernAufAnhieb = 0;
+  S.kernVerlauf = [];
   S.index = 0;
   S.geloest = new Set();
   S.aufAnhieb = 0;
   S.versucheGesamt = 0;
   S.nachgefasst = new Set();
   S.selbst = null;
+  S.tippsInsgesamt = 0;
+  S.einstufung = false;
+  S.entwurfWartet = null;
+  S.aufgabenStandWartet = null;
+  S.letzteFehlvorstellung = null;
+  S.aufgabe = null;
+  S.taskSession = null;
   /* Über alle Aufgaben, nicht nur die aktuelle Reihe: die Objekte werden
      zwischen den Pfaden wiederverwendet, sonst bliebe die Markierung kleben. */
   (S.daten.tasks || []).forEach(t => { delete t.nachfass; delete t.nachfass_leichter; });
   Tracker.setContext({ unit: S.daten.unit, path: p, task: null, progress: 0 });
   Tracker.track('path_selected', { path: p, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
-  Tracker.progress({
-    unit: S.daten.unit,
-    path: p,
-    task: null,
-    completed: 0,
-    total: S.reihe.length,
-    percent: 0,
-    correct: 0,
-    attempts: 0,
-    status: 'active'
-  });
   /* Gespeicherten Stand einspielen — danach geht es direkt an der Aufgabe
      weiter, an der zuletzt gearbeitet wurde. */
   if (stand && stand.pfad === p) {
-    S.geloest = new Set((stand.geloest || []).filter(id => S.reihe.some(t => t.id === id)));
+    const pool = new Map((S.daten.tasks || []).map(t => [t.id, t]));
+    const ids = Array.isArray(stand.reihe_ids) ? stand.reihe_ids : [];
+    const gespeichert = ids.map(id => pool.get(id)).filter(Boolean);
+    if (gespeichert.length) S.reihe = gespeichert;
+
+    const meta = stand.nachfass_meta || {};
+    Object.entries(meta).forEach(([id, m]) => {
+      const t = pool.get(id);
+      if (!t || !m) return;
+      t.nachfass = m.misconception || null;
+      t.nachfass_leichter = m.leichter === true;
+    });
+    S.nachgefasst = new Set(stand.nachgefasst || []);
+    S.geloest = new Set((stand.geloest || []).filter(id => pool.has(id)));
     S.index = Math.min(Math.max(0, stand.index | 0), S.reihe.length);
+    while (S.index < S.reihe.length && S.geloest.has(S.reihe[S.index].id)) S.index++;
     S.aufAnhieb = stand.auf_anhieb | 0;
     S.kernAufAnhieb = stand.kern_auf_anhieb | 0;
+    S.kernVerlauf = Array.isArray(stand.kern_verlauf) ? stand.kern_verlauf.map(Boolean) : [];
     S.versucheGesamt = stand.versuche_gesamt | 0;
     S.selbst = stand.selbst || null;
     S.fertig = new Set(stand.fertig || []);
-    S.entwurfWartet = stand.entwurf || null;
+    S.tippsInsgesamt = stand.tipps_insgesamt | 0;
+    S.entwurfWartet = null;
+    const aktuelle = S.reihe[S.index];
+    if (aktuelle && (!stand.aufgabe || stand.aufgabe === aktuelle.id)) {
+      S.entwurfWartet = stand.entwurf || null;
+      S.aufgabenStandWartet = {
+        task: aktuelle.id,
+        versuche: Math.max(0, stand.versuche_aktuell | 0),
+        tipps: Math.max(0, stand.tipps_aktuell ?? stand.tipps ?? 0),
+        elapsed: Math.max(0, Number(stand.elapsed_ms) || 0),
+        session: stand.task_session_id || null,
+        misconception: stand.letzte_fehlvorstellung || null
+      };
+    }
+    const fortschritt = Math.round(S.geloest.size / Math.max(1, S.reihe.length) * 100);
+    Tracker.setContext({ progress: fortschritt });
+    Tracker.progress({
+      unit: S.daten.unit, path: p, task: aktuelle?.id || null,
+      completed: S.geloest.size, total: S.reihe.length, percent: fortschritt,
+      correct: S.aufAnhieb, attempts: S.versucheGesamt,
+      status: S.index >= S.reihe.length ? 'completed' : 'active'
+    });
     aufgabeZeigen();
     return;
   }
+
+  /* Nur ein wirklich neu begonnener Pfad wird im Dashboard auf null gesetzt.
+     Bei einer Wiederaufnahme wurde oben der gespeicherte Stand übertragen. */
+  Tracker.progress({
+    unit: S.daten.unit, path: p, task: null,
+    completed: 0, total: S.reihe.length, percent: 0,
+    correct: 0, attempts: 0, status: 'active'
+  });
 
   /* Deep-Link auf eine bestimmte Aufgabe: dorthin springen. */
   if (ziel && ziel.aufgabe) {
@@ -649,6 +752,7 @@ function selbstcheckBlock() {
       wahl.querySelectorAll('.selbstcheck-opt').forEach(x => x.setAttribute('aria-pressed', 'false'));
       b.setAttribute('aria-pressed', 'true');
       Tracker.track('selbstcheck_vorher', { path: S.pfad, wert });
+      standSpeichern();
     });
     wahl.append(b);
   });
@@ -677,20 +781,30 @@ function aufgabeZeigen() {
 
   const t = S.reihe[S.index];
   S.aufgabe = t;
-  S.tippsGenutzt = 0;
-  S.versuche = 0;
-  S.start = Date.now();
-  /* Neue Aufgabe, neue Sitzungs-ID. Sie hängt an jedem Ereignis dieser
-     Bearbeitung und macht die Auswertung auch dann eindeutig, wenn
-     Ereignisse verspätet, doppelt oder aus einem zweiten Tab eintreffen. */
-  S.taskSession = neueId();
+  const wieder = S.aufgabenStandWartet && S.aufgabenStandWartet.task === t.id
+    ? S.aufgabenStandWartet : null;
+  S.aufgabenStandWartet = null;
+  S.tippsGenutzt = Math.min(t.hints?.length || 0, wieder?.tipps || 0);
+  S.versuche = Math.max(0, wieder?.versuche || 0);
+  S.start = Date.now() - Math.max(0, wieder?.elapsed || 0);
+  S.letzteFehlvorstellung = wieder?.misconception || null;
+  /* Beim Wiederaufnehmen bleibt die Sitzungs-ID erhalten. Nur eine wirklich
+     neue Aufgabenbearbeitung erhält eine neue ID. */
+  S.taskSession = wieder?.session || neueId();
 
   Tracker.setContext({
     unit: S.daten.unit, path: t.path, task: t.id,
     task_session_id: S.taskSession,
     progress: Math.round(S.geloest.size / (S.reihe.length || 1) * 100)
   });
-  Tracker.track('task_view', { step: t.step, index: S.index + 1, total: S.reihe.length, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
+  if (wieder) {
+    Tracker.track('task_resume', {
+      step: t.step, index: S.index + 1, total: S.reihe.length,
+      attempts: S.versuche, hints_used: S.tippsGenutzt
+    });
+  } else {
+    Tracker.track('task_view', { step: t.step, index: S.index + 1, total: S.reihe.length, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
+  }
 
   const zeile = el('div', 'stufe-zeile');
   zeile.append(el('span', 'stufe-pill', `Pfad ${t.path} · Stufe ${t.step}`));
@@ -749,6 +863,27 @@ function aufgabeZeigen() {
   const rueck = el('div');
   rueck.id = 'rueck';
   karte.append(rueck);
+
+  if (wieder) {
+    for (let i = 0; i < S.tippsGenutzt; i++) {
+      const box = el('div', 'rueck tipp');
+      box.innerHTML = `<b>Tipp ${i + 1}:</b> ${t.hints[i]}`;
+      rueck.append(box);
+    }
+    if ($('#tipp') && S.tippsGenutzt >= (t.hints?.length || 0)) $('#tipp').disabled = true;
+    if (S.versuche > 0) {
+      melde('tipp', `<b>Weiterlernen:</b> Deine bisherigen ${S.versuche === 1 ? 'Eingabe war' : S.versuche + ' Eingaben waren'} noch nicht richtig. Der nächste richtige Versuch zählt daher nicht als „auf Anhieb".`);
+    }
+    if (S.versuche >= 2 && t.solution) {
+      const box = el('div', 'rueck tipp');
+      box.innerHTML = `<b>So geht es:</b><div class="rechenweg">${t.solution}</div>`;
+      rueck.append(box);
+      const w = el('button', 'btn btn-neben', 'Weiter');
+      w.id = 'weiter';
+      w.addEventListener('click', () => { S.index++; aufgabeZeigen(); });
+      akt.append(w);
+    }
+  }
 
   /* Bereits getippte, aber noch nicht geprüfte Eingaben zurückholen. */
   if (S.entwurfWartet) { entwurfSetzen(S.entwurfWartet); S.entwurfWartet = null; }
@@ -916,6 +1051,7 @@ function auswahl(t) {
     b.addEventListener('click', () => {
       g.querySelectorAll('.opt').forEach(x => x.setAttribute('aria-pressed', 'false'));
       b.setAttribute('aria-pressed', 'true');
+      standSpeichernBald();
     });
     g.append(b);
   });
@@ -936,6 +1072,7 @@ function zuordnung(t) {
       b.addEventListener('click', () => {
         g.querySelectorAll('.opt').forEach(x => x.setAttribute('aria-pressed', 'false'));
         b.setAttribute('aria-pressed', 'true');
+        standSpeichernBald();
       });
       g.append(b);
     });
@@ -953,7 +1090,9 @@ function tippZeigen() {
   box.innerHTML = `<b>Tipp ${S.tippsGenutzt + 1}:</b> ${t.hints[S.tippsGenutzt]}`;
   $('#rueck').append(box);
   S.tippsGenutzt++;
+  S.tippsInsgesamt++;
   if (S.tippsGenutzt >= t.hints.length) $('#tipp').disabled = true;
+  standSpeichern();
 }
 
 /* ---------- Prüfen ---------- */
@@ -967,6 +1106,7 @@ function pruefe() {
     if (roh === '') { S.versuche--; return; }
     const kandidaten = lesarten(roh).filter(z => !Number.isNaN(z));
     if (!kandidaten.length) {
+      S.versuche--;
       melde('nope', 'Das ist keine Zahl. Schreib nur das Ergebnis — ohne Einheit.');
       return;
     }
@@ -1063,6 +1203,7 @@ function melde(art, text) {
 
 function melden(richtig, fehlvorstellung) {
   const t = S.aufgabe;
+  S.letzteFehlvorstellung = fehlvorstellung?.id || null;
   S.versucheGesamt++;
 
   /* Der Denkfehler wird lokal notiert — das Warm-up der nächsten Stunde
@@ -1080,11 +1221,13 @@ function melden(richtig, fehlvorstellung) {
   });
 
   if (richtig) {
+    const warSchonGeloest = S.geloest.has(t.id);
     S.geloest.add(t.id);
-    if (S.versuche === 1) {
+    if (!warSchonGeloest && S.versuche === 1) {
       S.aufAnhieb++;
       if (S.kernIds.has(t.id)) S.kernAufAnhieb++;
     }
+    if (!warSchonGeloest && S.kernIds.has(t.id)) S.kernVerlauf.push(S.versuche === 1);
     const aktiv = document.activeElement;
     if (aktiv && aktiv.matches?.('.zahl-feld')) aktiv.blur();
     const percent = Math.round(S.geloest.size / (S.reihe.length || 1) * 100);
@@ -1137,6 +1280,7 @@ function melden(richtig, fehlvorstellung) {
       akt.append(w);
     }
   }
+  standSpeichern();
 }
 
 /* ---------- Verweis auf die passende Erklärstelle ----------
@@ -1176,32 +1320,52 @@ function fehlerStamm(id) {
     /_(vol|volumen|flaeche|bei_volumen|bei_flaeche|fehlt|uebersehen|vertauscht|beim_teilen)$/, '');
 }
 
-function fehlvorstellungIn(t, id, weit) {
-  const passt = m => weit ? fehlerStamm(m.id) === fehlerStamm(id) : m.id === id;
-  if ((t.misconceptions || []).some(passt)) return true;
-  return (t.fields || []).some(f => (f.misconceptions || []).some(passt));
+/* Alle Fehlvorstellungen einer Aufgabe, auch die an einzelnen Feldern. */
+function alleFehlvorstellungen(t) {
+  const alle = [...(t.misconceptions || [])];
+  (t.fields || []).forEach(f => alle.push(...(f.misconceptions || [])));
+  return alle;
+}
+
+/* Drei Stufen der Ähnlichkeit, in dieser Reihenfolge:
+     'exakt'   dieselbe ID
+     'konzept' dasselbe Feld "konzeptfehler" — eine fachliche Aussage aus
+               der tasks.json, nicht geraten
+     'stamm'   gleicher Wortstamm, letzter Notnagel für ungepflegte IDs */
+function fehlvorstellungIn(t, id, konzept, art) {
+  return alleFehlvorstellungen(t).some(m => {
+    if (art === 'exakt') return m.id === id;
+    if (art === 'konzept') return !!konzept && m.konzeptfehler === konzept;
+    return fehlerStamm(m.id) === fehlerStamm(id);
+  });
 }
 
 const LEICHTER = { A: [], B: ['A'], C: ['B', 'A'] };
 
 function nachfassEinreihen(id) {
   if (!id || S.daten.pruefung || S.nachgefasst.has(id)) return;
-  const passt = (t, pfad, weit) => t !== S.aufgabe && t.path === pfad
-    && !S.geloest.has(t.id) && fehlvorstellungIn(t, id, weit);
+  /* Zu welchem Konzept gehört dieser Denkfehler? Steht es in den Daten,
+     zählt es mehr als jede Namensähnlichkeit. */
+  const konzept = (alleFehlvorstellungen(S.aufgabe)
+    .find(m => m.id === id) || {}).konzeptfehler || null;
+
+  const passt = (t, pfad, art) => t !== S.aufgabe && t.path === pfad
+    && !S.geloest.has(t.id) && fehlvorstellungIn(t, id, konzept, art);
 
   let treffer = null, leichter = false;
-  /* Suchreihenfolge: erst die exakt gleiche ID, dann der gleiche Wortstamm;
+  /* Suchreihenfolge: gleiche ID → gleiches Konzept → gleicher Wortstamm;
      jeweils erst der eigene Pfad, dann eine Stufe darunter. */
-  for (const weit of [false, true]) {
-    const idx = S.reihe.findIndex((t, i) => i > S.index && passt(t, S.pfad, weit));
+  for (const art of ['exakt', 'konzept', 'stamm']) {
+    if (art === 'konzept' && !konzept) continue;
+    const idx = S.reihe.findIndex((t, i) => i > S.index && passt(t, S.pfad, art));
     if (idx > -1) { treffer = S.reihe.splice(idx, 1)[0]; break; }
-    treffer = (S.daten.tasks || []).find(t => passt(t, S.pfad, weit) && !S.reihe.includes(t)) || null;
+    treffer = (S.daten.tasks || []).find(t => passt(t, S.pfad, art) && !S.reihe.includes(t)) || null;
     if (treffer) break;
     /* Kein passender Zwilling auf dem eigenen Pfad? Dann tut es eine Aufgabe
        eine Stufe darunter — nach einem Denkfehler ist das ohnehin der
        bessere Ansatz als dasselbe Niveau noch einmal. */
     for (const p of (LEICHTER[S.pfad] || [])) {
-      treffer = (S.daten.tasks || []).find(t => passt(t, p, weit) && !S.reihe.includes(t)) || null;
+      treffer = (S.daten.tasks || []).find(t => passt(t, p, art) && !S.reihe.includes(t)) || null;
       if (treffer) { leichter = true; break; }
     }
     if (treffer) break;
@@ -1218,6 +1382,88 @@ function nachfassEinreihen(id) {
   melde('tipp', leichter
     ? 'Gleich danach kommt <b>dieselbe Sache noch einmal</b> — eine Stufe einfacher.'
     : 'Gleich danach kommt <b>dieselbe Sache noch einmal</b> — mit anderen Zahlen.');
+}
+
+/* ---------- Schwellen der Pfadempfehlung ----------
+   An einer Stelle, damit sie nachjustierbar sind, ohne den Code zu
+   durchsuchen. Die Werte sind plausibel gewählt, aber **nicht empirisch
+   belegt**: Sie stammen aus der Überlegung, dass „vier von fünf auf Anhieb"
+   für die nächste Stufe spricht und „weniger als die Hälfte" gegen die
+   aktuelle. Jede Empfehlung wird zusammen mit den Schwellen protokolliert
+   (`pfadempfehlung`), damit sie später an tatsächlichen Ergebnissen
+   überprüft werden können — siehe Tafel „Pfadempfehlungen" im Dashboard. */
+const EMPFEHLUNG = {
+  hoch: 0.8,           // ab dieser Quote wird die nächsthöhere Stufe empfohlen
+  runter: 0.5,         // darunter die nächstniedrigere
+  mindestAufgaben: 4,  // weniger sind kein verlässliches Bild
+  tippsJeAufgabe: 1,   // ab so vielen Tipps je Aufgabe gilt die Quote als gestützt
+  sprungHaelften: 0.5, // Unterschied zwischen erster und zweiter Hälfte
+  nachfassAnteil: 0.5  // ab so vielen Nachfassaufgaben je Kernaufgabe
+};
+
+/* Wie belastbar ist die Quote? Vier Gründe sprechen dagegen — und alle vier
+   kommen im Unterricht regelmäßig vor:
+
+     1. zu wenige Aufgaben,
+     2. Ergebnisse, die überwiegend mit Tipps zustande kamen,
+     3. ein uneinheitlicher Verlauf: erste Hälfte glatt, zweite zäh (oder
+        umgekehrt). Die Quote ist dann ein Mittelwert über zwei verschiedene
+        Zustände und beschreibt keinen davon,
+     4. viele eingeschobene Nachfassaufgaben. Die Kernquote sieht dann besser
+        aus, als der Weg dorthin war.
+
+   In allen vier Fällen wird die Empfehlung als Vermutung formuliert und eine
+   kurze Einstufung angeboten, statt Sicherheit vorzutäuschen. */
+function empfehlungSicherheit(gesamt) {
+  if (gesamt < EMPFEHLUNG.mindestAufgaben) {
+    return { sicher: false, grund: `Das waren nur ${gesamt} Aufgaben — zu wenige für ein verlässliches Bild.` };
+  }
+  const tippQuote = S.tippsInsgesamt / Math.max(1, gesamt);
+  if (tippQuote >= EMPFEHLUNG.tippsJeAufgabe) {
+    return { sicher: false, grund: 'Du hast oft einen Tipp gebraucht — allein sieht es vielleicht anders aus.' };
+  }
+
+  const verlauf = S.kernVerlauf || [];
+  if (verlauf.length >= EMPFEHLUNG.mindestAufgaben) {
+    const mitte = Math.floor(verlauf.length / 2);
+    const anteil = teil => teil.filter(Boolean).length / Math.max(1, teil.length);
+    const erste = anteil(verlauf.slice(0, mitte));
+    const zweite = anteil(verlauf.slice(mitte));
+    if (Math.abs(zweite - erste) >= EMPFEHLUNG.sprungHaelften) {
+      return {
+        sicher: false,
+        grund: zweite < erste
+          ? 'Der Anfang lief deutlich besser als das Ende — vielleicht war es einfach genug für heute.'
+          : 'Am Anfang hakte es, am Ende lief es — das sieht nach „gerade verstanden" aus.'
+      };
+    }
+  }
+
+  const nachfassQuote = (S.nachgefasst?.size || 0) / Math.max(1, gesamt);
+  if (nachfassQuote >= EMPFEHLUNG.nachfassAnteil) {
+    return { sicher: false, grund: 'Zwischendurch kamen mehrere Nachfassaufgaben — die haben mitgeholfen.' };
+  }
+
+  return { sicher: true, grund: '' };
+}
+
+/* Eine kurze Einstufung auf dem vorgeschlagenen Pfad: drei Aufgaben,
+   Stufe 1 und 2, ohne Lernkarte davor. Danach steht die Empfehlung auf
+   eigenen Füßen. */
+function einstufungStarten(pfad) {
+  const kandidaten = (S.daten.tasks || []).filter(t => t.path === pfad && t.step <= 2);
+  if (kandidaten.length < 2) { pfadSetzen(pfad); return; }
+  Tracker.track('einstufung_gestartet', { von: S.pfad, nach: pfad });
+  pfadSetzen(pfad);
+  S.reihe = kandidaten.slice(0, 3);
+  S.kernIds = new Set(S.reihe.map(t => t.id));
+  S.kernGesamt = S.reihe.length;
+  S.kernAufAnhieb = 0;
+  S.kernVerlauf = [];
+  S.index = 0;
+  S.geloest = new Set();
+  S.einstufung = true;
+  aufgabeZeigen();
 }
 
 /* ---------- Abschluss ---------- */
@@ -1259,6 +1505,29 @@ function abschluss() {
     return;
   }
 
+  /* Kurze Einstufung: Sie schließt keinen Pfad ab, sondern beantwortet nur
+     die eine Frage, für die sie gestartet wurde. */
+  if (S.einstufung) {
+    const n = S.reihe.length, gut = S.kernAufAnhieb;
+    karte.append(el('h2', 'frage', 'Einstufung: ' + gut + ' von ' + n + ' auf Anhieb'));
+    const p = el('p');
+    p.innerHTML = gut >= Math.ceil(n * 0.67)
+      ? `Das reicht. <b>Pfad ${S.pfad} passt zu dir.</b>`
+      : `Noch wackelig. <b>Bleib zunächst auf dem bisherigen Pfad</b> — das ist keine Niederlage, sondern die passende Stufe.`;
+    karte.append(p);
+    Tracker.track('einstufung_ergebnis', { path: S.pfad, auf_anhieb: gut, gesamt: n });
+    const akt = el('div', 'aktionen');
+    const w = el('button', 'btn btn-haupt', `Auf Pfad ${S.pfad} weiterarbeiten`);
+    w.addEventListener('click', () => { S.einstufung = false; pfadSetzen(S.pfad); });
+    akt.append(w);
+    const z = el('a', 'btn btn-neben', 'Zur Übersicht');
+    z.href = 'index.html'; z.style.textDecoration = 'none';
+    akt.append(z);
+    karte.append(akt);
+    b.append(karte);
+    return;
+  }
+
   karte.append(el('h2', 'frage', `Pfad ${S.pfad} geschafft.`));
   S.fertig.add(S.pfad);
   standSpeichern();
@@ -1287,17 +1556,48 @@ function abschluss() {
     Tracker.track('selbstcheck_nachher', { path: S.pfad, vorher: S.selbst, auf_anhieb: aufAnhieb, gesamt });
   }
 
-  /* Empfehlung statt bloßer Wahlmöglichkeit: Die App weiß, wie es lief. */
+  /* Empfehlung statt bloßer Wahlmöglichkeit: Die App weiß, wie es lief.
+     Sie weiß es aber nicht immer gut genug — bei wenigen Kernaufgaben oder
+     vielen genutzten Tipps steht die Quote auf dünnem Grund. Dann wird die
+     Empfehlung als Vermutung formuliert und mit einem kurzen Einstufungs-
+     angebot verbunden, statt Sicherheit vorzutäuschen. */
   const naechster = { A: 'B', B: 'C', C: null }[S.pfad];
   const vorheriger = { A: null, B: 'A', C: 'B' }[S.pfad];
-  const hoch = naechster && quote >= .8 && S.daten.lernkarten && S.daten.lernkarten[naechster];
-  const runter = vorheriger && quote < .5 && S.daten.lernkarten && S.daten.lernkarten[vorheriger];
+  const hoch = naechster && quote >= EMPFEHLUNG.hoch && S.daten.lernkarten && S.daten.lernkarten[naechster];
+  const runter = vorheriger && quote < EMPFEHLUNG.runter && S.daten.lernkarten && S.daten.lernkarten[vorheriger];
+  const sicherheit = empfehlungSicherheit(gesamt);
+  /* Mitschreiben, was empfohlen wurde und auf welcher Grundlage — nur so
+     lassen sich die Schwellen später an echten Ergebnissen kalibrieren. */
+  Tracker.track('pfadempfehlung', {
+    von: S.pfad,
+    empfohlen: hoch ? naechster : (runter ? vorheriger : null),
+    quote: Math.round(quote * 100) / 100,
+    auf_anhieb: aufAnhieb,
+    gesamt,
+    tipps: S.tippsInsgesamt,
+    nachgefasst: S.nachgefasst?.size || 0,
+    verlauf: S.kernVerlauf || [],
+    sicher: sicherheit.sicher,
+    schwellen: EMPFEHLUNG
+  });
   if (hoch || runter) {
-    const rat = el('div', 'empfehlung');
-    rat.innerHTML = hoch
-      ? `<b>Vorschlag:</b> ${aufAnhieb} von ${gesamt} auf Anhieb — Pfad ${naechster} passt jetzt zu dir.`
-      : `<b>Vorschlag:</b> Das war zäh (${aufAnhieb} von ${gesamt} auf Anhieb). Auf Pfad ${vorheriger} wird die Grundlage noch einmal ruhig aufgebaut.`;
+    const rat = el('div', 'empfehlung' + (sicherheit.sicher ? '' : ' empfehlung-vage'));
+    const kern = hoch
+      ? `${aufAnhieb} von ${gesamt} auf Anhieb — Pfad ${naechster} passt jetzt zu dir.`
+      : `Das war zäh (${aufAnhieb} von ${gesamt} auf Anhieb). Auf Pfad ${vorheriger} wird die Grundlage noch einmal ruhig aufgebaut.`;
+    rat.innerHTML = sicherheit.sicher
+      ? `<b>Vorschlag:</b> ${kern}`
+      : `<b>Eher ein Eindruck als ein Ergebnis:</b> ${hoch
+          ? `Dein Ergebnis spricht für Pfad ${naechster}.`
+          : `Dein Ergebnis spricht eher für Pfad ${vorheriger}.`}`
+        + ` <span class="empfehlung-grund">${sicherheit.grund}</span>`;
     karte.append(rat);
+
+    if (!sicherheit.sicher) {
+      const probe = el('button', 'btn btn-neben', 'Kurze Einstufung (3 Aufgaben)');
+      probe.addEventListener('click', () => einstufungStarten(hoch ? naechster : vorheriger));
+      rat.append(probe);
+    }
   }
 
   const akt = el('div', 'aktionen');
@@ -1363,6 +1663,44 @@ function formelkarteBauen() {
     const ul = el('ul');
     k.saetze.forEach(s => ul.append(el('li', null, s)));
     i.append(ul);
+  }
+
+  einstellungenBauen(i);
+}
+
+/* ---------- Einstellungen ----------
+   Die Systemeinstellung „Bewegung reduzieren" ist auf einem Schulgerät für
+   niemanden auffindbar. Deshalb steht der Schalter dort, wo er gebraucht
+   wird: in der Schublade, die auf jeder Aufgabenseite erreichbar ist. */
+function einstellungenBauen(ziel) {
+  if (!window.ANIM || !window.ANIM.autostart) return;
+  ziel.append(el('h3', null, 'Einstellungen'));
+
+  const zeile = el('label', 'fk-schalter');
+  const box = el('input');
+  box.type = 'checkbox';
+  box.checked = window.ANIM.autostart.an();
+  box.addEventListener('change', () => {
+    window.ANIM.autostart.setzen(box.checked);
+    Tracker.track('einstellung_autostart', { an: box.checked });
+    hinweis.textContent = box.checked
+      ? 'Animationen starten von selbst, sobald sie im Bild sind.'
+      : 'Animationen starten erst auf „▶ Abspielen".';
+  });
+  zeile.append(box);
+  zeile.append(el('span', null, 'Animationen automatisch starten'));
+  ziel.append(zeile);
+
+  const hinweis = el('div', 'fk-hinweis', box.checked
+    ? 'Animationen starten von selbst, sobald sie im Bild sind.'
+    : 'Animationen starten erst auf „▶ Abspielen".');
+  ziel.append(hinweis);
+
+  /* Wer die Bewegung im Betriebssystem abgestellt hat, soll wissen, warum
+     der Schalter hier nichts bewirkt. */
+  if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+    ziel.append(el('div', 'fk-hinweis',
+      'Dein Gerät ist auf „Bewegung reduzieren" eingestellt. Animationen bleiben deshalb immer stehen.'));
   }
 }
 
@@ -1478,6 +1816,81 @@ function uebungskarteBauen() {
     if (eintrag.typ === 'sammlung') {
       li.append(el('span', 'ua-tag', 'Sammlung'));
     }
+    ul.append(li);
+  });
+  inhalt.append(ul);
+}
+
+
+/* ---------- Erklärvideos ----------
+   Datengetrieben aus tasks.json:
+   "videos": [
+     { "titel": "…", "url": "https://www.youtube.com/watch?v=…",
+       "quelle": "Lehrerschmidt", "pfad": "A" }   // pfad ist optional
+   ]
+
+   Warum verlinkt und nicht eingebettet: Ein eingebettetes YouTube-Fenster
+   lädt beim Öffnen der Einheit Skripte und setzt Kennungen — auch bei
+   Kindern, die das Video gar nicht ansehen wollen. Die Content-Security-
+   Policy verbietet es deshalb ausdrücklich (frame-src 'none'). Ein Link
+   ist eine Entscheidung des Kindes und bleibt eine.
+
+   Warum überhaupt: Die Lernkarte erklärt es einmal. Wenn genau diese
+   Erklärung nicht ankommt, hilft es wenig, sie noch einmal zu lesen —
+   dann hilft eine andere Stimme und ein anderer Weg. Offline funktioniert
+   das nicht; deshalb steht der Hinweis dabei. */
+const VIDEOQUELLEN = {
+  Lehrerschmidt: { key: 'lehrerschmidt', label: 'Lehrerschmidt' }
+};
+const VIDEO_MUSTER = /^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/;
+
+function videokarteBauen() {
+  const box = $('#videokarte');
+  const inhalt = $('#video-inhalt');
+  if (!box || !inhalt) return;
+
+  const liste = Array.isArray(S.daten.videos) ? S.daten.videos : [];
+  inhalt.innerHTML = '';
+
+  const gesehen = new Set();
+  const gueltig = liste.filter(eintrag => {
+    const url = String(eintrag?.url || '');
+    const titel = String(eintrag?.titel || '').trim();
+    const quelle = VIDEOQUELLEN[eintrag?.quelle];
+    /* Ein Video für Pfad C hilft auf Pfad A nicht weiter — es verunsichert. */
+    const passt = !eintrag?.pfad || eintrag.pfad === S.pfad;
+    if (!VIDEO_MUSTER.test(url) || !titel || !quelle || !passt || gesehen.has(url)) return false;
+    gesehen.add(url);
+    return true;
+  });
+
+  if (!gueltig.length) { box.hidden = true; return; }
+  box.hidden = false;
+
+  inhalt.append(el('p', 'ua-hinweis',
+    'Öffnet YouTube in einem neuen Tab — dafür brauchst du Internet. '
+    + 'Die Videos gehören nicht zu dieser Seite; dort gelten die Regeln von YouTube.'));
+
+  const ul = el('ul', 'ua-liste');
+  gueltig.forEach(eintrag => {
+    const quelle = VIDEOQUELLEN[eintrag.quelle];
+    const li = el('li');
+    li.append(el('span', `ua-q ua-q-${quelle.key}`, quelle.label));
+
+    const a = el('a', 'ua-link', eintrag.titel.trim());
+    a.href = eintrag.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.addEventListener('click', () => {
+      Tracker.track('video_open', {
+        provider: quelle.key,
+        title: eintrag.titel.trim(),
+        unit: S.daten.unit,
+        path: S.pfad
+      });
+    });
+    li.append(a);
+    if (eintrag.pfad) li.append(el('span', 'ua-tag', 'Pfad ' + eintrag.pfad));
     ul.append(li);
   });
   inhalt.append(ul);

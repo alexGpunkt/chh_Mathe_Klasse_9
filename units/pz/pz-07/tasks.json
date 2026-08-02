@@ -129,12 +129,14 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.25,
-          "feedback": "Das ist der Anteil als Dezimalzahl. Für Prozent noch mal 100 nehmen."
+          "feedback": "Das ist der Anteil als Dezimalzahl. Für Prozent noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "geteilt_vertauscht",
           "value": 400,
-          "feedback": "Du hast 80 : 20 gerechnet. Es muss Teil : Ganzes sein, also 20 : 80."
+          "feedback": "Du hast 80 : 20 gerechnet. Es muss Teil : Ganzes sein, also 20 : 80.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -163,12 +165,14 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.3,
-          "feedback": "Das ist der Anteil als Dezimalzahl. Noch mal 100 für Prozent."
+          "feedback": "Das ist der Anteil als Dezimalzahl. Noch mal 100 für Prozent.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "geteilt_vertauscht",
           "value": 333.33,
-          "feedback": "Du hast 30 : 9 gerechnet. Der Teil kommt zuerst: 9 : 30."
+          "feedback": "Du hast 30 : 9 gerechnet. Der Teil kommt zuerst: 9 : 30.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -195,7 +199,8 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.24,
-          "feedback": "Noch mal 100 nehmen — dann sind es Prozent."
+          "feedback": "Noch mal 100 nehmen — dann sind es Prozent.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "rest_statt_teil",
@@ -228,7 +233,8 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.5,
-          "feedback": "Das ist der Anteil als Dezimalzahl. 0,5 · 100 = 50 %."
+          "feedback": "Das ist der Anteil als Dezimalzahl. 0,5 · 100 = 50 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -258,7 +264,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 588.24,
-          "feedback": "Du hast 200 : 34 gerechnet. Teil durch Ganzes: 34 : 200."
+          "feedback": "Du hast 200 : 34 gerechnet. Teil durch Ganzes: 34 : 200.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -286,7 +293,8 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.18,
-          "feedback": "Noch mal 100 nehmen."
+          "feedback": "Noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -345,12 +353,14 @@
         {
           "id": "geteilt_vertauscht",
           "value": 800,
-          "feedback": "Du hast 56 : 7 gerechnet. Der Teil steht vorn: 7 : 56."
+          "feedback": "Du hast 56 : 7 gerechnet. Der Teil steht vorn: 7 : 56.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "mal_100_vergessen",
           "value": 0.125,
-          "feedback": "Noch mal 100 nehmen."
+          "feedback": "Noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -440,7 +450,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 8000,
-          "feedback": "Du hast 240 : 3 gerechnet. Teil durch Ganzes: 3 : 240."
+          "feedback": "Du hast 240 : 3 gerechnet. Teil durch Ganzes: 3 : 240.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -571,6 +582,23 @@
       "url": "https://de.serlo.org/mathe/174189/aufgaben-zur-berechnung-von-prozentwert-grundwert-und-prozentsatz",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Prozentsatz mit Formel — Schritt für Schritt",
+      "url": "https://www.youtube.com/watch?v=zxpxFQ7iwmI",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Prozentsatz berechnen — Prozentrechnung mit Formel",
+      "url": "https://www.youtube.com/watch?v=YdBcJa8-81s",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Dreisatz: Prozentsatz berechnen",
+      "url": "https://www.youtube.com/watch?v=xooEyNT3OQc",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

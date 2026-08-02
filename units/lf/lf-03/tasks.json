@@ -259,7 +259,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 0.333,
-          "feedback": "Du hast 2 : 6 gerechnet. Es gilt m = y : x — der y-Wert steht oben."
+          "feedback": "Du hast 2 : 6 gerechnet. Es gilt m = y : x — der y-Wert steht oben.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -287,7 +288,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 0.667,
-          "feedback": "Du hast 3 : 4,5 gerechnet. m = y : x."
+          "feedback": "Du hast 3 : 4,5 gerechnet. m = y : x.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -347,7 +349,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 0.4,
-          "feedback": "Du hast x : y gerechnet. Es gilt m = y : x."
+          "feedback": "Du hast x : y gerechnet. Es gilt m = y : x.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         },
         {
           "id": "differenz_statt_quotient",
@@ -435,7 +438,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 0.667,
-          "feedback": "Du hast 4 : 6 gerechnet. m = y : x — die Höhe geteilt durch die Breite."
+          "feedback": "Du hast 4 : 6 gerechnet. m = y : x — die Höhe geteilt durch die Breite.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -593,6 +597,18 @@
       "spiral": [
         "W-FKT"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Proportionale Zuordnung — was heißt proportional?",
+      "url": "https://www.youtube.com/watch?v=y-PT_Dr3qIA",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Proportionalitätsfaktor — das m in y = m · x",
+      "url": "https://www.youtube.com/watch?v=oMHVOFdTFbA",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

@@ -137,7 +137,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 10,
-          "feedback": "Das ist 1 %. Der Zinssatz ist 2 % — also das Doppelte."
+          "feedback": "Das ist 1 %. Der Zinssatz ist 2 % — also das Doppelte.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "gesamtwert_statt_teil",
@@ -170,7 +171,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 5,
-          "feedback": "Das ist 1 %. Noch mal 3 nehmen."
+          "feedback": "Das ist 1 %. Noch mal 3 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -198,12 +200,14 @@
         {
           "id": "komma_verschoben",
           "value": 300,
-          "feedback": "Um Faktor 10 zu groß — du hast mit 15 % gerechnet. Der Zinssatz ist 1,5 %."
+          "feedback": "Um Faktor 10 zu groß — du hast mit 15 % gerechnet. Der Zinssatz ist 1,5 %.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 20,
-          "feedback": "Das ist 1 %. Der Zinssatz ist 1,5 %."
+          "feedback": "Das ist 1 %. Der Zinssatz ist 1,5 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -258,7 +262,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 35,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -287,7 +292,8 @@
         {
           "id": "komma_verschoben",
           "value": 540,
-          "feedback": "Um Faktor 10 zu groß — das wären 45 %. Der Zinssatz ist 4,5 %."
+          "feedback": "Um Faktor 10 zu groß — das wären 45 %. Der Zinssatz ist 4,5 %.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -316,12 +322,14 @@
         {
           "id": "mal_statt_geteilt",
           "value": 2.7,
-          "feedback": "Du hast 3 % von 90 € gerechnet. Das Kapital ist gesucht — es muss viel größer als die Zinsen sein."
+          "feedback": "Du hast 3 % von 90 € gerechnet. Das Kapital ist gesucht — es muss viel größer als die Zinsen sein.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 30,
-          "feedback": "Das ist 1 % des Kapitals. Noch mal 100 nehmen."
+          "feedback": "Das ist 1 % des Kapitals. Noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -350,12 +358,14 @@
         {
           "id": "geteilt_vertauscht",
           "value": 3333.33,
-          "feedback": "Du hast 1 600 : 48 gerechnet. Es muss Zinsen : Kapital sein: 48 : 1 600."
+          "feedback": "Du hast 1 600 : 48 gerechnet. Es muss Zinsen : Kapital sein: 48 : 1 600.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "mal_100_vergessen",
           "value": 0.03,
-          "feedback": "Das ist der Anteil als Dezimalzahl. Für Prozent noch mal 100."
+          "feedback": "Das ist der Anteil als Dezimalzahl. Für Prozent noch mal 100.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -384,7 +394,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 250,
-          "feedback": "Das ist 1 %. Der Zinssatz ist 6,9 %."
+          "feedback": "Das ist 1 %. Der Zinssatz ist 6,9 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "gesamtwert_statt_teil",
@@ -421,12 +432,14 @@
           "feedback": "Du hast 3,5 % von 126 € gerechnet. Gesucht ist das Kapital — es ist viel größer.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 36,
-          "feedback": "Das ist 1 % des Kapitals."
+          "feedback": "Das ist 1 % des Kapitals.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -492,12 +505,14 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.035,
-          "feedback": "Das ist der Anteil als Dezimalzahl. Noch mal 100."
+          "feedback": "Das ist der Anteil als Dezimalzahl. Noch mal 100.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "geteilt_vertauscht",
           "value": 2857.14,
-          "feedback": "Du hast 5 200 : 182 gerechnet. Es muss Zinsen : Kapital sein."
+          "feedback": "Du hast 5 200 : 182 gerechnet. Es muss Zinsen : Kapital sein.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -527,12 +542,14 @@
         {
           "id": "komma_verschoben",
           "value": 3000,
-          "feedback": "Um Faktor 10 zu klein — du hast mit 48 % gerechnet. Der Zinssatz ist 4,8 %."
+          "feedback": "Um Faktor 10 zu klein — du hast mit 48 % gerechnet. Der Zinssatz ist 4,8 %.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "mal_statt_geteilt",
           "value": 69.12,
-          "feedback": "Du hast 4,8 % von 1 440 € gerechnet. Gesucht ist das Kapital."
+          "feedback": "Du hast 4,8 % von 1 440 € gerechnet. Gesucht ist das Kapital.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -562,12 +579,14 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.069,
-          "feedback": "Das ist der Anteil als Dezimalzahl. Noch mal 100."
+          "feedback": "Das ist der Anteil als Dezimalzahl. Noch mal 100.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "geteilt_vertauscht",
           "value": 1449.28,
-          "feedback": "Du hast 8 000 : 552 gerechnet. Es muss Zinsen : Kapital sein."
+          "feedback": "Du hast 8 000 : 552 gerechnet. Es muss Zinsen : Kapital sein.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -598,6 +617,23 @@
       "url": "https://www.learningsnacks.de/share/57694",
       "typ": "app",
       "quelle": "Learningsnacks"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Zinsen berechnen — die KIP-Grundformel für ein Jahr",
+      "url": "https://www.youtube.com/watch?v=ZywulDFgGAU",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zinsrechnung: Einführung in die KIP-Formel",
+      "url": "https://www.youtube.com/watch?v=Cjav7NNDIWU",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zinsen berechnen — drei Beispielaufgaben",
+      "url": "https://www.youtube.com/watch?v=og_HzcjP5lE",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

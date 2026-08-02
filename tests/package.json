@@ -1,0 +1,13 @@
+{
+  "name": "mathe9-browsertests",
+  "private": true,
+  "description": "Browser-Smoke-Tests. Bewusst als eigenes Paket: Die Anwendung selbst bleibt ohne Abhängigkeiten und ohne Build-Step.",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "install-browser": "playwright install chromium --with-deps"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0"
+  }
+}

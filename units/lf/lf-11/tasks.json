@@ -290,7 +290,8 @@
         {
           "id": "vorzeichen_beim_teilen",
           "value": -3,
-          "feedback": "Wenn du | − 7x rechnest, bekommst du −3x + 7 = −2, also −3x = −9 und x = +3. Minus geteilt durch Minus ergibt Plus."
+          "feedback": "Wenn du | − 7x rechnest, bekommst du −3x + 7 = −2, also −3x = −9 und x = +3. Minus geteilt durch Minus ergibt Plus.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -518,6 +519,23 @@
       "spiral": [
         "W-TERM"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Terme und Gleichungen vereinfachen",
+      "url": "https://www.youtube.com/watch?v=ki8HNoo-q0Y",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Gleichungen mit Klammern",
+      "url": "https://www.youtube.com/watch?v=H8kah0htP2Q",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Distributivgesetz: Klammern auflösen",
+      "url": "https://www.youtube.com/watch?v=7DS4NhyQjaY",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

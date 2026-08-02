@@ -174,7 +174,10 @@
       .m9-dev-row label{font-weight:650}.m9-dev-row small{display:block;color:#687384;font-weight:400}
       .m9-dev-row input[type=checkbox]{width:22px;height:22px}
       .m9-dev-row select{max-width:160px;padding:8px;border:1px solid #bdc6d1;border-radius:8px;background:#fff}
-      .m9-dev-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.m9-dev-actions button,.m9-dev-actions a{display:flex;align-items:center;justify-content:center;min-height:42px;border:0;border-radius:9px;background:#edf1f5;color:#172033;font-weight:700;text-decoration:none;padding:8px;text-align:center;cursor:pointer}
+      .m9-dev-betrieb{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:0;font-size:13px}
+      .m9-dev-betrieb dt{color:#687384}.m9-dev-betrieb dd{margin:0;font-weight:650;overflow-wrap:anywhere}
+      .m9-dev-betrieb dd.warn{color:#a82d20}
+      .m9-dev-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.m9-dev-actions button,.m9-dev-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;border:0;border-radius:9px;background:#edf1f5;color:#172033;font-weight:700;text-decoration:none;padding:8px;text-align:center;cursor:pointer}
       .m9-dev-actions .primary{background:#5b2b82;color:#fff}.m9-dev-status{margin-top:10px;min-height:20px;color:#425169}.m9-dev-status.error{color:#a82d20}.m9-dev-badge{position:fixed;left:62px;bottom:18px;z-index:11999;background:#5b2b82;color:#fff;border-radius:999px;padding:5px 9px;font:700 11px system-ui;pointer-events:none}
       @media(max-width:520px){.m9-dev-actions,.m9-dev-area-grid,.m9-dev-nav-selects{grid-template-columns:1fr}}
     `;
@@ -306,7 +309,7 @@
   async function clearOfflineCache() {
     if ('caches' in window) {
       const names = await caches.keys();
-      await Promise.all(names.map(name => caches.delete(name)));
+      await Promise.all(names.filter(name => name.startsWith('mathe9-')).map(name => caches.delete(name)));
     }
   }
 
@@ -315,13 +318,17 @@
       throw new Error('Service Worker wird von diesem Browser nicht unterstützt.');
     }
     const registrations = await navigator.serviceWorker.getRegistrations();
-    if (!registrations.length) {
+    const appRegistrations = registrations.filter(registration => {
+      const script = registration.active?.scriptURL || registration.waiting?.scriptURL || registration.installing?.scriptURL || '';
+      return script === appUrl('sw.js') || registration.scope === APP_ROOT_URL.href;
+    });
+    if (!appRegistrations.length) {
       await navigator.serviceWorker.register(appUrl('sw.js'), {
         scope: APP_ROOT_URL.pathname
       });
       return;
     }
-    await Promise.all(registrations.map(registration => registration.update()));
+    await Promise.all(appRegistrations.map(registration => registration.update()));
   }
 
   /* ---------- Diagnosebericht ----------
@@ -346,7 +353,38 @@
     if (letzteFehler.length > 20) letzteFehler.shift();
   });
 
+  /* Zustand des Datenversands. Ohne Tracker auf der Seite (Arbeitsblatt,
+     Matrix) bleibt der Aufruf trotzdem beantwortbar. */
+  function betriebsdaten() {
+    try {
+      if (window.Tracker && typeof window.Tracker.status === 'function') {
+        return window.Tracker.status();
+      }
+    } catch { /* Tracker noch nicht bereit */ }
+    return {
+      konfiguriert: false, online: navigator.onLine, wartend: 0,
+      aeltestes: null, zuletzt_gesendet: null, letzter_fehler: null
+    };
+  }
+
+  function zeitKurz(iso) {
+    if (!iso) return '–';
+    const ms = Date.now() - new Date(iso).getTime();
+    if (!Number.isFinite(ms)) return '–';
+    if (ms < 60000) return Math.max(0, Math.round(ms / 1000)) + ' s';
+    if (ms < 3600000) return Math.round(ms / 60000) + ' min';
+    return Math.round(ms / 3600000) + ' h';
+  }
+
   async function diagnoseSammeln() {
+    /* Das Manifest beantwortet die erste Frage jeder Fehlermeldung:
+       Welche Fassung läuft da überhaupt? */
+    let manifest = null;
+    try {
+      const r = await fetch(appUrl('version.json'), { cache: 'no-store' });
+      if (r.ok) manifest = await r.json();
+    } catch { /* offline oder noch kein Release */ }
+
     const caches_ = 'caches' in window ? await caches.keys() : [];
     let swZustand = 'nicht unterstützt';
     let swSkript = '';
@@ -359,12 +397,17 @@
       swSkript = regs[0]?.active?.scriptURL || '';
     }
     const q = new URLSearchParams(location.search);
-    let schuelerKennung = '(keine)';
+    let angemeldet = 'nein';
     try {
       const s = JSON.parse(localStorage.getItem('mathe9.student') || 'null');
-      /* Nur die technische Kennung, nicht der Anzeigename. */
-      schuelerKennung = s?.student_id ? String(s.student_id).slice(0, 8) + '…' : '(keine)';
+      angemeldet = s?.student_id ? 'ja' : 'nein';
     } catch { /* egal */ }
+    let diagnose = {};
+    try { diagnose = window.MATHE9_DIAGNOSE_STATE?.() || {}; } catch { diagnose = {}; }
+
+    const betrieb = betriebsdaten();
+    const migration = (typeof LokalerStand !== 'undefined' && LokalerStand.bericht)
+      ? LokalerStand.bericht() : null;
 
     return [
       'Mathe 9 · Diagnosebericht',
@@ -374,15 +417,37 @@
       'Seite:            ' + location.pathname,
       'Einheit:          ' + (q.get('u') || '—'),
       'Pfad:             ' + (localStorage.getItem('mathe9.pfad') || '—').replace(/"/g, ''),
-      'aktuelle Aufgabe: ' + (window.S && window.S.aufgabe ? window.S.aufgabe.id : '—'),
-      'Aufgabensitzung:  ' + (window.S && window.S.taskSession ? window.S.taskSession : '—'),
-      'Schülerkennung:   ' + schuelerKennung,
+      'aktuelle Aufgabe: ' + (diagnose.task || '—'),
+      'Aufgabensitzung:  ' + (diagnose.task_session_id || '—'),
+      'Schüler angemeldet: ' + angemeldet,
       '',
       '--- Fassung ---',
+      'Projektversion:   ' + (manifest ? manifest.version : '(kein version.json)'),
+      'Commit:           ' + (manifest ? manifest.source_commit : '—'),
+      'Zweig:            ' + (manifest ? manifest.source_branch : '—') +
+        (manifest && manifest.source_dirty ? ' (nicht eingecheckte Änderungen)' : ''),
+      'gebaut am:        ' + (manifest ? manifest.gebaut_am : '—'),
+      'Tracking laut Manifest: ' + (manifest ? String(manifest.tracking_aktiv) : '—'),
+      'Cache laut Datei: ' + (manifest ? manifest.cache_version : '—'),
       'Service Worker:   ' + swZustand,
       'SW-Skript:        ' + swSkript,
       'Caches:           ' + (caches_.join(', ') || '(keiner)'),
       'devMode:          ' + String(!!(window.MATHE9_SUPABASE && window.MATHE9_SUPABASE.devMode)),
+      '',
+      '--- Betrieb ---',
+      'Verbindung:       ' + (betrieb.online ? 'online' : 'offline'),
+      'Tracker:          ' + (betrieb.konfiguriert ? 'sendet' : 'deaktiviert oder nicht konfiguriert'),
+      'Warteschlange:    ' + betrieb.wartend + ' Ereignis(se)' +
+        (betrieb.aeltestes ? ', ältestes ' + betrieb.aeltestes : ''),
+      'letzte Synchron.: ' + (betrieb.zuletzt_gesendet || '(noch keine)'),
+      'letzter Fehler:   ' + (betrieb.letzter_fehler || '(keiner)'),
+      '',
+      '--- Lokale Datenstände ---',
+      'Format:           ' + (migration ? migration.von + ' → ' + migration.nach : '—'),
+      'Migration:        ' + (migration && migration.schritte.length
+        ? migration.schritte.join('; ') : '(nichts zu tun)'),
+      'verworfen:        ' + (migration && migration.verworfen.length
+        ? migration.verworfen.join(', ') : '(nichts)'),
       '',
       '--- Gerät ---',
       'User-Agent:       ' + navigator.userAgent,
@@ -494,6 +559,11 @@
         </div>
       </section>
 
+      <section class="m9-dev-section" aria-labelledby="m9-dev-betrieb-title">
+        <h3 id="m9-dev-betrieb-title">Betrieb</h3>
+        <dl class="m9-dev-betrieb" data-betrieb></dl>
+      </section>
+
       <section class="m9-dev-section" aria-labelledby="m9-dev-test-title">
         <h3 id="m9-dev-test-title">Testeinstellungen</h3>
         <div class="m9-dev-row"><label>Login überspringen<small>Verwendet einen lokalen Testschüler</small></label><input type="checkbox" data-setting="skipLogin"></div>
@@ -531,6 +601,58 @@
     setupNavigation(panel, setStatus).catch(error => {
       setStatus(`Navigation konnte nicht geladen werden: ${error.message}`, true);
     });
+
+    /* ---------- Betriebsanzeige ----------
+       Die erste Frage bei jeder Störung ist immer dieselbe: Welche Fassung
+       läuft, ist das Gerät online, und liegt noch etwas in der
+       Warteschlange? Das hier ist die Antwort, ohne dass jemand erst einen
+       Bericht erzeugen muss. */
+    const betriebListe = panel.querySelector('[data-betrieb]');
+    let manifestGemerkt = null;
+    let aktiverCache = '';
+
+    (async () => {
+      try {
+        const r = await fetch(appUrl('version.json'), { cache: 'no-store' });
+        if (r.ok) manifestGemerkt = await r.json();
+      } catch { /* offline: dann steht dort ein Strich */ }
+      try {
+        if ('caches' in window) {
+          aktiverCache = (await caches.keys()).filter(n => n.startsWith('mathe9-')).join(', ');
+        }
+      } catch { /* Cache-API gesperrt */ }
+      betriebZeichnen();
+    })();
+
+    function betriebZeichnen() {
+      const b = betriebsdaten();
+      const m = manifestGemerkt;
+      const zeilen = [
+        ['Version', m ? `${m.version} · ${m.source_commit || '?'}${m.source_dirty ? ' (dirty)' : ''}` : '–'],
+        ['gebaut', m && m.gebaut_am ? `${m.gebaut_am.slice(0, 16).replace('T', ' ')} (vor ${zeitKurz(m.gebaut_am)})` : '–'],
+        ['Cache (Datei)', m ? m.cache_version || '–' : '–'],
+        ['Cache (Gerät)', aktiverCache || '(keiner)'],
+        ['Verbindung', b.online ? 'online' : 'offline', !b.online],
+        ['Warteschlange', String(b.wartend), b.wartend > 0],
+        ['letzte Sync.', b.zuletzt_gesendet ? 'vor ' + zeitKurz(b.zuletzt_gesendet) : '(noch keine)'],
+        ['letzter Fehler', b.letzter_fehler || '(keiner)', Boolean(b.letzter_fehler)]
+      ];
+      betriebListe.textContent = '';
+      for (const [name, wert, warnen] of zeilen) {
+        const dt = document.createElement('dt');
+        dt.textContent = name;
+        const dd = document.createElement('dd');
+        dd.textContent = wert;
+        if (warnen) dd.className = 'warn';
+        betriebListe.append(dt, dd);
+      }
+    }
+
+    betriebZeichnen();
+    /* Nur nachführen, solange jemand hinsieht. */
+    setInterval(() => { if (!panel.hidden) betriebZeichnen(); }, 4000);
+    addEventListener('online', betriebZeichnen);
+    addEventListener('offline', betriebZeichnen);
 
     const checkboxes = [...panel.querySelectorAll('[data-setting]')];
     checkboxes.forEach(input => {

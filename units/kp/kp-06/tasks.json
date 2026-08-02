@@ -268,7 +268,8 @@
             {
               "id": "dreieck_halbe_vergessen",
               "value": 24,
-              "feedback": "Beim Dreieck durch 2 teilen: (6·4):2 = 12, nicht 24."
+              "feedback": "Beim Dreieck durch 2 teilen: (6·4):2 = 12, nicht 24.",
+              "konzeptfehler": "dreiecksflaeche_halbe"
             }
           ]
         },
@@ -311,7 +312,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 480,
-          "feedback": "Beim Dreieck durch 2: (8·5):2 = 20, dann · 12 = 240."
+          "feedback": "Beim Dreieck durch 2: (8·5):2 = 20, dann · 12 = 240.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -419,7 +421,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 860,
-          "feedback": "Dreieck durch 2: (5·4,3):2 = 10,75, dann · 20 = 215."
+          "feedback": "Dreieck durch 2: (5·4,3):2 = 10,75, dann · 20 = 215.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -557,6 +560,18 @@
       "url": "https://de.serlo.org/mathe/1625/prisma",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Prisma — Oberfläche und Volumen am Dreiecksprisma",
+      "url": "https://www.youtube.com/watch?v=lDA9rW32nko",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Prisma — Volumen berechnen (Grundlagen)",
+      "url": "https://www.youtube.com/watch?v=DR7AAhg1gqY",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

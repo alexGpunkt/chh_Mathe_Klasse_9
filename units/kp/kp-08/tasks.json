@@ -196,12 +196,14 @@
         {
           "id": "nur_eine_grundflaeche",
           "value": 66,
-          "feedback": "Es gibt ZWEI Grundflächen: 2 · 6 = 12, plus 60 = 72."
+          "feedback": "Es gibt ZWEI Grundflächen: 2 · 6 = 12, plus 60 = 72.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         },
         {
           "id": "grundflaeche_vergessen",
           "value": 60,
-          "feedback": "Nur der Mantel. Die beiden Grundflächen (2·6 = 12) fehlen: 72."
+          "feedback": "Nur der Mantel. Die beiden Grundflächen (2·6 = 12) fehlen: 72.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -273,7 +275,8 @@
             {
               "id": "grundflaeche_vergessen",
               "value": 120,
-              "feedback": "Zum Mantel noch 2 Grundflächen: 2·6 = 12, macht 132."
+              "feedback": "Zum Mantel noch 2 Grundflächen: 2·6 = 12, macht 132.",
+              "konzeptfehler": "grundflaeche_unvollstaendig"
             }
           ]
         }
@@ -311,7 +314,8 @@
         {
           "id": "nur_eine_grundflaeche",
           "value": 164,
-          "feedback": "Zwei Grundflächen: 2·20 = 40, plus 144 = 184."
+          "feedback": "Zwei Grundflächen: 2·20 = 40, plus 144 = 184.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -398,7 +402,8 @@
         {
           "id": "nur_eine_grundflaeche",
           "value": 312,
-          "feedback": "Zwei Grundflächen: 2·24 = 48, plus 288 = 336."
+          "feedback": "Zwei Grundflächen: 2·24 = 48, plus 288 = 336.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -495,7 +500,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 24,
-          "feedback": "Durch 2: (8·3):2 = 12."
+          "feedback": "Durch 2: (8·3):2 = 12.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -526,7 +532,8 @@
         {
           "id": "nur_eine_grundflaeche",
           "value": 192,
-          "feedback": "Zwei Grundflächen: 2·12 = 24, plus 180 = 204."
+          "feedback": "Zwei Grundflächen: 2·12 = 24, plus 180 = 204.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -591,6 +598,18 @@
       "url": "https://de.serlo.org/mathe/1625/prisma",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Dreiecksprisma — Oberfläche berechnen",
+      "url": "https://www.youtube.com/watch?v=WZi75oUmXvk",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Prisma — Oberfläche berechnen",
+      "url": "https://www.youtube.com/watch?v=jut5Ws-5Ddk",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

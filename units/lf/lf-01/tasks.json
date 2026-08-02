@@ -182,7 +182,8 @@
         {
           "id": "achsen_vertauscht",
           "value": 3,
-          "feedback": "Das ist der x-Wert — den kanntest du schon. Gefragt ist, wie HOCH der Punkt liegt."
+          "feedback": "Das ist der x-Wert — den kanntest du schon. Gefragt ist, wie HOCH der Punkt liegt.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -225,7 +226,8 @@
         {
           "id": "achsen_vertauscht",
           "value": 3,
-          "feedback": "Das ist der x-Wert. Gesucht ist die Höhe."
+          "feedback": "Das ist der x-Wert. Gesucht ist die Höhe.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -269,7 +271,8 @@
         {
           "id": "achsen_vertauscht",
           "value": 5,
-          "feedback": "Das ist der x-Wert. Gefragt ist die Höhe."
+          "feedback": "Das ist der x-Wert. Gefragt ist die Höhe.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -314,7 +317,8 @@
         {
           "id": "achsen_vertauscht",
           "value": 2,
-          "feedback": "Das ist der x-Wert. Gefragt ist die Höhe."
+          "feedback": "Das ist der x-Wert. Gefragt ist die Höhe.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -475,7 +479,8 @@
         {
           "id": "achsen_vertauscht",
           "value": 4,
-          "feedback": "Das ist die Kilometerzahl. Gefragt ist der Preis."
+          "feedback": "Das ist die Kilometerzahl. Gefragt ist der Preis.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -522,7 +527,8 @@
         {
           "id": "achsen_vertauscht",
           "value": 8,
-          "feedback": "Das ist der y-Wert — den kanntest du schon. Gefragt ist, wie weit rechts der Punkt liegt."
+          "feedback": "Das ist der y-Wert — den kanntest du schon. Gefragt ist, wie weit rechts der Punkt liegt.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -868,6 +874,18 @@
       "url": "https://h5p.org/h5p/embed/143883",
       "typ": "app",
       "quelle": "H5P"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Lineare Funktion ablesen — viele Beispiele",
+      "url": "https://www.youtube.com/watch?v=GhhSqXn3cqw",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "y = mx + b aus dem Koordinatensystem ablesen",
+      "url": "https://www.youtube.com/watch?v=3Ifbc736yfY",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

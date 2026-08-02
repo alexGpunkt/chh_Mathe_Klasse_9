@@ -331,7 +331,8 @@
         {
           "id": "vorzeichen_vertauscht",
           "value": 1,
-          "feedback": "1,05 gehört zu einer Zunahme. Bei einer Abnahme muss der Faktor kleiner als 1 sein."
+          "feedback": "1,05 gehört zu einer Zunahme. Bei einer Abnahme muss der Faktor kleiner als 1 sein.",
+          "konzeptfehler": "vorzeichen"
         },
         {
           "id": "negativer_faktor",
@@ -432,7 +433,8 @@
         {
           "id": "bei_schritt_1_gestoppt",
           "value": 220,
-          "feedback": "Das ist der Preis nach Schritt 1. Jetzt kommt die Senkung um 10 % — von 220 €."
+          "feedback": "Das ist der Preis nach Schritt 1. Jetzt kommt die Senkung um 10 % — von 220 €.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -466,7 +468,8 @@
         {
           "id": "bei_schritt_1_gestoppt",
           "value": 120,
-          "feedback": "Das ist der Preis nach der ersten Erhöhung. Es kommt noch eine zweite."
+          "feedback": "Das ist der Preis nach der ersten Erhöhung. Es kommt noch eine zweite.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -553,6 +556,23 @@
       "url": "https://learningapps.org/view7892631",
       "typ": "app",
       "quelle": "LearningApps"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Prozentrechnung mit Faktor — der schnelle Weg",
+      "url": "https://www.youtube.com/watch?v=cLzb_wjnvBM",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Rabatt und Skonto über den Prozentfaktor",
+      "url": "https://www.youtube.com/watch?v=VxZe9NaPZbM",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Mehrwertsteuer über den Prozentfaktor",
+      "url": "https://www.youtube.com/watch?v=cTkZPfM3N8c",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

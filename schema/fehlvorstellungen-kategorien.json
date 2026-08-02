@@ -1,0 +1,108 @@
+{
+  "hinweis": "Ordnet die Fehlvorstellungs-IDs der Aufgabenpools bereichsübergreifenden Kategorien zu. Eine ID gehört zur ERSTEN Kategorie, deren Muster greift — die Reihenfolge ist deshalb Teil der Aussage: spezielle Kategorien stehen vor allgemeinen. Die Muster sind reguläre Ausdrücke auf der ID. Was in keine Kategorie fällt, meldet werkzeuge/fehlvorstellungen-sichten.js zur fachlichen Durchsicht; ein leerer Rest ist NICHT das Ziel, wohl aber ein bewusst geprüfter.",
+  "version": 1,
+  "kategorien": [
+    {
+      "id": "rechenart_vertauscht",
+      "titel": "Grundrechenart vertauscht",
+      "beschreibung": "Multiplikation und Division beziehungsweise Addition und Subtraktion werden gegeneinander ausgetauscht. Der Rechenweg ist bekannt, die Richtung nicht.",
+      "muster": ["_statt_(mal|geteilt|multipliziert|addiert|subtrahiert|abgezogen)", "^(mal|geteilt|addiert|abgezogen|subtrahiert)_statt_", "^geteilt_vertauscht$", "^(zahlen|seiten|kanten|zaehler_nenner)_addiert$", "^summe_vermutet$", "^differenz_statt_quotient$", "^hoechstwert_als_summe$"]
+    },
+    {
+      "id": "einheiten_stellenwert",
+      "titel": "Einheiten und Stellenwert",
+      "beschreibung": "Umrechnungsfaktoren zwischen Längen, Flächen und Volumen; Komma an der falschen Stelle. Der typische Faktor-1000-Fehler bei Litern gehört hierher.",
+      "muster": ["^faktor_(10|100|1000)", "faktor_(100|1000)_bei_", "^flaeche_faktor_100$", "^(oberflaechen|volumen)_faktor$", "liter", "^ml_", "^komma_verschoben$", "^zehntel_hundertstel$", "^quadrat_statt_kubik$", "^nur_bis_dm3$", "^nicht_in_liter$", "^mal_100_vergessen$"]
+    },
+    {
+      "id": "grundwert_bezug",
+      "titel": "Bezugsgröße verwechselt (Grundwert, Teil, Ganzes)",
+      "beschreibung": "Prozente werden auf die falsche Größe bezogen: auf den Endwert statt den Ausgangswert, auf den Teil statt das Ganze. Die häufigste Ursache falscher Prozentergebnisse.",
+      "muster": ["grundwert", "^(ganzes_statt_teil|teil_statt_ganzes|rest_statt_teil)$", "^(endpreis|gesamtwert|endwert)_statt_", "^nur_(ein_teil|teil_berechnet)$", "^prozent_(auf_endwert_addiert|vom_endwert_abgezogen)$", "^prozentsaetze_addiert$", "^rabatt_als_rest$", "^neuer_wert_in_prozent$", "^anker_verwechselt$", "^differenz_addiert$"]
+    },
+    {
+      "id": "anteil_darstellung",
+      "titel": "Anteil, Bruch, Prozentsatz und Faktor",
+      "beschreibung": "Dieselbe Größe in verschiedenen Schreibweisen wird nicht als dieselbe erkannt: Zähler als Prozent gelesen, Prozentsatz als Faktor eingesetzt.",
+      "muster": ["^(zaehler|nenner)_als_prozent$", "^satz_(als_faktor|als_wert|falsch_erinnert)$", "^faktor_als_prozent$", "^ohne_bruchteil$", "^faktor_(falsch|mal_n|ohne_eins)$", "^restfaktor_als_antwort$"]
+    },
+    {
+      "id": "zuordnungsart",
+      "titel": "Proportional, antiproportional, linear",
+      "beschreibung": "Die Art des Zusammenhangs wird nicht geprüft, sondern vermutet — und dann das Verfahren der falschen Art angewendet.",
+      "muster": ["proportional", "^prop_antiprop_vertauscht$", "^linear", "^konstant_als_proportional$", "^quadratisch_gedacht$", "^monotonie_reicht$", "^einheitsschritt_uebersprungen$", "^umweg_ueber_1prozent$", "^bei_(1prozent|einheit|schritt_1)_gestoppt$", "^zu_frueh_gestoppt$", "^identisch_uebersehen$", "^gleich_gross$"]
+    },
+    {
+      "id": "funktionsparameter",
+      "titel": "Steigung und y-Achsenabschnitt (m und b)",
+      "beschreibung": "m und b werden vertauscht, verwechselt oder mit anderen Punkten des Graphen gleichgesetzt.",
+      "muster": ["^b_", "^m_", "_als_m$", "^steigung", "^steilheit_", "^dy_als_m$", "^nullstelle_verwechselt$", "^x_(als_y|und_y_verwechselt)$", "^koordinaten_", "^achsen_"]
+    },
+    {
+      "id": "vorzeichen",
+      "titel": "Vorzeichen",
+      "beschreibung": "Negative Zahlen werden übersehen, vertauscht oder gemieden. Betrifft Funktionen ebenso wie Änderungsraten.",
+      "muster": ["^vorzeichen", "^minus_minus$", "^negativ", "^fallend_als_langsamer$", "^nur_eine_richtung$", "^richtung_vertauscht$"]
+    },
+    {
+      "id": "hoehe_mantellinie",
+      "titel": "Höhe, Seitenhöhe und Mantellinie",
+      "beschreibung": "Die senkrechte Höhe wird mit der schrägen Kante gleichgesetzt. Der Klassiker bei Pyramide und Kegel.",
+      "muster": ["^h_(gleich|statt)_s$", "^hoehe_", "^ohne_senkrechte$", "^dach_als_pyramide$"]
+    },
+    {
+      "id": "radius_durchmesser_quadrat",
+      "titel": "Radius, Durchmesser und Quadrieren",
+      "beschreibung": "Durchmesser statt Radius eingesetzt oder das Quadrat vergessen — beides verändert das Ergebnis um einen festen Faktor.",
+      "muster": ["radius", "^durchmesser_", "_nicht_quadriert$", "^mal_zwei_statt_quadrat$", "^wurzel_vergessen$"]
+    },
+    {
+      "id": "formelfaktor",
+      "titel": "Fester Faktor der Formel (½, ⅓, π)",
+      "beschreibung": "Die Formel wird bis auf ihren konstanten Faktor richtig angewendet.",
+      "muster": ["drittel", "^geteilt_durch_drei$", "^nicht_durch_sechs$", "^nicht_halbiert$", "^haelfte_verwechselt$", "^ohne_zwei$", "^pi_ueberall_vermutet$", "^mal_drei$", "^dreieck_(halbe_vergessen|zu_klein)$", "^halbe_grundseite_vergessen$", "^faktor_vier_vergessen$"]
+    },
+    {
+      "id": "zins_tarif_zeit",
+      "titel": "Zins, Zeitanteil und Tarifbestandteile",
+      "beschreibung": "Der Zeitfaktor oder ein fester Bestandteil des Tarifs fehlt beziehungsweise wird falsch angesetzt.",
+      "muster": ["^zeitfaktor_", "^tage_365$", "^einfacher_zins$", "^bank_zahlt_mehr$", "^anzahlung_", "^grundpreis_", "^tarif_uebersehen$", "^immer_derselbe_tarif$", "^flat_ueberschaetzt$"]
+    },
+    {
+      "id": "flaeche_volumen_umfang",
+      "titel": "Fläche, Umfang und Volumen verwechselt",
+      "beschreibung": "Die gesuchte Größenart selbst ist falsch gewählt — nicht der Rechenweg.",
+      "muster": ["^(oberflaeche_statt_volumen|volumen_statt_oberflaeche)$", "^(flaeche_statt_umfang|umfang_als_flaeche)$", "^flaeche_gedacht$", "^groesste_flaeche$", "^falsche_groesse_(angegeben|gewaehlt)$", "^dichte_vergessen$", "^mantel_als_", "^prisma_verwechselt$", "^quader_statt_wuerfel$", "^wuerfel_trotz_ungleich$"]
+    },
+    {
+      "id": "koerperbestandteile",
+      "titel": "Flächen, Kanten und Ecken am Körper",
+      "beschreibung": "Die Bestandteile eines Körpers werden verwechselt oder falsch gezählt — auch im Netz.",
+      "muster": ["^(kanten|ecken|flaechen)_statt_", "^kanten(zahl_falsch|_im_netz)$", "^flaechenzahl_ignoriert$", "^nur_(drei_flaechen|eine_flaeche|zwei_kanten|grundkanten|zwei_seiten)$", "^netz_immer_moeglich$"]
+    },
+    {
+      "id": "teile_vergessen",
+      "titel": "Teilfläche oder Teilkörper vergessen beziehungsweise zu viel gezählt",
+      "beschreibung": "Beim Zusammensetzen einer Oberfläche oder eines Volumens fehlt ein Stück — oder eines ist doppelt drin.",
+      "muster": ["_vergessen$", "_mitgezaehlt$", "^nur_(ein_kreis|ein_dreieck|eine_grundflaeche|eine_halbkugel|kegel|pyramide|durch_a|durch_eine|grundflaeche_gezaehlt|halbe_grundkante)$", "^grundflaechen_verschieden$", "^ganze_kugel$", "^volle_grundkante$", "^ohne_mittelwert$"]
+    },
+    {
+      "id": "ablesen_darstellung",
+      "titel": "Ablesen und Darstellung deuten",
+      "beschreibung": "Aus Graph, Tabelle oder Zeichnung wird das Falsche entnommen — oder gar nicht erst gerechnet.",
+      "muster": ["^ablese", "^ablesen_statt_rechnen$", "^graph_", "^linie_verwechselt$", "^schnittpunkt_", "^richtung_verlesen$", "^gleich_lang_vermutet$", "^parallel_uebersehen$"]
+    },
+    {
+      "id": "term_und_gleichung",
+      "titel": "Terme und Gleichungen umformen",
+      "beschreibung": "Rechengesetze werden beim Umformen verletzt: halbe Klammer, falsche Reihenfolge, unvollständiges Zusammenfassen.",
+      "muster": ["^klammer_", "^punkt_vor_strich$", "^umstellung_falsch$", "^eingesetzt_statt_geloest$", "^reihenfolge_vertauscht$", "^zerlegung_falsch$", "^durch_bruch_geteilt$", "^verfahren_ungeschickt$", "^null_mal_falsch$", "^schritt_uebersehen$", "^nicht_subtrahiert$", "^x_nicht_gesammelt$"]
+    },
+    {
+      "id": "begruenden_modellieren",
+      "titel": "Begründen, Runden und Modellgrenzen",
+      "beschreibung": "Nicht der Rechenweg ist falsch, sondern die Aussage darüber: Beschreibung statt Begründung, Modellwert für Wirklichkeit gehalten, Genauigkeit falsch eingeschätzt.",
+      "muster": ["^beschreibung_statt_grund$", "^folge_statt_grund$", "^konvention_", "^regel_ohne_grund$", "^modell", "^durchschnitt_als_wirklichkeit$", "^sonderfall_", "^thema_verfehlt$", "^name_missverstanden$", "^unterschied_", "^fehler_(falsch_eingeschaetzt|nicht_erkannt)$", "^genau_statt_ueberschlag$", "^falsch_gerundet$", "^rundung_missverstanden$", "^ungenauigkeit_als_grund$", "^fast_als_ja$", "^produktprobe_uebersehen$", "^veraenderungen_heben_sich_auf$"]
+    }
+  ]
+}

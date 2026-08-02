@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v25-integration-stability-develop';
+const VERSION = 'mathe9-v29-betrieb-develop';
 
 const SCHALE = [
   './',
@@ -23,7 +23,9 @@ const SCHALE = [
   'dashboard/index.html',
   'dashboard/dashboard.css',
   'dashboard/dashboard.js',
+  'version.json',
   'pruefung-sets.json',
+  'schema/fehlvorstellungen-kategorien.json',
   'assets/js/dev-tools.js',
   'units/index.json',
   'spiral/plan.json',
@@ -31,10 +33,13 @@ const SCHALE = [
   'assets/css/anim.css',
   'assets/css/buch.css',
   'assets/js/store.js',
+  'assets/js/weiterlernen.js',
   'assets/js/supabase-config.js',
   'assets/js/student-login.js',
   'assets/js/zeichnen.js',
   'assets/js/animationen.js',
+  'assets/js/animationen-seite.js',
+  'assets/js/uebungen-seite.js',
   'assets/js/tracker.js',
   'assets/js/engine.js',
   'assets/js/buch.js',
@@ -117,10 +122,12 @@ const ALLES = [...SCHALE, ...EINHEITEN, ...SPIRAL];
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
     const c = await caches.open(VERSION);
-    /* Einzeln, damit eine fehlende Datei nicht die ganze Installation kippt. */
-    await Promise.all(ALLES.map(u =>
-      c.add(new Request(u, { cache: 'reload' })).catch(err =>
-        console.warn('[sw] nicht gecacht:', u, err.message))));
+    try {
+      await Promise.all(ALLES.map(u => c.add(new Request(u, { cache: 'reload' }))));
+    } catch (error) {
+      await caches.delete(VERSION);
+      throw error;
+    }
     /* Bewusst KEIN skipWaiting: Eine neue Fassung, die mitten in einer
        Aufgabe übernimmt, kann alte und neue Dateien mischen. Die Seite
        fragt stattdessen nach (siehe aktualisierungBeobachten in store.js)
@@ -135,7 +142,7 @@ self.addEventListener('message', e => {
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {
     const namen = await caches.keys();
-    await Promise.all(namen.filter(n => n !== VERSION).map(n => caches.delete(n)));
+    await Promise.all(namen.filter(n => n.startsWith('mathe9-') && n !== VERSION).map(n => caches.delete(n)));
     await self.clients.claim();
   })());
 });

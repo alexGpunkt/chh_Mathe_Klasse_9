@@ -484,7 +484,8 @@
         {
           "id": "komma_verschoben",
           "value": 6,
-          "feedback": "1,5 · 0,8 = 1,2; mal 0,5 = 0,6 — nicht 6."
+          "feedback": "1,5 · 0,8 = 1,2; mal 0,5 = 0,6 — nicht 6.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -518,7 +519,8 @@
         {
           "id": "faktor_100",
           "value": 4800,
-          "feedback": "1 m³ = 1000 l, nicht 100. 48 · 1000 = 48 000."
+          "feedback": "1 m³ = 1000 l, nicht 100. 48 · 1000 = 48 000.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -591,7 +593,8 @@
         {
           "id": "geteilt_statt_mal",
           "value": 5.18,
-          "feedback": "Masse = Volumen · Dichte, also mal 19,3, nicht geteilt."
+          "feedback": "Masse = Volumen · Dichte, also mal 19,3, nicht geteilt.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -613,6 +616,18 @@
       "url": "https://learningapps.org/2347385",
       "typ": "app",
       "quelle": "LearningApps"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Quader — Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=xFrFZieub44",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Würfel — Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=OT0a3HJ71vU",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

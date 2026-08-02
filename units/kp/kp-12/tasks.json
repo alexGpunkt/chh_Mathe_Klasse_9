@@ -234,7 +234,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 113,
-          "feedback": "r quadrieren: 3,14·3² = 28,26."
+          "feedback": "r quadrieren: 3,14·3² = 28,26.",
+          "konzeptfehler": "quadrieren_vergessen"
         }
       ],
       "tags": [
@@ -295,7 +296,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 216,
-          "feedback": "Durch 2: G = 12, dann · 9 = 108."
+          "feedback": "Durch 2: G = 12, dann · 9 = 108.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -326,7 +328,8 @@
         {
           "id": "durchmesser_als_radius",
           "value": 1319,
-          "feedback": "Erst r = d:2 = 5 cm."
+          "feedback": "Erst r = d:2 = 5 cm.",
+          "konzeptfehler": "radius_durchmesser"
         }
       ],
       "tags": [
@@ -357,7 +360,8 @@
         {
           "id": "mal_statt_geteilt",
           "value": 28800,
-          "feedback": "Rückwärts: 480 : 60 = 8."
+          "feedback": "Rückwärts: 480 : 60 = 8.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -553,6 +557,19 @@
       "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
       "typ": "sammlung",
       "quelle": "ZUM"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Teste dich! Gleichungen, Flächeninhalt und Volumen",
+      "url": "https://www.youtube.com/watch?v=-T8GqMNaFlo",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zylinder — Volumen aus der Oberfläche (Formel umstellen)",
+      "url": "https://www.youtube.com/watch?v=BXrsIKJWMXY",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

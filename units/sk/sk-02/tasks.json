@@ -574,5 +574,23 @@
         "W-GEO"
       ]
     }
+  ],
+  "videos": [
+    {
+      "titel": "Seitenhöhe einer Pyramide berechnen",
+      "url": "https://www.youtube.com/watch?v=OAQ3FFGAZ34",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Pyramide oder Kegel — die Seitenhöhe bestimmen",
+      "url": "https://www.youtube.com/watch?v=a0hWyoPZHiA",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Satz des Pythagoras — eine einfache Einführung",
+      "url": "https://www.youtube.com/watch?v=akgYT4Ol3CE",
+      "quelle": "Lehrerschmidt",
+      "pfad": "A"
+    }
   ]
 }

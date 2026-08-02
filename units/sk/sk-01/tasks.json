@@ -226,7 +226,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 4,
-          "feedback": "Die Grundfläche zählt mit: 4 + 1 = 5."
+          "feedback": "Die Grundfläche zählt mit: 4 + 1 = 5.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -267,7 +268,8 @@
         {
           "id": "hoehe_seitenhoehe_verwechselt",
           "value": 1,
-          "feedback": "Das ist die Seitenhöhe s. Die Höhe h steht senkrecht im Inneren."
+          "feedback": "Das ist die Seitenhöhe s. Die Höhe h steht senkrecht im Inneren.",
+          "konzeptfehler": "hoehe_statt_seitenhoehe"
         }
       ],
       "tags": [
@@ -302,7 +304,8 @@
           "feedback": "Das ist die Körperhöhe h. Die Seitenhöhe s liegt auf der schrägen Fläche.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "hoehe_statt_seitenhoehe"
         }
       ],
       "tags": [
@@ -477,7 +480,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 5,
-          "feedback": "Die Grundfläche zählt mit: 5 + 1 = 6."
+          "feedback": "Die Grundfläche zählt mit: 5 + 1 = 6.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -560,6 +564,13 @@
       "url": "https://learningapps.org/view1855042",
       "typ": "app",
       "quelle": "LearningApps"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Pyramide richtig beschriften: was hk, ha, hs, s und a sind",
+      "url": "https://www.youtube.com/watch?v=9mmgxbaVCOA",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

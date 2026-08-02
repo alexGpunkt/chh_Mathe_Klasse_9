@@ -266,7 +266,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 36,
-          "feedback": "Das ist die Zeit für 1 Maler allein. Jetzt noch durch 4 teilen."
+          "feedback": "Das ist die Zeit für 1 Maler allein. Jetzt noch durch 4 teilen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -300,7 +301,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 60,
-          "feedback": "Das ist die Zeit für 1 Pumpe allein."
+          "feedback": "Das ist die Zeit für 1 Pumpe allein.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -334,7 +336,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 4,
-          "feedback": "Das ist die Zeit für 1 kg Futter."
+          "feedback": "Das ist die Zeit für 1 kg Futter.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -369,7 +372,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 180,
-          "feedback": "Das wäre die Zeit für ein einziges Pferd."
+          "feedback": "Das wäre die Zeit für ein einziges Pferd.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -566,6 +570,24 @@
       "url": "https://learningapps.org/15408891",
       "typ": "app",
       "quelle": "LearningApps"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Antiproportionale Zuordnung",
+      "url": "https://www.youtube.com/watch?v=9xVKmBVUGGw",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Proportional oder nicht? Der Vergleich",
+      "url": "https://www.youtube.com/watch?v=y-PT_Dr3qIA",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Antiproportionale Zuordnung — weiteres Beispiel",
+      "url": "https://www.youtube.com/watch?v=ISGhREON0T4",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

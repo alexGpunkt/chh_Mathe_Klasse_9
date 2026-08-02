@@ -134,7 +134,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 30,
-          "feedback": "Beim Dreieck durch 2: (6·5):2 = 15."
+          "feedback": "Beim Dreieck durch 2: (6·5):2 = 15.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -204,7 +205,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 60,
-          "feedback": "Zur Mantelfläche noch die Grundfläche: 36 + 60 = 96."
+          "feedback": "Zur Mantelfläche noch die Grundfläche: 36 + 60 = 96.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -233,7 +235,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 80,
-          "feedback": "Der Mantel ist 80. Plus Grundfläche 64: O = 144."
+          "feedback": "Der Mantel ist 80. Plus Grundfläche 64: O = 144.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -282,7 +285,8 @@
             {
               "id": "grundflaeche_vergessen",
               "value": 260,
-              "feedback": "Zur Mantelfläche 260 noch die Grundfläche 100: O = 360."
+              "feedback": "Zur Mantelfläche 260 noch die Grundfläche 100: O = 360.",
+              "konzeptfehler": "grundflaeche_unvollstaendig"
             }
           ]
         }
@@ -319,7 +323,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 240,
-          "feedback": "Grundfläche 144 dazu: 144 + 240 = 384."
+          "feedback": "Grundfläche 144 dazu: 144 + 240 = 384.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -348,7 +353,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 56,
-          "feedback": "Durch 2: (8·7):2 = 28."
+          "feedback": "Durch 2: (8·7):2 = 28.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -379,7 +385,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 96,
-          "feedback": "Grundfläche 36 dazu: 132."
+          "feedback": "Grundfläche 36 dazu: 132.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -444,7 +451,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 320,
-          "feedback": "Grundfläche 256 dazu: 576."
+          "feedback": "Grundfläche 256 dazu: 576.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -485,7 +493,8 @@
             {
               "id": "grundflaeche_vergessen",
               "value": 60,
-              "feedback": "Zur Mantelfläche 60 noch die Grundfläche 36: O = 96."
+              "feedback": "Zur Mantelfläche 60 noch die Grundfläche 36: O = 96.",
+              "konzeptfehler": "grundflaeche_unvollstaendig"
             }
           ]
         }
@@ -527,7 +536,8 @@
             {
               "id": "grundflaeche_vergessen",
               "value": 260,
-              "feedback": "Mantel 260 + Grundfläche 100 = 360."
+              "feedback": "Mantel 260 + Grundfläche 100 = 360.",
+              "konzeptfehler": "grundflaeche_unvollstaendig"
             }
           ]
         }
@@ -626,6 +636,18 @@
       "url": "https://de.serlo.org/mathe/65267/aufgaben-zur-pyramide",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Pyramide — Oberfläche berechnen",
+      "url": "https://www.youtube.com/watch?v=kSxeMtSysqA",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Quadratische Pyramide — Oberfläche aus a und Seitenhöhe",
+      "url": "https://www.youtube.com/watch?v=ofr43etQWYs",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

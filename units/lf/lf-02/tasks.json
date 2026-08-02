@@ -193,7 +193,8 @@
           "feedback": "Du hast die Zahlen vertauscht. Die erste Zahl ist immer x — also rechts. P(5|2) läge ganz woanders.",
           "verweis": {
             "absatz": 0
-          }
+          },
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -278,7 +279,8 @@
         {
           "id": "koordinaten_vertauscht",
           "value": 1,
-          "feedback": "Vertauscht. R(0|4) läge auf der senkrechten Achse, ganz oben — nicht hier."
+          "feedback": "Vertauscht. R(0|4) läge auf der senkrechten Achse, ganz oben — nicht hier.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -429,7 +431,8 @@
         {
           "id": "vorzeichen",
           "value": 23,
-          "feedback": "Du hast addiert. In der Gleichung steht − 3."
+          "feedback": "Du hast addiert. In der Gleichung steht − 3.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -473,7 +476,8 @@
         {
           "id": "koordinaten_vertauscht",
           "value": 1,
-          "feedback": "(4|2) ist (2|4) mit vertauschten Zahlen — und liegt woanders. Die erste Zahl ist immer x."
+          "feedback": "(4|2) ist (2|4) mit vertauschten Zahlen — und liegt woanders. Die erste Zahl ist immer x.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -661,6 +665,24 @@
       "spiral": [
         "W-FKT"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Wertetabelle zu einer linearen Funktion erstellen",
+      "url": "https://www.youtube.com/watch?v=dLfPBJgHgC4",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Wertetabelle durch Ablesen im Koordinatensystem",
+      "url": "https://www.youtube.com/watch?v=PV_Nse6Z8l0",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Wertetabelle — grafisch und rechnerisch",
+      "url": "https://www.youtube.com/watch?v=E-PW7MwzyEY",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

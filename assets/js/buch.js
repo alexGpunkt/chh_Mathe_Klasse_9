@@ -9,7 +9,11 @@
 (function () {
   'use strict';
 
-  var LZ_KEY = 'mathe9.lesezeichen';
+  var LZ_KEY_ALT = 'mathe9.lesezeichen';
+  function lzKey() {
+    var kennung = (typeof Stand !== 'undefined' && Stand.kennung) ? Stand.kennung() : 'lokal';
+    return LZ_KEY_ALT + '.' + kennung;
+  }
   var reduce = typeof window.matchMedia === 'function' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -22,12 +26,21 @@
   }
   function lzLies() {
     try {
-      var wert = JSON.parse(localStorage.getItem(LZ_KEY));
+      var key = lzKey();
+      var roh = localStorage.getItem(key);
+      if (roh == null && key.endsWith('.lokal')) {
+        roh = localStorage.getItem(LZ_KEY_ALT);
+        if (roh != null) {
+          localStorage.setItem(key, roh);
+          localStorage.removeItem(LZ_KEY_ALT);
+        }
+      }
+      var wert = JSON.parse(roh);
       return Array.isArray(wert) ? wert.filter(function (id) { return typeof id === 'string'; }) : [];
     } catch (e) { return []; }
   }
   function lzSchreib(a) {
-    try { localStorage.setItem(LZ_KEY, JSON.stringify(a)); } catch (e) {}
+    try { localStorage.setItem(lzKey(), JSON.stringify(a)); } catch (e) {}
   }
 
   var PAGES = [];          // [{id,title,bcode,btitle}]
@@ -126,7 +139,7 @@
     var mitte = ce('button', 'buch-mitte'); mitte.id = 'buchMitte';
     mitte.setAttribute('aria-haspopup', 'dialog');
     var code = ce('span', 'buch-code'); code.id = 'buchCode'; code.textContent = '–';
-    var seite = ce('span', 'buch-seite'); seite.id = 'buchSeite'; seite.textContent = 'Seite –';
+    var seite = ce('span', 'buch-seite'); seite.id = 'buchSeite'; seite.textContent = 'Buchseite –';
     mitte.appendChild(code); mitte.appendChild(seite);
     mitte.addEventListener('click', tocAuf);
 
@@ -143,7 +156,7 @@
 
     var n = PAGES.length, pos = aktIdx + 1;
     code.textContent = aktID;
-    seite.textContent = 'Seite ' + pos + ' / ' + n;
+    seite.textContent = 'Buchseite ' + pos + ' von ' + n;
     fuell.style.width = (pos / n * 100) + '%';
   }
 
@@ -167,8 +180,8 @@
     var sprung = ce('div', 'buch-sprung');
     var feld = ce('input'); feld.id = 'sprungFeld'; feld.type = 'text';
     feld.setAttribute('inputmode', 'text');
-    feld.placeholder = 'Seite (1–' + PAGES.length + ') oder Kürzel (z. B. lf-04)';
-    feld.setAttribute('aria-label', 'Zu Seite oder Einheit springen');
+    feld.placeholder = 'Buchseite (1–' + PAGES.length + ') oder Kürzel (z. B. lf-04)';
+    feld.setAttribute('aria-label', 'Zu Buchseite oder Einheit springen');
     feld.addEventListener('keydown', function (e) { if (e.key === 'Enter') springe(); });
     var los = ce('button', null, 'Los'); los.id = 'sprungBtn';
     los.addEventListener('click', springe);
@@ -213,12 +226,38 @@
     });
   }
 
+  /* Lernstatus je Einheit. Ohne ihn ist das Inhaltsverzeichnis eine reine
+     Liste — mit ihm sieht man auf einen Blick, wo man steht und was
+     wiederholt gehört. Das Zeichen trägt immer auch einen Text, sonst wäre
+     es für Screenreader und für Farbenblinde bedeutungslos. */
+  var STATUS_ZEICHEN = {
+    offen:       { z: '○', t: 'noch nicht begonnen' },
+    begonnen:    { z: '●', t: 'begonnen' },
+    fertig:      { z: '✓', t: 'abgeschlossen' },
+    wiederholen: { z: '↻', t: 'Wiederholung fällig' }
+  };
+
+  function statusVon(id) {
+    try { return (typeof Stand !== 'undefined' && Stand.status) ? Stand.status(id) : 'offen'; }
+    catch (e) { return 'offen'; }
+  }
+
   function eintrag(p, imLz) {
     var b = ce('button', 'buch-eintrag' + (p.id === aktID ? ' aktuell' : ''));
     if (p.id === aktID) b.setAttribute('aria-current', 'page');
+
+    var st = statusVon(p.id);
+    var zeichen = STATUS_ZEICHEN[st] || STATUS_ZEICHEN.offen;
+    var marke = ce('span', 'e-status e-status-' + st, zeichen.z);
+    marke.title = zeichen.t;
+    b.appendChild(marke);
+
     b.appendChild(ce('span', 'e-code', p.id));
     b.appendChild(ce('span', 'e-titel', p.title));
     if (!imLz && lzLies().indexOf(p.id) >= 0) b.appendChild(ce('span', 'e-stern', '★'));
+
+    /* Für die Sprachausgabe: Zeichen allein sagt nichts. */
+    b.setAttribute('aria-label', p.id + ', ' + p.title + ', ' + zeichen.t);
     b.addEventListener('click', function () { tocZu(); gehe(p.id); });
     return b;
   }

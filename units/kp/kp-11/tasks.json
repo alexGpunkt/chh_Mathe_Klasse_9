@@ -529,5 +529,22 @@
         "W-EINH"
       ]
     }
+  ],
+  "videos": [
+    {
+      "titel": "Zusammengesetzter Körper — Volumen aus zwei Quadern",
+      "url": "https://www.youtube.com/watch?v=YuhxZrArwJE",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zusammengesetzter Körper — Volumen durch Subtraktion",
+      "url": "https://www.youtube.com/watch?v=AFWktTrf5zY",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Masse eines Körpers über die Dichte berechnen",
+      "url": "https://www.youtube.com/watch?v=OaUh5M4hCO8",
+      "quelle": "Lehrerschmidt"
+    }
   ]
 }

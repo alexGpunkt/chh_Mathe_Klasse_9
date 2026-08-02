@@ -147,7 +147,8 @@
           "feedback": "Das ist die Höhe h (senkrecht). s ist die schräge Strecke zum Kreisrand.",
           "verweis": {
             "absatz": 0
-          }
+          },
+          "konzeptfehler": "hoehe_statt_seitenhoehe"
         }
       ],
       "tags": [
@@ -537,6 +538,18 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Kegel — die Mantellinie (Seitenhöhe) berechnen",
+      "url": "https://www.youtube.com/watch?v=EnYG0PXbLN4",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Satz des Pythagoras — die Hypotenuse berechnen",
+      "url": "https://www.youtube.com/watch?v=2SmXe2BkCgU",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

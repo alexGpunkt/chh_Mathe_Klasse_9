@@ -24,8 +24,8 @@
      bewusst dasselbe Objekt (die Animationen lesen es beim Bauen aus) —
      beim Umschalten werden die Werte ersetzt und die Bilder neu gebaut. */
   const HELL = {
-    ink: '#15233A', weich: '#4A5A70', faint: '#8C99A8', gitter: '#DDE3E8',
-    a: '#2E7D5B', b: '#2563A8', c: '#6B3FA0', korr: '#C62F26', ok: '#2E7D5B',
+    ink: '#15233A', weich: '#4A5A70', faint: '#687789', gitter: '#DDE3E8',
+    a: '#1F6849', b: '#205B9C', c: '#6B3FA0', korr: '#A8231C', ok: '#1F6849',
     paper: '#F3F5F4', weiss: '#FFFFFF', gelb: '#C98A12', neutral: '#C8D2D8'
   };
   const DUNKEL = {
@@ -42,6 +42,20 @@
     STUFE_FARBE.A = FARBE.a; STUFE_FARBE.B = FARBE.b; STUFE_FARBE.C = FARBE.c;
   }
   paletteSetzen(!!(mqDunkel && mqDunkel.matches));
+
+  /* ---------- Eigene Bewegungseinstellung ----------
+     Die Systemeinstellung „Bewegung reduzieren" kennen viele nicht und
+     finden sie auf einem Schulgerät auch nicht. Deshalb gibt es zusätzlich
+     einen sichtbaren Schalter in der Formelkarte. Er kann Bewegung nur
+     abschalten, nie erzwingen: Wer sie im System abgestellt hat, bekommt
+     sie hier nicht zurück. */
+  const AUTOSTART_SCHLUESSEL = 'mathe9.autostart';
+  function autostartErlaubt() {
+    try {
+      if (typeof Speicher !== 'undefined') return Speicher.lies(AUTOSTART_SCHLUESSEL, true) !== false;
+      return localStorage.getItem(AUTOSTART_SCHLUESSEL) !== 'false';
+    } catch { return true; }
+  }
 
   const REDUCED = window.matchMedia
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -250,6 +264,11 @@
   register({
     id: 'steigung', titel: 'Steigung m', bezug: 'LF-04',
     kurz: 'Wie steil ist die Gerade? A: Kästchen zählen · B: m = Δy:Δx · C: aus zwei Punkten (Dreieck egal).',
+    text: {
+      A: ['Die Gerade steigt nach rechts oben.', 'Gehe 1 Kästchen nach rechts.', 'Zähle die Kästchen nach oben. Das ist m.', 'Größeres m heißt: die Gerade wird steiler.'],
+      B: ['Das Steigungsdreieck zeigt Δx nach rechts und Δy nach oben.', 'm = Δy : Δx.', 'Ist m negativ, geht es nach unten statt nach oben.'],
+      C: ['P und Q liegen beide auf der Geraden.', 'm = (y₂ − y₁) : (x₂ − x₁).', 'Das Dreieck darf größer oder kleiner sein — m bleibt gleich.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const ables = h('div', 'anim-ables');
@@ -308,6 +327,11 @@
   register({
     id: 'achsenabschnitt', titel: 'y-Achsenabschnitt b', bezug: 'LF-05',
     kurz: 'Wo trifft die Gerade die y-Achse? A: ablesen · B: Grundbetrag · C: b = y − m·x berechnen.',
+    text: {
+      A: ['b ist die Höhe am Schnitt mit der senkrechten Achse.', 'Wird b größer, rutscht die ganze Gerade nach oben.', 'Die Steigung ändert sich dabei nicht.'],
+      B: ['b ist der Grundbetrag: der Wert bei x = 0.', 'Er gilt auch, wenn noch nichts verbraucht wurde.'],
+      C: ['Aus einem Punkt P(x | y) und der Steigung m folgt b = y − m·x.', 'Im Beispiel: b = 5 − 2·2 = 1.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const ables = h('div', 'anim-ables');
@@ -360,6 +384,11 @@
   register({
     id: 'baukasten', titel: 'Geradenbaukasten: y = m·x + b', bezug: 'LF-06',
     kurz: 'm und b zusammen. A: ganze Zahlen · B: auch negativ/halb · C: mit Sonderfall m = 0.',
+    text: {
+      A: ['m bestimmt die Steigung, b die Starthöhe.', 'Nur b ändern: die Gerade verschiebt sich nach oben oder unten.', 'Nur m ändern: die Gerade kippt um den Punkt (0 | b).'],
+      B: ['m und b lassen sich auch halb und negativ einstellen.', 'Negatives m heißt: die Gerade fällt.'],
+      C: ['Bei m = 0 entsteht eine waagerechte Gerade.', 'Dann hat jedes x denselben y-Wert.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const gl = h('div', 'anim-gleichung');
@@ -404,6 +433,11 @@
   register({
     id: 'wertetabelle', titel: 'Von der Wertetabelle zum Graphen', bezug: 'LF-02',
     kurz: 'A: Punkte setzen · B: konstante Differenz +d zeigt „linear“ · C: linear vs. nicht linear.',
+    text: {
+      A: ['Jede Spalte der Tabelle wird ein Punkt.', 'Erst der x-Wert nach rechts, dann der y-Wert nach oben.', 'Sind alle Punkte gesetzt, entsteht die Gerade.'],
+      B: ['Gleiche Schritte bei x geben gleiche Sprünge bei y.', 'Diese gleichbleibende Differenz heißt linear.'],
+      C: ['y = x + 1 hat die Differenzen +1, +1, +1 — linear.', 'y = x² hat die Differenzen +1, +3, +5 — nicht linear.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
 
@@ -464,6 +498,11 @@
   register({
     id: 'proportional', titel: 'Proportional: y = m·x', bezug: 'LF-03',
     kurz: 'Ursprungsgerade. A: doppeltes x → doppeltes y · B: m = y:x · C: warum durch (0|0).',
+    text: {
+      A: ['Die Gerade geht durch (0 | 0).', 'Doppeltes x gibt doppeltes y.'],
+      B: ['Das Verhältnis y : x bleibt an jeder Stelle gleich.', 'Dieses Verhältnis ist m.'],
+      C: ['Für x = 0 ist y = m · 0 = 0.', 'Deshalb muss die Gerade durch (0 | 0) gehen.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const m = 1;
@@ -504,7 +543,7 @@
 
   /* Teil 1 fertig — Teil 2 (weitere Konzepte + API) wird angehängt. */
   window.ANIM = window.ANIM || {};
-  window.ANIM._intern = { Feld, Loop, steuerleiste, regler, abzeichen, register, LISTE, NACH_ID, FARBE, STUFE_NAME, STUFE_FARBE, fmt, osz, h, el, stufeVon, REDUCED, mqDunkel, paletteSetzen };
+  window.ANIM._intern = { Feld, Loop, steuerleiste, regler, abzeichen, register, LISTE, NACH_ID, FARBE, STUFE_NAME, STUFE_FARBE, fmt, osz, h, el, stufeVon, REDUCED, mqDunkel, paletteSetzen, autostartErlaubt, AUTOSTART_SCHLUESSEL };
   window.ANIM.liste = LISTE;
 })();
 
@@ -514,7 +553,7 @@
 (function () {
   'use strict';
   const I = window.ANIM._intern;
-  const { Feld, Loop, steuerleiste, regler, abzeichen, register, LISTE, NACH_ID, FARBE, STUFE_NAME, STUFE_FARBE, fmt, osz, h, el, stufeVon, REDUCED, mqDunkel, paletteSetzen } = I;
+  const { Feld, Loop, steuerleiste, regler, abzeichen, register, LISTE, NACH_ID, FARBE, STUFE_NAME, STUFE_FARBE, fmt, osz, h, el, stufeVon, REDUCED, mqDunkel, paletteSetzen, autostartErlaubt, AUTOSTART_SCHLUESSEL } = I;
 
   /* ============================================================
      Konzept 6 · Punktprobe  (LF-08)
@@ -525,6 +564,11 @@
   register({
     id: 'punktprobe', titel: 'Punktprobe', bezug: 'LF-08',
     kurz: 'Liegt der Punkt auf der Geraden? A: einsetzen & prüfen · B: drauf/daneben · C: fehlende Koordinate.',
+    text: {
+      A: ['Setze den x-Wert in die Gleichung ein.', 'Kommt der y-Wert des Punktes heraus, liegt er auf der Geraden.'],
+      B: ['Stimmt der berechnete y-Wert nicht, liegt der Punkt daneben.', 'Der Abstand zeigt, wie weit daneben.'],
+      C: ['Ist nur y bekannt, setzt du y ein und löst nach x auf.', 'Beispiel: 5 = 2x − 1 gibt x = 3.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const m = 2, b = -1;
@@ -588,6 +632,11 @@
   register({
     id: 'nullstelle', titel: 'Nullstelle: wo y = 0 ist', bezug: 'LF-10',
     kurz: 'A: ablesen · B: 0 = m·x + b lösen · C: im Sachkontext (Tank leer) mit Modellgrenze.',
+    text: {
+      A: ['Die Nullstelle ist der Schnittpunkt mit der waagerechten Achse.', 'Dort ist y = 0.'],
+      B: ['Setze y = 0 und löse nach x auf.', 'Beispiel: 0 = x − 2 gibt x = 2.'],
+      C: ['Im Sachzusammenhang bedeutet die Nullstelle: der Tank ist leer.', 'Nach 5 Stunden ist nichts mehr da.', 'Danach gilt das Modell nicht mehr — es gibt keine negative Füllmenge.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const ables = h('div', 'anim-ables');
@@ -640,6 +689,11 @@
   register({
     id: 'schnittpunkt', titel: 'Schnittpunkt zweier Geraden', bezug: 'LF-12',
     kurz: 'A: ablesen · B: gleichsetzen · C: Sonderfälle parallel / identisch.',
+    text: {
+      A: ['Der Schnittpunkt ist die Kreuzung der beiden Geraden.', 'Lies dort x und y ab: S(2 | 3).'],
+      B: ['Im Schnittpunkt sind beide y-Werte gleich.', 'Setze die rechten Seiten gleich und löse nach x auf.'],
+      C: ['Gleiches m, anderes b: parallel, kein Schnittpunkt.', 'Gleiches m und gleiches b: identisch, unendlich viele Punkte.', 'Verschiedene m: genau ein Schnittpunkt.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const F = Feld({ xmin: -1, xmax: 6, ymin: -1, ymax: 7, breite: o.breite || 340 });
@@ -708,6 +762,11 @@
   register({
     id: 'tarifvergleich', titel: 'Tarifvergleich: ab wann lohnt sich was?', bezug: 'LF-14',
     kurz: 'A: an einer Stelle vergleichen · B: Grenze über Schnittpunkt · C: mit Flatrate (Bereiche).',
+    text: {
+      A: ['Bei wenigen Stunden ist der Tarif ohne Grundgebühr günstiger.', 'Bei vielen Stunden gewinnt der Tarif mit Grundgebühr.', 'Bei 5 Stunden kosten beide gleich viel.'],
+      B: ['Der Schnittpunkt ist die Grenze zwischen den Bereichen.', 'Links davon gewinnt der eine Tarif, rechts der andere.'],
+      C: ['Mit einer Flatrate gibt es drei Bereiche.', 'Jeder Tarif hat einen Bereich, in dem er am günstigsten ist.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const A = x => 10 + 2 * x, B = x => 4 * x, C = 22;
@@ -766,6 +825,11 @@
   register({
     id: 'gleichung', titel: 'Lineare Gleichung als Waage', bezug: 'LF-11',
     kurz: 'A: erst ± , dann : · B: x auf beiden Seiten sammeln · C: Sonderfälle (keine / unendlich).',
+    text: {
+      A: ['Die Waage ist im Gleichgewicht: links so viel wie rechts.', 'Erst die Zahl ohne x wegnehmen — auf beiden Seiten.', 'Dann durch die Zahl vor dem x teilen — auf beiden Seiten.'],
+      B: ['Steht x auf beiden Seiten, sammle es zuerst auf einer.', 'Danach wie gewohnt: erst ±, dann :.'],
+      C: ['Fällt x heraus und bleibt eine wahre Aussage, gibt es unendlich viele Lösungen.', 'Bleibt eine falsche Aussage, gibt es keine.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const zeile = h('div', 'anim-gleichung'); zeile.style.fontSize = '20px';
@@ -842,7 +906,7 @@
     if (btn) btn.addEventListener('click', nutzerKlick);
 
     let io = null;
-    if (!REDUCED && window.IntersectionObserver) {
+    if (!REDUCED && autostartErlaubt() && window.IntersectionObserver) {
       io = new IntersectionObserver(eintraege => {
         eintraege.forEach(e => {
           if (e.isIntersecting) {
@@ -851,6 +915,9 @@
         });
       }, { threshold: 0.2 });
       io.observe(fig);
+    } else if (!REDUCED && !autostartErlaubt() && typeof ctrl.pause === 'function') {
+      /* Autostart abgewählt: Das Bild steht still, bis jemand abspielt. */
+      ctrl.pause(); sync();
     }
 
     return () => {
@@ -866,7 +933,7 @@
      sie eine Flut, ohne Auszeichnung unsichtbar. Deshalb: die laufende
      Zeile ausblenden, dafür eine feste Beschreibung und eine ruhige
      Statuszeile, die nur auf Pause und im Endzustand spricht. */
-  function barrierefreiMachen(fig, def) {
+  function barrierefreiMachen(fig, def, stufe) {
     fig.querySelectorAll('.anim-ables, .anim-rechnung').forEach(n => n.setAttribute('aria-hidden', 'true'));
     if (def && def.kurz) {
       const fest = h('p', 'anim-sr', def.titel + '. ' + def.kurz);
@@ -877,6 +944,34 @@
     status.setAttribute('aria-live', 'polite');
     status.dataset.rolle = 'status';
     fig.appendChild(status);
+    textfassungEinbauen(fig, def, stufe);
+  }
+
+  /* ---------- Die Animation in Worten ----------
+     Kein Lernziel darf allein an einer Bewegung hängen. Wer nicht sieht,
+     wer die Bewegung abgeschaltet hat, wer sie zu schnell findet oder das
+     Blatt ausdruckt, bekommt hier dieselbe Aussage als Text — aufklappbar,
+     damit sie das Bild nicht verdrängt.
+
+     Die Sätze stehen als `text: { A: [...], B: [...], C: [...] }` an der
+     Animationsdefinition. Fehlt die Stufe, wird der Kurztext verwendet;
+     fehlt auch der, bleibt der Block weg statt eine Hülse zu zeigen. */
+  function textfassungEinbauen(fig, def, stufe) {
+    const st = (stufe || 'B').toUpperCase().charAt(0);
+    const saetze = (def && def.text && (def.text[st] || def.text.B))
+      || (def && def.kurz ? [def.kurz] : null);
+    if (!saetze || !saetze.length) return;
+
+    const box = h('details', 'anim-text');
+    const kopf = h('summary', null, 'Als Text lesen');
+    box.appendChild(kopf);
+    const liste = h('ol', 'anim-text-liste');
+    saetze.forEach(s => liste.appendChild(h('li', null, s)));
+    box.appendChild(liste);
+    /* Beim Drucken ist das Bild ein Standbild — dann gehört der Text
+       aufgeklappt daneben. */
+    box.classList.add('anim-text-druck');
+    fig.appendChild(box);
   }
   function vorlesen(fig) {
     const status = fig.querySelector('[data-rolle="status"]');
@@ -974,7 +1069,7 @@
     try {
       ctrl = def.bauen(fig, opts || {});
       host.appendChild(fig);
-      barrierefreiMachen(fig, def);
+      barrierefreiMachen(fig, def, (opts || {}).stufe);
       if (def.frage && !REDUCED && ctrl && typeof ctrl.pause === 'function') {
         ctrl.pause();
         vorhersageEinbauen(fig, def, ctrl);
@@ -1019,6 +1114,21 @@
   };
   window.ANIM.einbetten = baueIn;
   window.ANIM.aufraeumen = bereichAufraeumen;
+
+  /* Die Seite baut den sichtbaren Schalter; hier liegt nur der Wert und
+     das Neuaufbauen der bereits eingehängten Bilder. */
+  window.ANIM.autostart = {
+    an: autostartErlaubt,
+    setzen(an) {
+      try {
+        if (typeof Speicher !== 'undefined') Speicher.schreib(AUTOSTART_SCHLUESSEL, !!an);
+        else localStorage.setItem(AUTOSTART_SCHLUESSEL, String(!!an));
+      } catch { /* Speicher gesperrt — dann gilt es für diese Sitzung */ }
+      [...GEBAUT.entries()].forEach(([host, gebaut]) => {
+        if (host && host.isConnected && gebaut.id) baueIn(gebaut.id, host, gebaut.opts);
+      });
+    }
+  };
   window.ANIM.pausieren = function (root) {
     [...GEBAUT.values()].forEach(g => {
       if (g.host === root || (root?.contains && root.contains(g.host))) {
@@ -1146,6 +1256,11 @@
   register({
     id: 'anteile', titel: 'Bruch – Dezimalzahl – Prozent', bezug: 'PZ-01',
     kurz: 'A: einfache Anteile ablesen · B: 3/4 → 0,75 → 75 % · C: unbequeme Brüche runden.',
+    text: {
+      A: ['Der ganze Streifen ist 100 %.', 'Die Hälfte sind 50 %, ein Viertel 25 %, drei Viertel 75 %.'],
+      B: ['Bruch durch Division in eine Dezimalzahl: 3 : 4 = 0,75.', 'Dezimalzahl mal 100 gibt Prozent: 75 %.'],
+      C: ['Nicht jede Division geht auf: 2 : 3 = 0,666…', 'Dann wird sinnvoll gerundet: rund 67 %.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const S = Streifen({ breite: o.breite || 340 });
@@ -1178,6 +1293,11 @@
   register({
     id: 'schaetzen', titel: 'Prozente schätzen', bezug: 'PZ-02',
     kurz: 'A: mehr/weniger als die Hälfte · B: mit Ankerwerten auf 5 % · C: über 10 %-Schritte zerlegen.',
+    text: {
+      A: ['Die Marke in der Mitte ist 50 %.', 'Endet die Farbe davor, sind es weniger als die Hälfte.'],
+      B: ['Ordne zuerst zwischen den Marken 0, 25, 50, 75 und 100 % ein.', 'Dann schätze auf 5 % genau.'],
+      C: ['Zerlege in Zehnerschritte.', 'Vier Schritte sind rund 40 %.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const S = Streifen({ breite: o.breite || 340 });
@@ -1212,6 +1332,11 @@
   register({
     id: 'dreisatz', titel: 'Dreisatz über die Einheit', bezug: 'PZ-03',
     kurz: 'A: :n auf 1, dann ·m · B: Schema mit beschrifteten Pfeilen · C: direkt über den Faktor.',
+    text: {
+      A: ['5 Brötchen kosten 2,00 €.', 'Teile durch 5: ein Brötchen kostet 0,40 €.', 'Nimm mal 8: acht Brötchen kosten 3,20 €.'],
+      B: ['Erst herunter auf 1, dann hoch auf die gesuchte Menge.', 'Die Pfeile zeigen, womit gerechnet wird.'],
+      C: ['Der Preis für ein Stück ist der Faktor.', '8 · 0,40 € = 3,20 €.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const box = h('div', 'anim-schema');
@@ -1247,6 +1372,11 @@
   register({
     id: 'antiproportional', titel: 'Antiproportional: mehr → weniger', bezug: 'PZ-04',
     kurz: 'A: steigt oder fällt? · B: rechnen (Produkt bleibt gleich) · C: Produktprobe.',
+    text: {
+      A: ['Mehr Maler bedeutet weniger Tage.', 'Die eine Größe wächst, die andere schrumpft.'],
+      B: ['Das Produkt aus Malern und Tagen bleibt gleich: 6 · 8 = 48.', '48 : 8 Maler = 6 Tage.'],
+      C: ['In jeder Zeile ergibt das Produkt denselben Wert.', 'Genau das kennzeichnet antiproportional.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const box = h('div', 'anim-schema anim-schema-tab');
@@ -1283,6 +1413,11 @@
   register({
     id: 'grundgroessen', titel: 'Grundwert, Prozentwert, Prozentsatz', bezug: 'PZ-05',
     kurz: 'A: den Grundwert (das Ganze) finden · B: G, W und p % benennen · C: wenn G fehlt.',
+    text: {
+      A: ['Der ganze Streifen ist der Grundwert G und entspricht 100 %.', 'Der gefärbte Teil ist der Prozentwert W.'],
+      B: ['G ist das Ganze, W der Teil, p % der Prozentsatz.', 'Das %-Zeichen gehört zum Prozentsatz, die Einheit zum Prozentwert.'],
+      C: ['Manchmal ist der Grundwert im Text gar nicht genannt.', 'Dann sind nur W und p % bekannt und G ist gesucht.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const S = Streifen({ breite: o.breite || 340, mitte: false });
@@ -1322,6 +1457,11 @@
   register({
     id: 'prozentwert', titel: 'Prozentwert berechnen', bezug: 'PZ-06',
     kurz: 'A: über den 1-%-Schritt · B: W = G · p : 100 · C: mit Faktor und Überschlag.',
+    text: {
+      A: ['1 % ist der Grundwert geteilt durch 100: 80 € : 100 = 0,80 €.', '35 % sind 35 · 0,80 € = 28 €.'],
+      B: ['W = G · p : 100 = 80 · 35 : 100 = 28 €.', 'Ist p kleiner als 100 %, muss W kleiner als G sein.'],
+      C: ['35 % sind ungefähr ein Drittel: rund 27 € als Überschlag.', 'Genau: 80 · 0,35 = 28 €.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const G = 80, p = 35, W = G * p / 100;
@@ -1346,6 +1486,11 @@
   register({
     id: 'prozentsatz', titel: 'Prozentsatz berechnen', bezug: 'PZ-07',
     kurz: 'A: bei glatten Zahlen (Bruch → %) · B: p = W : G · 100 · C: prozentuale Veränderung.',
+    text: {
+      A: ['15 von 60 ist der Bruch 15/60.', 'Gekürzt ist das 1/4, also 25 %.'],
+      B: ['p = W : G · 100 = 34 : 40 · 100 = 85 %.'],
+      C: ['Auch eine Veränderung wird so berechnet: 6 € von 40 € sind 15 %.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const S = Streifen({ breite: o.breite || 340 });
@@ -1371,6 +1516,11 @@
   register({
     id: 'grundwert', titel: 'Grundwert berechnen', bezug: 'PZ-08',
     kurz: 'A: über den 1-%-Schritt aufs Ganze · B: G = W : p · 100 mit Kontrolle · C: vom verminderten Wert zurück.',
+    text: {
+      A: ['20 % sind 12 €.', '1 % ist 12 € : 20 = 0,60 €.', '100 % sind 0,60 € · 100 = 60 €.'],
+      B: ['G = W : p · 100 = 12 : 20 · 100 = 60 €.', 'Kontrolle: 60 € ist größer als 12 € — das passt.'],
+      C: ['Nach 20 % Rabatt sind 48 € noch 80 % des alten Preises.', '100 % sind 48 : 80 · 100 = 60 €.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const S = Streifen({ breite: o.breite || 340 });
@@ -1401,6 +1551,11 @@
   register({
     id: 'veraenderung', titel: 'Vermehren, vermindern, Wachstumsfaktor', bezug: 'PZ-09',
     kurz: 'A: erst Betrag, dann ±  · B: in einem Schritt (Faktor 1 ± p) · C: zurück vom Endpreis bzw. Faktorkette.',
+    text: {
+      A: ['Der Rabatt beträgt 200 € · 15 : 100 = 30 €.', 'Der Endpreis ist 200 € − 30 € = 170 €.'],
+      B: ['100 % − 15 % = 85 %, also Faktor 0,85.', '200 € · 0,85 = 170 € in einem Schritt.'],
+      C: ['Ein Endpreis von 119 € entspricht 119 %.', 'Zurück geht es durch 1,19, nicht durch Abziehen von 19 %.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const thema = (o && o.thema) === 'richtung' ? 'richtung' : 'rabatt';
@@ -1475,6 +1630,11 @@
   register({
     id: 'zinsen', titel: 'Zinsen & Zinseszins', bezug: 'PZ-11',
     kurz: 'Jahreszinsen, Teile eines Jahres und Zinseszins — je Einheit über „thema“ gewählt.',
+    text: {
+      A: ['Das Kapital ist der Grundwert, der Zinssatz der Prozentsatz.', 'Z = K · p : 100 = 1200 · 5 : 100 = 60 € im Jahr.'],
+      B: ['Ist p gesucht: p = Z : K · 100 = 60 : 2000 · 100 = 3 %.'],
+      C: ['Ist K gesucht: K = Z · 100 : p = 100 · 100 : 4 = 2500 €.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st);
       const thema = ['jahr', 'zeit', 'eszins'].indexOf((o && o.thema) || '') >= 0 ? o.thema : 'jahr';
@@ -1632,6 +1792,11 @@
   register({
     id: 'koerper', titel: 'Körper: Flächen, Kanten, Ecken', bezug: 'KP-01',
     kurz: 'A: zählen (6/12/8) · B: Grundfläche, Mantel, Netz · C: n-Eck-Prisma (n+2, 3n, 2n).',
+    text: {
+      A: ['Der Würfel hat 6 Flächen.', 'Er hat 12 Kanten: 4 oben, 4 unten, 4 senkrecht.', 'Er hat 8 Ecken: 4 oben, 4 unten.'],
+      B: ['Die Grundfläche liegt unten und gibt dem Körper den Namen.', 'Der Mantel sind alle Seitenflächen zusammen.', 'Oben liegt die Deckfläche, so groß wie die Grundfläche.'],
+      C: ['Bei einem n-Eck-Prisma gilt: n + 2 Flächen, 3n Kanten, 2n Ecken.', 'Für n = 4 sind das 6 Flächen, 12 Kanten und 8 Ecken.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -1708,6 +1873,11 @@
   register({
     id: 'einheiten', titel: 'Einheiten: Fläche ·100, Volumen ·1000', bezug: 'KP-02',
     kurz: 'A: 1 dm³ = 1 l · B: dm² → cm² (·100), dm³ → cm³ (·1000) · C: zwischen l/dm³/cm³/m³ wechseln.',
+    text: {
+      A: ['Ein Würfel mit 1 dm Kante fasst genau 1 Liter.', '1 dm³ = 1 l.'],
+      B: ['Teilt man jede Seite in 10, entstehen 10 · 10 = 100 Kästchen.', 'Bei Flächen gilt der Faktor 100, bei Volumen 1000.'],
+      C: ['1 m³ = 1000 dm³ = 1000 l.', '250 cm³ = 250 : 1000 = 0,25 l.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -1775,6 +1945,11 @@
   register({
     id: 'oberflaeche', titel: 'Oberfläche über das Netz', bezug: 'KP-03',
     kurz: 'A: Würfel 6·a² · B: Quader 2·(ab+ac+bc) · C: mit gemischten Einheiten.',
+    text: {
+      A: ['Das Netz des Würfels besteht aus 6 gleichen Quadraten.', 'O = 6 · a² = 6 · 25 = 150 cm².'],
+      B: ['Das Quadernetz hat 6 Flächen in 3 Paaren.', 'O = 2 · (a·b + a·c + b·c) = 2 · (12 + 8 + 6) = 52 cm².'],
+      C: ['Vor dem Rechnen alle Längen in dieselbe Einheit bringen.', 'Dann wie gewohnt die sechs Flächen addieren.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -1827,6 +2002,11 @@
   register({
     id: 'volumenbox', titel: 'Volumen: Schicht für Schicht', bezug: 'KP-04',
     kurz: 'A: Würfel a³ · B: Quader a·b·c (= G·h), Liter · C: gemischte Einheiten.',
+    text: {
+      A: ['Der Würfel füllt sich Schicht für Schicht.', 'V = a · a · a = 3³ = 27 cm³.'],
+      B: ['Jede Schicht ist die Grundfläche a · b.', 'V = a · b · c = 5 · 3 · 4 = 60 dm³, also 60 Liter.'],
+      C: ['Bei gemischten Einheiten zuerst umrechnen.', 'In dm gerechnet ergibt dm³ direkt Liter.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -1858,6 +2038,11 @@
   register({
     id: 'kante', titel: 'Rückwärts: fehlende Kante finden', bezug: 'KP-05',
     kurz: 'A: Quaderkante = V:(a·b) · B: Würfelkante aus V (∛) oder O · C: rückwärts begründen.',
+    text: {
+      A: ['Das Volumen wächst, bis es 60 cm³ erreicht.', 'c = V : (a · b) = 60 : 20 = 3 cm.'],
+      B: ['Beim Würfel ist V = a³.', 'a ist die dritte Wurzel aus 64, also 4 cm.'],
+      C: ['Aus O = 6 · a² = 96 folgt a² = 16.', 'Also ist a = 4 cm.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -1948,6 +2133,11 @@
   register({
     id: 'prisma', titel: 'Prisma: Grundfläche · Höhe', bezug: 'KP-06',
     kurz: 'A: V = G·h (Grundfläche hoch ziehen) · B: Dreiecksgrundfläche → G → V · C: zusammengesetzte Grundfläche.',
+    text: {
+      A: ['Die Grundfläche wird nach oben gezogen.', 'V = G · h = 12 · 5 = 60 cm³.'],
+      B: ['Bei einem Dreiecksprisma ist G die Dreiecksfläche.', 'V = G · h = 12 · 10 = 120 cm³.'],
+      C: ['Auch eine zusammengesetzte Grundfläche wird zuerst berechnet.', 'V = 25 · 8 = 200 cm³.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -1979,6 +2169,11 @@
   register({
     id: 'mantelprisma', titel: 'Prisma-Oberfläche: Mantel abwickeln', bezug: 'KP-08',
     kurz: 'A: Mantel = Umfang · Höhe · B: O = 2·G + Mantel · C: fehlende Seite mit Pythagoras.',
+    text: {
+      A: ['Der Mantel wird abgerollt und wird ein Rechteck.', 'Mantel = Umfang · Höhe = 12 · 10 = 120 cm².'],
+      B: ['Zur Oberfläche kommen beide Grundflächen dazu.', 'O = 2 · 6 + 120 = 132 cm².'],
+      C: ['Fehlt eine Dreiecksseite, hilft der Satz des Pythagoras.', '√(3² + 4²) = 5, also Umfang 12.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2032,6 +2227,11 @@
   register({
     id: 'zylinder', titel: 'Zylindervolumen: π·r²·h', bezug: 'KP-09',
     kurz: 'A: V = π·r²·h · B: aus dem Durchmesser (r = d:2) · C: in Litern.',
+    text: {
+      A: ['Der Zylinder füllt sich von unten.', 'V = π · r² · h = 3,14 · 25 · 10 = 785 cm³.'],
+      B: ['Steht nur d da, halbiere zuerst: r = 8 : 2 = 4.', 'V = 3,14 · 16 · 12 = 603 cm³.'],
+      C: ['In dm gerechnet ergibt dm³ direkt Liter.', 'V = 3,14 · 4 · 3 ≈ 37,7 l.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2068,6 +2268,11 @@
   register({
     id: 'zylinderflaeche', titel: 'Zylinder-Oberfläche: Mantel abrollen', bezug: 'KP-10',
     kurz: 'A: Mantel = 2·π·r · h · B: O = 2 Kreise + Mantel · C: offener Behälter.',
+    text: {
+      A: ['Der Mantel wird zu einem Rechteck abgerollt.', 'Die eine Seite ist der Kreisumfang 2 · π · r = 25,12 cm.', 'Mantel = 25,12 · 10 = 251,2 cm².'],
+      B: ['Zur Oberfläche kommen zwei Kreise dazu.', 'O = 2 · 50,24 + 251,2 ≈ 351,7 cm².'],
+      C: ['Ein oben offener Becher hat nur einen Kreis.', 'O = 50,24 + 251,2 ≈ 301,4 cm².']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2108,6 +2313,11 @@
   register({
     id: 'zusammengesetzt', titel: 'Zusammengesetzte Körper', bezug: 'KP-11',
     kurz: 'A: zerlegen und Volumen addieren · B: Masse = Volumen · Dichte · C: Hohlkörper (außen − innen).',
+    text: {
+      A: ['Der Körper wird in Quader und Würfel zerlegt.', 'V = 32 + 8 = 40 cm³.'],
+      B: ['Ein Quader mit 5 · 5 · 2 hat 50 cm³.', 'Masse = 50 cm³ · 7,8 g/cm³ = 390 g.'],
+      C: ['Bei einem Rohr zählt nur das Material.', 'V = außen − innen = 785 − 502,4 = 282,6 cm³.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const G4 = window.ANIM._geo;
@@ -2269,6 +2479,11 @@
   register({
     id: 'pyramide', titel: 'Die Pyramide: Teile benennen', bezug: 'SK-01',
     kurz: 'A: Spitze, Grundfläche, Grundkante, Höhe · B: Höhe vs. Seitenhöhe · C: n-Eck-Pyramide (n Seiten, n+1 Flächen).',
+    text: {
+      A: ['Die Spitze ist der oberste Punkt.', 'Die Grundfläche liegt unten, eine ihrer Seiten ist die Grundkante a.', 'Die Höhe h geht senkrecht von der Spitze zur Mitte.'],
+      B: ['Die Höhe h steht innen senkrecht.', 'Die Seitenhöhe s liegt außen auf der Fläche.', 's ist immer länger als h.'],
+      C: ['Eine n-Eck-Pyramide hat n Seitendreiecke.', 'Zusammen mit der Grundfläche sind das n + 1 Flächen.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2328,6 +2543,11 @@
   register({
     id: 'pythpyr', titel: 'Pyramide: das rechtwinklige Dreieck', bezug: 'SK-02',
     kurz: 'A: das Dreieck aus h, a:2 und s erkennen · B: s = √(h²+(a:2)²) · C: h oder a rückwärts.',
+    text: {
+      A: ['Höhe h, halbe Grundkante a : 2 und Seitenhöhe s bilden ein rechtwinkliges Dreieck.', 'Der rechte Winkel liegt zwischen h und a : 2.', 's ist die Hypotenuse.'],
+      B: ['s = √(h² + (a:2)²) = √(16 + 9) = 5 cm.'],
+      C: ['Rückwärts: h = √(s² − (a:2)²) = √(169 − 25) = 12 cm.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2372,6 +2592,11 @@
   register({
     id: 'volpyr', titel: 'Pyramidenvolumen: ⅓ · G · h', bezug: 'SK-03',
     kurz: 'A: V = ⅓·G·h · B: quadratische Grundfläche · C: 3 Pyramiden füllen 1 Prisma.',
+    text: {
+      A: ['Drei gleiche Pyramiden füllen genau ein Prisma.', 'Deshalb ist V = (G · h) : 3 = (30 · 6) : 3 = 60 cm³.'],
+      B: ['Bei quadratischer Grundfläche ist G = a² = 36.', 'V = (36 · 10) : 3 = 120 cm³.'],
+      C: ['Prisma: 24 · 9 = 216 cm³.', 'Pyramide: 216 : 3 = 72 cm³ — genau ein Drittel.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2411,6 +2636,11 @@
   register({
     id: 'obpyr', titel: 'Pyramiden-Oberfläche: Netz', bezug: 'SK-04',
     kurz: 'A: ein Seitendreieck (a·s):2 · B: O = a² + 4 Dreiecke · C: erst s mit Pythagoras.',
+    text: {
+      A: ['Jedes Seitendreieck hat die Fläche (a · s) : 2 = 15 cm².', 'Alle vier sind gleich groß.'],
+      B: ['O = Grundfläche + 4 Dreiecke = a² + 2 · a · s.', 'O = 36 + 60 = 96 cm².'],
+      C: ['Fehlt s, wird es zuerst mit Pythagoras berechnet: s = 5.', 'Dann O = 96 cm².']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2455,6 +2685,11 @@
   register({
     id: 'rueckwaerts', titel: 'Rückwärts & gemischt', bezug: 'SK-05',
     kurz: 'A: Volumen oder Oberfläche? · B: fehlende Höhe aus dem Volumen · C: mehrschrittig.',
+    text: {
+      A: ['„Wie viel passt hinein?" fragt nach dem Volumen — der Körper füllt sich.', '„Wie viel Material?" fragt nach der Oberfläche — nur die Außenhaut zählt.'],
+      B: ['Aus dem Volumen lässt sich die Höhe zurückrechnen.', 'Pyramide: h = 3 · V : a². Kegel: h = 3 · V : (π · r²).'],
+      C: ['Mehrschrittig: erst die fehlende Größe, dann die gesuchte.', 'Zwischenergebnisse mit Einheit notieren.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const form = (o && o.form) === 'kegel' ? 'kegel' : 'pyramide';
@@ -2549,6 +2784,11 @@
   register({
     id: 'kegel', titel: 'Der Kegel: r, h, s', bezug: 'SK-06',
     kurz: 'A: benennen + rechtwinkliges Dreieck · B: s = √(r²+h²) · C: r oder h rückwärts.',
+    text: {
+      A: ['Der Radius r geht von der Kreismitte zum Rand.', 'Die Höhe h steht senkrecht auf der Mitte.', 'Die Mantellinie s ist die Hypotenuse zwischen r und h.'],
+      B: ['s = √(r² + h²) = √(9 + 16) = 5 cm.'],
+      C: ['Rückwärts: h = √(s² − r²) = √(169 − 25) = 12 cm.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2586,6 +2826,11 @@
   register({
     id: 'volkegel', titel: 'Kegelvolumen: ⅓·π·r²·h', bezug: 'SK-07',
     kurz: 'A: V = ⅓·π·r²·h · B: aus dem Durchmesser · C: 3 Kegel füllen 1 Zylinder.',
+    text: {
+      A: ['Drei Kegel füllen genau einen Zylinder.', 'V = (3,14 · 25 · 10) : 3 ≈ 261,7 cm³.'],
+      B: ['Steht nur d da, halbiere zuerst: r = 3.', 'V = (3,14 · 9 · 7) : 3 ≈ 65,9 cm³.'],
+      C: ['Zylinder: 37,68 dm³. Kegel: ein Drittel davon.', 'V = 12,56 dm³ = 12,56 l.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2628,6 +2873,11 @@
   register({
     id: 'obkegel', titel: 'Kegel-Oberfläche: Mantel als Sektor', bezug: 'SK-08',
     kurz: 'A: Mantel = π·r·s (abwickeln) · B: O = Grundkreis + Mantel · C: erst s mit Pythagoras.',
+    text: {
+      A: ['Der Mantel wird zu einem Kreisausschnitt abgerollt.', 'Sein Radius ist die Mantellinie s.', 'Mantel = π · r · s = 3,14 · 3 · 5 = 47,1 cm².'],
+      B: ['Zur Oberfläche kommt der Grundkreis dazu.', 'O = 28,26 + 47,1 = 75,36 cm².'],
+      C: ['Fehlt s, zuerst mit Pythagoras berechnen.', 'Dann O = π · r · (r + s) = 75,36 cm².']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2660,6 +2910,11 @@
   register({
     id: 'kugel', titel: 'Die Kugel: O und V', bezug: 'SK-10',
     kurz: 'A: O = 4·π·r² · B: V = 4/3·π·r³ · C: in Sachaufgaben (aus d, Liter).',
+    text: {
+      A: ['Wächst der Radius, wächst die Oberfläche schneller als er selbst.', 'O = 4 · π · r² = 4 · 3,14 · 25 = 314 cm².'],
+      B: ['Beim Volumen kommt r dreimal vor.', 'V = (4 · π · r³) : 3 = 113,04 cm³.'],
+      C: ['Erst r = d : 2 bestimmen.', 'In dm gerechnet ergibt dm³ direkt Liter: rund 33,5 l.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2699,6 +2954,11 @@
   register({
     id: 'zusammensk', titel: 'Zusammengesetzte Körper', bezug: 'SK-11',
     kurz: 'A: Eistüte = Kegel + Halbkugel (zerlegen) · B: Silo = Zylinder + Kegel (addieren) · C: mehrschrittig.',
+    text: {
+      A: ['Die Eistüte besteht aus einem Kegel und einer Halbkugel.', 'Beide Volumen einzeln berechnen, dann addieren.'],
+      B: ['Kegel 75,36 cm³ plus Halbkugel 56,52 cm³.', 'Zusammen 131,88 cm³.'],
+      C: ['Das Silo besteht aus Zylinder und Kegeldach.', 'V = 62,8 + 6,28 = 69,08 m³.']
+    },
     bauen(host, o) {
       const st = stufeVon(o); abzeichen(host, st); const K = STUFE_FARBE[st];
       const info = h('div', 'anim-ables');
@@ -2811,6 +3071,11 @@
   register({
     id: 'signalwoerter', titel: 'Signalwörter: Was ist gesucht?', bezug: 'KP-12',
     kurz: 'Erst lesen, dann rechnen. Das Signalwort zeigt, welche Größe gesucht ist — über „bereich“ für PZ, KP oder SK.',
+    text: {
+      A: ['„fasst", „Liter", „passt hinein" fragen nach dem Rauminhalt.', '„anstreichen", „Material", „einwickeln" fragen nach der Außenhaut.'],
+      B: ['Erst lesen, welche Größe gesucht ist, dann die Formel wählen.'],
+      C: ['Manche Formulierungen sind unauffällig: „Wie viel Farbe?" meint die Oberfläche.', '„Wie viel Wasser?" meint das Volumen.']
+    },
     frage: {
       text: '„Wie viel Liter passen hinein?“ — wonach ist gefragt?',
       optionen: ['Nach dem Rauminhalt', 'Nach der Außenhaut', 'Nach der Höhe'],

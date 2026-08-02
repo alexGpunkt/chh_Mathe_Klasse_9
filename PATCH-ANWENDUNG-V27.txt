@@ -1,0 +1,3 @@
+Dieses Patch wird auf den hochgeladenen V26-Projektstand angewendet. Den Inhalt in die Repository-Wurzel kopieren und vorhandene Dateien ersetzen. Es enthält keine .git- oder .claude-Dateien. Die interne Datei anpassungen.txt bei Bedarf manuell aus dem Repository entfernen.
+
+Enthaltene geänderte/neue Dateien: 22

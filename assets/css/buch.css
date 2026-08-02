@@ -27,7 +27,7 @@ body.tastatur-aktiv .buch-nav { transform: translateY(105%); }
 /* Querformat: flachere Leiste, damit die Aufgabe sichtbar bleibt. */
 @media (orientation: landscape) and (max-height: 560px) {
   :root { --buch-nav-h: 52px; }
-  .buch-btn { height: 40px; font-size: 15px; }
+  .buch-btn { height: 44px; font-size: 15px; }
   html.buch-aktiv body { padding-bottom: calc(72px + var(--buch-nav-total)); }
 }
 
@@ -58,6 +58,20 @@ html.buch-aktiv .einheit-titel { overflow-wrap: anywhere; }
   box-shadow: 0 -6px 20px -12px rgba(21,35,58,.5);
   padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
+/* Der Benutzer-Chip sitzt unten rechts und lag bis V29 mit z-index 9000
+   genau über „Weiter". Auf einem Handy war die Buchnavigation damit an
+   der wichtigsten Stelle nicht bedienbar — sichtbar, aber tot. Im
+   Buchmodus rückt der Chip deshalb über die Leiste. */
+html.buch-aktiv .m9-user-chip {
+  bottom: calc(var(--buch-nav-total) + 10px);
+}
+/* Ist die Tastatur offen, fährt die Leiste weg — dann darf der Chip
+   wieder nach unten, sonst schwebt er mitten im Bild. */
+html.buch-aktiv body.tastatur-aktiv .m9-user-chip,
+html.buch-aktiv body:has(input.zahl-feld:focus) .m9-user-chip {
+  bottom: 10px;
+}
+
 .buch-nav-fortschritt { height: var(--buch-fort-h); background: var(--karo); }
 .buch-nav-fuell {
   height: 100%; width: 0%; background: var(--pfad);
@@ -133,14 +147,14 @@ html.buch-aktiv .einheit-titel { overflow-wrap: anywhere; }
 
 .buch-sprung { display: flex; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--linie); }
 .buch-sprung input {
-  flex: 1 1 auto; min-width: 0; height: 42px; padding: 0 12px;
+  flex: 1 1 auto; min-width: 0; height: 44px; padding: 0 12px;
   border: 1px solid var(--linie-kraeftig); border-radius: 10px;
   font-family: var(--f-body); font-size: 15px; color: var(--ink);
   background: var(--paper);
 }
 .buch-sprung input:focus { outline: 2px solid var(--pfad); outline-offset: 1px; }
 .buch-sprung button {
-  flex: 0 0 auto; height: 42px; padding: 0 16px;
+  flex: 0 0 auto; height: 44px; padding: 0 16px;
   border: none; border-radius: 10px; background: var(--pfad); color: #fff;
   font-family: var(--f-display); font-weight: 700; font-size: 15px; cursor: pointer;
 }
@@ -176,6 +190,16 @@ html.buch-aktiv .einheit-titel { overflow-wrap: anywhere; }
   -webkit-tap-highlight-color: transparent;
 }
 .buch-eintrag:hover { background: var(--paper); }
+
+/* Lernstatus im Inhaltsverzeichnis — Zeichen und Farbe, nie Farbe allein. */
+.e-status {
+  flex: 0 0 auto; width: 18px; text-align: center;
+  font-family: var(--f-num); font-size: 13px; line-height: 1.4;
+}
+.e-status-offen { color: var(--ink-faint); }
+.e-status-begonnen { color: var(--b); }
+.e-status-fertig { color: var(--ok); font-weight: 700; }
+.e-status-wiederholen { color: var(--merk-linie); font-weight: 700; }
 .buch-eintrag .e-code {
   font-family: var(--f-num); font-size: 12px; font-weight: 700;
   color: var(--ink-soft); flex: 0 0 auto;

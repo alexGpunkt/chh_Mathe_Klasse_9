@@ -179,7 +179,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 3,
-          "feedback": "Das ist 1 %. Noch mal 10 nehmen."
+          "feedback": "Das ist 1 %. Noch mal 10 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -237,12 +238,14 @@
         {
           "id": "mal_statt_geteilt",
           "value": 8,
-          "feedback": "Du hast 20 % von 40 € gerechnet. Die 40 € sind schon der Teil — das Ganze ist größer."
+          "feedback": "Du hast 20 % von 40 € gerechnet. Die 40 € sind schon der Teil — das Ganze ist größer.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 2,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -269,7 +272,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 67.5,
-          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst."
+          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -304,7 +308,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 416.67,
-          "feedback": "Du hast 250 : 60 gerechnet. Teil durch Ganzes."
+          "feedback": "Du hast 250 : 60 gerechnet. Teil durch Ganzes.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -334,12 +339,14 @@
         {
           "id": "mal_statt_geteilt",
           "value": 2.88,
-          "feedback": "Du hast 8 % von 36 € gerechnet. Gesucht ist das Ganze — es ist größer."
+          "feedback": "Du hast 8 % von 36 € gerechnet. Gesucht ist das Ganze — es ist größer.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 4.5,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -401,7 +408,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 0.9,
-          "feedback": "Das ist der Preis für 1 kg. Gefragt sind 8 kg."
+          "feedback": "Das ist der Preis für 1 kg. Gefragt sind 8 kg.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -431,7 +439,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 34.2,
-          "feedback": "Das ist die Mehrwertsteuer allein. Gefragt ist der Bruttopreis."
+          "feedback": "Das ist die Mehrwertsteuer allein. Gefragt ist der Bruttopreis.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -532,12 +541,14 @@
         {
           "id": "nur_teil_berechnet",
           "value": 375,
-          "feedback": "Das sind nur die Zinsen. Gefragt ist die gesamte Rückzahlung — der Kredit muss auch zurück."
+          "feedback": "Das sind nur die Zinsen. Gefragt ist die gesamte Rückzahlung — der Kredit muss auch zurück.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "komma_verschoben",
           "value": 5037.5,
-          "feedback": "Du hast mit 0,75 % gerechnet. Der Zinssatz ist 7,5 %."
+          "feedback": "Du hast mit 0,75 % gerechnet. Der Zinssatz ist 7,5 %.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -573,7 +584,8 @@
         {
           "id": "bei_schritt_1_gestoppt",
           "value": 64,
-          "feedback": "Das ist der Preis nach der ersten Reduzierung. Die Kundenkarte bringt noch 10 % darauf."
+          "feedback": "Das ist der Preis nach der ersten Reduzierung. Die Kundenkarte bringt noch 10 % darauf.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -604,6 +616,18 @@
       "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
       "typ": "sammlung",
       "quelle": "ZUM"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Teste dich! Wiederholung Klasse 9 — Dreisatz und Zinsen",
+      "url": "https://www.youtube.com/watch?v=JR2HlPuir6s",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Prozentrechnung mit Formeln — Überblick Klasse 8 bis 10",
+      "url": "https://www.youtube.com/watch?v=qa8UhuhYooQ",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

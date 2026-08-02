@@ -1,0 +1,44 @@
+{
+  "hinweis": "Performancebudget für günstige Smartphones. Die Grenzen sind bewusst knapp über dem heutigen Stand gewählt: Sie sollen Wachstum bemerkbar machen, nicht sofort brechen. Wer eine Grenze anhebt, trifft eine Entscheidung — und schreibt sie in die Begründung darunter.",
+  "geprueft_am_stand": "V29",
+
+  "grenzen": {
+    "js_je_seite_gzip_kb": {
+      "wert": 120,
+      "gilt_fuer": "Summe aller <script src> einer Seite, gzip-komprimiert",
+      "begruendung": "einheit.html liegt bei rund 104 KB. Über 120 KB wird das Parsen auf einem 4 Jahre alten Android-Gerät spürbar; dann muss animationen.js aufgeteilt werden."
+    },
+    "js_gesamt_gzip_kb": {
+      "wert": 150,
+      "gilt_fuer": "alle ausgelieferten .js zusammen, gzip-komprimiert",
+      "begruendung": "Der Service Worker lädt bei der Installation alles auf einmal. Über 150 KB dauert die Erstinstallation im Schul-WLAN zu lang."
+    },
+    "css_gesamt_gzip_kb": {
+      "wert": 25,
+      "gilt_fuer": "alle .css zusammen, gzip-komprimiert",
+      "begruendung": "CSS blockiert das erste Bild. 15 KB heute; 25 KB ist die Schmerzgrenze."
+    },
+    "einzeldatei_kb": {
+      "wert": 200,
+      "gilt_fuer": "größte einzelne .js-Datei, unkomprimiert",
+      "begruendung": "animationen.js liegt bei 178 KB. Eine einzelne Datei über 200 KB lässt sich nicht mehr sinnvoll überblicken und blockiert den Hauptthread am Stück."
+    },
+    "offline_gesamt_kb": {
+      "wert": 2200,
+      "gilt_fuer": "alles, was sw.js beim Install in den Cache legt",
+      "begruendung": "Rund 1,6 MB heute. Über 2,2 MB wird die Erstinstallation über Mobilfunk unzumutbar und der Speicher auf alten Geräten knapp."
+    },
+    "animationsschleifen": {
+      "wert": 1,
+      "gilt_fuer": "gleichzeitig laufende requestAnimationFrame-Schleifen je Seite",
+      "begruendung": "Mehrere Schleifen gleichzeitig heißen auf schwachen Geräten Ruckeln und warme Akkus. Die Animationen laufen deshalb einzeln und halten an, sobald sie nicht sichtbar sind."
+    }
+  },
+
+  "nicht_hier_pruefbar": [
+    "Zeit bis zur Bedienbarkeit auf einem echten Gerät",
+    "Speicherverbrauch im laufenden Betrieb",
+    "Layoutsprünge beim Nachladen der Schrift",
+    "Ladezeit bei langsamem Mobilfunk"
+  ]
+}

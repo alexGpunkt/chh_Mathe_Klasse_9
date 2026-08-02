@@ -143,7 +143,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 9.4,
-          "feedback": "r wird quadriert: π · 3² = π · 9, nicht π · 3."
+          "feedback": "r wird quadriert: π · 3² = π · 9, nicht π · 3.",
+          "konzeptfehler": "quadrieren_vergessen"
         },
         {
           "id": "mal_zwei_statt_quadrat",
@@ -200,7 +201,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 63,
-          "feedback": "r wird quadriert: 3,14 · 2² = 12,56, nicht 3,14 · 2."
+          "feedback": "r wird quadriert: 3,14 · 2² = 12,56, nicht 3,14 · 2.",
+          "konzeptfehler": "quadrieren_vergessen"
         }
       ],
       "tags": [
@@ -229,7 +231,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 63,
-          "feedback": "r wird quadriert: 3,14 · 25, nicht 3,14 · 5."
+          "feedback": "r wird quadriert: 3,14 · 25, nicht 3,14 · 5.",
+          "konzeptfehler": "quadrieren_vergessen"
         }
       ],
       "tags": [
@@ -258,7 +261,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 94,
-          "feedback": "r quadrieren: 3,14 · 3² = 28,26, nicht 3,14 · 3."
+          "feedback": "r quadrieren: 3,14 · 3² = 28,26, nicht 3,14 · 3.",
+          "konzeptfehler": "quadrieren_vergessen"
         }
       ],
       "tags": [
@@ -294,7 +298,8 @@
             {
               "id": "durchmesser_als_radius",
               "value": 8,
-              "feedback": "r ist die Hälfte des Durchmessers: r = 8 : 2 = 4."
+              "feedback": "r ist die Hälfte des Durchmessers: r = 8 : 2 = 4.",
+              "konzeptfehler": "radius_durchmesser"
             }
           ]
         },
@@ -360,7 +365,8 @@
         {
           "id": "durchmesser_als_radius",
           "value": 3768,
-          "feedback": "Erst r = d:2 = 5. Mit d=10 als r würde vervierfacht."
+          "feedback": "Erst r = d:2 = 5. Mit d=10 als r würde vervierfacht.",
+          "konzeptfehler": "radius_durchmesser"
         }
       ],
       "tags": [
@@ -392,7 +398,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 314,
-          "feedback": "r quadrieren: 3,14 · 10² = 314, dann · 10 = 3140."
+          "feedback": "r quadrieren: 3,14 · 10² = 314, dann · 10 = 3140.",
+          "konzeptfehler": "quadrieren_vergessen"
         }
       ],
       "tags": [
@@ -422,7 +429,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 3.14,
-          "feedback": "r quadrieren: 0,5² = 0,25, nicht 0,5."
+          "feedback": "r quadrieren: 0,5² = 0,25, nicht 0,5.",
+          "konzeptfehler": "quadrieren_vergessen"
         }
       ],
       "tags": [
@@ -485,7 +493,8 @@
         {
           "id": "durchmesser_als_radius",
           "value": 5024,
-          "feedback": "Erst r = d:2 = 2 cm."
+          "feedback": "Erst r = d:2 = 2 cm.",
+          "konzeptfehler": "radius_durchmesser"
         }
       ],
       "tags": [
@@ -517,7 +526,8 @@
         {
           "id": "mal_statt_geteilt",
           "value": 20000,
-          "feedback": "Rückwärts wird geteilt: 400 : 50 = 8."
+          "feedback": "Rückwärts wird geteilt: 400 : 50 = 8.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -574,6 +584,24 @@
       "url": "https://de.serlo.org/mathe/1555/zylinder",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Zylinder — Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=JmTtpD7Q8jo",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zylinder — Volumen mit Radius oder Durchmesser",
+      "url": "https://www.youtube.com/watch?v=6sf_cvf4xxE",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zylinder — Radius aus dem Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=w3umGES7Ovw",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

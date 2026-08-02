@@ -132,7 +132,8 @@
         {
           "id": "mal_statt_geteilt",
           "value": 900,
-          "feedback": "Rückwärts wird geteilt: 60 : 15 = 4, nicht mal."
+          "feedback": "Rückwärts wird geteilt: 60 : 15 = 4, nicht mal.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -546,6 +547,18 @@
       "spiral": [
         "W-KOPF"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Würfel — Kantenlänge aus dem Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=3Z90qbEXTK8",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Würfel — Oberfläche und Volumen im Zusammenhang",
+      "url": "https://www.youtube.com/watch?v=h6TZxluWfQ8",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

@@ -556,7 +556,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 7.5,
-          "feedback": "Du hast 30 · 0,25 gerechnet. Es muss 30 : 0,25 sein — und Teilen durch eine Zahl unter 1 macht das Ergebnis größer."
+          "feedback": "Du hast 30 · 0,25 gerechnet. Es muss 30 : 0,25 sein — und Teilen durch eine Zahl unter 1 macht das Ergebnis größer.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -676,6 +677,13 @@
       "url": "https://unterrichten.zum.de/wiki/Lineare_Funktionen_im_Aktiv-Urlaub",
       "typ": "sammlung",
       "quelle": "ZUM"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Gleichsetzungsverfahren mit Zeichnung — welche Gerade wann günstiger ist",
+      "url": "https://www.youtube.com/watch?v=m-exG_pEFHo",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

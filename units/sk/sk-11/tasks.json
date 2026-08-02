@@ -394,7 +394,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 80,
-          "feedback": "Bei der Pyramide durch 3: (16·3):3 = 16, dann + 32 = 48."
+          "feedback": "Bei der Pyramide durch 3: (16·3):3 = 16, dann + 32 = 48.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -515,7 +516,8 @@
         {
           "id": "durchmesser_als_radius",
           "value": 301,
-          "feedback": "Erst r = d:2 = 3 cm."
+          "feedback": "Erst r = d:2 = 3 cm.",
+          "konzeptfehler": "radius_durchmesser"
         }
       ],
       "tags": [
@@ -580,6 +582,23 @@
       "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
       "typ": "sammlung",
       "quelle": "ZUM"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Kegelturm berechnen — Volumen und Oberfläche",
+      "url": "https://www.youtube.com/watch?v=iRHl4m61bXA",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Halbkugel — Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=qPbUNDyG-eQ",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Halbkugel — Oberfläche berechnen",
+      "url": "https://www.youtube.com/watch?v=aJJFbgrznzA",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

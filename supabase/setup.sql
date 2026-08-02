@@ -703,4 +703,822 @@ on all sequences in schema public
 to anon, authenticated;
 
 
+-- ============================================================
+-- Protokoll der Datenpflege
+--
+-- Ein Aufräumjob, den niemand beobachtet, ist ein Datenschutzversprechen
+-- auf Verdacht. Jeder Lauf schreibt deshalb hierher: wann, wie lange, wie
+-- viele Zeilen — und im Fehlerfall die Meldung. Die Tabelle enthält nur
+-- Zählwerte, keine Personendaten.
+-- ============================================================
+
+create table if not exists public.mathe9_wartung_laeufe (
+  id bigserial primary key,
+
+  gestartet_at timestamptz not null default now(),
+  beendet_at timestamptz,
+
+  erfolg boolean not null default false,
+  fehler text,
+
+  ereignisse bigint not null default 0,
+  fortschritt bigint not null default 0,
+  tokens bigint not null default 0,
+
+  ereignis_tage integer,
+  fortschritt_tage integer,
+
+  ausgeloest_von text
+);
+
+alter table public.mathe9_wartung_laeufe enable row level security;
+
+create index if not exists
+  mathe9_wartung_laeufe_zeit_idx
+  on public.mathe9_wartung_laeufe (gestartet_at desc);
+
+drop policy if exists "teachers read wartung" on public.mathe9_wartung_laeufe;
+
+
+-- ============================================================
+-- Aufbewahrung und Löschung
+-- Siehe DATENSCHUTZ.md. Fristen hier zentral, damit sie nicht in
+-- Kommentaren stehen, sondern tatsächlich wirken.
+-- ============================================================
+
+-- Rohereignisse: 90 Tage. Fortschritt: ein Schuljahr.
+create or replace function public.mathe9_aufraeumen(
+  ereignis_tage integer default 90,
+  fortschritt_tage integer default 365
+)
+returns table (tabelle text, geloescht bigint)
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  n_ereignisse bigint;
+  n_fortschritt bigint;
+  n_token bigint;
+  erlaubt boolean := false;
+  lauf bigint;
+begin
+  -- SECURITY DEFINER umgeht RLS. Ein EXECUTE-Recht allein reicht daher
+  -- nicht: angemeldete Aufrufer werden zusätzlich gegen die Lehrkraftliste
+  -- bzw. den serverseitigen teacher-Claim geprüft. pg_cron/SQL-Administration
+  -- läuft ohne auth.uid() und darf die Wartung weiterhin ausführen.
+  if auth.role() = 'authenticated' or auth.uid() is not null then
+    execute $q$
+      select exists (
+        select 1 from public.mathe9_teachers t where t.user_id = $1
+      ) or coalesce((auth.jwt() -> 'app_metadata' ->> 'role') = 'teacher', false)
+    $q$ into erlaubt using auth.uid();
+    if not erlaubt then
+      raise exception 'Nur freigeschaltete Lehrkräfte dürfen die Datenbereinigung ausführen.'
+        using errcode = '42501';
+    end if;
+  end if;
+
+  -- Erst den Lauf eröffnen, dann arbeiten: Bricht der Job ab, bleibt eine
+  -- Zeile mit erfolg = false stehen. Ein stiller Ausfall wäre sonst von
+  -- „läuft, findet aber nichts" nicht zu unterscheiden.
+  insert into public.mathe9_wartung_laeufe (ereignis_tage, fortschritt_tage, ausgeloest_von)
+  values (
+    ereignis_tage,
+    fortschritt_tage,
+    coalesce(nullif(auth.uid()::text, ''), 'planmaessig')
+  )
+  returning id into lauf;
+
+  begin
+    delete from public.mathe9_events
+    where ts < now() - make_interval(days => ereignis_tage);
+    get diagnostics n_ereignisse = row_count;
+
+    delete from public.mathe9_progress
+    where coalesce(updated_at, ts) < now() - make_interval(days => fortschritt_tage);
+    get diagnostics n_fortschritt = row_count;
+
+    -- Abgelaufene Sitzungstoken enthalten keine Lernantworten, sollten aber
+    -- ebenfalls nicht unbegrenzt anwachsen.
+    begin
+      delete from public.mathe9_student_tokens where gueltig_bis < now();
+      get diagnostics n_token = row_count;
+    exception when undefined_table then
+      n_token := 0; -- erster Durchlauf einer älteren Installation
+    end;
+  exception when others then
+    update public.mathe9_wartung_laeufe
+       set beendet_at = now(), erfolg = false, fehler = left(sqlerrm, 500)
+     where id = lauf;
+    raise;
+  end;
+
+  update public.mathe9_wartung_laeufe
+     set beendet_at = now(),
+         erfolg = true,
+         ereignisse = n_ereignisse,
+         fortschritt = n_fortschritt,
+         tokens = n_token
+   where id = lauf;
+
+  -- Das Protokoll selbst darf ebenfalls nicht unbegrenzt wachsen.
+  delete from public.mathe9_wartung_laeufe
+  where gestartet_at < now() - interval '400 days';
+
+  return query
+    select 'mathe9_events'::text, n_ereignisse
+    union all
+    select 'mathe9_progress'::text, n_fortschritt
+    union all
+    select 'mathe9_student_tokens'::text, n_token;
+end;
+$$;
+
+comment on function public.mathe9_aufraeumen is
+  'Löscht abgelaufene Ereignisse, Fortschrittssätze und Sitzungstoken. Muss planmäßig '
+  'aufgerufen werden (pg_cron oder wöchentlich von Hand) — ohne Aufruf '
+  'passiert nichts. Jeder Lauf wird in mathe9_wartung_laeufe protokolliert.';
+
+
+-- Zustand der Datenpflege für das Dashboard. Bewusst eine Funktion und
+-- keine Tabellenabfrage: Die Bewertung „überfällig" gehört an eine Stelle,
+-- nicht in jeden Client.
+create or replace function public.mathe9_wartung_status()
+returns table (
+  letzter_lauf timestamptz,
+  letzter_erfolg timestamptz,
+  erfolg boolean,
+  fehler text,
+  ereignisse bigint,
+  fortschritt bigint,
+  tokens bigint,
+  tage_seit_erfolg numeric,
+  ueberfaellig boolean,
+  laeufe_30_tage bigint
+)
+language plpgsql
+stable
+security definer
+set search_path = public
+as $fn$
+declare
+  letzter public.mathe9_wartung_laeufe%rowtype;
+  erfolgreich timestamptz;
+begin
+  if not public.mathe9_ist_lehrkraft() then
+    raise exception 'Nur freigeschaltete Lehrkräfte dürfen den Wartungsstatus lesen.'
+      using errcode = '42501';
+  end if;
+
+  select * into letzter from public.mathe9_wartung_laeufe
+   order by gestartet_at desc limit 1;
+
+  select max(w.gestartet_at) into erfolgreich
+    from public.mathe9_wartung_laeufe w where w.erfolg;
+
+  -- Immer genau eine Zeile: „noch nie gelaufen" ist selbst ein Befund und
+  -- soll im Dashboard sichtbar werden, nicht als leere Antwort verschwinden.
+  return query select
+    letzter.gestartet_at,
+    erfolgreich,
+    coalesce(letzter.erfolg, false),
+    letzter.fehler,
+    coalesce(letzter.ereignisse, 0::bigint),
+    coalesce(letzter.fortschritt, 0::bigint),
+    coalesce(letzter.tokens, 0::bigint),
+    round(extract(epoch from now() - erfolgreich) / 86400.0, 1),
+    -- Geplant ist ein wöchentlicher Lauf. Nach zehn Tagen ohne Erfolg ist
+    -- etwas kaputt: pg_cron abgeschaltet, Fehler im Job, Projekt pausiert.
+    coalesce(erfolgreich < now() - interval '10 days', true),
+    (select count(*) from public.mathe9_wartung_laeufe w2
+      where w2.gestartet_at > now() - interval '30 days');
+end;
+$fn$;
+
+revoke all on function public.mathe9_wartung_status() from public, anon;
+grant execute on function public.mathe9_wartung_status() to authenticated;
+
+
+-- Auskunftsrecht: alles zu einer Person an einer Stelle.
+create or replace function public.mathe9_person_export(kennung uuid)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  erlaubt boolean := false;
+  ergebnis jsonb;
+begin
+  if auth.role() = 'authenticated' or auth.uid() is not null then
+    execute $q$
+      select exists (
+        select 1 from public.mathe9_teachers t where t.user_id = $1
+      ) or coalesce((auth.jwt() -> 'app_metadata' ->> 'role') = 'teacher', false)
+    $q$ into erlaubt using auth.uid();
+    if not erlaubt then
+      raise exception 'Nur freigeschaltete Lehrkräfte dürfen Personendaten exportieren.'
+        using errcode = '42501';
+    end if;
+  end if;
+
+  select jsonb_build_object(
+    'schueler',    (select to_jsonb(st) from public.mathe9_students st where st.id = kennung),
+    'ereignisse',  (select coalesce(jsonb_agg(to_jsonb(e) order by e.ts), '[]'::jsonb)
+                      from public.mathe9_events e where e.student_id = kennung),
+    'fortschritt', (select coalesce(jsonb_agg(to_jsonb(pr)), '[]'::jsonb)
+                      from public.mathe9_progress pr where pr.student_id = kennung)
+  ) into ergebnis;
+  return ergebnis;
+end;
+$$;
+
+
+-- Löschrecht: Ereignisse, Fortschritt und Freigabeeintrag einer Person.
+create or replace function public.mathe9_person_loeschen(kennung uuid)
+returns table (tabelle text, geloescht bigint)
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  n_ereignisse bigint;
+  n_fortschritt bigint;
+  n_schueler bigint;
+  erlaubt boolean := false;
+begin
+  if auth.role() = 'authenticated' or auth.uid() is not null then
+    execute $q$
+      select exists (
+        select 1 from public.mathe9_teachers t where t.user_id = $1
+      ) or coalesce((auth.jwt() -> 'app_metadata' ->> 'role') = 'teacher', false)
+    $q$ into erlaubt using auth.uid();
+    if not erlaubt then
+      raise exception 'Nur freigeschaltete Lehrkräfte dürfen Personendaten löschen.'
+        using errcode = '42501';
+    end if;
+  end if;
+  delete from public.mathe9_events where student_id = kennung;
+  get diagnostics n_ereignisse = row_count;
+
+  delete from public.mathe9_progress where student_id = kennung;
+  get diagnostics n_fortschritt = row_count;
+
+  delete from public.mathe9_students where id = kennung;
+  get diagnostics n_schueler = row_count;
+
+  return query
+    select 'mathe9_events'::text, n_ereignisse
+    union all
+    select 'mathe9_progress'::text, n_fortschritt
+    union all
+    select 'mathe9_students'::text, n_schueler;
+end;
+$$;
+
+-- Diese drei Funktionen sind Verwaltungswerkzeuge und gehören NICHT in die
+-- Hand der Anwendung. Nur angemeldete Lehrkräfte dürfen sie aufrufen.
+revoke all on function public.mathe9_aufraeumen(integer, integer) from public, anon;
+revoke all on function public.mathe9_person_export(uuid) from public, anon;
+revoke all on function public.mathe9_person_loeschen(uuid) from public, anon;
+
+grant execute on function public.mathe9_aufraeumen(integer, integer) to authenticated;
+grant execute on function public.mathe9_person_export(uuid) to authenticated;
+grant execute on function public.mathe9_person_loeschen(uuid) to authenticated;
+
+
+-- ============================================================
+-- Lehrkraft-Freigabe
+--
+-- Vorher galt JEDER Supabase-Nutzer mit der Rolle "authenticated" als
+-- Lehrkraft. Wer sich irgendwo im Projekt ein Konto anlegen konnte, sah
+-- damit alle Lernenden. Jetzt entscheidet eine Freigabeliste.
+--
+-- ACHTUNG BEIM ERSTEN LAUF: Solange die Liste leer ist, sieht niemand
+-- Dashboarddaten. Das ist Absicht — der sichere Zustand ist der leere.
+-- Einmalig freischalten:
+--
+--   select public.mathe9_lehrkraft_freischalten('lehrerin@schule.de');
+--
+-- ============================================================
+
+create table if not exists public.mathe9_teachers (
+  user_id uuid
+    primary key
+    references auth.users(id)
+    on delete cascade,
+
+  email text,
+
+  display_name text,
+
+  created_at timestamptz
+    not null
+    default now()
+);
+
+alter table public.mathe9_teachers enable row level security;
+
+
+-- ------------------------------------------------------------
+-- Protokoll der Lehrkraftfreigaben
+--
+-- Wer sieht die Daten aller Lernenden — und seit wann, auf wessen
+-- Veranlassung? Ohne Protokoll ist das nach einem halben Jahr nicht mehr
+-- zu beantworten. Die Tabelle hält jede Änderung fest; gelöscht wird hier
+-- nichts, auch nicht beim Entzug der Freigabe.
+-- ------------------------------------------------------------
+
+create table if not exists public.mathe9_teacher_audit (
+  id bigserial primary key,
+
+  zeit timestamptz not null default now(),
+
+  -- 'freigeschaltet' | 'gesperrt'
+  aktion text not null,
+
+  ziel_user_id uuid,
+  ziel_email text,
+
+  -- NULL bedeutet: direkt über die Datenbankverwaltung, ohne Benutzer-JWT.
+  ausgefuehrt_von uuid,
+  ausgefuehrt_von_email text,
+
+  hinweis text
+);
+
+alter table public.mathe9_teacher_audit enable row level security;
+
+create index if not exists
+  mathe9_teacher_audit_zeit_idx
+  on public.mathe9_teacher_audit (zeit desc);
+
+
+-- Freigabe erteilen. Wird von der Datenbankverwaltung aufgerufen,
+-- nicht von der Anwendung.
+--
+-- Die frühere einstellige Fassung muss weichen: Sie wäre neben der neuen
+-- Signatur mit Vorgabewert nicht mehr eindeutig aufrufbar.
+drop function if exists public.mathe9_lehrkraft_freischalten(text);
+
+create or replace function public.mathe9_lehrkraft_freischalten(
+  p_email text,
+  p_hinweis text default null
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  ziel uuid;
+  neu integer;
+begin
+  select id into ziel from auth.users where lower(email) = lower(p_email) limit 1;
+  if ziel is null then
+    raise exception 'Kein Supabase-Konto mit der Adresse % gefunden. Erst Konto anlegen, dann freischalten.', p_email;
+  end if;
+
+  insert into public.mathe9_teachers (user_id, email)
+  values (ziel, lower(p_email))
+  on conflict (user_id) do nothing;
+
+  get diagnostics neu = row_count;
+
+  -- Nur echte Änderungen protokollieren. Ein zweiter Aufruf mit derselben
+  -- Adresse ist ein Versehen, kein Vorgang.
+  if neu > 0 then
+    insert into public.mathe9_teacher_audit
+      (aktion, ziel_user_id, ziel_email, ausgefuehrt_von, ausgefuehrt_von_email, hinweis)
+    values (
+      'freigeschaltet', ziel, lower(p_email), auth.uid(),
+      (select u.email from auth.users u where u.id = auth.uid()),
+      p_hinweis
+    );
+  end if;
+
+  return ziel;
+end;
+$fn$;
+
+revoke all on function public.mathe9_lehrkraft_freischalten(text, text) from public, anon, authenticated;
+
+
+-- Freigabe entziehen. Das Gegenstück, das bisher fehlte: Ohne eigene
+-- Funktion wurde von Hand in mathe9_teachers gelöscht — spurlos.
+create or replace function public.mathe9_lehrkraft_sperren(
+  p_email text,
+  p_hinweis text default null
+)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  ziel uuid;
+  entfernt integer;
+begin
+  select user_id into ziel from public.mathe9_teachers
+   where lower(email) = lower(p_email) limit 1;
+
+  if ziel is null then
+    select id into ziel from auth.users where lower(email) = lower(p_email) limit 1;
+  end if;
+
+  delete from public.mathe9_teachers where user_id = ziel;
+  get diagnostics entfernt = row_count;
+
+  if entfernt > 0 then
+    insert into public.mathe9_teacher_audit
+      (aktion, ziel_user_id, ziel_email, ausgefuehrt_von, ausgefuehrt_von_email, hinweis)
+    values (
+      'gesperrt', ziel, lower(p_email), auth.uid(),
+      (select u.email from auth.users u where u.id = auth.uid()),
+      p_hinweis
+    );
+  end if;
+
+  return entfernt > 0;
+end;
+$fn$;
+
+revoke all on function public.mathe9_lehrkraft_sperren(text, text) from public, anon, authenticated;
+
+
+-- Die Prüfung, die alle Lehrkraft-Policies verwenden. Zusätzlich zur
+-- Freigabeliste zählt ein serverseitig gesetzter Claim role = teacher —
+-- damit lässt sich die Rolle auch zentral über die Nutzerverwaltung setzen.
+create or replace function public.mathe9_ist_lehrkraft()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $fn$
+  select
+    exists (
+      select 1
+      from public.mathe9_teachers t
+      where t.user_id = auth.uid()
+    )
+    or coalesce(
+      (auth.jwt() -> 'app_metadata' ->> 'role') = 'teacher',
+      false
+    );
+$fn$;
+
+grant execute on function public.mathe9_ist_lehrkraft() to authenticated;
+
+
+-- Lehrkräfte sehen ihre eigene Freigabe, sonst niemand.
+drop policy if exists "teachers read own membership" on public.mathe9_teachers;
+
+create policy
+  "teachers read own membership"
+
+on public.mathe9_teachers
+
+for select
+
+to authenticated
+
+using (user_id = auth.uid());
+
+
+-- Protokolle sind für freigeschaltete Lehrkräfte lesbar — und nur lesbar.
+-- Geschrieben wird ausschließlich aus SECURITY-DEFINER-Funktionen.
+drop policy if exists "teachers read audit" on public.mathe9_teacher_audit;
+
+create policy "teachers read audit"
+on public.mathe9_teacher_audit
+for select
+to authenticated
+using (public.mathe9_ist_lehrkraft());
+
+create policy "teachers read wartung"
+on public.mathe9_wartung_laeufe
+for select
+to authenticated
+using (public.mathe9_ist_lehrkraft());
+
+grant select on public.mathe9_teacher_audit to authenticated;
+grant select on public.mathe9_wartung_laeufe to authenticated;
+
+
+-- Regelmäßige Kontrolle alter Lehrerkonten: Wer ist freigeschaltet, seit
+-- wann, und wann war er zuletzt angemeldet? Ein Konto, das seit Monaten
+-- niemand benutzt, gehört überprüft — nicht stillschweigend behalten.
+create or replace function public.mathe9_lehrkraft_uebersicht()
+returns table (
+  email text,
+  freigeschaltet_am timestamptz,
+  zuletzt_angemeldet timestamptz,
+  tage_ohne_anmeldung numeric,
+  pruefen boolean
+)
+language plpgsql
+stable
+security definer
+set search_path = public
+as $fn$
+begin
+  if not public.mathe9_ist_lehrkraft() then
+    raise exception 'Nur freigeschaltete Lehrkräfte dürfen die Lehrkraftliste einsehen.'
+      using errcode = '42501';
+  end if;
+
+  return query
+    select
+      coalesce(t.email, u.email)::text,
+      t.created_at,
+      u.last_sign_in_at,
+      round(extract(epoch from now() - u.last_sign_in_at) / 86400.0, 1),
+      coalesce(u.last_sign_in_at < now() - interval '180 days', true)
+    from public.mathe9_teachers t
+    left join auth.users u on u.id = t.user_id
+    order by u.last_sign_in_at asc nulls first;
+end;
+$fn$;
+
+revoke all on function public.mathe9_lehrkraft_uebersicht() from public, anon;
+grant execute on function public.mathe9_lehrkraft_uebersicht() to authenticated;
+
+
+-- ============================================================
+-- Schreibrecht der Schüler-App kryptografisch binden
+--
+-- Vorher genügte eine beliebige nichtleere student_id: Wer den anon-Key
+-- kannte, konnte Daten im Namen jedes Kindes schreiben. Jetzt stellt die
+-- Anmeldung ein kurzlebiges Token aus. Gespeichert wird nur sein Hash;
+-- gesendet wird es als Kopfzeile x-mathe9-token.
+-- ============================================================
+
+create table if not exists public.mathe9_student_tokens (
+  token_hash text
+    primary key,
+
+  student_id uuid
+    not null
+    references public.mathe9_students(id)
+    on delete cascade,
+
+  ausgestellt timestamptz
+    not null
+    default now(),
+
+  gueltig_bis timestamptz
+    not null
+);
+
+alter table public.mathe9_student_tokens enable row level security;
+-- Bewusst ohne Policy: Auf die Tabelle greift ausschliesslich
+-- SECURITY-DEFINER-Code zu, niemand sonst.
+
+create index if not exists
+  mathe9_student_tokens_gueltig_idx
+on public.mathe9_student_tokens (gueltig_bis);
+
+
+-- Anmeldung mit Tokenausgabe. Ersetzt mathe9_validate_student_login;
+-- die alte Funktion bleibt fuer aeltere Clients bestehen.
+create or replace function public.mathe9_student_anmelden(
+  p_login_name text,
+  p_class_code text,
+  p_stunden integer default 12
+)
+returns table (
+  student_id uuid,
+  login_name text,
+  display_name text,
+  class_code text,
+  token text,
+  gueltig_bis timestamptz
+)
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  gefunden record;
+  neues_token text;
+  frist timestamptz;
+begin
+  select st.id, st.login_name, st.display_name, st.class_code
+    into gefunden
+  from public.mathe9_students as st
+  where lower(st.login_name) = lower(trim(p_login_name))
+    and lower(st.class_code) = lower(trim(p_class_code))
+    and st.active
+  limit 1;
+
+  if gefunden.id is null then
+    return;                      -- keine Zeile: Anmeldung abgelehnt
+  end if;
+
+  -- Ein Schultag plus Puffer. Laenger als noetig waere ein unnoetiges
+  -- Risiko auf einem Geraet, das die naechste Klasse benutzt.
+  frist := now() + make_interval(hours => greatest(1, least(24, coalesce(p_stunden, 12))));
+  neues_token := encode(gen_random_bytes(32), 'hex');
+
+  insert into public.mathe9_student_tokens (token_hash, student_id, gueltig_bis)
+  values (encode(digest(neues_token, 'sha256'), 'hex'), gefunden.id, frist);
+
+  -- Abgelaufene Token bei Gelegenheit entfernen.
+  delete from public.mathe9_student_tokens where gueltig_bis < now() - interval '7 days';
+
+  return query
+    select gefunden.id, gefunden.login_name, gefunden.display_name,
+           gefunden.class_code, neues_token, frist;
+end;
+$fn$;
+
+revoke all on function public.mathe9_student_anmelden(text, text, integer) from public;
+grant execute on function public.mathe9_student_anmelden(text, text, integer) to anon, authenticated;
+
+-- Die alte Prüfung gab bei passenden Anmeldedaten eine Schüler-ID ohne
+-- Sitzungstoken zurück. Neue Clients verwenden sie nicht mehr; ihr EXECUTE-
+-- Recht wird nach der Migration entzogen, damit es keinen unsicheren
+-- Parallelpfad gibt.
+revoke all on function public.mathe9_validate_student_login(text, text)
+  from public, anon, authenticated;
+
+
+-- Welches Kind gehoert zum mitgesendeten Token? NULL heisst: kein gueltiges.
+create or replace function public.mathe9_token_student()
+returns uuid
+language sql
+stable
+security definer
+set search_path = public
+as $fn$
+  select t.student_id
+  from public.mathe9_student_tokens t
+  join public.mathe9_students st on st.id = t.student_id and st.active
+  where t.token_hash = encode(
+          digest(
+            coalesce(
+              nullif(current_setting('request.headers', true), '')::json ->> 'x-mathe9-token',
+              ''
+            ),
+            'sha256'
+          ),
+          'hex'
+        )
+    and t.gueltig_bis > now()
+  limit 1;
+$fn$;
+
+grant execute on function public.mathe9_token_student() to anon, authenticated;
+
+
+-- Vorhandenes Token prüfen, ohne bei jedem Seitenwechsel ein neues
+-- auszustellen. Die App kann so eine laufende Sitzung wiederverwenden.
+create or replace function public.mathe9_student_sitzung()
+returns table (
+  student_id uuid,
+  login_name text,
+  display_name text,
+  class_code text,
+  gueltig_bis timestamptz
+)
+language sql
+stable
+security definer
+set search_path = public
+as $fn$
+  select st.id, st.login_name, st.display_name, st.class_code, tok.gueltig_bis
+  from public.mathe9_student_tokens tok
+  join public.mathe9_students st on st.id = tok.student_id
+  where tok.token_hash = encode(
+          digest(
+            coalesce(
+              nullif(current_setting('request.headers', true), '')::json ->> 'x-mathe9-token',
+              ''
+            ),
+            'sha256'
+          ),
+          'hex'
+        )
+    and tok.gueltig_bis > now()
+    and st.active
+  limit 1;
+$fn$;
+
+revoke all on function public.mathe9_student_sitzung() from public;
+grant execute on function public.mathe9_student_sitzung() to anon, authenticated;
+
+
+-- Abmelden: Token sofort entwerten.
+create or replace function public.mathe9_student_abmelden()
+returns integer
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  n integer;
+begin
+  delete from public.mathe9_student_tokens
+  where token_hash = encode(
+          digest(
+            coalesce(
+              nullif(current_setting('request.headers', true), '')::json ->> 'x-mathe9-token',
+              ''
+            ),
+            'sha256'
+          ),
+          'hex'
+        );
+  get diagnostics n = row_count;
+  return n;
+end;
+$fn$;
+
+grant execute on function public.mathe9_student_abmelden() to anon, authenticated;
+
+
+-- ============================================================
+-- Policies neu fassen
+-- ============================================================
+
+drop policy if exists "teachers read students" on public.mathe9_students;
+drop policy if exists "teachers insert students" on public.mathe9_students;
+drop policy if exists "teachers update students" on public.mathe9_students;
+drop policy if exists "teachers delete students" on public.mathe9_students;
+drop policy if exists "teachers read events" on public.mathe9_events;
+drop policy if exists "teachers read progress" on public.mathe9_progress;
+drop policy if exists "students insert events" on public.mathe9_events;
+drop policy if exists "students insert progress" on public.mathe9_progress;
+drop policy if exists "students update progress" on public.mathe9_progress;
+
+create policy "teachers read students" on public.mathe9_students
+  for select to authenticated using (public.mathe9_ist_lehrkraft());
+
+create policy "teachers insert students" on public.mathe9_students
+  for insert to authenticated with check (public.mathe9_ist_lehrkraft());
+
+create policy "teachers update students" on public.mathe9_students
+  for update to authenticated using (public.mathe9_ist_lehrkraft())
+  with check (public.mathe9_ist_lehrkraft());
+
+create policy "teachers delete students" on public.mathe9_students
+  for delete to authenticated using (public.mathe9_ist_lehrkraft());
+
+create policy "teachers read events" on public.mathe9_events
+  for select to authenticated using (public.mathe9_ist_lehrkraft());
+
+create policy "teachers read progress" on public.mathe9_progress
+  for select to authenticated using (public.mathe9_ist_lehrkraft());
+
+-- Die Anwendung darf nur fuer DAS Kind schreiben, dessen Token sie mitsendet.
+create policy "students insert events" on public.mathe9_events
+  for insert to anon
+  with check (student_id is not null and student_id = public.mathe9_token_student());
+
+create policy "students insert progress" on public.mathe9_progress
+  for insert to anon
+  with check (student_id is not null and student_id = public.mathe9_token_student());
+
+create policy "students update progress" on public.mathe9_progress
+  for update to anon
+  using (student_id is not null and student_id = public.mathe9_token_student())
+  with check (student_id is not null and student_id = public.mathe9_token_student());
+
+
+-- ============================================================
+-- Loeschfristen planmaessig ausfuehren
+--
+-- mathe9_aufraeumen() allein loescht nichts — es muss aufgerufen werden.
+-- Ist pg_cron im Projekt verfuegbar, richtet der folgende Block einen
+-- woechentlichen Lauf ein (sonntags 03:17 UTC). Sonst bleibt der Aufruf
+-- ein dokumentierter Handgriff, siehe DATENSCHUTZ.md.
+-- ============================================================
+
+do $plan$
+begin
+  if exists (select 1 from pg_available_extensions where name = 'pg_cron') then
+    execute 'create extension if not exists pg_cron';
+
+    perform cron.unschedule(jobid)
+    from cron.job
+    where jobname = 'mathe9-aufraeumen';
+
+    perform cron.schedule(
+      'mathe9-aufraeumen',
+      '17 3 * * 0',
+      'select public.mathe9_aufraeumen();'
+    );
+
+    raise notice 'pg_cron: woechentlicher Aufraeumlauf eingerichtet.';
+  else
+    raise notice 'pg_cron nicht verfuegbar — mathe9_aufraeumen() muss manuell oder extern geplant werden.';
+  end if;
+exception when others then
+  raise notice 'pg_cron konnte nicht eingerichtet werden (%). Bitte manuell planen.', sqlerrm;
+end;
+$plan$;
+
+
 commit;

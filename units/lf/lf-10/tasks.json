@@ -336,7 +336,8 @@
           "feedback": "Aus 0 = 2x − 6 folgt 6 = 2x, also x = +3. Die −6 wandert als +6 auf die andere Seite.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -365,7 +366,8 @@
         {
           "id": "vorzeichen_fehlt",
           "value": 3,
-          "feedback": "Aus 0 = 3x + 9 folgt −9 = 3x, also x = −3. Das Ergebnis ist negativ."
+          "feedback": "Aus 0 = 3x + 9 folgt −9 = 3x, also x = −3. Das Ergebnis ist negativ.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -395,7 +397,8 @@
         {
           "id": "vorzeichen_beim_teilen",
           "value": -5,
-          "feedback": "Beim Teilen durch −1 dreht sich das Vorzeichen: −5 : (−1) = +5."
+          "feedback": "Beim Teilen durch −1 dreht sich das Vorzeichen: −5 : (−1) = +5.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -455,7 +458,8 @@
         {
           "id": "vorzeichen_beim_teilen",
           "value": -3.5,
-          "feedback": "Minus geteilt durch Minus ergibt Plus: −7 : (−2) = +3,5."
+          "feedback": "Minus geteilt durch Minus ergibt Plus: −7 : (−2) = +3,5.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -484,12 +488,14 @@
         {
           "id": "vorzeichen_fehlt",
           "value": 0.25,
-          "feedback": "Aus −1 = 4x folgt x = −0,25. Das Ergebnis ist negativ."
+          "feedback": "Aus −1 = 4x folgt x = −0,25. Das Ergebnis ist negativ.",
+          "konzeptfehler": "vorzeichen"
         },
         {
           "id": "geteilt_vertauscht",
           "value": -4,
-          "feedback": "Du hast 4 : (−1) gerechnet. Es muss −1 : 4 sein."
+          "feedback": "Du hast 4 : (−1) gerechnet. Es muss −1 : 4 sein.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -557,7 +563,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 0.083,
-          "feedback": "Du hast 1,5 : 18 gerechnet. Es muss 18 : 1,5 sein."
+          "feedback": "Du hast 1,5 : 18 gerechnet. Es muss 18 : 1,5 sein.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -658,6 +665,24 @@
       "url": "https://de.serlo.org/mathe/174384/aufgaben-zu-geradengleichungen-nullstellen-und-schnittpunkten",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Nullstelle einer linearen Funktion berechnen",
+      "url": "https://www.youtube.com/watch?v=gbAx4WzT0pI",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Nullstelle im Graphen ablesen",
+      "url": "https://www.youtube.com/watch?v=icmVzA9fNuw",
+      "quelle": "Lehrerschmidt",
+      "pfad": "A"
+    },
+    {
+      "titel": "Nullstelle zeichnen und berechnen",
+      "url": "https://www.youtube.com/watch?v=UWp9DHI47xg",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

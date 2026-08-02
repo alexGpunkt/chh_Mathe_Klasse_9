@@ -319,7 +319,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 0.333,
-          "feedback": "Du hast Δx : Δy gerechnet. Die Höhe steht oben: m = Δy : Δx."
+          "feedback": "Du hast Δx : Δy gerechnet. Die Höhe steht oben: m = Δy : Δx.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -366,7 +367,8 @@
           "feedback": "Der Betrag stimmt, aber das Vorzeichen fehlt. Die Gerade FÄLLT — also ist m negativ.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -411,7 +413,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 2,
-          "feedback": "Du hast 2 : 1 gerechnet. m = Δy : Δx — die Höhe geteilt durch die Breite. Diese Gerade ist flach, also muss m unter 1 liegen."
+          "feedback": "Du hast 2 : 1 gerechnet. m = Δy : Δx — die Höhe geteilt durch die Breite. Diese Gerade ist flach, also muss m unter 1 liegen.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -460,12 +463,14 @@
           "feedback": "Der Betrag stimmt. Die Gerade fällt aber — m muss negativ sein.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "vorzeichen"
         },
         {
           "id": "geteilt_vertauscht",
           "value": -2,
-          "feedback": "Du hast 4 : (−2) gerechnet. m = Δy : Δx = −2 : 4."
+          "feedback": "Du hast 4 : (−2) gerechnet. m = Δy : Δx = −2 : 4.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -559,7 +564,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 0.667,
-          "feedback": "Du hast Δx : Δy gerechnet. m = Δy : Δx."
+          "feedback": "Du hast Δx : Δy gerechnet. m = Δy : Δx.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         },
         {
           "id": "dy_als_m",
@@ -673,7 +679,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 0.5,
-          "feedback": "Du hast die Differenzen vertauscht. Oben steht die y-Differenz: (y₂ − y₁) : (x₂ − x₁)."
+          "feedback": "Du hast die Differenzen vertauscht. Oben steht die y-Differenz: (y₂ − y₁) : (x₂ − x₁).",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         },
         {
           "id": "koordinaten_gemischt",
@@ -708,7 +715,8 @@
         {
           "id": "vorzeichen_fehlt",
           "value": 0.5,
-          "feedback": "Der Betrag stimmt. Aber von P(−2|5) nach Q(4|2) geht es nach UNTEN — m ist negativ."
+          "feedback": "Der Betrag stimmt. Aber von P(−2|5) nach Q(4|2) geht es nach UNTEN — m ist negativ.",
+          "konzeptfehler": "vorzeichen"
         },
         {
           "id": "minus_minus",
@@ -746,6 +754,24 @@
       "url": "https://de.serlo.org/mathe/31911/aufgaben-zu-linearen-funktionen-als-geraden-im-koordinatensystem",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Die Steigung einer linearen Funktion",
+      "url": "https://www.youtube.com/watch?v=fGi3XPMnSVA",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Das Steigungsdreieck",
+      "url": "https://www.youtube.com/watch?v=fN52WXY_72g",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Steigung berechnen und in Grad umrechnen",
+      "url": "https://www.youtube.com/watch?v=aCrMeQ5RmXg",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

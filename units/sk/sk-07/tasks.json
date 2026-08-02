@@ -144,7 +144,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 180,
-          "feedback": "Beim Kegel durch 3 teilen: 180 : 3 = 60."
+          "feedback": "Beim Kegel durch 3 teilen: 180 : 3 = 60.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -183,7 +184,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 169.56,
-          "feedback": "Durch 3 teilen: 169,56 : 3 = 56,52."
+          "feedback": "Durch 3 teilen: 169,56 : 3 = 56,52.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -212,7 +214,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 706.5,
-          "feedback": "Durch 3: 706,5 : 3 = 235,5."
+          "feedback": "Durch 3: 706,5 : 3 = 235,5.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -241,7 +244,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 452.16,
-          "feedback": "Durch 3: 452,16 : 3 = 150,72."
+          "feedback": "Durch 3: 452,16 : 3 = 150,72.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -270,7 +274,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 1130.4,
-          "feedback": "Durch 3: 1130,4 : 3 = 376,8."
+          "feedback": "Durch 3: 1130,4 : 3 = 376,8.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -307,7 +312,8 @@
             {
               "id": "durchmesser_als_radius",
               "value": 8,
-              "feedback": "r = d : 2 = 4 cm."
+              "feedback": "r = d : 2 = 4 cm.",
+              "konzeptfehler": "radius_durchmesser"
             }
           ]
         },
@@ -350,7 +356,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 75.36,
-          "feedback": "Durch 3: 75,36 : 3 = 25,12."
+          "feedback": "Durch 3: 75,36 : 3 = 25,12.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -380,7 +387,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 3768,
-          "feedback": "Durch 3: 3768 : 3 = 1256."
+          "feedback": "Durch 3: 3768 : 3 = 1256.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -411,7 +419,8 @@
         {
           "id": "durchmesser_als_radius",
           "value": 150.72,
-          "feedback": "Erst r = d:2 = 3 cm."
+          "feedback": "Erst r = d:2 = 3 cm.",
+          "konzeptfehler": "radius_durchmesser"
         }
       ],
       "tags": [
@@ -466,7 +475,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 942,
-          "feedback": "Durch 3: 942 : 3 = 314."
+          "feedback": "Durch 3: 942 : 3 = 314.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -527,7 +537,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 753,
-          "feedback": "Durch 3: 753,6 : 3 = 251."
+          "feedback": "Durch 3: 753,6 : 3 = 251.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -558,7 +569,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 4,
-          "feedback": "Rückwärts mal 3: h = 3·100 : 25 = 12."
+          "feedback": "Rückwärts mal 3: h = 3·100 : 25 = 12.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -590,6 +602,24 @@
       "url": "https://quizlet.com/de/384212942/mathe-formeln-korper-berechnung-flash-cards/",
       "typ": "app",
       "quelle": "Quizlet"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Kegel — Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=jtOvWPwFozE",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Kegel — Volumen mit Radius oder Durchmesser",
+      "url": "https://www.youtube.com/watch?v=IsPM8oH5Cmw",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Kegel — Radius aus dem Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=7Paj_p32gts",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

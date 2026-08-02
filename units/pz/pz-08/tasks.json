@@ -133,12 +133,14 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 3,
-          "feedback": "Das ist 1 %. Gesucht sind 100 % — also noch mal 100 nehmen."
+          "feedback": "Das ist 1 %. Gesucht sind 100 % — also noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "mal_statt_geteilt",
           "value": 3000,
-          "feedback": "Um Faktor 10 zu groß. Du hast 30 · 10 · 10 gerechnet. Richtig: erst 30 : 10 = 3, dann · 100."
+          "feedback": "Um Faktor 10 zu groß. Du hast 30 · 10 · 10 gerechnet. Richtig: erst 30 : 10 = 3, dann · 100.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -167,12 +169,14 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 2,
-          "feedback": "Das ist 1 %. Noch mal 100 nehmen."
+          "feedback": "Das ist 1 %. Noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "mal_statt_geteilt",
           "value": 12.5,
-          "feedback": "Du hast 25 % VON 50 € gerechnet. Aber 50 € sind schon der Teil — gesucht ist das Ganze. Es muss größer werden."
+          "feedback": "Du hast 25 % VON 50 € gerechnet. Aber 50 € sind schon der Teil — gesucht ist das Ganze. Es muss größer werden.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -200,12 +204,14 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 0.7,
-          "feedback": "Das ist 1 %. Gesucht sind 100 %."
+          "feedback": "Das ist 1 %. Gesucht sind 100 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "mal_statt_geteilt",
           "value": 2.8,
-          "feedback": "Du hast 20 % von 14 kg gerechnet. Die 14 kg sind aber schon der Teil. Das Ganze muss größer sein."
+          "feedback": "Du hast 20 % von 14 kg gerechnet. Die 14 kg sind aber schon der Teil. Das Ganze muss größer sein.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -235,12 +241,14 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 2.4,
-          "feedback": "Das ist 1 %. Noch mal 100 nehmen."
+          "feedback": "Das ist 1 %. Noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "mal_statt_geteilt",
           "value": 0.6,
-          "feedback": "Du hast 5 % von 12 € gerechnet. Das Ergebnis wird dabei kleiner — der Grundwert muss aber größer sein."
+          "feedback": "Du hast 5 % von 12 € gerechnet. Das Ergebnis wird dabei kleiner — der Grundwert muss aber größer sein.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -269,7 +277,8 @@
         {
           "id": "mal_statt_geteilt",
           "value": 11.56,
-          "feedback": "Du hast 17 % von 68 € gerechnet. Aber 68 € sind schon der Prozentwert — gesucht ist das Ganze, und das ist größer."
+          "feedback": "Du hast 17 % von 68 € gerechnet. Aber 68 € sind schon der Prozentwert — gesucht ist das Ganze, und das ist größer.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "zahlen_addiert",
@@ -279,7 +288,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 4,
-          "feedback": "Das ist 1 %. Gesucht sind 100 %."
+          "feedback": "Das ist 1 %. Gesucht sind 100 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -311,12 +321,14 @@
           "feedback": "Du hast 12 % von 54 € gerechnet. Es muss geteilt werden: 54 : 12 · 100.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 4.5,
-          "feedback": "Das ist 1 %. Noch mal 100."
+          "feedback": "Das ist 1 %. Noch mal 100.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -345,12 +357,14 @@
         {
           "id": "mal_statt_geteilt",
           "value": 1.92,
-          "feedback": "Du hast 8 % von 24 gerechnet. Die 24 sind schon der Teil — das Ganze ist größer."
+          "feedback": "Du hast 8 % von 24 gerechnet. Die 24 sind schon der Teil — das Ganze ist größer.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 3,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -379,12 +393,14 @@
         {
           "id": "mal_statt_geteilt",
           "value": 31.85,
-          "feedback": "Du hast 35 % von 91 € gerechnet. Gesucht ist das Ganze — teile: 91 : 35 · 100."
+          "feedback": "Du hast 35 % von 91 € gerechnet. Gesucht ist das Ganze — teile: 91 : 35 · 100.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 2.6,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -415,12 +431,14 @@
           "feedback": "Du hast 45 % von 27 km gerechnet. Das Ganze muss größer als 27 km sein.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 0.6,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -453,12 +471,14 @@
           "feedback": "Du hast 3 % von 4,50 € gerechnet. Der Grundwert muss viel größer sein als 4,50 €.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 1.5,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -524,12 +544,14 @@
         {
           "id": "mal_statt_geteilt",
           "value": 134.54,
-          "feedback": "Du hast 62 % von 217 € gerechnet. Das Ergebnis ist kleiner als 217 € — der Grundwert muss aber größer sein."
+          "feedback": "Du hast 62 % von 217 € gerechnet. Das Ergebnis ist kleiner als 217 € — der Grundwert muss aber größer sein.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 3.5,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -598,17 +620,20 @@
         {
           "id": "mal_statt_geteilt",
           "value": 1.88,
-          "feedback": "Du hast 2,5 % von 75 € gerechnet. Das Kapital ist gesucht — es muss viel größer sein als die Zinsen."
+          "feedback": "Du hast 2,5 % von 75 € gerechnet. Das Kapital ist gesucht — es muss viel größer sein als die Zinsen.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         },
         {
           "id": "komma_verschoben",
           "value": 300,
-          "feedback": "Um Faktor 10 zu klein. Du hast mit 25 % gerechnet statt mit 2,5 %."
+          "feedback": "Um Faktor 10 zu klein. Du hast mit 25 % gerechnet statt mit 2,5 %.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 30,
-          "feedback": "Das ist 1 %."
+          "feedback": "Das ist 1 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -639,6 +664,24 @@
       "url": "https://de.serlo.org/mathe/174189/aufgaben-zur-berechnung-von-prozentwert-grundwert-und-prozentsatz",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Grundwert berechnen — Prozentrechnung mit Formel",
+      "url": "https://www.youtube.com/watch?v=gtEAmp8-K-8",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Grundwert berechnen — mit Formel oder mit Dreisatz",
+      "url": "https://www.youtube.com/watch?v=crxxwdBxOW0",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Grundwert berechnen — schwierige Übungen",
+      "url": "https://www.youtube.com/watch?v=xVtp8ZmR9Xk",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

@@ -132,7 +132,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 4,
-          "feedback": "Das ist der Rabatt in Euro. Jetzt fehlt Schritt 2: 40 € − 4 €."
+          "feedback": "Das ist der Rabatt in Euro. Jetzt fehlt Schritt 2: 40 € − 4 €.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "addiert_statt_abgezogen",
@@ -169,7 +170,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 20,
-          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst: 80 € − 20 €."
+          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst: 80 € − 20 €.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "addiert_statt_abgezogen",
@@ -205,7 +207,8 @@
           "feedback": "Das ist der Rabatt. Jetzt noch von 60 € abziehen.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -238,7 +241,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 3,
-          "feedback": "Das ist die Erhöhung. Gefragt ist der neue Preis: 30 € + 3 €."
+          "feedback": "Das ist die Erhöhung. Gefragt ist der neue Preis: 30 € + 3 €.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -266,7 +270,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 170,
-          "feedback": "Das ist der Rabatt. Gefragt ist der Endpreis: 850 € − 170 €."
+          "feedback": "Das ist der Rabatt. Gefragt ist der Endpreis: 850 € − 170 €.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -296,7 +301,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 45.6,
-          "feedback": "Das ist die Mehrwertsteuer allein. Gefragt ist der Bruttopreis: 240 € + 45,60 €."
+          "feedback": "Das ist die Mehrwertsteuer allein. Gefragt ist der Bruttopreis: 240 € + 45,60 €.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "abgezogen_statt_addiert",
@@ -331,7 +337,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 6.8,
-          "feedback": "Das ist das Trinkgeld. Gefragt ist der Gesamtbetrag."
+          "feedback": "Das ist das Trinkgeld. Gefragt ist der Gesamtbetrag.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -361,12 +368,14 @@
         {
           "id": "nur_teil_berechnet",
           "value": 36,
-          "feedback": "Das ist die Erhöhung. Gefragt ist die neue Miete: 720 € + 36 €."
+          "feedback": "Das ist die Erhöhung. Gefragt ist die neue Miete: 720 € + 36 €.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "komma_verschoben",
           "value": 1080,
-          "feedback": "Du hast mit dem Faktor 1,5 gerechnet — das wären 50 %. Bei 5 % ist der Faktor 1,05."
+          "feedback": "Du hast mit dem Faktor 1,5 gerechnet — das wären 50 %. Bei 5 % ist der Faktor 1,05.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -396,7 +405,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 38.7,
-          "feedback": "Das ist der Rabatt. Gefragt ist der neue Preis."
+          "feedback": "Das ist der Rabatt. Gefragt ist der neue Preis.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -425,7 +435,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 67.5,
-          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst."
+          "feedback": "Das ist der Rabatt. Gefragt ist, was du zahlst.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -461,7 +472,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 45.22,
-          "feedback": "Das ist 19 % von 238 €. Gefragt ist der Nettopreis."
+          "feedback": "Das ist 19 % von 238 €. Gefragt ist der Nettopreis.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -496,7 +508,8 @@
         {
           "id": "nur_teil_berechnet",
           "value": 22.5,
-          "feedback": "Das ist 25 % von 90 €. Gefragt ist der Preis vorher."
+          "feedback": "Das ist 25 % von 90 €. Gefragt ist der Preis vorher.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -591,6 +604,23 @@
       "url": "https://learningapps.org/view7892631",
       "typ": "app",
       "quelle": "LearningApps"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Vermehrter Grundwert",
+      "url": "https://www.youtube.com/watch?v=7uBHTprZ9Ms",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Verminderter Grundwert",
+      "url": "https://www.youtube.com/watch?v=9Y3eLNrK_rk",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Preiserhöhung: den Aufschlag berechnen",
+      "url": "https://www.youtube.com/watch?v=hyKgJKGCjHc",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

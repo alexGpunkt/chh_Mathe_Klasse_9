@@ -366,7 +366,8 @@
         {
           "id": "durchmesser_als_radius",
           "value": 1055,
-          "feedback": "Erst r = d:2 = 4 cm."
+          "feedback": "Erst r = d:2 = 4 cm.",
+          "konzeptfehler": "radius_durchmesser"
         }
       ],
       "tags": [
@@ -463,7 +464,7 @@
       "step": 2,
       "type": "numeric",
       "prompt": "Ein Etikett soll den Mantel einer Dose (d = 7 cm, h = 10 cm) genau umschließen. Wie lang muss es sein (π ≈ 3,14, eine Nachkommastelle)?",
-      "answer": 22.0,
+      "answer": 22,
       "unit_label": "cm",
       "tolerance": 0.3,
       "hints": [
@@ -557,6 +558,18 @@
       "url": "https://de.serlo.org/mathe/1555/zylinder",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Zylinder — Oberfläche berechnen",
+      "url": "https://www.youtube.com/watch?v=O-VmGO6I61w",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zylinder — Oberfläche ausführlich an zwei Beispielen",
+      "url": "https://www.youtube.com/watch?v=579dBO-cbMo",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

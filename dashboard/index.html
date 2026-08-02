@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mathe 9 · Lehrerdashboard</title>
   <link rel="stylesheet" href="dashboard.css">
@@ -49,7 +50,14 @@
     <section class="kpis"><article><strong id="activeNow">0</strong><span>jetzt aktiv</span></article><article><strong id="studentsToday">0</strong><span>Schüler</span></article><article><strong id="answers">0</strong><span>Antwortversuche</span></article><article><strong id="correctRate">–</strong><span>richtig</span></article><article><strong id="medianTime">–</strong><span>Zeit je Aufgabe (Median)</span></article></section>
     <section class="panel"><div class="panelHead"><h2>Schüleraktivität und Fortschritt</h2><span>aktiv: Ereignis innerhalb 60 s</span></div><div class="tableWrap"><table><thead><tr><th>Status</th><th>Name</th><th>Einheit</th><th>Pfad</th><th>Fortschritt</th><th>Aufgabe</th><th>Zeit je Aufgabe</th><th>zuletzt aktiv</th></tr></thead><tbody id="studentsBody"></tbody></table></div></section>
     <section class="panel"><div class="panelHead"><div><h2>Wer hängt gerade fest?</h2><span>Aufgabe seit über 3 Minuten offen oder deutlich über der üblichen Zeit</span></div></div><div class="tableWrap"><table><thead><tr><th>Name</th><th>Einheit</th><th>Aufgabe</th><th>Dauer</th><th>Lage</th></tr></thead><tbody id="stuckBody"></tbody></table></div></section>
+    <section class="panel"><div class="panelHead"><div><h2>Pfadempfehlungen</h2><span>Grundlage für die spätere Kalibrierung der Schwellen — noch sind sie nur plausibel</span></div></div><div class="tableWrap"><table><thead><tr><th>Empfehlung</th><th>Fälle</th><th>Quote (Median)</th><th>als sicher gewertet</th><th>angenommen</th><th>danach auf Anhieb</th></tr></thead><tbody id="recoBody"></tbody></table></div></section>
+    <section class="panel"><div class="panelHead"><div><h2>Vorhersagen zu den Animationen</h2><span>Erst tippen, dann zusehen — hier steht, ob die Animation die Vorstellung ändert</span></div></div><div class="kpis" style="margin:0 0 12px"><article><strong id="predCount">0</strong><span>Vorhersagen</span></article><article><strong id="predRate">–</strong><span>richtig</span></article><article><strong id="predRecover">–</strong><span>falsch getippt, danach Aufgabe richtig</span></article></div><div class="tableWrap"><table><thead><tr><th>Animation</th><th>Vorhersagen</th><th>richtig</th><th>danach Aufgabe richtig</th><th>mehrfach daneben</th></tr></thead><tbody id="predBody"></tbody></table></div></section>
     <section class="grid"><article class="panel"><h2>Häufige Denkfehler</h2><div id="misconceptions" class="bars"></div></article><article class="panel"><h2>Letzte Antworten</h2><div id="feed" class="feed"></div></article></section>
+
+    <section class="panel"><div class="panelHead"><div><h2>Denkfehler über die Lernbereiche hinweg</h2><span>Dieselbe Fehlvorstellung taucht in PZ, LF, KP und SK auf — hier zusammengefasst</span></div></div><div class="tableWrap"><table><thead><tr><th>Kategorie</th><th>Fälle</th><th>betroffene Bereiche</th><th>häufigste Einzel-IDs</th></tr></thead><tbody id="categoryBody"></tbody></table></div></section>
+
+    <section class="panel"><div class="panelHead"><div><h2>Betrieb und Datenpflege</h2><span>Welche Fassung läuft, und löscht der Aufräumjob tatsächlich?</span></div></div><div id="opsBox" class="opsGrid"></div></section>
+
     <p id="error" class="error" hidden></p>
   </div>
 </main>

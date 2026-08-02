@@ -132,7 +132,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 120,
-          "feedback": "Durch 3: 120:3 = 40."
+          "feedback": "Durch 3: 120:3 = 40.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -161,7 +162,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 270,
-          "feedback": "Durch 3: 270:3 = 90."
+          "feedback": "Durch 3: 270:3 = 90.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -190,7 +192,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 37.68,
-          "feedback": "r quadrieren: 4·3,14·3² = 113,04."
+          "feedback": "r quadrieren: 4·3,14·3² = 113,04.",
+          "konzeptfehler": "quadrieren_vergessen"
         }
       ],
       "tags": [
@@ -248,7 +251,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 648,
-          "feedback": "Durch 3: 648:3 = 216."
+          "feedback": "Durch 3: 648:3 = 216.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -278,7 +282,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 942,
-          "feedback": "Durch 3: 942:3 = 314."
+          "feedback": "Durch 3: 942:3 = 314.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -338,7 +343,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 260,
-          "feedback": "Grundfläche 100 dazu: 360."
+          "feedback": "Grundfläche 100 dazu: 360.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -398,7 +404,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 4,
-          "feedback": "Mal 3: 3·240 : 60 = 12."
+          "feedback": "Mal 3: 3·240 : 60 = 12.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -438,7 +445,8 @@
             {
               "id": "grundflaeche_vergessen",
               "value": 320,
-              "feedback": "Mantel 320 + Grundfläche 256 = 576."
+              "feedback": "Mantel 320 + Grundfläche 256 = 576.",
+              "konzeptfehler": "grundflaeche_unvollstaendig"
             }
           ]
         }
@@ -515,7 +523,8 @@
         {
           "id": "hoehe_statt_mantellinie",
           "value": 37.68,
-          "feedback": "Für den Mantel s = 5 nehmen, nicht h = 4."
+          "feedback": "Für den Mantel s = 5 nehmen, nicht h = 4.",
+          "konzeptfehler": "hoehe_statt_seitenhoehe"
         }
       ],
       "tags": [
@@ -571,6 +580,19 @@
       "url": "https://de.serlo.org/mathe/62625/schwierigere-aufgaben-zu-einzelnen-grundkoerpern",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Pyramidenstumpf — Volumen ohne Formel gedacht",
+      "url": "https://www.youtube.com/watch?v=U79x42snt74",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Dritte Wurzel ziehen — für das Rückwärtsrechnen",
+      "url": "https://www.youtube.com/watch?v=15iZX75AJ5w",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

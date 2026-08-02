@@ -11,11 +11,11 @@
   --an-grund:   #F3F5F4;
   --an-ink:     #15233A;
   --an-soft:    #4A5A70;
-  --an-faint:   #8C99A8;
+  --an-faint:   #8895A4;
   --an-b:       #2563A8;
   --an-b-bg:    #E2EBF6;
   --an-b-tief:  #1E5390;
-  --an-a:       #2E7D5B;
+  --an-a:       #287755;
   --an-a-bg:    #E4F1EA;
   --an-c:       #6B3FA0;
   --an-gelb:    #C98A12;
@@ -52,6 +52,37 @@
   border-radius: 12px;
   background: var(--an-flaeche);
 }
+
+/* ---------- Die Animation in Worten ----------
+   Aufklappbar, damit sie das Bild nicht verdrängt — aber vorhanden, damit
+   kein Lernziel allein an einer Bewegung hängt. */
+.anim-text {
+  max-width: 340px;
+  margin: 10px auto 0;
+  border-top: 1px solid var(--an-linie);
+  padding-top: 8px;
+  text-align: left;
+}
+.anim-text > summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--an-soft);
+}
+.anim-text > summary:focus-visible { outline: 3px solid var(--an-b); outline-offset: 2px; border-radius: 6px; }
+.anim-text-liste {
+  margin: 4px 0 4px;
+  padding-left: 22px;
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--an-ink);
+}
+.anim-text-liste li { margin-bottom: 5px; }
 
 /* Nur für Screenreader: feste Bildbeschreibung und ruhige Statuszeile.
    Die mitlaufende Zeile unter dem Bild ist dafür stumm geschaltet. */
@@ -291,6 +322,11 @@
     --an-c: #6B3FA0; --an-gelb: #C98A12;
   }
   .anim-steuer, .anim-regler, .anim-regler-paar, .anim-frage { display: none; }
+  /* Auf Papier ist das Bild ein Standbild — dann gehoert die Textfassung
+     aufgeklappt daneben, sonst fehlt die Aussage der Bewegung. */
+  .anim-text[open] > summary, .anim-text > summary { display: none; }
+  .anim-text .anim-text-liste { display: block !important; }
+  .anim-text { border-top: 1px solid #999; }
   .anim-svg { max-height: none; }
   .anim, .anim-karte { break-inside: avoid; }
 }

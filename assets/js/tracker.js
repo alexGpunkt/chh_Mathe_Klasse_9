@@ -22,6 +22,7 @@ const TRACKER_CONFIG = Object.assign(
 
 const Tracker = (() => {
   const QUEUE_KEY = 'mathe9.tracker.queue.v2';
+  const SYNC_KEY = 'mathe9.tracker.sync';
   const DEVICE_KEY = 'mathe9.device_id';
   const SESSION_KEY = 'mathe9.session_id';
   const MAX_QUEUE = 500;
@@ -31,6 +32,11 @@ const Tracker = (() => {
   let heartbeatTimer = null;
   let lastInteraction = Date.now();
   let sending = false;
+  /*
+   * Für die Betriebsdiagnose: Wie viel liegt noch hier,
+   * wann ging zuletzt etwas durch, und woran hakt es?
+   */
+  let lastError = null;
 
   let currentContext = {
     page: pageName(),
@@ -173,6 +179,22 @@ const Tracker = (() => {
       result.Authorization = `Bearer ${key}`;
     }
 
+    /*
+     * Sitzungstoken der Schüleranmeldung. Die Datenbank lässt einen
+     * Schreibzugriff nur für genau das Kind zu, dessen Token mitkommt —
+     * der anon-Key allein genügt nicht mehr.
+     */
+    const token =
+      (window.Mathe9StudentLogin &&
+        typeof window.Mathe9StudentLogin.token === 'function' &&
+        window.Mathe9StudentLogin.token()) ||
+      window.MATHE9_TOKEN ||
+      null;
+
+    if (token) {
+      result['x-mathe9-token'] = token;
+    }
+
     return result;
   }
 
@@ -305,6 +327,15 @@ const Tracker = (() => {
     );
   }
 
+  async function schreibTokenSichern(force = false) {
+    const login = window.Mathe9StudentLogin;
+    if (!login || typeof login.ensureToken !== 'function') {
+      return Boolean(headers()['x-mathe9-token']);
+    }
+    const token = await login.ensureToken({ force });
+    return Boolean(token);
+  }
+
   async function flush() {
     if (
       !configured() ||
@@ -320,7 +351,10 @@ const Tracker = (() => {
     const batch = queue.slice(0, 50);
 
     try {
-      const response = await fetch(
+      if (!await schreibTokenSichern()) {
+        throw new Error('Kein gültiges Schüler-Sitzungstoken. Die Daten bleiben in der Offline-Warteschlange.');
+      }
+      let response = await fetch(
         base() + 'mathe9_events',
         {
           method: 'POST',
@@ -329,6 +363,11 @@ const Tracker = (() => {
           keepalive: true
         }
       );
+      if ((response.status === 401 || response.status === 403) && await schreibTokenSichern(true)) {
+        response = await fetch(base() + 'mathe9_events', {
+          method: 'POST', headers: headers(), body: JSON.stringify(batch), keepalive: true
+        });
+      }
 
       if (!response.ok) {
         const details = await response.text();
@@ -353,10 +392,19 @@ const Tracker = (() => {
         queue
       );
 
+      lastError = null;
+
+      writeJson(
+        SYNC_KEY,
+        new Date().toISOString()
+      );
+
       if (queue.length) {
         scheduleFlush(250);
       }
     } catch (error) {
+      lastError = error.message;
+
       console.warn(
         '[Mathe9 tracker] Versand fehlgeschlagen:',
         error.message
@@ -364,6 +412,23 @@ const Tracker = (() => {
     } finally {
       sending = false;
     }
+  }
+
+  /*
+   * Zustand des Versands — für das Entwicklermenü und den
+   * Diagnosebericht. Bewusst nur Zählwerte und Zeitpunkte:
+   * Der Inhalt der Warteschlange gehört nicht in einen Bericht,
+   * der weitergegeben wird.
+   */
+  function status() {
+    return {
+      konfiguriert: configured(),
+      online: navigator.onLine,
+      wartend: queue.length,
+      aeltestes: queue[0]?.ts || null,
+      zuletzt_gesendet: readJson(SYNC_KEY, null),
+      letzter_fehler: lastError
+    };
   }
 
   async function progress(snapshot = {}) {
@@ -444,27 +509,25 @@ const Tracker = (() => {
     delete row.task;
 
     try {
+      if (!await schreibTokenSichern()) {
+        throw new Error('Kein gültiges Schüler-Sitzungstoken. Der Fortschritt wird später erneut gesendet.');
+      }
       const query = new URLSearchParams({
         on_conflict:
           'student_id,unit,path'
       });
 
-      const response = await fetch(
-        base() +
-        'mathe9_progress?' +
-        query,
-        {
-          method: 'POST',
-
-          headers: headers(
-            'resolution=merge-duplicates,return=minimal'
-          ),
-
-          body: JSON.stringify(row),
-
-          keepalive: true
-        }
-      );
+      const ziel = base() + 'mathe9_progress?' + query;
+      const optionen = () => ({
+        method: 'POST',
+        headers: headers('resolution=merge-duplicates,return=minimal'),
+        body: JSON.stringify(row),
+        keepalive: true
+      });
+      let response = await fetch(ziel, optionen());
+      if ((response.status === 401 || response.status === 403) && await schreibTokenSichern(true)) {
+        response = await fetch(ziel, optionen());
+      }
 
       if (!response.ok) {
         const details = await response.text();
@@ -491,6 +554,10 @@ const Tracker = (() => {
       ...currentContext,
       ...context
     };
+    if (Object.prototype.hasOwnProperty.call(context, 'task') && context.task == null &&
+        !Object.prototype.hasOwnProperty.call(context, 'task_session_id')) {
+      currentContext.task_session_id = null;
+    }
   }
 
   function heartbeat(reason = 'interval') {
@@ -545,7 +612,7 @@ const Tracker = (() => {
 
     addEventListener(
       'online',
-      flush
+      () => flush()
     );
 
     addEventListener(
@@ -611,6 +678,7 @@ const Tracker = (() => {
     setContext,
     flush,
     heartbeat,
+    status,
     studentName
   };
 })();

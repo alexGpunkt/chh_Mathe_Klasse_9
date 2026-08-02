@@ -476,7 +476,8 @@
         {
           "id": "komma_verschoben",
           "value": 1.35,
-          "feedback": "Um Faktor 10 zu groß — das wären 35 %. Bei 3,5 % ist q = 1,035."
+          "feedback": "Um Faktor 10 zu groß — das wären 35 %. Bei 3,5 % ist q = 1,035.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -507,7 +508,8 @@
           "feedback": "Nach 3 Jahren sind es erst 3 374,59 € — das ist noch unter 3 500 €. Probiere ein Jahr weiter.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "einfacher_zins",
@@ -548,7 +550,8 @@
           "feedback": "Nach 10 Jahren ist der Faktor erst 1,967 — knapp unter 2. Ein Jahr fehlt noch.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "einfacher_zins",
@@ -623,6 +626,24 @@
       "url": "https://de.serlo.org/mathe/38066/%C3%BCbersicht",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Die Zinseszinsformel einfach erklärt",
+      "url": "https://www.youtube.com/watch?v=NIdWRErSsso",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Zinseszins ohne Formel — Jahr für Jahr gerechnet",
+      "url": "https://www.youtube.com/watch?v=AwqLs6LXrvk",
+      "quelle": "Lehrerschmidt",
+      "pfad": "A"
+    },
+    {
+      "titel": "Zinseszins mit Formel berechnen",
+      "url": "https://www.youtube.com/watch?v=M2MS-0PWIdg",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

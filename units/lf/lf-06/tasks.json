@@ -180,7 +180,8 @@
         {
           "id": "m_und_b_vertauscht",
           "value": 1,
-          "feedback": "Du hast m und b vertauscht. In y = 2x + 1 ist 2 die Steigung und 1 der Startwert — nicht umgekehrt."
+          "feedback": "Du hast m und b vertauscht. In y = 2x + 1 ist 2 die Steigung und 1 der Startwert — nicht umgekehrt.",
+          "konzeptfehler": "m_und_b_vertauscht"
         }
       ],
       "tags": [
@@ -282,7 +283,8 @@
               "feedback": "m ist negativ — es geht nach UNTEN: 6 − 2 = 4.",
               "verweis": {
                 "absatz": 1
-              }
+              },
+              "konzeptfehler": "vorzeichen"
             }
           ]
         }
@@ -405,7 +407,8 @@
         {
           "id": "vorzeichen_uebersehen",
           "value": 1,
-          "feedback": "Das Minus vor dem x ist entscheidend: m = −1, die Gerade fällt."
+          "feedback": "Das Minus vor dem x ist entscheidend: m = −1, die Gerade fällt.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -471,7 +474,8 @@
             {
               "id": "vorzeichen_fehlt",
               "value": 3,
-              "feedback": "In der Gleichung steht − 3, also b = −3. Der Start liegt UNTER dem Nullpunkt."
+              "feedback": "In der Gleichung steht − 3, also b = −3. Der Start liegt UNTER dem Nullpunkt.",
+              "konzeptfehler": "vorzeichen"
             }
           ]
         },
@@ -692,6 +696,24 @@
         "W-FKT",
         "W-BRUCH"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Lineare Funktion y = mx + b zeichnen",
+      "url": "https://www.youtube.com/watch?v=UVcOBaQP47A",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Gerade mit dem Steigungsdreieck eintragen",
+      "url": "https://www.youtube.com/watch?v=ErD3rr-BQJs",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Lineare Funktion zeichnen — vier Beispiele",
+      "url": "https://www.youtube.com/watch?v=oEXxdzOJ3HE",
+      "quelle": "Lehrerschmidt",
+      "pfad": "A"
     }
   ]
 }

@@ -137,7 +137,8 @@
           "feedback": "Für den Mantel die Mantellinie s nehmen, nicht die Höhe.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "hoehe_statt_seitenhoehe"
         }
       ],
       "tags": [
@@ -167,7 +168,8 @@
         {
           "id": "radius_nicht_quadriert",
           "value": 9.42,
-          "feedback": "r quadrieren: 3,14 · 3² = 28,26."
+          "feedback": "r quadrieren: 3,14 · 3² = 28,26.",
+          "konzeptfehler": "quadrieren_vergessen"
         }
       ],
       "tags": [
@@ -566,7 +568,8 @@
         {
           "id": "hoehe_statt_mantellinie",
           "value": 188,
-          "feedback": "Für den Mantel s = 13 nehmen, nicht h = 12: M = 3,14·5·13 = 204."
+          "feedback": "Für den Mantel s = 13 nehmen, nicht h = 12: M = 3,14·5·13 = 204.",
+          "konzeptfehler": "hoehe_statt_seitenhoehe"
         }
       ],
       "tags": [
@@ -627,6 +630,18 @@
       "url": "https://de.serlo.org/mathe/1561/kegel",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Kegel — Oberfläche berechnen",
+      "url": "https://www.youtube.com/watch?v=GcDY8WTlG6k",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Kegel — Oberfläche, wenn Radius und Höhe gegeben sind",
+      "url": "https://www.youtube.com/watch?v=7KDWxSPxeJ8",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

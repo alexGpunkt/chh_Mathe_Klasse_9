@@ -141,7 +141,8 @@
         {
           "id": "achsen_vertauscht",
           "value": 4,
-          "feedback": "Das ist der x-Wert. Gefragt ist die Höhe."
+          "feedback": "Das ist der x-Wert. Gefragt ist die Höhe.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -289,7 +290,8 @@
             {
               "id": "vorzeichen_fehlt",
               "value": 2,
-              "feedback": "Die Gerade fällt — m ist negativ."
+              "feedback": "Die Gerade fällt — m ist negativ.",
+              "konzeptfehler": "vorzeichen"
             }
           ]
         },
@@ -335,7 +337,8 @@
         {
           "id": "vorzeichen_fehlt",
           "value": -3,
-          "feedback": "Aus 0 = 3x − 9 folgt 9 = 3x, also x = +3."
+          "feedback": "Aus 0 = 3x − 9 folgt 9 = 3x, also x = +3.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -689,6 +692,19 @@
       "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
       "typ": "sammlung",
       "quelle": "ZUM"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Gleichsetzungsverfahren — fünf Aufgaben zum Üben",
+      "url": "https://www.youtube.com/watch?v=T3DWWuZtqdY",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Gleichsetzungsverfahren — fünf schwierige Aufgaben",
+      "url": "https://www.youtube.com/watch?v=qlHtDS3VwHY",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

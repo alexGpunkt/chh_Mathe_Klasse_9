@@ -11,20 +11,20 @@
   --karo:       #D9E2E6;
   --ink:        #15233A;
   --ink-soft:   #4A5A70;
-  --ink-faint:  #8C99A8;
+  --ink-faint:  #687789;   /* Kontrast 4,58:1 auf Weiß */
 
   /* Pfadfarben – semantisch, überall identisch */
-  --a:      #2E7D5B;   /* Basis */
+  --a:      #1F6849;   /* Basis · 5,83:1 auf --a-bg */
   --a-bg:   #E4F1EA;
-  --b:      #2563A8;   /* Standard */
+  --b:      #205B9C;   /* Standard */
   --b-bg:   #E2EBF6;
   --c:      #6B3FA0;   /* Vertiefung */
   --c-bg:   #ECE4F5;
 
   /* Korrektur */
-  --korr:     #C62F26;
+  --korr:     #A8231C;
   --korr-bg:  #FBE7E5;
-  --ok:       #2E7D5B;
+  --ok:       #1F6849;
   --ok-bg:    #E4F1EA;
 
   /* aktiver Pfad – wird per JS gesetzt */
@@ -40,7 +40,7 @@
   --treffer-bg:     #F4F8F6;
   --merk-bg:        #FFF6E0;
   --merk-linie:     #C98A12;
-  --merk-text:      #9A6B0C;
+  --merk-text:      #745000;
   --skala:          rgba(21,35,58,.28);
 
   /* Kopf, Hero und Formelkarte sind immer dunkel — auch im hellen Modus.
@@ -354,9 +354,15 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 
 /* ---------- Updatehinweis ----------
    Sitzt unten, aber über der Formelkarte, und verschwindet erst, wenn
-   entschieden wurde. */
+   entschieden wurde.
+
+   Der z-index war bis V29 zu niedrig: Der Benutzer-Chip unten rechts
+   (z-index 9000) lag über dem Knopf „Jetzt aktualisieren" und fing die
+   Berührung ab. Die Leiste war sichtbar, aber nicht bedienbar. Sie liegt
+   jetzt darüber — und solange sie da ist, tritt der Chip zurück, damit auf
+   schmalen Geräten nichts überlappt. */
 .update-leiste {
-  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60;
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 9500;
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   padding: 12px 14px;
   background: var(--kopf-bg); color: var(--kopf-text);
@@ -374,6 +380,7 @@ input.zahl-feld.feld-falsch  { border-color: var(--korr); background: var(--korr
 }
 .update-btn-neben { background: transparent; color: var(--kopf-text); }
 .update-btn:disabled { opacity: .6; cursor: default; }
+body.m9-update .m9-user-chip { display: none; }
 @media print { .update-leiste { display: none; } }
 
 /* ---------- Wiederaufnahme ---------- */
@@ -456,6 +463,19 @@ button.wort-tippbar:focus-visible { outline: 3px solid var(--pfad); outline-offs
 }
 .formel-inhalt ul { margin: 0; padding-left: 18px; font-size: 15px; }
 .formel-inhalt li { margin-bottom: 4px; }
+
+/* Schalter in der Schublade — volles Touchziel, nicht nur das Kästchen. */
+.fk-schalter {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 48px; padding: 6px 0;
+  font-size: 15px; cursor: pointer;
+}
+.fk-schalter input {
+  width: 24px; height: 24px; flex: 0 0 auto;
+  accent-color: var(--pfad); cursor: pointer;
+}
+.fk-schalter:focus-within { outline: 3px solid var(--kopf-text); outline-offset: 4px; border-radius: 6px; }
+.fk-hinweis { font-size: 13px; opacity: .7; margin: -2px 0 8px 36px; }
 
 /* ---------- Unterer Bildschirmrand entlasten ----------
    Formelkarte, Buchnavigation und die eingeblendete Tastatur greifen alle
@@ -604,7 +624,7 @@ body.tastatur-aktiv .formelkarte { transform: translateY(105%); }
 }
 .mx-zeile {
   display: flex; align-items: flex-start; gap: 10px;
-  padding: 10px 12px; border-top: 1px solid var(--flaeche); cursor: pointer;
+  min-height: 44px; padding: 10px 12px; border-top: 1px solid var(--flaeche); cursor: pointer;
   font-size: 15px;
 }
 .mx-zeile:first-of-type { border-top: 0; }
@@ -631,7 +651,7 @@ body.tastatur-aktiv .formelkarte { transform: translateY(105%); }
     --paper: #FFFFFF; --paper-hi: #FFFFFF; --karo: #FFFFFF;
     --ink: #000000; --ink-soft: #333333; --ink-faint: #777777;
     --a: #2E7D5B; --a-bg: #FFFFFF;
-    --b: #2563A8; --b-bg: #FFFFFF;
+    --b: #205B9C; --b-bg: #FFFFFF;
     --c: #6B3FA0; --c-bg: #FFFFFF;
     --korr: #000000; --korr-bg: #FFFFFF;
     --ok: #000000; --ok-bg: #FFFFFF;
@@ -964,11 +984,19 @@ input.zahl-feld.lk-luecke-feld { flex: 1 1 120px; height: 46px; font-size: 18px;
   white-space: nowrap;
 }
 .ua-q-learningapps { background: #2E7D5B; }
-.ua-q-serlo { background: #2563A8; }
+.ua-q-serlo { background: #205B9C; }
 .ua-q-h5p { background: #0B7285; }
 .ua-q-learningsnacks { background: #C98A12; }
 .ua-q-quizlet { background: #6B3FA0; }
 .ua-q-zum { background: #C62F26; }
+/* Videoquelle bewusst in einem anderen Farbton als die Übungsplattformen:
+   Ein Video ist eine Erklärung, keine Übung — der Unterschied soll auch
+   ohne Lesen des Kartentitels sichtbar sein. */
+.ua-q-lehrerschmidt { background: #8A2B2B; }
+
+/* Die Videokarte sitzt über der Übungskarte und ist am Rand als
+   „Erklärung" markiert, nicht als Lernweg-Farbe. */
+.videokarte { border-left-color: #8A2B2B; }
 
 @media (max-width: 720px) {
   .uebungskarte { margin-left: 16px; margin-right: 16px; }

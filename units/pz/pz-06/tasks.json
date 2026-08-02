@@ -130,7 +130,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 2,
-          "feedback": "Du hast bei 1 % aufgehört. 1 % = 2 €. Gesucht sind 10 % — also noch mal 10 nehmen."
+          "feedback": "Du hast bei 1 % aufgehört. 1 % = 2 €. Gesucht sind 10 % — also noch mal 10 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "endpreis_statt_teil",
@@ -165,7 +166,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 4,
-          "feedback": "Das ist 1 %. Gesucht sind 25 % — also noch mal 25 nehmen."
+          "feedback": "Das ist 1 %. Gesucht sind 25 % — also noch mal 25 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "rest_statt_teil",
@@ -197,12 +199,14 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 6,
-          "feedback": "Das ist 1 %. Gesucht sind 5 %."
+          "feedback": "Das ist 1 %. Gesucht sind 5 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "geteilt_statt_mal",
           "value": 120,
-          "feedback": "Du hast 600 : 5 gerechnet. Rechne über 1 %: 600 : 100 = 6, dann · 5."
+          "feedback": "Du hast 600 : 5 gerechnet. Rechne über 1 %: 600 : 100 = 6, dann · 5.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -235,7 +239,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 0.5,
-          "feedback": "Das ist 1 %. Gesucht sind 20 %."
+          "feedback": "Das ist 1 %. Gesucht sind 20 %.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -265,7 +270,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 8.5,
-          "feedback": "Das ist 1 %. Noch mal 12 nehmen."
+          "feedback": "Das ist 1 %. Noch mal 12 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "endpreis_statt_teil",
@@ -299,7 +305,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 12.5,
-          "feedback": "Das ist 1 %. Noch mal 36 nehmen."
+          "feedback": "Das ist 1 %. Noch mal 36 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "rest_statt_teil",
@@ -395,7 +402,8 @@
         {
           "id": "bei_1prozent_gestoppt",
           "value": 245,
-          "feedback": "Das ist 1 %. Noch mal 19 nehmen."
+          "feedback": "Das ist 1 %. Noch mal 19 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -455,7 +463,8 @@
         {
           "id": "komma_verschoben",
           "value": 850,
-          "feedback": "Um Faktor 10 zu groß. 2,5 % sind 0,025 — nicht 0,25. 0,25 wären 25 %."
+          "feedback": "Um Faktor 10 zu groß. 2,5 % sind 0,025 — nicht 0,25. 0,25 wären 25 %.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -517,12 +526,14 @@
         {
           "id": "komma_verschoben",
           "value": 100,
-          "feedback": "Um Faktor 10 zu groß — du hast 8 % gerechnet. 0,8 % entspricht dem Faktor 0,008."
+          "feedback": "Um Faktor 10 zu groß — du hast 8 % gerechnet. 0,8 % entspricht dem Faktor 0,008.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "bei_1prozent_gestoppt",
           "value": 12.5,
-          "feedback": "Das ist 1 %. Gesucht sind 0,8 % — also etwas weniger."
+          "feedback": "Das ist 1 %. Gesucht sind 0,8 % — also etwas weniger.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -590,6 +601,24 @@
       "url": "https://de.serlo.org/mathe/174189/aufgaben-zur-berechnung-von-prozentwert-grundwert-und-prozentsatz",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Prozentwert mit der Formel berechnen",
+      "url": "https://www.youtube.com/watch?v=PiTFi7dFXAI",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Dreisatz: Prozentwert berechnen — Einführung",
+      "url": "https://www.youtube.com/watch?v=FpAzwrPi4kg",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Prozentwert mit Formel — Schritt für Schritt",
+      "url": "https://www.youtube.com/watch?v=STRLNoknUl4",
+      "quelle": "Lehrerschmidt",
+      "pfad": "A"
     }
   ]
 }

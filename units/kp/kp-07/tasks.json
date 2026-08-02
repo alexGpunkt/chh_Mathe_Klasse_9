@@ -174,7 +174,8 @@
             {
               "id": "dreieck_halbe_vergessen",
               "value": 12,
-              "feedback": "Dreieck: (4·3):2 = 6, nicht 12."
+              "feedback": "Dreieck: (4·3):2 = 6, nicht 12.",
+              "konzeptfehler": "dreiecksflaeche_halbe"
             }
           ]
         },
@@ -217,7 +218,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 240,
-          "feedback": "Dreieck durch 2: (10·6):2 = 30, dann · 4 = 120."
+          "feedback": "Dreieck durch 2: (10·6):2 = 30, dann · 4 = 120.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -247,7 +249,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 480,
-          "feedback": "Dreieck durch 2: 30 cm², dann · 8 = 240."
+          "feedback": "Dreieck durch 2: 30 cm², dann · 8 = 240.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -277,7 +280,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 252,
-          "feedback": "Durch 2 teilen: 14 cm², dann · 9 = 126."
+          "feedback": "Durch 2 teilen: 14 cm², dann · 9 = 126.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -360,7 +364,8 @@
         {
           "id": "dreieck_halbe_vergessen",
           "value": 9,
-          "feedback": "Dreieck durch 2: (2·1,5):2 = 1,5, dann · 3 = 4,5."
+          "feedback": "Dreieck durch 2: (2·1,5):2 = 1,5, dann · 3 = 4,5.",
+          "konzeptfehler": "dreiecksflaeche_halbe"
         }
       ],
       "tags": [
@@ -534,7 +539,8 @@
         {
           "id": "mal_statt_geteilt",
           "value": 7500,
-          "feedback": "Rückwärts wird geteilt: 300 : 25 = 12."
+          "feedback": "Rückwärts wird geteilt: 300 : 25 = 12.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -560,6 +566,24 @@
       "url": "https://de.serlo.org/mathe/1625/prisma",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Prisma — Volumen berechnen (Dreiecksprisma)",
+      "url": "https://www.youtube.com/watch?v=6hyX0FlMtRw",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Dreiecksprisma — Volumen berechnen",
+      "url": "https://www.youtube.com/watch?v=jwTNE9Cplkg",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Dreiecksprisma — Volumen einfach erklärt",
+      "url": "https://www.youtube.com/watch?v=WJ2tyI3xeps",
+      "quelle": "Lehrerschmidt",
+      "pfad": "A"
     }
   ]
 }

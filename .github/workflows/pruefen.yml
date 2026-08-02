@@ -1,43 +1,126 @@
 name: Projekt prüfen
 
-# Läuft bei jedem Push auf develop und master sowie bei Pull Requests.
-# Die Prüfung braucht kein npm install — sie kommt ohne Abhängigkeiten aus.
-
 on:
   push:
     branches: [develop, master]
   pull_request:
     branches: [develop, master]
   workflow_dispatch:
+  schedule:
+    - cron: '20 5 * * 1'
 
 jobs:
   pruefen:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - name: Quellcode holen
         uses: actions/checkout@v4
         with:
-          # Zwei Commits, damit „Cache-Version hochgezählt?" prüfbar ist.
-          fetch-depth: 2
-
+          fetch-depth: 0
       - name: Node bereitstellen
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: Gesamtprüfung
         run: node werkzeuge/pruefen.js
+      - name: Barrierefreiheit (statisch)
+        run: node werkzeuge/a11y-pruefen.js
+      - name: Performancebudget
+        run: node werkzeuge/budget-pruefen.js
 
-  # Externe Übungen brauchen Netz und ändern sich ohne unser Zutun.
-  # Deshalb getrennt, planmäßig und ohne den Push zu blockieren.
-  externe-links:
-    if: github.event_name == 'workflow_dispatch'
+  browser-smoke:
+    if: github.event_name != 'schedule'
+    needs: pruefen
     runs-on: ubuntu-latest
-    continue-on-error: true
+    defaults:
+      run:
+        working-directory: tests
+    steps:
+      - name: Quellcode holen
+        uses: actions/checkout@v4
+      - name: Node bereitstellen
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: tests/package-lock.json
+      - name: Testabhängigkeiten installieren
+        run: npm ci
+      - name: Chromium installieren
+        run: npx playwright install chromium --with-deps
+      - name: Lernweg im Browser prüfen
+        run: npm test
+      - name: Fehlerbilder bereitstellen
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-fehler
+          path: |
+            tests/test-results
+            tests/playwright-report
+          if-no-files-found: ignore
+
+  externe-links:
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      # Der Lauf selbst darf nicht scheitern — der Befund wird gemeldet,
+      # nicht als roter Job weggeklickt.
       - name: Externe Übungen anfragen
-        run: node werkzeuge/links-pruefen.js
+        id: pruefung
+        continue-on-error: true
+        run: node werkzeuge/links-pruefen.js --bericht befund.json
+
+      # Ein Befund, der nur im Protokoll steht, wird nicht gelesen. Deshalb:
+      # genau EIN Sammel-Issue, das aktualisiert statt neu erstellt wird —
+      # und das sich schließt, sobald wieder alles erreichbar ist.
+      - name: Befund als Issue führen
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITEL: 'Externe Übungsverweise: technische Auffälligkeiten'
+        run: |
+          set -euo pipefail
+          if [ ! -f befund.json ]; then
+            echo "Kein Bericht erzeugt — der Prüflauf ist vorzeitig abgebrochen."
+            exit 1
+          fi
+
+          betroffen=$(node -p "require('./befund.json').betroffen")
+          nummer=$(gh issue list --state open --search "$TITEL in:title" \
+                     --json number,title \
+                     --jq "[.[] | select(.title == env.TITEL)] | .[0].number // empty")
+
+          {
+            node -p "require('./befund.json').markdown"
+            echo
+            echo "_Automatisch erzeugt von \`werkzeuge/links-pruefen.js\`, Lauf ${{ github.run_id }}._"
+          } > koerper.md
+
+          if [ "$betroffen" -eq 0 ]; then
+            if [ -n "$nummer" ]; then
+              gh issue comment "$nummer" --body-file koerper.md
+              gh issue close "$nummer" --comment "Alle Verweise sind wieder erreichbar."
+              echo "Issue #$nummer geschlossen."
+            else
+              echo "Nichts zu melden."
+            fi
+            exit 0
+          fi
+
+          if [ -n "$nummer" ]; then
+            gh issue edit "$nummer" --body-file koerper.md
+            gh issue comment "$nummer" --body "Stand aktualisiert: $betroffen betroffene Verweise."
+            echo "Issue #$nummer aktualisiert."
+          else
+            gh issue create --title "$TITEL" --body-file koerper.md
+            echo "Issue neu angelegt."
+          fi

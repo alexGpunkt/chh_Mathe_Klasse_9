@@ -552,7 +552,8 @@
             {
               "id": "flaeche_faktor_100",
               "value": 256,
-              "feedback": "Von m² nach cm² ist der Faktor 10 000, nicht 100: 1 m² = 100 cm · 100 cm = 10 000 cm²."
+              "feedback": "Von m² nach cm² ist der Faktor 10 000, nicht 100: 1 m² = 100 cm · 100 cm = 10 000 cm².",
+              "konzeptfehler": "stellenwert_faktor"
             }
           ]
         }
@@ -611,6 +612,24 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Quader — Oberfläche berechnen",
+      "url": "https://www.youtube.com/watch?v=G4AsydQwZPE",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Würfel — Oberfläche berechnen",
+      "url": "https://www.youtube.com/watch?v=t2CwW27O1lw",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Quader — das Körpernetz erstellen",
+      "url": "https://www.youtube.com/watch?v=5oIGcsi-wIE",
+      "quelle": "Lehrerschmidt",
+      "pfad": "A"
     }
   ]
 }

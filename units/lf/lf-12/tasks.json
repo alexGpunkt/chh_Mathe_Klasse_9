@@ -846,5 +846,22 @@
       "typ": "app",
       "quelle": "Serlo"
     }
+  ],
+  "videos": [
+    {
+      "titel": "Schnittpunkt zweier Geraden grafisch bestimmen",
+      "url": "https://www.youtube.com/watch?v=mgDet0KN8NQ",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Gibt es überhaupt einen Schnittpunkt?",
+      "url": "https://www.youtube.com/watch?v=HFMpd5EjahE",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Parallele Geraden haben keinen Schnittpunkt",
+      "url": "https://www.youtube.com/watch?v=5nHirLbc4fc",
+      "quelle": "Lehrerschmidt"
+    }
   ]
 }

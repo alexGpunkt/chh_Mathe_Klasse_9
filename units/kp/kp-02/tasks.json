@@ -164,12 +164,14 @@
         {
           "id": "faktor_100_bei_volumen",
           "value": 100,
-          "feedback": "100 ist der Flächenfaktor. Volumen hat drei Richtungen: 10 · 10 · 10 = 1000."
+          "feedback": "100 ist der Flächenfaktor. Volumen hat drei Richtungen: 10 · 10 · 10 = 1000.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "faktor_10",
           "value": 10,
-          "feedback": "Das ist der Längenfaktor. Beim Volumen dreimal multiplizieren: 1000."
+          "feedback": "Das ist der Längenfaktor. Beim Volumen dreimal multiplizieren: 1000.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -198,12 +200,14 @@
         {
           "id": "faktor_1000_bei_flaeche",
           "value": 1000,
-          "feedback": "1000 ist der Volumenfaktor. Fläche hat zwei Richtungen: 10 · 10 = 100."
+          "feedback": "1000 ist der Volumenfaktor. Fläche hat zwei Richtungen: 10 · 10 = 100.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "faktor_10",
           "value": 10,
-          "feedback": "Fläche wird zweimal multipliziert: 100."
+          "feedback": "Fläche wird zweimal multipliziert: 100.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -257,12 +261,14 @@
           "feedback": "Nach oben (cm³ → dm³) wird geteilt, nicht multipliziert: : 1000.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "mal_geteilt_vertauscht"
         },
         {
           "id": "faktor_100",
           "value": 35,
-          "feedback": "Beim Volumen ist der Faktor 1000, nicht 100."
+          "feedback": "Beim Volumen ist der Faktor 1000, nicht 100.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -291,12 +297,14 @@
         {
           "id": "faktor_100",
           "value": 40,
-          "feedback": "Volumenfaktor ist 1000: 0,4 · 1000 = 400."
+          "feedback": "Volumenfaktor ist 1000: 0,4 · 1000 = 400.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "geteilt_statt_mal",
           "value": 0.0004,
-          "feedback": "Nach unten (m³ → dm³) wird multipliziert: · 1000."
+          "feedback": "Nach unten (m³ → dm³) wird multipliziert: · 1000.",
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -325,7 +333,8 @@
         {
           "id": "faktor_1000",
           "value": 0.25,
-          "feedback": "Fläche: Faktor 100, nicht 1000. 250 : 100 = 2,5."
+          "feedback": "Fläche: Faktor 100, nicht 1000. 250 : 100 = 2,5.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "mal_statt_geteilt",
@@ -333,7 +342,8 @@
           "feedback": "Nach oben wird geteilt: : 100.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "mal_geteilt_vertauscht"
         }
       ],
       "tags": [
@@ -421,7 +431,8 @@
         {
           "id": "faktor_100",
           "value": 120,
-          "feedback": "1 m³ = 1000 l. 1,2 · 1000 = 1200."
+          "feedback": "1 m³ = 1000 l. 1,2 · 1000 = 1200.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -483,7 +494,8 @@
         {
           "id": "faktor_100",
           "value": 75,
-          "feedback": "Faktor ist 1000: 0,75 · 1000 = 750."
+          "feedback": "Faktor ist 1000: 0,75 · 1000 = 750.",
+          "konzeptfehler": "stellenwert_faktor"
         }
       ],
       "tags": [
@@ -557,6 +569,18 @@
       "spiral": [
         "W-EINH"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Raummaße umrechnen: m³, dm³, cm³ und Liter",
+      "url": "https://www.youtube.com/watch?v=NItq_I7Yz9M",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Flächenmaße umrechnen: km², ha, a, m², cm²",
+      "url": "https://www.youtube.com/watch?v=bEgBxIdZZLs",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

@@ -233,7 +233,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 0.3,
-          "feedback": "Das ist der Preis für 1 Ei. Jetzt noch mal 10 nehmen."
+          "feedback": "Das ist der Preis für 1 Ei. Jetzt noch mal 10 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "einheitsschritt_uebersprungen",
@@ -267,7 +268,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 1.8,
-          "feedback": "Das ist der Preis für 1 kg. Gefragt sind 4 kg."
+          "feedback": "Das ist der Preis für 1 kg. Gefragt sind 4 kg.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "richtung_vertauscht",
@@ -301,7 +303,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 80,
-          "feedback": "Das ist die Strecke in 1 Stunde. Gefragt sind 5 Stunden."
+          "feedback": "Das ist die Strecke in 1 Stunde. Gefragt sind 5 Stunden.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "differenz_addiert",
@@ -335,7 +338,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 2.5,
-          "feedback": "Das ist das Gewicht von 1 Paket."
+          "feedback": "Das ist das Gewicht von 1 Paket.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -369,7 +373,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 75,
-          "feedback": "Das ist die Menge für 1 Portion."
+          "feedback": "Das ist die Menge für 1 Portion.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -400,7 +405,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 15,
-          "feedback": "Das sind die Seiten pro Minute. Gefragt sind 8 Minuten."
+          "feedback": "Das sind die Seiten pro Minute. Gefragt sind 8 Minuten.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -428,7 +434,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 7,
-          "feedback": "Das ist der Preis für 1 m. Gefragt sind 4 m."
+          "feedback": "Das ist der Preis für 1 m. Gefragt sind 4 m.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -460,7 +467,8 @@
           "feedback": "Das ist der Preis pro Liter.",
           "verweis": {
             "absatz": 0
-          }
+          },
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -564,7 +572,8 @@
         {
           "id": "bei_einheit_gestoppt",
           "value": 62.5,
-          "feedback": "Das ist die Menge für 1 Person."
+          "feedback": "Das ist die Menge für 1 Person.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -590,6 +599,24 @@
       "url": "https://www.schule-bw.de/faecher-und-schularten/mathematisch-naturwissenschaftliche-faecher/mathematik/unterrichtsmaterialien/sekundarstufe1/zahl/prozent/links/hotpotproz",
       "typ": "app",
       "quelle": "H5P"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Proportionale Zuordnung — woran man sie erkennt",
+      "url": "https://www.youtube.com/watch?v=MT3hVo_BfT0",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Dreisatz einfach erklärt",
+      "url": "https://www.youtube.com/watch?v=ELKsWSoQUjo",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Proportionalitätsfaktor",
+      "url": "https://www.youtube.com/watch?v=oMHVOFdTFbA",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

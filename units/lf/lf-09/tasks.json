@@ -276,7 +276,8 @@
             {
               "id": "vorzeichen_fehlt",
               "value": 1,
-              "feedback": "Der Betrag stimmt. Von P nach Q geht es aber nach UNTEN — m ist negativ."
+              "feedback": "Der Betrag stimmt. Von P nach Q geht es aber nach UNTEN — m ist negativ.",
+              "konzeptfehler": "vorzeichen"
             }
           ]
         },
@@ -413,7 +414,8 @@
             {
               "id": "vorzeichen_fehlt",
               "value": 1,
-              "feedback": "b = 3 − 2 · 2 = 3 − 4 = −1. Das Ergebnis ist negativ."
+              "feedback": "b = 3 − 2 · 2 = 3 − 4 = −1. Das Ergebnis ist negativ.",
+              "konzeptfehler": "vorzeichen"
             }
           ]
         }
@@ -448,7 +450,8 @@
             {
               "id": "vorzeichen_fehlt",
               "value": 1,
-              "feedback": "Δy = 3 − 7 = −4. Also m = −4 : 4 = −1."
+              "feedback": "Δy = 3 − 7 = −4. Also m = −4 : 4 = −1.",
+              "konzeptfehler": "vorzeichen"
             }
           ]
         },
@@ -520,7 +523,8 @@
             {
               "id": "geteilt_vertauscht",
               "value": 2,
-              "feedback": "Du hast Δx : Δy gerechnet. m = 2 : 4 = 0,5."
+              "feedback": "Du hast Δx : Δy gerechnet. m = 2 : 4 = 0,5.",
+              "konzeptfehler": "mal_geteilt_vertauscht"
             }
           ]
         },
@@ -565,7 +569,8 @@
             {
               "id": "vorzeichen_fehlt",
               "value": 4,
-              "feedback": "b = 2 − 2 · 3 = 2 − 6 = −4."
+              "feedback": "b = 2 − 2 · 3 = 2 − 6 = −4.",
+              "konzeptfehler": "vorzeichen"
             }
           ]
         }
@@ -692,7 +697,8 @@
             {
               "id": "vorzeichen_fehlt",
               "value": 0.5,
-              "feedback": "b = 1 − 0,75 · 2 = 1 − 1,5 = −0,5. Das Ergebnis ist negativ."
+              "feedback": "b = 1 − 0,75 · 2 = 1 − 1,5 = −0,5. Das Ergebnis ist negativ.",
+              "konzeptfehler": "vorzeichen"
             }
           ]
         }
@@ -757,6 +763,13 @@
       "url": "https://de.serlo.org/mathe/174384/aufgaben-zu-geradengleichungen-nullstellen-und-schnittpunkten",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Funktionsgleichung aus zwei Punkten bestimmen",
+      "url": "https://www.youtube.com/watch?v=jf4DrqcXdKQ",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

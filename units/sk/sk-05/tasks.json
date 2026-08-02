@@ -195,7 +195,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 3,
-          "feedback": "Rückwärts mal 3: h = 3·120 : 40 = 9."
+          "feedback": "Rückwärts mal 3: h = 3·120 : 40 = 9.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -225,7 +226,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 8.33,
-          "feedback": "Erst mal 3: G = 3·100 : 12 = 25."
+          "feedback": "Erst mal 3: G = 3·100 : 12 = 25.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -284,7 +286,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 288,
-          "feedback": "Durch 3: 288 : 3 = 96."
+          "feedback": "Durch 3: 288 : 3 = 96.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -313,7 +316,8 @@
         {
           "id": "grundflaeche_vergessen",
           "value": 240,
-          "feedback": "Grundfläche 144 dazu: 384."
+          "feedback": "Grundfläche 144 dazu: 384.",
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         }
       ],
       "tags": [
@@ -343,7 +347,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 2,
-          "feedback": "Rückwärts mal 3: 3·96 : 48 = 6."
+          "feedback": "Rückwärts mal 3: 3·96 : 48 = 6.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -428,7 +433,8 @@
         {
           "id": "faktor_drittel_vergessen",
           "value": 18000,
-          "feedback": "Durch 3: 18 000 : 3 = 6000."
+          "feedback": "Durch 3: 18 000 : 3 = 6000.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -467,7 +473,8 @@
             {
               "id": "grundflaeche_vergessen",
               "value": 320,
-              "feedback": "Mantel 320 + Grundfläche 256 = 576."
+              "feedback": "Mantel 320 + Grundfläche 256 = 576.",
+              "konzeptfehler": "grundflaeche_unvollstaendig"
             }
           ]
         }
@@ -507,7 +514,8 @@
         {
           "id": "drittel_vergessen_rueck",
           "value": 5,
-          "feedback": "Mal 3: h = 3·500 : 100 = 15."
+          "feedback": "Mal 3: h = 3·500 : 100 = 15.",
+          "konzeptfehler": "drittel_vergessen"
         }
       ],
       "tags": [
@@ -553,6 +561,19 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Pyramide — Seitenhöhe berechnen",
+      "url": "https://www.youtube.com/watch?v=-YIBOQF-n3w",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Pyramidenstumpf — Volumen mit Formel",
+      "url": "https://www.youtube.com/watch?v=kFj-9bDmqrE",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
     }
   ]
 }

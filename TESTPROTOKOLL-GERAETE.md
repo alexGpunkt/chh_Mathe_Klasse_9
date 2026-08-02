@@ -63,6 +63,44 @@ aktualisieren → Seite neu öffnen.**
 - [ ] „Von vorn beginnen“ verwirft den Stand wirklich
 - [ ] Gerätewechsel: Der Stand bleibt lokal, es erscheint kein fremder Stand
 
+### H · Barrierefreiheit
+Die maschinell prüfbaren Punkte laufen in `node werkzeuge/a11y-pruefen.js`.
+Was dort **nicht** feststellbar ist und hier geprüft werden muss:
+
+- [ ] **Screenreader** (VoiceOver / TalkBack): Aufgabe, Eingabefeld und
+      Rückmeldung werden in sinnvoller Reihenfolge vorgelesen
+- [ ] Animation: feste Beschreibung wird gelesen, die laufende Zeile nicht
+- [ ] „Prüfen“ meldet das Ergebnis, ohne dass man danach suchen muss
+- [ ] **Nur Tastatur:** Pfadwahl, Eingabe, Prüfen, Tipp, Erklärung, Formelkarte
+      sind erreichbar; der Fokus ist immer sichtbar
+- [ ] Fokus springt nach dem Öffnen der Erklärung nicht an den Seitenanfang
+- [ ] **Zoom 200 %:** nichts überlappt, nichts wird abgeschnitten
+- [ ] **Zoom 400 %:** Inhalt bleibt in einer Spalte lesbar, kein Querscrollen
+- [ ] **Kontraste** mit einem Prüfwerkzeug messen — hell **und** dunkel,
+      besonders Merkkasten, Hinweiskasten und die Pfadfarben auf Weiß
+- [ ] Touchziele nachmessen, wo das Skript nur einen Hinweis gibt: Kästchen
+      und Reglerdaumen sind kleiner als 44 px, sitzen aber in einer 44-px-Fläche —
+      am Gerät prüfen, ob sie sicher zu treffen sind
+
+### I · Betrieb (ab V29)
+Was hier steht, hat der Browsertest im Ansatz geprüft, aber nicht am echten
+Gerät — und drei dieser Punkte waren bis V29 tatsächlich kaputt.
+
+- [ ] **Erster Aufruf lädt nicht von selbst neu.** Seite frisch öffnen, sofort
+      eine Zahl tippen: Die Eingabe muss stehen bleiben
+- [ ] Update-Leiste: **„Jetzt aktualisieren" ist antippbar** — der Benutzer-Chip
+      unten rechts darf nicht darüberliegen
+- [ ] Buchmodus: **„Weiter" ist antippbar**, auch mit angemeldetem Konto
+- [ ] „Abmelden und meine lokalen Lernstände löschen" während einer halb
+      ausgefüllten Aufgabe: Danach ist **kein** Stand mehr da, auch nicht nach
+      erneutem Öffnen derselben Einheit
+- [ ] Entwicklermenü → Betrieb zeigt Fassung, Cache, Verbindung,
+      Warteschlange und letzte Synchronisation — und die Werte stimmen
+- [ ] Flugmodus: Warteschlange wächst; wieder online geht sie auf 0 zurück
+- [ ] Keine Meldung „Content Security Policy" in der Browserkonsole
+- [ ] Performancebudget: Zeit bis zur Bedienbarkeit auf Gerät 4 messen und
+      hier notieren (`werkzeuge/budget.json` misst nur Größen)
+
 ## Befunde
 
 | Gerät | Punkt | Beobachtung | Schwere | erledigt |

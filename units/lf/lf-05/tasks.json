@@ -265,7 +265,8 @@
         {
           "id": "vorzeichen_fehlt",
           "value": 2,
-          "feedback": "Die Höhe stimmt, aber der Punkt liegt UNTER dem Nullpunkt — also b = −2."
+          "feedback": "Die Höhe stimmt, aber der Punkt liegt UNTER dem Nullpunkt — also b = −2.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -500,12 +501,14 @@
         {
           "id": "vorzeichen",
           "value": 17,
-          "feedback": "Du hast addiert. Aus 11 = 6 + b folgt b = 11 − 6 = 5."
+          "feedback": "Du hast addiert. Aus 11 = 6 + b folgt b = 11 − 6 = 5.",
+          "konzeptfehler": "vorzeichen"
         },
         {
           "id": "koordinaten_vertauscht",
           "value": -3,
-          "feedback": "Du hast x und y vertauscht: 3 = 2 · 11 + b. Die erste Zahl im Punkt ist x."
+          "feedback": "Du hast x und y vertauscht: 3 = 2 · 11 + b. Die erste Zahl im Punkt ist x.",
+          "konzeptfehler": "achsen_vertauscht"
         }
       ],
       "tags": [
@@ -564,7 +567,8 @@
         {
           "id": "vorzeichen_fehlt",
           "value": 2,
-          "feedback": "Aus 1 = 3 + b folgt b = 1 − 3 = −2. Das Ergebnis ist negativ."
+          "feedback": "Aus 1 = 3 + b folgt b = 1 − 3 = −2. Das Ergebnis ist negativ.",
+          "konzeptfehler": "vorzeichen"
         }
       ],
       "tags": [
@@ -597,7 +601,8 @@
         {
           "id": "m_und_b_vertauscht",
           "value": 1,
-          "feedback": "Vertauscht. Die 20 € fallen einmalig an, nicht pro Minute — also sind sie b. Die 0,20 € fallen pro Minute an — also sind sie m."
+          "feedback": "Vertauscht. Die 20 € fallen einmalig an, nicht pro Minute — also sind sie b. Die 0,20 € fallen pro Minute an — also sind sie m.",
+          "konzeptfehler": "m_und_b_vertauscht"
         },
         {
           "id": "b_vergessen",
@@ -627,6 +632,18 @@
       "url": "https://de.serlo.org/mathe/31911/aufgaben-zu-linearen-funktionen-als-geraden-im-koordinatensystem",
       "typ": "app",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Den Schnittpunkt mit der y-Achse bestimmen",
+      "url": "https://www.youtube.com/watch?v=WDgH4CN-enA",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Eine Gerade verschieben — was b bewirkt",
+      "url": "https://www.youtube.com/watch?v=TBDBuLdQOcM",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

@@ -3,6 +3,13 @@
    links-pruefen.js · externe Übungen anfragen
 
    Aufruf:  node werkzeuge/links-pruefen.js
+            node werkzeuge/links-pruefen.js --bericht befund.json
+
+   Mit --bericht wird der Befund zusätzlich als JSON geschrieben. Daraus
+   baut der GitHub-Workflow ein Issue: neue Fehler öffnen es, ein
+   bestehendes wird aktualisiert, und wenn wieder alles erreichbar ist,
+   wird es geschlossen. Ein Befund, der nur im Actions-Protokoll steht,
+   wird nicht gelesen.
 
    Meldet, was sich technisch feststellen lässt:
      - nicht erreichbar oder Zeitüberschreitung
@@ -23,6 +30,10 @@ const WURZEL = path.resolve(__dirname, '..');
 const ERLAUBT = ['learningapps.org', 'serlo.org', 'h5p.org', 'schule-bw.de',
                  'learningsnacks.de', 'quizlet.com', 'zum.de'];
 const ZEITGRENZE = 15000;
+const BERICHT = (() => {
+  const i = process.argv.indexOf('--bericht');
+  return i >= 0 ? process.argv[i + 1] : null;
+})();
 
 function einheiten() {
   const treffer = [];
@@ -57,38 +68,112 @@ async function anfragen(url) {
 }
 
 (async () => {
-  const befunde = [];
-  let geprueft = 0;
-
+  /* Viele Einheiten verweisen auf dieselbe Sammlung. Jede URL wird deshalb
+     nur einmal angefragt und der Befund anschließend allen Fundstellen
+     zugeordnet. Sechs parallele Anfragen bleiben freundlich zu den
+     Plattformen und verkürzen den Lauf dennoch deutlich. */
+  const fundstellen = new Map();
   for (const datei of einheiten()) {
     const d = JSON.parse(fs.readFileSync(datei, 'utf8'));
     const kurz = path.relative(WURZEL, datei).replace(/\\/g, '/');
     for (const l of d.uebungslinks || []) {
-      geprueft++;
-      const start = new URL(l.url);
-      const erg = await anfragen(l.url);
-
-      if (erg.fehler) { befunde.push([kurz, l.titel, l.url, 'nicht erreichbar: ' + erg.fehler]); continue; }
-      if (erg.status >= 400) { befunde.push([kurz, l.titel, l.url, 'HTTP ' + erg.status]); continue; }
-
-      const zielHost = new URL(erg.ziel).hostname.toLowerCase();
-      const startHost = start.hostname.toLowerCase();
-      if (zielHost !== startHost) {
-        const nochErlaubt = ERLAUBT.some(b => zielHost === b || zielHost.endsWith('.' + b));
-        befunde.push([kurz, l.titel, l.url,
-          `Weiterleitung auf ${zielHost}${nochErlaubt ? '' : ' — Plattform nicht freigegeben'}`]);
-      }
+      if (!fundstellen.has(l.url)) fundstellen.set(l.url, []);
+      fundstellen.get(l.url).push({ datei: kurz, titel: l.titel });
     }
   }
 
-  console.log(`${geprueft} externe Übungen angefragt.`);
+  const urls = [...fundstellen.keys()];
+  const ergebnisse = new Map();
+  let cursor = 0;
+  async function worker() {
+    while (cursor < urls.length) {
+      const url = urls[cursor++];
+      ergebnisse.set(url, await anfragen(url));
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(6, urls.length) }, worker));
+
+  const befunde = [];
+  for (const url of urls) {
+    const erg = ergebnisse.get(url);
+    let was = '';
+    if (erg.fehler) was = 'nicht erreichbar: ' + erg.fehler;
+    else if (erg.status >= 400) was = 'HTTP ' + erg.status;
+    else {
+      const zielHost = new URL(erg.ziel).hostname.toLowerCase();
+      const startHost = new URL(url).hostname.toLowerCase();
+      if (zielHost !== startHost) {
+        const nochErlaubt = ERLAUBT.some(b => zielHost === b || zielHost.endsWith('.' + b));
+        was = `Weiterleitung auf ${zielHost}${nochErlaubt ? '' : ' — Plattform nicht freigegeben'}`;
+      }
+    }
+    if (was) for (const f of fundstellen.get(url)) befunde.push([f.datei, f.titel, url, was]);
+  }
+
+  const verweise = [...fundstellen.values()].reduce((n, x) => n + x.length, 0);
+  console.log(`${urls.length} unterschiedliche Adressen für ${verweise} Übungsverweise angefragt.`);
+
+  if (BERICHT) schreibeBericht(befunde, urls.length, verweise);
+
   if (!befunde.length) { console.log('Keine technischen Auffälligkeiten.'); return; }
 
-  console.log(`\n${befunde.length} Auffälligkeiten:\n`);
+  console.log(`\n${befunde.length} betroffene Verweise:\n`);
   for (const [datei, titel, url, was] of befunde) {
     console.log(`  ${datei}\n    „${titel}"\n    ${url}\n    → ${was}\n`);
   }
   console.log('Hinweis: Erreichbarkeit ist kein Qualitätsnachweis. Die fachliche');
   console.log('Prüfung bleibt Aufgabe der Lehrkraft.');
-  process.exitCode = befunde.length ? 2 : 0;   // 2 = nur Hinweis, kein Baufehler
+  process.exitCode = 2;
 })();
+
+/* Der Bericht ist nach Einheiten geordnet, nicht nach URLs: Wer ihn liest,
+   muss wissen, welche Stunde betroffen ist — nicht, welcher Server hakt. */
+function schreibeBericht(befunde, adressen, verweise) {
+  const proEinheit = new Map();
+  for (const [datei, titel, url, was] of befunde) {
+    const einheit = (datei.match(/units\/[a-z]{2}\/([a-z]{2}-\d{2})\//) || [])[1] || datei;
+    if (!proEinheit.has(einheit)) proEinheit.set(einheit, []);
+    proEinheit.get(einheit).push({ titel, url, befund: was });
+  }
+
+  const zeilen = [];
+  for (const [einheit, treffer] of [...proEinheit].sort()) {
+    zeilen.push(`### ${einheit.toUpperCase()}`);
+    zeilen.push('');
+    for (const t of treffer) {
+      zeilen.push(`- **${t.befund}** — [${t.titel}](${t.url})`);
+    }
+    zeilen.push('');
+  }
+
+  const markdown = befunde.length
+    ? [
+        `${befunde.length} Übungsverweise sind technisch auffällig `
+          + `(${adressen} Adressen für ${verweise} Verweise geprüft).`,
+        '',
+        ...zeilen,
+        '---',
+        '',
+        'Erreichbarkeit ist **kein** Qualitätsnachweis: Eine 200 sagt nichts darüber,',
+        'ob die Aufgaben fachlich noch passen, ob die Seite inzwischen Werbung zeigt',
+        'oder eine Anmeldung verlangt. Diese Prüfung bleibt Aufgabe der Lehrkraft.',
+        '',
+        'Wird ein Verweis ersetzt oder entfernt, verschwindet er beim nächsten Lauf',
+        'von selbst aus dieser Liste.'
+      ].join('\n')
+    : `Alle ${adressen} Adressen für ${verweise} Übungsverweise waren erreichbar.`;
+
+  const inhalt = {
+    geprueft_am: new Date().toISOString(),
+    adressen,
+    verweise,
+    betroffen: befunde.length,
+    einheiten: [...proEinheit.keys()].sort(),
+    markdown,
+    befunde: befunde.map(([datei, titel, url, was]) => ({ datei, titel, url, befund: was }))
+  };
+
+  fs.mkdirSync(path.dirname(path.resolve(BERICHT)), { recursive: true });
+  fs.writeFileSync(BERICHT, JSON.stringify(inhalt, null, 2));
+  console.log(`Bericht geschrieben: ${BERICHT}`);
+}

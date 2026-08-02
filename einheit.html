@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#15233A">
 <title>Einheit · Mathe 9</title>
@@ -31,9 +32,11 @@
       <div class="streifen-skala"></div>
       <div class="streifen-marke"></div>
     </div>
+    <!-- „Aufgaben" ausgeschrieben: Auf derselben Seite steht unten die
+         Buchseite. Ohne Beschriftung werden die beiden Zahlen verwechselt. -->
     <div class="streifen-legende">
       <span>0 %</span>
-      <span><b id="prozent">0 %</b> · <span id="absolut">0 von 0</span></span>
+      <span><b id="prozent">0 %</b> · <span id="absolut">0 von 0</span> Aufgaben</span>
       <span>100 %</span>
     </div>
   </div>
@@ -46,6 +49,11 @@
 </header>
 
 <main id="buehne"><p class="lade">Aufgaben werden geladen …</p></main>
+
+<details class="uebungskarte videokarte" id="videokarte" hidden>
+  <summary>Erklärvideos · noch einmal von jemand anderem erklärt</summary>
+  <div class="uebung-inhalt" id="video-inhalt"></div>
+</details>
 
 <details class="uebungskarte" id="uebungskarte" hidden>
   <summary>Üben &amp; Wiederholen · externe Übungen</summary>

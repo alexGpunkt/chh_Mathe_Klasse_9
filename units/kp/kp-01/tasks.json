@@ -543,7 +543,8 @@
           "feedback": "6 sind nur die Kanten einer Grundfläche. Es gibt oben, unten und senkrecht — also 3 · 6.",
           "verweis": {
             "absatz": 1
-          }
+          },
+          "konzeptfehler": "grundflaeche_unvollstaendig"
         },
         {
           "id": "ohne_senkrechte",
@@ -649,6 +650,23 @@
       "url": "https://de.serlo.org/mathe/16156/raumgeometrie",
       "typ": "sammlung",
       "quelle": "Serlo"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Eigenschaften geometrischer Körper",
+      "url": "https://www.youtube.com/watch?v=plzMl984VkU",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Eigenschaften geometrischer Körper — mit Test",
+      "url": "https://www.youtube.com/watch?v=gYqXN0JPp1w",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Netz zeichnen: Würfel und Quader",
+      "url": "https://www.youtube.com/watch?v=HO3rE2dgPmA",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

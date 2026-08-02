@@ -304,7 +304,8 @@
             {
               "id": "mal_100_vergessen",
               "value": 0.2,
-              "feedback": "Das ist die Dezimalzahl. Für Prozent noch mal 100 nehmen."
+              "feedback": "Das ist die Dezimalzahl. Für Prozent noch mal 100 nehmen.",
+              "konzeptfehler": "prozentschritt_unvollstaendig"
             },
             {
               "id": "nenner_als_prozent",
@@ -347,7 +348,8 @@
             {
               "id": "mal_100_vergessen",
               "value": 0.15,
-              "feedback": "Das ist die Dezimalzahl. Noch mal 100."
+              "feedback": "Das ist die Dezimalzahl. Noch mal 100.",
+              "konzeptfehler": "prozentschritt_unvollstaendig"
             }
           ]
         }
@@ -412,12 +414,14 @@
         {
           "id": "komma_verschoben",
           "value": 4.5,
-          "feedback": "Das Komma muss zwei Stellen nach rechts, nicht eine: 0,45 → 45 %."
+          "feedback": "Das Komma muss zwei Stellen nach rechts, nicht eine: 0,45 → 45 %.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "mal_100_vergessen",
           "value": 0.45,
-          "feedback": "Das ist noch die Dezimalzahl. Mal 100 nehmen."
+          "feedback": "Das ist noch die Dezimalzahl. Mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -445,7 +449,8 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.18,
-          "feedback": "Noch mal 100 nehmen."
+          "feedback": "Noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "nenner_als_prozent",
@@ -478,12 +483,14 @@
         {
           "id": "komma_verschoben",
           "value": 60,
-          "feedback": "Um Faktor 10 zu groß. 0,60 wären 60 % — hier steht aber 0,06."
+          "feedback": "Um Faktor 10 zu groß. 0,60 wären 60 % — hier steht aber 0,06.",
+          "konzeptfehler": "stellenwert_faktor"
         },
         {
           "id": "mal_100_vergessen",
           "value": 0.06,
-          "feedback": "Noch mal 100 nehmen."
+          "feedback": "Noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         }
       ],
       "tags": [
@@ -512,12 +519,14 @@
         {
           "id": "mal_100_vergessen",
           "value": 0.375,
-          "feedback": "Noch mal 100 nehmen."
+          "feedback": "Noch mal 100 nehmen.",
+          "konzeptfehler": "prozentschritt_unvollstaendig"
         },
         {
           "id": "geteilt_vertauscht",
           "value": 266.67,
-          "feedback": "Du hast 8 : 3 gerechnet. Der Zähler steht vorn: 3 : 8."
+          "feedback": "Du hast 8 : 3 gerechnet. Der Zähler steht vorn: 3 : 8.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -583,7 +592,8 @@
         {
           "id": "geteilt_vertauscht",
           "value": 120,
-          "feedback": "Du hast 6 : 5 gerechnet. Das gäbe über 100 % — unmöglich, wenn der Zähler kleiner als der Nenner ist."
+          "feedback": "Du hast 6 : 5 gerechnet. Das gäbe über 100 % — unmöglich, wenn der Zähler kleiner als der Nenner ist.",
+          "konzeptfehler": "grundwert_prozentwert_vertauscht"
         }
       ],
       "tags": [
@@ -640,6 +650,23 @@
       "url": "https://learningapps.org/26815",
       "typ": "app",
       "quelle": "LearningApps"
+    }
+  ],
+  "videos": [
+    {
+      "titel": "Bruch in Dezimalzahl umwandeln",
+      "url": "https://www.youtube.com/watch?v=jimlv04pCPg",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Brüche in Prozent umwandeln",
+      "url": "https://www.youtube.com/watch?v=AWGb9rOJeP0",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Dezimalzahl in Bruch umwandeln",
+      "url": "https://www.youtube.com/watch?v=_rPOeFrZ7L8",
+      "quelle": "Lehrerschmidt"
     }
   ]
 }

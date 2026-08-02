@@ -565,5 +565,22 @@
         "W-TERM"
       ]
     }
+  ],
+  "videos": [
+    {
+      "titel": "Gleichsetzungsverfahren: lineare Gleichungssysteme lösen",
+      "url": "https://www.youtube.com/watch?v=i361KL1OumQ",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Einsetzungsverfahren — fünf einfache Übungen",
+      "url": "https://www.youtube.com/watch?v=aRekZQ07CJ0",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Additionsverfahren — fünf einfache Übungen",
+      "url": "https://www.youtube.com/watch?v=EG-KXnbxL38",
+      "quelle": "Lehrerschmidt"
+    }
   ]
 }

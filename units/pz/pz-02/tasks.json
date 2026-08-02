@@ -518,5 +518,23 @@
         "W-KOPF"
       ]
     }
+  ],
+  "videos": [
+    {
+      "titel": "Überschlagen und schätzen — die Größenordnung vorher wissen",
+      "url": "https://www.youtube.com/watch?v=vPqvDAPOytI",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Prozente im Kopf rechnen, Schritt für Schritt erklärt",
+      "url": "https://www.youtube.com/watch?v=sbrInrBWdo4",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Prozente schnell im Kopf — mit glatten Zahlen",
+      "url": "https://www.youtube.com/watch?v=8GLO5ZH2yHo",
+      "quelle": "Lehrerschmidt",
+      "pfad": "C"
+    }
   ]
 }
