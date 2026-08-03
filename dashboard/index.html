@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src https://learningapps.org https://*.learningapps.org https://serlo.org https://*.serlo.org https://h5p.org https://*.h5p.org https://schule-bw.de https://*.schule-bw.de https://learningsnacks.de https://*.learningsnacks.de https://quizlet.com https://*.quizlet.com https://zum.de https://*.zum.de; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mathe 9 · Lehrerdashboard</title>
   <link rel="stylesheet" href="dashboard.css">
@@ -45,6 +45,24 @@
       </form>
       <p id="rosterMessage" class="message" hidden></p>
       <div class="tableWrap"><table class="rosterTable"><thead><tr><th>Benutzername</th><th>Name</th><th>Lerngruppe</th><th>Status</th><th>Aktion</th></tr></thead><tbody id="rosterBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="modusPanel">
+      <div class="panelHead"><div><h2>Unterricht und Freigaben</h2><span>Im Bewertungsmodus öffnet sich die nächste Einheit erst, wenn Sie das handschriftliche Übungsblatt gesehen haben</span></div></div>
+      <div class="modusZeile">
+        <span class="modusAnzeige" id="modusAnzeige">Modus wird geladen …</span>
+        <label>Dauer <select id="modusDauer"><option value="45">45 Minuten</option><option value="90" selected>90 Minuten</option><option value="180">3 Stunden</option><option value="360">6 Stunden</option></select></label>
+        <button id="modusBewertung" type="button">Bewertungsmodus starten</button>
+        <button id="modusUebung" type="button">Auf Übungsmodus zurückstellen</button>
+      </div>
+      <p class="modusHinweis">Die Kontrolle beschränkt sich auf die Frage, <b>ob</b> handschriftlich gearbeitet wurde — nicht, ob richtig gerechnet wurde. Das klärt der Selbstkontrollkasten auf dem Blatt.</p>
+      <p id="modusMeldung" class="message" hidden></p>
+      <div class="tableWrap"><table><thead><tr><th>Name</th><th>zuletzt bearbeitet</th><th>Übungsblatt</th><th>freigegeben</th><th>nächste Einheit freigeben</th></tr></thead><tbody id="freigabeBody"></tbody></table></div>
+    </section>
+
+    <section class="panel">
+      <div class="panelHead"><div><h2>Aktive Lernzeit</h2><span>Nur Zeit mit tatsächlicher Aktivität und angekommenem Ping — Leerlauf zählt nicht</span></div></div>
+      <div class="tableWrap"><table><thead><tr><th>Name</th><th>heute</th><th>letzte 7 Tage</th><th>häufigste Einheit</th><th>zuletzt gemeldet</th></tr></thead><tbody id="lernzeitBody"></tbody></table></div>
     </section>
 
     <section class="kpis"><article><strong id="activeNow">0</strong><span>jetzt aktiv</span></article><article><strong id="studentsToday">0</strong><span>Schüler</span></article><article><strong id="answers">0</strong><span>Antwortversuche</span></article><article><strong id="correctRate">–</strong><span>richtig</span></article><article><strong id="medianTime">–</strong><span>Zeit je Aufgabe (Median)</span></article></section>

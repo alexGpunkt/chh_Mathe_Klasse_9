@@ -1,0 +1,1686 @@
+{
+  "bereich": "KP",
+  "title": "Würfel, Quader, Prisma, Zylinder",
+  "_hinweis": "Siehe uebungsblaetter/pz.json. Bei π wird durchgehend mit 3,14 gerechnet — genau wie im Aufgabenpool. Die Aufgabentexte sagen das ausdrücklich, sonst stimmt die gedruckte Lösung für alle nicht, die die π-Taste benutzen.",
+  "einheiten": {
+    "kp-01": {
+      "auftrag": "Zeichne zu jeder Aufgabe eine Skizze. Beschrifte Ecken, Kanten und Flächen.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-01-1",
+          "vars": {
+            "koerper": {
+              "aus": [
+                0,
+                1,
+                2
+              ]
+            }
+          },
+          "berechnet": {
+            "kanten": "(koerper == 0) * 12 + (koerper == 1) * 12 + (koerper == 2) * 9"
+          },
+          "template": "Nenne Ecken, Kanten und Flächen des Körpers. Gib die Anzahl der KANTEN an. Körper: {(koerper==0)*1 + (koerper==1)*2 + (koerper==2)*3}. 1 = Würfel, 2 = Quader, 3 = Dreiecksprisma.",
+          "answer": "kanten",
+          "unit_label": "Kanten",
+          "round": 0,
+          "solution": "Würfel und Quader: 8 Ecken, 12 Kanten, 6 Flächen. Dreiecksprisma: 6 Ecken, 9 Kanten, 5 Flächen. Hier: {ergebnis} Kanten.",
+          "misconceptions": [
+            {
+              "id": "kanten_statt_ecken",
+              "value": "8",
+              "feedback": "8 ist die Anzahl der Ecken."
+            },
+            {
+              "id": "kanten_statt_flaechen",
+              "value": "6",
+              "feedback": "6 ist die Anzahl der Flächen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-01-2",
+          "vars": {
+            "n": {
+              "aus": [
+                3,
+                4,
+                5,
+                6,
+                8
+              ]
+            }
+          },
+          "template": "Ein gerades Prisma hat als Grundfläche ein {n}-Eck. Wie viele Kanten hat der Körper?",
+          "answer": "3 * n",
+          "unit_label": "Kanten",
+          "round": 0,
+          "solution": "{n} Grundkanten + {n} Deckkanten + {n} Seitenkanten = {ergebnis}",
+          "misconceptions": [
+            {
+              "id": "nur_grundkanten",
+              "value": "n",
+              "feedback": "Nur die Grundfläche gezählt."
+            },
+            {
+              "id": "nur_zwei_kanten",
+              "value": "2 * n",
+              "feedback": "Die senkrechten Seitenkanten fehlen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-01-3",
+          "vars": {
+            "n": {
+              "aus": [
+                3,
+                4,
+                5,
+                6,
+                8
+              ]
+            }
+          },
+          "template": "Wie viele Flächen hat ein gerades Prisma mit einem {n}-Eck als Grundfläche?",
+          "answer": "n + 2",
+          "unit_label": "Flächen",
+          "round": 0,
+          "solution": "{n} Seitenflächen + Grundfläche + Deckfläche = {ergebnis}",
+          "misconceptions": [
+            {
+              "id": "nur_eine_grundflaeche",
+              "value": "n + 1",
+              "feedback": "Grund- UND Deckfläche zählen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-01-4",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 12
+            }
+          },
+          "template": "Ein Würfel hat die Kantenlänge {a} cm. Wie lang sind alle Kanten zusammen?",
+          "answer": "12 * a",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "12 · {a} cm = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "kantenzahl_falsch",
+              "value": "8 * a",
+              "feedback": "Ein Würfel hat 12 Kanten, nicht 8."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-01-5",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 10
+            },
+            "b": {
+              "von": 2,
+              "bis": 10
+            },
+            "c": {
+              "von": 2,
+              "bis": 10
+            }
+          },
+          "template": "Ein Quader ist {a} cm lang, {b} cm breit und {c} cm hoch. Zeichne das Netz und berechne die Summe aller Kantenlängen.",
+          "answer": "4 * (a + b + c)",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "4 · ({a} + {b} + {c}) = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "nur_zwei_kanten",
+              "value": "a + b + c",
+              "feedback": "Jede Kantenlänge kommt viermal vor."
+            }
+          ]
+        }
+      ]
+    },
+    "kp-02": {
+      "auftrag": "Schreibe bei jeder Umrechnung den Umrechnungsfaktor dazu (·100 bei Flächen, ·1000 bei Volumen).",
+      "aufgaben": [
+        {
+          "id": "AB-KP-02-1",
+          "vars": {
+            "x": {
+              "von": 2,
+              "bis": 90,
+              "schritt": 2
+            }
+          },
+          "template": "Rechne um: {x} dm³ = ? Liter",
+          "answer": "x",
+          "unit_label": "Liter",
+          "round": 1,
+          "solution": "1 dm³ = 1 Liter, also {ergebnis} Liter",
+          "misconceptions": [
+            {
+              "id": "liter_als_kubikzentimeter",
+              "value": "x * 1000",
+              "feedback": "1 dm³ ist genau 1 Liter, nicht 1000."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-02-2",
+          "vars": {
+            "x": {
+              "von": 1,
+              "bis": 40
+            }
+          },
+          "template": "Rechne um: {x} m³ = ? dm³",
+          "answer": "x * 1000",
+          "unit_label": "dm³",
+          "round": 0,
+          "solution": "1 m³ = 1000 dm³, also {x} · 1000 = {ergebnis} dm³",
+          "misconceptions": [
+            {
+              "id": "quadrat_statt_kubik",
+              "value": "x * 100",
+              "feedback": "Bei Volumen ist der Faktor 1000, bei Flächen 100."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-02-3",
+          "vars": {
+            "x": {
+              "von": 1,
+              "bis": 50
+            }
+          },
+          "template": "Rechne um: {x} m² = ? dm²",
+          "answer": "x * 100",
+          "unit_label": "dm²",
+          "round": 0,
+          "solution": "1 m² = 100 dm², also {ergebnis} dm²",
+          "misconceptions": [
+            {
+              "id": "faktor_1000_bei_flaeche",
+              "value": "x * 1000",
+              "feedback": "Bei Flächen ist der Faktor 100."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-02-4",
+          "vars": {
+            "x": {
+              "von": 1000,
+              "bis": 90000,
+              "schritt": 1000
+            }
+          },
+          "template": "Rechne um: {x} cm³ = ? Liter",
+          "answer": "x / 1000",
+          "unit_label": "Liter",
+          "round": 2,
+          "solution": "1000 cm³ = 1 Liter, also {x} : 1000 = {ergebnis} Liter",
+          "misconceptions": [
+            {
+              "id": "faktor_100_bei_volumen",
+              "value": "x / 100",
+              "feedback": "1 Liter sind 1000 cm³."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-02-5",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 20
+            },
+            "b": {
+              "von": 2,
+              "bis": 20
+            },
+            "c": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Ein Becken ist {a} dm lang, {b} dm breit und {c} dm hoch. Wie viel Liter passen hinein?",
+          "answer": "a * b * c",
+          "unit_label": "Liter",
+          "round": 0,
+          "solution": "{a} · {b} · {c} = {a*b*c} dm³ = {ergebnis} Liter"
+        }
+      ]
+    },
+    "kp-03": {
+      "auftrag": "Zeichne zu jeder Aufgabe das Netz und beschrifte die einzelnen Rechtecke.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-03-1",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "template": "Berechne die Oberfläche eines Würfels mit der Kantenlänge {a} cm.",
+          "answer": "6 * a * a",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "O = 6 · {a}² = 6 · {a*a} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "kante_nicht_quadriert",
+              "value": "6 * a",
+              "feedback": "Jede Fläche ist a · a."
+            },
+            {
+              "id": "nur_eine_flaeche",
+              "value": "a * a",
+              "feedback": "Ein Würfel hat sechs Flächen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-03-2",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 14
+            },
+            "b": {
+              "von": 2,
+              "bis": 14
+            },
+            "c": {
+              "von": 2,
+              "bis": 14
+            }
+          },
+          "template": "Berechne die Oberfläche eines Quaders mit {a} cm · {b} cm · {c} cm.",
+          "answer": "2 * (a * b + a * c + b * c)",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "O = 2 · ({a}·{b} + {a}·{c} + {b}·{c}) = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "nur_drei_flaechen",
+              "value": "a * b + a * c + b * c",
+              "feedback": "Jede Fläche kommt zweimal vor."
+            },
+            {
+              "id": "oberflaeche_statt_volumen",
+              "value": "a * b * c",
+              "feedback": "Das ist das Volumen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-03-3",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 20
+            },
+            "b": {
+              "von": 3,
+              "bis": 20
+            },
+            "c": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Eine Schachtel {a} cm · {b} cm · {c} cm hat keinen Deckel. Wie viel Karton wird gebraucht?",
+          "answer": "a * b + 2 * a * c + 2 * b * c",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "Boden {a*b} + 2 Seiten {2*a*c} + 2 Seiten {2*b*c} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "deckel_mitgezaehlt",
+              "value": "2 * (a * b + a * c + b * c)",
+              "feedback": "Der Deckel fehlt bei dieser Schachtel."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-03-4",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 12
+            },
+            "f": {
+              "aus": [
+                2,
+                3
+              ]
+            }
+          },
+          "template": "Ein Würfel hat die Kantenlänge {a} cm. Wie groß ist die Oberfläche eines Würfels mit der {f}-fachen Kantenlänge?",
+          "answer": "6 * (f * a) * (f * a)",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "Neue Kante: {f*a} cm. O = 6 · {f*a}² = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "oberflaechen_faktor",
+              "value": "6 * a * a * f",
+              "feedback": "Bei {f}-facher Kante wird die Oberfläche {f*f}-mal so groß."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-03-5",
+          "vars": {
+            "O": {
+              "aus": [
+                24,
+                54,
+                96,
+                150,
+                216,
+                294,
+                384
+              ]
+            }
+          },
+          "berechnet": {
+            "a": "wurzel(O / 6)"
+          },
+          "template": "Ein Würfel hat die Oberfläche {O} cm². Wie lang ist eine Kante?",
+          "answer": "wurzel(O / 6)",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "{O} : 6 = {O/6} cm² je Fläche, also a = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "wurzel_vergessen",
+              "value": "O / 6",
+              "feedback": "Aus dem Flächeninhalt einer Fläche muss die Wurzel gezogen werden."
+            }
+          ]
+        }
+      ]
+    },
+    "kp-04": {
+      "auftrag": "Schreibe bei jeder Aufgabe die Formel hin, bevor du Zahlen einsetzt.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-04-1",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "template": "Berechne das Volumen eines Würfels mit der Kantenlänge {a} cm.",
+          "answer": "a * a * a",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "V = {a}³ = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "quadrat_statt_kubik",
+              "value": "a * a",
+              "feedback": "Beim Volumen wird dreimal multipliziert."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-04-2",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 20
+            },
+            "b": {
+              "von": 2,
+              "bis": 20
+            },
+            "c": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Berechne das Volumen eines Quaders mit {a} cm · {b} cm · {c} cm.",
+          "answer": "a * b * c",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "V = {a} · {b} · {c} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "volumen_statt_oberflaeche",
+              "value": "2 * (a * b + a * c + b * c)",
+              "feedback": "Das ist die Oberfläche."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-04-3",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 15
+            },
+            "b": {
+              "von": 2,
+              "bis": 15
+            },
+            "c": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "template": "Ein Aquarium misst {a} dm · {b} dm · {c} dm. Wie viel Liter fasst es?",
+          "answer": "a * b * c",
+          "unit_label": "Liter",
+          "round": 1,
+          "solution": "V = {a} · {b} · {c} = {a*b*c} dm³ = {ergebnis} Liter"
+        },
+        {
+          "id": "AB-KP-04-4",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 10
+            },
+            "f": {
+              "aus": [
+                2,
+                3
+              ]
+            }
+          },
+          "template": "Wie groß ist das Volumen eines Würfels mit der {f}-fachen Kantenlänge von {a} cm?",
+          "answer": "(f * a) * (f * a) * (f * a)",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "Neue Kante {f*a} cm, V = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "volumen_faktor",
+              "value": "a * a * a * f",
+              "feedback": "Bei {f}-facher Kante wird das Volumen {f*f*f}-mal so groß."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-04-5",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 20
+            },
+            "b": {
+              "von": 2,
+              "bis": 20
+            },
+            "V": {
+              "von": 60,
+              "bis": 2000,
+              "schritt": 20
+            }
+          },
+          "bedingung": "ganz(V * 10 / (a * b))",
+          "template": "Ein Quader hat das Volumen {V} cm², die Grundfläche misst {a} cm · {b} cm. Wie hoch ist er?",
+          "answer": "V / (a * b)",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "h = {V} : ({a} · {b}) = {ergebnis} cm"
+        }
+      ]
+    },
+    "kp-05": {
+      "auftrag": "Stelle die Formel schriftlich um, bevor du rechnest. Notiere jeden Schritt.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-05-1",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 20
+            },
+            "b": {
+              "von": 2,
+              "bis": 20
+            },
+            "c": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "berechnet": {
+            "V": "a * b * c"
+          },
+          "template": "Ein Quader hat das Volumen {V} cm³, ist {a} cm lang und {b} cm breit. Wie hoch ist er?",
+          "answer": "V / (a * b)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "h = {V} : ({a} · {b}) = {ergebnis} cm"
+        },
+        {
+          "id": "AB-KP-05-2",
+          "vars": {
+            "a": {
+              "aus": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                12
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "a * a * a"
+          },
+          "template": "Ein Würfel hat das Volumen {V} cm³. Wie lang ist eine Kante?",
+          "answer": "a",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "Gesucht ist die Zahl, die dreimal mit sich selbst multipliziert {V} ergibt: {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "geteilt_durch_drei",
+              "value": "V / 3",
+              "feedback": "Dritte Wurzel, nicht Division durch 3."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-05-3",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 15
+            },
+            "b": {
+              "von": 2,
+              "bis": 15
+            },
+            "c": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "berechnet": {
+            "O": "2 * (a * b + a * c + b * c)"
+          },
+          "template": "Ein Quader hat die Oberfläche {O} cm², ist {a} cm lang und {b} cm breit. Wie hoch ist er?",
+          "answer": "(O / 2 - a * b) / (a + b)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "O : 2 = {O/2}; minus {a*b} ergibt {O/2-a*b}; geteilt durch ({a} + {b}) = {ergebnis} cm"
+        },
+        {
+          "id": "AB-KP-05-4",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 20
+            },
+            "c": {
+              "von": 2,
+              "bis": 20
+            },
+            "V": {
+              "von": 40,
+              "bis": 2000,
+              "schritt": 20
+            }
+          },
+          "bedingung": "ganz(V * 10 / (a * c))",
+          "template": "Ein Quader mit dem Volumen {V} cm³ ist {a} cm lang und {c} cm hoch. Wie breit ist er?",
+          "answer": "V / (a * c)",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "b = {V} : ({a} · {c}) = {ergebnis} cm"
+        },
+        {
+          "id": "AB-KP-05-5",
+          "vars": {
+            "a": {
+              "aus": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                8,
+                10
+              ]
+            }
+          },
+          "berechnet": {
+            "O": "6 * a * a"
+          },
+          "template": "Ein Würfel hat die Oberfläche {O} cm². Wie groß ist sein Volumen?",
+          "answer": "a * a * a",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "Eine Fläche: {O} : 6 = {a*a} cm², also a = {a} cm. V = {ergebnis} cm³"
+        }
+      ]
+    },
+    "kp-06": {
+      "auftrag": "Zeichne bei jeder Aufgabe die Grundfläche gesondert und beschrifte sie.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-06-1",
+          "vars": {
+            "G": {
+              "von": 4,
+              "bis": 60,
+              "schritt": 2
+            },
+            "h": {
+              "von": 2,
+              "bis": 25
+            }
+          },
+          "template": "Ein Prisma hat die Grundfläche {G} cm² und die Höhe {h} cm. Berechne das Volumen.",
+          "answer": "G * h",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "V = G · h = {G} · {h} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "geteilt_statt_mal",
+              "value": "G / h",
+              "feedback": "Grundfläche mal Höhe."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-06-2",
+          "vars": {
+            "g": {
+              "von": 2,
+              "bis": 20
+            },
+            "hg": {
+              "von": 2,
+              "bis": 20,
+              "schritt": 2
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Die Grundfläche eines Prismas ist ein Dreieck mit g = {g} cm und Dreieckshöhe = {hg} cm. Der Körper ist {h} cm hoch. Berechne das Volumen.",
+          "answer": "g * hg / 2 * h",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "G = {g} · {hg} : 2 = {g*hg/2} cm². V = {g*hg/2} · {h} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "dreieck_halbe_vergessen",
+              "value": "g * hg * h",
+              "feedback": "Beim Dreieck fehlt die Division durch 2."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-06-3",
+          "vars": {
+            "V": {
+              "von": 60,
+              "bis": 900,
+              "schritt": 20
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "bedingung": "ganz(V * 10 / h)",
+          "template": "Ein Prisma hat das Volumen {V} cm³ und die Höhe {h} cm. Wie groß ist die Grundfläche?",
+          "answer": "V / h",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "G = {V} : {h} = {ergebnis} cm²"
+        },
+        {
+          "id": "AB-KP-06-4",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 15
+            },
+            "b": {
+              "von": 2,
+              "bis": 15
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Ein Prisma hat als Grundfläche ein Rechteck {a} cm · {b} cm und ist {h} cm hoch. Berechne das Volumen. Welcher bekannte Körper ist das?",
+          "answer": "a * b * h",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "Das ist ein Quader. V = {a} · {b} · {h} = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-KP-06-5",
+          "vars": {
+            "G": {
+              "von": 6,
+              "bis": 60,
+              "schritt": 3
+            },
+            "V": {
+              "von": 60,
+              "bis": 1200,
+              "schritt": 30
+            }
+          },
+          "bedingung": "ganz(V * 10 / G)",
+          "template": "Ein Prisma mit der Grundfläche {G} cm² hat das Volumen {V} cm³. Wie hoch ist es?",
+          "answer": "V / G",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "h = {V} : {G} = {ergebnis} cm"
+        }
+      ]
+    },
+    "kp-07": {
+      "auftrag": "Berechne zuerst die Grundfläche, dann das Volumen. Schreibe beide Zwischenergebnisse auf.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-07-1",
+          "vars": {
+            "g": {
+              "von": 3,
+              "bis": 20
+            },
+            "hg": {
+              "von": 2,
+              "bis": 20,
+              "schritt": 2
+            },
+            "h": {
+              "von": 3,
+              "bis": 25
+            }
+          },
+          "template": "Dreiecksprisma: Grunddreieck mit g = {g} cm, h = {hg} cm; Körperhöhe {h} cm. Berechne das Volumen.",
+          "answer": "g * hg / 2 * h",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "G = {g*hg/2} cm², V = {g*hg/2} · {h} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "dreieck_halbe_vergessen",
+              "value": "g * hg * h",
+              "feedback": "Die Hälfte beim Dreieck fehlt."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-07-2",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "c": {
+              "von": 3,
+              "bis": 15
+            },
+            "hg": {
+              "von": 2,
+              "bis": 16,
+              "schritt": 2
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "bedingung": "a != c",
+          "template": "Trapezprisma: Grundfläche ein Trapez mit a = {a} cm, c = {c} cm, Trapezhöhe = {hg} cm; Körperhöhe {h} cm. Berechne das Volumen.",
+          "answer": "(a + c) / 2 * hg * h",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "G = ({a} + {c}) : 2 · {hg} = {(a+c)/2*hg} cm². V = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-KP-07-3",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 12
+            },
+            "b": {
+              "von": 3,
+              "bis": 12
+            },
+            "e": {
+              "von": 1,
+              "bis": 6
+            },
+            "f": {
+              "von": 1,
+              "bis": 6
+            },
+            "h": {
+              "von": 3,
+              "bis": 15
+            }
+          },
+          "bedingung": "(e < a) * (f < b)",
+          "template": "Die Grundfläche ist eine L-Form: ein Rechteck {a} cm · {b} cm, aus dem eine Ecke {e} cm · {f} cm ausgeschnitten ist. Körperhöhe {h} cm. Berechne das Volumen.",
+          "answer": "(a * b - e * f) * h",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "G = {a*b} − {e*f} = {a*b-e*f} cm². V = {a*b-e*f} · {h} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "nur_teil_berechnet",
+              "value": "a * b * h",
+              "feedback": "Der Ausschnitt muss abgezogen werden."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-07-4",
+          "vars": {
+            "g": {
+              "von": 4,
+              "bis": 20,
+              "schritt": 2
+            },
+            "hg": {
+              "von": 2,
+              "bis": 20,
+              "schritt": 2
+            },
+            "V": {
+              "von": 100,
+              "bis": 2000,
+              "schritt": 50
+            }
+          },
+          "bedingung": "ganz(V * 10 / (g * hg / 2))",
+          "template": "Ein Dreiecksprisma mit g = {g} cm und Dreieckshöhe = {hg} cm hat das Volumen {V} cm³. Wie hoch ist der Körper?",
+          "answer": "V / (g * hg / 2)",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "G = {g*hg/2} cm². h = {V} : {g*hg/2} = {ergebnis} cm"
+        },
+        {
+          "id": "AB-KP-07-5",
+          "vars": {
+            "g": {
+              "von": 4,
+              "bis": 16,
+              "schritt": 2
+            },
+            "hg": {
+              "von": 2,
+              "bis": 14,
+              "schritt": 2
+            },
+            "h": {
+              "von": 5,
+              "bis": 30,
+              "schritt": 5
+            }
+          },
+          "template": "Ein Dreiecksprisma (g = {g} cm, Dreieckshöhe = {hg} cm, Körperhöhe {h} cm) wird mit Wasser gefüllt. Wie viel Liter passen hinein? (1000 cm³ = 1 Liter)",
+          "answer": "g * hg / 2 * h / 1000",
+          "unit_label": "Liter",
+          "round": 3,
+          "solution": "V = {g*hg/2*h} cm³ = {ergebnis} Liter",
+          "misconceptions": [
+            {
+              "id": "nicht_in_liter",
+              "value": "g * hg / 2 * h",
+              "feedback": "Noch durch 1000 teilen."
+            }
+          ]
+        }
+      ]
+    },
+    "kp-08": {
+      "auftrag": "Zeichne das Netz. Rechne Grundflächen und Mantel getrennt und addiere erst am Ende.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-08-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 12
+            },
+            "b": {
+              "von": 3,
+              "bis": 12
+            },
+            "c": {
+              "von": 3,
+              "bis": 12
+            },
+            "hg": {
+              "von": 2,
+              "bis": 10
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "bedingung": "ganz(a * hg / 2 * 10)",
+          "template": "Ein Dreiecksprisma hat ein Grunddreieck mit den Seiten {a} cm, {b} cm und {c} cm, der Flächeninhalt beträgt {a*hg/2} cm². Die Körperhöhe ist {h} cm. Berechne den Mantel.",
+          "answer": "(a + b + c) * h",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "M = Umfang · Höhe = ({a} + {b} + {c}) · {h} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "nur_eine_flaeche",
+              "value": "a * h",
+              "feedback": "Alle drei Seitenflächen zählen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-08-2",
+          "vars": {
+            "g": {
+              "von": 4,
+              "bis": 16,
+              "schritt": 2
+            },
+            "hg": {
+              "von": 2,
+              "bis": 14,
+              "schritt": 2
+            },
+            "u": {
+              "von": 12,
+              "bis": 40,
+              "schritt": 2
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Ein Dreiecksprisma: Grundfläche {g*hg/2} cm² (g = {g} cm, h = {hg} cm), Umfang des Dreiecks {u} cm, Körperhöhe {h} cm. Berechne die Oberfläche.",
+          "answer": "2 * (g * hg / 2) + u * h",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "O = 2 · {g*hg/2} + {u} · {h} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "nur_eine_grundflaeche",
+              "value": "g * hg / 2 + u * h",
+              "feedback": "Grund- UND Deckfläche zählen."
+            },
+            {
+              "id": "mantel_vergessen",
+              "value": "2 * (g * hg / 2)",
+              "feedback": "Der Mantel fehlt."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-08-3",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 12
+            },
+            "b": {
+              "von": 3,
+              "bis": 12
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "berechnet": {
+            "c": "wurzel(a * a + b * b)"
+          },
+          "bedingung": "ganz(wurzel(a * a + b * b))",
+          "template": "Ein Prisma hat als Grundfläche ein rechtwinkliges Dreieck mit den Katheten {a} cm und {b} cm. Berechne zuerst die Hypotenuse mit dem Satz des Pythagoras.",
+          "answer": "wurzel(a * a + b * b)",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "c² = {a}² + {b}² = {a*a+b*b}, also c = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "wurzel_vergessen",
+              "value": "a * a + b * b",
+              "feedback": "Die Wurzel fehlt."
+            },
+            {
+              "id": "seiten_addiert",
+              "value": "a + b",
+              "feedback": "Die Seiten werden nicht addiert, sondern quadriert."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-08-4",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 12
+            },
+            "b": {
+              "von": 3,
+              "bis": 12
+            },
+            "h": {
+              "von": 3,
+              "bis": 15
+            }
+          },
+          "berechnet": {
+            "c": "wurzel(a * a + b * b)"
+          },
+          "bedingung": "ganz(wurzel(a * a + b * b))",
+          "template": "Grundfläche: rechtwinkliges Dreieck mit den Katheten {a} cm und {b} cm, Hypotenuse {c} cm. Körperhöhe {h} cm. Berechne die Oberfläche.",
+          "answer": "2 * (a * b / 2) + (a + b + c) * h",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "G = {a*b/2} cm², M = ({a} + {b} + {c}) · {h} = {(a+b+c)*h} cm². O = {ergebnis} cm²"
+        },
+        {
+          "id": "AB-KP-08-5",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 14
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Ein Prisma hat als Grundfläche ein Quadrat mit der Seite {a} cm und ist {h} cm hoch. Berechne die Oberfläche.",
+          "answer": "2 * a * a + 4 * a * h",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "O = 2 · {a*a} + 4 · {a} · {h} = {ergebnis} cm²"
+        }
+      ]
+    },
+    "kp-09": {
+      "auftrag": "Rechne mit π ≈ 3,14. Schreibe die Formel V = π · r² · h jedes Mal auf.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-09-1",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 12
+            },
+            "h": {
+              "von": 2,
+              "bis": 25
+            }
+          },
+          "template": "Berechne das Volumen eines Zylinders mit r = {r} cm und h = {h} cm. Rechne mit π ≈ 3,14.",
+          "answer": "3.14 * r * r * h",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "V = 3,14 · {r}² · {h} = 3,14 · {r*r} · {h} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "radius_nicht_quadriert",
+              "value": "3.14 * r * h",
+              "feedback": "Der Radius muss quadriert werden."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-09-2",
+          "vars": {
+            "d": {
+              "von": 2,
+              "bis": 24,
+              "schritt": 2
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Ein Zylinder hat den Durchmesser {d} cm und die Höhe {h} cm. Berechne das Volumen (π ≈ 3,14).",
+          "answer": "3.14 * (d / 2) * (d / 2) * h",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "r = {d} : 2 = {d/2} cm. V = 3,14 · {d/2*d/2} · {h} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "durchmesser_als_radius",
+              "value": "3.14 * d * d * h",
+              "feedback": "Erst den Durchmesser halbieren."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-09-3",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 10
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "berechnet": {
+            "V": "3.14 * r * r * h / 1000"
+          },
+          "bedingung": "betrag(V * 1000 - runde(V * 1000)) < 0.4",
+          "gerundet": true,
+          "template": "Eine zylindrische Dose hat r = {r} cm und h = {h} cm. Wie viel Liter passen hinein? (π ≈ 3,14; 1000 cm³ = 1 Liter) Runde auf drei Nachkommastellen.",
+          "answer": "3.14 * r * r * h / 1000",
+          "unit_label": "Liter",
+          "round": 3,
+          "solution": "V = {3.14*r*r*h} cm³ = {ergebnis} Liter",
+          "misconceptions": [
+            {
+              "id": "nicht_in_liter",
+              "value": "3.14 * r * r * h",
+              "feedback": "Noch durch 1000 teilen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-09-4",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 10
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "berechnet": {
+            "V": "3.14 * r * r * h"
+          },
+          "template": "Ein Zylinder mit r = {r} cm hat das Volumen {V} cm³. Wie hoch ist er? (π ≈ 3,14)",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Grundkreis: 3,14 · {r*r} = {3.14*r*r} cm². h = {V} : {3.14*r*r} = {ergebnis} cm"
+        },
+        {
+          "id": "AB-KP-09-5",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            },
+            "f": {
+              "aus": [
+                2,
+                3
+              ]
+            }
+          },
+          "template": "Ein Zylinder hat r = {r} cm und h = {h} cm. Wie groß ist das Volumen, wenn der Radius {f}-mal so groß wird? (π ≈ 3,14)",
+          "answer": "3.14 * (f * r) * (f * r) * h",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Neuer Radius {f*r} cm. V = 3,14 · {f*r*f*r} · {h} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "volumen_faktor",
+              "value": "3.14 * r * r * h * f",
+              "feedback": "Bei {f}-fachem Radius wird das Volumen {f*f}-mal so groß."
+            }
+          ]
+        }
+      ]
+    },
+    "kp-10": {
+      "auftrag": "Zeichne die Abwicklung: zwei Kreise und ein Rechteck. Beschrifte die Rechteckseiten.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-10-1",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 12
+            },
+            "h": {
+              "von": 2,
+              "bis": 25
+            }
+          },
+          "template": "Berechne den Mantel eines Zylinders mit r = {r} cm und h = {h} cm (π ≈ 3,14).",
+          "answer": "2 * 3.14 * r * h",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "M = 2 · 3,14 · {r} · {h} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "mantel_als_kreis",
+              "value": "3.14 * r * r",
+              "feedback": "Der Mantel ist ein Rechteck: Umfang mal Höhe."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-10-2",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 12
+            },
+            "h": {
+              "von": 2,
+              "bis": 25
+            }
+          },
+          "template": "Berechne die Oberfläche eines Zylinders mit r = {r} cm und h = {h} cm (π ≈ 3,14).",
+          "answer": "2 * 3.14 * r * r + 2 * 3.14 * r * h",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "2 Kreise: {2*3.14*r*r} cm². Mantel: {2*3.14*r*h} cm². O = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "mantel_vergessen",
+              "value": "2 * 3.14 * r * r",
+              "feedback": "Der Mantel fehlt."
+            },
+            {
+              "id": "nur_ein_kreis",
+              "value": "3.14 * r * r + 2 * 3.14 * r * h",
+              "feedback": "Es sind zwei Kreise."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-10-3",
+          "vars": {
+            "d": {
+              "von": 2,
+              "bis": 20,
+              "schritt": 2
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Ein Zylinder hat den Durchmesser {d} cm und die Höhe {h} cm. Berechne die Oberfläche (π ≈ 3,14).",
+          "answer": "2 * 3.14 * (d / 2) * (d / 2) + 2 * 3.14 * (d / 2) * h",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "r = {d/2} cm. O = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "durchmesser_als_radius",
+              "value": "2 * 3.14 * d * d + 2 * 3.14 * d * h",
+              "feedback": "Erst halbieren."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-10-4",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Eine Konservendose (r = {r} cm, h = {h} cm) bekommt ein Etikett rundherum, ohne Deckel und Boden. Wie viel cm² Papier werden gebraucht? (π ≈ 3,14)",
+          "answer": "2 * 3.14 * r * h",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Nur der Mantel: 2 · 3,14 · {r} · {h} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "deckel_mitgezaehlt",
+              "value": "2 * 3.14 * r * r + 2 * 3.14 * r * h",
+              "feedback": "Deckel und Boden werden hier nicht beklebt."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-10-5",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 15
+            },
+            "h": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Ein oben offener zylindrischer Eimer hat r = {r} cm und h = {h} cm. Wie groß ist die Oberfläche? (π ≈ 3,14)",
+          "answer": "3.14 * r * r + 2 * 3.14 * r * h",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Ein Kreis {3.14*r*r} + Mantel {2*3.14*r*h} = {ergebnis} cm²"
+        }
+      ]
+    },
+    "kp-11": {
+      "auftrag": "Zerlege jeden Körper schriftlich in Teilkörper. Schreibe auf, was addiert und was subtrahiert wird.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-11-1",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 20,
+              "schritt": 2
+            },
+            "b": {
+              "von": 4,
+              "bis": 20,
+              "schritt": 2
+            },
+            "c": {
+              "von": 2,
+              "bis": 12
+            },
+            "d": {
+              "von": 2,
+              "bis": 10
+            }
+          },
+          "template": "Ein Körper besteht aus zwei Quadern: {a} cm · {b} cm · {c} cm und {a} cm · {b} cm · {d} cm, aufeinandergesetzt. Berechne das Volumen.",
+          "answer": "a * b * c + a * b * d",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "{a*b*c} + {a*b*d} = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-KP-11-2",
+          "vars": {
+            "a": {
+              "von": 6,
+              "bis": 20,
+              "schritt": 2
+            },
+            "b": {
+              "von": 6,
+              "bis": 20,
+              "schritt": 2
+            },
+            "c": {
+              "von": 4,
+              "bis": 15
+            },
+            "e": {
+              "von": 1,
+              "bis": 5
+            }
+          },
+          "bedingung": "(2 * e < a) * (2 * e < b)",
+          "template": "Aus einem Quader {a} cm · {b} cm · {c} cm wird ein durchgehendes quadratisches Loch mit der Seitenlänge {e} cm gebohrt (senkrecht, ganze Höhe). Wie groß ist das Restvolumen?",
+          "answer": "a * b * c - e * e * c",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "{a*b*c} − {e*e*c} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "innen_vergessen",
+              "value": "a * b * c",
+              "feedback": "Das Loch muss abgezogen werden."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-11-3",
+          "vars": {
+            "V": {
+              "von": 100,
+              "bis": 3000,
+              "schritt": 100
+            },
+            "dichte": {
+              "aus": [
+                0.5,
+                1,
+                2,
+                2.5,
+                7
+              ]
+            }
+          },
+          "template": "Ein Körper hat das Volumen {V} cm³ und die Dichte {dichte} g/cm³. Wie schwer ist er?",
+          "answer": "V * dichte",
+          "unit_label": "g",
+          "round": 1,
+          "solution": "m = {V} · {dichte} = {ergebnis} g",
+          "misconceptions": [
+            {
+              "id": "geteilt_statt_mal",
+              "value": "V / dichte",
+              "feedback": "Masse = Volumen · Dichte."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-11-4",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 10
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            },
+            "a": {
+              "von": 6,
+              "bis": 24,
+              "schritt": 2
+            }
+          },
+          "bedingung": "2 * r < a",
+          "template": "In einen Quader mit quadratischer Grundfläche ({a} cm · {a} cm, Höhe {h} cm) wird ein Zylinder (r = {r} cm, gleiche Höhe) hineingesteckt. Wie viel Luft bleibt? (π ≈ 3,14)",
+          "answer": "a * a * h - 3.14 * r * r * h",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "{a*a*h} − {3.14*r*r*h} = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-KP-11-5",
+          "vars": {
+            "aussen": {
+              "von": 6,
+              "bis": 20,
+              "schritt": 2
+            },
+            "wand": {
+              "aus": [
+                1,
+                2
+              ]
+            },
+            "h": {
+              "von": 4,
+              "bis": 20,
+              "schritt": 2
+            }
+          },
+          "bedingung": "aussen - 2 * wand > 1",
+          "template": "Ein oben offener Kasten hat außen {aussen} cm · {aussen} cm · {h} cm bei {wand} cm Wandstärke (Boden ebenfalls {wand} cm). Wie viel Liter fasst er innen? (1000 cm³ = 1 Liter)",
+          "answer": "(aussen - 2 * wand) * (aussen - 2 * wand) * (h - wand) / 1000",
+          "unit_label": "Liter",
+          "round": 4,
+          "solution": "Innen: {aussen-2*wand} cm · {aussen-2*wand} cm · {h-wand} cm = {(aussen-2*wand)*(aussen-2*wand)*(h-wand)} cm³ = {ergebnis} Liter",
+          "misconceptions": [
+            {
+              "id": "innen_vergessen",
+              "value": "aussen * aussen * h / 1000",
+              "feedback": "Die Wandstärke muss abgezogen werden."
+            }
+          ]
+        }
+      ]
+    },
+    "kp-12": {
+      "auftrag": "Entscheide bei jeder Aufgabe zuerst schriftlich: Volumen oder Oberfläche? Begründe kurz.",
+      "aufgaben": [
+        {
+          "id": "AB-KP-12-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "b": {
+              "von": 3,
+              "bis": 15
+            },
+            "c": {
+              "von": 3,
+              "bis": 15
+            }
+          },
+          "template": "Ein Karton {a} cm · {b} cm · {c} cm soll ganz beklebt werden. Wie viel cm² Papier braucht man?",
+          "answer": "2 * (a * b + a * c + b * c)",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "Oberfläche: 2 · ({a*b} + {a*c} + {b*c}) = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "oberflaeche_statt_volumen",
+              "value": "a * b * c",
+              "feedback": "Bekleben heißt Oberfläche."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-12-2",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Wie viel Wasser passt in einen zylindrischen Behälter mit r = {r} cm und h = {h} cm? (π ≈ 3,14)",
+          "answer": "3.14 * r * r * h",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Volumen: 3,14 · {r*r} · {h} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "volumen_statt_oberflaeche",
+              "value": "2 * 3.14 * r * r + 2 * 3.14 * r * h",
+              "feedback": "„Passt hinein“ heißt Volumen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-12-3",
+          "vars": {
+            "g": {
+              "von": 4,
+              "bis": 18,
+              "schritt": 2
+            },
+            "hg": {
+              "von": 2,
+              "bis": 16,
+              "schritt": 2
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Ein Dreiecksprisma (Grunddreieck g = {g} cm, h = {hg} cm; Körperhöhe {h} cm) wird gegossen. Wie viel Material braucht man?",
+          "answer": "g * hg / 2 * h",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "Volumen: {g*hg/2} · {h} = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-KP-12-4",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 20,
+              "schritt": 2
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Ein quadratisches Prisma ({a} cm Grundkante, {h} cm hoch) bekommt einen Anstrich — außen, ohne Boden. Wie viel cm²?",
+          "answer": "a * a + 4 * a * h",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "Deckel {a*a} + Mantel {4*a*h} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_mitgezaehlt",
+              "value": "2 * a * a + 4 * a * h",
+              "feedback": "Der Boden wird nicht gestrichen."
+            }
+          ]
+        },
+        {
+          "id": "AB-KP-12-5",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 10
+            },
+            "h": {
+              "von": 4,
+              "bis": 20,
+              "schritt": 2
+            }
+          },
+          "berechnet": {
+            "V": "3.14 * r * r * h"
+          },
+          "template": "Ein Zylinder mit r = {r} cm hat das Volumen {V} cm³. Wie hoch ist er, und wie groß ist sein Mantel? Gib die Höhe an. (π ≈ 3,14)",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "h = {V} : (3,14 · {r*r}) = {ergebnis} cm; Mantel = {2*3.14*r*h} cm²"
+        }
+      ]
+    }
+  }
+}

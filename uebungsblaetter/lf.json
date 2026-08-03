@@ -1,0 +1,871 @@
+{
+  "bereich": "LF",
+  "title": "Lineare Funktionen",
+  "_hinweis": "Siehe uebungsblaetter/pz.json. Bei Steigungen und y-Werten sind negative Ergebnisse ausdrücklich erlaubt — deshalb steht dort kein unit_label aus der Positivliste des Prüfers.",
+  "einheiten": {
+    "lf-01": {
+      "auftrag": "Zeichne zu jeder Aufgabe eine kleine Skizze mit beschrifteten Achsen, bevor du rechnest.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-01-1",
+          "vars": { "start": { "von": 2, "bis": 20, "schritt": 2 }, "m": { "von": 2, "bis": 9 }, "t": { "von": 3, "bis": 12 } },
+          "template": "Ein Wasserbehälter enthält {start} Liter. Pro Minute fließen {m} Liter zu. Wie viel Liter sind nach {t} Minuten drin?",
+          "answer": "start + m * t",
+          "unit_label": "l",
+          "round": 0,
+          "solution": "{start} + {m} · {t} = {ergebnis} l",
+          "misconceptions": [
+            { "id": "b_vergessen", "value": "m * t", "feedback": "Die {start} Liter am Anfang fehlen." }
+          ]
+        },
+        {
+          "id": "AB-LF-01-2",
+          "vars": { "start": { "von": 40, "bis": 200, "schritt": 20 }, "m": { "von": 2, "bis": 10 }, "t": { "von": 2, "bis": 12 } },
+          "bedingung": "start - m * t > 0",
+          "template": "Ein Tank enthält {start} Liter, pro Minute laufen {m} Liter ab. Wie viel ist nach {t} Minuten noch drin?",
+          "answer": "start - m * t",
+          "unit_label": "l",
+          "round": 0,
+          "solution": "{start} − {m} · {t} = {ergebnis} l",
+          "misconceptions": [
+            { "id": "vorzeichen_uebersehen", "value": "start + m * t", "feedback": "Es läuft ab, also wird abgezogen." }
+          ]
+        },
+        {
+          "id": "AB-LF-01-3",
+          "vars": { "m": { "von": 2, "bis": 12 }, "b": { "von": 1, "bis": 30 }, "x": { "von": 2, "bis": 15 } },
+          "template": "Ein Graph beginnt bei {b} und steigt pro Schritt um {m}. Welchen Wert hat er bei x = {x}?",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "{m} · {x} + {b} = {ergebnis}",
+          "misconceptions": [
+            { "id": "b_vergessen", "value": "m * x", "feedback": "Der Startwert {b} fehlt." }
+          ]
+        },
+        {
+          "id": "AB-LF-01-4",
+          "vars": { "grund": { "von": 5, "bis": 25, "schritt": 5 }, "proStk": { "von": 2, "bis": 9 }, "n": { "von": 3, "bis": 20 } },
+          "template": "Ein Handytarif kostet {grund} € Grundgebühr und {proStk} € pro Gigabyte. Was kosten {n} Gigabyte?",
+          "answer": "grund + proStk * n",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{grund} + {proStk} · {n} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "grundpreis_vergessen", "value": "proStk * n", "feedback": "Die Grundgebühr fehlt." }
+          ]
+        },
+        {
+          "id": "AB-LF-01-5",
+          "vars": { "m": { "von": 3, "bis": 15 }, "b": { "von": 5, "bis": 40, "schritt": 5 }, "y": { "von": 50, "bis": 300, "schritt": 10 } },
+          "bedingung": "ganz((y - b) / m) * ((y - b) / m > 0)",
+          "template": "Ein Wert startet bei {b} und wächst um {m} pro Schritt. Nach wie vielen Schritten ist er bei {y}?",
+          "answer": "(y - b) / m",
+          "unit_label": "Schritte",
+          "round": 0,
+          "solution": "({y} − {b}) : {m} = {ergebnis} Schritte",
+          "misconceptions": [
+            { "id": "b_vergessen", "value": "y / m", "feedback": "Der Startwert muss zuerst abgezogen werden." }
+          ]
+        }
+      ]
+    },
+
+    "lf-02": {
+      "auftrag": "Lege zu jeder Funktion eine Wertetabelle von x = 0 bis x = 4 an und zeichne den Graphen.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-02-1",
+          "vars": { "m": { "von": 2, "bis": 6 }, "b": { "von": 1, "bis": 8 }, "x": { "von": 0, "bis": 6 } },
+          "template": "y = {m}x + {b}. Berechne den y-Wert für x = {x}.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "{m} · {x} + {b} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-02-2",
+          "vars": { "m": { "aus": [-1, -2, -3, -4] }, "b": { "von": 6, "bis": 20, "schritt": 2 }, "x": { "von": 1, "bis": 5 } },
+          "template": "y = {m}x + {b}. Berechne den y-Wert für x = {x}.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "{m} · {x} + {b} = {ergebnis}",
+          "misconceptions": [
+            { "id": "vorzeichen_uebersehen", "value": "betrag(m) * x + b", "feedback": "Die Steigung ist negativ." }
+          ]
+        },
+        {
+          "id": "AB-LF-02-3",
+          "vars": { "m": { "aus": [0.5, 1.5, 2.5] }, "b": { "von": 1, "bis": 9 }, "x": { "aus": [2, 4, 6, 8] } },
+          "template": "y = {m}x + {b}. Berechne den y-Wert für x = {x}.",
+          "answer": "m * x + b",
+          "round": 1,
+          "solution": "{m} · {x} + {b} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-02-4",
+          "vars": { "m": { "von": 2, "bis": 8 }, "b": { "von": 0, "bis": 12, "schritt": 2 }, "y": { "von": 10, "bis": 80, "schritt": 2 } },
+          "bedingung": "ganz((y - b) / m) * ((y - b) / m > 0)",
+          "template": "y = {m}x + {b}. Für welches x ist y = {y}?",
+          "answer": "(y - b) / m",
+          "round": 0,
+          "solution": "{y} − {b} = {y-b}, dann : {m} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-02-5",
+          "vars": { "m": { "von": 2, "bis": 7 }, "b": { "von": 1, "bis": 10 } },
+          "template": "Lege für y = {m}x + {b} eine Wertetabelle für x = 0, 1, 2, 3 an. Wie groß ist der Unterschied zwischen zwei benachbarten y-Werten?",
+          "answer": "m",
+          "round": 0,
+          "solution": "Bei jedem Schritt kommt {m} dazu — das ist die Steigung.",
+          "misconceptions": [
+            { "id": "b_statt_m", "value": "b", "feedback": "{b} ist der Startwert, nicht der Zuwachs." }
+          ]
+        }
+      ]
+    },
+
+    "lf-03": {
+      "auftrag": "Prüfe bei jeder Aufgabe, ob die Zuordnung wirklich proportional ist. Begründe schriftlich.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-03-1",
+          "vars": { "m": { "von": 2, "bis": 12 }, "x": { "von": 2, "bis": 15 } },
+          "template": "y = {m} · x. Berechne y für x = {x}.",
+          "answer": "m * x",
+          "round": 0,
+          "solution": "{m} · {x} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-03-2",
+          "vars": { "m": { "von": 2, "bis": 12 }, "y": { "von": 12, "bis": 144, "schritt": 2 } },
+          "bedingung": "ganz(y / m) * (y / m > 0)",
+          "template": "Für y = {m} · x gilt y = {y}. Wie groß ist x?",
+          "answer": "y / m",
+          "round": 0,
+          "solution": "{y} : {m} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-03-3",
+          "vars": { "x": { "von": 2, "bis": 12 }, "y": { "von": 4, "bis": 120, "schritt": 2 } },
+          "bedingung": "ganz(y / x)",
+          "template": "Zu x = {x} gehört y = {y}. Die Zuordnung ist proportional. Wie lautet der Proportionalitätsfaktor?",
+          "answer": "y / x",
+          "round": 2,
+          "solution": "m = {y} : {x} = {ergebnis}",
+          "misconceptions": [
+            { "id": "anker_verwechselt", "value": "x / y", "feedback": "Geteilt wird y durch x." }
+          ]
+        },
+        {
+          "id": "AB-LF-03-4",
+          "vars": { "preis": { "von": 2, "bis": 9 }, "n": { "von": 4, "bis": 20, "schritt": 2 } },
+          "template": "Ein Stift kostet {preis} €. Schreibe die Funktionsgleichung auf und berechne den Preis für {n} Stifte.",
+          "answer": "preis * n",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "y = {preis}x, also {preis} · {n} = {ergebnis} €"
+        },
+        {
+          "id": "AB-LF-03-5",
+          "vars": { "m": { "von": 2, "bis": 10 }, "b": { "von": 2, "bis": 12 }, "x": { "von": 2, "bis": 10 } },
+          "template": "Ist y = {m}x + {b} proportional? Begründe. Berechne außerdem y für x = {x}.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "Nicht proportional, denn bei x = 0 ist y = {b} und nicht 0. Für x = {x}: {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-04": {
+      "auftrag": "Zeichne bei jeder Aufgabe das Steigungsdreieck ein und beschrifte Δx und Δy.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-04-1",
+          "vars": { "dx": { "von": 1, "bis": 8 }, "dy": { "von": 2, "bis": 24, "schritt": 2 } },
+          "bedingung": "ganz(dy * 100 / dx)",
+          "template": "Ein Steigungsdreieck hat Δx = {dx} und Δy = {dy}. Wie groß ist die Steigung m?",
+          "answer": "dy / dx",
+          "round": 2,
+          "solution": "m = {dy} : {dx} = {ergebnis}",
+          "misconceptions": [
+            { "id": "anker_verwechselt", "value": "dx / dy", "feedback": "m = Δy : Δx, nicht umgekehrt." }
+          ]
+        },
+        {
+          "id": "AB-LF-04-2",
+          "vars": { "x1": { "von": 0, "bis": 5 }, "dx": { "von": 1, "bis": 6 }, "y1": { "von": 0, "bis": 10 }, "dy": { "aus": [-8, -6, -4, -2, 2, 4, 6, 8] } },
+          "bedingung": "ganz(dy * 100 / dx)",
+          "berechnet": { "x2": "x1 + dx", "y2": "y1 + dy" },
+          "template": "Durch die Punkte P({x1}|{y1}) und Q({x2}|{y2}) verläuft eine Gerade. Berechne die Steigung.",
+          "answer": "dy / dx",
+          "round": 2,
+          "solution": "m = ({y2} − {y1}) : ({x2} − {x1}) = {dy} : {dx} = {ergebnis}",
+          "misconceptions": [
+            { "id": "achsen_vertauscht", "value": "dx / dy", "feedback": "Zähler ist die Differenz der y-Werte." }
+          ]
+        },
+        {
+          "id": "AB-LF-04-3",
+          "vars": { "m": { "aus": [0.5, 1.5, 2, 3, 4] }, "dx": { "von": 2, "bis": 8, "schritt": 2 } },
+          "template": "Eine Gerade hat die Steigung m = {m}. Um wie viel steigt sie auf {dx} Schritten nach rechts?",
+          "answer": "m * dx",
+          "round": 1,
+          "solution": "{m} · {dx} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-04-4",
+          "vars": { "dy": { "aus": [-12, -9, -6, -3, 3, 6, 9, 12] }, "dx": { "aus": [1, 2, 3] } },
+          "bedingung": "ganz(dy / dx)",
+          "template": "Δy = {dy}, Δx = {dx}. Wie groß ist m? Steigt oder fällt die Gerade?",
+          "answer": "dy / dx",
+          "round": 2,
+          "solution": "m = {dy} : {dx} = {ergebnis}. Bei negativem m fällt die Gerade."
+        },
+        {
+          "id": "AB-LF-04-5",
+          "vars": { "hoehe": { "von": 2, "bis": 12 }, "laenge": { "von": 20, "bis": 200, "schritt": 20 } },
+          "bedingung": "ganz(hoehe * 1000 / laenge)",
+          "template": "Eine Straße steigt auf {laenge} m um {hoehe} m an. Wie viel Prozent Steigung sind das?",
+          "answer": "hoehe * 100 / laenge",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{hoehe} : {laenge} · 100 = {ergebnis} %"
+        }
+      ]
+    },
+
+    "lf-05": {
+      "auftrag": "Markiere in jeder Aufgabe den y-Achsenabschnitt im Koordinatensystem.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-05-1",
+          "vars": { "m": { "aus": [-3, -2, -1, 1, 2, 3, 4] }, "b": { "aus": [-6, -4, -2, 2, 4, 6, 8] } },
+          "template": "y = {m}x {b:±}. Wo schneidet die Gerade die y-Achse?",
+          "answer": "b",
+          "round": 0,
+          "solution": "Bei x = 0 ist y = {b}. Der Schnittpunkt ist (0|{b}).",
+          "misconceptions": [
+            { "id": "m_und_b_vertauscht", "value": "m", "feedback": "{m} ist die Steigung." }
+          ]
+        },
+        {
+          "id": "AB-LF-05-2",
+          "vars": { "m": { "von": 2, "bis": 6 }, "x": { "von": 1, "bis": 8 }, "y": { "von": 5, "bis": 40 } },
+          "template": "Eine Gerade mit m = {m} geht durch P({x}|{y}). Wie groß ist b?",
+          "answer": "y - m * x",
+          "round": 0,
+          "solution": "b = {y} − {m} · {x} = {ergebnis}",
+          "misconceptions": [
+            { "id": "b_falsch_berechnet", "value": "y + m * x", "feedback": "m · x muss abgezogen werden." }
+          ]
+        },
+        {
+          "id": "AB-LF-05-3",
+          "vars": { "b": { "aus": [-5, -3, -1, 2, 4, 6] }, "m": { "von": 1, "bis": 5 }, "x": { "von": 1, "bis": 8 } },
+          "template": "Die Gerade y = {m}x {b:±} wird um 3 nach oben verschoben. Wie lautet das neue b, und welchen y-Wert hat sie bei x = {x}?",
+          "answer": "m * x + b + 3",
+          "round": 0,
+          "solution": "Neues b: {b} + 3 = {b+3}. Bei x = {x}: {m} · {x} + {b+3} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-05-4",
+          "vars": { "b": { "aus": [-8, -6, -4, 3, 5, 7] }, "m": { "aus": [-2, -1, 2, 3] } },
+          "template": "Wie lautet die Gleichung einer Geraden mit Steigung {m}, die die y-Achse bei {b} schneidet? Berechne den y-Wert bei x = 4.",
+          "answer": "m * 4 + b",
+          "round": 0,
+          "solution": "y = {m}x {b:±}. Bei x = 4: {m} · 4 {b:±} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-05-5",
+          "vars": { "m": { "von": 2, "bis": 6 }, "b1": { "von": 1, "bis": 6 }, "d": { "von": 2, "bis": 8 } },
+          "template": "Zwei Geraden haben beide die Steigung {m}, die eine b = {b1}, die andere b = {b1+d}. Wie weit liegen sie senkrecht auseinander?",
+          "answer": "d",
+          "round": 0,
+          "solution": "Der Abstand ist der Unterschied der b-Werte: {b1+d} − {b1} = {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-06": {
+      "auftrag": "Zeichne jede Gerade in ein Koordinatensystem. Beginne beim y-Achsenabschnitt.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-06-1",
+          "vars": { "m": { "aus": [1, 2, 3] }, "b": { "aus": [-4, -2, 1, 3] }, "x": { "von": 1, "bis": 6 } },
+          "template": "Zeichne y = {m}x {b:±} und lies den y-Wert bei x = {x} ab. Rechne zur Kontrolle nach.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "{m} · {x} {b:±} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-06-2",
+          "vars": { "m": { "aus": [-1, -2, -3] }, "b": { "von": 4, "bis": 12, "schritt": 2 }, "x": { "von": 1, "bis": 4 } },
+          "template": "Zeichne y = {m}x + {b}. Welchen y-Wert hat die Gerade bei x = {x}?",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "{m} · {x} + {b} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-06-3",
+          "vars": { "zaehler": { "aus": [1, 2, 3] }, "nenner": { "aus": [2, 3, 4] }, "b": { "aus": [-2, 0, 1, 3] }, "x": { "aus": [4, 6, 8, 12] } },
+          "bedingung": "ganz(zaehler * x / nenner)",
+          "berechnet": { "m": "zaehler / nenner" },
+          "template": "Zeichne die Gerade mit m = {zaehler}/{nenner} und b = {b}. Welchen y-Wert hat sie bei x = {x}?",
+          "answer": "m * x + b",
+          "round": 2,
+          "solution": "{zaehler}/{nenner} · {x} = {m*x}, plus {b} ergibt {ergebnis}"
+        },
+        {
+          "id": "AB-LF-06-4",
+          "vars": { "b": { "aus": [-3, -1, 2, 5] }, "x": { "von": 2, "bis": 8 } },
+          "template": "Zeichne die waagerechte Gerade y = {b} und die Gerade y = x {b:±}. Welchen y-Wert hat die zweite bei x = {x}?",
+          "answer": "x + b",
+          "round": 0,
+          "solution": "{x} {b:±} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-06-5",
+          "vars": { "m": { "aus": [2, 3, 4] }, "b": { "aus": [-6, -4, -2] }, "x": { "von": 1, "bis": 6 } },
+          "template": "Zeichne y = {m}x {b:±}. In welchem Punkt schneidet sie die x-Achse? Berechne außerdem y bei x = {x}.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "Nullstelle: x = {0-b}/{m}. Bei x = {x}: {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-07": {
+      "auftrag": "Lies aus jedem Graphen zuerst b, dann m ab und schreibe die Gleichung auf.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-07-1",
+          "vars": { "x1": { "von": 0, "bis": 3 }, "dx": { "von": 1, "bis": 5 }, "m": { "aus": [-3, -2, -1, 1, 2, 3] }, "b": { "aus": [-4, -2, 0, 2, 4] } },
+          "berechnet": { "y1": "m * x1 + b", "x2": "x1 + dx", "y2": "m * (x1 + dx) + b" },
+          "template": "Eine Gerade geht durch ({x1}|{y1}) und ({x2}|{y2}). Berechne m.",
+          "answer": "m",
+          "round": 2,
+          "solution": "m = ({y2} − {y1}) : ({x2} − {x1}) = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-07-2",
+          "vars": { "m": { "aus": [-2, -1, 1, 2, 3] }, "b": { "aus": [-5, -3, 1, 4, 6] }, "x1": { "von": 1, "bis": 5 } },
+          "berechnet": { "y1": "m * x1 + b" },
+          "template": "Eine Gerade hat die Steigung {m} und geht durch ({x1}|{y1}). Wie lautet b?",
+          "answer": "b",
+          "round": 0,
+          "solution": "b = {y1} − {m} · {x1} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-07-3",
+          "vars": { "m": { "aus": [1, 2, 3, 4] }, "b": { "aus": [-4, -2, 2, 5] }, "x": { "von": 2, "bis": 9 } },
+          "template": "Aus einem Graphen liest man b = {b} und ein Steigungsdreieck mit Δx = 1, Δy = {m} ab. Wie lautet die Gleichung, und welchen Wert hat y bei x = {x}?",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "y = {m}x {b:±}. Bei x = {x}: {ergebnis}"
+        },
+        {
+          "id": "AB-LF-07-4",
+          "vars": { "m": { "aus": [-4, -3, -2, -1] }, "b": { "von": 4, "bis": 14, "schritt": 2 }, "x": { "von": 1, "bis": 5 } },
+          "template": "Eine fallende Gerade schneidet die y-Achse bei {b} und fällt pro Schritt um {0-m}. Wie lautet die Gleichung? Berechne y bei x = {x}.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "y = {m}x + {b}. Bei x = {x}: {ergebnis}",
+          "misconceptions": [
+            { "id": "vorzeichen_fehlt", "value": "betrag(m) * x + b", "feedback": "Eine fallende Gerade hat ein negatives m." }
+          ]
+        },
+        {
+          "id": "AB-LF-07-5",
+          "vars": { "m": { "aus": [0.5, 1.5, 2.5] }, "b": { "aus": [-3, -1, 2, 4] }, "x": { "aus": [2, 4, 6, 8] } },
+          "template": "Der Graph steigt auf 2 Schritten nach rechts um {2*m} nach oben und schneidet die y-Achse bei {b}. Wie lautet die Gleichung? Berechne y bei x = {x}.",
+          "answer": "m * x + b",
+          "round": 1,
+          "solution": "m = {2*m} : 2 = {m}. y = {m}x {b:±}. Bei x = {x}: {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-08": {
+      "auftrag": "Setze bei jeder Punktprobe beide Koordinaten ein und schreibe beide Seiten der Gleichung hin.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-08-1",
+          "vars": { "m": { "aus": [-2, -1, 2, 3] }, "b": { "aus": [-4, -1, 2, 5] }, "x": { "von": 1, "bis": 6 } },
+          "template": "Liegt der Punkt P({x}|{m*x+b}) auf der Geraden y = {m}x {b:±}? Rechne nach und gib den y-Wert der Geraden bei x = {x} an.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "{m} · {x} {b:±} = {ergebnis} — der Punkt liegt auf der Geraden."
+        },
+        {
+          "id": "AB-LF-08-2",
+          "vars": { "m": { "aus": [1, 2, 3] }, "b": { "aus": [-3, 0, 2, 4] }, "x": { "von": 1, "bis": 6 }, "fehl": { "aus": [-3, -2, 2, 3] } },
+          "template": "Liegt Q({x}|{m*x+b+fehl}) auf y = {m}x {b:±}? Berechne den richtigen y-Wert.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "{m} · {x} {b:±} = {ergebnis}, der Punkt hat aber {m*x+b+fehl} — er liegt NICHT darauf."
+        },
+        {
+          "id": "AB-LF-08-3",
+          "vars": { "m": { "aus": [2, 3, 4] }, "b": { "aus": [-6, -2, 1, 5] }, "y": { "von": 2, "bis": 30, "schritt": 2 } },
+          "bedingung": "ganz((y - b) / m)",
+          "template": "Für welches x liegt ein Punkt mit dem y-Wert {y} auf der Geraden y = {m}x {b:±}?",
+          "answer": "(y - b) / m",
+          "round": 0,
+          "solution": "{y} = {m}x {b:±} → x = ({y} − {b}) : {m} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-08-4",
+          "vars": { "m": { "aus": [-3, -2, 2, 3] }, "b": { "aus": [-4, 1, 3, 6] }, "x": { "aus": [-3, -2, -1] } },
+          "template": "Berechne den y-Wert von y = {m}x {b:±} an der Stelle x = {x}.",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "{m} · ({x}) {b:±} = {ergebnis}",
+          "misconceptions": [
+            { "id": "vorzeichen_beim_teilen", "value": "betrag(m * x) + b", "feedback": "Das Vorzeichen von x muss mitgerechnet werden." }
+          ]
+        },
+        {
+          "id": "AB-LF-08-5",
+          "vars": { "m": { "aus": [1, 2, 3] }, "b": { "aus": [-2, 0, 3] }, "x": { "von": 2, "bis": 8 } },
+          "template": "Denke dir einen Punkt aus, der auf y = {m}x {b:±} liegt und die x-Koordinate {x} hat. Wie lautet seine y-Koordinate?",
+          "answer": "m * x + b",
+          "round": 0,
+          "solution": "y = {m} · {x} {b:±} = {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-09": {
+      "auftrag": "Berechne zuerst m, dann b. Schreibe am Ende die vollständige Gleichung auf.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-09-1",
+          "vars": { "x1": { "von": 0, "bis": 4 }, "dx": { "von": 1, "bis": 5 }, "m": { "aus": [-3, -2, -1, 1, 2, 3] }, "b": { "aus": [-4, -1, 2, 5] } },
+          "berechnet": { "y1": "m * x1 + b", "x2": "x1 + dx", "y2": "m * (x1 + dx) + b" },
+          "template": "Bestimme die Gleichung der Geraden durch A({x1}|{y1}) und B({x2}|{y2}). Gib m an.",
+          "answer": "m",
+          "round": 2,
+          "solution": "m = ({y2} − {y1}) : ({x2} − {x1}) = {ergebnis}, dann b = {y1} − {m} · {x1} = {b}"
+        },
+        {
+          "id": "AB-LF-09-2",
+          "vars": { "x1": { "von": 1, "bis": 5 }, "dx": { "von": 1, "bis": 4 }, "m": { "aus": [-2, -1, 1, 2, 4] }, "b": { "aus": [-5, -2, 3, 6] } },
+          "berechnet": { "y1": "m * x1 + b", "x2": "x1 + dx", "y2": "m * (x1 + dx) + b" },
+          "template": "Bestimme b für die Gerade durch A({x1}|{y1}) und B({x2}|{y2}).",
+          "answer": "b",
+          "round": 2,
+          "solution": "m = {m}, dann b = {y1} − {m} · {x1} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-09-3",
+          "vars": { "x1": { "von": 0, "bis": 3 }, "dx": { "von": 2, "bis": 6, "schritt": 2 }, "m": { "aus": [0.5, 1.5, 2.5] }, "b": { "aus": [-2, 1, 4] } },
+          "berechnet": { "y1": "m * x1 + b", "x2": "x1 + dx", "y2": "m * (x1 + dx) + b" },
+          "template": "Die Gerade durch ({x1}|{y1}) und ({x2}|{y2}) hat eine gebrochene Steigung. Berechne m.",
+          "answer": "m",
+          "round": 2,
+          "solution": "m = ({y2} − {y1}) : {dx} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-09-4",
+          "vars": { "m": { "aus": [-2, -1, 2, 3] }, "b": { "aus": [-3, 2, 5] }, "x1": { "von": 1, "bis": 4 }, "dx": { "von": 1, "bis": 4 } },
+          "berechnet": { "y1": "m * x1 + b", "x2": "x1 + dx", "y2": "m * (x1 + dx) + b", "x3": "x1 + dx + 2" },
+          "template": "Die Gerade geht durch ({x1}|{y1}) und ({x2}|{y2}). Welchen y-Wert hat sie bei x = {x3}?",
+          "answer": "m * x3 + b",
+          "round": 2,
+          "solution": "m = {m}, b = {b}. Bei x = {x3}: {ergebnis}"
+        },
+        {
+          "id": "AB-LF-09-5",
+          "vars": { "m": { "aus": [2, 3, 4] }, "b": { "aus": [-6, -4, -2] }, "x1": { "von": 1, "bis": 3 }, "dx": { "von": 2, "bis": 5 } },
+          "berechnet": { "y1": "m * x1 + b", "x2": "x1 + dx", "y2": "m * (x1 + dx) + b" },
+          "bedingung": "ganz((0 - b) * 100 / m)",
+          "template": "Bestimme aus A({x1}|{y1}) und B({x2}|{y2}) die Gleichung und daraus die Nullstelle.",
+          "answer": "(0 - b) / m",
+          "round": 2,
+          "solution": "y = {m}x {b:±}. Nullstelle: 0 = {m}x {b:±} → x = {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-10": {
+      "auftrag": "Setze bei jeder Aufgabe y = 0 und löse die Gleichung schriftlich nach x auf.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-10-1",
+          "vars": { "m": { "aus": [1, 2, 3, 4] }, "b": { "aus": [-12, -8, -6, -4, -2] } },
+          "bedingung": "ganz((0 - b) * 100 / m)",
+          "template": "Berechne die Nullstelle von y = {m}x {b:±}.",
+          "answer": "(0 - b) / m",
+          "round": 2,
+          "solution": "0 = {m}x {b:±} → {m}x = {0-b} → x = {ergebnis}",
+          "misconceptions": [
+            { "id": "b_als_nullstelle", "value": "b", "feedback": "{b} ist der y-Achsenabschnitt." }
+          ]
+        },
+        {
+          "id": "AB-LF-10-2",
+          "vars": { "m": { "aus": [-1, -2, -3, -4] }, "b": { "von": 2, "bis": 16, "schritt": 2 } },
+          "bedingung": "ganz((0 - b) * 100 / m)",
+          "template": "Berechne die Nullstelle von y = {m}x + {b}.",
+          "answer": "(0 - b) / m",
+          "round": 2,
+          "solution": "0 = {m}x + {b} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-10-3",
+          "vars": { "m": { "aus": [0.5, 1.5, 2.5] }, "b": { "aus": [-6, -3, 3, 6] } },
+          "bedingung": "ganz((0 - b) * 100 / m)",
+          "template": "Berechne die Nullstelle von y = {m}x {b:±}.",
+          "answer": "(0 - b) / m",
+          "round": 2,
+          "solution": "x = {0-b} : {m} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-10-4",
+          "vars": { "start": { "von": 20, "bis": 200, "schritt": 20 }, "rate": { "von": 2, "bis": 10, "schritt": 2 } },
+          "bedingung": "ganz(start / rate)",
+          "template": "Ein Tank enthält {start} Liter, pro Minute laufen {rate} Liter ab. Nach wie vielen Minuten ist er leer?",
+          "answer": "start / rate",
+          "unit_label": "Minuten",
+          "round": 0,
+          "solution": "0 = {start} − {rate}t → t = {start} : {rate} = {ergebnis} Minuten"
+        },
+        {
+          "id": "AB-LF-10-5",
+          "vars": { "m": { "aus": [2, 3, 5] }, "b": { "aus": [-10, -6, 4, 9] } },
+          "bedingung": "ganz((0 - b) * 100 / m)",
+          "template": "Wo schneidet y = {m}x {b:±} die x-Achse, wo die y-Achse? Gib die Nullstelle an.",
+          "answer": "(0 - b) / m",
+          "round": 2,
+          "solution": "x-Achse bei x = {ergebnis}, y-Achse bei y = {b}"
+        }
+      ]
+    },
+
+    "lf-11": {
+      "auftrag": "Notiere hinter jedem Umformungsschritt, was du auf beiden Seiten gemacht hast (| −5, | : 3 …).",
+      "aufgaben": [
+        {
+          "id": "AB-LF-11-1",
+          "vars": { "a": { "von": 2, "bis": 9 }, "x": { "von": 2, "bis": 12 }, "b": { "aus": [-12, -8, -5, 3, 7, 11] } },
+          "berechnet": { "c": "a * x + b" },
+          "template": "Löse: {a}x {b:±} = {c}",
+          "answer": "x",
+          "round": 2,
+          "solution": "{a}x = {c} − ({b}) = {a*x} | : {a} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-11-2",
+          "vars": { "a": { "von": 2, "bis": 8 }, "d": { "von": 1, "bis": 6 }, "x": { "von": 1, "bis": 10 }, "b": { "aus": [-9, -4, 2, 6] } },
+          "bedingung": "a != d",
+          "berechnet": { "links": "a * x + b", "rechtsB": "(a - d) * x + b" },
+          "template": "Löse: {a}x {b:±} = {d}x + {rechtsB}",
+          "answer": "x",
+          "round": 2,
+          "solution": "{a}x − {d}x = {rechtsB} − ({b}) → {a-d}x = {(a-d)*x} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-11-3",
+          "vars": { "a": { "von": 2, "bis": 6 }, "k": { "von": 1, "bis": 8 }, "x": { "von": 1, "bis": 9 } },
+          "berechnet": { "c": "a * (x + k)" },
+          "template": "Löse: {a}·(x + {k}) = {c}",
+          "answer": "x",
+          "round": 2,
+          "solution": "{a}x + {a*k} = {c} → {a}x = {a*x} → x = {ergebnis}",
+          "misconceptions": [
+            { "id": "klammer_nur_halb", "value": "(c - k) / a", "feedback": "Die Klammer muss vollständig ausmultipliziert werden." }
+          ]
+        },
+        {
+          "id": "AB-LF-11-4",
+          "vars": { "n": { "aus": [2, 3, 4, 5] }, "x": { "von": 2, "bis": 20, "schritt": 2 }, "b": { "aus": [-6, -3, 4, 8] } },
+          "bedingung": "ganz(x / n)",
+          "berechnet": { "c": "x / n + b" },
+          "template": "Löse: x : {n} {b:±} = {c}",
+          "answer": "x",
+          "round": 2,
+          "solution": "x : {n} = {c} − ({b}) = {x/n} | · {n} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-11-5",
+          "vars": { "a": { "von": 2, "bis": 7 }, "k": { "von": 1, "bis": 6 }, "d": { "von": 1, "bis": 5 }, "x": { "von": 1, "bis": 8 } },
+          "bedingung": "a != d",
+          "berechnet": { "rechts": "d * x + a * (x + k) - d * x" },
+          "template": "Löse: {a}·(x + {k}) − {d}x = {rechts} − {d}x",
+          "answer": "x",
+          "round": 2,
+          "solution": "Beide Seiten + {d}x, dann {a}x + {a*k} = {rechts} → x = {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-12": {
+      "auftrag": "Zeichne beide Geraden in EIN Koordinatensystem und lies den Schnittpunkt ab.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-12-1",
+          "vars": { "m1": { "aus": [1, 2, 3] }, "m2": { "aus": [-2, -1, 0] }, "xs": { "von": 1, "bis": 5 }, "b1": { "aus": [-3, 0, 2] } },
+          "bedingung": "m1 != m2",
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "Zeichne y = {m1}x {b1:±} und y = {m2}x {b2:±}. Wie lautet die x-Koordinate des Schnittpunkts?",
+          "answer": "xs",
+          "round": 2,
+          "solution": "Beide Geraden treffen sich in ({xs}|{ys})."
+        },
+        {
+          "id": "AB-LF-12-2",
+          "vars": { "m1": { "aus": [1, 2] }, "m2": { "aus": [-1, -2, 3] }, "xs": { "von": 1, "bis": 5 }, "b1": { "aus": [-2, 1, 4] } },
+          "bedingung": "m1 != m2",
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "Zeichne y = {m1}x {b1:±} und y = {m2}x {b2:±}. Wie lautet die y-Koordinate des Schnittpunkts?",
+          "answer": "ys",
+          "round": 2,
+          "solution": "Der Schnittpunkt ist ({xs}|{ys})."
+        },
+        {
+          "id": "AB-LF-12-3",
+          "vars": { "m": { "aus": [1, 2, 3] }, "b1": { "aus": [-3, 0, 2] }, "d": { "von": 2, "bis": 6, "schritt": 2 } },
+          "template": "Zeichne y = {m}x {b1:±} und y = {m}x {b1+d:±}. Wie viele Schnittpunkte gibt es?",
+          "answer": "0",
+          "round": 0,
+          "solution": "Gleiche Steigung, verschiedenes b — die Geraden sind parallel, also {ergebnis} Schnittpunkte."
+        },
+        {
+          "id": "AB-LF-12-4",
+          "vars": { "m1": { "aus": [2, 3, 4] }, "m2": { "aus": [-3, -2, -1] }, "xs": { "von": 1, "bis": 4 }, "b1": { "aus": [-2, 0, 3] } },
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "Zeichne beide Geraden y = {m1}x {b1:±} und y = {m2}x {b2:±}. Lies den Schnittpunkt ab und gib seine x-Koordinate an.",
+          "answer": "xs",
+          "round": 2,
+          "solution": "Schnittpunkt ({xs}|{ys})."
+        },
+        {
+          "id": "AB-LF-12-5",
+          "vars": { "m": { "aus": [1, 2, 3] }, "b": { "aus": [-4, -2, 1, 3] }, "waag": { "aus": [-2, 0, 2, 4, 6] } },
+          "bedingung": "ganz((waag - b) * 100 / m)",
+          "template": "Zeichne y = {m}x {b:±} und die waagerechte Gerade y = {waag}. Wo liegt der Schnittpunkt? Gib x an.",
+          "answer": "(waag - b) / m",
+          "round": 2,
+          "solution": "{waag} = {m}x {b:±} → x = {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-13": {
+      "auftrag": "Setze die beiden Terme gleich und löse schriftlich. Mache am Ende die Probe.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-13-1",
+          "vars": { "m1": { "von": 2, "bis": 8 }, "m2": { "von": 1, "bis": 7 }, "xs": { "von": 1, "bis": 8 }, "b1": { "aus": [-6, -2, 0, 3] } },
+          "bedingung": "m1 != m2",
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "Berechne den Schnittpunkt von y = {m1}x {b1:±} und y = {m2}x {b2:±}. Gib x an.",
+          "answer": "xs",
+          "round": 2,
+          "solution": "{m1}x {b1:±} = {m2}x {b2:±} → {m1-m2}x = {(m1-m2)*xs} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-13-2",
+          "vars": { "m1": { "von": 2, "bis": 6 }, "m2": { "aus": [-4, -3, -2, -1] }, "xs": { "von": 1, "bis": 6 }, "b1": { "aus": [-3, 1, 4] } },
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "Berechne den Schnittpunkt von y = {m1}x {b1:±} und y = {m2}x {b2:±}. Gib y an.",
+          "answer": "ys",
+          "round": 2,
+          "solution": "x = {xs}, eingesetzt: y = {m1} · {xs} {b1:±} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-13-3",
+          "vars": { "m1": { "aus": [0.5, 1.5, 2.5] }, "m2": { "aus": [-1.5, -0.5, 3.5] }, "xs": { "aus": [2, 4, 6] }, "b1": { "aus": [-2, 0, 3] } },
+          "bedingung": "m1 != m2",
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "Berechne den Schnittpunkt von y = {m1}x {b1:±} und y = {m2}x {b2:±}. Gib x an.",
+          "answer": "xs",
+          "round": 2,
+          "solution": "Gleichsetzen und nach x auflösen: x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-13-4",
+          "vars": { "m": { "von": 2, "bis": 6 }, "b": { "aus": [-5, -2, 3] }, "waag": { "aus": [-4, 0, 5, 8] } },
+          "bedingung": "ganz((waag - b) * 100 / m)",
+          "template": "Berechne den Schnittpunkt von y = {m}x {b:±} mit y = {waag}. Gib x an.",
+          "answer": "(waag - b) / m",
+          "round": 2,
+          "solution": "{m}x {b:±} = {waag} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-13-5",
+          "vars": { "m1": { "von": 3, "bis": 9 }, "m2": { "von": 1, "bis": 5 }, "xs": { "von": 2, "bis": 8 }, "b1": { "aus": [-8, -4, 2] } },
+          "bedingung": "m1 != m2",
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "Zwei Geraden: y = {m1}x {b1:±} und y = {m2}x {b2:±}. Berechne den Schnittpunkt und mache die Probe. Gib die x-Koordinate an.",
+          "answer": "xs",
+          "round": 2,
+          "solution": "x = {ergebnis}, Probe: beide Seiten ergeben {ys}"
+        }
+      ]
+    },
+
+    "lf-14": {
+      "auftrag": "Stelle für jeden Tarif eine Gleichung auf. Zeichne beide Geraden und begründe, ab wann welcher Tarif günstiger ist.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-14-1",
+          "vars": { "grund": { "von": 6, "bis": 30, "schritt": 2 }, "pro": { "aus": [0.05, 0.1, 0.2, 0.25] }, "min": { "von": 20, "bis": 200, "schritt": 20 } },
+          "template": "Tarif A: {grund} € Grundgebühr und {pro} € pro Minute. Was kosten {min} Minuten?",
+          "answer": "grund + pro * min",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{grund} + {pro} · {min} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "grundpreis_uebersehen", "value": "pro * min", "feedback": "Die Grundgebühr fehlt." }
+          ]
+        },
+        {
+          "id": "AB-LF-14-2",
+          "vars": { "pro": { "aus": [0.2, 0.25, 0.4, 0.5] }, "min": { "von": 20, "bis": 200, "schritt": 20 } },
+          "template": "Tarif B hat keine Grundgebühr und kostet {pro} € pro Minute. Was kosten {min} Minuten?",
+          "answer": "pro * min",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{pro} · {min} = {ergebnis} €"
+        },
+        {
+          "id": "AB-LF-14-3",
+          "vars": { "grund": { "von": 6, "bis": 24, "schritt": 6 }, "proA": { "aus": [0.1, 0.2] }, "proB": { "aus": [0.25, 0.4, 0.5] } },
+          "bedingung": "(proB > proA) * ganz(grund * 100 / (proB - proA))",
+          "template": "Tarif A: {grund} € Grundgebühr + {proA} €/min. Tarif B: {proB} €/min ohne Grundgebühr. Ab wie vielen Minuten ist A günstiger?",
+          "answer": "grund / (proB - proA)",
+          "unit_label": "Minuten",
+          "round": 2,
+          "solution": "{grund} + {proA}t = {proB}t → {grund} = {proB-proA}t → t = {ergebnis} Minuten"
+        },
+        {
+          "id": "AB-LF-14-4",
+          "vars": { "flat": { "von": 20, "bis": 60, "schritt": 5 }, "pro": { "aus": [0.2, 0.25, 0.5] } },
+          "bedingung": "ganz(flat * 100 / pro)",
+          "template": "Eine Flatrate kostet {flat} € im Monat. Tarif B kostet {pro} € pro Minute. Ab wie vielen Minuten lohnt sich die Flatrate?",
+          "answer": "flat / pro",
+          "unit_label": "Minuten",
+          "round": 2,
+          "solution": "{flat} = {pro}t → t = {ergebnis} Minuten"
+        },
+        {
+          "id": "AB-LF-14-5",
+          "vars": { "grund": { "von": 8, "bis": 32, "schritt": 4 }, "pro": { "aus": [0.1, 0.2, 0.25] }, "budget": { "von": 20, "bis": 80, "schritt": 4 } },
+          "bedingung": "(budget > grund) * ganz((budget - grund) * 100 / pro)",
+          "template": "Tarif A: {grund} € Grundgebühr + {pro} €/min. Wie viele Minuten kann man für {budget} € telefonieren?",
+          "answer": "(budget - grund) / pro",
+          "unit_label": "Minuten",
+          "round": 0,
+          "solution": "({budget} − {grund}) : {pro} = {ergebnis} Minuten"
+        }
+      ]
+    },
+
+    "lf-15": {
+      "auftrag": "Löse jedes System mit dem Gleichsetzungs- oder Einsetzungsverfahren. Schreibe das Verfahren dazu.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-15-1",
+          "vars": { "m1": { "von": 2, "bis": 6 }, "m2": { "aus": [-3, -2, -1, 1] }, "xs": { "von": 1, "bis": 6 }, "b1": { "aus": [-4, 0, 3] } },
+          "bedingung": "m1 != m2",
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "y = {m1}x {b1:±} und y = {m2}x {b2:±}. Bestimme x.",
+          "answer": "xs",
+          "round": 2,
+          "solution": "Gleichsetzen: {m1-m2}x = {(m1-m2)*xs} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-15-2",
+          "vars": { "m1": { "von": 2, "bis": 5 }, "m2": { "aus": [-2, -1, 3] }, "xs": { "von": 1, "bis": 6 }, "b1": { "aus": [-3, 1, 5] } },
+          "bedingung": "m1 != m2",
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "y = {m1}x {b1:±} und y = {m2}x {b2:±}. Bestimme y.",
+          "answer": "ys",
+          "round": 2,
+          "solution": "x = {xs}, eingesetzt ergibt y = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-15-3",
+          "vars": { "x": { "von": 1, "bis": 9 }, "y": { "von": 1, "bis": 9 } },
+          "berechnet": { "s": "x + y", "d": "x - y" },
+          "bedingung": "x > y",
+          "template": "x + y = {s} und x − y = {d}. Bestimme x.",
+          "answer": "x",
+          "round": 0,
+          "solution": "Addieren: 2x = {s+d} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-15-4",
+          "vars": { "x": { "von": 1, "bis": 8 }, "y": { "von": 1, "bis": 8 }, "a": { "von": 2, "bis": 4 } },
+          "berechnet": { "s": "a * x + y", "t": "x + y" },
+          "template": "{a}x + y = {s} und x + y = {t}. Bestimme x.",
+          "answer": "x",
+          "round": 0,
+          "solution": "Subtrahieren: {a-1}x = {s-t} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-15-5",
+          "vars": { "x": { "von": 1, "bis": 8 }, "y": { "von": 1, "bis": 8 }, "a": { "von": 2, "bis": 4 }, "b": { "von": 2, "bis": 4 } },
+          "berechnet": { "s": "a * x + b * y", "t": "x + y" },
+          "bedingung": "a != b",
+          "template": "{a}x + {b}y = {s} und x + y = {t}. Bestimme y.",
+          "answer": "y",
+          "round": 2,
+          "solution": "Aus x = {t} − y einsetzen: {a}({t} − y) + {b}y = {s} → y = {ergebnis}"
+        }
+      ]
+    },
+
+    "lf-16": {
+      "auftrag": "Gemischte Aufgaben zum Prüfungstraining. Schreibe bei jeder Aufgabe zuerst auf, was gesucht ist.",
+      "aufgaben": [
+        {
+          "id": "AB-LF-16-1",
+          "vars": { "x1": { "von": 0, "bis": 3 }, "dx": { "von": 1, "bis": 5 }, "m": { "aus": [-3, -2, 2, 3] }, "b": { "aus": [-4, 1, 5] } },
+          "berechnet": { "y1": "m * x1 + b", "x2": "x1 + dx", "y2": "m * (x1 + dx) + b" },
+          "template": "Bestimme die Steigung der Geraden durch ({x1}|{y1}) und ({x2}|{y2}).",
+          "answer": "m",
+          "round": 2,
+          "solution": "m = ({y2} − {y1}) : {dx} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-16-2",
+          "vars": { "m": { "aus": [2, 3, 4] }, "b": { "aus": [-12, -8, -6] } },
+          "bedingung": "ganz((0 - b) * 100 / m)",
+          "template": "Berechne die Nullstelle von y = {m}x {b:±}.",
+          "answer": "(0 - b) / m",
+          "round": 2,
+          "solution": "x = {0-b} : {m} = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-16-3",
+          "vars": { "m1": { "von": 2, "bis": 6 }, "m2": { "aus": [-2, -1, 1] }, "xs": { "von": 1, "bis": 6 }, "b1": { "aus": [-3, 0, 4] } },
+          "bedingung": "m1 != m2",
+          "berechnet": { "ys": "m1 * xs + b1", "b2": "m1 * xs + b1 - m2 * xs" },
+          "template": "Berechne den Schnittpunkt von y = {m1}x {b1:±} und y = {m2}x {b2:±}. Gib x an.",
+          "answer": "xs",
+          "round": 2,
+          "solution": "x = {ergebnis}, y = {ys}"
+        },
+        {
+          "id": "AB-LF-16-4",
+          "vars": { "a": { "von": 2, "bis": 8 }, "x": { "von": 2, "bis": 12 }, "b": { "aus": [-10, -6, 4, 9] } },
+          "berechnet": { "c": "a * x + b" },
+          "template": "Löse: {a}x {b:±} = {c}",
+          "answer": "x",
+          "round": 2,
+          "solution": "{a}x = {a*x} → x = {ergebnis}"
+        },
+        {
+          "id": "AB-LF-16-5",
+          "vars": { "grund": { "von": 5, "bis": 25, "schritt": 5 }, "pro": { "aus": [0.1, 0.2, 0.25] }, "n": { "von": 20, "bis": 200, "schritt": 20 } },
+          "template": "Ein Tarif kostet {grund} € plus {pro} € je Einheit. Stelle die Gleichung auf und berechne die Kosten für {n} Einheiten.",
+          "answer": "grund + pro * n",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "y = {grund} + {pro}x. Für x = {n}: {ergebnis} €"
+        }
+      ]
+    }
+  }
+}

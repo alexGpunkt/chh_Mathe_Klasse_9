@@ -337,6 +337,72 @@ test('Erklärvideos werden verlinkt, nicht eingebettet', async ({ page }) => {
   }
 });
 
+test('Übungsblatt wird angeboten und ist erreichbar', async ({ page, request }) => {
+  await page.goto('/einheit.html?u=pz-08&p=B');
+
+  const karte = page.locator('#blattkarte');
+  await expect(karte).toBeVisible();
+  await expect(karte).toContainText('von Hand');
+
+  const link = page.locator('#blattkarte-link');
+  const pfad = await link.getAttribute('href');
+  expect(pfad).toBe('units/pz/pz-08/uebungsblatt.pdf');
+  await expect(link).not.toHaveAttribute('download', /.+/);
+
+  /* Ein Verweis auf ein fehlendes PDF fiele erst im Unterricht auf. */
+  const antwort = await request.get('http://127.0.0.1:8123/' + pfad);
+  expect(antwort.status()).toBe(200);
+  const kopf = (await antwort.body()).subarray(0, 8).toString('latin1');
+  expect(kopf).toContain('%PDF-');
+});
+
+test('Externe Übung öffnet im Rahmen statt im neuen Tab', async ({ page, context }) => {
+  /* Die fremde Seite wird nicht wirklich geladen — geprüft wird, dass die
+     Anwendung bestehen bleibt und der Rückweg da ist. */
+  await context.route(/learningapps\.org/, route =>
+    route.fulfill({ status: 200, contentType: 'text/html', body: '<p>Testübung</p>' }));
+
+  await page.goto('/einheit.html?u=pz-01&p=B');
+  await page.locator('#uebungskarte summary').click();
+
+  const link = page.locator('#uebungskarte a.ua-link').first();
+  await expect(link).toBeVisible();
+  await link.focus();
+
+  /* Kein neuer Tab: Die Seitenzahl des Kontextes bleibt gleich. */
+  const vorher = context.pages().length;
+  await link.click();
+  const rahmen = page.locator('.m9-rahmen');
+  await expect(rahmen).toBeVisible();
+  await expect(rahmen).toHaveAttribute('role', 'dialog');
+  await expect(rahmen).toHaveAttribute('aria-modal', 'true');
+  expect(context.pages().length).toBe(vorher);
+
+  await expect(rahmen.locator('iframe')).toHaveCount(1);
+  /* Der Weg in den neuen Tab steht immer daneben — manche Plattformen
+     verbieten das Einbetten. */
+  await expect(rahmen.locator('a[target="_blank"]')).toBeVisible();
+
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.m9-rahmen')).toHaveCount(0);
+  await expect(page.locator('#uebungskarte')).toBeVisible();
+  await expect(link).toBeFocused();
+});
+
+test('Lernzeit zählt nur bei Aktivität', async ({ page }) => {
+  await page.goto('/einheit.html?u=pz-06&p=A');
+  await expect(page.locator('.lernkarte')).toBeVisible();
+
+  const zustand = await page.evaluate(() => window.Lernmodus?.zustand?.() || null);
+  expect(zustand).not.toBeNull();
+  /* Im Entwicklermodus wird nichts gemeldet — geprüft wird, dass das Modul
+     überhaupt läuft und keinen Modus vortäuscht, den es nicht kennt. */
+  expect(['uebung', 'bewertung']).toContain(zustand.modus);
+
+  const urteil = await page.evaluate(() => window.Lernmodus.darfOeffnen('sk-12'));
+  expect(urteil.erlaubt).toBe(true);
+});
+
 test('Sicherheitsrichtlinie bricht keine Seite', async ({ page }) => {
   /* Eine CSP, die etwas Notwendiges blockiert, fällt sonst erst im
      Unterricht auf — als „bei mir geht das nicht". */

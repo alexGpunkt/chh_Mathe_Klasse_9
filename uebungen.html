@@ -3,7 +3,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src https://learningapps.org https://*.learningapps.org https://serlo.org https://*.serlo.org https://h5p.org https://*.h5p.org https://schule-bw.de https://*.schule-bw.de https://learningsnacks.de https://*.learningsnacks.de https://quizlet.com https://*.quizlet.com https://zum.de https://*.zum.de; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#15233A" name="theme-color"/>
 <title>Üben &amp; Wiederholen · Externe Übungen · Mathe 9</title>
@@ -35,8 +35,9 @@
 <main class="ua-seite">
 <p class="ua-intro">
     Passende kostenlose Übungen zu den vier Lernbereichen – zum Wiederholen und Festigen, geordnet
-    nach Bereich, Thema und Quelle. Alle öffnen in einem neuen Tab. Dieselben Links erscheinen auch
-    direkt in den Einheiten unter „Üben &amp; Wiederholen“. <b>Hinweis:</b> Die Inhalte stammen von
+    nach Bereich, Thema und Quelle. Ein normaler Klick öffnet sie zunächst innerhalb der Anwendung;
+    der direkte Aufruf in einem neuen Tab bleibt verfügbar. Dieselben Links erscheinen auch direkt
+    in den Einheiten unter „Üben &amp; Wiederholen“. <b>Hinweis:</b> Die Inhalte stammen von
     externen Plattformen und sind teils nutzergeneriert – Qualität und Verfügbarkeit können schwanken;
     bitte vor dem Einsatz kurz prüfen. Einträge mit „Sammlung“ bündeln mehrere Übungen.
   </p>
@@ -226,6 +227,8 @@
 <script src="assets/js/dev-tools.js"></script>
 <script src="assets/js/student-login.js"></script>
 <script src="assets/js/tracker.js"></script>
+<script src="assets/js/lernmodus.js"></script>
+<script src="assets/js/uebungsrahmen.js"></script>
 <script src="assets/js/uebungen-seite.js"></script>
 </body>
 </html>

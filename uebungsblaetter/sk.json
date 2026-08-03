@@ -1,0 +1,1818 @@
+{
+  "bereich": "SK",
+  "title": "Spitzkörper",
+  "_hinweis": "Siehe uebungsblaetter/pz.json. π ≈ 3,14 wie im Aufgabenpool, im Aufgabentext ausdrücklich genannt. Die pythagoreischen Tripel in den Bedingungen sorgen dafür, dass Seitenhöhen und Mantellinien ganzzahlig aufgehen — sonst wäre die gedruckte Lösung nicht nachrechenbar.",
+  "einheiten": {
+    "sk-01": {
+      "auftrag": "Zeichne eine Pyramide im Schrägbild und beschrifte a, h und hs.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-01-1",
+          "vars": {
+            "n": {
+              "aus": [
+                3,
+                4,
+                5,
+                6
+              ]
+            }
+          },
+          "template": "Eine Pyramide hat ein {n}-Eck als Grundfläche. Wie viele Kanten hat sie?",
+          "answer": "2 * n",
+          "unit_label": "Kanten",
+          "round": 0,
+          "solution": "{n} Grundkanten + {n} Seitenkanten zur Spitze = {ergebnis}",
+          "misconceptions": [
+            {
+              "id": "nur_grundkanten",
+              "value": "n",
+              "feedback": "Die Kanten zur Spitze fehlen."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-01-2",
+          "vars": {
+            "n": {
+              "aus": [
+                3,
+                4,
+                5,
+                6,
+                8
+              ]
+            }
+          },
+          "template": "Wie viele Flächen hat eine Pyramide mit einem {n}-Eck als Grundfläche?",
+          "answer": "n + 1",
+          "unit_label": "Flächen",
+          "round": 0,
+          "solution": "{n} Seitendreiecke + 1 Grundfläche = {ergebnis}",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_vergessen",
+              "value": "n",
+              "feedback": "Die Grundfläche zählt mit."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-01-3",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Eine quadratische Pyramide hat die Grundkante {a} cm. Wie lang sind alle vier Grundkanten zusammen?",
+          "answer": "4 * a",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "4 · {a} = {ergebnis} cm"
+        },
+        {
+          "id": "AB-SK-01-4",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Berechne die Grundfläche einer quadratischen Pyramide mit der Grundkante {a} cm.",
+          "answer": "a * a",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "G = {a}² = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "kante_nicht_quadriert",
+              "value": "4 * a",
+              "feedback": "Das ist der Umfang."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-01-5",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 24,
+              "schritt": 2
+            }
+          },
+          "template": "Eine quadratische Pyramide hat die Grundkante {a} cm. Wie weit ist es vom Mittelpunkt der Grundfläche bis zur Mitte einer Grundkante?",
+          "answer": "a / 2",
+          "unit_label": "cm",
+          "round": 1,
+          "solution": "Das ist die halbe Grundkante: {a} : 2 = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "volle_grundkante",
+              "value": "a",
+              "feedback": "Nur die halbe Grundkante."
+            }
+          ]
+        }
+      ]
+    },
+    "sk-02": {
+      "auftrag": "Zeichne bei jeder Aufgabe das rechtwinklige Dreieck heraus, in dem du rechnest.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-02-1",
+          "vars": {
+            "halb": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                3,
+                8,
+                6,
+                12,
+                5
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(halb * halb + h * h))",
+          "template": "Eine quadratische Pyramide hat die Grundkante {2*halb} cm und die Höhe {h} cm. Berechne die Seitenhöhe hs.",
+          "answer": "wurzel(halb * halb + h * h)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "hs² = {halb}² + {h}² = {halb*halb+h*h}, also hs = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "volle_grundkante",
+              "value": "wurzel(2 * halb * 2 * halb + h * h)",
+              "feedback": "Nur die HALBE Grundkante gehört ins Dreieck."
+            },
+            {
+              "id": "wurzel_vergessen",
+              "value": "halb * halb + h * h",
+              "feedback": "Die Wurzel fehlt."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-02-2",
+          "vars": {
+            "halb": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "hs": {
+              "aus": [
+                5,
+                5,
+                10,
+                10,
+                13,
+                13
+              ]
+            }
+          },
+          "bedingung": "(hs > halb) * ganz(wurzel(hs * hs - halb * halb))",
+          "template": "Eine quadratische Pyramide hat die Grundkante {2*halb} cm und die Seitenhöhe {hs} cm. Berechne die Körperhöhe h.",
+          "answer": "wurzel(hs * hs - halb * halb)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "h² = {hs}² − {halb}² = {hs*hs-halb*halb}, also h = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "h_gleich_s",
+              "value": "hs",
+              "feedback": "Die Seitenhöhe ist länger als die Körperhöhe."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-02-3",
+          "vars": {
+            "a": {
+              "aus": [
+                3,
+                6,
+                8,
+                5,
+                9,
+                12
+              ]
+            },
+            "b": {
+              "aus": [
+                4,
+                8,
+                6,
+                12,
+                12,
+                16
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(a * a + b * b))",
+          "template": "Berechne die Hypotenuse eines rechtwinkligen Dreiecks mit den Katheten {a} cm und {b} cm.",
+          "answer": "wurzel(a * a + b * b)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "c² = {a*a} + {b*b} = {a*a+b*b}, c = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "seiten_addiert",
+              "value": "a + b",
+              "feedback": "Erst quadrieren, dann addieren, dann Wurzel."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-02-4",
+          "vars": {
+            "halb": {
+              "aus": [
+                2,
+                3,
+                4,
+                6,
+                8,
+                9,
+                12
+              ]
+            },
+            "h": {
+              "aus": [
+                1,
+                2,
+                3,
+                4,
+                6,
+                7,
+                8,
+                9,
+                12,
+                17
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(2 * halb * halb + h * h))",
+          "template": "Eine quadratische Pyramide hat die Grundkante {2*halb} cm und die Höhe {h} cm. Berechne die Länge einer Seitenkante s. (Tipp: halbe Diagonale der Grundfläche)",
+          "answer": "wurzel(2 * halb * halb + h * h)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Halbe Diagonale² = {halb}² + {halb}² = {2*halb*halb}. s² = {2*halb*halb} + {h*h} = {2*halb*halb+h*h}, s = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "hoehe_statt_mantellinie",
+              "value": "wurzel(halb * halb + h * h)",
+              "feedback": "Das ist die Seitenhöhe hs, nicht die Seitenkante."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-02-5",
+          "vars": {
+            "c": {
+              "aus": [
+                5,
+                10,
+                13,
+                15,
+                17,
+                25
+              ]
+            },
+            "a": {
+              "aus": [
+                3,
+                6,
+                5,
+                9,
+                8,
+                7
+              ]
+            }
+          },
+          "bedingung": "(a < c) * ganz(wurzel(c * c - a * a))",
+          "template": "In einem rechtwinkligen Dreieck ist die Hypotenuse {c} cm und eine Kathete {a} cm lang. Berechne die andere Kathete.",
+          "answer": "wurzel(c * c - a * a)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "b² = {c}² − {a}² = {c*c-a*a}, b = {ergebnis} cm"
+        }
+      ]
+    },
+    "sk-03": {
+      "auftrag": "Schreibe die Formel V = ⅓ · G · h auf und rechne in zwei Schritten: erst G, dann V.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-03-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 18
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15,
+                18
+              ]
+            }
+          },
+          "template": "Berechne das Volumen einer quadratischen Pyramide mit a = {a} cm und h = {h} cm.",
+          "answer": "a * a * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "G = {a*a} cm². V = {a*a} · {h} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "faktor_drittel_vergessen",
+              "value": "a * a * h",
+              "feedback": "Der Faktor ⅓ fehlt — das wäre ein Prisma."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-03-2",
+          "vars": {
+            "G": {
+              "von": 6,
+              "bis": 90,
+              "schritt": 3
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15
+              ]
+            }
+          },
+          "template": "Eine Pyramide hat die Grundfläche {G} cm² und die Höhe {h} cm. Berechne das Volumen.",
+          "answer": "G * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "V = {G} · {h} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "geteilt_durch_drei",
+              "value": "G * h",
+              "feedback": "Bei Spitzkörpern kommt der Faktor ⅓ dazu."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-03-3",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "b": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Eine Pyramide hat ein Rechteck {a} cm · {b} cm als Grundfläche und die Höhe {h} cm. Berechne das Volumen.",
+          "answer": "a * b * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "G = {a*b} cm². V = {a*b} · {h} : 3 = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-SK-03-4",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "a * a * h / 3"
+          },
+          "template": "Eine quadratische Pyramide mit a = {a} cm hat das Volumen {V} cm³. Wie hoch ist sie?",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "h = 3 · {V} : {a*a} = {ergebnis} cm"
+        },
+        {
+          "id": "AB-SK-03-5",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Vergleiche: Ein Prisma und eine Pyramide haben beide die Grundfläche {a*a} cm² und die Höhe {h} cm. Um wie viel cm³ ist das Prisma größer?",
+          "answer": "a * a * h - a * a * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Prisma {a*a*h} cm³ − Pyramide {a*a*h/3} cm³ = {ergebnis} cm³"
+        }
+      ]
+    },
+    "sk-04": {
+      "auftrag": "Zeichne das Netz: ein Quadrat und vier Dreiecke. Rechne Grundfläche und Mantel getrennt.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-04-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 18
+            },
+            "hs": {
+              "von": 3,
+              "bis": 25
+            }
+          },
+          "template": "Berechne den Mantel einer quadratischen Pyramide mit a = {a} cm und hs = {hs} cm.",
+          "answer": "4 * (a * hs / 2)",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Ein Dreieck: {a} · {hs} : 2 = {a*hs/2} cm². Mal 4: {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "nur_ein_dreieck",
+              "value": "a * hs / 2",
+              "feedback": "Es sind vier Seitendreiecke."
+            },
+            {
+              "id": "dreieck_halbe_vergessen",
+              "value": "4 * a * hs",
+              "feedback": "Beim Dreieck fehlt die Division durch 2."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-04-2",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 18
+            },
+            "hs": {
+              "von": 3,
+              "bis": 25
+            }
+          },
+          "template": "Berechne die Oberfläche einer quadratischen Pyramide mit a = {a} cm und hs = {hs} cm.",
+          "answer": "a * a + 4 * (a * hs / 2)",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "G = {a*a} cm², M = {4*(a*hs/2)} cm². O = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_vergessen",
+              "value": "4 * (a * hs / 2)",
+              "feedback": "Die Grundfläche fehlt."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-04-3",
+          "vars": {
+            "halb": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                3,
+                8,
+                6,
+                12,
+                5
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(halb * halb + h * h))",
+          "berechnet": {
+            "hs": "wurzel(halb * halb + h * h)"
+          },
+          "template": "Eine quadratische Pyramide hat a = {2*halb} cm und die KÖRPERHÖHE h = {h} cm. Berechne die Oberfläche. (Erst hs bestimmen!)",
+          "answer": "2 * halb * 2 * halb + 4 * (2 * halb * hs / 2)",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "hs = {hs} cm. G = {2*halb*2*halb} cm², M = {4*(2*halb*hs/2)} cm². O = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "hoehe_statt_mantellinie",
+              "value": "2 * halb * 2 * halb + 4 * (2 * halb * h / 2)",
+              "feedback": "Für den Mantel braucht man hs, nicht h."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-04-4",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 20,
+              "schritt": 2
+            },
+            "hs": {
+              "von": 4,
+              "bis": 24,
+              "schritt": 2
+            }
+          },
+          "template": "Ein Zeltdach in Pyramidenform (a = {a} m, hs = {hs} m) soll bespannt werden — ohne Boden. Wie viel m² Stoff?",
+          "answer": "4 * (a * hs / 2)",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Nur der Mantel: {ergebnis} m²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_mitgezaehlt",
+              "value": "a * a + 4 * (a * hs / 2)",
+              "feedback": "Der Boden wird nicht bespannt."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-04-5",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 16
+            },
+            "hs": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "berechnet": {
+            "O": "a * a + 4 * (a * hs / 2)"
+          },
+          "template": "Eine quadratische Pyramide mit a = {a} cm hat die Oberfläche {O} cm². Wie groß ist der Mantel?",
+          "answer": "4 * (a * hs / 2)",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "M = O − G = {O} − {a*a} = {ergebnis} cm²"
+        }
+      ]
+    },
+    "sk-05": {
+      "auftrag": "Stelle die Formeln schriftlich um. Notiere jeden Umformungsschritt.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-05-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "a * a * h / 3"
+          },
+          "template": "Eine quadratische Pyramide mit der Höhe {h} cm hat das Volumen {V} cm³. Wie lang ist die Grundkante?",
+          "answer": "a",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "G = 3 · {V} : {h} = {a*a} cm², also a = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "wurzel_vergessen",
+              "value": "a * a",
+              "feedback": "Aus der Grundfläche muss die Wurzel gezogen werden."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-05-2",
+          "vars": {
+            "G": {
+              "von": 9,
+              "bis": 90,
+              "schritt": 3
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "G * h / 3"
+          },
+          "template": "Eine Pyramide hat das Volumen {V} cm³ und die Höhe {h} cm. Wie groß ist die Grundfläche?",
+          "answer": "G",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "G = 3 · {V} : {h} = {ergebnis} cm²"
+        },
+        {
+          "id": "AB-SK-05-3",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 18,
+              "schritt": 2
+            },
+            "hs": {
+              "von": 4,
+              "bis": 20,
+              "schritt": 2
+            }
+          },
+          "berechnet": {
+            "M": "4 * (a * hs / 2)"
+          },
+          "template": "Der Mantel einer quadratischen Pyramide beträgt {M} cm², die Grundkante {a} cm. Wie groß ist die Seitenhöhe?",
+          "answer": "hs",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Ein Dreieck: {M} : 4 = {M/4} cm². hs = 2 · {M/4} : {a} = {ergebnis} cm"
+        },
+        {
+          "id": "AB-SK-05-4",
+          "vars": {
+            "halb": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "hs": {
+              "aus": [
+                5,
+                5,
+                10,
+                10,
+                13,
+                13
+              ]
+            }
+          },
+          "bedingung": "(hs > halb) * ganz(wurzel(hs * hs - halb * halb))",
+          "berechnet": {
+            "h": "wurzel(hs * hs - halb * halb)"
+          },
+          "template": "Eine quadratische Pyramide hat a = {2*halb} cm und hs = {hs} cm. Berechne das Volumen. (Erst die Körperhöhe!)",
+          "answer": "2 * halb * 2 * halb * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "h = {h} cm. V = {2*halb*2*halb} · {h} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "hoehe_seitenhoehe_verwechselt",
+              "value": "2 * halb * 2 * halb * hs / 3",
+              "feedback": "Für das Volumen zählt die Körperhöhe h, nicht hs."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-05-5",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            },
+            "f": {
+              "aus": [
+                2,
+                3
+              ]
+            }
+          },
+          "template": "Eine quadratische Pyramide (a = {a} cm, h = {h} cm) wird in allen Maßen {f}-mal so groß gebaut. Wie groß ist das neue Volumen?",
+          "answer": "(f * a) * (f * a) * (f * h) / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Neue Maße: a = {f*a} cm, h = {f*h} cm. V = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "volumen_faktor",
+              "value": "a * a * h / 3 * f",
+              "feedback": "Bei {f}-fachen Längen wird das Volumen {f*f*f}-mal so groß."
+            }
+          ]
+        }
+      ]
+    },
+    "sk-06": {
+      "auftrag": "Zeichne das rechtwinklige Dreieck aus r, h und s heraus, bevor du rechnest.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-06-1",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                3,
+                8,
+                6,
+                12,
+                5
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(r * r + h * h))",
+          "template": "Ein Kegel hat r = {r} cm und h = {h} cm. Berechne die Mantellinie s.",
+          "answer": "wurzel(r * r + h * h)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "s² = {r}² + {h}² = {r*r+h*h}, also s = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "seiten_addiert",
+              "value": "r + h",
+              "feedback": "Pythagoras: erst quadrieren."
+            },
+            {
+              "id": "wurzel_vergessen",
+              "value": "r * r + h * h",
+              "feedback": "Die Wurzel fehlt."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-06-2",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "s": {
+              "aus": [
+                5,
+                5,
+                10,
+                10,
+                13,
+                13
+              ]
+            }
+          },
+          "bedingung": "(s > r) * ganz(wurzel(s * s - r * r))",
+          "template": "Ein Kegel hat r = {r} cm und die Mantellinie s = {s} cm. Berechne die Höhe h.",
+          "answer": "wurzel(s * s - r * r)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "h² = {s}² − {r}² = {s*s-r*r}, h = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "hoehe_als_mantellinie",
+              "value": "s",
+              "feedback": "s ist die schräge Linie, h die senkrechte."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-06-3",
+          "vars": {
+            "h": {
+              "aus": [
+                4,
+                3,
+                8,
+                6,
+                12,
+                5
+              ]
+            },
+            "s": {
+              "aus": [
+                5,
+                5,
+                10,
+                10,
+                13,
+                13
+              ]
+            }
+          },
+          "bedingung": "(s > h) * ganz(wurzel(s * s - h * h))",
+          "template": "Ein Kegel hat h = {h} cm und s = {s} cm. Berechne den Radius.",
+          "answer": "wurzel(s * s - h * h)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "r² = {s}² − {h}² = {s*s-h*h}, r = {ergebnis} cm"
+        },
+        {
+          "id": "AB-SK-06-4",
+          "vars": {
+            "d": {
+              "aus": [
+                6,
+                8,
+                12,
+                16,
+                10,
+                24
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                3,
+                8,
+                6,
+                12,
+                5
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(d / 2 * d / 2 + h * h))",
+          "template": "Ein Kegel hat den Durchmesser {d} cm und die Höhe {h} cm. Berechne die Mantellinie.",
+          "answer": "wurzel(d / 2 * d / 2 + h * h)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "r = {d/2} cm. s² = {d/2*d/2} + {h*h} = {d/2*d/2+h*h}, s = {ergebnis} cm",
+          "misconceptions": [
+            {
+              "id": "durchmesser_als_radius",
+              "value": "wurzel(d * d + h * h)",
+              "feedback": "Erst den Durchmesser halbieren."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-06-5",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                6,
+                5,
+                9
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                8,
+                12,
+                12
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(r * r + h * h))",
+          "template": "Ordne die drei Längen eines Kegels mit r = {r} cm und h = {h} cm der Größe nach. Welche ist die längste?",
+          "answer": "wurzel(r * r + h * h)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "s = {ergebnis} cm ist immer die längste — sie ist die Hypotenuse."
+        }
+      ]
+    },
+    "sk-07": {
+      "auftrag": "Rechne mit π ≈ 3,14 und schreibe V = ⅓ · π · r² · h jedes Mal auf.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-07-1",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 12
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15,
+                18
+              ]
+            }
+          },
+          "template": "Berechne das Volumen eines Kegels mit r = {r} cm und h = {h} cm (π ≈ 3,14).",
+          "answer": "3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "V = 3,14 · {r*r} · {h} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "faktor_drittel_vergessen",
+              "value": "3.14 * r * r * h",
+              "feedback": "Der Faktor ⅓ fehlt — das wäre ein Zylinder."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-07-2",
+          "vars": {
+            "d": {
+              "von": 2,
+              "bis": 24,
+              "schritt": 2
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15
+              ]
+            }
+          },
+          "template": "Ein Kegel hat den Durchmesser {d} cm und die Höhe {h} cm. Berechne das Volumen (π ≈ 3,14).",
+          "answer": "3.14 * (d / 2) * (d / 2) * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "r = {d/2} cm. V = 3,14 · {d/2*d/2} · {h} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "durchmesser_als_radius",
+              "value": "3.14 * d * d * h / 3",
+              "feedback": "Erst halbieren."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-07-3",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Ein Zylinder und ein Kegel haben beide r = {r} cm und h = {h} cm. Um wie viel cm³ ist der Zylinder größer? (π ≈ 3,14)",
+          "answer": "3.14 * r * r * h - 3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Zylinder {3.14*r*r*h} − Kegel {3.14*r*r*h/3} = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-SK-07-4",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "3.14 * r * r * h / 3"
+          },
+          "template": "Ein Kegel mit r = {r} cm hat das Volumen {V} cm³. Wie hoch ist er? (π ≈ 3,14)",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "h = 3 · {V} : (3,14 · {r*r}) = {ergebnis} cm"
+        },
+        {
+          "id": "AB-SK-07-5",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                4,
+                6,
+                5,
+                12
+              ]
+            },
+            "s": {
+              "aus": [
+                5,
+                5,
+                10,
+                13,
+                13
+              ]
+            }
+          },
+          "bedingung": "(s > r) * ganz(wurzel(s * s - r * r))",
+          "berechnet": {
+            "h": "wurzel(s * s - r * r)"
+          },
+          "template": "Ein Kegel hat r = {r} cm und s = {s} cm. Berechne das Volumen. (Erst h bestimmen; π ≈ 3,14)",
+          "answer": "3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "h = {h} cm. V = 3,14 · {r*r} · {h} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "hoehe_als_mantellinie",
+              "value": "3.14 * r * r * s / 3",
+              "feedback": "Für das Volumen zählt h, nicht s."
+            }
+          ]
+        }
+      ]
+    },
+    "sk-08": {
+      "auftrag": "Zeichne die Abwicklung: Grundkreis und Kreissektor. Rechne beide Teile getrennt.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-08-1",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 12
+            },
+            "s": {
+              "von": 3,
+              "bis": 25
+            }
+          },
+          "bedingung": "s > r",
+          "template": "Berechne den Mantel eines Kegels mit r = {r} cm und s = {s} cm (π ≈ 3,14).",
+          "answer": "3.14 * r * s",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "M = 3,14 · {r} · {s} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "mantel_als_kreis",
+              "value": "3.14 * r * r",
+              "feedback": "Das ist der Grundkreis."
+            },
+            {
+              "id": "hoehe_statt_mantellinie",
+              "value": "3.14 * r * r * s",
+              "feedback": "M = π · r · s, ohne zweites r."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-08-2",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 12
+            },
+            "s": {
+              "von": 3,
+              "bis": 25
+            }
+          },
+          "bedingung": "s > r",
+          "template": "Berechne die Oberfläche eines Kegels mit r = {r} cm und s = {s} cm (π ≈ 3,14).",
+          "answer": "3.14 * r * r + 3.14 * r * s",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Grundkreis {3.14*r*r} + Mantel {3.14*r*s} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "grundkreis_vergessen",
+              "value": "3.14 * r * s",
+              "feedback": "Der Grundkreis fehlt."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-08-3",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                3,
+                8,
+                6,
+                12,
+                5
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(r * r + h * h))",
+          "berechnet": {
+            "s": "wurzel(r * r + h * h)"
+          },
+          "template": "Ein Kegel hat r = {r} cm und die HÖHE h = {h} cm. Berechne die Oberfläche. (Erst s bestimmen; π ≈ 3,14)",
+          "answer": "3.14 * r * r + 3.14 * r * s",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "s = {s} cm. O = {3.14*r*r} + {3.14*r*s} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "hoehe_statt_mantellinie",
+              "value": "3.14 * r * r + 3.14 * r * h",
+              "feedback": "Für den Mantel braucht man s, nicht h."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-08-4",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "s": {
+              "von": 5,
+              "bis": 25
+            }
+          },
+          "bedingung": "s > r",
+          "template": "Eine Eistüte (Kegel ohne Deckel) hat r = {r} cm und s = {s} cm. Wie viel cm² Papier braucht man? (π ≈ 3,14)",
+          "answer": "3.14 * r * s",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Nur der Mantel: {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "grundkreis_mitgezaehlt",
+              "value": "3.14 * r * r + 3.14 * r * s",
+              "feedback": "Die Tüte hat oben keinen Deckel."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-08-5",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 10
+            },
+            "s": {
+              "von": 5,
+              "bis": 20
+            }
+          },
+          "bedingung": "s > r",
+          "berechnet": {
+            "O": "3.14 * r * r + 3.14 * r * s"
+          },
+          "template": "Ein Kegel mit r = {r} cm hat die Oberfläche {O} cm². Wie groß ist der Mantel? (π ≈ 3,14)",
+          "answer": "3.14 * r * s",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "M = O − Grundkreis = {O} − {3.14*r*r} = {ergebnis} cm²"
+        }
+      ]
+    },
+    "sk-09": {
+      "auftrag": "Stelle die Formel zuerst um. Schreibe jeden Schritt auf und prüfe die Einheit.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-09-1",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "3.14 * r * r * h / 3"
+          },
+          "template": "Ein Kegel mit der Höhe {h} cm hat das Volumen {V} cm³. Wie groß ist die Grundfläche? (π ≈ 3,14)",
+          "answer": "3.14 * r * r",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "G = 3 · {V} : {h} = {ergebnis} cm²"
+        },
+        {
+          "id": "AB-SK-09-2",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "s": {
+              "von": 5,
+              "bis": 25
+            }
+          },
+          "bedingung": "s > r",
+          "berechnet": {
+            "M": "3.14 * r * s"
+          },
+          "template": "Der Mantel eines Kegels beträgt {M} cm², der Radius {r} cm. Wie lang ist die Mantellinie? (π ≈ 3,14)",
+          "answer": "s",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "s = {M} : (3,14 · {r}) = {ergebnis} cm"
+        },
+        {
+          "id": "AB-SK-09-3",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                3,
+                8,
+                6,
+                12,
+                5
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(r * r + h * h))",
+          "berechnet": {
+            "s": "wurzel(r * r + h * h)"
+          },
+          "template": "Ein Kegel hat r = {r} cm und s = {s} cm. Berechne die Höhe und daraus das Volumen. Gib das Volumen an. (π ≈ 3,14)",
+          "answer": "3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "h = {h} cm. V = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-SK-09-4",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 10
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            },
+            "f": {
+              "aus": [
+                2,
+                3
+              ]
+            }
+          },
+          "template": "Ein Kegel (r = {r} cm, h = {h} cm) wird in allen Maßen {f}-mal so groß. Wie groß ist das neue Volumen? (π ≈ 3,14)",
+          "answer": "3.14 * (f * r) * (f * r) * (f * h) / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Neue Maße: r = {f*r} cm, h = {f*h} cm. V = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-SK-09-5",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 10
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "3.14 * r * r * h / 3 / 1000"
+          },
+          "bedingung": "betrag(V * 1000 - runde(V * 1000)) < 0.4",
+          "template": "Ein Kegel (r = {r} cm, h = {h} cm) wird mit Sand gefüllt. Wie viel Liter sind das? (π ≈ 3,14; 1000 cm³ = 1 Liter) Runde auf drei Nachkommastellen.",
+          "answer": "3.14 * r * r * h / 3 / 1000",
+          "unit_label": "Liter",
+          "round": 3,
+          "gerundet": true,
+          "solution": "V = {3.14*r*r*h/3} cm³ = {ergebnis} Liter"
+        }
+      ]
+    },
+    "sk-10": {
+      "auftrag": "Schreibe beide Kugelformeln auf und markiere, wo r hoch drei und wo r hoch zwei steht.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-10-1",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15
+              ]
+            }
+          },
+          "template": "Berechne das Volumen einer Kugel mit r = {r} cm (π ≈ 3,14).",
+          "answer": "4 * 3.14 * r * r * r / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "V = 4 · 3,14 · {r*r*r} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "radius_nicht_quadriert",
+              "value": "4 * 3.14 * r * r / 3",
+              "feedback": "Beim Volumen steht r hoch drei."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-10-2",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 15
+            }
+          },
+          "template": "Berechne die Oberfläche einer Kugel mit r = {r} cm (π ≈ 3,14).",
+          "answer": "4 * 3.14 * r * r",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "O = 4 · 3,14 · {r*r} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "faktor_vier_vergessen",
+              "value": "3.14 * r * r",
+              "feedback": "Der Faktor 4 fehlt."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-10-3",
+          "vars": {
+            "d": {
+              "aus": [
+                6,
+                12,
+                18,
+                24,
+                30
+              ]
+            }
+          },
+          "template": "Eine Kugel hat den Durchmesser {d} cm. Berechne ihr Volumen (π ≈ 3,14).",
+          "answer": "4 * 3.14 * (d / 2) * (d / 2) * (d / 2) / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "r = {d/2} cm. V = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "durchmesser_als_radius",
+              "value": "4 * 3.14 * d * d * d / 3",
+              "feedback": "Erst halbieren."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-10-4",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Berechne das Volumen einer HALBkugel mit r = {r} cm (π ≈ 3,14).",
+          "answer": "4 * 3.14 * r * r * r / 3 / 2",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Ganze Kugel: {4*3.14*r*r*r/3} cm³, davon die Hälfte: {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "ganze_kugel",
+              "value": "4 * 3.14 * r * r * r / 3",
+              "feedback": "Nur die Hälfte."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-10-5",
+          "vars": {
+            "r": {
+              "von": 1,
+              "bis": 12
+            }
+          },
+          "template": "Berechne die Oberfläche einer Halbkugel MIT Bodenkreis, r = {r} cm (π ≈ 3,14).",
+          "answer": "4 * 3.14 * r * r / 2 + 3.14 * r * r",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Halbe Kugelfläche {4*3.14*r*r/2} + Bodenkreis {3.14*r*r} = {ergebnis} cm²",
+          "misconceptions": [
+            {
+              "id": "grundkreis_vergessen",
+              "value": "4 * 3.14 * r * r / 2",
+              "feedback": "Der Bodenkreis fehlt."
+            }
+          ]
+        }
+      ]
+    },
+    "sk-11": {
+      "auftrag": "Zerlege jeden Körper schriftlich. Schreibe auf, welche Teile addiert werden.",
+      "aufgaben": [
+        {
+          "id": "AB-SK-11-1",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 10
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            },
+            "hz": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "template": "Ein Silo besteht aus einem Zylinder (r = {r} cm, h = {hz} cm) mit einem Kegel obendrauf (gleicher Radius, h = {h} cm). Berechne das Gesamtvolumen. (π ≈ 3,14)",
+          "answer": "3.14 * r * r * hz + 3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Zylinder {3.14*r*r*hz} + Kegel {3.14*r*r*h/3} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "faktor_drittel_vergessen",
+              "value": "3.14 * r * r * hz + 3.14 * r * r * h",
+              "feedback": "Beim Kegel fehlt der Faktor ⅓."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-11-2",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Eine Eistüte: Kegel (r = {r} cm, h = {h} cm) mit einer Halbkugel obendrauf (gleicher Radius). Berechne das Volumen. (π ≈ 3,14)",
+          "answer": "3.14 * r * r * h / 3 + 4 * 3.14 * r * r * r / 3 / 2",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Kegel {3.14*r*r*h/3} + Halbkugel {4*3.14*r*r*r/3/2} = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "ganze_kugel",
+              "value": "3.14 * r * r * h / 3 + 4 * 3.14 * r * r * r / 3",
+              "feedback": "Oben sitzt nur eine Halbkugel."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-11-3",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 16,
+              "schritt": 2
+            },
+            "hq": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Ein Turm: Quader mit quadratischer Grundfläche ({a} cm · {a} cm, Höhe {hq} cm) und darauf eine Pyramide (gleiche Grundfläche, h = {h} cm). Berechne das Volumen.",
+          "answer": "a * a * hq + a * a * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Quader {a*a*hq} + Pyramide {a*a*h/3} = {ergebnis} cm³"
+        },
+        {
+          "id": "AB-SK-11-4",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 10
+            },
+            "s": {
+              "von": 6,
+              "bis": 25
+            },
+            "hz": {
+              "von": 2,
+              "bis": 12
+            }
+          },
+          "bedingung": "s > r",
+          "template": "Ein Silo aus Zylinder (r = {r} cm, h = {hz} cm) und Kegeldach (s = {s} cm) soll außen gestrichen werden — Mantel des Zylinders und Kegelmantel, ohne Boden. Wie viel cm²? (π ≈ 3,14)",
+          "answer": "2 * 3.14 * r * hz + 3.14 * r * s",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Zylindermantel {2*3.14*r*hz} + Kegelmantel {3.14*r*s} = {ergebnis} cm²"
+        },
+        {
+          "id": "AB-SK-11-5",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                6,
+                9
+              ]
+            },
+            "h": {
+              "aus": [
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Ein Zylinder (r = {r} cm, h = {h} cm) wird oben kegelförmig ausgehöhlt (gleicher Radius, gleiche Höhe). Wie viel Material bleibt? (π ≈ 3,14)",
+          "answer": "3.14 * r * r * h - 3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "{3.14*r*r*h} − {3.14*r*r*h/3} = {ergebnis} cm³"
+        }
+      ]
+    },
+    "sk-12": {
+      "auftrag": "Entscheide bei jeder Aufgabe zuerst schriftlich: Pyramide, Kegel oder Kugel? Volumen oder Oberfläche?",
+      "aufgaben": [
+        {
+          "id": "AB-SK-12-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Eine quadratische Pyramide (a = {a} cm, h = {h} cm) wird aus Gips gegossen. Wie viel cm³ Gips?",
+          "answer": "a * a * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "V = {a*a} · {h} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "faktor_drittel_vergessen",
+              "value": "a * a * h",
+              "feedback": "Spitzkörper: Faktor ⅓."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-12-2",
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "s": {
+              "von": 6,
+              "bis": 25
+            }
+          },
+          "bedingung": "s > r",
+          "template": "Ein Partyhut in Kegelform (r = {r} cm, s = {s} cm) wird aus Pappe gebastelt — ohne Boden. Wie viel cm²? (π ≈ 3,14)",
+          "answer": "3.14 * r * s",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Nur der Mantel: 3,14 · {r} · {s} = {ergebnis} cm²"
+        },
+        {
+          "id": "AB-SK-12-3",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "template": "Ein Ball hat den Radius {r} cm. Wie viel Luft passt hinein? (π ≈ 3,14)",
+          "answer": "4 * 3.14 * r * r * r / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "V = 4 · 3,14 · {r*r*r} : 3 = {ergebnis} cm³",
+          "misconceptions": [
+            {
+              "id": "volumen_statt_oberflaeche",
+              "value": "4 * 3.14 * r * r",
+              "feedback": "„Passt hinein“ heißt Volumen."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-12-4",
+          "vars": {
+            "halb": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                3,
+                8,
+                6,
+                12,
+                5
+              ]
+            }
+          },
+          "bedingung": "ganz(wurzel(halb * halb + h * h))",
+          "berechnet": {
+            "hs": "wurzel(halb * halb + h * h)"
+          },
+          "template": "Ein Pyramidendach (a = {2*halb} m, Körperhöhe {h} m) wird gedeckt. Wie viel m² Dachfläche? (Erst hs bestimmen!)",
+          "answer": "4 * (2 * halb * hs / 2)",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "hs = {hs} m. Mantel = 4 · ({2*halb} · {hs} : 2) = {ergebnis} m²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_mitgezaehlt",
+              "value": "2 * halb * 2 * halb + 4 * (2 * halb * hs / 2)",
+              "feedback": "Der Boden wird nicht gedeckt."
+            }
+          ]
+        },
+        {
+          "id": "AB-SK-12-5",
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                4,
+                6,
+                5,
+                12
+              ]
+            },
+            "s": {
+              "aus": [
+                5,
+                5,
+                10,
+                13,
+                13
+              ]
+            }
+          },
+          "bedingung": "(s > r) * ganz(wurzel(s * s - r * r))",
+          "berechnet": {
+            "h": "wurzel(s * s - r * r)"
+          },
+          "template": "Ein Kegel hat r = {r} cm und s = {s} cm. Berechne Höhe, Volumen und Oberfläche. Gib das Volumen an. (π ≈ 3,14)",
+          "answer": "3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "h = {h} cm. V = {ergebnis} cm³, O = {3.14*r*r+3.14*r*s} cm²"
+        }
+      ]
+    }
+  }
+}

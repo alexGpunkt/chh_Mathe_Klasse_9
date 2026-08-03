@@ -1,11 +1,11 @@
 {
   "name": "Mathe 9 · Campus Hannah Höch",
-  "version": "v29",
-  "cache_version": "mathe9-v29-betrieb-develop",
-  "source_commit": "4e32b7a77b15",
+  "version": "v31",
+  "cache_version": "mathe9-v31-integration-fixes-develop",
+  "source_commit": null,
   "source_branch": "develop",
   "source_dirty": true,
-  "gebaut_am": "2026-08-02T15:56:36.153638Z",
+  "gebaut_am": "2026-08-03T18:10:00Z",
   "tracking_aktiv": true,
   "einheiten": 54
 }

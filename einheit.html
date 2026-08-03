@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src https://learningapps.org https://*.learningapps.org https://serlo.org https://*.serlo.org https://h5p.org https://*.h5p.org https://schule-bw.de https://*.schule-bw.de https://learningsnacks.de https://*.learningsnacks.de https://quizlet.com https://*.quizlet.com https://zum.de https://*.zum.de; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#15233A">
 <title>Einheit · Mathe 9</title>
@@ -50,6 +50,14 @@
 
 <main id="buehne"><p class="lade">Aufgaben werden geladen …</p></main>
 
+<section class="blattkarte" id="blattkarte" hidden>
+  <div class="blattkarte-text">
+    <strong>Jetzt von Hand: Übungsblatt zu dieser Einheit</strong>
+    <span id="blattkarte-hinweis">Gleiches Thema, andere Aufgaben. Ausdrucken oder ins Heft übertragen — und dann schriftlich rechnen. Die Lösungen zur Selbstkontrolle stehen unten auf dem Blatt.</span>
+  </div>
+  <a class="btn btn-haupt" id="blattkarte-link" href="#" target="_blank" rel="noopener">Übungsblatt öffnen (PDF)</a>
+</section>
+
 <details class="uebungskarte videokarte" id="videokarte" hidden>
   <summary>Erklärvideos · noch einmal von jemand anderem erklärt</summary>
   <div class="uebung-inhalt" id="video-inhalt"></div>
@@ -70,6 +78,8 @@
 <script src="assets/js/dev-tools.js"></script>
 <script src="assets/js/student-login.js"></script>
 <script src="assets/js/tracker.js"></script>
+<script src="assets/js/lernmodus.js"></script>
+<script src="assets/js/uebungsrahmen.js"></script>
 <script src="assets/js/zeichnen.js"></script>
 <script src="assets/js/animationen.js"></script>
 <script src="assets/js/engine.js"></script>

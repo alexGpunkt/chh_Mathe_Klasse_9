@@ -448,9 +448,79 @@ try {
   if (!/insert\s+into\s+public\.mathe9_teacher_audit/i.test(sql)) {
     fehler.push('supabase/setup.sql: Änderungen an der Lehrkraftfreigabe werden nicht protokolliert');
   }
+  /* Lernmodus, Freigaben und Lernzeit sind seit V30 der Kern des
+     Unterrichtsablaufs. Fehlt eines davon, sperrt oder öffnet die
+     Anwendung stillschweigend das Falsche. */
+  for (const name of ['mathe9_lernmodus', 'mathe9_lernzeit_melden', 'mathe9_unterricht_setzen', 'mathe9_freigeben', 'mathe9_freigabe_zuruecknehmen']) {
+    if (!new RegExp('create\\s+or\\s+replace\\s+function\\s+public\\.' + name + '\\b', 'i').test(sql)) {
+      fehler.push(`supabase/setup.sql: Funktion ${name} fehlt`);
+    }
+  }
+  for (const tabelle of ['mathe9_unterricht', 'mathe9_freigaben', 'mathe9_lernzeit']) {
+    if (!new RegExp('create\\s+table\\s+if\\s+not\\s+exists\\s+public\\.' + tabelle + '\\b', 'i').test(sql)) {
+      fehler.push(`supabase/setup.sql: Tabelle ${tabelle} fehlt`);
+    }
+    if (!new RegExp('alter\\s+table\\s+public\\.' + tabelle + '\\s+enable\\s+row\\s+level\\s+security', 'i').test(sql)) {
+      fehler.push(`supabase/setup.sql: ${tabelle} ohne Row Level Security`);
+    }
+  }
+  /* Ein abgelaufener Bewertungsmodus muss von selbst in den offenen
+     Zustand zurückfallen — sonst sperrt eine vergessene Umschaltung die
+     ganze Klasse bis zum nächsten Eingriff aus. */
+  if (!/gilt_bis\s+is\s+null\s+or\s+aktuell\.gilt_bis\s*>\s*now\(\)/i.test(sql)) {
+    fehler.push('supabase/setup.sql: mathe9_lernmodus lässt den Bewertungsmodus nicht ablaufen');
+  }
+  /* Lernzeit ist personenbezogen und gehört in Auskunft und Löschfrist. */
+  if (!/'lernzeit'/.test(sql)) {
+    fehler.push('supabase/setup.sql: mathe9_person_export enthält die Lernzeit nicht');
+  }
+  if (!/delete\s+from\s+public\.mathe9_lernzeit/i.test(sql)) {
+    fehler.push('supabase/setup.sql: Lernzeiten werden nicht aufgeräumt');
+  }
   melde('Supabase-SQL auf Transaktion, Verwaltungsrechte, Tokenpflege, Protokolle und Funktionsblöcke geprüft');
 } catch (e) {
   fehler.push('supabase/setup.sql konnte nicht geprüft werden: ' + e.message);
+}
+
+/* ---------- 14b · Handschriftliche Übungsblätter ----------
+   Jede Einheit braucht ihr Blatt. Fehlt eines, verweist die Einheitenseite
+   auf eine Datei, die es nicht gibt — und der handschriftliche Teil des
+   Unterrichts fällt genau dort aus, wo niemand es merkt. */
+{
+  const ordner = P('uebungsblaetter');
+  let blaetter = 0;
+  let generatoren = 0;
+  const bekannt = new Set();
+
+  if (!fs.existsSync(ordner)) {
+    fehler.push('Ordner uebungsblaetter/ fehlt');
+  } else {
+    for (const datei of fs.readdirSync(ordner).filter(f => f.endsWith('.json'))) {
+      const daten = liesJson('uebungsblaetter/' + datei);
+      for (const [id, blatt] of Object.entries(daten.einheiten || {})) {
+        blaetter++;
+        bekannt.add(id);
+        generatoren += (blatt.aufgaben || []).length;
+        if (!blatt.auftrag) fehler.push(`uebungsblaetter/${datei}: ${id} ohne Arbeitsauftrag`);
+        if ((blatt.aufgaben || []).length < 4) {
+          fehler.push(`uebungsblaetter/${datei}: ${id} hat nur ${(blatt.aufgaben || []).length} Aufgaben`);
+        }
+      }
+    }
+  }
+
+  for (const f of einheiten) {
+    const id = (f.match(/^units\/[a-z]{2}\/([a-z]{2}-\d{2})\//) || [])[1];
+    if (!id) continue;
+    if (!bekannt.has(id)) fehler.push(`uebungsblaetter/: kein Blatt für ${id}`);
+    const pdf = f.replace('tasks.json', 'uebungsblatt.pdf');
+    if (!fs.existsSync(P(pdf))) {
+      fehler.push(`${pdf} fehlt — node werkzeuge/uebungsblaetter.js ausführen`);
+    } else if (fs.statSync(P(pdf)).size < 1500) {
+      fehler.push(`${pdf} ist verdächtig klein (${fs.statSync(P(pdf)).size} Bytes)`);
+    }
+  }
+  melde(`${blaetter} Übungsblätter mit ${generatoren} Generatoren, ${einheiten.length} PDFs vorhanden`);
 }
 
 /* ---------- 15 · Changelog zur aktuellen Fassung ----------

@@ -421,7 +421,9 @@
       const eigene = [
         'mathe9.stand.' + kennung + '.',     // Bearbeitungsstände und „zuletzt“
         'mathe9.fehler.' + kennung,          // Fehlerprofil
-        'mathe9.lesezeichen.' + kennung      // Lesezeichen im Buchmodus
+        'mathe9.lesezeichen.' + kennung,     // Lesezeichen im Buchmodus
+        'mathe9.lernmodus.' + kennung,       // zwischengespeicherte Unterrichtsfreigaben
+        'mathe9.lernzeit.offen.' + kennung   // noch nicht übertragene Lernzeit je Einheit
       ];
       /* Geräteweite Reste älterer Fassungen kommen mit, wenn niemand
          angemeldet war — sonst gehörten sie einem anderen Kind. */
@@ -464,6 +466,13 @@
   }
 
   async function abmelden(auchLoeschen) {
+    /* Noch offene Lernzeit nach Möglichkeit unter der aktuellen
+       Schülerkennung übertragen, bevor Token oder lokale Profildaten
+       verschwinden. Offline bleibt sie nur dann erhalten, wenn ausdrücklich
+       „Nur abmelden“ gewählt wurde. */
+    try { await window.Lernmodus?.vorAbmelden?.(); }
+    catch { /* Abmelden darf an einer Zeitmeldung nicht scheitern. */ }
+
     /* Erst die Schreibvorgänge stoppen, dann löschen. Sonst schreibt ein
        noch laufender, entprellter Speichervorgang den gerade gelöschten
        Stand wieder hin — und zwar unter „lokal", weil die Anmeldung dann
@@ -486,7 +495,7 @@
     /* Ohne Argument wird gefragt; mit `true`/`false` direkt gehandelt. */
     logout(auchLoeschen) {
       if (auchLoeschen === undefined) { abmeldeDialog(); return; }
-      abmelden(!!auchLoeschen);
+      return abmelden(!!auchLoeschen);
     },
     validate: validateStudent,
     token: tokenLesen,

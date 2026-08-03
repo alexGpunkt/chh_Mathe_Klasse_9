@@ -1,0 +1,895 @@
+{
+  "bereich": "PZ",
+  "title": "Prozent- und Zinsrechnung",
+  "_hinweis": "Generatoren für die handschriftlichen Übungsblätter. Format wie in spiral/*.json — ausgewertet von assets/js/ausdruck.js, damit die gedruckten Lösungen von demselben Code stammen wie die Prüfung in der Anwendung. Die Aufgaben sind bewusst NICHT die digitalen: gleiches Thema, andere Zahlen, andere Einkleidung. Die Einträge unter misconceptions liefern die falschen Antworten für den Selbstkontrollkasten — typische Fehler sind dort brauchbarer als Zufallszahlen.",
+  "einheiten": {
+    "pz-01": {
+      "auftrag": "Rechne jede Aufgabe schriftlich. Schreibe bei den Umwandlungen den Rechenweg dazu.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-01-1",
+          "vars": { "z": { "von": 1, "bis": 19 }, "n": { "aus": [4, 5, 8, 10, 20, 25, 50] } },
+          "bedingung": "(z < n) * ganz(z * 1000 / n)",
+          "template": "Schreibe den Bruch {z}/{n} als Prozentsatz.",
+          "answer": "z * 100 / n",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{z} : {n} = {z/n} und {z/n} · 100 = {ergebnis} %",
+          "misconceptions": [
+            { "id": "zaehler_als_prozent", "value": "z", "feedback": "Das ist der Zähler, nicht der Anteil." },
+            { "id": "nenner_als_prozent", "value": "n", "feedback": "Das ist der Nenner." }
+          ]
+        },
+        {
+          "id": "AB-PZ-01-2",
+          "vars": { "p": { "von": 5, "bis": 95, "schritt": 5 } },
+          "template": "Schreibe {p} % als Dezimalzahl.",
+          "answer": "p / 100",
+          "round": 2,
+          "solution": "{p} : 100 = {ergebnis}",
+          "misconceptions": [
+            { "id": "komma_verschoben", "value": "p / 10", "feedback": "Ein Komma zu wenig verschoben." },
+            { "id": "faktor_100", "value": "p", "feedback": "Prozent heißt „von hundert“ — es muss geteilt werden." }
+          ]
+        },
+        {
+          "id": "AB-PZ-01-3",
+          "vars": { "h": { "von": 5, "bis": 95, "schritt": 5 } },
+          "berechnet": { "d": "h / 100" },
+          "template": "Schreibe die Dezimalzahl {d} als Prozentsatz.",
+          "answer": "d * 100",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{d} · 100 = {ergebnis} %",
+          "misconceptions": [
+            { "id": "faktor_10", "value": "d * 10", "feedback": "Nur eine Stelle verschoben statt zwei." }
+          ]
+        },
+        {
+          "id": "AB-PZ-01-4",
+          "vars": { "teil": { "von": 3, "bis": 24 }, "ganz": { "aus": [20, 25, 40, 50] } },
+          "bedingung": "(teil < ganz) * ganz(teil * 1000 / ganz)",
+          "template": "In einer Klasse mit {ganz} Kindern haben {teil} ein Fahrrad dabei. Wie viel Prozent sind das?",
+          "answer": "teil * 100 / ganz",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{teil} : {ganz} = {teil/ganz}, also {ergebnis} %",
+          "misconceptions": [
+            { "id": "ganzes_statt_teil", "value": "(ganz - teil) * 100 / ganz", "feedback": "Das ist der Anteil OHNE Fahrrad." }
+          ]
+        },
+        {
+          "id": "AB-PZ-01-5",
+          "vars": { "z": { "aus": [1, 3, 7, 9, 11, 13] }, "n": { "aus": [20, 25, 50] } },
+          "bedingung": "(z < n) * ganz(z * 1000 / n)",
+          "template": "Ordne der Größe nach: {z}/{n} · 0,5 · 40 %. Gib den größten Wert in Prozent an.",
+          "answer": "(z * 100 / n > 50) * (z * 100 / n) + (z * 100 / n <= 50) * 50",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{z}/{n} = {z*100/n} %, 0,5 = 50 %, 40 % — der größte Wert ist {ergebnis} %."
+        }
+      ]
+    },
+
+    "pz-02": {
+      "auftrag": "Schätze zuerst im Kopf und notiere die Schätzung. Rechne danach schriftlich nach.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-02-1",
+          "vars": { "G": { "von": 40, "bis": 900, "schritt": 20 } },
+          "template": "Wie viel sind 10 % von {G} €?",
+          "answer": "G / 10",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{G} : 10 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "bei_1prozent_gestoppt", "value": "G / 100", "feedback": "Das ist 1 %." }
+          ]
+        },
+        {
+          "id": "AB-PZ-02-2",
+          "vars": { "G": { "von": 40, "bis": 800, "schritt": 4 } },
+          "template": "Wie viel sind 25 % von {G} €?",
+          "answer": "G / 4",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "25 % ist ein Viertel: {G} : 4 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "haelfte_verwechselt", "value": "G / 2", "feedback": "Das ist die Hälfte, also 50 %." }
+          ]
+        },
+        {
+          "id": "AB-PZ-02-3",
+          "vars": { "G": { "von": 60, "bis": 900, "schritt": 20 } },
+          "template": "Schätze: 21 % von {G} € sind ungefähr wie viel? Rechne mit 20 %.",
+          "answer": "G / 5",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "20 % = ein Fünftel: {G} : 5 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "haelfte_verwechselt", "value": "G / 4", "feedback": "Das wäre ein Viertel, also 25 %." }
+          ]
+        },
+        {
+          "id": "AB-PZ-02-4",
+          "vars": { "G": { "von": 200, "bis": 2000, "schritt": 100 } },
+          "template": "Wie viel sind 5 % von {G} €? (Tipp: 10 % halbieren)",
+          "answer": "G / 20",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "10 % sind {G/10} €, die Hälfte davon ist {ergebnis} €",
+          "misconceptions": [
+            { "id": "bei_1prozent_gestoppt", "value": "G / 10", "feedback": "Das sind 10 %, nicht 5 %." }
+          ]
+        },
+        {
+          "id": "AB-PZ-02-5",
+          "vars": { "G": { "von": 60, "bis": 900, "schritt": 20 } },
+          "template": "Ein Pullover kostet {G} €. Er wird um 30 % billiger. Schätze den neuen Preis.",
+          "answer": "G * 7 / 10",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "30 % von {G} € sind {G*3/10} €. Neuer Preis: {G} − {G*3/10} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "rabatt_als_rest", "value": "G * 3 / 10", "feedback": "Das ist der Rabatt, nicht der neue Preis." }
+          ]
+        }
+      ]
+    },
+
+    "pz-03": {
+      "auftrag": "Schreibe bei jeder Aufgabe die drei Zeilen des Dreisatzes untereinander.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-03-1",
+          "vars": { "n": { "von": 3, "bis": 9 }, "preis": { "von": 2, "bis": 12 }, "m": { "von": 10, "bis": 30 } },
+          "berechnet": { "gesamt": "n * preis" },
+          "template": "{n} Hefte kosten {gesamt} €. Was kosten {m} Hefte?",
+          "answer": "m * preis",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "1 Heft: {gesamt} : {n} = {preis} €. {m} Hefte: {m} · {preis} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "bei_einheit_gestoppt", "value": "preis", "feedback": "Das ist der Preis für EIN Heft." }
+          ]
+        },
+        {
+          "id": "AB-PZ-03-2",
+          "vars": { "n": { "von": 4, "bis": 12 }, "menge": { "von": 3, "bis": 15 }, "m": { "von": 20, "bis": 60, "schritt": 4 } },
+          "berechnet": { "gesamt": "n * menge" },
+          "template": "{n} gleiche Kisten wiegen zusammen {gesamt} kg. Wie schwer sind {m} Kisten?",
+          "answer": "m * menge",
+          "unit_label": "kg",
+          "round": 2,
+          "solution": "Eine Kiste: {gesamt} : {n} = {menge} kg. {m} Kisten: {ergebnis} kg",
+          "misconceptions": [
+            { "id": "geteilt_statt_mal", "value": "m / menge", "feedback": "Mehr Kisten heißt mehr Gewicht — hier wird multipliziert." }
+          ]
+        },
+        {
+          "id": "AB-PZ-03-3",
+          "vars": { "km": { "von": 30, "bis": 90, "schritt": 30 }, "liter": { "von": 3, "bis": 9 }, "ziel": { "von": 120, "bis": 600, "schritt": 30 } },
+          "template": "Ein Auto braucht für {km} km genau {liter} Liter. Wie viel Liter für {ziel} km?",
+          "answer": "ziel / km * liter",
+          "unit_label": "l",
+          "round": 2,
+          "bedingung": "ganz(ziel / km * liter * 100)",
+          "solution": "Für 1 km: {liter} : {km} = {liter/km} l. Für {ziel} km: {ergebnis} l"
+        },
+        {
+          "id": "AB-PZ-03-4",
+          "vars": { "arbeiter": { "von": 2, "bis": 6 }, "stunden": { "von": 2, "bis": 8 }, "neu": { "von": 8, "bis": 24, "schritt": 2 } },
+          "berechnet": { "leistung": "arbeiter * stunden" },
+          "template": "{arbeiter} Personen schaffen in {stunden} Stunden {leistung} Kisten. Wie viele Kisten schaffen sie in {neu} Stunden?",
+          "answer": "arbeiter * neu",
+          "unit_label": "Kisten",
+          "round": 0,
+          "solution": "Pro Stunde: {leistung} : {stunden} = {arbeiter} Kisten. In {neu} Stunden: {ergebnis}"
+        },
+        {
+          "id": "AB-PZ-03-5",
+          "vars": { "preis": { "von": 2, "bis": 9 }, "n": { "von": 6, "bis": 20, "schritt": 2 }, "budget": { "von": 30, "bis": 120, "schritt": 6 } },
+          "bedingung": "ganz(budget / preis)",
+          "template": "Eine Packung kostet {preis} €. Wie viele Packungen bekommt man für {budget} €?",
+          "answer": "budget / preis",
+          "unit_label": "Packungen",
+          "round": 0,
+          "solution": "{budget} : {preis} = {ergebnis} Packungen"
+        }
+      ]
+    },
+
+    "pz-04": {
+      "auftrag": "Prüfe bei jeder Aufgabe ZUERST schriftlich: proportional oder antiproportional? Begründe in einem Satz.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-04-1",
+          "vars": { "n": { "von": 2, "bis": 8 }, "tage": { "von": 6, "bis": 30, "schritt": 2 }, "neu": { "von": 2, "bis": 12 } },
+          "berechnet": { "arbeit": "n * tage" },
+          "bedingung": "ganz(arbeit * 10 / neu) * (neu != n)",
+          "template": "{n} Maler brauchen {tage} Tage. Wie lange brauchen {neu} Maler?",
+          "answer": "arbeit / neu",
+          "unit_label": "Tage",
+          "round": 1,
+          "solution": "Gesamtarbeit: {n} · {tage} = {arbeit} Tagewerke. {arbeit} : {neu} = {ergebnis} Tage",
+          "misconceptions": [
+            { "id": "proportional_gerechnet", "value": "tage / n * neu", "feedback": "Mehr Maler heißt WENIGER Tage — antiproportional." }
+          ]
+        },
+        {
+          "id": "AB-PZ-04-2",
+          "vars": { "v": { "aus": [40, 60, 80, 90, 120] }, "t": { "aus": [2, 3, 4, 6] }, "vneu": { "aus": [30, 40, 60, 80, 120] } },
+          "berechnet": { "s": "v * t" },
+          "bedingung": "ganz(s * 10 / vneu) * (vneu != v)",
+          "template": "Bei {v} km/h dauert die Fahrt {t} Stunden. Wie lange dauert sie bei {vneu} km/h?",
+          "answer": "s / vneu",
+          "unit_label": "h",
+          "round": 1,
+          "solution": "Strecke: {v} · {t} = {s} km. {s} : {vneu} = {ergebnis} h",
+          "misconceptions": [
+            { "id": "proportional_gerechnet", "value": "t / v * vneu", "feedback": "Schneller heißt kürzer — antiproportional." }
+          ]
+        },
+        {
+          "id": "AB-PZ-04-3",
+          "vars": { "n": { "von": 3, "bis": 10 }, "preis": { "von": 2, "bis": 9 }, "neu": { "von": 12, "bis": 40, "schritt": 2 } },
+          "berechnet": { "gesamt": "n * preis" },
+          "template": "{n} Eintrittskarten kosten {gesamt} €. Was kosten {neu} Karten? (Proportional oder nicht?)",
+          "answer": "neu * preis",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Proportional. Eine Karte: {preis} €. {neu} Karten: {ergebnis} €",
+          "misconceptions": [
+            { "id": "antiproportional_gerechnet", "value": "gesamt * n / neu", "feedback": "Mehr Karten kosten mehr — das ist proportional." }
+          ]
+        },
+        {
+          "id": "AB-PZ-04-4",
+          "vars": { "gaeste": { "aus": [6, 8, 10, 12, 15, 20] }, "tage": { "aus": [4, 6, 8, 10, 12] }, "neu": { "aus": [4, 5, 6, 8, 10, 12] } },
+          "berechnet": { "vorrat": "gaeste * tage" },
+          "bedingung": "ganz(vorrat * 10 / neu) * (neu != gaeste)",
+          "template": "Ein Vorrat reicht für {gaeste} Personen {tage} Tage. Wie lange reicht er für {neu} Personen?",
+          "answer": "vorrat / neu",
+          "unit_label": "Tage",
+          "round": 1,
+          "solution": "Vorrat: {gaeste} · {tage} = {vorrat} Personentage. {vorrat} : {neu} = {ergebnis} Tage"
+        },
+        {
+          "id": "AB-PZ-04-5",
+          "vars": { "a": { "von": 2, "bis": 9 }, "b": { "von": 12, "bis": 48, "schritt": 2 } },
+          "berechnet": { "prod": "a * b" },
+          "template": "Bei einer antiproportionalen Zuordnung gehört zu {a} der Wert {b}. Welcher Wert gehört zu {2*a}?",
+          "answer": "prod / (2 * a)",
+          "round": 2,
+          "solution": "Das Produkt bleibt gleich: {a} · {b} = {prod}. {prod} : {2*a} = {ergebnis}",
+          "misconceptions": [
+            { "id": "proportional_gerechnet", "value": "2 * b", "feedback": "Bei antiproportional wird das Doppelte zur Hälfte, nicht zum Doppelten." }
+          ]
+        }
+      ]
+    },
+
+    "pz-05": {
+      "auftrag": "Schreibe zu jeder Aufgabe auf, was G, W und p % sind — erst danach rechnen.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-05-1",
+          "vars": { "G": { "von": 40, "bis": 400, "schritt": 20 }, "p": { "aus": [10, 20, 25, 50] } },
+          "template": "Von {G} Schülerinnen und Schülern gehen {p} % zu Fuß zur Schule. Wie viele sind das? Benenne zuerst G, W und p %.",
+          "answer": "G * p / 100",
+          "unit_label": "Kinder",
+          "round": 0,
+          "bedingung": "ganz(G * p / 100)",
+          "solution": "G = {G}, p % = {p} %, gesucht ist W. W = {G} · {p} : 100 = {ergebnis}",
+          "misconceptions": [
+            { "id": "grundwert_uebersehen", "value": "p", "feedback": "{p} ist der Prozentsatz, nicht die Anzahl." }
+          ]
+        },
+        {
+          "id": "AB-PZ-05-2",
+          "vars": { "G": { "aus": [40, 50, 80, 200, 250] }, "W": { "von": 4, "bis": 100, "schritt": 2 } },
+          "bedingung": "(W < G) * ganz(W * 1000 / G)",
+          "template": "Ein Rad kostet {G} €, der Rabatt beträgt {W} €. Welche Größe ist der Grundwert, welche der Prozentwert? Wie viel Prozent Rabatt sind das?",
+          "answer": "W * 100 / G",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "G = {G} € (das Ganze), W = {W} € (der Teil). p % = {W} : {G} · 100 = {ergebnis} %",
+          "misconceptions": [
+            { "id": "anker_verwechselt", "value": "G * 100 / W", "feedback": "G und W sind vertauscht." }
+          ]
+        },
+        {
+          "id": "AB-PZ-05-3",
+          "vars": { "W": { "von": 6, "bis": 60, "schritt": 2 }, "p": { "aus": [10, 20, 25, 40, 50] } },
+          "template": "{W} kg sind {p} % einer Menge. Wie groß ist das Ganze?",
+          "answer": "W * 100 / p",
+          "unit_label": "kg",
+          "round": 2,
+          "solution": "G = {W} : {p} · 100 = {ergebnis} kg",
+          "misconceptions": [
+            { "id": "anker_verwechselt", "value": "W * p / 100", "feedback": "So rechnet man den Prozentwert, nicht den Grundwert." }
+          ]
+        },
+        {
+          "id": "AB-PZ-05-4",
+          "vars": { "G": { "von": 200, "bis": 900, "schritt": 50 }, "p": { "aus": [20, 40, 60, 80] } },
+          "template": "In einem Verein sind {G} Mitglieder, {p} % davon sind Jugendliche. Wie viele Mitglieder sind KEINE Jugendlichen?",
+          "answer": "G * (100 - p) / 100",
+          "unit_label": "Mitglieder",
+          "round": 0,
+          "bedingung": "ganz(G * (100 - p) / 100)",
+          "solution": "100 % − {p} % = {100-p} %. {G} · {100-p} : 100 = {ergebnis}",
+          "misconceptions": [
+            { "id": "teil_statt_ganzes", "value": "G * p / 100", "feedback": "Das ist die Zahl der Jugendlichen." }
+          ]
+        },
+        {
+          "id": "AB-PZ-05-5",
+          "vars": { "G": { "aus": [50, 80, 120, 200] }, "p": { "aus": [15, 25, 35, 45] } },
+          "template": "Schreibe einen eigenen Sachaufgabentext, in dem {G} der Grundwert und {p} % der Prozentsatz ist. Berechne dann den Prozentwert.",
+          "answer": "G * p / 100",
+          "round": 2,
+          "solution": "W = {G} · {p} : 100 = {ergebnis}"
+        }
+      ]
+    },
+
+    "pz-06": {
+      "auftrag": "Rechne mit der Formel W = G · p : 100. Schreibe jeden Schritt auf.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-06-1",
+          "vars": { "G": { "von": 60, "bis": 900, "schritt": 20 }, "p": { "aus": [5, 10, 15, 20, 25] } },
+          "template": "Berechne {p} % von {G} €.",
+          "answer": "G * p / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{G} · {p} : 100 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "faktor_100", "value": "G * p", "feedback": "Die Division durch 100 fehlt." }
+          ]
+        },
+        {
+          "id": "AB-PZ-06-2",
+          "vars": { "G": { "von": 200, "bis": 1600, "schritt": 50 }, "p": { "aus": [3, 7, 12, 18] } },
+          "bedingung": "ganz(G * p)",
+          "template": "Ein Fahrrad kostet {G} €. Der Rabatt beträgt {p} %. Wie hoch ist der Rabatt in Euro?",
+          "answer": "G * p / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{G} · {p} : 100 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "rabatt_als_rest", "value": "G - G * p / 100", "feedback": "Das ist der Preis nach dem Rabatt." }
+          ]
+        },
+        {
+          "id": "AB-PZ-06-3",
+          "vars": { "G": { "von": 300, "bis": 2400, "schritt": 100 }, "p": { "aus": [2, 4, 6, 8] } },
+          "template": "Von {G} Bäumen sind {p} % krank. Wie viele Bäume sind krank?",
+          "answer": "G * p / 100",
+          "unit_label": "Bäume",
+          "round": 0,
+          "bedingung": "ganz(G * p / 100)",
+          "solution": "{G} · {p} : 100 = {ergebnis} Bäume"
+        },
+        {
+          "id": "AB-PZ-06-4",
+          "vars": { "G": { "von": 40, "bis": 500, "schritt": 20 }, "p": { "aus": [110, 120, 150] } },
+          "template": "Berechne {p} % von {G} €. (Achtung: mehr als das Ganze)",
+          "answer": "G * p / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{G} · {p} : 100 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "endwert_als_grundwert", "value": "G", "feedback": "Über 100 % ist das Ergebnis größer als das Ganze." }
+          ]
+        },
+        {
+          "id": "AB-PZ-06-5",
+          "vars": { "G": { "von": 500, "bis": 3000, "schritt": 100 }, "p": { "aus": [5, 10, 20] }, "q": { "aus": [3, 6, 9] } },
+          "template": "Von {G} € werden zuerst {p} % gespart und danach {q} % des Restes ausgegeben. Wie viel Euro werden ausgegeben?",
+          "answer": "G * (100 - p) / 100 * q / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Rest: {G} · {100-p} : 100 = {G*(100-p)/100} €. Davon {q} %: {ergebnis} €",
+          "misconceptions": [
+            { "id": "alter_grundwert", "value": "G * q / 100", "feedback": "{q} % beziehen sich auf den Rest, nicht auf {G} €." }
+          ]
+        }
+      ]
+    },
+
+    "pz-07": {
+      "auftrag": "Rechne mit p = W : G · 100. Runde auf eine Nachkommastelle, wenn es nicht aufgeht.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-07-1",
+          "vars": { "G": { "aus": [40, 50, 80, 200, 400, 500] }, "W": { "von": 2, "bis": 200, "schritt": 2 } },
+          "bedingung": "(W < G) * ganz(W * 1000 / G)",
+          "template": "Wie viel Prozent sind {W} € von {G} €?",
+          "answer": "W * 100 / G",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{W} : {G} · 100 = {ergebnis} %",
+          "misconceptions": [
+            { "id": "anker_verwechselt", "value": "G * 100 / W", "feedback": "Geteilt wird durch den Grundwert." }
+          ]
+        },
+        {
+          "id": "AB-PZ-07-2",
+          "vars": { "ganz": { "aus": [20, 25, 40, 50] }, "teil": { "von": 1, "bis": 24 } },
+          "bedingung": "(teil < ganz) * ganz(teil * 1000 / ganz)",
+          "template": "In einer Klasse mit {ganz} Kindern haben {teil} eine Eins geschrieben. Wie viel Prozent sind das?",
+          "answer": "teil * 100 / ganz",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{teil} : {ganz} · 100 = {ergebnis} %"
+        },
+        {
+          "id": "AB-PZ-07-3",
+          "vars": { "alt": { "aus": [40, 50, 80, 200, 400] }, "diff": { "von": 2, "bis": 40, "schritt": 2 } },
+          "bedingung": "ganz(diff * 1000 / alt)",
+          "berechnet": { "neu": "alt + diff" },
+          "template": "Ein Preis steigt von {alt} € auf {neu} €. Um wie viel Prozent ist er gestiegen?",
+          "answer": "diff * 100 / alt",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "Erhöhung: {diff} €. {diff} : {alt} · 100 = {ergebnis} %",
+          "misconceptions": [
+            { "id": "neuer_als_grundwert", "value": "diff * 100 / neu", "feedback": "Bezugsgröße ist der ALTE Preis." }
+          ]
+        },
+        {
+          "id": "AB-PZ-07-4",
+          "vars": { "G": { "aus": [25, 50, 125, 250, 500] }, "W": { "von": 5, "bis": 250, "schritt": 5 } },
+          "bedingung": "(W < G) * ganz(W * 1000 / G)",
+          "template": "{W} kg von {G} kg wurden verkauft. Wie viel Prozent sind noch da?",
+          "answer": "100 - W * 100 / G",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "Verkauft: {W*100/G} %. Übrig: 100 % − {W*100/G} % = {ergebnis} %",
+          "misconceptions": [
+            { "id": "teil_statt_ganzes", "value": "W * 100 / G", "feedback": "Das ist der verkaufte Anteil." }
+          ]
+        },
+        {
+          "id": "AB-PZ-07-5",
+          "vars": { "G": { "aus": [200, 400, 500, 800] }, "W": { "von": 10, "bis": 400, "schritt": 10 } },
+          "bedingung": "(W < G) * ganz(W * 1000 / G)",
+          "template": "Von {G} Stimmen entfielen {W} auf eine Partei. Wie viel Prozent sind das? Reicht es über die Fünf-Prozent-Hürde?",
+          "answer": "W * 100 / G",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{W} : {G} · 100 = {ergebnis} %"
+        }
+      ]
+    },
+
+    "pz-08": {
+      "auftrag": "Rechne mit G = W : p · 100. Kontrolliere am Ende: Ist der Grundwert größer als der Prozentwert?",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-08-1",
+          "vars": { "W": { "von": 6, "bis": 240, "schritt": 6 }, "p": { "aus": [10, 20, 25, 40, 50] } },
+          "template": "{W} € sind {p} % eines Betrags. Wie groß ist der Betrag?",
+          "answer": "W * 100 / p",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{W} : {p} · 100 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "anker_verwechselt", "value": "W * p / 100", "feedback": "So kommt man auf den Prozentwert." }
+          ]
+        },
+        {
+          "id": "AB-PZ-08-2",
+          "vars": { "W": { "von": 3, "bis": 90, "schritt": 3 }, "p": { "aus": [5, 15, 30, 60] } },
+          "bedingung": "ganz(W * 1000 / p)",
+          "template": "{p} % der Klasse, das sind {W} Kinder, fahren mit dem Bus. Wie viele Kinder sind in der Klasse?",
+          "answer": "W * 100 / p",
+          "unit_label": "Kinder",
+          "round": 0,
+          "solution": "{W} : {p} · 100 = {ergebnis} Kinder"
+        },
+        {
+          "id": "AB-PZ-08-3",
+          "vars": { "rest": { "von": 30, "bis": 600, "schritt": 30 }, "p": { "aus": [10, 20, 25, 40] } },
+          "bedingung": "ganz(rest * 100000 / (100 - p))",
+          "template": "Nach {p} % Rabatt kostet eine Jacke noch {rest} €. Was hat sie vorher gekostet?",
+          "answer": "rest * 100 / (100 - p)",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{rest} € sind {100-p} %. G = {rest} : {100-p} · 100 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "endpreis_statt_teil", "value": "rest * 100 / p", "feedback": "{rest} € sind {100-p} %, nicht {p} %." }
+          ]
+        },
+        {
+          "id": "AB-PZ-08-4",
+          "vars": { "W": { "von": 12, "bis": 360, "schritt": 12 }, "p": { "aus": [4, 8, 16, 24] } },
+          "bedingung": "ganz(W * 1000 / p)",
+          "template": "In einem Betrieb sind {W} Personen krank, das sind {p} % der Belegschaft. Wie groß ist die Belegschaft?",
+          "answer": "W * 100 / p",
+          "unit_label": "Personen",
+          "round": 0,
+          "solution": "{W} : {p} · 100 = {ergebnis} Personen"
+        },
+        {
+          "id": "AB-PZ-08-5",
+          "vars": { "brutto": { "von": 119, "bis": 1190, "schritt": 119 } },
+          "template": "Ein Preis mit 19 % Mehrwertsteuer beträgt {brutto} €. Wie hoch ist der Nettopreis?",
+          "answer": "brutto * 100 / 119",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{brutto} € sind 119 %. {brutto} : 119 · 100 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "endwert_als_grundwert", "value": "brutto * 81 / 100", "feedback": "19 % abziehen ist nicht dasselbe wie durch 1,19 teilen." }
+          ]
+        }
+      ]
+    },
+
+    "pz-09": {
+      "auftrag": "Notiere bei jeder Aufgabe zuerst den Faktor (zum Beispiel · 0,80) und rechne dann.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-09-1",
+          "vars": { "G": { "von": 50, "bis": 900, "schritt": 25 }, "p": { "aus": [10, 20, 25, 40] } },
+          "template": "Ein Artikel kostet {G} €. Er wird um {p} % billiger. Wie hoch ist der neue Preis?",
+          "answer": "G * (100 - p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Faktor {(100-p)/100}. {G} · {(100-p)/100} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "rabatt_als_rest", "value": "G * p / 100", "feedback": "Das ist der Rabatt, nicht der Preis." }
+          ]
+        },
+        {
+          "id": "AB-PZ-09-2",
+          "vars": { "G": { "von": 50, "bis": 900, "schritt": 25 }, "p": { "aus": [5, 10, 19, 20] } },
+          "template": "Zu {G} € kommen {p} % dazu. Wie hoch ist der Endbetrag?",
+          "answer": "G * (100 + p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Faktor {(100+p)/100}. {G} · {(100+p)/100} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "teil_statt_ganzes", "value": "G * p / 100", "feedback": "Das ist nur der Aufschlag." }
+          ]
+        },
+        {
+          "id": "AB-PZ-09-3",
+          "vars": { "endwert": { "von": 80, "bis": 800, "schritt": 40 }, "p": { "aus": [20, 25, 50] } },
+          "bedingung": "ganz(endwert * 100000 / (100 + p))",
+          "template": "Nach einer Erhöhung um {p} % beträgt die Miete {endwert} €. Wie hoch war sie vorher?",
+          "answer": "endwert * 100 / (100 + p)",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{endwert} : {(100+p)/100} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "prozent_vom_endwert_abgezogen", "value": "endwert * (100 - p) / 100", "feedback": "{p} % abziehen führt nicht zurück." }
+          ]
+        },
+        {
+          "id": "AB-PZ-09-4",
+          "vars": { "rest": { "von": 60, "bis": 600, "schritt": 30 }, "p": { "aus": [20, 25, 40] } },
+          "bedingung": "ganz(rest * 100000 / (100 - p))",
+          "template": "Ein Preis wurde um {p} % gesenkt und beträgt jetzt {rest} €. Wie hoch war der alte Preis?",
+          "answer": "rest * 100 / (100 - p)",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{rest} € sind {100-p} %. {rest} : {(100-p)/100} = {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-09-5",
+          "vars": { "G": { "von": 100, "bis": 1000, "schritt": 100 }, "p": { "aus": [10, 20, 25] } },
+          "template": "Ein Preis von {G} € steigt um {p} % und fällt danach wieder um {p} %. Wie hoch ist er am Ende?",
+          "answer": "G * (100 + p) / 100 * (100 - p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{G} · {(100+p)/100} = {G*(100+p)/100} €, davon {100-p} %: {ergebnis} €",
+          "misconceptions": [
+            { "id": "veraenderungen_heben_sich_auf", "value": "G", "feedback": "Erhöhung und Senkung beziehen sich auf verschiedene Grundwerte." }
+          ]
+        }
+      ]
+    },
+
+    "pz-10": {
+      "auftrag": "Gib bei jeder Aufgabe den Wachstumsfaktor an, bevor du rechnest.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-10-1",
+          "vars": { "alt": { "aus": [40, 50, 80, 200, 250, 400] }, "diff": { "von": 2, "bis": 80, "schritt": 2 } },
+          "bedingung": "ganz(diff * 1000 / alt)",
+          "berechnet": { "neu": "alt + diff" },
+          "template": "Ein Wert steigt von {alt} auf {neu}. Um wie viel Prozent ist er gestiegen?",
+          "answer": "(neu - alt) * 100 / alt",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "p = ({neu} − {alt}) : {alt} · 100 = {ergebnis} %",
+          "misconceptions": [
+            { "id": "neuer_als_grundwert", "value": "(neu - alt) * 100 / neu", "feedback": "Bezug ist der alte Wert." }
+          ]
+        },
+        {
+          "id": "AB-PZ-10-2",
+          "vars": { "alt": { "aus": [40, 50, 80, 200, 250, 400] }, "diff": { "von": 2, "bis": 40, "schritt": 2 } },
+          "bedingung": "(diff < alt) * ganz(diff * 1000 / alt)",
+          "berechnet": { "neu": "alt - diff" },
+          "template": "Ein Wert fällt von {alt} auf {neu}. Um wie viel Prozent ist er gefallen?",
+          "answer": "(alt - neu) * 100 / alt",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "p = ({alt} − {neu}) : {alt} · 100 = {ergebnis} %"
+        },
+        {
+          "id": "AB-PZ-10-3",
+          "vars": { "G": { "von": 100, "bis": 2000, "schritt": 100 }, "p": { "aus": [3, 5, 8, 12] } },
+          "template": "Gib den Wachstumsfaktor für eine Zunahme um {p} % an und berechne damit den neuen Wert von {G} €.",
+          "answer": "G * (100 + p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "q = {(100+p)/100}. {G} · {(100+p)/100} = {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-10-4",
+          "vars": { "G": { "von": 200, "bis": 2000, "schritt": 100 }, "p": { "aus": [10, 20, 25] }, "q": { "aus": [10, 20, 50] } },
+          "template": "{G} € nehmen erst um {p} % zu und dann um {q} % ab. Wie viel Euro sind es am Ende?",
+          "answer": "G * (100 + p) / 100 * (100 - q) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Faktoren multiplizieren: {G} · {(100+p)/100} · {(100-q)/100} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "prozentsaetze_addiert", "value": "G * (100 + p - q) / 100", "feedback": "Prozentsätze dürfen nicht addiert werden — die Faktoren werden multipliziert." }
+          ]
+        },
+        {
+          "id": "AB-PZ-10-5",
+          "vars": { "G": { "von": 100, "bis": 1000, "schritt": 100 }, "p": { "aus": [20, 25, 50] } },
+          "bedingung": "ganz(p * 1000 / (100 + p))",
+          "template": "Um wie viel Prozent muss ein um {p} % gestiegener Wert wieder fallen, damit er beim Ausgangswert {G} landet? Gib den Prozentsatz an.",
+          "answer": "p * 100 / (100 + p)",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "Der neue Grundwert ist {G*(100+p)/100}. Rückgang: {G*p/100} : {G*(100+p)/100} · 100 = {ergebnis} %",
+          "misconceptions": [
+            { "id": "veraenderungen_heben_sich_auf", "value": "p", "feedback": "Der Rückgang bezieht sich auf den größeren Wert." }
+          ]
+        }
+      ]
+    },
+
+    "pz-11": {
+      "auftrag": "Schreibe zu jeder Aufgabe K, p und Z auf und rechne mit Z = K · p : 100.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-11-1",
+          "vars": { "K": { "von": 500, "bis": 9000, "schritt": 500 }, "p": { "aus": [1, 2, 2.5, 3, 4] } },
+          "template": "{K} € werden ein Jahr lang mit {p} % verzinst. Wie hoch sind die Zinsen?",
+          "answer": "K * p / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Z = {K} · {p} : 100 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "faktor_100", "value": "K * p", "feedback": "Durch 100 teilen nicht vergessen." }
+          ]
+        },
+        {
+          "id": "AB-PZ-11-2",
+          "vars": { "K": { "von": 1000, "bis": 20000, "schritt": 1000 }, "p": { "aus": [1.5, 2, 3, 5] } },
+          "template": "Wie hoch ist das Kapital nach einem Jahr, wenn {K} € mit {p} % verzinst werden?",
+          "answer": "K * (100 + p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Zinsen: {K*p/100} €. Kapital: {K} + {K*p/100} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "teil_statt_ganzes", "value": "K * p / 100", "feedback": "Das sind nur die Zinsen." }
+          ]
+        },
+        {
+          "id": "AB-PZ-11-3",
+          "vars": { "K": { "von": 400, "bis": 8000, "schritt": 400 }, "p": { "aus": [2, 4, 5, 8] } },
+          "berechnet": { "Z": "K * p / 100" },
+          "template": "Für {K} € gab es in einem Jahr {Z} € Zinsen. Wie hoch war der Zinssatz?",
+          "answer": "Z * 100 / K",
+          "unit_label": "%",
+          "round": 2,
+          "solution": "p = {Z} : {K} · 100 = {ergebnis} %"
+        },
+        {
+          "id": "AB-PZ-11-4",
+          "vars": { "p": { "aus": [2, 4, 5] }, "K": { "von": 1000, "bis": 20000, "schritt": 1000 } },
+          "berechnet": { "Z": "K * p / 100" },
+          "template": "Bei {p} % Zinsen gab es in einem Jahr {Z} € Zinsen. Wie hoch war das Kapital?",
+          "answer": "Z * 100 / p",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "K = {Z} : {p} · 100 = {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-11-5",
+          "vars": { "K": { "von": 2000, "bis": 20000, "schritt": 500 }, "p": { "aus": [1, 2, 3] }, "q": { "aus": [4, 5, 6] } },
+          "template": "Eine Bank zahlt {p} %, eine andere {q} %. Wie viel mehr Zinsen bringt die zweite Bank für {K} € in einem Jahr?",
+          "answer": "K * (q - p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Unterschied: {q} % − {p} % = {q-p} %. {K} · {q-p} : 100 = {ergebnis} €"
+        }
+      ]
+    },
+
+    "pz-12": {
+      "auftrag": "Rechne immer zuerst die Jahreszinsen aus und nimm dann den Zeitanteil. Bankjahr: 360 Tage.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-12-1",
+          "vars": { "K": { "von": 1200, "bis": 12000, "schritt": 1200 }, "p": { "aus": [2, 3, 4, 5] }, "m": { "aus": [3, 4, 6, 8] } },
+          "template": "{K} € werden {m} Monate lang mit {p} % verzinst. Wie hoch sind die Zinsen?",
+          "answer": "K * p / 100 * m / 12",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Jahreszinsen: {K*p/100} €. Für {m} Monate: {K*p/100} · {m} : 12 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "zeitfaktor_vergessen", "value": "K * p / 100", "feedback": "Das sind die Zinsen für ein ganzes Jahr." }
+          ]
+        },
+        {
+          "id": "AB-PZ-12-2",
+          "vars": { "K": { "von": 3600, "bis": 36000, "schritt": 3600 }, "p": { "aus": [2, 3, 5] }, "t": { "aus": [30, 60, 90, 120, 180] } },
+          "template": "{K} € werden {t} Tage lang mit {p} % verzinst. Wie hoch sind die Zinsen? (Bankjahr 360 Tage)",
+          "answer": "K * p / 100 * t / 360",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Jahreszinsen: {K*p/100} €. Für {t} Tage: {K*p/100} · {t} : 360 = {ergebnis} €",
+          "misconceptions": [
+            { "id": "tage_365", "value": "K * p / 100 * t / 365", "feedback": "Im Bankjahr wird mit 360 Tagen gerechnet." }
+          ]
+        },
+        {
+          "id": "AB-PZ-12-3",
+          "vars": { "K": { "von": 2400, "bis": 24000, "schritt": 2400 }, "p": { "aus": [1.5, 2.5, 3 ] }, "m": { "aus": [2, 5, 7, 10] } },
+          "template": "Wie hoch ist das Kapital nach {m} Monaten, wenn {K} € mit {p} % verzinst werden?",
+          "answer": "K + K * p / 100 * m / 12",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Zinsen: {K*p/100*m/12} €. Kapital: {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-12-4",
+          "vars": { "K": { "von": 1200, "bis": 12000, "schritt": 1200 }, "p": { "aus": [2, 4, 6] }, "m": { "aus": [3, 6, 9] } },
+          "berechnet": { "Z": "K * p / 100 * m / 12" },
+          "template": "Für {K} € gab es nach {m} Monaten {Z} € Zinsen. Wie hoch war der Zinssatz?",
+          "answer": "Z * 100 * 12 / (K * m)",
+          "unit_label": "%",
+          "round": 2,
+          "solution": "p = {Z} · 100 · 12 : ({K} · {m}) = {ergebnis} %"
+        },
+        {
+          "id": "AB-PZ-12-5",
+          "vars": { "K": { "von": 3600, "bis": 18000, "schritt": 3600 }, "p": { "aus": [2, 3, 4] }, "t": { "aus": [45, 90, 135, 270] } },
+          "template": "Ein Kredit über {K} € läuft {t} Tage bei {p} % Zinsen. Welcher Betrag muss zurückgezahlt werden?",
+          "answer": "K + K * p / 100 * t / 360",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Zinsen: {K*p/100*t/360} €. Rückzahlung: {ergebnis} €"
+        }
+      ]
+    },
+
+    "pz-13": {
+      "auftrag": "Rechne Jahr für Jahr in einer Tabelle. Vergleiche am Ende mit der Kurzform K · q · q · …",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-13-1",
+          "vars": { "K": { "von": 1000, "bis": 10000, "schritt": 1000 }, "p": { "aus": [2, 3, 4, 5] } },
+          "template": "{K} € werden 2 Jahre lang mit {p} % verzinst (Zinseszins). Wie hoch ist das Kapital danach?",
+          "answer": "K * (100 + p) / 100 * (100 + p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "q = {(100+p)/100}. {K} · q · q = {ergebnis} €",
+          "misconceptions": [
+            { "id": "einfacher_zins", "value": "K + K * p / 100 * 2", "feedback": "Beim Zinseszins werden auch die Zinsen des ersten Jahres verzinst." }
+          ]
+        },
+        {
+          "id": "AB-PZ-13-2",
+          "vars": { "K": { "von": 1000, "bis": 10000, "schritt": 1000 }, "p": { "aus": [2, 4, 5] } },
+          "berechnet": { "Kn": "K * (100 + p) / 100 * (100 + p) / 100 * (100 + p) / 100" },
+          "bedingung": "betrag(Kn * 100 - runde(Kn * 100)) < 0.4",
+          "gerundet": true,
+          "template": "{K} € werden 3 Jahre lang mit {p} % verzinst. Wie hoch ist das Kapital danach? Runde auf Cent.",
+          "answer": "K * (100 + p) / 100 * (100 + p) / 100 * (100 + p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{K} · {(100+p)/100} · {(100+p)/100} · {(100+p)/100} = {ergebnis} €",
+          "misconceptions": [
+            { "id": "einfacher_zins", "value": "K + K * p / 100 * 3", "feedback": "Das wäre einfacher Zins ohne Zinseszins." }
+          ]
+        },
+        {
+          "id": "AB-PZ-13-3",
+          "vars": { "K": { "von": 2000, "bis": 20000, "schritt": 2000 }, "p": { "aus": [2, 3, 5] } },
+          "template": "Wie hoch sind die GESAMTEN Zinsen, wenn {K} € 2 Jahre lang mit {p} % verzinst werden (Zinseszins)?",
+          "answer": "K * (100 + p) / 100 * (100 + p) / 100 - K",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Endkapital: {K*(100+p)/100*(100+p)/100} €. Zinsen: {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-13-4",
+          "vars": { "K": { "von": 1000, "bis": 8000, "schritt": 1000 }, "p": { "aus": [3, 4, 5] } },
+          "template": "Vergleiche für {K} € über 2 Jahre bei {p} %: Wie viel Euro bringt Zinseszins MEHR als einfacher Zins?",
+          "answer": "K * (100 + p) / 100 * (100 + p) / 100 - K - K * p / 100 * 2",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Zinseszins: {K*(100+p)/100*(100+p)/100-K} €, einfacher Zins: {K*p/100*2} €. Unterschied: {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-13-5",
+          "vars": { "K": { "von": 1000, "bis": 9000, "schritt": 1000 }, "p": { "aus": [10, 20, 25] } },
+          "template": "Ein Wert von {K} € nimmt zwei Jahre lang um je {p} % AB. Wie viel ist er danach wert?",
+          "answer": "K * (100 - p) / 100 * (100 - p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "q = {(100-p)/100}. {K} · q · q = {ergebnis} €",
+          "misconceptions": [
+            { "id": "prozentsaetze_addiert", "value": "K * (100 - 2 * p) / 100", "feedback": "Die Prozentsätze dürfen nicht addiert werden." }
+          ]
+        }
+      ]
+    },
+
+    "pz-14": {
+      "auftrag": "Gemischte Aufgaben. Schreibe bei jeder zuerst auf, welche Größe gesucht ist.",
+      "aufgaben": [
+        {
+          "id": "AB-PZ-14-1",
+          "vars": { "G": { "von": 200, "bis": 2000, "schritt": 100 }, "p": { "aus": [15, 20, 30] } },
+          "template": "Ein Laptop kostet {G} €. Im Angebot sind es {p} % weniger. Wie viel spart man, und was kostet er dann?",
+          "answer": "G * (100 - p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Ersparnis: {G*p/100} €. Neuer Preis: {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-14-2",
+          "vars": { "K": { "von": 2000, "bis": 20000, "schritt": 1000 }, "p": { "aus": [2, 3, 4] }, "m": { "aus": [6, 9] } },
+          "template": "{K} € liegen {m} Monate zu {p} % auf dem Konto. Wie hoch sind die Zinsen?",
+          "answer": "K * p / 100 * m / 12",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{K*p/100} € · {m} : 12 = {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-14-3",
+          "vars": { "rest": { "von": 60, "bis": 900, "schritt": 30 }, "p": { "aus": [20, 25, 40] } },
+          "bedingung": "ganz(rest * 100000 / (100 - p))",
+          "template": "Nach {p} % Rabatt zahlt man {rest} €. Wie hoch war der ursprüngliche Preis?",
+          "answer": "rest * 100 / (100 - p)",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{rest} : {(100-p)/100} = {ergebnis} €"
+        },
+        {
+          "id": "AB-PZ-14-4",
+          "vars": { "alt": { "aus": [50, 80, 200, 400] }, "diff": { "von": 4, "bis": 80, "schritt": 4 } },
+          "bedingung": "ganz(diff * 1000 / alt)",
+          "berechnet": { "neu": "alt + diff" },
+          "template": "Die Zahl der Mitglieder steigt von {alt} auf {neu}. Um wie viel Prozent ist das?",
+          "answer": "diff * 100 / alt",
+          "unit_label": "%",
+          "round": 1,
+          "solution": "{diff} : {alt} · 100 = {ergebnis} %"
+        },
+        {
+          "id": "AB-PZ-14-5",
+          "vars": { "K": { "von": 1000, "bis": 10000, "schritt": 1000 }, "p": { "aus": [3, 4, 5] } },
+          "template": "{K} € liegen 2 Jahre mit Zinseszins zu {p} % an. Wie hoch ist das Endkapital?",
+          "answer": "K * (100 + p) / 100 * (100 + p) / 100",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "{K} · {(100+p)/100} · {(100+p)/100} = {ergebnis} €"
+        }
+      ]
+    }
+  }
+}

@@ -295,6 +295,147 @@ selbst werden nicht offline gespeichert; die Verweise, Einheitsdaten und die
 Übersichtsseite liegen dagegen im Offlinecache.
 
 
+## Handschriftliche Übungsblätter
+
+Der digitale Weg prüft Ergebnisse, nicht Rechenwege. Wer nur tippt, übt das
+Aufschreiben nicht — und in der Klassenarbeit wird aufgeschrieben. Deshalb
+steht am Ende jeder Einheit ein Blatt zum Ausdrucken: **gleiches Thema,
+andere Zahlen, andere Einkleidung.**
+
+```bash
+node werkzeuge/uebungsblatt-pruefen.js   # 270 Generatoren × 300 Proben
+node werkzeuge/uebungsblaetter.js        # erzeugt die 54 PDFs
+node werkzeuge/uebungsblaetter.js pz-08  # nur eines
+```
+
+Die Aufgaben stehen als **Generatoren** in `uebungsblaetter/{pz,lf,kp,sk}.json`
+— dasselbe Format wie die Warm-up-Generatoren in `spiral/`:
+
+```jsonc
+{
+  "id": "AB-PZ-08-3",
+  "vars": { "rest": { "von": 30, "bis": 600, "schritt": 30 }, "p": { "aus": [10, 20, 25, 40] } },
+  "bedingung": "ganz(rest * 100000 / (100 - p))",   // muss glatt aufgehen
+  "template": "Nach {p} % Rabatt kostet eine Jacke noch {rest} €. Was hat sie vorher gekostet?",
+  "answer": "rest * 100 / (100 - p)",
+  "unit_label": "€", "round": 2,
+  "solution": "{rest} € sind {100-p} %. G = {rest} : {100-p} · 100 = {ergebnis} €",
+  "misconceptions": [ { "id": "endpreis_statt_teil", "value": "rest * 100 / p", "feedback": "…" } ]
+}
+```
+
+**Die Lösung wird gerechnet, nicht geschrieben.** `assets/js/ausdruck.js`
+wertet `answer` aus — dieselbe Datei, die im Browser das Warm-up prüft. Zwei
+Implementierungen wären zwei Gelegenheiten, sich zu verrechnen, und ein
+gedrucktes Blatt lässt sich nicht nachträglich korrigieren.
+
+`uebungsblatt-pruefen.js` rechnet jeden Generator 300-mal durch und besteht
+darauf, dass das Ergebnis bei der angegebenen Rundung **exakt** ist. 33,333…
+auf einem Blatt wäre nicht kontrollierbar. Wo sachlich gerundet wird (Zinsen
+auf Cent), verlangt `"gerundet": true`, dass der Aufgabentext das sagt — und
+lehnt Werte ab, die genau auf der Rundungsgrenze liegen.
+
+Was der Prüfer **nicht** kann: erkennen, ob die Formel fachlich die richtige
+ist. Ein Generator, der konsequent falsch rechnet, läuft grün durch. Dagegen
+hilft nur, den Rechenweg in `solution` zu lesen — er steht auf dem Blatt und
+muss zum Ergebnis passen.
+
+### Der Selbstkontrollkasten
+
+Unten auf jedem Blatt stehen **alle richtigen Lösungen, gemischt mit ebenso
+vielen falschen.** Die falschen sind keine Zufallszahlen, sondern die im Pool
+hinterlegten Fehlvorstellungen: Wer „das kommt hin" denkt, findet dort genau
+sein Ergebnis wieder und muss noch einmal hinsehen. Reichen die hinterlegten
+Fehler nicht, kommen plausible Abweichungen dazu (Faktor 10, halbiert,
+Vorzeichen) — nie eine Zufallszahl, die sofort auffiele.
+
+Darunter stehen die Rechenwege in Grau, ausdrücklich als „erst nach dem
+Rechnen ansehen".
+
+### PDF ohne Abhängigkeiten
+
+`werkzeuge/pdf.js` schreibt PDF 1.4 mit den Standardschriften (Helvetica),
+WinAnsiEncoding und eigenem Zeilenumbruch. Kein `node_modules`, kein
+Build-Step — die Regel des Projekts gilt auch hier. Zeichen, die WinAnsi
+nicht kennt (π, ≈, →, ⅓), werden lesbar ersetzt statt als leeres Kästchen
+gedruckt.
+
+Die Blätter sind **reproduzierbar**: Die Zufallszahlen hängen an einer Saat
+aus der Einheiten-ID. Gleicher Stand, gleiche Datei — sonst unterschiede sich
+das ausgeteilte Papier von dem im Repository.
+
+Die PDFs liegen **nicht** im Offlinecache. 54 Dateien à rund 8 KB würden die
+Erstinstallation im Schul-WLAN verlängern, und gedruckt wird ohnehin dort, wo
+es Netz gibt.
+
+
+## Übungsmodus und Bewertungsmodus
+
+Zwei Betriebsarten, umgeschaltet im Dashboard:
+
+| | Übungsmodus | Bewertungsmodus |
+|---|---|---|
+| wann | außerhalb der Unterrichtszeit | während des Unterrichts |
+| Einheitenwahl | frei | nur freigegebene |
+| Freigabe durch | — | Lehrkraft, nach Sicht des Übungsblattes |
+
+**Der Ablauf:** Ein Kind arbeitet eine Einheit digital durch, rechnet das
+Übungsblatt von Hand und legt es vor. Die Lehrkraft sieht hin — nur, **ob**
+gerechnet wurde, nicht ob richtig — und gibt im Dashboard die nächste Einheit
+frei. Die Richtigkeit klärt der Selbstkontrollkasten. Eine Lehrkraft, die 28
+Blätter nachrechnen muss, gibt nichts mehr frei, und dann steht der
+Unterricht.
+
+Zwei Dinge, die bewusst so sind:
+
+1. **Der Modus steht in der Datenbank, nicht im Browser.** Eine Sperre, die
+   das Gerät selbst setzt, wäre keine. `mathe9_lernmodus()` entscheidet.
+2. **Ein abgelaufener Bewertungsmodus fällt von selbst in den offenen
+   Zustand.** `gilt_bis` begrenzt ihn; eine vergessene Umschaltung darf nicht
+   die ganze Klasse aussperren.
+
+Ehrlich gesagt: Wer die Entwicklerwerkzeuge des Browsers bedienen kann, kommt
+an der Sperre vorbei. Sie ist eine Absprache mit sichtbarer Form, kein Schutz
+gegen Angriffe — und hält genau das, was ein Unterrichtsablauf braucht.
+Bereits begonnene Einheiten bleiben immer offen, sonst säße jemand mitten in
+einer Aufgabe plötzlich vor einer Sperre.
+
+Im Entwicklermodus (`devMode: true` mit übersprungenem Login) ist alles frei
+wählbar — sonst ließe sich der Ablauf nicht testen.
+
+### Aktive Lernzeit
+
+Gezählt wird eine Sekunde nur, wenn **alles drei** stimmt: Seite im
+Vordergrund, Aktivität in den letzten 90 Sekunden (Tippen, Scrollen,
+Animation bedienen, externe Übung offen), und die Meldung ist beim Server
+angekommen. Was nicht ankommt, bleibt lokal liegen und wird nachgemeldet —
+angerechnet wird also nur, was den Server erreicht hat.
+
+`mathe9_lernzeit_melden()` deckelt jede Meldung bei 15 Minuten. Ein größerer
+Wert käme entweder von einer sehr langen Offlinephase oder von einem
+manipulierten Aufruf; in beiden Fällen ist Deckeln richtiger als Glauben.
+
+### Externe Übungen laufen im Rahmen
+
+Bis V29 öffnete jeder Übungsverweis einen neuen Tab — damit war die Anwendung
+weg: kein Ping, keine Lernzeit, kein Zurückweg außer der Tableiste. Seit V30
+öffnet `assets/js/uebungsrahmen.js` die Übung **innerhalb** der Seite.
+
+Der Rahmen entsteht erst beim Klick. Bis dahin gibt es keine Verbindung zum
+Anbieter — genau wie bei einem Link. Was **nicht** geht, ist ein `<iframe>` im
+HTML, das schon beim Öffnen der Einheit lädt; deshalb steht im Markup keiner.
+
+`frame-src` in der CSP erlaubt ausschließlich die sieben Übungsplattformen.
+YouTube gehört bewusst nicht dazu (siehe unten).
+
+> **Vor dem Unterricht prüfen:** Manche Plattformen verbieten das Einbetten
+> (`X-Frame-Options`). Von außen lässt sich das nicht sicher erkennen. Deshalb
+> steht der Hinweis samt „In neuem Tab öffnen" dauerhaft neben dem Rahmen;
+> eine vermeintliche automatische Erkennung würde hier falsche Sicherheit
+> erzeugen. Welche Plattform sich einbetten lässt, zeigt nur der Versuch am
+> echten Gerät.
+
+
 ## Erklärvideos
 
 Die Lernkarte erklärt eine Sache genau einmal. Kommt genau diese Erklärung
@@ -915,7 +1056,7 @@ blockiert, greifen die Fallbacks; besser ist, die Dateien nach
 `assets/fonts/` zu legen und lokal einzubinden.
 
 
-## Aktueller Develop-Stand V29
+## Aktueller Develop-Stand V31
 
 V26 ergänzt dauerhafte Zwischenstände, Aufgaben-Sitzungs-IDs, explizite
 Beispiellücken, Erklärverweise, Nachfassaufgaben, Updatehinweis, JSON-Schema,
@@ -959,7 +1100,31 @@ Fehler ans Licht, die nur im echten Betrieb auffallen:
   laufender, entprellter Speichervorgang schrieb den Stand danach erneut —
   unter der Kennung `lokal`, also sichtbar für das nächste Kind am Gerät.
 
+V30 ergänzt 54 druckfertige Übungsblätter mit 270 Generatoren, einen
+servergestützten Übungs- und Bewertungsmodus, aktive Lernzeit, Freigaben im
+Dashboard sowie externe Übungen in einem innerhalb der Anwendung geöffneten
+Rahmen. Die zugehörige Datenbankmigration ist in `MIGRATION.md` beschrieben
+und muss vor einer produktiven Nutzung weiterhin in einem Supabase-Testprojekt
+geprüft werden.
+
+V31 integriert diese Funktionen sicher in die bestehende Struktur:
+
+- Freigaben und offene Lernzeit werden je Schülerprofil statt geräteweit
+  gespeichert; noch nicht übertragene Zeit bleibt der richtigen Einheit
+  zugeordnet,
+- ein lokal zwischengespeicherter Bewertungsmodus läuft auch offline korrekt
+  ab und kann das Gerät nicht dauerhaft sperren,
+- beim Abmelden wird offene Lernzeit nach Möglichkeit zuerst übertragen und
+  bei gewünschter Datenlöschung zusammen mit den übrigen Profildaten entfernt,
+- externe Übungen werden genau einmal protokolliert; der Rahmen ist ein
+  zugänglicher modaler Dialog mit Fokusführung, Escape-Taste und ehrlichem
+  Hinweis bei nicht einbettbaren Plattformen,
+- Übungsblatt-PDFs öffnen auf Smartphones im Browser statt zwangsweise einen
+  Download auszulösen,
+- interne Bezeichner wie `h_Dreieck` und `h_s` wurden aus den sichtbaren
+  Aufgabentexten entfernt und die Generatorprüfung erkennt solche Rückfälle.
+
 Alle Fassungen mit Änderungen, Migration, Einschränkungen und Rückkehrpunkt
 stehen in `CHANGELOG.md`.
 
-Cache-Version: `mathe9-v29-betrieb-develop`.
+Cache-Version: `mathe9-v31-integration-fixes-develop`.

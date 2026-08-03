@@ -5,7 +5,7 @@ Datenbankmigrationen, bekannten Einschränkungen und dem Weg zurück.
 
 Format: eine Überschrift je Fassung, Datum im Format JJJJ-MM-TT. Die
 Fassungsnummer ist zugleich die Cache-Version in `sw.js` und das Git-Tag
-(`v29`). `werkzeuge/release.js` prüft, dass es zu jeder neuen Fassung einen
+(`v31`). `werkzeuge/release.js` prüft, dass es zu jeder neuen Fassung einen
 Eintrag gibt — ein Release ohne Changelog-Eintrag wird nicht freigegeben.
 
 Die ausführlichen Integrationsberichte je Fassung liegen weiterhin als
@@ -14,6 +14,159 @@ Die ausführlichen Integrationsberichte je Fassung liegen weiterhin als
 Die Fassungen vor v29 sind nachgetragen. Ihr Veröffentlichungsdatum ist
 nicht belegt — es gab bis dahin weder Tags noch Changelog. Deshalb steht
 dort keines: ein geschätztes Datum wäre schlechter als gar keines.
+
+---
+
+## v31 — 2026-08-03 · Sichere Lernzeit und mobile Integration
+
+**Gemeinsam genutzte Geräte**
+
+- Unterrichtsmodus und noch nicht übertragene Lernzeit liegen jetzt unter
+  schülerbezogenen Schlüsseln. Freigaben und Zeitblöcke eines Kindes können
+  nicht mehr beim nächsten angemeldeten Kind erscheinen.
+- Offene Lernzeit wird je Einheit gesammelt. Ein fehlgeschlagener Versand
+  aus LF-04 kann nach einem Seitenwechsel nicht mehr fälschlich KP-02
+  zugerechnet werden.
+- Vor dem Abmelden wird offene Zeit nach Möglichkeit übertragen. Bei
+  „Abmelden und lokale Lernstände löschen“ werden auch Modus-Cache und offene
+  Lernzeit des aktuellen Profils entfernt.
+
+**Bewertungsmodus**
+
+- `gilt_bis` wird zusätzlich lokal ausgewertet. Ein offline gebliebenes Gerät
+  fällt nach Ablauf wieder in den Übungsmodus zurück.
+- Beim Eintritt in eine Einheit wird die Freigabe erzwungen aktualisiert;
+  veraltete Cacheentscheidungen werden nicht mehr zunächst angezeigt.
+
+**Externe Übungen**
+
+- Ein normaler Klick wird nur noch vom Übungsrahmen protokolliert. Strg-/Cmd-
+  und Mittelklick werden getrennt als neuer Tab erfasst; doppelte
+  `external_practice_open`-Ereignisse entfallen.
+- Der Rahmen besitzt `aria-modal`, Fokusfalle, Escape-Schließen, gesperrten
+  Hintergrund und Fokuswiederherstellung.
+- Weil X-Frame-Options aus dem Elternfenster nicht zuverlässig erkennbar ist,
+  steht der Hinweis zum neuen Tab dauerhaft und macht keine Scheinerkennung
+  nach einer festen Wartezeit mehr.
+
+**Handschriftliche Übungsblätter**
+
+- Sichtbare interne Bezeichner wie `h_Dreieck`, `h_Trapez` und `h_s` wurden
+  durch lesbare Fachsprache ersetzt; alle 54 PDFs wurden neu erzeugt.
+- Die Generatorprüfung weist künftig verbliebene Code-Schreibweisen in
+  Aufgabentext oder Rechenweg als Fehler aus.
+- PDF-Links öffnen im Browser und erzwingen auf Smartphones keinen Download.
+
+**Migration**
+
+Keine zusätzliche Datenbankmigration gegenüber v30. Die v30-Supabase-
+Erweiterung ist in diesem Arbeitsschritt nur statisch integriert und muss vor
+dem produktiven Einsatz weiterhin im Testprojekt geprüft werden.
+
+**Bekannte Einschränkungen**
+
+- `mathe9_unterricht` bildet weiterhin einen globalen Unterrichtszustand ab.
+  Für mehrere gleichzeitig arbeitende Lerngruppen sollte der Modus später
+  nach `class_code` getrennt werden; das erfordert eine kontrollierte
+  Datenbankmigration.
+- Ob Drittanbieter die Einbettung zulassen, muss auf echten Geräten geprüft
+  werden. Der neue-Tab-Weg bleibt immer verfügbar.
+
+**Zurück zur Vorgängerfassung**
+
+`sw.js` und `version.json` auf v30 zurücksetzen und die in diesem Abschnitt
+geänderten JavaScript-, JSON- und PDF-Dateien aus dem v30-Stand wiederherstellen.
+Die v30-Datenbanktabellen können unverändert bestehen bleiben.
+
+---
+
+## v30 — 2026-08-03 · Handschrift, Lernmodus und Lernzeit
+
+**Handschriftliche Übungsblätter**
+
+- `uebungsblaetter/{pz,lf,kp,sk}.json`: 270 Aufgabengeneratoren für alle 54
+  Einheiten — gleiches Thema wie der digitale Teil, andere Zahlen und
+  andere Einkleidung.
+- `werkzeuge/uebungsblaetter.js` erzeugt daraus 54 PDFs
+  (`units/<bereich>/<id>/uebungsblatt.pdf`, zusammen 432 KB) mit
+  Schreibraum, Selbstkontrollkasten und Rechenwegen.
+- Der Kontrollkasten enthält alle richtigen Lösungen gemischt mit ebenso
+  vielen falschen. Die falschen sind die hinterlegten Fehlvorstellungen —
+  wer „das kommt hin" denkt, findet dort genau sein Ergebnis wieder.
+- `assets/js/ausdruck.js`: der Generator-Auswerter aus spiral.js, jetzt
+  gemeinsam von Browser und Node genutzt. Die gedruckten Lösungen stammen
+  damit von genau demselben Code, der sie in der Anwendung prüft.
+- `werkzeuge/uebungsblatt-pruefen.js` rechnet jeden Generator 300-mal
+  durch: Ergebnis exakt bei der angegebenen Rundung, keine übrig
+  gebliebenen Platzhalter, falsche Antworten verschieden von der richtigen.
+
+**Lernmodus**
+
+- Übungsmodus außerhalb der Unterrichtszeit: freie Wahl der Einheiten.
+- Bewertungsmodus während des Unterrichts: Eine neue Einheit öffnet sich
+  erst nach Freigabe durch die Lehrkraft — nach Sichtung des
+  handschriftlichen Blattes. Geprüft wird nur, **ob** von Hand gerechnet
+  wurde, nicht ob richtig.
+- Der Modus steht in der Datenbank, nicht im Browser. Ein abgelaufener
+  Bewertungsmodus fällt von selbst in den offenen Zustand zurück.
+- Im Entwicklermodus bleibt alles frei wählbar.
+
+**Aktive Lernzeit**
+
+- Gezählt wird nur, was sichtbar, aktiv und angekommen ist: Seite im
+  Vordergrund, Aktivität in den letzten 90 Sekunden, Meldung vom Server
+  bestätigt. Was nicht ankommt, bleibt liegen und wird nachgemeldet.
+- Scrollen, Tippen, Animationen bedienen und geöffnete externe Übungen
+  zählen als Aktivität.
+
+**Externe Übungen im Rahmen statt im neuen Tab**
+
+- `assets/js/uebungsrahmen.js` öffnet Übungen innerhalb der Anwendung. Der
+  Ping läuft weiter, die Lernzeit auch, und der Rückweg ist ein Knopf.
+- Der Rahmen entsteht erst beim Klick — bis dahin gibt es keine Verbindung
+  zum Anbieter, genau wie bei einem Link.
+- `frame-src` in der CSP erlaubt jetzt die sieben Übungsplattformen.
+  YouTube gehört bewusst nicht dazu: Videos bleiben Links.
+
+**Dashboard**
+
+- Tafel „Unterricht und Freigaben": Modus umschalten, je Kind die nächste
+  Einheit freigeben oder zurücknehmen, mit Anzeige, ob das Übungsblatt
+  geöffnet wurde.
+- Tafel „Aktive Lernzeit": heute, letzte sieben Tage, häufigste Einheit.
+
+**Datenbank** — Migration erforderlich, siehe `MIGRATION.md`
+
+- `mathe9_unterricht`, `mathe9_freigaben`, `mathe9_lernzeit`
+- `mathe9_lernmodus()`, `mathe9_lernzeit_melden()`,
+  `mathe9_unterricht_setzen()`, `mathe9_freigeben()`,
+  `mathe9_freigabe_zuruecknehmen()`
+- `mathe9_person_export` gibt Freigaben und Lernzeiten mit heraus,
+  `mathe9_aufraeumen` löscht alte Lernzeiten mit der Fortschrittsfrist.
+
+**Bekannte Einschränkungen**
+
+- Die Sperre im Bewertungsmodus ist eine Absprache mit sichtbarer Form,
+  kein Schutz gegen Umgehung: Wer die Entwicklerwerkzeuge des Browsers
+  bedienen kann, kommt daran vorbei. Der Server verhindert nur, dass sie
+  durch bloßes Ändern von localStorage fällt.
+- Manche Übungsplattformen verbieten das Einbetten (X-Frame-Options). Das
+  lässt sich von außen nicht sicher erkennen; deshalb steht „In neuem Tab
+  öffnen" immer daneben, und nach sechs Sekunden ohne Inhalt erscheint ein
+  Hinweis. **Vor dem Unterricht auf einem echten Gerät prüfen, welche
+  Plattformen sich einbetten lassen.**
+- Was innerhalb des Rahmens passiert, ist von außen nicht sichtbar. Für die
+  Lernzeit gilt „Rahmen offen und Seite sichtbar" als Arbeit, begrenzt auf
+  15 Minuten ohne jede Interaktion.
+- Die PDFs liegen nicht im Offlinecache (54 Dateien, 432 KB). Zum Drucken
+  wird Netz gebraucht.
+
+**Zurück zur Vorgängerfassung**
+
+`sw.js` und `version.json` auf `v29` zurücksetzen. Die neuen Tabellen können
+in der Datenbank stehen bleiben; ohne den Client werden sie nicht
+beschrieben. Steht der Bewertungsmodus noch, vorher im Dashboard auf
+Übungsmodus zurückstellen — sonst bleibt er bis zum Ablauf von `gilt_bis`.
 
 ---
 

@@ -28,6 +28,8 @@ jobs:
         run: node werkzeuge/a11y-pruefen.js
       - name: Performancebudget
         run: node werkzeuge/budget-pruefen.js
+      - name: Übungsblatt-Generatoren
+        run: node werkzeuge/uebungsblatt-pruefen.js
 
   browser-smoke:
     if: github.event_name != 'schedule'

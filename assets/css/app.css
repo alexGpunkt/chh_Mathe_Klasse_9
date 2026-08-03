@@ -1006,3 +1006,35 @@ input.zahl-feld.lk-luecke-feld { flex: 1 1 120px; height: 46px; font-size: 18px;
   .uebungskarte { display: none !important; }
 }
 
+
+/* ============================================================
+   Übungsblatt und Lernsperre  (V30)
+   ============================================================ */
+.blattkarte {
+  max-width: 688px; margin: 4px auto 18px; padding: 14px 16px;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  background: var(--paper-hi); border: 1px solid var(--linie);
+  border-left: 4px solid #2E7D5B; border-radius: var(--r); box-shadow: var(--shadow);
+}
+.blattkarte[hidden] { display: none; }
+.blattkarte-text { flex: 1 1 260px; min-width: 0; }
+.blattkarte-text strong { display: block; font-family: var(--f-display); font-size: 16px; margin-bottom: 3px; }
+.blattkarte-text span { display: block; font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
+.blattkarte .btn { flex: 0 0 auto; }
+
+/* Sperre im Bewertungsmodus. Bewusst freundlich und ohne Schlosssymbol:
+   Es ist kein Fehler des Kindes, dass die Lehrkraft noch nicht geschaut hat. */
+.lernsperre {
+  max-width: 640px; margin: 28px auto; padding: 22px 24px;
+  background: var(--paper-hi); border: 1px solid var(--linie);
+  border-left: 5px solid var(--b); border-radius: var(--r); box-shadow: var(--shadow);
+}
+.lernsperre h2 { font-family: var(--f-display); font-size: 1.35rem; margin: 0 0 10px; }
+.lernsperre p { line-height: 1.55; margin: 0 0 12px; }
+.lernsperre-klein { font-size: 14px; color: var(--ink-soft); }
+.lernsperre .aktionen { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+@media (max-width: 720px) {
+  .blattkarte { margin-left: 16px; margin-right: 16px; }
+  .blattkarte .btn { width: 100%; }
+}

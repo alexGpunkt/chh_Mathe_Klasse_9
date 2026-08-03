@@ -101,6 +101,41 @@ Gerät — und drei dieser Punkte waren bis V29 tatsächlich kaputt.
 - [ ] Performancebudget: Zeit bis zur Bedienbarkeit auf Gerät 4 messen und
       hier notieren (`werkzeuge/budget.json` misst nur Größen)
 
+### J · Übungsblatt, Lernmodus und Rahmen (ab V30)
+Der Rahmen für externe Übungen ist der Punkt, der sich nur am echten Gerät
+klären lässt: Welche Plattform lässt sich einbetten und welche nicht?
+
+- [ ] **Jede der sieben Plattformen einmal öffnen** (LearningApps, Serlo,
+      H5P/Landesbildungsserver, Learningsnacks, Quizlet, ZUM) und notieren,
+      ob sie im Rahmen erscheint oder nur der gelbe Hinweis
+- [ ] Im Rahmen: „Zurück zur Einheit" führt zurück, ohne den Aufgabenstand
+      zu verlieren
+- [ ] Escape schließt den Rahmen ebenfalls; danach liegt der Fokus wieder auf
+      dem zuvor betätigten Übungslink
+- [ ] Mit Tastatur bleibt der Fokus im geöffneten Rahmen; Hintergrundknöpfe
+      sind bis zum Schließen nicht erreichbar
+- [ ] Ein normaler Klick erzeugt im Dashboard/Netzwerk genau **ein** Ereignis
+      `external_practice_open`, keinen doppelten Eintrag
+- [ ] Die fremde Seite kann die Anwendung **nicht** überschreiben
+      (kein Sprung aus dem Rahmen heraus)
+- [ ] Übungsblatt-PDF öffnet sich auf dem Gerät und lässt sich drucken
+- [ ] Auf dem PDF: Umlaute, €, ², ³ korrekt; keine leeren Kästchen
+- [ ] Der Selbstkontrollkasten enthält gleich viele richtige und falsche Werte
+- [ ] Bewertungsmodus im Dashboard einschalten → eine nicht freigegebene
+      Einheit auf dem Schülergerät zeigt die Sperre, **nicht** die Aufgaben
+- [ ] Freigabe im Dashboard → das Schülergerät öffnet die Einheit spätestens
+      nach drei Minuten (oder sofort nach Neuladen)
+- [ ] Eine bereits **begonnene** Einheit bleibt trotz Bewertungsmodus offen
+- [ ] Bewertungsmodus ablaufen lassen → Einheiten sind wieder frei, auch wenn
+      das Schülergerät in diesem Moment offline ist
+- [ ] Auf einem gemeinsam genutzten Gerät nacheinander zwei Schüler anmelden:
+      Freigaben und offene Lernzeit dürfen nicht vom ersten zum zweiten Profil
+      wechseln
+- [ ] Aktive Lernzeit im Dashboard wächst beim Arbeiten und **nicht**, wenn
+      das Gerät nur offen herumliegt
+- [ ] Flugmodus während der Arbeit: Nach dem Wiederverbinden erscheint die
+      Zeit nachträglich im Dashboard
+
 ## Befunde
 
 | Gerät | Punkt | Beobachtung | Schwere | erledigt |

@@ -128,7 +128,7 @@ try {
 
   console.log('\nPrüfungen:');
   const env = { ...process.env, GITHUB_REF_NAME: 'master' };
-  for (const werkzeug of ['pruefen.js', 'a11y-pruefen.js', 'budget-pruefen.js']) {
+  for (const werkzeug of ['pruefen.js', 'a11y-pruefen.js', 'budget-pruefen.js', 'uebungsblatt-pruefen.js']) {
     process.stdout.write(`  · ${werkzeug} … `);
     execFileSync(process.execPath, [P('werkzeuge', werkzeug)], { cwd: WURZEL, env, stdio: 'pipe' });
     console.log('in Ordnung');

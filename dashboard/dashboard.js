@@ -51,11 +51,195 @@ function showApp(){ $('#loginPanel').hidden=true;$('#dashboardApp').hidden=false
   /* Der Katalog muss vor dem ersten Rendern da sein, sonst bleibt die
      bereichsübergreifende Tafel bis zur nächsten Aktualisierung leer. */
   ladeKategorien().then(loadAll);
-  loadOps() }
+  loadOps();loadModus() }
 function showError(text){$('#error').textContent=text;$('#error').hidden=false}
 function rosterMessage(text,error=false){const e=$('#rosterMessage');e.textContent=text;e.className='message '+(error?'bad':'good');e.hidden=false;setTimeout(()=>e.hidden=true,4000)}
 
 async function loadAll(){if(loading||!session)return;loading=true;$('#refresh').disabled=true;try{await Promise.all([loadRoster(),loadDashboard()]);$('.status').classList.add('live');$('#statusText').textContent='live · '+new Date().toLocaleTimeString('de-DE');$('#error').hidden=true}catch(e){showError('Daten konnten nicht geladen werden: '+e.message);$('.status').classList.remove('live')}finally{loading=false;$('#refresh').disabled=false}}
+
+/* ---------- Unterricht, Freigaben und Lernzeit  (V30) ----------
+   Der Ablauf, den das abbildet: Ein Kind arbeitet eine Einheit digital
+   durch, rechnet das Übungsblatt von Hand und legt es vor. Die Lehrkraft
+   sieht hin — nur, OB gerechnet wurde — und gibt die nächste Einheit frei.
+
+   Die Prüfung auf Richtigkeit gehört bewusst nicht hierher: Dafür steht
+   der Selbstkontrollkasten auf dem Blatt. Eine Lehrkraft, die 28 Blätter
+   nachrechnen muss, gibt nichts mehr frei, und dann steht der Unterricht. */
+let einheitenReihe = null;
+async function ladeEinheitenReihe(){
+  if(einheitenReihe)return einheitenReihe;
+  try{
+    const r=await fetch('../units/index.json',{cache:'no-store'});
+    const d=await r.json();
+    einheitenReihe=[];
+    for(const b of d.bereiche||[])for(const e of b.einheiten||[])einheitenReihe.push(String(e.id).toLowerCase());
+  }catch(e){ einheitenReihe=[]; }
+  return einheitenReihe;
+}
+function naechsteEinheit(id){
+  const i=(einheitenReihe||[]).indexOf(String(id||'').toLowerCase());
+  if(i<0)return (einheitenReihe||[])[0]||null;
+  return (einheitenReihe||[])[i+1]||null;
+}
+
+let modusZustand=null;
+async function loadModus(){
+  try{
+    const zeilen=await request(rest()+'mathe9_unterricht?select=*&id=eq.1');
+    modusZustand=(zeilen||[])[0]||null;
+  }catch(e){ modusZustand=null; }
+  zeichneModus();
+}
+function zeichneModus(){
+  const feld=$('#modusAnzeige');
+  if(!feld)return;
+  if(!modusZustand){
+    feld.textContent='Lernmodus nicht abrufbar — supabase/setup.sql ausführen';
+    feld.className='modusAnzeige warn';
+    return;
+  }
+  const bewertung=modusZustand.modus==='bewertung'
+    && (!modusZustand.gilt_bis || new Date(modusZustand.gilt_bis)>new Date());
+  feld.textContent=bewertung
+    ? 'Bewertungsmodus aktiv'+(modusZustand.gilt_bis?' bis '+new Date(modusZustand.gilt_bis).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}):'')
+    : 'Übungsmodus — alle Einheiten frei wählbar';
+  feld.className='modusAnzeige '+(bewertung?'aktiv':'');
+}
+async function setzeModus(modus){
+  const minuten=Number($('#modusDauer').value)||90;
+  const m=$('#modusMeldung');
+  try{
+    await request(rest()+'rpc/mathe9_unterricht_setzen',{method:'POST',
+      body:JSON.stringify({p_modus:modus,p_minuten:minuten,p_klasse:$('#classFilter').value.trim()||null})});
+    m.textContent=modus==='bewertung'
+      ? `Bewertungsmodus läuft für ${minuten} Minuten. Neue Einheiten brauchen jetzt eine Freigabe.`
+      : 'Übungsmodus — die Lernenden wählen wieder frei.';
+    m.className='message good';m.hidden=false;setTimeout(()=>m.hidden=true,5000);
+    await loadModus();
+  }catch(e){
+    m.textContent='Umschalten fehlgeschlagen: '+e.message;m.className='message bad';m.hidden=false;
+  }
+}
+
+async function loadFreigaben(progress,events){
+  const koerper=$('#freigabeBody');
+  if(!koerper)return;
+  await ladeEinheitenReihe();
+
+  let freigaben=[];
+  try{ freigaben=await request(rest()+'mathe9_freigaben?select=*')||[]; }
+  catch(e){
+    koerper.innerHTML='<tr><td colspan="5" class="muted">Freigaben nicht abrufbar — supabase/setup.sql ausführen.</td></tr>';
+    return;
+  }
+  const proKind=new Map();
+  freigaben.forEach(f=>{
+    if(!proKind.has(f.student_id))proKind.set(f.student_id,new Set());
+    proKind.get(f.student_id).add(String(f.unit).toLowerCase());
+  });
+
+  /* Wer gerade woran arbeitet, steht im Fortschritt. Ohne Fortschritt gibt
+     es nichts freizugeben — das Kind hat noch nicht angefangen. */
+  const letzte=new Map();
+  (progress||[]).forEach(p=>{
+    const k=p.student_id;if(!k)return;
+    const alt=letzte.get(k);
+    if(!alt||zeitwert(p)>zeitwert(alt))letzte.set(k,p);
+  });
+  /* Auch das Öffnen eines Übungsblattes ist ein Signal: Das Kind ist so
+     weit. Es steht in der Tabelle, damit die Lehrkraft nicht raten muss. */
+  const blatt=new Map();
+  (events||[]).filter(e=>e.event_type==='uebungsblatt_geoeffnet').forEach(e=>{
+    const k=e.student_id;if(!k)return;
+    const alt=blatt.get(k);
+    if(!alt||zeitwert(e)>zeitwert(alt))blatt.set(k,e);
+  });
+
+  const zeilen=[...letzte.entries()].sort((a,b)=>zeitwert(b[1])-zeitwert(a[1]));
+  koerper.innerHTML=zeilen.length?zeilen.map(([kind,p])=>{
+    const aktuell=String(p.unit||'').toLowerCase();
+    const naechste=naechsteEinheit(aktuell);
+    const frei=proKind.get(kind)||new Set();
+    const blattEvent=blatt.get(kind);
+    const blattText=blattEvent&&String(blattEvent.unit||'').toLowerCase()===aktuell
+      ? `geöffnet vor ${ago(blattEvent.ts)}` : '<span class="muted">nicht geöffnet</span>';
+    const freiText=frei.size?[...frei].sort().join(', '):'<span class="muted">keine</span>';
+    return `<tr>
+      <td>${esc(p.student)}</td>
+      <td>${esc((p.unit||'–').toUpperCase())} · ${esc(p.path||'–')}</td>
+      <td>${blattText}</td>
+      <td>${freiText}</td>
+      <td class="actions">${naechste
+        ? `<button data-frei="${esc(kind)}" data-unit="${esc(naechste)}"${frei.has(naechste)?' disabled':''}>${frei.has(naechste)?naechste.toUpperCase()+' ist frei':naechste.toUpperCase()+' freigeben'}</button>`
+        : '<span class="muted">letzte Einheit</span>'}
+        ${frei.size?`<button class="danger" data-zurueck="${esc(kind)}" data-unit="${esc([...frei].sort().pop())}">Letzte zurücknehmen</button>`:''}
+      </td></tr>`;
+  }).join(''):'<tr><td colspan="5" class="muted">Noch niemand hat eine Einheit begonnen.</td></tr>';
+}
+
+async function freigabeKlick(event){
+  const frei=event.target.closest('[data-frei]');
+  const zurueck=event.target.closest('[data-zurueck]');
+  const m=$('#modusMeldung');
+  try{
+    if(frei){
+      await request(rest()+'rpc/mathe9_freigeben',{method:'POST',
+        body:JSON.stringify({p_student:frei.dataset.frei,p_unit:frei.dataset.unit,p_hinweis:'Handschrift gesehen'})});
+      m.textContent=frei.dataset.unit.toUpperCase()+' wurde freigegeben.';
+    }else if(zurueck){
+      if(!confirm('Freigabe für '+zurueck.dataset.unit.toUpperCase()+' wirklich zurücknehmen?'))return;
+      await request(rest()+'rpc/mathe9_freigabe_zuruecknehmen',{method:'POST',
+        body:JSON.stringify({p_student:zurueck.dataset.zurueck,p_unit:zurueck.dataset.unit})});
+      m.textContent='Freigabe zurückgenommen.';
+    }else return;
+    m.className='message good';m.hidden=false;setTimeout(()=>m.hidden=true,4000);
+    await loadAll();
+  }catch(e){
+    m.textContent='Fehlgeschlagen: '+e.message;m.className='message bad';m.hidden=false;
+  }
+}
+
+function dauerLang(sekunden){
+  const s=Number(sekunden)||0;
+  if(s<60)return s+' s';
+  const min=Math.round(s/60);
+  if(min<60)return min+' min';
+  return Math.floor(min/60)+' h '+String(min%60).padStart(2,'0')+' min';
+}
+
+async function loadLernzeit(){
+  const koerper=$('#lernzeitBody');
+  if(!koerper)return;
+  let zeilen=[];
+  try{
+    const seit=new Date(Date.now()-7*86400000).toISOString().slice(0,10);
+    zeilen=await request(rest()+'mathe9_lernzeit?select=*&datum=gte.'+seit)||[];
+  }catch(e){
+    koerper.innerHTML='<tr><td colspan="5" class="muted">Lernzeit nicht abrufbar — supabase/setup.sql ausführen.</td></tr>';
+    return;
+  }
+  const heute=new Date().toISOString().slice(0,10);
+  const namen=new Map();
+  (await request(rest()+'mathe9_students?select=id,display_name').catch(()=>[])||[])
+    .forEach(s=>namen.set(s.id,s.display_name));
+
+  const proKind=new Map();
+  zeilen.forEach(z=>{
+    if(!proKind.has(z.student_id))proKind.set(z.student_id,{heute:0,woche:0,einheiten:new Map(),zuletzt:null});
+    const a=proKind.get(z.student_id);
+    a.woche+=z.sekunden||0;
+    if(z.datum===heute)a.heute+=z.sekunden||0;
+    a.einheiten.set(z.unit,(a.einheiten.get(z.unit)||0)+(z.sekunden||0));
+    if(!a.zuletzt||new Date(z.aktualisiert_at)>new Date(a.zuletzt))a.zuletzt=z.aktualisiert_at;
+  });
+
+  const sortiert=[...proKind.entries()].sort((a,b)=>b[1].woche-a[1].woche);
+  koerper.innerHTML=sortiert.length?sortiert.map(([kind,a])=>{
+    const top=[...a.einheiten.entries()].sort((x,y)=>y[1]-x[1])[0];
+    return `<tr><td>${esc(namen.get(kind)||'—')}</td><td>${dauerLang(a.heute)}</td><td>${dauerLang(a.woche)}</td>
+      <td>${esc((top?.[0]||'–').toUpperCase())} (${dauerLang(top?.[1]||0)})</td><td>${ago(a.zuletzt)}</td></tr>`;
+  }).join(''):'<tr><td colspan="5" class="muted">Noch keine Lernzeit erfasst.</td></tr>';
+}
 
 /* ---------- Betrieb und Datenpflege ----------
    Zwei Fragen, die im Unterrichtsalltag untergehen und dann im falschen
@@ -172,7 +356,7 @@ function renderRoster(rows){$('#rosterBody').innerHTML=rows.length?rows.map(r=>`
 async function addStudent(event){event.preventDefault();const login=normalizeLogin($('#studentLogin').value),display=$('#studentDisplay').value.trim(),cls=$('#studentClass').value.trim();if(!validLogin(login)){rosterMessage('Benutzername muss nachname.vorname entsprechen.',true);return}try{await request(rest()+'mathe9_students',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify({login_name:login,display_name:display,class_code:cls,active:true})});event.target.reset();$('#studentClass').value=$('#classFilter').value.trim();rosterMessage('Schüler wurde freigeschaltet.');await loadRoster()}catch(e){rosterMessage('Hinzufügen fehlgeschlagen: '+e.message,true)}}
 async function rosterClick(event){const toggle=event.target.closest('[data-toggle]'),del=event.target.closest('[data-delete]');try{if(toggle){const active=toggle.dataset.active==='true';await request(rest()+'mathe9_students?id=eq.'+encodeURIComponent(toggle.dataset.toggle),{method:'PATCH',headers:{Prefer:'return=minimal'},body:JSON.stringify({active:!active})});rosterMessage(active?'Zugang wurde gesperrt.':'Zugang wurde freigegeben.')}else if(del){if(!confirm('Diesen Eintrag wirklich löschen?'))return;await request(rest()+'mathe9_students?id=eq.'+encodeURIComponent(del.dataset.delete),{method:'DELETE',headers:{Prefer:'return=minimal'}});rosterMessage('Eintrag wurde gelöscht.')}else return;await loadRoster()}catch(e){rosterMessage('Änderung fehlgeschlagen: '+e.message,true)}}
 
-async function loadDashboard(){const mins=Number($('#range').value),since=new Date(Date.now()-mins*60000).toISOString(),cls=$('#classFilter').value.trim(),cq=cls?'&class_code=eq.'+encodeURIComponent(cls):'';const [progress,events]=await Promise.all([request(rest()+'mathe9_progress?select=*&updated_at=gte.'+encodeURIComponent(since)+cq+'&order=updated_at.desc&limit=500'),request(rest()+'mathe9_events?select=*&ts=gte.'+encodeURIComponent(since)+cq+'&order=ts.desc&limit=2000')]);render(progress||[],events||[])}
+async function loadDashboard(){const mins=Number($('#range').value),since=new Date(Date.now()-mins*60000).toISOString(),cls=$('#classFilter').value.trim(),cq=cls?'&class_code=eq.'+encodeURIComponent(cls):'';const [progress,events]=await Promise.all([request(rest()+'mathe9_progress?select=*&updated_at=gte.'+encodeURIComponent(since)+cq+'&order=updated_at.desc&limit=500'),request(rest()+'mathe9_events?select=*&ts=gte.'+encodeURIComponent(since)+cq+'&order=ts.desc&limit=2000')]);render(progress||[],events||[]);loadFreigaben(progress||[],events||[]);loadLernzeit()}
 function zeitwert(e){const t=new Date(e?.ts||e?.updated_at||0).getTime();return Number.isFinite(t)?t:0}
 function sichereDauer(v){const n=Number(v);return Number.isFinite(n)&&n>0?Math.min(n,12*60*60*1000):null}
 
@@ -387,5 +571,5 @@ const mis={};
 function start(){stop();timer=setInterval(()=>{if(document.visibilityState==='visible')loadAll()},5000)}function stop(){if(timer){clearInterval(timer);timer=null}}
 
 $('#teacherLogin').addEventListener('submit',async e=>{e.preventDefault();const err=$('#loginError');err.hidden=true;try{await signIn($('#teacherEmail').value.trim(),$('#teacherPassword').value);await appOeffnen()}catch(x){err.textContent='Anmeldung fehlgeschlagen: '+x.message;err.hidden=false}});
-$('#logout').addEventListener('click',signOut);$('#refresh').addEventListener('click',()=>{loadAll();loadOps()});$('#range').addEventListener('change',loadAll);$('#classFilter').addEventListener('change',()=>{ $('#studentClass').value=$('#classFilter').value.trim();loadAll()});$('#studentForm').addEventListener('submit',addStudent);$('#rosterBody').addEventListener('click',rosterClick);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&session)loadAll()});
+$('#logout').addEventListener('click',signOut);$('#refresh').addEventListener('click',()=>{loadAll();loadOps()});$('#range').addEventListener('change',loadAll);$('#classFilter').addEventListener('change',()=>{ $('#studentClass').value=$('#classFilter').value.trim();loadAll()});$('#studentForm').addEventListener('submit',addStudent);$('#freigabeBody').addEventListener('click',freigabeKlick);$('#modusBewertung').addEventListener('click',()=>setzeModus('bewertung'));$('#modusUebung').addEventListener('click',()=>setzeModus('uebung'));$('#rosterBody').addEventListener('click',rosterClick);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&session)loadAll()});
 if(!C.enabled||!C.url||!C.anonKey){$('#loginError').textContent='Supabase ist in assets/js/supabase-config.js noch nicht vollständig konfiguriert.';$('#loginError').hidden=false;showLogin()}else if(session?.access_token){appOeffnen()}else showLogin();

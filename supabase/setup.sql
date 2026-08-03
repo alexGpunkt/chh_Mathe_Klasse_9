@@ -807,6 +807,16 @@ begin
     exception when undefined_table then
       n_token := 0; -- erster Durchlauf einer älteren Installation
     end;
+
+    -- Lernzeiten sind personenbezogen und unterliegen derselben Frist wie
+    -- der Fortschritt. Freigaben bleiben an den Schülerdatensatz gebunden
+    -- und verschwinden mit ihm (ON DELETE CASCADE).
+    begin
+      delete from public.mathe9_lernzeit
+      where datum < (now() - make_interval(days => fortschritt_tage))::date;
+    exception when undefined_table then
+      null; -- ältere Installation ohne Lernzeittabelle
+    end;
   exception when others then
     update public.mathe9_wartung_laeufe
        set beendet_at = now(), erfolg = false, fehler = left(sqlerrm, 500)
@@ -928,7 +938,13 @@ begin
     'ereignisse',  (select coalesce(jsonb_agg(to_jsonb(e) order by e.ts), '[]'::jsonb)
                       from public.mathe9_events e where e.student_id = kennung),
     'fortschritt', (select coalesce(jsonb_agg(to_jsonb(pr)), '[]'::jsonb)
-                      from public.mathe9_progress pr where pr.student_id = kennung)
+                      from public.mathe9_progress pr where pr.student_id = kennung),
+    -- Auch Freigaben und Lernzeiten sind personenbezogen und gehoeren in
+    -- eine Auskunft. Ein Export, der die Haelfte weglaesst, ist keiner.
+    'freigaben',   (select coalesce(jsonb_agg(to_jsonb(fr) order by fr.freigegeben_at), '[]'::jsonb)
+                      from public.mathe9_freigaben fr where fr.student_id = kennung),
+    'lernzeit',    (select coalesce(jsonb_agg(to_jsonb(lz) order by lz.datum), '[]'::jsonb)
+                      from public.mathe9_lernzeit lz where lz.student_id = kennung)
   ) into ergebnis;
   return ergebnis;
 end;
@@ -1485,6 +1501,317 @@ create policy "students update progress" on public.mathe9_progress
   for update to anon
   using (student_id is not null and student_id = public.mathe9_token_student())
   with check (student_id is not null and student_id = public.mathe9_token_student());
+
+
+-- ============================================================
+-- Lernmodus, Freigaben und aktive Lernzeit  (V30)
+--
+-- Zwei Betriebsarten:
+--
+--   Übungsmodus   — ausserhalb der Unterrichtszeit. Die Lernenden waehlen
+--                   ihre Einheiten frei. Nichts ist gesperrt.
+--   Bewertungsmodus — waehrend des Unterrichts. Eine neue Einheit oeffnet
+--                   sich erst, wenn die Lehrkraft sie freigegeben hat —
+--                   nach Sichtung des handschriftlichen Uebungsblattes.
+--
+-- Der Modus steht bewusst in der Datenbank und nicht im Browser: Eine
+-- Sperre, die das Geraet selbst setzt, ist keine.
+-- ============================================================
+
+create table if not exists public.mathe9_unterricht (
+  id smallint primary key default 1,
+  modus text not null default 'uebung',
+  -- Bis wann gilt der Bewertungsmodus? Danach faellt die Anwendung von
+  -- selbst in den Uebungsmodus zurueck. Ohne dieses Ablaufdatum bliebe
+  -- nach einer vergessenen Umschaltung die ganze Klasse gesperrt.
+  gilt_bis timestamptz,
+  klasse text,
+  gesetzt_von uuid,
+  gesetzt_at timestamptz not null default now(),
+  constraint mathe9_unterricht_einzeln check (id = 1),
+  constraint mathe9_unterricht_modus check (modus in ('uebung', 'bewertung'))
+);
+
+insert into public.mathe9_unterricht (id, modus)
+values (1, 'uebung')
+on conflict (id) do nothing;
+
+alter table public.mathe9_unterricht enable row level security;
+
+
+-- Eine Zeile je freigegebener Einheit und Person. Die Lehrkraft prueft nur,
+-- OB handschriftlich gearbeitet wurde — nicht, ob richtig gerechnet wurde.
+-- Das ist Absicht: Die Richtigkeit klaert der Selbstkontrollkasten auf dem
+-- Blatt, die Freigabe klaert, dass ueberhaupt mit der Hand gerechnet wurde.
+create table if not exists public.mathe9_freigaben (
+  student_id uuid not null references public.mathe9_students(id) on delete cascade,
+  unit text not null,
+  freigegeben_at timestamptz not null default now(),
+  freigegeben_von uuid,
+  handschrift_gesehen boolean not null default true,
+  hinweis text,
+  primary key (student_id, unit)
+);
+
+alter table public.mathe9_freigaben enable row level security;
+
+create index if not exists
+  mathe9_freigaben_zeit_idx
+  on public.mathe9_freigaben (freigegeben_at desc);
+
+
+-- Aktive Lernzeit, tageweise und je Einheit summiert.
+--
+-- Gezaehlt werden nur Sekunden, in denen die Seite sichtbar war UND es
+-- kurz zuvor eine Aktivitaet gab UND der Ping tatsaechlich ankam. Die
+-- Anwendung sammelt lokal und meldet Zuwaechse; angerechnet wird also nur,
+-- was den Server erreicht hat.
+create table if not exists public.mathe9_lernzeit (
+  student_id uuid not null references public.mathe9_students(id) on delete cascade,
+  datum date not null default (now() at time zone 'Europe/Berlin')::date,
+  unit text not null default '—',
+  sekunden integer not null default 0,
+  aktualisiert_at timestamptz not null default now(),
+  primary key (student_id, datum, unit)
+);
+
+alter table public.mathe9_lernzeit enable row level security;
+
+create index if not exists
+  mathe9_lernzeit_datum_idx
+  on public.mathe9_lernzeit (datum desc);
+
+
+-- ------------------------------------------------------------
+-- Was darf dieses Kind gerade?  (Aufruf mit Schueler-Token)
+-- ------------------------------------------------------------
+create or replace function public.mathe9_lernmodus()
+returns table (
+  modus text,
+  gilt_bis timestamptz,
+  freigegeben text[],
+  lernzeit_heute integer
+)
+language plpgsql
+stable
+security definer
+set search_path = public
+as $fn$
+declare
+  kind uuid;
+  aktuell public.mathe9_unterricht%rowtype;
+begin
+  kind := public.mathe9_token_student();
+  if kind is null then
+    raise exception 'Kein gueltiges Schueler-Sitzungstoken.' using errcode = '42501';
+  end if;
+
+  select * into aktuell from public.mathe9_unterricht where id = 1;
+
+  return query select
+    -- Abgelaufener Bewertungsmodus gilt nicht mehr. Der Rueckfall ist der
+    -- offene Zustand, nicht der gesperrte: Eine vergessene Umschaltung darf
+    -- niemanden aussperren.
+    case
+      when aktuell.modus = 'bewertung'
+       and (aktuell.gilt_bis is null or aktuell.gilt_bis > now())
+      then 'bewertung'
+      else 'uebung'
+    end::text,
+    aktuell.gilt_bis,
+    coalesce((
+      select array_agg(f.unit order by f.unit)
+      from public.mathe9_freigaben f
+      where f.student_id = kind
+    ), array[]::text[]),
+    coalesce((
+      select sum(l.sekunden)::integer
+      from public.mathe9_lernzeit l
+      where l.student_id = kind
+        and l.datum = (now() at time zone 'Europe/Berlin')::date
+    ), 0);
+end;
+$fn$;
+
+revoke all on function public.mathe9_lernmodus() from public;
+grant execute on function public.mathe9_lernmodus() to anon, authenticated;
+
+
+-- ------------------------------------------------------------
+-- Aktive Lernzeit melden  (Aufruf mit Schueler-Token)
+-- ------------------------------------------------------------
+create or replace function public.mathe9_lernzeit_melden(
+  p_unit text,
+  p_sekunden integer
+)
+returns integer
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  kind uuid;
+  zuwachs integer;
+begin
+  kind := public.mathe9_token_student();
+  if kind is null then
+    raise exception 'Kein gueltiges Schueler-Sitzungstoken.' using errcode = '42501';
+  end if;
+
+  -- Obergrenze je Meldung: Die App meldet alle paar Minuten. Ein groesserer
+  -- Wert kaeme entweder von einer sehr langen Offlinephase oder von einem
+  -- manipulierten Aufruf. In beiden Faellen ist Deckeln richtiger als
+  -- Glauben.
+  zuwachs := least(greatest(coalesce(p_sekunden, 0), 0), 900);
+  if zuwachs = 0 then
+    return 0;
+  end if;
+
+  insert into public.mathe9_lernzeit (student_id, unit, sekunden)
+  values (kind, coalesce(nullif(trim(p_unit), ''), '—'), zuwachs)
+  on conflict (student_id, datum, unit) do update
+    set sekunden = public.mathe9_lernzeit.sekunden + excluded.sekunden,
+        aktualisiert_at = now();
+
+  return zuwachs;
+end;
+$fn$;
+
+revoke all on function public.mathe9_lernzeit_melden(text, integer) from public;
+grant execute on function public.mathe9_lernzeit_melden(text, integer) to anon, authenticated;
+
+
+-- ------------------------------------------------------------
+-- Lehrkraftseite: Modus umschalten und Einheiten freigeben
+-- ------------------------------------------------------------
+create or replace function public.mathe9_unterricht_setzen(
+  p_modus text,
+  p_minuten integer default 90,
+  p_klasse text default null
+)
+returns public.mathe9_unterricht
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  ergebnis public.mathe9_unterricht%rowtype;
+begin
+  if not public.mathe9_ist_lehrkraft() then
+    raise exception 'Nur freigeschaltete Lehrkraefte duerfen den Lernmodus umschalten.'
+      using errcode = '42501';
+  end if;
+  if p_modus not in ('uebung', 'bewertung') then
+    raise exception 'Unbekannter Modus: %', p_modus;
+  end if;
+
+  update public.mathe9_unterricht
+     set modus = p_modus,
+         gilt_bis = case
+           when p_modus = 'bewertung'
+           then now() + make_interval(mins => greatest(coalesce(p_minuten, 90), 5))
+           else null
+         end,
+         klasse = p_klasse,
+         gesetzt_von = auth.uid(),
+         gesetzt_at = now()
+   where id = 1
+  returning * into ergebnis;
+
+  return ergebnis;
+end;
+$fn$;
+
+revoke all on function public.mathe9_unterricht_setzen(text, integer, text) from public, anon;
+grant execute on function public.mathe9_unterricht_setzen(text, integer, text) to authenticated;
+
+
+-- Freigabe nach Sichtung des handschriftlichen Blattes.
+create or replace function public.mathe9_freigeben(
+  p_student uuid,
+  p_unit text,
+  p_hinweis text default null
+)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+begin
+  if not public.mathe9_ist_lehrkraft() then
+    raise exception 'Nur freigeschaltete Lehrkraefte duerfen Einheiten freigeben.'
+      using errcode = '42501';
+  end if;
+  if p_unit is null or trim(p_unit) = '' then
+    raise exception 'Ohne Einheit keine Freigabe.';
+  end if;
+
+  insert into public.mathe9_freigaben (student_id, unit, freigegeben_von, hinweis)
+  values (p_student, lower(trim(p_unit)), auth.uid(), p_hinweis)
+  on conflict (student_id, unit) do update
+    set freigegeben_at = now(),
+        freigegeben_von = auth.uid(),
+        hinweis = coalesce(excluded.hinweis, public.mathe9_freigaben.hinweis);
+
+  return true;
+end;
+$fn$;
+
+revoke all on function public.mathe9_freigeben(uuid, text, text) from public, anon;
+grant execute on function public.mathe9_freigeben(uuid, text, text) to authenticated;
+
+
+create or replace function public.mathe9_freigabe_zuruecknehmen(
+  p_student uuid,
+  p_unit text
+)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  entfernt integer;
+begin
+  if not public.mathe9_ist_lehrkraft() then
+    raise exception 'Nur freigeschaltete Lehrkraefte duerfen Freigaben zuruecknehmen.'
+      using errcode = '42501';
+  end if;
+
+  delete from public.mathe9_freigaben
+   where student_id = p_student and unit = lower(trim(p_unit));
+  get diagnostics entfernt = row_count;
+  return entfernt > 0;
+end;
+$fn$;
+
+revoke all on function public.mathe9_freigabe_zuruecknehmen(uuid, text) from public, anon;
+grant execute on function public.mathe9_freigabe_zuruecknehmen(uuid, text) to authenticated;
+
+
+-- Policies: Lehrkraefte lesen alles, geschrieben wird nur ueber die
+-- Funktionen oben. Die Schueler-App liest ihren Modus ausschliesslich
+-- ueber mathe9_lernmodus() — direkten Tabellenzugriff bekommt sie nicht,
+-- sonst waere die Freigabeliste aller Kinder mit dem anon-Key lesbar.
+drop policy if exists "teachers read freigaben" on public.mathe9_freigaben;
+drop policy if exists "teachers read lernzeit" on public.mathe9_lernzeit;
+drop policy if exists "teachers read unterricht" on public.mathe9_unterricht;
+
+create policy "teachers read freigaben"
+on public.mathe9_freigaben for select to authenticated
+using (public.mathe9_ist_lehrkraft());
+
+create policy "teachers read lernzeit"
+on public.mathe9_lernzeit for select to authenticated
+using (public.mathe9_ist_lehrkraft());
+
+create policy "teachers read unterricht"
+on public.mathe9_unterricht for select to authenticated
+using (public.mathe9_ist_lehrkraft());
+
+grant select on public.mathe9_freigaben to authenticated;
+grant select on public.mathe9_lernzeit to authenticated;
+grant select on public.mathe9_unterricht to authenticated;
 
 
 -- ============================================================

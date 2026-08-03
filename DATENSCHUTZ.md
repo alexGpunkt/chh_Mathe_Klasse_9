@@ -66,6 +66,23 @@ den Datenbankfunktionen geschrieben. `mathe9_wartung_laeufe` wird nach 400
 Tagen selbst bereinigt; das Freigabeprotokoll bleibt bewusst stehen — es
 dokumentiert einen Berechtigungsvorgang, kein Lernverhalten.
 
+Seit V30 kommen zwei personenbezogene Tabellen dazu:
+
+| Tabelle | Inhalt | Frist |
+|---|---|---|
+| `mathe9_freigaben` | welche Einheit für wen freigegeben ist, wann und von wem | mit dem Schülerdatensatz (`ON DELETE CASCADE`) |
+| `mathe9_lernzeit` | aktive Lernzeit je Person, Tag und Einheit — nur Sekunden, keine Inhalte | wie der Fortschritt: **ein Schuljahr** |
+
+Zur Lernzeit gehört eine ehrliche Einordnung: Sie ist eine **Anwesenheits-
+und Tätigkeitsangabe**, kein Leistungsmaß. Gezählt wird nur, was sichtbar,
+aktiv und beim Server angekommen ist; Leerlauf zählt nicht. Was in einer
+eingebetteten fremden Übung geschieht, ist von hier aus nicht sichtbar — dort
+gilt „Rahmen offen und Seite sichtbar" als Arbeit. Wer daraus Noten ableiten
+will, misst etwas anderes, als er glaubt.
+
+Beide Tabellen stehen in `mathe9_person_export` und verschwinden mit
+`mathe9_person_loeschen`.
+
 ### 1.2b Verweise auf fremde Seiten (Übungen und Erklärvideos)
 
 Jede Einheit kann auf externe Übungen und auf Erklärvideos der YouTube-Kanäle
@@ -82,6 +99,16 @@ Einbettungen**:
 - Wer klickt, verlässt die Anwendung. Ab dort gelten die Bestimmungen des
   jeweiligen Anbieters — bei YouTube also die von Google, mit allem, was
   dazugehört. Auf der Karte steht das als Hinweis.
+- **Seit V30 öffnen sich die Übungen in einem Rahmen innerhalb der
+  Anwendung**, damit die Lernzeit weiterläuft. Am Entscheidenden ändert das
+  nichts: Der Rahmen entsteht erst beim Klick, vorher gibt es keine
+  Verbindung. Ein Rahmen ist **nicht harmloser** als ein neuer Tab — er ist
+  genauso ein Aufruf beim fremden Anbieter, nur ohne den Verlust des
+  Rückwegs. Der Rahmen läuft mit `sandbox` ohne `allow-top-navigation` und
+  mit `referrerpolicy="no-referrer"`.
+- Videos bleiben Links, auch nach V30. Sie liefen sonst über Google-Server
+  innerhalb der Seite, und dafür gibt es keinen Grund, der die zusätzliche
+  Datenweitergabe aufwöge.
 - Protokolliert wird bei aktivem Tracking nur, **dass** ein Verweis geöffnet
   wurde (Ereignis `video_open` beziehungsweise `external_practice_open`) mit
   Titel und Plattform. Was auf der fremden Seite geschieht, erreicht diese

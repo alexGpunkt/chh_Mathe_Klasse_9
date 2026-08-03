@@ -16,6 +16,8 @@ oder ein Dashboard, das niemand mehr öffnen kann.
 | **V29:** `mathe9_wartung_laeufe` + `mathe9_wartung_status()` | Ohne sie zeigt das Dashboard „Status nicht abrufbar"; gelöscht wird trotzdem |
 | **V29:** `mathe9_teacher_audit`, `mathe9_lehrkraft_sperren`, `mathe9_lehrkraft_uebersicht` | Ohne sie bleiben Änderungen an der Lehrkraftfreigabe unprotokolliert |
 | **V29:** `mathe9_lehrkraft_freischalten` bekommt einen zweiten Parameter | Die einstellige Fassung wird **gelöscht**. Skripte, die sie aufrufen, funktionieren weiter (der zweite Parameter hat einen Vorgabewert) |
+| **V30:** `mathe9_unterricht`, `mathe9_freigaben`, `mathe9_lernzeit` | Ohne sie bleibt die Anwendung im Übungsmodus — alles offen. Das ist der sichere Rückfall, aber nicht der gewünschte Unterrichtsablauf |
+| **V30:** `mathe9_lernmodus()`, `mathe9_lernzeit_melden()` | Ohne sie meldet die App im Protokoll einen Fehler und arbeitet im Übungsmodus weiter; Lernzeiten gehen verloren |
 
 ## 1 · Testprojekt anlegen
 
@@ -92,6 +94,31 @@ Ab V29 zusätzlich:
 - [ ] Ein **nicht** freigeschaltetes Konto bekommt bei
       `mathe9_wartung_status()` und `mathe9_lehrkraft_uebersicht()` den
       Fehler 42501 statt einer leeren Antwort
+
+Ab V30 zusätzlich:
+
+- [ ] `select * from public.mathe9_lernmodus();` **ohne** Schüler-Token gibt
+      42501 — nicht etwa eine offene Antwort
+- [ ] Mit gültigem Token liefert es `modus = 'uebung'` und eine leere
+      Freigabeliste
+- [ ] `select public.mathe9_unterricht_setzen('bewertung', 90);` schaltet um;
+      `mathe9_lernmodus()` liefert danach `bewertung` mit `gilt_bis`
+- [ ] **Ablauf prüfen:** `update public.mathe9_unterricht set gilt_bis =
+      now() - interval '1 minute';` — `mathe9_lernmodus()` muss danach wieder
+      `uebung` liefern. Das ist die Sicherung gegen eine vergessene
+      Umschaltung
+- [ ] `select public.mathe9_freigeben('<student-id>', 'pz-02');` taucht in
+      der Freigabeliste des Kindes auf
+- [ ] `select public.mathe9_lernzeit_melden('pz-01', 120);` addiert; ein
+      zweiter Aufruf addiert erneut auf dieselbe Zeile
+- [ ] `select public.mathe9_lernzeit_melden('pz-01', 99999);` wird auf 900
+      gedeckelt
+- [ ] Ein Schüler-Token darf **keine** fremde Freigabeliste sehen:
+      `select * from public.mathe9_freigaben;` über REST mit anon-Key liefert
+      nichts
+- [ ] `select public.mathe9_person_export('<student-id>');` enthält die
+      Schlüssel `freigaben` und `lernzeit`
+- [ ] `select public.mathe9_aufraeumen(0, 0);` löscht auch die Lernzeiten
 
 ## 4 · Produktive Migration
 

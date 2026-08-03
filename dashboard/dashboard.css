@@ -4,3 +4,6 @@
 
 /* Betrieb und Datenpflege · V29 */
 .opsGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.opsItem{border:1px solid #e5eaf0;border-radius:10px;padding:11px 13px}.opsItem dt{font-size:.78rem;color:#667487;margin:0 0 3px}.opsItem dd{margin:0;font-size:1rem;font-weight:700;overflow-wrap:anywhere}.opsItem.warn{border-color:#e8b9b1;background:#fff6f4}.opsItem.warn dd{color:#982f23}.opsItem.good{border-color:#bfe4cd}.opsNote{grid-column:1/-1;font-size:.82rem;color:#667487;margin:0}
+
+/* Unterricht, Freigaben und Lernzeit · V30 */
+.modusZeile{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.modusAnzeige{flex:1 1 240px;font-weight:700;padding:9px 12px;border-radius:9px;background:#eef2f6;color:#15233a}.modusAnzeige.aktiv{background:#fff1ef;color:#982f23}.modusAnzeige.warn{background:#fff6e6;color:#7a5200}.modusZeile label{display:flex;gap:6px;align-items:center;font-size:.85rem;font-weight:700}.modusZeile button{background:#15233a;color:#fff;border:0;font-weight:700}.modusZeile button:last-of-type{background:#fff;color:#15233a;border:1px solid #bdc8d3}.modusHinweis{font-size:.85rem;color:#667487;margin:0 0 12px}

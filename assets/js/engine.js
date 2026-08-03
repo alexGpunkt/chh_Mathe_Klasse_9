@@ -305,6 +305,29 @@ async function start() {
   formelkarteBauen();
   uebungskarteBauen();
   videokarteBauen();
+  blattkarteBauen();
+
+  /* ---------- Bewertungsmodus ----------
+     Während des Unterrichts öffnet sich eine neue Einheit erst nach
+     Freigabe durch die Lehrkraft. Entschieden wird das serverseitig; hier
+     steht nur, was das Kind sieht. Der Aufruf wartet bewusst NICHT auf die
+     Antwort, bevor der Rest der Seite baut — sonst stünde bei jedem
+     Seitenaufruf erst einmal nichts da. Kommt die Sperre eine Sekunde
+     später, ist das früh genug. */
+  if (window.Lernmodus) {
+    Promise.resolve(
+      Lernmodus.starten(S.daten.unit ? String(S.daten.unit).toLowerCase() : null)
+    ).then(() => {
+      const id = String(S.daten.unit || '').toLowerCase();
+      const urteil = Lernmodus.darfOeffnen(id);
+      if (!urteil.erlaubt) {
+        Tracker.track('einheit_gesperrt', { unit: id });
+        Lernmodus.sperreAnzeigen(id, document.querySelector('#buehne'));
+        document.querySelector('#uebungskarte')?.setAttribute('hidden', '');
+        document.querySelector('#videokarte')?.setAttribute('hidden', '');
+      }
+    });
+  }
 
   /* Ein Deep-Link der Lehrkraft schlägt den gespeicherten Stand: Wer per
      Link an eine bestimmte Stelle geschickt wird, soll dort landen. */
@@ -1786,7 +1809,7 @@ function uebungskarteBauen() {
   inhalt.append(el(
     'p',
     'ua-hinweis',
-    'Externe interaktive Übungen öffnen in einem neuen Tab. Inhalte und Verfügbarkeit können sich ändern – bitte vor dem Unterricht kurz prüfen.'
+    'Externe interaktive Übungen öffnen zunächst innerhalb der Anwendung. Über „In neuem Tab öffnen“ bleibt der direkte Aufruf möglich. Inhalte und Verfügbarkeit können sich ändern – bitte vor dem Unterricht kurz prüfen.'
   ));
 
   const ul = el('ul', 'ua-liste');
@@ -1804,12 +1827,24 @@ function uebungskarteBauen() {
     a.href = eintrag.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    a.addEventListener('click', () => {
-      Tracker.track('external_practice_open', {
-        provider: eintrag.quelle.key,
-        title: eintrag.titel,
-        link_type: eintrag.typ
-      });
+    a.dataset.provider = eintrag.quelle.key;
+    a.dataset.linkType = eintrag.typ;
+
+    /* Der normale Klick wird vom Übungsrahmen genau einmal protokolliert.
+       Nur bewusste Tab-Aufrufe umgehen den Rahmen und werden hier erfasst. */
+    const trackNeuerTab = () => Tracker.track('external_practice_open', {
+      provider: eintrag.quelle.key,
+      title: eintrag.titel,
+      link_type: eintrag.typ,
+      mode: 'neuer_tab'
+    });
+    a.addEventListener('click', ereignis => {
+      if (ereignis.metaKey || ereignis.ctrlKey || ereignis.shiftKey || ereignis.altKey) {
+        trackNeuerTab();
+      }
+    });
+    a.addEventListener('auxclick', ereignis => {
+      if (ereignis.button === 1) trackNeuerTab();
     });
     li.append(a);
 
@@ -1819,6 +1854,35 @@ function uebungskarteBauen() {
     ul.append(li);
   });
   inhalt.append(ul);
+}
+
+
+/* ---------- Handschriftliches Übungsblatt ----------
+   Der digitale Weg prüft Ergebnisse, nicht Rechenwege. Wer nur tippt, übt
+   das Aufschreiben nicht — und in der Klassenarbeit wird aufgeschrieben.
+   Deshalb steht am Ende jeder Einheit ein Blatt zum Ausdrucken: gleiches
+   Thema, andere Zahlen, andere Einkleidung.
+
+   Die PDFs liegen fertig im Repository (werkzeuge/uebungsblaetter.js) und
+   nicht im Offlinecache: Gedruckt wird ohnehin dort, wo es Netz gibt, und
+   54 PDFs im Installationspaket würden die Erstinstallation im Schul-WLAN
+   spürbar verlängern. */
+function blattkarteBauen() {
+  const karte = $('#blattkarte');
+  const link = $('#blattkarte-link');
+  if (!karte || !link) return;
+
+  const id = String(S.daten.unit || '').toLowerCase();
+  if (!id) { karte.hidden = true; return; }
+
+  const bereich = id.split('-')[0];
+  link.href = `units/${bereich}/${id}/uebungsblatt.pdf`;
+  link.removeAttribute('download');
+  karte.hidden = false;
+
+  link.addEventListener('click', () => {
+    Tracker.track('uebungsblatt_geoeffnet', { unit: id, path: S.pfad });
+  });
 }
 
 

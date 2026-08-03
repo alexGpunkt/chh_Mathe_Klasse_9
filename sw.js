@@ -2,13 +2,13 @@
    sw.js · Offline-Betrieb
 
    Das Schul-WLAN fällt aus, der Unterricht nicht.
-   Der vollständige Pool liegt bei rund 1 MB und passt komplett in den Cache.
+   Der vollständige Offline-Pool liegt bei rund 1,8 MB und passt komplett in den Cache.
 
    WICHTIG: Nach jeder inhaltlichen Änderung VERSION hochzählen.
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v29-betrieb-develop';
+const VERSION = 'mathe9-v31-integration-fixes-develop';
 
 const SCHALE = [
   './',
@@ -41,8 +41,11 @@ const SCHALE = [
   'assets/js/animationen-seite.js',
   'assets/js/uebungen-seite.js',
   'assets/js/tracker.js',
+  'assets/js/lernmodus.js',
+  'assets/js/uebungsrahmen.js',
   'assets/js/engine.js',
   'assets/js/buch.js',
+  'assets/js/ausdruck.js',
   'assets/js/spiral.js',
   'assets/js/pruefung.js',
   'assets/js/arbeitsblatt.js',
