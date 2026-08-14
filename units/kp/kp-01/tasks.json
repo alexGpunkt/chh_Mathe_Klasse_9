@@ -446,6 +446,18 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "mantel_als_eben",
+          "value": 1,
+          "feedback": "Der Quader hat nur ebene Flächen — sechs Rechtecke."
+        },
+        {
+          "id": "mantel_als_eben",
+          "value": 2,
+          "feedback": "Auch beim Dreiecksprisma ist jede Fläche eben."
+        }
       ]
     },
     {
@@ -643,7 +655,11 @@
       "titel": "Sammlung „Geometrische Körper“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/barbara%20007?displayfolder=105708",
       "typ": "sammlung",
-      "quelle": "LearningApps"
+      "quelle": "LearningApps",
+      "pfade": [
+        "B",
+        "C"
+      ]
     },
     {
       "titel": "Raumgeometrie: Netz, Oberfläche & Volumen (Übersicht)",

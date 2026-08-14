@@ -164,6 +164,13 @@
       ],
       "spiral": [
         "W-KOPF"
+      ],
+      "misconceptions": [
+        {
+          "id": "endwert_statt_differenz",
+          "value": 60,
+          "feedback": "Das ist der neue Preis. Gefragt ist der Unterschied: 80 − 60."
+        }
       ]
     },
     {
@@ -186,6 +193,14 @@
       ],
       "spiral": [
         "W-KOPF"
+      ],
+      "misconceptions": [
+        {
+          "id": "richtung_vertauscht",
+          "value": 1,
+          "konzeptfehler": "vorzeichen",
+          "feedback": "Von 200 auf 250 werden es mehr, nicht weniger."
+        }
       ]
     },
     {
@@ -206,6 +221,13 @@
       ],
       "spiral": [
         "W-KOPF"
+      ],
+      "misconceptions": [
+        {
+          "id": "endwert_statt_differenz",
+          "value": 96,
+          "feedback": "Das ist die neue Zahl. Gefragt ist der Rückgang: 120 − 96."
+        }
       ]
     },
     {

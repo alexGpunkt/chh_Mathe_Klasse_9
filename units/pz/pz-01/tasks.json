@@ -376,13 +376,28 @@
         {
           "label": "als Dezimalzahl",
           "answer": 0.28,
-          "tolerance": 0.001
+          "tolerance": 0.001,
+          "misconceptions": [
+            {
+              "id": "satz_als_wert",
+              "value": 28,
+              "feedback": "Das ist der Prozentsatz. Als Dezimalzahl steht dort 0,28."
+            }
+          ]
         },
         {
           "label": "als Prozentsatz",
           "answer": 28,
           "unit_label": "%",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "mal_100_vergessen",
+              "value": 0.28,
+              "konzeptfehler": "prozentschritt_unvollstaendig",
+              "feedback": "Das ist die Dezimalzahl. Für Prozent noch mal 100."
+            }
+          ]
         }
       ],
       "hints": [

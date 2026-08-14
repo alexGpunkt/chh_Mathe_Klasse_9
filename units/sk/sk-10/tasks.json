@@ -33,7 +33,8 @@
       "hinfuehrung": "Bei der Kugel brauchst du nur den Radius.",
       "erklaerung": [
         "Rechne zuerst r · r.",
-        "Nimm das Ergebnis mal 4 und mal π."
+        "Nimm das Ergebnis mal 4 und mal π.",
+        "r² heißt r · r. Es heißt nicht r · 2."
       ],
       "visual": {
         "type": "animation",
@@ -421,6 +422,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "faktor_vier_vergessen",
+          "value": 12.56,
+          "feedback": "Die Kugeloberfläche ist 4 · π · r², nicht π · r²."
+        }
       ]
     },
     {
@@ -593,7 +601,11 @@
       "titel": "Sammlung „Spitzkörper & Kugel“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/plaschke?displayfolder=3637252&bookmark=1",
       "typ": "sammlung",
-      "quelle": "LearningApps"
+      "quelle": "LearningApps",
+      "pfade": [
+        "B",
+        "C"
+      ]
     },
     {
       "titel": "Volumenformeln aller Körper (Übersicht)",

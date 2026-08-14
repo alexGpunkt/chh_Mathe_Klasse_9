@@ -131,6 +131,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "abgezogen_statt_addiert",
+          "value": 40,
+          "feedback": "Zylinder und Kegel werden zusammengezählt."
+        }
       ]
     },
     {
@@ -217,6 +224,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "abgezogen_statt_addiert",
+          "value": 50.24,
+          "feedback": "Zylinder und Kegeldach werden zusammengezählt."
+        }
       ]
     },
     {
@@ -294,13 +308,28 @@
           "label": "Volumen Kegeldach (zwei NKS)",
           "answer": 12.56,
           "tolerance": 0.3,
-          "unit_label": "m³"
+          "unit_label": "m³",
+          "misconceptions": [
+            {
+              "id": "drittel_vergessen",
+              "value": 37.68,
+              "konzeptfehler": "drittel_vergessen",
+              "feedback": "Bei Pyramide und Kegel gehört das Drittel dazu — noch durch 3 teilen."
+            }
+          ]
         },
         {
           "label": "Gesamt",
           "answer": 75.36,
           "tolerance": 0.5,
-          "unit_label": "m³"
+          "unit_label": "m³",
+          "misconceptions": [
+            {
+              "id": "teilkoerper_vergessen",
+              "value": 62.8,
+              "feedback": "Das ist nur der Zylinder. Das Kegeldach fehlt."
+            }
+          ]
         }
       ],
       "hints": [
@@ -374,6 +403,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "teilkoerper_vergessen",
+          "value": 10.99,
+          "feedback": "Das ist nur der Zylinder. Die Kegelspitze fehlt."
+        }
       ]
     },
     {
@@ -432,6 +468,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "teilkoerper_vergessen",
+          "value": 36,
+          "feedback": "Das ist nur die Quadersäule. Die Pyramidenspitze fehlt."
+        }
       ]
     },
     {
@@ -569,7 +612,11 @@
       "titel": "Sammlung „Spitzkörper & Kugel“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/plaschke?displayfolder=3637252&bookmark=1",
       "typ": "sammlung",
-      "quelle": "LearningApps"
+      "quelle": "LearningApps",
+      "pfade": [
+        "B",
+        "C"
+      ]
     },
     {
       "titel": "Schwierigere Aufgaben zu einzelnen Grundkörpern",
@@ -581,7 +628,11 @@
       "titel": "ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)",
       "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
       "typ": "sammlung",
-      "quelle": "ZUM"
+      "quelle": "ZUM",
+      "pfade": [
+        "B",
+        "C"
+      ]
     }
   ],
   "videos": [

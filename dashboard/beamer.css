@@ -1,0 +1,345 @@
+/* ============================================================
+   beamer.css · Fortschrittsanzeige für die Leinwand
+
+   Alles hier ist für eine Entfernung von acht Metern gebaut, nicht für
+   einen Schreibtisch: dunkler Grund, große Schrift, drei Zustände, die
+   sich in der Farbe UND in der Bewegung unterscheiden. Wer im Raum
+   Rot und Grün nicht auseinanderhält, erkennt den Alarm am Blinken und
+   am stehenden Strichmännchen.
+   ============================================================ */
+
+:root {
+  --grund:      #0E1622;
+  --grund-2:    #16202E;
+  --linie:      #2C3B4E;
+  --text:       #EDF2F8;
+  --text-leise: #8FA2B8;
+
+  --gruen:      #34D399;
+  --rot:        #F87171;
+  --alarm:      #FF3B30;
+  --bahn:       #3B4C63;
+
+  --f-titel: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-text:  "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-zahl:  "JetBrains Mono", ui-monospace, monospace;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--f-text);
+  color: var(--text);
+  background: var(--grund);
+  overflow: hidden;               /* eine Leinwand scrollt nicht */
+}
+
+/* ---------- Kopf ---------- */
+
+.kopf {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 14px clamp(16px, 2vw, 32px);
+  border-bottom: 1px solid var(--linie);
+  background: var(--grund-2);
+}
+
+.kopf h1 {
+  margin: 0;
+  font-family: var(--f-titel);
+  font-size: clamp(20px, 2.6vw, 34px);
+  letter-spacing: -.01em;
+}
+
+.unterzeile {
+  margin: 2px 0 0;
+  font-size: clamp(12px, 1.1vw, 16px);
+  color: var(--text-leise);
+}
+
+.kopf-rechts {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 32px);
+}
+
+.legende {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(11px, 1vw, 15px);
+  color: var(--text-leise);
+}
+
+.legende-punkt {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.legende-punkt + .legende-punkt { margin-left: 12px; }
+.legende-punkt.gruen { background: var(--gruen); }
+.legende-punkt.rot   { background: var(--rot); }
+.legende-punkt.alarm { background: var(--alarm); animation: blinken 1s steps(1, end) infinite; }
+
+.zaehler {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--f-zahl);
+}
+.zaehler span {
+  font-size: clamp(20px, 2.2vw, 32px);
+  font-weight: 700;
+}
+.zaehler small {
+  font-family: var(--f-text);
+  font-size: clamp(10px, .9vw, 13px);
+  color: var(--text-leise);
+  margin-right: 10px;
+}
+#zaehlerAlarm { color: var(--alarm); }
+
+#vollbild {
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  cursor: pointer;
+}
+#vollbild:hover { background: var(--linie); }
+
+/* ---------- Bahnen ----------
+   Mehrspaltig, sobald es sich lohnt. Die Spaltenzahl ergibt sich aus der
+   Fensterbreite; die Zeilenhöhe verteilt sich auf die verbleibende Höhe,
+   damit auch bei 28 Kindern nichts aus dem Bild fällt. */
+
+.bahnen {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns: repeat(var(--spalten, 1), minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  gap: clamp(6px, 1vh, 16px) clamp(12px, 1.6vw, 28px);
+
+  padding: clamp(10px, 1.6vh, 22px) clamp(16px, 2vw, 32px);
+  overflow: hidden;
+}
+
+.bahn {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 2px;
+}
+
+.bahn-kopf,
+.bahn-fuss {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 700;
+  font-size: clamp(13px, 1.25vw, 20px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ping {
+  flex: 0 0 auto;
+  width: clamp(10px, .9vw, 15px);
+  height: clamp(10px, .9vw, 15px);
+  border-radius: 50%;
+  background: var(--rot);
+}
+.bahn[data-status="gruen"] .ping { background: var(--gruen); }
+.bahn[data-status="rot"]   .ping { background: var(--rot); }
+.bahn[data-status="alarm"] .ping {
+  background: var(--alarm);
+  animation: blinken 1s steps(1, end) infinite;
+}
+
+.bahn-fuss {
+  font-family: var(--f-zahl);
+  font-size: clamp(10px, .95vw, 15px);
+  color: var(--text-leise);
+}
+.bahn-fuss .prozent { color: var(--text); font-weight: 700; }
+
+/* ---------- Die Gerade, auf der gelaufen wird ---------- */
+
+.strecke {
+  position: relative;
+  min-height: 0;
+  align-self: center;
+  width: 100%;
+  height: clamp(44px, 7vh, 90px);
+}
+
+.linie {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22%;
+  height: 3px;
+  background: var(--bahn);
+  border-radius: 2px;
+}
+
+/* Der bereits zurückgelegte Teil der Strecke. */
+.linie-fuell {
+  position: absolute;
+  left: 0;
+  bottom: 22%;
+  height: 3px;
+  background: var(--gruen);
+  border-radius: 2px;
+  transition: width .6s ease-out;
+}
+.bahn[data-status="rot"]   .linie-fuell { background: var(--rot); }
+.bahn[data-status="alarm"] .linie-fuell { background: var(--alarm); }
+
+/* Ein Strich je Einheit der Reihe: Woran man sieht, wie weit noch. */
+.marke {
+  position: absolute;
+  bottom: calc(22% - 3px);
+  width: 1px;
+  height: 9px;
+  background: var(--linie);
+}
+
+.ziel {
+  position: absolute;
+  right: 0;
+  bottom: calc(22% + 4px);
+  font-size: clamp(13px, 1.3vw, 20px);
+  opacity: .55;
+}
+
+/* ---------- Das Strichmännchen ---------- */
+
+.laeufer {
+  position: absolute;
+  bottom: 22%;
+  /* left wird je Kind gesetzt; die Verschiebung um die halbe Breite sorgt
+     dafür, dass die Füße auf der Linie stehen und nicht daneben. */
+  transform: translateX(-50%);
+  transition: left .8s cubic-bezier(.4, 0, .2, 1);
+  will-change: left;
+}
+
+.maennchen {
+  display: block;
+  width: clamp(22px, 2.4vw, 40px);
+  height: auto;
+  overflow: visible;
+}
+
+.maennchen line,
+.maennchen circle {
+  stroke: var(--gruen);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  fill: none;
+}
+.bahn[data-status="rot"]   .maennchen line,
+.bahn[data-status="rot"]   .maennchen circle { stroke: var(--rot); }
+.bahn[data-status="alarm"] .maennchen line,
+.bahn[data-status="alarm"] .maennchen circle { stroke: var(--alarm); }
+
+.bahn[data-status="alarm"] .maennchen {
+  animation: blinken 1s steps(1, end) infinite;
+}
+
+/* Laufbewegung: Beine und Arme pendeln um Hüfte und Schulter. Sie läuft
+   nur, solange der Ping da ist — ein Kind ohne Verbindung steht still,
+   und genau das soll man von hinten im Raum sehen. */
+.bein-l, .bein-r, .arm-l, .arm-r { transform-origin: 20px 34px; }
+.arm-l, .arm-r { transform-origin: 20px 22px; }
+
+.bahn[data-status="gruen"] .bein-l { animation: schritt 0.9s ease-in-out infinite; }
+.bahn[data-status="gruen"] .bein-r { animation: schritt 0.9s ease-in-out infinite reverse; }
+.bahn[data-status="gruen"] .arm-l  { animation: schwung 0.9s ease-in-out infinite reverse; }
+.bahn[data-status="gruen"] .arm-r  { animation: schwung 0.9s ease-in-out infinite; }
+
+/* Fertig ist fertig: Wer die Reihe durch hat, bleibt am Ziel stehen. */
+.bahn[data-fertig="ja"] .maennchen line,
+.bahn[data-fertig="ja"] .maennchen circle { stroke: #FBBF24; }
+.bahn[data-fertig="ja"] .bein-l,
+.bahn[data-fertig="ja"] .bein-r,
+.bahn[data-fertig="ja"] .arm-l,
+.bahn[data-fertig="ja"] .arm-r { animation: none !important; }
+
+@keyframes schritt {
+  0%, 100% { transform: rotate(-22deg); }
+  50%      { transform: rotate(22deg); }
+}
+@keyframes schwung {
+  0%, 100% { transform: rotate(-16deg); }
+  50%      { transform: rotate(16deg); }
+}
+@keyframes blinken {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: .12; }
+}
+
+/* Wer Bewegung nicht verträgt, bekommt sie nicht. Der Alarm bleibt
+   trotzdem erkennbar: Er wechselt dann statt zu blinken die Umrandung. */
+@media (prefers-reduced-motion: reduce) {
+  .bein-l, .bein-r, .arm-l, .arm-r,
+  .legende-punkt.alarm, .bahn[data-status="alarm"] .ping,
+  .bahn[data-status="alarm"] .maennchen { animation: none !important; }
+
+  .bahn[data-status="alarm"] {
+    outline: 3px solid var(--alarm);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  .laeufer { transition: none; }
+}
+
+/* ---------- Leerzustand und Hinweis ---------- */
+
+.leer {
+  grid-column: 1 / -1;
+  align-self: center;
+  text-align: center;
+  font-size: clamp(16px, 1.8vw, 26px);
+  color: var(--text-leise);
+}
+
+.hinweis {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px clamp(16px, 2vw, 32px);
+  font-size: clamp(11px, 1vw, 14px);
+  color: var(--text-leise);
+  border-top: 1px solid var(--linie);
+  background: var(--grund-2);
+}
+.hinweis[hidden] { display: none; }
+.hinweis.warnung { color: #FCD34D; }

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src https://learningapps.org https://*.learningapps.org https://serlo.org https://*.serlo.org https://h5p.org https://*.h5p.org https://schule-bw.de https://*.schule-bw.de https://learningsnacks.de https://*.learningsnacks.de https://quizlet.com https://*.quizlet.com https://zum.de https://*.zum.de; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co; form-action 'self'; worker-src 'self'">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mathe 9 · Beameransicht</title>
+  <link rel="stylesheet" href="beamer.css">
+</head>
+<body>
+
+<!-- Diese Seite wird an die Leinwand geworfen. Sie holt ihre Daten nicht
+     selbst, sondern bekommt sie vom Lehrerdashboard über einen
+     BroadcastChannel geschickt. Zwei Gründe: Das Sitzungstoken der
+     Lehrkraft bleibt in genau einem Tab, und was hier steht, ist
+     garantiert dasselbe, was die Lehrkraft auf ihrem Bildschirm sieht. -->
+
+<header class="kopf">
+  <div class="kopf-links">
+    <h1 id="titel">Wo stehen wir gerade?</h1>
+    <p class="unterzeile" id="unterzeile">warte auf das Lehrerdashboard …</p>
+  </div>
+  <div class="kopf-rechts">
+    <div class="legende">
+      <span class="legende-punkt gruen"></span>Ping da
+      <span class="legende-punkt rot"></span>Ping fehlt
+      <span class="legende-punkt alarm"></span>über dem Grenzwert
+    </div>
+    <div class="zaehler">
+      <span id="zaehlerAktiv">0</span><small>mit Ping</small>
+      <span id="zaehlerAlarm">0</span><small>im Alarm</small>
+    </div>
+    <button id="vollbild" type="button" title="Vollbild ein- oder ausschalten (F)">⛶</button>
+  </div>
+</header>
+
+<main id="bahnen" class="bahnen" aria-live="polite"></main>
+
+<p id="hinweis" class="hinweis">
+  Diese Ansicht wird vom Lehrerdashboard versorgt. Das Dashboard-Fenster
+  muss geöffnet bleiben — es darf ruhig hinter diesem Fenster liegen.
+</p>
+
+<script src="beamer.js"></script>
+</body>
+</html>

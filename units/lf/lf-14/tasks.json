@@ -167,6 +167,18 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "grundpreis_verwechselt",
+          "value": 0.25,
+          "feedback": "0,25 € ist der Preis für EINE Minute. Für 100 Minuten mal 100."
+        },
+        {
+          "id": "ablesen_statt_rechnen",
+          "value": 100,
+          "feedback": "Das sind die Minuten, nicht die Kosten."
+        }
       ]
     },
     {
@@ -191,6 +203,18 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "tarif_uebersehen",
+          "value": 1,
+          "feedback": "B kostet 25 €, A nur 22 € — weniger ist günstiger."
+        },
+        {
+          "id": "gleich_gross",
+          "value": 2,
+          "feedback": "22 € und 25 € sind nicht gleich."
+        }
       ]
     },
     {
@@ -234,12 +258,28 @@
         {
           "label": "m von Tarif A",
           "answer": 0.1,
-          "tolerance": 0.001
+          "tolerance": 0.001,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 12,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "Die 12 € fallen einmalig an — das ist b, nicht m."
+            }
+          ]
         },
         {
           "label": "b von Tarif A",
           "answer": 12,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 0.1,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "0,10 € gelten je Minute — das ist m."
+            }
+          ]
         },
         {
           "label": "m von Tarif B",
@@ -249,7 +289,15 @@
         {
           "label": "b von Tarif B",
           "answer": 0,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 0.25,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "B hat keine Grundgebühr, also b = 0. Die 0,25 € sind m."
+            }
+          ]
         }
       ],
       "hints": [
@@ -296,13 +344,29 @@
           "label": "x-Wert (Minuten)",
           "answer": 80,
           "unit_label": "min",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 20,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "20 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert (Euro)",
           "answer": 20,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 80,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "80 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -396,13 +460,29 @@
           "label": "x-Wert (Minuten)",
           "answer": 40,
           "unit_label": "min",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 14,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "14 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert (Euro)",
           "answer": 14,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 40,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "40 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [

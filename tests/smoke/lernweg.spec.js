@@ -337,23 +337,42 @@ test('Erklärvideos werden verlinkt, nicht eingebettet', async ({ page }) => {
   }
 });
 
-test('Übungsblatt wird angeboten und ist erreichbar', async ({ page, request }) => {
+/* Seit V33 gibt es je Lernweg ein eigenes Blatt. Geprüft wird deshalb jeder
+   einzeln: Ein Kind auf dem Basisweg darf nicht das Blatt des
+   Vertiefungswegs bekommen, und ein toter Verweis fiele erst im
+   Unterricht auf. */
+for (const stufe of ['A', 'B', 'C']) {
+  test(`Übungsblatt für Lernweg ${stufe} wird angeboten und ist erreichbar`, async ({ page, request }) => {
+    await page.goto(`/einheit.html?u=pz-08&p=${stufe}`);
+
+    const karte = page.locator('#blattkarte');
+    await expect(karte).toBeVisible();
+    await expect(karte).toContainText('von Hand');
+
+    const link = page.locator('#blattkarte-link');
+    const pfad = await link.getAttribute('href');
+    expect(pfad).toBe(`units/pz/pz-08/uebungsblatt-${stufe.toLowerCase()}.pdf`);
+    await expect(link).not.toHaveAttribute('download', /.+/);
+
+    const antwort = await request.get('http://127.0.0.1:8123/' + pfad);
+    expect(antwort.status()).toBe(200);
+    const kopf = (await antwort.body()).subarray(0, 8).toString('latin1');
+    expect(kopf).toContain('%PDF-');
+  });
+}
+
+/* Der Lernwegwechsel muss den Verweis mitziehen — bis V33 blieb dort das
+   B-Blatt stehen, weil pfadSetzen() die Karte nicht neu baute. */
+test('Wechsel des Lernwegs tauscht das verlinkte Übungsblatt', async ({ page }) => {
   await page.goto('/einheit.html?u=pz-08&p=B');
-
-  const karte = page.locator('#blattkarte');
-  await expect(karte).toBeVisible();
-  await expect(karte).toContainText('von Hand');
-
   const link = page.locator('#blattkarte-link');
-  const pfad = await link.getAttribute('href');
-  expect(pfad).toBe('units/pz/pz-08/uebungsblatt.pdf');
-  await expect(link).not.toHaveAttribute('download', /.+/);
+  await expect(link).toHaveAttribute('href', 'units/pz/pz-08/uebungsblatt-b.pdf');
 
-  /* Ein Verweis auf ein fehlendes PDF fiele erst im Unterricht auf. */
-  const antwort = await request.get('http://127.0.0.1:8123/' + pfad);
-  expect(antwort.status()).toBe(200);
-  const kopf = (await antwort.body()).subarray(0, 8).toString('latin1');
-  expect(kopf).toContain('%PDF-');
+  await page.locator('.pfad-btn[data-p="A"]').click();
+  await expect(link).toHaveAttribute('href', 'units/pz/pz-08/uebungsblatt-a.pdf');
+
+  await page.locator('.pfad-btn[data-p="C"]').click();
+  await expect(link).toHaveAttribute('href', 'units/pz/pz-08/uebungsblatt-c.pdf');
 });
 
 test('Externe Übung öffnet im Rahmen statt im neuen Tab', async ({ page, context }) => {

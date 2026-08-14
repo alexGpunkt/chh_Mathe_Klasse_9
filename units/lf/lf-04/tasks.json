@@ -146,12 +146,28 @@
         {
           "label": "Schritte nach rechts (Δx)",
           "answer": 1,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 2,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "Nach rechts geht es einen Schritt. Die 2 sind die Schritte nach oben."
+            }
+          ]
         },
         {
           "label": "Schritte nach oben (Δy)",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 1,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "Nach oben geht es zwei Schritte. Die 1 ist der Schritt nach rechts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -200,6 +216,18 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "differenz_statt_quotient",
+          "value": 4,
+          "feedback": "Δy und Δx werden geteilt, nicht addiert: 3 : 1 = 3."
+        },
+        {
+          "id": "dy_als_m",
+          "value": 1,
+          "feedback": "Das ist der Schritt nach rechts. m ist der Schritt nach oben geteilt durch ihn."
+        }
       ]
     },
     {
@@ -236,6 +264,14 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "m_und_b_vertauscht",
+          "value": 2,
+          "konzeptfehler": "m_und_b_vertauscht",
+          "feedback": "Die 2 ist die Höhe, in der die Gerade startet. Das Dreieck zeigt einen Schritt rechts und einen hoch."
+        }
       ]
     },
     {
@@ -621,6 +657,18 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "dy_als_m",
+          "value": 3,
+          "feedback": "Das ist nur Δy. Das Dreieck ist 2 breit — also noch durch 2 teilen."
+        },
+        {
+          "id": "differenz_statt_quotient",
+          "value": 2,
+          "feedback": "Das ist Δx. m = Δy : Δx."
+        }
       ]
     },
     {

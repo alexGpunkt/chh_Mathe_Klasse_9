@@ -131,6 +131,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "volle_grundkante",
+          "value": 6,
+          "feedback": "Das ist die ganze Grundkante. Die Hälfte davon ist 6 : 2 = 3 cm."
+        }
       ]
     },
     {
@@ -573,6 +580,20 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Aufgaben zum Satz des Pythagoras",
+      "url": "https://de.serlo.org/mathe/29228/aufgaben-zum-satz-des-pythagoras",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Aufgaben zur Pyramide",
+      "url": "https://de.serlo.org/mathe/65267/aufgaben-zur-pyramide",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

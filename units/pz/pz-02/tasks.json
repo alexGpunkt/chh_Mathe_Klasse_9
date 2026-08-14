@@ -134,6 +134,13 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "richtung_verlesen",
+          "value": 1,
+          "feedback": "Der gefärbte Teil endet vor dem Strich in der Mitte — er ist kleiner."
+        }
       ]
     },
     {
@@ -162,6 +169,13 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "richtung_verlesen",
+          "value": 0,
+          "feedback": "Der gefärbte Teil reicht über den Strich in der Mitte hinaus — er ist größer."
+        }
       ]
     },
     {
@@ -231,6 +245,18 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "anker_verwechselt",
+          "value": 1,
+          "feedback": "Ein Viertel wäre nur halb so viel wie das Gefärbte."
+        },
+        {
+          "id": "anker_verwechselt",
+          "value": 2,
+          "feedback": "Fast alles wäre deutlich mehr als die Hälfte des Streifens."
+        }
       ]
     },
     {
@@ -257,6 +283,13 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 65,
+          "feedback": "65 % ist der ungefärbte Teil. Gefragt ist der gefärbte."
+        }
       ]
     },
     {
@@ -284,6 +317,13 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 35,
+          "feedback": "35 % ist der ungefärbte Teil. Gefragt ist der gefärbte."
+        }
       ]
     },
     {
@@ -310,6 +350,13 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 85,
+          "feedback": "85 % ist der ungefärbte Teil. Gefragt ist der gefärbte."
+        }
       ]
     },
     {
@@ -337,6 +384,13 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 10,
+          "feedback": "10 % ist der ungefärbte Teil. Gefragt ist der gefärbte."
+        }
       ]
     },
     {
@@ -364,6 +418,13 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 55,
+          "feedback": "55 % ist der ungefärbte Teil. Gefragt ist der gefärbte."
+        }
       ]
     },
     {
@@ -391,6 +452,13 @@
       ],
       "spiral": [
         "W-PROZ"
+      ],
+      "misconceptions": [
+        {
+          "id": "rest_statt_teil",
+          "value": 95,
+          "feedback": "95 % ist der ungefärbte Teil. Gefragt ist der gefärbte."
+        }
       ]
     },
     {
@@ -453,6 +521,13 @@
       "spiral": [
         "W-PROZ",
         "W-KOPF"
+      ],
+      "misconceptions": [
+        {
+          "id": "anker_verwechselt",
+          "value": 62,
+          "feedback": "Das sind 10 % von 620 €. 48 % sind knapp die Hälfte."
+        }
       ]
     },
     {
@@ -477,6 +552,13 @@
       "spiral": [
         "W-PROZ",
         "W-KOPF"
+      ],
+      "misconceptions": [
+        {
+          "id": "anker_verwechselt",
+          "value": 48,
+          "feedback": "Das sind 10 % von 480 €. 9 % sind etwas weniger."
+        }
       ]
     },
     {
@@ -517,6 +599,20 @@
         "W-PROZ",
         "W-KOPF"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Anteile und Prozente – Einführung",
+      "url": "https://learningapps.org/26815",
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben zur Prozentrechnung",
+      "url": "https://de.serlo.org/mathe/23869/aufgaben-zur-prozentrechnung",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

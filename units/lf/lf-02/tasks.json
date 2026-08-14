@@ -137,12 +137,28 @@
         {
           "label": "Schritte nach rechts",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 4,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "4 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "Schritte nach oben",
           "answer": 4,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 3,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "3 ist der x-Wert. Gefragt ist die Höhe des Punkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -226,12 +242,28 @@
         {
           "label": "Schritte nach rechts",
           "answer": 5,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 2,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "2 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "Schritte nach oben",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 5,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "5 ist der x-Wert. Gefragt ist die Höhe des Punkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -344,17 +376,39 @@
         {
           "label": "y für x = 0",
           "answer": -2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "vorzeichen_uebersehen",
+              "value": 2,
+              "konzeptfehler": "vorzeichen",
+              "feedback": "Bei x = 0 fällt 3x weg und es bleibt −2 übrig, nicht +2."
+            }
+          ]
         },
         {
           "label": "y für x = 2",
           "answer": 4,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "b_vergessen",
+              "value": 6,
+              "feedback": "3 · 2 = 6 ist erst der halbe Weg — die −2 kommt noch dazu."
+            }
+          ]
         },
         {
           "label": "y für x = 4",
           "answer": 10,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "b_vergessen",
+              "value": 12,
+              "feedback": "3 · 4 = 12, davon noch 2 abziehen."
+            }
+          ]
         }
       ],
       "hints": [
@@ -386,12 +440,28 @@
         {
           "label": "y für x = 3",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "vorzeichen_uebersehen",
+              "value": 8,
+              "konzeptfehler": "vorzeichen",
+              "feedback": "Vor dem x steht ein Minus: −3 + 5, nicht 3 + 5."
+            }
+          ]
         },
         {
           "label": "y für x = 6",
           "answer": -1,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "vorzeichen_uebersehen",
+              "value": 11,
+              "konzeptfehler": "vorzeichen",
+              "feedback": "Auch hier: −6 + 5 = −1."
+            }
+          ]
         }
       ],
       "hints": [
@@ -502,12 +572,26 @@
         {
           "label": "y für x = 2",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "steigung_ignoriert",
+              "value": 4,
+              "feedback": "0,5 · 2 = 1, nicht 2. Ein halber Schritt je x."
+            }
+          ]
         },
         {
           "label": "y für x = 4",
           "answer": 4,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "steigung_ignoriert",
+              "value": 6,
+              "feedback": "0,5 · 4 = 2, dazu die 2 — also 4."
+            }
+          ]
         }
       ],
       "hints": [
@@ -665,6 +749,20 @@
       "spiral": [
         "W-FKT"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Wertetabelle und Graph zuordnen",
+      "url": "https://learningapps.org/view5452529",
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben zu Geraden im Koordinatensystem",
+      "url": "https://de.serlo.org/mathe/31911/aufgaben-zu-linearen-funktionen-als-geraden-im-koordinatensystem",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

@@ -455,6 +455,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen",
+          "value": 339.12,
+          "konzeptfehler": "drittel_vergessen",
+          "feedback": "Bei Pyramide und Kegel gehört das Drittel dazu — noch durch 3 teilen."
+        }
       ]
     },
     {

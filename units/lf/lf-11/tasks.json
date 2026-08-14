@@ -166,6 +166,18 @@
       ],
       "spiral": [
         "W-TERM"
+      ],
+      "misconceptions": [
+        {
+          "id": "schritt_uebersehen",
+          "value": 15,
+          "feedback": "20 − 5 = 15 ist erst ein Schritt. Jetzt noch durch 3 teilen."
+        },
+        {
+          "id": "nicht_subtrahiert",
+          "value": 8.33,
+          "feedback": "Erst die 5 abziehen, dann teilen — nicht umgekehrt."
+        }
       ]
     },
     {
@@ -271,6 +283,13 @@
       ],
       "spiral": [
         "W-TERM"
+      ],
+      "misconceptions": [
+        {
+          "id": "x_nicht_gesammelt",
+          "value": 4.2,
+          "feedback": "Die 2x auf der rechten Seite müssen erst nach links: 5x − 2x = 3x."
+        }
       ]
     },
     {
@@ -323,6 +342,13 @@
       ],
       "spiral": [
         "W-TERM"
+      ],
+      "misconceptions": [
+        {
+          "id": "x_nicht_gesammelt",
+          "value": 2.5,
+          "feedback": "Die x-Terme werden voneinander abgezogen: 6x − 2x = 4x."
+        }
       ]
     },
     {
@@ -345,6 +371,13 @@
       ],
       "spiral": [
         "W-TERM"
+      ],
+      "misconceptions": [
+        {
+          "id": "x_nicht_gesammelt",
+          "value": 2.4,
+          "feedback": "Die x-Terme werden voneinander abgezogen: 7x − 3x = 4x."
+        }
       ]
     },
     {
@@ -519,6 +552,20 @@
       "spiral": [
         "W-TERM"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Aufgaben zum Lösen von linearen Gleichungen",
+      "url": "https://de.serlo.org/mathe/80254/aufgaben-zum-loesen-von-linearen-gleichungen",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Äquivalenzumformungen erklärt",
+      "url": "https://de.serlo.org/mathe/1847/aequivalenzumformungen",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

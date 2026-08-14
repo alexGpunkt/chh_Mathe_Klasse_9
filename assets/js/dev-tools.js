@@ -4,44 +4,39 @@
    Sichtbar nur, wenn MATHE9_SUPABASE.devMode === true.
    Einstellungen werden lokal im Browser gespeichert.
    Vor dem Merge nach master devMode unbedingt auf false setzen.
+
+   Diese Datei steht seit V34 in KEINEM HTML mehr. Sie wird von
+   assets/js/dev-boot.js nachgeladen, und zwar nur dann, wenn devMode
+   eingeschaltet ist. Auf master wird sie nie angefordert — das spart
+   9,4 KB gzip auf jeder Seite.
+
+   Alles, was vor den übrigen Skripten laufen muss (CONFIG-Überschreibungen,
+   der Testschüler), liegt deshalb in dev-boot.js und nicht mehr hier.
+   Hier steht nur noch das Menü selbst.
    ============================================================ */
 
 (() => {
   'use strict';
 
   const CONFIG = window.MATHE9_SUPABASE || {};
-  const PREFIX = 'mathe9.dev.';
-  const STUDENT_KEY = 'mathe9.student';
 
-  /* Die App-Wurzel wird aus dem Pfad dieses Skripts ermittelt. Dadurch
-     funktionieren alle Links sowohl aus /dashboard/ als auch aus den
-     HTML-Seiten im Hauptverzeichnis. */
-  const SCRIPT_URL = document.currentScript?.src ||
-    new URL('assets/js/dev-tools.js', location.href).href;
-  const APP_ROOT_URL = new URL('../../', SCRIPT_URL);
-  const CURRENT_URL = new URL(location.href);
-  const IS_DASHBOARD = /\/dashboard(?:\/index\.html)?\/?$/i.test(CURRENT_URL.pathname);
+  /* Die Helfer kommen aus dev-boot.js. Sie hier ein zweites Mal zu
+     definieren hieße, zwei Fassungen desselben Testschülers zu pflegen. */
+  const BOOT = window.Mathe9DevTools;
+  if (!BOOT) {
+    console.warn('[Mathe9 DEV] dev-boot.js fehlt — das Entwicklermenü bleibt aus.');
+    return;
+  }
 
-  const TEST_STUDENTS = {
-    test1: {
-      student_id: '00000000-0000-4000-8000-000000000001',
-      login_name: 'test.schueler1',
-      display_name: 'Testschüler 1',
-      class_code: 'DEV'
-    },
-    test2: {
-      student_id: '00000000-0000-4000-8000-000000000002',
-      login_name: 'test.schueler2',
-      display_name: 'Testschüler 2',
-      class_code: 'DEV'
-    },
-    test3: {
-      student_id: '00000000-0000-4000-8000-000000000003',
-      login_name: 'test.schueler3',
-      display_name: 'Testschüler 3',
-      class_code: 'DEV'
-    }
-  };
+  const {
+    appUrl, readBool, writeBool, readText, writeText,
+    testStudent, saveTestStudent, clearStudent
+  } = BOOT;
+
+  const IS_DASHBOARD = BOOT.istDashboard;
+  const TEST_STUDENTS = BOOT.testSchueler;
+  const APP_ROOT_URL = BOOT.appRootUrl;
+  const enabled = BOOT.enabled;
 
   const FALLBACK_AREAS = [
     {
@@ -69,78 +64,6 @@
       count: 12
     }
   ];
-
-  const enabled = CONFIG.devMode === true;
-
-  function appUrl(path = '') {
-    return new URL(path, APP_ROOT_URL).href;
-  }
-
-  function readBool(name, fallback = false) {
-    const value = localStorage.getItem(PREFIX + name);
-    if (value === null) return fallback;
-    return value === 'true';
-  }
-
-  function writeBool(name, value) {
-    localStorage.setItem(PREFIX + name, String(Boolean(value)));
-  }
-
-  function readText(name, fallback = '') {
-    return localStorage.getItem(PREFIX + name) || fallback;
-  }
-
-  function writeText(name, value) {
-    localStorage.setItem(PREFIX + name, String(value));
-  }
-
-  function testStudent(key = readText('student', 'test1')) {
-    return TEST_STUDENTS[key] || TEST_STUDENTS.test1;
-  }
-
-  function saveTestStudent(key) {
-    const student = {
-      ...testStudent(key),
-      class_code: CONFIG.devClassCode || testStudent(key).class_code,
-      verified_at: new Date().toISOString(),
-      dev_bypass: true
-    };
-
-    localStorage.setItem(STUDENT_KEY, JSON.stringify(student));
-    localStorage.setItem('mathe9.name', student.display_name);
-    localStorage.setItem('mathe9.student_id', student.student_id);
-    localStorage.setItem('mathe9.class_code', student.class_code);
-    window.MATHE9_STUDENT = student;
-    return student;
-  }
-
-  function clearStudent() {
-    localStorage.removeItem(STUDENT_KEY);
-    localStorage.removeItem('mathe9.name');
-    localStorage.removeItem('mathe9.student_id');
-    localStorage.removeItem('mathe9.class_code');
-    delete window.MATHE9_STUDENT;
-  }
-
-  function applyRuntimeSettings() {
-    if (!enabled) return;
-
-    CONFIG.devMode = true;
-    CONFIG.skipStudentLogin = readBool('skipLogin', true);
-    CONFIG.devTrackerDisabled = readBool('trackerDisabled', true);
-    CONFIG.devStudentKey = readText('student', 'test1');
-
-    /* Das Lehrerdashboard benötigt Supabase zwingend. Dort darf die
-       lokale Schüler-Testeinstellung CONFIG.enabled nicht abschalten. */
-    if (!IS_DASHBOARD && readBool('supabaseDisabled', true)) {
-      CONFIG.enabled = false;
-      CONFIG.devSupabaseDisabled = true;
-    }
-
-    if (!IS_DASHBOARD && CONFIG.skipStudentLogin) {
-      saveTestStudent(CONFIG.devStudentKey);
-    }
-  }
 
   function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, character => ({
@@ -747,18 +670,8 @@
     });
   }
 
-  applyRuntimeSettings();
-
-  window.Mathe9DevTools = {
-    enabled,
-    appUrl,
-    readBool,
-    writeBool,
-    testStudent,
-    saveTestStudent,
-    clearStudent
-  };
-
+  /* Die Einstellungen hat dev-boot.js bereits angewandt, und
+     window.Mathe9DevTools steht dort. Hier bleibt nur der Aufbau. */
   if (!enabled) return;
 
   if (document.readyState === 'loading') {

@@ -59,7 +59,8 @@
       "hinfuehrung": "Bei einer quadratischen Pyramide berechnest du zuerst die Grundfläche a² und setzt sie in die Volumenformel ein.",
       "erklaerung": [
         "Grundfläche: G = a · a = a².",
-        "Volumen: V = (a² · h) : 3."
+        "Volumen: V = (a² · h) : 3.",
+        "Teile zum Schluss durch 3. Dieser Schritt wird am häufigsten vergessen."
       ],
       "beispiel": {
         "aufgabe": "Quadratische Pyramide: a = 6 cm, h = 10 cm. Volumen?",
@@ -346,6 +347,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen",
+          "value": 480,
+          "konzeptfehler": "drittel_vergessen",
+          "feedback": "Bei Pyramide und Kegel gehört das Drittel dazu — noch durch 3 teilen."
+        }
       ]
     },
     {
@@ -401,6 +410,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen",
+          "value": 150,
+          "konzeptfehler": "drittel_vergessen",
+          "feedback": "Bei Pyramide und Kegel gehört das Drittel dazu — noch durch 3 teilen."
+        }
       ]
     },
     {

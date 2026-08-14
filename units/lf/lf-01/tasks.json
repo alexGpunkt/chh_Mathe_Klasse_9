@@ -35,23 +35,9 @@
         "Gehe dann nach links. Lies den y-Wert ab."
       ],
       "visual": {
-        "type": "koordinaten",
-        "lines": [
-          {
-            "m": 1,
-            "b": 1
-          }
-        ],
-        "xmax": 6,
-        "ymax": 7,
-        "punkte": [
-          {
-            "x": 3,
-            "y": 4,
-            "label": "P"
-          }
-        ],
-        "alt": "Eine steigende Gerade; bei x = 3 liegt der Punkt P auf Höhe y = 4."
+        "type": "animation",
+        "name": "graphlesen",
+        "stufe": "A"
       },
       "beispiel": {
         "aufgabe": "Welcher y-Wert gehört zu x = 3?",
@@ -84,7 +70,12 @@
         ],
         "ergebnis": "Die Höhe 4 ist bei x = 3 erreicht."
       },
-      "merke": "Vorwärts: x → y. Rückwärts: y → x. Immer im rechten Winkel."
+      "merke": "Vorwärts: x → y. Rückwärts: y → x. Immer im rechten Winkel.",
+      "visual": {
+        "type": "animation",
+        "name": "graphlesen",
+        "stufe": "B"
+      }
     },
     "C": {
       "titel": "Knickstellen und fallende Abschnitte deuten",
@@ -94,32 +85,9 @@
         "Ein fallender Abschnitt heißt: Während x wächst, wird y kleiner – etwa Rückweg, Abkühlung, Entladung."
       ],
       "visual": {
-        "type": "koordinaten",
-        "xmax": 7,
-        "ymax": 6,
-        "polylinien": [
-          {
-            "punkte": [
-              [
-                0,
-                0
-              ],
-              [
-                2,
-                4
-              ],
-              [
-                4,
-                4
-              ],
-              [
-                6,
-                1
-              ]
-            ]
-          }
-        ],
-        "alt": "Ein Graph steigt, verläuft dann waagerecht und fällt am Ende."
+        "type": "animation",
+        "name": "graphlesen",
+        "stufe": "C"
       },
       "beispiel": {
         "aufgabe": "Deute den Graphen: erst steil hoch, dann flach, dann abwärts.",
@@ -402,6 +370,18 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "richtung_verlesen",
+          "value": 0,
+          "feedback": "Von links nach rechts gelesen wird die Linie tiefer — sie fällt."
+        },
+        {
+          "id": "richtung_verlesen",
+          "value": 2,
+          "feedback": "Gleich bliebe sie nur, wenn sie waagerecht verliefe."
+        }
       ]
     },
     {
@@ -436,6 +416,18 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "richtung_verlesen",
+          "value": 0,
+          "feedback": "Die Linie liegt überall auf Höhe 3 — sie geht nirgends nach oben."
+        },
+        {
+          "id": "richtung_verlesen",
+          "value": 1,
+          "feedback": "Sie fällt auch nicht: Die Höhe bleibt bei jedem x gleich."
+        }
       ]
     },
     {

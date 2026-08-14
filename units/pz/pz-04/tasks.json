@@ -133,6 +133,13 @@
       ],
       "spiral": [
         "W-SACH"
+      ],
+      "misconceptions": [
+        {
+          "id": "prop_antiprop_vertauscht",
+          "value": 1,
+          "feedback": "Mehr Arbeiter schaffen dieselbe Mauer schneller — die Zeit wird kürzer."
+        }
       ]
     },
     {
@@ -186,6 +193,13 @@
       ],
       "spiral": [
         "W-SACH"
+      ],
+      "misconceptions": [
+        {
+          "id": "prop_antiprop_vertauscht",
+          "value": 1,
+          "feedback": "Der Vorrat bleibt gleich. Auf mehr Personen verteilt bekommt jede weniger."
+        }
       ]
     },
     {
@@ -209,6 +223,13 @@
       ],
       "spiral": [
         "W-SACH"
+      ],
+      "misconceptions": [
+        {
+          "id": "prop_antiprop_vertauscht",
+          "value": 1,
+          "feedback": "Schneller fahren heißt früher ankommen — die Zeit wird kürzer."
+        }
       ]
     },
     {

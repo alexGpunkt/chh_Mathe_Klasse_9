@@ -192,7 +192,28 @@ function zufallVar(def) {
   return def.von + Math.floor(Math.random() * n) * schritt;
 }
 
-function baue(gen) {
+/* ---------- Niveaustufe auf einen Generator anwenden ----------
+   Ein Generator beschreibt die Aufgabe, "stufen" beschreibt die Abweichung
+   für einen Lernweg: meist engere oder unbequemere Zahlenbereiche, manchmal
+   eine andere Bedingung oder Rundung. Ohne Eintrag bleibt der Generator, wie
+   er ist — Stufe B ist deshalb überall der unveränderte Bestand.
+
+   Zusammengeführt wird flach, "vars" aber je Variable: Wer nur den Nenner
+   ändern will, soll den Zähler nicht noch einmal hinschreiben müssen. */
+function fuerStufe(gen, stufe) {
+  const abw = gen && gen.stufen && stufe ? gen.stufen[stufe] : null;
+  if (!abw) return gen;
+  return {
+    ...gen,
+    ...abw,
+    vars: { ...(gen.vars || {}), ...(abw.vars || {}) },
+    berechnet: { ...(gen.berechnet || {}), ...(abw.berechnet || {}) },
+    stufen: undefined
+  };
+}
+
+function baue(gen, stufe) {
+  gen = fuerStufe(gen, stufe);
   let vars = null;
   for (let versuch = 0; versuch < 200; versuch++) {
     const v = {};
@@ -240,6 +261,6 @@ function baue(gen) {
    das der eine oder andere nicht versteht. */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
-    tokenisiere, werteAus, fmt, fmtVorzeichen, fmtGeld, fuelle, zufallVar, baue
+    tokenisiere, werteAus, fmt, fmtVorzeichen, fmtGeld, fuelle, zufallVar, baue, fuerStufe
   };
 }

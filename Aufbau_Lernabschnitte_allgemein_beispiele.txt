@@ -1,0 +1,84 @@
+0*Überschrift
+
+1*Einstieg / Erkundung.** Am Anfang steht eine motivierende Situation – ein Sachkontext, ein Bild, ein Spiel oder eine offene Erkundungsaufgabe. Ihre Funktion ist doppelt: Sie aktiviert das Vorwissen und erzeugt einen inhaltlichen „Bedarf" für das Neue, indem sie ein Problem aufwirft, das mit den bisherigen Mitteln noch nicht sauber lösbar ist. Didaktisch ist das der Kern des genetischen Prinzips – der Lernende soll die Notwendigkeit des neuen Begriffs oder Verfahrens selbst nachvollziehen. Wenn möglich eine Animation. Diese sollen stadartmäßig gestoppt und bei bedarf gestartet oder über einen schieberegler bedient werden.
+
+2*Erarbeitung.** Aus dem Einstieg heraus wird der neue Inhalt entwickelt, häufig entlang eines durchgerechneten Leitbeispiels, das exemplarisch zeigt, wie man vom konkreten Fall zur allgemeinen Einsicht kommt. Hier wirkt oft das EIS-Prinzip nach Bruner: enaktiv/anschaulich (Handlung, Material), ikonisch (Bild, Diagramm, Skizze) und symbolisch (Term, Formel) werden verknüpft, sodass die Abstraktion vorbereitet und nicht übersprungen wird. Die Aufgaben sollen, wenn möglich, mithilfe der vorheroigen animation gelöst werden können.
+
+3*Sicherung im Merkkasten.** Das Ergebnis der Erarbeitung wird verdichtet – Definition, Regel, Satz oder Formel stehen in einem farbig hervorgehobenen Kasten (Merkwissen, „Das Wichtigste"). Dieser Kasten ist bewusst das Nachschlage- und Sicherungselement des Abschnitts. Gestaltet, möglichst als drag-and-drop, zuordnung oder auswahlaufgabe
+
+4*Musterbeispiele.** Direkt anschließend zeigen ein bis mehrere durchgerechnete Beispiele die Anwendung des neuen Wissens, oft mit ausformulierten Lösungsschritten und Kommentarspalte. Sie liefern das Format, an dem die Lernenden ihr eigenes Vorgehen orientieren können. Eine Reihe statischer Übungsaufgaben welche, wenn möglich, mithilfe der animation gelöst werden können. Das einbinden eines lernvideos oder präsentationen soll an dieser stelle vorbereitet werden.
+
+5*Übungsphase.** Den größten Umfang nimmt der gestufte Aufgabenblock ein. Er ist in der Regel nach Schwierigkeit differenziert – häufig mit Symbolen (Punkte, Sterne, Farben) für Grund-, Mittel- und Erweiterungsniveau – und folgt einer Progression von reinen Übungsaufgaben (Verfahren festigen) über Verständnis- und Begründungsaufgaben bis zu Sachaufgaben. Viele Werke sortieren zudem nach Aufgabentypen und binden operative Variationen ein (verändere eine Größe, kehre die Aufgabe um). Ein Aufgabengenerator zur erzeuigung von Übungsaufgaben, entsprechend den zuvor, mit der animation gelösten Aufgaben, erzeugt. direktes feedback der aufgabe sowie ein vortschrittsbalken der den schüler anzeigt, wann genügend übungsaufgaben, richtig gelöst wurden und fortgefahren werden kann. Verlinkungen zu vergleichbaren, externen Übungsaufgaben sowie das, entsprechend dem jeweiligen niveau, erzeugtem pdf Aufgabenblatt.
+
+6*Vertiefung / Anwendung / Vernetzung.** Zum Abschluss stehen oft anspruchsvollere Anwendungs-, Modellierungs- oder Vernetzungsaufgaben, die den Inhalt mit realen Kontexten oder anderen Themen verbinden, sowie gelegentlich offene, forschende oder „Knobel"-Aufgaben. Speziell ausgewählte, den lernniveaus entsprechende Aufgabenbeispiele, gerne auch BBR Aufgaben aus den vergangenen Jahren. Nur die Aufgabenstellung und kein Eingabefeld da diese Aufgaben handscvhriftlich gelöst werden müssen.
+
+Auf der übergeordneten Kapitelebene rahmen diese Lernabschnitte weitere Elemente ein: ein Kapitelauftakt mit Überblick und Kompetenzzielen, zwischendurch Selbsteinschätzungs- oder Check-Seiten, und am Ende „Vermischte Aufgaben", eine Zusammenfassung (Rückblick) sowie ein Test zur Selbstkontrolle.
+
+Zwei durchgängige Prinzipien prägen den gesamten Aufbau: das **Spiralprinzip** (Themen werden auf höherem Niveau wieder aufgegriffen, weshalb ein Abschnitt bewusst an Vorwissen anknüpft) und die **innere Differenzierung** (gestufte Aufgaben, Hilfen, teils separate Basis- und Zusatzangebote), die gerade in heterogenen Lerngruppen tragen soll.
+
+
+
+
+==================================================
+
+Hier vier knappe Lernabschnitte – je ein Thema, das die sechs didaktischen Phasen von Einstieg bis Vertiefung durchläuft. animationen, generatoren und verlinkungen werden nicht erneut erwähnt 
+
+1 · Lineare Funktionen
+
+Einstieg. Ein Taxi verlangt 3 € Grundpreis plus 2 € je km. Wie viel kostet eine Fahrt über 4 km – und wie liest man das an einer Tabelle/Grafik ab?
+
+Erarbeitung. Wertetabelle anlegen (0 km → 3 €, 1 km → 5 €, 2 km → 7 € …). Je km steigt der Preis um denselben Betrag: konstante Zunahme. Das ist die Steigung; der Startwert bei 0 km ist der y-Achsenabschnitt.
+
+Sicherung (Merkkasten). Eine lineare Funktion hat die Form f(x) = m·x + b. Dabei ist m die Steigung (Änderung pro Schritt) und b der y-Achsenabschnitt (Wert bei x = 0).
+
+Musterbeispiel. Bestimme die Gleichung durch A(1|5) und B(3|11).
+m = (11−5)/(3−1) = 3; einsetzen von A: 5 = 3·1 + b ⟹ b = 2 ⟹ f(x) = 3x + 2.
+
+Übungsphase. (a) f(x) = 2x − 1: berechne f(4) und die Nullstelle. (b) Stelle die Gleichung durch P(0|4) und Q(2|0) auf. (c) Zeichne g(x) = −x + 3.
+
+Vertiefung. Zwei Tarife: A: 3x + 6, B: 5x. Ab welcher km-Zahl ist A günstiger? (3x + 6 = 5x ⟹ x = 3; ab 3 km lohnt A.)
+
+2 · Prozentrechnen
+
+Einstieg. Eine Jacke für 80 € wird um 25 % reduziert. Reichen 60 € zum Kauf?
+
+Erarbeitung. 25 % bedeutet 25 von 100, also der Faktor 0,25. Rabatt = 80 · 0,25 = 20 €; neuer Preis 60 €. Grundwert (80 €), Prozentsatz (25 %) und Prozentwert (20 €) gehören zusammen.
+
+Sicherung (Merkkasten). Prozentwert W = G · p (mit p als Dezimalzahl). Umstellen: G = W / p, p = W / G.
+
+Musterbeispiel. 15 % eines Betrags sind 45 €. Grundwert?
+G = W / p = 45 / 0,15 = 300 €.
+
+Übungsphase. (a) 12 % von 250 €. (b) 20 von 80 Personen – wie viel Prozent? (c) 30 % sind 21 € – wie hoch ist der Grundwert?
+
+Vertiefung. Ein Preis steigt um 8 % auf 54 €. Wie hoch war er vorher? (Neuer Preis = 108 % ⟹ G = 54 / 1,08 = 50 €.) Warum ist „+8 % dann −8 %" nicht wieder der Startwert?
+
+3 · Körper (Prismen & Zylinder)
+
+Einstieg. Zwei Dosen fassen gleich viel, sehen aber unterschiedlich aus. Wovon hängt das Fassungsvermögen ab?
+
+Erarbeitung. Prisma und Zylinder haben oben und unten dieselbe Grundfläche; man stapelt sie gleichsam „schichtweise" in die Höhe. Also: Grundfläche mal Höhe.
+
+Sicherung (Merkkasten). V = G · h. Zylinder: G = π·r², somit V = π·r²·h. Oberfläche Zylinder: O = 2·π·r² + 2·π·r·h (zwei Kreise + Mantel).
+
+Musterbeispiel. Zylinder r = 4 cm, h = 10 cm.
+V = π·16·10 = 160π ≈ 502,7 cm³.
+
+Übungsphase. (a) Quader 5·3·4 cm: V und O. (b) Dreiecksprisma, Grundfläche ½·6·8 cm², Länge 10 cm: V. (c) Zylinder r = 3 cm, h = 7 cm: O.
+
+Vertiefung. Verdopple beim Zylinder nur den Radius – wie ändert sich das Volumen? (Es vervierfacht sich, weil r quadratisch eingeht.)
+
+4 · Spitzkörper (Pyramide & Kegel)
+
+Einstieg. Ein Kegelbecher fasst überraschend wenig – deutlich weniger als ein gleich hoher Zylinderbecher. Warum?
+
+Erarbeitung. Füllt man einen Kegel dreimal in einen gleich großen Zylinder (gleiche Grundfläche, gleiche Höhe), ist dieser genau voll. Spitzkörper haben also ein Drittel des Volumens des „vollen" Körpers.
+
+Sicherung (Merkkasten). V = ⅓·G·h. Kegel: V = ⅓·π·r²·h. Für Oberflächen braucht man Seitenhöhe hₐ bzw. Mantellinie s = √(r² + h²).
+
+Musterbeispiel. Kegel r = 3 cm, h = 8 cm.
+V = ⅓·π·9·8 = 24π ≈ 75,4 cm³.
+
+Übungsphase. (a) Quadratpyramide a = 6 cm, h = 10 cm: V. (b) Kegel r = 6 cm, h = 8 cm: s und O. (c) Quadratpyramide a = 6 cm, h = 4 cm: hₐ und Oberfläche.
+
+Vertiefung. Ein Silo = Zylinder (r = 2 m, h = 5 m) mit aufgesetztem Kegel (r = 2 m, h = 3 m). Gesamtvolumen? (20π + 4π = 24π ≈ 75,4 m³.)

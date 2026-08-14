@@ -301,6 +301,19 @@ async function start() {
     } catch (e) { zeigeFehler(pfadZurDatei, e); return; }
   }
   Tracker.setContext({ page: S.daten.pruefung ? 'pruefung' : 'einheit', unit: S.daten.unit, path: S.pfad });
+
+  /* Seit V34 liegt je Lernbereich eine eigene Animationsdatei vor, die
+     animationen-laden.js anhand von ?u= nachholt. Der Download läuft
+     parallel zu dem der tasks.json — hier ist er deshalb fast immer
+     schon fertig. Gewartet wird trotzdem: Ohne den Block stünde in der
+     Lernkarte „Animation nicht gefunden" statt des Bildes.
+
+     Schlägt das Laden fehl, liefert das Versprechen `false` und die
+     Einheit baut ohne Bilder auf. Eine fehlende Abbildung darf niemanden
+     an der Aufgabe hindern. */
+  try { await window.ANIM?.bereit; }
+  catch (fehler) { console.warn('[Mathe9 Animation]', fehler); }
+
   kopfBauen();
   formelkarteBauen();
   uebungskarteBauen();
@@ -412,8 +425,12 @@ function pfadSetzen(p, stand, ziel) {
   document.documentElement.style.setProperty('--pfad-bg', `var(--${p.toLowerCase()}-bg)`);
   document.querySelectorAll('.pfad-btn').forEach(b =>
     b.setAttribute('aria-pressed', String(b.dataset.p === p)));
-  /* Videos können an einen Lernweg gebunden sein — beim Wechsel neu bauen. */
+  /* Videos, externe Übungen und das Übungsblatt hängen am Lernweg — beim
+     Wechsel neu bauen. Sonst zeigt die Seite nach einem Wechsel von B auf A
+     weiter das B-Blatt und die für den Basisweg ausgeblendeten Sammlungen. */
   videokarteBauen();
+  uebungskarteBauen();
+  blattkarteBauen();
 
   S.reihe = S.daten.tasks.filter(t => t.path === p);
   /* Der Prüfungstrainer hat seine Reihenfolge schon festgelegt. */
@@ -783,6 +800,30 @@ function selbstcheckBlock() {
   return box;
 }
 
+/* ---------- Fortschritt an das Dashboard ----------
+   Eine Stelle, an der der Stand zusammengesetzt wird. Vorher stand
+   derselbe Block dreimal im Code und wurde nur bei einer richtigen
+   Antwort gesendet; jetzt melden auch Aufgabenwechsel, Fehlversuche und
+   der Takt in tracker.js denselben Stand. */
+function fortschrittMelden(zusatz = {}) {
+  if (!S.daten) return;
+  const gesamt = S.reihe.length || 0;
+  const percent = Math.round(S.geloest.size / (gesamt || 1) * 100);
+  Tracker.setContext({ progress: percent });
+  Tracker.progressWennNeu({
+    unit: S.daten.unit,
+    path: S.pfad,
+    task: S.aufgabe?.id || S.reihe[S.index]?.id || null,
+    completed: S.geloest.size,
+    total: gesamt,
+    percent,
+    correct: S.aufAnhieb,
+    attempts: S.versucheGesamt,
+    status: gesamt && S.geloest.size >= gesamt ? 'completed' : 'active',
+    ...zusatz
+  });
+}
+
 /* ---------- Prozentstreifen = Fortschritt ---------- */
 function streifenAktualisieren() {
   const gesamt = S.reihe.length || 1;
@@ -828,6 +869,11 @@ function aufgabeZeigen() {
   } else {
     Tracker.track('task_view', { step: t.step, index: S.index + 1, total: S.reihe.length, source: S.daten.pruefung ? 'pruefung' : 'einheit' });
   }
+
+  /* Auch das bloße Aufschlagen einer Aufgabe ist Fortschritt: Das
+     Dashboard und die Beameransicht sollen zeigen, WO jemand steht, nicht
+     erst, wenn er etwas richtig gelöst hat. */
+  fortschrittMelden();
 
   const zeile = el('div', 'stufe-zeile');
   zeile.append(el('span', 'stufe-pill', `Pfad ${t.path} · Stufe ${t.step}`));
@@ -1253,19 +1299,7 @@ function melden(richtig, fehlvorstellung) {
     if (!warSchonGeloest && S.kernIds.has(t.id)) S.kernVerlauf.push(S.versuche === 1);
     const aktiv = document.activeElement;
     if (aktiv && aktiv.matches?.('.zahl-feld')) aktiv.blur();
-    const percent = Math.round(S.geloest.size / (S.reihe.length || 1) * 100);
-    Tracker.setContext({ progress: percent });
-    Tracker.progress({
-      unit: S.daten.unit,
-      path: S.pfad,
-      task: t.id,
-      completed: S.geloest.size,
-      total: S.reihe.length,
-      percent,
-      correct: S.aufAnhieb,
-      attempts: S.versucheGesamt,
-      status: S.geloest.size >= S.reihe.length ? 'completed' : 'active'
-    });
+    fortschrittMelden();
     const box = el('div', 'rueck ok');
     box.innerHTML = '<b>Richtig.</b>' + (t.solution ? `<div class="rechenweg">${t.solution}</div>` : '');
     $('#rueck').append(box);
@@ -1303,6 +1337,9 @@ function melden(richtig, fehlvorstellung) {
       akt.append(w);
     }
   }
+  /* Auch ein Fehlversuch verschiebt den Stand: Die Zahl der Versuche geht
+     ins Dashboard ein und ist dort das Signal „hier hakt es". */
+  fortschrittMelden();
   standSpeichern();
 }
 
@@ -1783,8 +1820,15 @@ function uebungskarteBauen() {
       const titel = String(eintrag?.titel || '').trim();
       const typ = eintrag?.typ === 'sammlung' ? 'sammlung' : 'app';
       const schluessel = `${titel}\n${url.href}\n${typ}`;
+      /* Wie bei den Videos: Ein Ziel, das nicht zum Lernweg passt, hilft
+         dort nicht. Ohne "pfade" gilt der Verweis auf allen Wegen — das
+         ist der Normalfall und bleibt es. Eingeschränkt wird nur, was ein
+         Kind auf dem Basisweg erst sortieren müsste: offene Übersichts-
+         und Ordnerseiten ohne Bezug zu genau dieser Einheit. */
+      const pfade = Array.isArray(eintrag?.pfade) ? eintrag.pfade : null;
+      const passt = !pfade || pfade.includes(S.pfad);
 
-      if (url.protocol !== 'https:' || !quelle || !titel || gesehen.has(schluessel)) {
+      if (url.protocol !== 'https:' || !quelle || !titel || !passt || gesehen.has(schluessel)) {
         return null;
       }
       gesehen.add(schluessel);
@@ -1876,13 +1920,23 @@ function blattkarteBauen() {
   if (!id) { karte.hidden = true; return; }
 
   const bereich = id.split('-')[0];
-  link.href = `units/${bereich}/${id}/uebungsblatt.pdf`;
+  /* Je Lernweg ein eigenes Blatt: A vier Aufgaben mit glatten Zahlen,
+     C sechs mit unbequemen. Ein Kind auf dem Basisweg soll nicht an
+     Aufgaben scheitern, die für den Vertiefungsweg gedacht sind. */
+  const stufe = String(S.pfad || 'B').toLowerCase();
+  link.href = `units/${bereich}/${id}/uebungsblatt-${stufe}.pdf`;
   link.removeAttribute('download');
   karte.hidden = false;
 
-  link.addEventListener('click', () => {
-    Tracker.track('uebungsblatt_geoeffnet', { unit: id, path: S.pfad });
-  });
+  /* Die Karte wird bei jedem Lernwegwechsel neu gebaut. Ohne diese Sperre
+     käme bei jedem Wechsel ein weiterer Zuhörer dazu und ein einziger Klick
+     würde mehrfach gemeldet. */
+  if (!link.dataset.gebunden) {
+    link.dataset.gebunden = '1';
+    link.addEventListener('click', () => {
+      Tracker.track('uebungsblatt_geoeffnet', { unit: id, path: S.pfad });
+    });
+  }
 }
 
 

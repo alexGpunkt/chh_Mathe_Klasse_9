@@ -107,17 +107,29 @@ function falscheLoesungen(aufgabe, anzahl, zufall, belegt) {
   return mischen(kandidaten, zufall).slice(0, anzahl);
 }
 
-function blattBauen(bereich, einheitId, blatt, einheitTitel) {
-  const saat = saatAus('mathe9-uebungsblatt-' + einheitId);
+/* Welche Generatoren gehören auf welchen Lernweg? Ohne "pfade" gilt ein
+   Generator auf allen dreien — so bleibt Stufe B der geprüfte Bestand. */
+function fuerPfad(aufgaben, stufe) {
+  return aufgaben.filter(gen => !Array.isArray(gen.pfade) || gen.pfade.includes(stufe));
+}
+
+const STUFE_NAME = { A: 'Basis', B: 'Standard', C: 'Vertiefung' };
+
+function blattBauen(bereich, einheitId, blatt, einheitTitel, stufe) {
+  /* Eigene Saat je Lernweg: Sonst stünden auf dem A- und dem B-Blatt
+     dieselben Zahlen, und der Wechsel des Lernwegs brächte nichts Neues. */
+  const saat = saatAus('mathe9-uebungsblatt-' + einheitId + '-' + stufe);
   const zufall = saatZufall(saat);
 
-  const aufgaben = mitSaat(saat, () => blatt.aufgaben.map(gen => ausdruck.baue(gen)));
+  const gewaehlt = fuerPfad(blatt.aufgaben, stufe);
+  const aufgaben = mitSaat(saat, () => gewaehlt.map(gen => ausdruck.baue(gen, stufe)));
 
   const doc = new PDF();
 
   /* ---------- Kopf ---------- */
   doc.text(`${einheitId.toUpperCase()} · ${einheitTitel}`, { groesse: 16, fett: true, abstand: 2 });
-  doc.text('Übungsblatt zur Nachbereitung — von Hand rechnen', { groesse: 11, abstand: 10 });
+  doc.text(`Übungsblatt zur Nachbereitung — von Hand rechnen · Stufe ${stufe} (${STUFE_NAME[stufe]})`,
+    { groesse: 11, abstand: 10 });
   doc.linie(doc.rand, doc.y + 4, doc.breite - doc.rand, doc.y + 4, 1);
   doc.luecke(14);
 
@@ -183,7 +195,7 @@ function blattBauen(bereich, einheitId, blatt, einheitTitel) {
     doc.text(`${i + 1}.  ${aufgabe.solution}`, { groesse: 9.5, abstand: 3, farbe: [0.35, 0.35, 0.35] });
   });
 
-  return { pdf: doc.bauen(`${einheitId.toUpperCase()} Übungsblatt`), aufgaben };
+  return { pdf: doc.bauen(`${einheitId.toUpperCase()} Übungsblatt Stufe ${stufe}`), aufgaben };
 }
 
 /* ---------- Durchlauf ---------- */
@@ -201,15 +213,22 @@ for (const datei of fs.readdirSync(ORDNER).filter(f => f.endsWith('.json')).sort
 
   for (const [einheitId, blatt] of Object.entries(daten.einheiten || {})) {
     if (nurEinheit && einheitId !== nurEinheit) continue;
-    const ziel = path.join(WURZEL, 'units', bereich, einheitId, 'uebungsblatt.pdf');
-    if (!fs.existsSync(path.dirname(ziel))) {
-      console.error(`Ordner fehlt: ${path.dirname(ziel)}`);
+    const ordner = path.join(WURZEL, 'units', bereich, einheitId);
+    if (!fs.existsSync(ordner)) {
+      console.error(`Ordner fehlt: ${ordner}`);
       process.exit(1);
     }
-    const { pdf, aufgaben } = blattBauen(bereich, einheitId, blatt, titel.get(einheitId) || '');
-    fs.writeFileSync(ziel, pdf);
-    geschrieben++;
-    aufgabenGesamt += aufgaben.length;
+    for (const stufe of ['A', 'B', 'C']) {
+      const gewaehlt = fuerPfad(blatt.aufgaben, stufe);
+      if (!gewaehlt.length) {
+        console.error(`${einheitId}: kein Generator für Stufe ${stufe}`);
+        process.exit(1);
+      }
+      const { pdf, aufgaben } = blattBauen(bereich, einheitId, blatt, titel.get(einheitId) || '', stufe);
+      fs.writeFileSync(path.join(ordner, `uebungsblatt-${stufe.toLowerCase()}.pdf`), pdf);
+      geschrieben++;
+      aufgabenGesamt += aufgaben.length;
+    }
   }
 }
 

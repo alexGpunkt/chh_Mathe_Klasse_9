@@ -235,6 +235,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "volumen_statt_oberflaeche",
+          "value": 64,
+          "feedback": "Das ist das Volumen. Die Oberfläche sind sechs Quadrate zu je 16 cm²."
+        }
       ]
     },
     {
@@ -347,6 +354,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "grundflaechen_vergessen",
+          "value": 220,
+          "feedback": "Das ist nur der Mantel. Die beiden Grundflächen 2 · 30 cm² fehlen."
+        }
       ]
     },
     {
@@ -438,6 +452,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "grundflaechen_vergessen",
+          "value": 15,
+          "feedback": "Das ist nur der Mantel. Vorder- und Rückseite 2 · 1,5 m² fehlen."
+        }
       ]
     },
     {

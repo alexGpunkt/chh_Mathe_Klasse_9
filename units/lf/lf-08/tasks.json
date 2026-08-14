@@ -164,6 +164,18 @@
       ],
       "spiral": [
         "W-TERM"
+      ],
+      "misconceptions": [
+        {
+          "id": "mal_statt_addiert",
+          "value": 8,
+          "feedback": "In y = x + 4 wird addiert: 2 + 4, nicht 2 · 4."
+        },
+        {
+          "id": "eingesetzt_statt_geloest",
+          "value": 2,
+          "feedback": "Das ist der x-Wert. Der muss noch in die Gleichung eingesetzt werden."
+        }
       ]
     },
     {
@@ -220,6 +232,18 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "fast_als_ja",
+          "value": 1,
+          "feedback": "Die Rechnung ergibt 5, und P hat den y-Wert 5 — das passt genau."
+        },
+        {
+          "id": "ablesen_statt_rechnen",
+          "value": 2,
+          "feedback": "Doch: Einsetzen und vergleichen ist genau der Weg, das zu entscheiden."
+        }
       ]
     },
     {
@@ -240,6 +264,18 @@
       ],
       "spiral": [
         "W-TERM"
+      ],
+      "misconceptions": [
+        {
+          "id": "mal_statt_addiert",
+          "value": 7,
+          "feedback": "Erst 2 · 4 = 8 rechnen, dann 1 dazu."
+        },
+        {
+          "id": "eingesetzt_statt_geloest",
+          "value": 4,
+          "feedback": "Das ist der x-Wert von P, nicht das Ergebnis."
+        }
       ]
     },
     {

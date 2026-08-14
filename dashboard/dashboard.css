@@ -7,3 +7,12 @@
 
 /* Unterricht, Freigaben und Lernzeit · V30 */
 .modusZeile{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.modusAnzeige{flex:1 1 240px;font-weight:700;padding:9px 12px;border-radius:9px;background:#eef2f6;color:#15233a}.modusAnzeige.aktiv{background:#fff1ef;color:#982f23}.modusAnzeige.warn{background:#fff6e6;color:#7a5200}.modusZeile label{display:flex;gap:6px;align-items:center;font-size:.85rem;font-weight:700}.modusZeile button{background:#15233a;color:#fff;border:0;font-weight:700}.modusZeile button:last-of-type{background:#fff;color:#15233a;border:1px solid #bdc8d3}.modusHinweis{font-size:.85rem;color:#667487;margin:0 0 12px}
+/* Beameransicht: dieselbe Zeilenform wie beim Unterrichtsmodus, aber die
+   Zahlenfelder brauchen eine feste Breite — sonst springt die Zeile bei
+   jedem Tastendruck. */
+.beamerZeile{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:10px}
+.beamerZeile label{display:flex;flex-direction:column;gap:4px;font-size:.85rem;font-weight:700;color:#3d4a5c}
+.beamerZeile input[type=number]{width:110px}
+.beamerZeile select{min-width:210px}
+.beamerZeile button{background:#15233a;color:#fff;border:0;font-weight:700;min-height:38px}
+.beamerZeile button:hover{background:#26374f}

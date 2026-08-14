@@ -603,7 +603,11 @@
       "titel": "Sammlung „Prozent“ (Kategorie Mathematik)",
       "url": "https://learningapps.org/index.php?category=2&subcategory=1253",
       "typ": "sammlung",
-      "quelle": "LearningApps"
+      "quelle": "LearningApps",
+      "pfade": [
+        "B",
+        "C"
+      ]
     },
     {
       "titel": "Aufgaben zur Prozentrechnung (gemischt)",
@@ -615,7 +619,11 @@
       "titel": "ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)",
       "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
       "typ": "sammlung",
-      "quelle": "ZUM"
+      "quelle": "ZUM",
+      "pfade": [
+        "B",
+        "C"
+      ]
     }
   ],
   "videos": [

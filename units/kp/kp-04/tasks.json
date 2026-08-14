@@ -464,6 +464,13 @@
       ],
       "spiral": [
         "W-EINH"
+      ],
+      "misconceptions": [
+        {
+          "id": "nicht_in_liter",
+          "value": 96000,
+          "feedback": "Das sind cm³. 1000 cm³ sind 1 Liter — also noch durch 1000."
+        }
       ]
     },
     {

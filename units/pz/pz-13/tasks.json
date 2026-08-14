@@ -128,13 +128,27 @@
           "label": "Zinsen im 1. Jahr",
           "answer": 50,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "endwert_statt_differenz",
+              "value": 1050,
+              "feedback": "Das ist das Kapital am Jahresende. Gefragt sind nur die Zinsen."
+            }
+          ]
         },
         {
           "label": "Kapital am Ende des 1. Jahres",
           "answer": 1050,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "nur_teil_berechnet",
+              "value": 50,
+              "feedback": "Das sind die Zinsen. Für das Kapital kommen sie zu den 1 000 € dazu."
+            }
+          ]
         }
       ],
       "hints": [
@@ -200,13 +214,27 @@
           "label": "Zinsen im 1. Jahr",
           "answer": 60,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "endwert_statt_differenz",
+              "value": 2060,
+              "feedback": "Das ist das Kapital am Jahresende. Gefragt sind nur die Zinsen."
+            }
+          ]
         },
         {
           "label": "Kapital am Ende des 1. Jahres",
           "answer": 2060,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "nur_teil_berechnet",
+              "value": 60,
+              "feedback": "Das sind die Zinsen. Für das Kapital kommen sie zu den 2 000 € dazu."
+            }
+          ]
         }
       ],
       "hints": [

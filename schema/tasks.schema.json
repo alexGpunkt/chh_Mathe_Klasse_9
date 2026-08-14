@@ -625,6 +625,19 @@
       ],
       "additionalProperties": false,
       "properties": {
+        "pfade": {
+          "type": "array",
+          "description": "Optional: Nur auf diesen Lernwegen anzeigen. Ohne Angabe auf allen — das ist der Normalfall. Gedacht für offene Übersichts- und Ordnerseiten, die auf dem Basisweg erst sortiert werden müssten.",
+          "items": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
         "titel": {
           "type": "string",
           "minLength": 3

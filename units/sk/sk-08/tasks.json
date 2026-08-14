@@ -365,6 +365,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "radius_statt_mantellinie",
+          "value": 50.24,
+          "konzeptfehler": "radius_durchmesser",
+          "feedback": "In die Mantelformel gehört π · r · s, hier also 3,14 · 4 · 9."
+        }
       ]
     },
     {

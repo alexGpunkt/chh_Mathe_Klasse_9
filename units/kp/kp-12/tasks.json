@@ -192,6 +192,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 17,
+          "feedback": "Grundfläche und Höhe werden malgenommen: 10 · 7, nicht 10 + 7."
+        }
       ]
     },
     {
@@ -214,6 +221,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 26,
+          "feedback": "Grundfläche und Höhe werden malgenommen: 20 · 6, nicht 20 + 6."
+        }
       ]
     },
     {
@@ -538,7 +552,11 @@
       "titel": "Suche „Oberfläche“ (Mathematik)",
       "url": "https://learningapps.org/index.php?s=Oberfläche",
       "typ": "sammlung",
-      "quelle": "LearningApps"
+      "quelle": "LearningApps",
+      "pfade": [
+        "B",
+        "C"
+      ]
     },
     {
       "titel": "Gemischte Aufgaben zur Volumenberechnung",
@@ -556,7 +574,11 @@
       "titel": "ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)",
       "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
       "typ": "sammlung",
-      "quelle": "ZUM"
+      "quelle": "ZUM",
+      "pfade": [
+        "B",
+        "C"
+      ]
     }
   ],
   "videos": [

@@ -178,6 +178,18 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "flaechen_statt_grundflaeche",
+          "value": 1,
+          "feedback": "Die Dreiecke sind die Seitenflächen. Unten liegt das Quadrat."
+        },
+        {
+          "id": "flaechen_statt_grundflaeche",
+          "value": 2,
+          "feedback": "Ein Kreis als Grundfläche gehört zum Kegel."
+        }
       ]
     },
     {
@@ -370,6 +382,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "nur_drei_flaechen",
+          "value": 3,
+          "feedback": "Das Quadrat hat vier Seiten — an jede grenzt ein Dreieck."
+        }
       ]
     },
     {

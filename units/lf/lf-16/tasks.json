@@ -48,7 +48,13 @@
         },
         "ergebnis": "Nullstelle bei x = 2."
       },
-      "merke": "Vier Typen: ablesen · zeichnen · Punktprobe · Nullstelle."
+      "merke": "Vier Typen: ablesen · zeichnen · Punktprobe · Nullstelle.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "A",
+        "bereich": "lf"
+      }
     },
     "B": {
       "titel": "Gemischter Satz ohne Ansage",
@@ -66,7 +72,13 @@
         ],
         "ergebnis": "Punktprobe: P(2 | 5) liegt auf der Geraden."
       },
-      "merke": "Erst am Signalwort den Typ erkennen, dann rechnen."
+      "merke": "Erst am Signalwort den Typ erkennen, dann rechnen.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "B",
+        "bereich": "lf"
+      }
     },
     "C": {
       "titel": "MSA-Niveau: rechnen und begründen",
@@ -84,7 +96,13 @@
         ],
         "ergebnis": "Ab 5 Einheiten ist A günstiger – mit Rechnung und Begründung belegt."
       },
-      "merke": "MSA: rechnen + begründen + im Sachkontext deuten."
+      "merke": "MSA: rechnen + begründen + im Sachkontext deuten.",
+      "visual": {
+        "type": "animation",
+        "name": "signalwoerter",
+        "stufe": "C",
+        "bereich": "lf"
+      }
     }
   },
   "formelkarte": {
@@ -163,12 +181,27 @@
         {
           "label": "Start: y-Wert bei x = 0",
           "answer": 1,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 2,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "Die 2 ist die Steigung. Bei x = 0 bleibt die 1 übrig."
+            }
+          ]
         },
         {
           "label": "Zweiter Punkt: y-Wert bei x = 1",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "b_vergessen",
+              "value": 2,
+              "feedback": "2 · 1 = 2 — die 1 vom Startwert kommt noch dazu."
+            }
+          ]
         }
       ],
       "hints": [
@@ -393,12 +426,27 @@
         {
           "label": "Steigung m",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "dy_als_m",
+              "value": 9,
+              "feedback": "Das ist Δy = 12 − 3. Noch durch Δx = 3 teilen."
+            }
+          ]
         },
         {
           "label": "y-Achsenabschnitt b",
           "answer": 0,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 3,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "Das ist die Steigung. Setze P ein: 3 − 3 · 1 = 0."
+            }
+          ]
         }
       ],
       "hints": [
@@ -426,12 +474,28 @@
         {
           "label": "x-Wert",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 5,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "5 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert",
           "answer": 5,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 2,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "2 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -536,12 +600,28 @@
         {
           "label": "x-Wert",
           "answer": 4,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 5,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "5 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert",
           "answer": 5,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 4,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "4 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -629,13 +709,29 @@
           "label": "Schnittpunkt: Stunden",
           "answer": 5,
           "unit_label": "h",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 15,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "15 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "Schnittpunkt: Euro",
           "answer": 15,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 5,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "5 ist der x-Wert. Gefragt ist die Höhe des Treffpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -667,7 +763,11 @@
       "titel": "Sammlung „Lineare Funktionen“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/mbraun?displayfolder=514302&bookmark=1",
       "typ": "sammlung",
-      "quelle": "LearningApps"
+      "quelle": "LearningApps",
+      "pfade": [
+        "B",
+        "C"
+      ]
     },
     {
       "titel": "Gemischte Aufgaben zu linearen Funktionen",
@@ -691,7 +791,11 @@
       "titel": "ZUM-Projektwiki: interaktive H5P-Übungen (Sammlung)",
       "url": "https://projekte.zum.de/wiki/Kategorie:H5P",
       "typ": "sammlung",
-      "quelle": "ZUM"
+      "quelle": "ZUM",
+      "pfade": [
+        "B",
+        "C"
+      ]
     }
   ],
   "videos": [

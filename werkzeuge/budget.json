@@ -1,22 +1,23 @@
 {
   "hinweis": "Performancebudget für günstige Smartphones. Die Grenzen sind bewusst knapp über dem heutigen Stand gewählt: Sie sollen Wachstum bemerkbar machen, nicht sofort brechen. Wer eine Grenze anhebt, trifft eine Entscheidung — und schreibt sie in die Begründung darunter.",
-  "geprueft_am_stand": "V31",
-  "_luft": "ACHTUNG: Mit V31 liegt das gesamte JavaScript bei 146 von 150 KB gzip und die Einheitenseite bei 114 von 120 KB. Der nächste größere Zuwachs reißt die Grenze. Vorher sollte animationen.js je Lernbereich aufgeteilt werden; dadurch laden Smartphones nur die tatsächlich benötigten Animationen.",
+  "geprueft_am_stand": "V34",
+  "_luft": "In Ordnung: Mit V34 liegt die Einheitenseite bei 97 von 120 KB gzip und das gesamte JavaScript bei 146 von 150. Der Weg dorthin waren drei Schritte — Lehrerdateien aus dem Schüler-Offlinepaket, dev-tools.js nur noch bei devMode, und die Aufteilung von animationen.js je Lernbereich. Beim Gesamtbudget sind nur noch 4 KB Luft: Die Aufteilung hat es wie erwartet um rund 6 KB verteuert, weil fünf Dateien schlechter komprimieren als eine. Wer als Nächstes Code hinzufügt, schaut also auf die Gesamtsumme, nicht mehr auf die Seite. Der nächste strukturelle Hebel wäre engine.js (24 KB gzip, 78 KB roh) — dort steckt Prüfungs- und Diagnoselogik, die nicht jede Einheitenseite braucht. Die Grenzen anzuheben ist keine Lösung: Sie beschreiben, was ein günstiges Schulgerät im WLAN noch schafft.",
+  "_was_gezaehlt_wird": "Seit V34 zählt budget-pruefen.js nur, was ein SCHÜLERGERÄT lädt: alles aus der Vorabliste in sw.js, alles aus einem <script src> oder <link href> der Seiten im Hauptverzeichnis, plus sw.js selbst. Damit fallen dashboard/*.js und dashboard/*.css heraus (das Lehrerdashboard steht seit V34 nicht mehr im Offlinepaket und wird von keiner Schülerseite eingebunden — es lädt weiterhin normal über das Netz und ist offline ohnehin nutzlos, weil es eine Live-Ansicht auf Supabase ist) sowie dev-tools.js (wird von dev-boot.js nur bei devMode nachgeladen; auf master fordert es niemand an). Die Regel ist mechanisch: Wer eine dieser Dateien wieder in sw.js einträgt oder in eine Seite einbindet, bekommt sie automatisch zurück in die Rechnung. Nicht gezählte Dateien werden im Bericht namentlich ausgewiesen — die Entscheidung soll sichtbar bleiben und nicht im Werkzeug verschwinden.",
   "grenzen": {
     "js_je_seite_gzip_kb": {
       "wert": 120,
-      "gilt_fuer": "Summe aller <script src> einer Seite, gzip-komprimiert",
-      "begruendung": "einheit.html liegt bei rund 114 KB. Über 120 KB wird das Parsen auf einem älteren Android-Gerät spürbar; dann muss animationen.js aufgeteilt werden."
+      "gilt_fuer": "Summe aller <script src> einer Seite PLUS der größten Datei, die sie nachlädt (animationen-laden.js holt je nach ?u= einen Lernbereichsblock). Gezählt wird der ungünstigste Fall — ein nachgeladenes Skript wiegt genauso viel wie ein fest eingebundenes.",
+      "begruendung": "einheit.html liegt bei 97 KB (Grundlast 86 plus den größten Bereichsblock, LF mit 11 KB). Über 120 KB wird das Parsen auf einem älteren Android-Gerät spürbar."
     },
     "js_gesamt_gzip_kb": {
       "wert": 150,
-      "gilt_fuer": "alle ausgelieferten .js zusammen, gzip-komprimiert",
-      "begruendung": "Der Service Worker lädt bei der Installation alles auf einmal. Über 150 KB dauert die Erstinstallation im Schul-WLAN zu lang."
+      "gilt_fuer": "alles .js, was ein Schülergerät lädt (siehe _was_gezaehlt_wird), gzip-komprimiert",
+      "begruendung": "Der Service Worker lädt bei der Installation alles auf einmal. Über 150 KB dauert die Erstinstallation im Schul-WLAN zu lang. Deshalb zählt hier auch nur, was auf einem Schülergerät ankommt — Lehrerdateien tun das seit V34 nicht mehr."
     },
     "css_gesamt_gzip_kb": {
       "wert": 25,
-      "gilt_fuer": "alle .css zusammen, gzip-komprimiert",
-      "begruendung": "CSS liegt derzeit bei rund 18 KB gzip. 25 KB bleibt die Obergrenze für den renderkritischen Teil."
+      "gilt_fuer": "alles .css, was ein Schülergerät lädt, gzip-komprimiert",
+      "begruendung": "CSS liegt derzeit bei rund 19 KB gzip. 25 KB bleibt die Obergrenze für den renderkritischen Teil."
     },
     "einzeldatei_kb": {
       "wert": 200,

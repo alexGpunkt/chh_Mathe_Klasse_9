@@ -382,6 +382,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen",
+          "value": 324,
+          "konzeptfehler": "drittel_vergessen",
+          "feedback": "Bei Pyramide und Kegel gehört das Drittel dazu — noch durch 3 teilen."
+        }
       ]
     },
     {
@@ -561,6 +569,20 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Pyramide: Volumen und Oberfläche üben",
+      "url": "https://learningapps.org/1362557",
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Aufgaben zur Pyramide",
+      "url": "https://de.serlo.org/mathe/65267/aufgaben-zur-pyramide",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

@@ -149,6 +149,14 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "m_und_b_vertauscht",
+          "value": 1,
+          "konzeptfehler": "m_und_b_vertauscht",
+          "feedback": "Das ist die Steigung. Gefragt ist die Höhe, in der die Gerade die senkrechte Achse trifft."
+        }
       ]
     },
     {
@@ -187,6 +195,14 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "m_und_b_vertauscht",
+          "value": -1,
+          "konzeptfehler": "m_und_b_vertauscht",
+          "feedback": "Das ist die Steigung — die Gerade fällt. b ist die Höhe am Schnittpunkt mit der senkrechten Achse."
+        }
       ]
     },
     {
@@ -226,6 +242,14 @@
       ],
       "spiral": [
         "W-FKT"
+      ],
+      "misconceptions": [
+        {
+          "id": "m_und_b_vertauscht",
+          "value": 2,
+          "konzeptfehler": "m_und_b_vertauscht",
+          "feedback": "Das ist die Steigung. Die Gerade geht durch den Nullpunkt, also ist b = 0."
+        }
       ]
     },
     {
@@ -346,13 +370,29 @@
           "label": "Steigung m",
           "answer": 2,
           "unit_label": "€/km",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 3.5,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "3.5 ist der y-Achsenabschnitt. Die Steigung sagt, wie viel es je Schritt nach rechts hochgeht."
+            }
+          ]
         },
         {
           "label": "y-Achsenabschnitt b",
           "answer": 3.5,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 2,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "2 ist die Steigung. b ist der Wert, bei dem die Gerade die senkrechte Achse schneidet."
+            }
+          ]
         }
       ],
       "hints": [

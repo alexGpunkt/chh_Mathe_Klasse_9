@@ -104,7 +104,12 @@
         ],
         "ergebnis": "y = 3/4 x."
       },
-      "merke": "Bruch-m am großen Dreieck; b notfalls mit b = y − m·x rechnen."
+      "merke": "Bruch-m am großen Dreieck; b notfalls mit b = y − m·x rechnen.",
+      "visual": {
+        "type": "animation",
+        "name": "steigung",
+        "stufe": "C"
+      }
     }
   },
   "formelkarte": {
@@ -372,12 +377,28 @@
         {
           "label": "Steigung m",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 3,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "3 ist der y-Achsenabschnitt. Die Steigung sagt, wie viel es je Schritt nach rechts hochgeht."
+            }
+          ]
         },
         {
           "label": "y-Achsenabschnitt b",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "m_und_b_vertauscht",
+              "value": 2,
+              "konzeptfehler": "m_und_b_vertauscht",
+              "feedback": "2 ist die Steigung. b ist der Wert, bei dem die Gerade die senkrechte Achse schneidet."
+            }
+          ]
         }
       ],
       "hints": [

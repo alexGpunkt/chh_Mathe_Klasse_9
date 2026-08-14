@@ -195,10 +195,20 @@ const Lernmodus = (() => {
     return { erlaubt: false, grund: 'gesperrt' };
   }
 
+  /* Seit V33 gibt es je Lernweg ein eigenes Blatt. Hier ist die Einheit
+     bereits bearbeitet — der Lernweg steht also im gespeicherten Stand.
+     Fehlt er (anderes Gerät, gelöschter Speicher), ist der Standardweg B
+     die richtige Annahme: Er trägt die Aufgaben, die alle können sollen. */
   function uebungsblattPfad(einheit) {
     const id = String(einheit || '').toLowerCase();
     const bereich = id.split('-')[0];
-    return `units/${bereich}/${id}/uebungsblatt.pdf`;
+    let stufe = 'b';
+    try {
+      const stand = typeof Stand !== 'undefined' && Stand.lies ? Stand.lies(id) : null;
+      const gespeichert = String((stand && stand.pfad) || '').toUpperCase();
+      if (['A', 'B', 'C'].includes(gespeichert)) stufe = gespeichert.toLowerCase();
+    } catch { /* ohne Stand bleibt es bei B */ }
+    return `units/${bereich}/${id}/uebungsblatt-${stufe}.pdf`;
   }
 
   function sperreAnzeigen(einheit, ziel) {

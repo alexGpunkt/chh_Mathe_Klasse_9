@@ -308,6 +308,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "quadrieren_vergessen",
+          "value": 23,
+          "konzeptfehler": "quadrieren_vergessen",
+          "feedback": "Erst quadrieren: 8² + 15² = 289, dann die Wurzel ziehen."
+        }
       ]
     },
     {
@@ -331,6 +339,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "quadrieren_vergessen",
+          "value": 21,
+          "konzeptfehler": "quadrieren_vergessen",
+          "feedback": "Erst quadrieren: 9² + 12² = 225, dann die Wurzel ziehen."
+        }
       ]
     },
     {
@@ -417,6 +433,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "quadrieren_vergessen",
+          "value": 13,
+          "konzeptfehler": "quadrieren_vergessen",
+          "feedback": "Erst quadrieren: 3² + 10² = 109, dann die Wurzel ziehen."
+        }
       ]
     },
     {
@@ -439,6 +463,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "quadrieren_vergessen",
+          "value": 28,
+          "konzeptfehler": "quadrieren_vergessen",
+          "feedback": "Erst quadrieren: 12² + 16² = 400, dann die Wurzel ziehen."
+        }
       ]
     },
     {
@@ -538,6 +570,20 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Kegel: Größen und Formeln üben",
+      "url": "https://learningapps.org/1418658",
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Kegel – Artikel mit Aufgabenordner",
+      "url": "https://de.serlo.org/mathe/1561/kegel",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

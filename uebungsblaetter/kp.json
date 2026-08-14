@@ -67,7 +67,32 @@
               "value": "2 * n",
               "feedback": "Die senkrechten Seitenkanten fehlen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "n": {
+                  "aus": [
+                    3,
+                    4,
+                    5
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "n": {
+                  "aus": [
+                    6,
+                    8,
+                    10,
+                    12
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-01-3",
@@ -93,7 +118,32 @@
               "value": "n + 1",
               "feedback": "Grund- UND Deckfläche zählen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "n": {
+                  "aus": [
+                    3,
+                    4,
+                    5
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "n": {
+                  "aus": [
+                    6,
+                    8,
+                    10,
+                    12
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-01-4",
@@ -114,7 +164,25 @@
               "value": "8 * a",
               "feedback": "Ein Würfel hat 12 Kanten, nicht 8."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 8
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 6,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-01-5",
@@ -143,6 +211,44 @@
               "value": "a + b + c",
               "feedback": "Jede Kantenlänge kommt viermal vor."
             }
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-KP-01-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "e": {
+              "aus": [
+                6,
+                8,
+                10,
+                12,
+                16
+              ]
+            }
+          },
+          "template": "Ein gerades Prisma hat {e} Ecken. Welches Vieleck ist die Grundfläche? Gib die Eckenzahl des Vielecks an.",
+          "answer": "e / 2",
+          "unit_label": "Ecken",
+          "round": 0,
+          "solution": "Ein Prisma hat oben und unten dieselbe Grundfläche. Also {e} : 2 = {ergebnis} Ecken je Vieleck.",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_doppelt",
+              "value": "e",
+              "feedback": "Das sind alle Ecken des Körpers, oben und unten zusammen."
+            },
+            {
+              "id": "kanten_statt_ecken",
+              "value": "e * 3 / 2",
+              "feedback": "Das wäre die Anzahl der Kanten."
+            }
           ]
         }
       ]
@@ -170,7 +276,27 @@
               "value": "x * 1000",
               "feedback": "1 dm³ ist genau 1 Liter, nicht 1000."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "x": {
+                  "von": 2,
+                  "bis": 40,
+                  "schritt": 2
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "x": {
+                  "von": 5,
+                  "bis": 200,
+                  "schritt": 5
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-02-2",
@@ -191,7 +317,25 @@
               "value": "x * 100",
               "feedback": "Bei Volumen ist der Faktor 1000, bei Flächen 100."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "x": {
+                  "von": 1,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "x": {
+                  "von": 5,
+                  "bis": 80
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-02-3",
@@ -212,7 +356,25 @@
               "value": "x * 1000",
               "feedback": "Bei Flächen ist der Faktor 100."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "x": {
+                  "von": 1,
+                  "bis": 15
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "x": {
+                  "von": 5,
+                  "bis": 120
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-02-4",
@@ -234,7 +396,22 @@
               "value": "x / 100",
               "feedback": "1 Liter sind 1000 cm³."
             }
-          ]
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ],
+          "stufen": {
+            "C": {
+              "vars": {
+                "x": {
+                  "von": 500,
+                  "bis": 99500,
+                  "schritt": 500
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-02-5",
@@ -256,7 +433,71 @@
           "answer": "a * b * c",
           "unit_label": "Liter",
           "round": 0,
-          "solution": "{a} · {b} · {c} = {a*b*c} dm³ = {ergebnis} Liter"
+          "solution": "{a} · {b} · {c} = {a*b*c} dm³ = {ergebnis} Liter",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "b": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "c": {
+                  "von": 2,
+                  "bis": 8
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 5,
+                  "bis": 25
+                },
+                "b": {
+                  "von": 5,
+                  "bis": 25
+                },
+                "c": {
+                  "von": 5,
+                  "bis": 25
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-KP-02-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "x": {
+              "von": 10000,
+              "bis": 900000,
+              "schritt": 10000
+            }
+          },
+          "template": "Rechne um: {x} cm² = ? m²",
+          "answer": "x / 10000",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "1 m² = 10 000 cm². Also {x} : 10 000 = {ergebnis} m².",
+          "misconceptions": [
+            {
+              "id": "faktor_100",
+              "value": "x / 100",
+              "feedback": "Bei Flächen ist der Sprung von cm² zu m² 100 · 100 = 10 000, nicht 100."
+            },
+            {
+              "id": "faktor_1000",
+              "value": "x / 1000",
+              "feedback": "1000 gehört zu den Volumeneinheiten, nicht zu den Flächen."
+            }
+          ]
         }
       ]
     },
@@ -287,7 +528,25 @@
               "value": "a * a",
               "feedback": "Ein Würfel hat sechs Flächen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 8
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 7,
+                  "bis": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-03-2",
@@ -321,7 +580,41 @@
               "value": "a * b * c",
               "feedback": "Das ist das Volumen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "b": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "c": {
+                  "von": 2,
+                  "bis": 8
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 6,
+                  "bis": 20
+                },
+                "b": {
+                  "von": 6,
+                  "bis": 20
+                },
+                "c": {
+                  "von": 6,
+                  "bis": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-03-3",
@@ -350,7 +643,41 @@
               "value": "2 * (a * b + a * c + b * c)",
               "feedback": "Der Deckel fehlt bei dieser Schachtel."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "b": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "c": {
+                  "von": 3,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 25
+                },
+                "b": {
+                  "von": 8,
+                  "bis": 25
+                },
+                "c": {
+                  "von": 8,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-03-4",
@@ -377,7 +704,36 @@
               "value": "6 * a * a * f",
               "feedback": "Bei {f}-facher Kante wird die Oberfläche {f*f}-mal so groß."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "f": {
+                  "aus": [
+                    2
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 15
+                },
+                "f": {
+                  "aus": [
+                    2,
+                    3
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-03-5",
@@ -408,6 +764,49 @@
               "value": "O / 6",
               "feedback": "Aus dem Flächeninhalt einer Fläche muss die Wurzel gezogen werden."
             }
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-KP-03-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "aus": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                8,
+                10
+              ]
+            }
+          },
+          "berechnet": {
+            "O": "6 * a * a"
+          },
+          "template": "Ein Würfel hat die Oberfläche {O} cm². Wie groß ist sein Volumen?",
+          "answer": "a * a * a",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "Eine Fläche: {O} : 6 = {a*a} cm². Kante: √{a*a} = {a} cm. Volumen: {a}³ = {ergebnis} cm³.",
+          "misconceptions": [
+            {
+              "id": "quadrieren_vergessen",
+              "value": "O / 6",
+              "feedback": "Das ist erst der Flächeninhalt einer Seite. Daraus die Kante ziehen."
+            },
+            {
+              "id": "oberflaeche_als_volumen",
+              "value": "O",
+              "feedback": "Die Oberfläche ist eine Fläche in cm², das Volumen ein Rauminhalt in cm³."
+            }
           ]
         }
       ]
@@ -434,7 +833,25 @@
               "value": "a * a",
               "feedback": "Beim Volumen wird dreimal multipliziert."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 8
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 7,
+                  "bis": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-04-2",
@@ -463,7 +880,41 @@
               "value": "2 * (a * b + a * c + b * c)",
               "feedback": "Das ist die Oberfläche."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 10
+                },
+                "b": {
+                  "von": 2,
+                  "bis": 10
+                },
+                "c": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 25
+                },
+                "b": {
+                  "von": 8,
+                  "bis": 25
+                },
+                "c": {
+                  "von": 8,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-04-3",
@@ -485,7 +936,41 @@
           "answer": "a * b * c",
           "unit_label": "Liter",
           "round": 1,
-          "solution": "V = {a} · {b} · {c} = {a*b*c} dm³ = {ergebnis} Liter"
+          "solution": "V = {a} · {b} · {c} = {a*b*c} dm³ = {ergebnis} Liter",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "b": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "c": {
+                  "von": 2,
+                  "bis": 8
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 5,
+                  "bis": 20
+                },
+                "b": {
+                  "von": 5,
+                  "bis": 20
+                },
+                "c": {
+                  "von": 5,
+                  "bis": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-04-4",
@@ -512,7 +997,36 @@
               "value": "a * a * a * f",
               "feedback": "Bei {f}-facher Kante wird das Volumen {f*f*f}-mal so groß."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "f": {
+                  "aus": [
+                    2
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 12
+                },
+                "f": {
+                  "aus": [
+                    2,
+                    3
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-04-5",
@@ -536,7 +1050,48 @@
           "answer": "V / (a * b)",
           "unit_label": "cm",
           "round": 1,
-          "solution": "h = {V} : ({a} · {b}) = {ergebnis} cm"
+          "solution": "h = {V} : ({a} · {b}) = {ergebnis} cm",
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-KP-04-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 9
+            },
+            "b": {
+              "von": 2,
+              "bis": 9
+            },
+            "c": {
+              "von": 2,
+              "bis": 9
+            }
+          },
+          "template": "Ein Becken misst {a} m · {b} m · {c} m. Wie viel Liter fasst es? (1 m³ = 1000 Liter)",
+          "answer": "a * b * c * 1000",
+          "unit_label": "Liter",
+          "round": 0,
+          "solution": "V = {a} · {b} · {c} = {a*b*c} m³. Mal 1000: {ergebnis} Liter.",
+          "misconceptions": [
+            {
+              "id": "einheit_uebersprungen",
+              "value": "a * b * c",
+              "feedback": "Das ist das Volumen in m³. Für Liter noch mal 1000."
+            },
+            {
+              "id": "faktor_100",
+              "value": "a * b * c * 100",
+              "feedback": "Von m³ auf Liter ist der Faktor 1000, nicht 100."
+            }
+          ]
         }
       ]
     },
@@ -566,7 +1121,41 @@
           "answer": "V / (a * b)",
           "unit_label": "cm",
           "round": 2,
-          "solution": "h = {V} : ({a} · {b}) = {ergebnis} cm"
+          "solution": "h = {V} : ({a} · {b}) = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 10
+                },
+                "b": {
+                  "von": 2,
+                  "bis": 10
+                },
+                "c": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 6,
+                  "bis": 20
+                },
+                "b": {
+                  "von": 6,
+                  "bis": 20
+                },
+                "c": {
+                  "von": 6,
+                  "bis": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-05-2",
@@ -600,7 +1189,35 @@
               "value": "V / 3",
               "feedback": "Dritte Wurzel, nicht Division durch 3."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "aus": [
+                    2,
+                    3,
+                    4,
+                    5
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "aus": [
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    12
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-05-3",
@@ -625,7 +1242,29 @@
           "answer": "(O / 2 - a * b) / (a + b)",
           "unit_label": "cm",
           "round": 2,
-          "solution": "O : 2 = {O/2}; minus {a*b} ergibt {O/2-a*b}; geteilt durch ({a} + {b}) = {ergebnis} cm"
+          "solution": "O : 2 = {O/2}; minus {a*b} ergibt {O/2-a*b}; geteilt durch ({a} + {b}) = {ergebnis} cm",
+          "pfade": [
+            "B",
+            "C"
+          ],
+          "stufen": {
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 15
+                },
+                "b": {
+                  "von": 4,
+                  "bis": 15
+                },
+                "c": {
+                  "von": 4,
+                  "bis": 15
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-05-4",
@@ -649,7 +1288,26 @@
           "answer": "V / (a * c)",
           "unit_label": "cm",
           "round": 1,
-          "solution": "b = {V} : ({a} · {c}) = {ergebnis} cm"
+          "solution": "b = {V} : ({a} · {c}) = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 10
+                },
+                "c": {
+                  "von": 2,
+                  "bis": 10
+                },
+                "V": {
+                  "von": 40,
+                  "bis": 800,
+                  "schritt": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-05-5",
@@ -673,7 +1331,68 @@
           "answer": "a * a * a",
           "unit_label": "cm³",
           "round": 1,
-          "solution": "Eine Fläche: {O} : 6 = {a*a} cm², also a = {a} cm. V = {ergebnis} cm³"
+          "solution": "Eine Fläche: {O} : 6 = {a*a} cm², also a = {a} cm. V = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "aus": [
+                    2,
+                    3,
+                    4,
+                    5
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "aus": [
+                    6,
+                    8,
+                    10
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-KP-05-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 10
+            },
+            "h": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "berechnet": {
+            "V": "a * a * h"
+          },
+          "template": "Ein Quader mit quadratischer Grundfläche hat das Volumen {V} cm³ und die Höhe {h} cm. Wie lang ist eine Grundkante?",
+          "answer": "a",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Grundfläche: {V} : {h} = {a*a} cm². Sie ist ein Quadrat, also Kante = √{a*a} = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "quadrieren_vergessen",
+              "value": "V / h",
+              "feedback": "Das ist die Grundfläche. Für die Kante noch die Wurzel ziehen."
+            },
+            {
+              "id": "mal_geteilt_vertauscht",
+              "value": "V * h",
+              "feedback": "Rückwärts wird geteilt, nicht malgenommen."
+            }
+          ]
         }
       ]
     },
@@ -704,7 +1423,35 @@
               "value": "G / h",
               "feedback": "Grundfläche mal Höhe."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "G": {
+                  "von": 4,
+                  "bis": 30,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "G": {
+                  "von": 10,
+                  "bis": 80,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 5,
+                  "bis": 30
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-06-2",
@@ -734,7 +1481,43 @@
               "value": "g * hg * h",
               "feedback": "Beim Dreieck fehlt die Division durch 2."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "g": {
+                  "von": 2,
+                  "bis": 10
+                },
+                "hg": {
+                  "von": 2,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "g": {
+                  "von": 5,
+                  "bis": 24
+                },
+                "hg": {
+                  "von": 4,
+                  "bis": 24,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 5,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-06-3",
@@ -754,7 +1537,22 @@
           "answer": "V / h",
           "unit_label": "cm²",
           "round": 1,
-          "solution": "G = {V} : {h} = {ergebnis} cm²"
+          "solution": "G = {V} : {h} = {ergebnis} cm²",
+          "stufen": {
+            "A": {
+              "vars": {
+                "V": {
+                  "von": 60,
+                  "bis": 400,
+                  "schritt": 20
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-06-4",
@@ -776,7 +1574,41 @@
           "answer": "a * b * h",
           "unit_label": "cm³",
           "round": 1,
-          "solution": "Das ist ein Quader. V = {a} · {b} · {h} = {ergebnis} cm³"
+          "solution": "Das ist ein Quader. V = {a} · {b} · {h} = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "b": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 5,
+                  "bis": 18
+                },
+                "b": {
+                  "von": 5,
+                  "bis": 18
+                },
+                "h": {
+                  "von": 5,
+                  "bis": 22
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-06-5",
@@ -797,7 +1629,52 @@
           "answer": "V / G",
           "unit_label": "cm",
           "round": 1,
-          "solution": "h = {V} : {G} = {ergebnis} cm"
+          "solution": "h = {V} : {G} = {ergebnis} cm",
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-KP-06-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "G": {
+              "von": 6,
+              "bis": 60,
+              "schritt": 3
+            },
+            "h1": {
+              "von": 2,
+              "bis": 10
+            },
+            "d": {
+              "von": 2,
+              "bis": 12
+            }
+          },
+          "berechnet": {
+            "h2": "h1 + d"
+          },
+          "template": "Zwei Prismen haben dieselbe Grundfläche {G} cm². Das erste ist {h1} cm hoch, das zweite {h2} cm. Um wie viel cm³ unterscheiden sich die Volumen?",
+          "answer": "G * d",
+          "unit_label": "cm³",
+          "round": 1,
+          "solution": "V₁ = {G}·{h1} = {G*h1} cm³, V₂ = {G}·{h2} = {G*h2} cm³. Unterschied: {ergebnis} cm³ — das ist {G} · {d}.",
+          "misconceptions": [
+            {
+              "id": "hoehen_addiert",
+              "value": "G * (h1 + h2)",
+              "feedback": "Gefragt ist der Unterschied, also die Differenz der Höhen."
+            },
+            {
+              "id": "grundflaeche_vergessen",
+              "value": "d",
+              "feedback": "Das ist nur der Höhenunterschied. Noch mal die Grundfläche {G}."
+            }
+          ]
         }
       ]
     },
@@ -832,7 +1709,43 @@
               "value": "g * hg * h",
               "feedback": "Die Hälfte beim Dreieck fehlt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "g": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "hg": {
+                  "von": 2,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "g": {
+                  "von": 8,
+                  "bis": 24
+                },
+                "hg": {
+                  "von": 4,
+                  "bis": 24,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 6,
+                  "bis": 30
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-07-2",
@@ -860,7 +1773,30 @@
           "answer": "(a + c) / 2 * hg * h",
           "unit_label": "cm³",
           "round": 1,
-          "solution": "G = ({a} + {c}) : 2 · {hg} = {(a+c)/2*hg} cm². V = {ergebnis} cm³"
+          "solution": "G = ({a} + {c}) : 2 · {hg} = {(a+c)/2*hg} cm². V = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 8
+                },
+                "c": {
+                  "von": 3,
+                  "bis": 8
+                },
+                "hg": {
+                  "von": 2,
+                  "bis": 8,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 10
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-07-3",
@@ -898,7 +1834,37 @@
               "value": "a * b * h",
               "feedback": "Der Ausschnitt muss abgezogen werden."
             }
-          ]
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ],
+          "stufen": {
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 5,
+                  "bis": 16
+                },
+                "b": {
+                  "von": 5,
+                  "bis": 16
+                },
+                "e": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "f": {
+                  "von": 2,
+                  "bis": 8
+                },
+                "h": {
+                  "von": 5,
+                  "bis": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-07-4",
@@ -924,7 +1890,28 @@
           "answer": "V / (g * hg / 2)",
           "unit_label": "cm",
           "round": 1,
-          "solution": "G = {g*hg/2} cm². h = {V} : {g*hg/2} = {ergebnis} cm"
+          "solution": "G = {g*hg/2} cm². h = {V} : {g*hg/2} = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "g": {
+                  "von": 4,
+                  "bis": 12,
+                  "schritt": 2
+                },
+                "hg": {
+                  "von": 2,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "V": {
+                  "von": 100,
+                  "bis": 1000,
+                  "schritt": 50
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-07-5",
@@ -955,6 +1942,73 @@
               "id": "nicht_in_liter",
               "value": "g * hg / 2 * h",
               "feedback": "Noch durch 1000 teilen."
+            }
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "g": {
+                  "von": 4,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "hg": {
+                  "von": 2,
+                  "bis": 8,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 5,
+                  "bis": 20,
+                  "schritt": 5
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-KP-07-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "c": {
+              "von": 3,
+              "bis": 15
+            },
+            "hg": {
+              "von": 2,
+              "bis": 12,
+              "schritt": 2
+            },
+            "h": {
+              "von": 3,
+              "bis": 18
+            }
+          },
+          "berechnet": {
+            "V": "(a + c) / 2 * hg * h"
+          },
+          "bedingung": "a != c",
+          "template": "Ein Prisma mit trapezförmiger Grundfläche (a = {a} cm, c = {c} cm, Trapezhöhe {hg} cm) hat das Volumen {V} cm³. Wie hoch ist der Körper?",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Grundfläche: ({a} + {c}) : 2 · {hg} = {(a+c)/2*hg} cm². Höhe: {V} : {(a+c)/2*hg} = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "dreiecksflaeche_halbe",
+              "value": "V / ((a + c) * hg)",
+              "feedback": "Beim Trapez wird die Summe der Parallelseiten halbiert, nicht die ganze Fläche."
+            },
+            {
+              "id": "grundflaeche_unvollstaendig",
+              "value": "V / (a * hg)",
+              "feedback": "Die zweite Parallelseite {c} fehlt in der Grundfläche."
             }
           ]
         }
@@ -999,7 +2053,33 @@
               "value": "a * h",
               "feedback": "Alle drei Seitenflächen zählen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 8
+                },
+                "b": {
+                  "von": 3,
+                  "bis": 8
+                },
+                "c": {
+                  "von": 3,
+                  "bis": 8
+                },
+                "hg": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 10
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-08-2",
@@ -1040,7 +2120,32 @@
               "value": "2 * (g * hg / 2)",
               "feedback": "Der Mantel fehlt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "g": {
+                  "von": 4,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "hg": {
+                  "von": 2,
+                  "bis": 8,
+                  "schritt": 2
+                },
+                "u": {
+                  "von": 12,
+                  "bis": 24,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 10
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-08-3",
@@ -1104,7 +2209,11 @@
           "answer": "2 * (a * b / 2) + (a + b + c) * h",
           "unit_label": "cm²",
           "round": 1,
-          "solution": "G = {a*b/2} cm², M = ({a} + {b} + {c}) · {h} = {(a+b+c)*h} cm². O = {ergebnis} cm²"
+          "solution": "G = {a*b/2} cm², M = ({a} + {b} + {c}) · {h} = {(a+b+c)*h} cm². O = {ergebnis} cm²",
+          "pfade": [
+            "B",
+            "C"
+          ]
         },
         {
           "id": "AB-KP-08-5",
@@ -1122,7 +2231,70 @@
           "answer": "2 * a * a + 4 * a * h",
           "unit_label": "cm²",
           "round": 1,
-          "solution": "O = 2 · {a*a} + 4 · {a} · {h} = {ergebnis} cm²"
+          "solution": "O = 2 · {a*a} + 4 · {a} · {h} = {ergebnis} cm²",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 8
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 6,
+                  "bis": 18
+                },
+                "h": {
+                  "von": 6,
+                  "bis": 25
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-KP-08-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "b": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "von": 4,
+              "bis": 22
+            }
+          },
+          "template": "Ein Prisma hat als Grundfläche ein Rechteck {a} cm · {b} cm und ist {h} cm hoch. Berechne Mantel und Oberfläche. Gib die Oberfläche an.",
+          "answer": "2 * a * b + 2 * (a + b) * h",
+          "unit_label": "cm²",
+          "round": 1,
+          "solution": "Mantel: Umfang {2*(a+b)} cm · {h} cm = {2*(a+b)*h} cm². Dazu zwei Grundflächen 2 · {a*b} = {2*a*b} cm². Oberfläche: {ergebnis} cm².",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_unvollstaendig",
+              "value": "a * b + 2 * (a + b) * h",
+              "feedback": "Ein Prisma hat ZWEI Grundflächen, oben und unten."
+            },
+            {
+              "id": "mantel_statt_oberflaeche",
+              "value": "2 * (a + b) * h",
+              "feedback": "Das ist nur der Mantel. Die Grundflächen fehlen."
+            }
+          ]
         }
       ]
     },
@@ -1152,7 +2324,33 @@
               "value": "3.14 * r * h",
               "feedback": "Der Radius muss quadriert werden."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 6
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 5,
+                  "bis": 15
+                },
+                "h": {
+                  "von": 8,
+                  "bis": 30
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-09-2",
@@ -1178,7 +2376,35 @@
               "value": "3.14 * d * d * h",
               "feedback": "Erst den Durchmesser halbieren."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "d": {
+                  "von": 2,
+                  "bis": 12,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "d": {
+                  "von": 10,
+                  "bis": 30,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 6,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-09-3",
@@ -1208,7 +2434,21 @@
               "value": "3.14 * r * r * h",
               "feedback": "Noch durch 1000 teilen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 5
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-09-4",
@@ -1229,7 +2469,21 @@
           "answer": "h",
           "unit_label": "cm",
           "round": 2,
-          "solution": "Grundkreis: 3,14 · {r*r} = {3.14*r*r} cm². h = {V} : {3.14*r*r} = {ergebnis} cm"
+          "solution": "Grundkreis: 3,14 · {r*r} = {3.14*r*r} cm². h = {V} : {3.14*r*r} = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 6
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-09-5",
@@ -1259,6 +2513,46 @@
               "id": "volumen_faktor",
               "value": "3.14 * r * r * h * f",
               "feedback": "Bei {f}-fachem Radius wird das Volumen {f*f}-mal so groß."
+            }
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-KP-09-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "berechnet": {
+            "V": "3.14 * r * r * h"
+          },
+          "template": "Ein Zylinder hat das Volumen {V} cm³ und die Höhe {h} cm. Wie groß ist die Grundfläche? (π ≈ 3,14)",
+          "answer": "3.14 * r * r",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "V = G · h, also G = {V} : {h} = {ergebnis} cm². (Das entspricht π · {r}².)",
+          "misconceptions": [
+            {
+              "id": "mal_geteilt_vertauscht",
+              "value": "V * h",
+              "feedback": "Aus V = G · h folgt G = V : h."
+            },
+            {
+              "id": "radius_durchmesser",
+              "value": "V / h / 2",
+              "feedback": "Gefragt ist die Grundfläche, nicht ihre Hälfte."
             }
           ]
         }
@@ -1290,7 +2584,33 @@
               "value": "3.14 * r * r",
               "feedback": "Der Mantel ist ein Rechteck: Umfang mal Höhe."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 6
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 5,
+                  "bis": 15
+                },
+                "h": {
+                  "von": 8,
+                  "bis": 30
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-10-2",
@@ -1320,7 +2640,33 @@
               "value": "3.14 * r * r + 2 * 3.14 * r * h",
               "feedback": "Es sind zwei Kreise."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 6
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 5,
+                  "bis": 15
+                },
+                "h": {
+                  "von": 8,
+                  "bis": 30
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-10-3",
@@ -1346,7 +2692,22 @@
               "value": "2 * 3.14 * d * d + 2 * 3.14 * d * h",
               "feedback": "Erst halbieren."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "d": {
+                  "von": 2,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 2,
+                  "bis": 10
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-10-4",
@@ -1371,7 +2732,21 @@
               "value": "2 * 3.14 * r * r + 2 * 3.14 * r * h",
               "feedback": "Deckel und Boden werden hier nicht beklebt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-10-5",
@@ -1389,7 +2764,47 @@
           "answer": "3.14 * r * r + 2 * 3.14 * r * h",
           "unit_label": "cm²",
           "round": 2,
-          "solution": "Ein Kreis {3.14*r*r} + Mantel {2*3.14*r*h} = {ergebnis} cm²"
+          "solution": "Ein Kreis {3.14*r*r} + Mantel {2*3.14*r*h} = {ergebnis} cm²",
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-KP-10-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "berechnet": {
+            "M": "2 * 3.14 * r * h"
+          },
+          "template": "Ein Zylinder hat den Mantel {M} cm² und den Radius {r} cm. Wie hoch ist er? (π ≈ 3,14)",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Der Mantel ist ein Rechteck: Umfang {2*3.14*r} cm · Höhe. Also h = {M} : {2*3.14*r} = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "radius_durchmesser",
+              "value": "M / (3.14 * r)",
+              "feedback": "Der Umfang ist 2 · π · r, nicht π · r."
+            },
+            {
+              "id": "grundflaeche_unvollstaendig",
+              "value": "M / (3.14 * r * r)",
+              "feedback": "Der Mantel hängt am Umfang, nicht an der Kreisfläche."
+            }
+          ]
         }
       ]
     },
@@ -1422,7 +2837,31 @@
           "answer": "a * b * c + a * b * d",
           "unit_label": "cm³",
           "round": 1,
-          "solution": "{a*b*c} + {a*b*d} = {ergebnis} cm³"
+          "solution": "{a*b*c} + {a*b*d} = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "b": {
+                  "von": 4,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "c": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "d": {
+                  "von": 2,
+                  "bis": 5
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-11-2",
@@ -1458,7 +2897,31 @@
               "value": "a * b * c",
               "feedback": "Das Loch muss abgezogen werden."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 6,
+                  "bis": 12,
+                  "schritt": 2
+                },
+                "b": {
+                  "von": 6,
+                  "bis": 12,
+                  "schritt": 2
+                },
+                "c": {
+                  "von": 4,
+                  "bis": 10
+                },
+                "e": {
+                  "von": 1,
+                  "bis": 3
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-11-3",
@@ -1489,7 +2952,40 @@
               "value": "V / dichte",
               "feedback": "Masse = Volumen · Dichte."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "V": {
+                  "von": 100,
+                  "bis": 1000,
+                  "schritt": 100
+                },
+                "dichte": {
+                  "aus": [
+                    1,
+                    2
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "V": {
+                  "von": 200,
+                  "bis": 3000,
+                  "schritt": 100
+                },
+                "dichte": {
+                  "aus": [
+                    0.5,
+                    2.5,
+                    7
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-11-4",
@@ -1513,7 +3009,26 @@
           "answer": "a * a * h - 3.14 * r * r * h",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "{a*a*h} − {3.14*r*r*h} = {ergebnis} cm³"
+          "solution": "{a*a*h} − {3.14*r*r*h} = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 5
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "a": {
+                  "von": 8,
+                  "bis": 16,
+                  "schritt": 2
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-11-5",
@@ -1546,6 +3061,58 @@
               "id": "innen_vergessen",
               "value": "aussen * aussen * h / 1000",
               "feedback": "Die Wandstärke muss abgezogen werden."
+            }
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-KP-11-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "von": 8,
+              "bis": 20,
+              "schritt": 2
+            },
+            "b": {
+              "von": 8,
+              "bis": 20,
+              "schritt": 2
+            },
+            "c": {
+              "von": 3,
+              "bis": 12
+            },
+            "r": {
+              "von": 2,
+              "bis": 6
+            },
+            "hz": {
+              "von": 3,
+              "bis": 12
+            }
+          },
+          "bedingung": "(2 * r < a) * (2 * r < b)",
+          "template": "Ein Körper besteht aus einem Quader {a} cm · {b} cm · {c} cm mit einem aufgesetzten Zylinder (r = {r} cm, h = {hz} cm). Berechne das Gesamtvolumen. (π ≈ 3,14)",
+          "answer": "a * b * c + 3.14 * r * r * hz",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Quader: {a*b*c} cm³. Zylinder: 3,14 · {r}² · {hz} = {3.14*r*r*hz} cm³. Zusammen {ergebnis} cm³.",
+          "misconceptions": [
+            {
+              "id": "teilkoerper_vergessen",
+              "value": "a * b * c",
+              "feedback": "Der Zylinder obendrauf fehlt."
+            },
+            {
+              "id": "radius_durchmesser",
+              "value": "a * b * c + 3.14 * 2 * r * 2 * r * hz",
+              "feedback": "In die Formel gehört der Radius, nicht der Durchmesser."
             }
           ]
         }
@@ -1581,7 +3148,41 @@
               "value": "a * b * c",
               "feedback": "Bekleben heißt Oberfläche."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "b": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "c": {
+                  "von": 3,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 20
+                },
+                "b": {
+                  "von": 8,
+                  "bis": 20
+                },
+                "c": {
+                  "von": 8,
+                  "bis": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-12-2",
@@ -1606,7 +3207,33 @@
               "value": "2 * 3.14 * r * r + 2 * 3.14 * r * h",
               "feedback": "„Passt hinein“ heißt Volumen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 5,
+                  "bis": 14
+                },
+                "h": {
+                  "von": 8,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-12-3",
@@ -1630,7 +3257,27 @@
           "answer": "g * hg / 2 * h",
           "unit_label": "cm³",
           "round": 1,
-          "solution": "Volumen: {g*hg/2} · {h} = {ergebnis} cm³"
+          "solution": "Volumen: {g*hg/2} · {h} = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "g": {
+                  "von": 4,
+                  "bis": 12,
+                  "schritt": 2
+                },
+                "hg": {
+                  "von": 2,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-12-4",
@@ -1656,7 +3303,22 @@
               "value": "2 * a * a + 4 * a * h",
               "feedback": "Der Boden wird nicht gestrichen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 12,
+                  "schritt": 2
+                },
+                "h": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-KP-12-5",
@@ -1678,7 +3340,51 @@
           "answer": "h",
           "unit_label": "cm",
           "round": 2,
-          "solution": "h = {V} : (3,14 · {r*r}) = {ergebnis} cm; Mantel = {2*3.14*r*h} cm²"
+          "solution": "h = {V} : (3,14 · {r*r}) = {ergebnis} cm; Mantel = {2*3.14*r*h} cm²",
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-KP-12-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 10
+            },
+            "h": {
+              "von": 4,
+              "bis": 20
+            },
+            "p": {
+              "aus": [
+                20,
+                50,
+                80
+              ]
+            }
+          },
+          "template": "Ein zylindrischer Tank (r = {r} cm, h = {h} cm) ist zu {p} % gefüllt. Wie viel cm³ Wasser sind darin? (π ≈ 3,14)",
+          "answer": "3.14 * r * r * h * p / 100",
+          "unit_label": "cm³",
+          "round": 3,
+          "solution": "Ganzer Tank: 3,14 · {r}² · {h} = {3.14*r*r*h} cm³. Davon {p} %: {ergebnis} cm³.",
+          "misconceptions": [
+            {
+              "id": "prozentschritt_unvollstaendig",
+              "value": "3.14 * r * r * h",
+              "feedback": "Das ist der volle Tank. Noch die {p} % nehmen."
+            },
+            {
+              "id": "grundflaeche_unvollstaendig",
+              "value": "3.14 * r * r * p / 100",
+              "feedback": "Die Höhe {h} fehlt — so rechnest du nur mit der Grundfläche."
+            }
+          ]
         }
       ]
     }

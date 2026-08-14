@@ -318,6 +318,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "radius_statt_mantellinie",
+          "value": 78.5,
+          "konzeptfehler": "radius_durchmesser",
+          "feedback": "In die Mantelformel gehört π · r · s, hier also 3,14 · 5 · 12."
+        }
       ]
     },
     {
@@ -404,6 +412,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "drittel_vergessen",
+          "value": 75.36,
+          "konzeptfehler": "drittel_vergessen",
+          "feedback": "Bei Pyramide und Kegel gehört das Drittel dazu — noch durch 3 teilen."
+        }
       ]
     },
     {
@@ -417,19 +433,43 @@
           "label": "Mantellinie s",
           "answer": 10,
           "tolerance": 0.01,
-          "unit_label": "cm"
+          "unit_label": "cm",
+          "misconceptions": [
+            {
+              "id": "quadrieren_vergessen",
+              "value": 14,
+              "konzeptfehler": "quadrieren_vergessen",
+              "feedback": "Erst quadrieren: 6² + 8² = 100, dann die Wurzel ziehen."
+            }
+          ]
         },
         {
           "label": "Volumen (eine Nachkommastelle)",
           "answer": 301.4,
           "tolerance": 3,
-          "unit_label": "cm³"
+          "unit_label": "cm³",
+          "misconceptions": [
+            {
+              "id": "drittel_vergessen",
+              "value": 904.32,
+              "konzeptfehler": "drittel_vergessen",
+              "feedback": "Bei Pyramide und Kegel gehört das Drittel dazu — noch durch 3 teilen."
+            }
+          ]
         },
         {
           "label": "Oberfläche (zwei Nachkommastellen)",
           "answer": 301.44,
           "tolerance": 2,
-          "unit_label": "cm²"
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_vergessen",
+              "value": 188.4,
+              "konzeptfehler": "grundflaeche_unvollstaendig",
+              "feedback": "Das ist nur der Mantel. Der Grundkreis 3,14 · 6² kommt dazu."
+            }
+          ]
         }
       ],
       "hints": [
@@ -546,6 +586,20 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Kegel: Größen und Formeln üben",
+      "url": "https://learningapps.org/1418658",
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Kegel – Artikel mit Aufgabenordner",
+      "url": "https://de.serlo.org/mathe/1561/kegel",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

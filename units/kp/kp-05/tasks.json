@@ -549,6 +549,20 @@
       ]
     }
   ],
+  "uebungslinks": [
+    {
+      "titel": "Würfel und Quader: Oberfläche und Volumen",
+      "url": "https://learningapps.org/2347385",
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Raumgeometrie – Artikel mit Aufgabenordner",
+      "url": "https://de.serlo.org/mathe/16156/raumgeometrie",
+      "typ": "app",
+      "quelle": "Serlo"
+    }
+  ],
   "videos": [
     {
       "titel": "Würfel — Kantenlänge aus dem Volumen berechnen",

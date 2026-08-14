@@ -181,6 +181,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 25,
+          "feedback": "Grundfläche und Höhe werden malgenommen: 20 · 5, nicht 20 + 5."
+        }
       ]
     },
     {
@@ -345,6 +352,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 188,
+          "konzeptfehler": "radius_durchmesser",
+          "feedback": "Der Radius steht im Quadrat: 3,14 · 6 · 6 · 10."
+        }
       ]
     },
     {

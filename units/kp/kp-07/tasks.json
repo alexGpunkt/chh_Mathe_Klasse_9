@@ -146,6 +146,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 21,
+          "feedback": "Grundfläche und Höhe werden malgenommen: 15 · 6, nicht 15 + 6."
+        }
       ]
     },
     {
@@ -344,6 +351,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 55,
+          "feedback": "Grundfläche und Höhe werden malgenommen: 48 · 7, nicht 48 + 7."
+        }
       ]
     },
     {
@@ -433,6 +447,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "dreieck_halbe_vergessen",
+          "value": 900,
+          "konzeptfehler": "dreiecksflaeche_halbe",
+          "feedback": "Die Dreiecksfläche wird halbiert: 6 · 6 : 2 = 18 cm²."
+        }
       ]
     },
     {
@@ -519,6 +541,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 69,
+          "feedback": "Grundfläche und Höhe werden malgenommen: 65 · 4, nicht 65 + 4."
+        }
       ]
     },
     {

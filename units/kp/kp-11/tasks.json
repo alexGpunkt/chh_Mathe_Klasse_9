@@ -136,6 +136,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "abgezogen_statt_addiert",
+          "value": 40,
+          "feedback": "Die beiden Teile werden zusammengezählt, nicht voneinander abgezogen."
+        }
       ]
     },
     {
@@ -188,6 +195,13 @@
       ],
       "spiral": [
         "W-EINH"
+      ],
+      "misconceptions": [
+        {
+          "id": "faktor_1000",
+          "value": 0.25,
+          "feedback": "250 cm³ Wasser wiegen 250 g. 0,25 wäre das Gewicht in Kilogramm."
+        }
       ]
     },
     {
@@ -243,6 +257,14 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "radius_nicht_quadriert",
+          "value": 31.4,
+          "konzeptfehler": "radius_durchmesser",
+          "feedback": "Der Radius steht im Quadrat: 3,14 · 2 · 2 · 5."
+        }
       ]
     },
     {
@@ -333,6 +355,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "teilkoerper_vergessen",
+          "value": 15000,
+          "feedback": "Das ist nur der untere Quader. Der aufgesetzte fehlt."
+        }
       ]
     },
     {
@@ -528,6 +557,20 @@
       "spiral": [
         "W-EINH"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Gemischte Aufgaben zur Volumenberechnung",
+      "url": "https://de.serlo.org/mathe/55209/gemischte-aufgaben-zur-volumenberechung",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Schwierigere Aufgaben zu einzelnen Grundkörpern",
+      "url": "https://de.serlo.org/mathe/62625/schwierigere-aufgaben-zu-einzelnen-grundkoerpern",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

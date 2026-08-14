@@ -29,7 +29,29 @@
               "value": "n",
               "feedback": "Die Kanten zur Spitze fehlen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "n": {
+                  "aus": [
+                    3,
+                    4
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "n": {
+                  "aus": [
+                    5,
+                    6
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-01-2",
@@ -55,7 +77,30 @@
               "value": "n",
               "feedback": "Die Grundfläche zählt mit."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "n": {
+                  "aus": [
+                    3,
+                    4
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "n": {
+                  "aus": [
+                    5,
+                    6,
+                    8
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-01-3",
@@ -69,7 +114,25 @@
           "answer": "4 * a",
           "unit_label": "cm",
           "round": 1,
-          "solution": "4 · {a} = {ergebnis} cm"
+          "solution": "4 · {a} = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 30
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-01-4",
@@ -90,7 +153,25 @@
               "value": "4 * a",
               "feedback": "Das ist der Umfang."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 10
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-01-5",
@@ -111,6 +192,44 @@
               "id": "volle_grundkante",
               "value": "a",
               "feedback": "Nur die halbe Grundkante."
+            }
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-SK-01-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "k": {
+              "aus": [
+                6,
+                8,
+                10,
+                12,
+                16
+              ]
+            }
+          },
+          "template": "Eine Pyramide hat {k} Kanten. Welches Vieleck ist die Grundfläche? Gib die Eckenzahl an.",
+          "answer": "k / 2",
+          "unit_label": "Ecken",
+          "round": 0,
+          "solution": "Jede Grundkante hat genau eine Seitenkante als Partner. Also {k} : 2 = {ergebnis} Ecken.",
+          "misconceptions": [
+            {
+              "id": "kanten_als_ecken",
+              "value": "k",
+              "feedback": "Das ist die Anzahl aller Kanten, nicht die des Vielecks."
+            },
+            {
+              "id": "flaechen_statt_ecken",
+              "value": "k / 2 + 1",
+              "feedback": "Das wäre die Anzahl der Flächen."
             }
           ]
         }
@@ -160,7 +279,25 @@
               "value": "halb * halb + h * h",
               "feedback": "Die Wurzel fehlt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "halb": {
+                  "aus": [
+                    3,
+                    4
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    4,
+                    3
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-02-2",
@@ -198,7 +335,25 @@
               "value": "hs",
               "feedback": "Die Seitenhöhe ist länger als die Körperhöhe."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "halb": {
+                  "aus": [
+                    3,
+                    4
+                  ]
+                },
+                "hs": {
+                  "aus": [
+                    5,
+                    5
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-02-3",
@@ -236,7 +391,43 @@
               "value": "a + b",
               "feedback": "Erst quadrieren, dann addieren, dann Wurzel."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                },
+                "b": {
+                  "aus": [
+                    4,
+                    8
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "aus": [
+                    5,
+                    9,
+                    12
+                  ]
+                },
+                "b": {
+                  "aus": [
+                    12,
+                    12,
+                    16
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-02-4",
@@ -279,6 +470,10 @@
               "value": "wurzel(halb * halb + h * h)",
               "feedback": "Das ist die Seitenhöhe hs, nicht die Seitenkante."
             }
+          ],
+          "pfade": [
+            "B",
+            "C"
           ]
         },
         {
@@ -310,7 +505,71 @@
           "answer": "wurzel(c * c - a * a)",
           "unit_label": "cm",
           "round": 2,
-          "solution": "b² = {c}² − {a}² = {c*c-a*a}, b = {ergebnis} cm"
+          "solution": "b² = {c}² − {a}² = {c*c-a*a}, b = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "c": {
+                  "aus": [
+                    5,
+                    10
+                  ]
+                },
+                "a": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-SK-02-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "halb": {
+              "aus": [
+                3,
+                4,
+                6,
+                8,
+                5,
+                12
+              ]
+            },
+            "s": {
+              "aus": [
+                5,
+                5,
+                10,
+                10,
+                13,
+                13
+              ]
+            }
+          },
+          "bedingung": "(s > halb) * ganz(wurzel(s * s - halb * halb))",
+          "template": "Eine quadratische Pyramide hat die Grundkante {2*halb} cm und die Seitenkante s = {s} cm. Berechne die Seitenhöhe hs.",
+          "answer": "wurzel(s * s - halb * halb)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Das rechtwinklige Dreieck aus hs, der halben Grundkante {halb} cm und s = {s} cm ergibt hs = √({s}² − {halb}²) = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "hoehe_statt_seitenhoehe",
+              "value": "wurzel(s * s - 2 * halb * halb)",
+              "feedback": "Mit der halben Diagonale kommt die Körperhöhe heraus, nicht die Seitenhöhe."
+            },
+            {
+              "id": "quadrieren_vergessen",
+              "value": "s - halb",
+              "feedback": "Beim Satz des Pythagoras werden die Quadrate voneinander abgezogen."
+            }
+          ]
         }
       ]
     },
@@ -346,7 +605,39 @@
               "value": "a * a * h",
               "feedback": "Der Faktor ⅓ fehlt — das wäre ein Prisma."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 9
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6,
+                    9
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 20
+                },
+                "h": {
+                  "aus": [
+                    12,
+                    15,
+                    18
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-03-2",
@@ -377,7 +668,25 @@
               "value": "G * h",
               "feedback": "Bei Spitzkörpern kommt der Faktor ⅓ dazu."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "G": {
+                  "von": 6,
+                  "bis": 45,
+                  "schritt": 3
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6,
+                    9
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-03-3",
@@ -403,7 +712,45 @@
           "answer": "a * b * h / 3",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "G = {a*b} cm². V = {a*b} · {h} : 3 = {ergebnis} cm³"
+          "solution": "G = {a*b} cm². V = {a*b} · {h} : 3 = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 9
+                },
+                "b": {
+                  "von": 3,
+                  "bis": 9
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 6,
+                  "bis": 18
+                },
+                "b": {
+                  "von": 6,
+                  "bis": 18
+                },
+                "h": {
+                  "aus": [
+                    9,
+                    12
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-03-4",
@@ -428,7 +775,23 @@
           "answer": "h",
           "unit_label": "cm",
           "round": 2,
-          "solution": "h = 3 · {V} : {a*a} = {ergebnis} cm"
+          "solution": "h = 3 · {V} : {a*a} = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 9
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-03-5",
@@ -450,7 +813,55 @@
           "answer": "a * a * h - a * a * h / 3",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "Prisma {a*a*h} cm³ − Pyramide {a*a*h/3} cm³ = {ergebnis} cm³"
+          "solution": "Prisma {a*a*h} cm³ − Pyramide {a*a*h/3} cm³ = {ergebnis} cm³",
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-SK-03-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "b": {
+              "von": 3,
+              "bis": 15
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "a * b * h / 3"
+          },
+          "template": "Eine Pyramide mit rechteckiger Grundfläche {a} cm · {b} cm hat das Volumen {V} cm³. Wie hoch ist sie?",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Grundfläche: {a*b} cm². Aus V = G·h : 3 folgt h = 3·{V} : {a*b} = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "drittel_vergessen",
+              "value": "V / (a * b)",
+              "feedback": "Das Drittel muss rückgängig gemacht werden: erst mal 3."
+            },
+            {
+              "id": "grundflaeche_unvollstaendig",
+              "value": "3 * V / a",
+              "feedback": "Die Grundfläche ist {a} · {b}, nicht nur {a}."
+            }
+          ]
         }
       ]
     },
@@ -485,7 +896,33 @@
               "value": "4 * a * hs",
               "feedback": "Beim Dreieck fehlt die Division durch 2."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "hs": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 20
+                },
+                "hs": {
+                  "von": 10,
+                  "bis": 28
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-04-2",
@@ -510,7 +947,33 @@
               "value": "4 * (a * hs / 2)",
               "feedback": "Die Grundfläche fehlt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "hs": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 20
+                },
+                "hs": {
+                  "von": 10,
+                  "bis": 28
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-04-3",
@@ -551,7 +1014,33 @@
               "value": "2 * halb * 2 * halb + 4 * (2 * halb * h / 2)",
               "feedback": "Für den Mantel braucht man hs, nicht h."
             }
-          ]
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ],
+          "stufen": {
+            "C": {
+              "vars": {
+                "halb": {
+                  "aus": [
+                    6,
+                    8,
+                    5,
+                    12
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    8,
+                    6,
+                    12,
+                    5
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-04-4",
@@ -578,7 +1067,23 @@
               "value": "a * a + 4 * (a * hs / 2)",
               "feedback": "Der Boden wird nicht bespannt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 12,
+                  "schritt": 2
+                },
+                "hs": {
+                  "von": 4,
+                  "bis": 14,
+                  "schritt": 2
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-04-5",
@@ -599,7 +1104,57 @@
           "answer": "4 * (a * hs / 2)",
           "unit_label": "cm²",
           "round": 2,
-          "solution": "M = O − G = {O} − {a*a} = {ergebnis} cm²"
+          "solution": "M = O − G = {O} − {a*a} = {ergebnis} cm²",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 10
+                },
+                "hs": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-SK-04-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 16
+            },
+            "hs": {
+              "von": 4,
+              "bis": 22
+            }
+          },
+          "berechnet": {
+            "O": "a * a + 4 * (a * hs / 2)"
+          },
+          "template": "Eine quadratische Pyramide hat die Oberfläche {O} cm² und die Grundkante {a} cm. Wie groß ist die Seitenhöhe?",
+          "answer": "hs",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Mantel: {O} − {a*a} = {4*(a*hs/2)} cm². Ein Dreieck: {a*hs/2} cm². Daraus hs = 2 · {a*hs/2} : {a} = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "grundflaeche_unvollstaendig",
+              "value": "2 * O / (4 * a)",
+              "feedback": "Die Grundfläche {a*a} cm² muss zuerst abgezogen werden."
+            },
+            {
+              "id": "dreiecksflaeche_halbe",
+              "value": "(O - a * a) / (4 * a)",
+              "feedback": "Beim Dreieck steht die 2 im Nenner — hier also mal 2."
+            }
+          ]
         }
       ]
     },
@@ -637,7 +1192,24 @@
               "value": "a * a",
               "feedback": "Aus der Grundfläche muss die Wurzel gezogen werden."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 9
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6,
+                    9
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-05-2",
@@ -663,7 +1235,24 @@
           "answer": "G",
           "unit_label": "cm²",
           "round": 2,
-          "solution": "G = 3 · {V} : {h} = {ergebnis} cm²"
+          "solution": "G = 3 · {V} : {h} = {ergebnis} cm²",
+          "stufen": {
+            "A": {
+              "vars": {
+                "G": {
+                  "von": 9,
+                  "bis": 45,
+                  "schritt": 3
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-05-3",
@@ -686,7 +1275,23 @@
           "answer": "hs",
           "unit_label": "cm",
           "round": 2,
-          "solution": "Ein Dreieck: {M} : 4 = {M/4} cm². hs = 2 · {M/4} : {a} = {ergebnis} cm"
+          "solution": "Ein Dreieck: {M} : 4 = {M/4} cm². hs = 2 · {M/4} : {a} = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "hs": {
+                  "von": 4,
+                  "bis": 12,
+                  "schritt": 2
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-05-4",
@@ -727,6 +1332,10 @@
               "value": "2 * halb * 2 * halb * hs / 3",
               "feedback": "Für das Volumen zählt die Körperhöhe h, nicht hs."
             }
+          ],
+          "pfade": [
+            "B",
+            "C"
           ]
         },
         {
@@ -761,6 +1370,94 @@
               "id": "volumen_faktor",
               "value": "a * a * h / 3 * f",
               "feedback": "Bei {f}-fachen Längen wird das Volumen {f*f*f}-mal so groß."
+            }
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 9
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                },
+                "f": {
+                  "aus": [
+                    2
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 15
+                },
+                "h": {
+                  "aus": [
+                    6,
+                    9,
+                    12
+                  ]
+                },
+                "f": {
+                  "aus": [
+                    2,
+                    3
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-SK-05-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 14
+            },
+            "h1": {
+              "aus": [
+                3,
+                6,
+                9
+              ]
+            },
+            "d": {
+              "aus": [
+                3,
+                6,
+                9
+              ]
+            }
+          },
+          "berechnet": {
+            "h2": "h1 + d"
+          },
+          "template": "Zwei quadratische Pyramiden haben dieselbe Grundkante {a} cm. Die erste ist {h1} cm hoch, die zweite {h2} cm. Um wie viel cm³ unterscheiden sich die Volumen?",
+          "answer": "a * a * d / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "V₁ = {a*a}·{h1} : 3 = {a*a*h1/3} cm³, V₂ = {a*a}·{h2} : 3 = {a*a*h2/3} cm³. Unterschied: {ergebnis} cm³.",
+          "misconceptions": [
+            {
+              "id": "drittel_vergessen",
+              "value": "a * a * d",
+              "feedback": "Bei der Pyramide gehört das Drittel dazu."
+            },
+            {
+              "id": "hoehen_addiert",
+              "value": "a * a * (h1 + h2) / 3",
+              "feedback": "Gefragt ist der Unterschied, also die Differenz der Höhen."
             }
           ]
         }
@@ -810,7 +1507,25 @@
               "value": "r * r + h * h",
               "feedback": "Die Wurzel fehlt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    3,
+                    4
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    4,
+                    3
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-06-2",
@@ -848,7 +1563,25 @@
               "value": "s",
               "feedback": "s ist die schräge Linie, h die senkrechte."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    3,
+                    4
+                  ]
+                },
+                "s": {
+                  "aus": [
+                    5,
+                    5
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-06-3",
@@ -879,7 +1612,25 @@
           "answer": "wurzel(s * s - h * h)",
           "unit_label": "cm",
           "round": 2,
-          "solution": "r² = {s}² − {h}² = {s*s-h*h}, r = {ergebnis} cm"
+          "solution": "r² = {s}² − {h}² = {s*s-h*h}, r = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "h": {
+                  "aus": [
+                    4,
+                    3
+                  ]
+                },
+                "s": {
+                  "aus": [
+                    5,
+                    5
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-06-4",
@@ -917,7 +1668,25 @@
               "value": "wurzel(d * d + h * h)",
               "feedback": "Erst den Durchmesser halbieren."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "d": {
+                  "aus": [
+                    6,
+                    8
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    4,
+                    3
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-06-5",
@@ -944,7 +1713,57 @@
           "answer": "wurzel(r * r + h * h)",
           "unit_label": "cm",
           "round": 2,
-          "solution": "s = {ergebnis} cm ist immer die längste — sie ist die Hypotenuse."
+          "solution": "s = {ergebnis} cm ist immer die längste — sie ist die Hypotenuse.",
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-SK-06-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "d": {
+              "aus": [
+                6,
+                8,
+                12,
+                16,
+                10,
+                24
+              ]
+            },
+            "s": {
+              "aus": [
+                5,
+                5,
+                10,
+                10,
+                13,
+                13
+              ]
+            }
+          },
+          "bedingung": "(s > d / 2) * ganz(wurzel(s * s - d / 2 * d / 2))",
+          "template": "Ein Kegel hat den Durchmesser {d} cm und die Mantellinie s = {s} cm. Berechne die Höhe.",
+          "answer": "wurzel(s * s - d / 2 * d / 2)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Der Radius ist {d} : 2 = {d/2} cm. Dann h = √({s}² − {d/2}²) = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "radius_durchmesser",
+              "value": "wurzel(betrag(s * s - d * d))",
+              "feedback": "In das rechtwinklige Dreieck gehört der Radius, nicht der Durchmesser."
+            },
+            {
+              "id": "quadrieren_vergessen",
+              "value": "s - d / 2",
+              "feedback": "Erst quadrieren, dann abziehen, dann die Wurzel ziehen."
+            }
+          ]
         }
       ]
     },
@@ -980,7 +1799,39 @@
               "value": "3.14 * r * r * h",
               "feedback": "Der Faktor ⅓ fehlt — das wäre ein Zylinder."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 6
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6,
+                    9
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 5,
+                  "bis": 12
+                },
+                "h": {
+                  "aus": [
+                    12,
+                    15,
+                    18
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-07-2",
@@ -1011,7 +1862,25 @@
               "value": "3.14 * d * d * h / 3",
               "feedback": "Erst halbieren."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "d": {
+                  "von": 2,
+                  "bis": 12,
+                  "schritt": 2
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6,
+                    9
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-07-3",
@@ -1033,7 +1902,23 @@
           "answer": "3.14 * r * r * h - 3.14 * r * r * h / 3",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "Zylinder {3.14*r*r*h} − Kegel {3.14*r*r*h/3} = {ergebnis} cm³"
+          "solution": "Zylinder {3.14*r*r*h} − Kegel {3.14*r*r*h/3} = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-07-4",
@@ -1058,7 +1943,23 @@
           "answer": "h",
           "unit_label": "cm",
           "round": 2,
-          "solution": "h = 3 · {V} : (3,14 · {r*r}) = {ergebnis} cm"
+          "solution": "h = 3 · {V} : (3,14 · {r*r}) = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-07-5",
@@ -1097,6 +1998,51 @@
               "value": "3.14 * r * r * s / 3",
               "feedback": "Für das Volumen zählt h, nicht s."
             }
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-SK-07-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15
+              ]
+            }
+          },
+          "berechnet": {
+            "Vz": "3.14 * r * r * h"
+          },
+          "template": "Ein Kegel und ein Zylinder haben denselben Radius {r} cm und dieselbe Höhe {h} cm. Der Zylinder fasst {Vz} cm³. Wie viel fasst der Kegel? (π ≈ 3,14)",
+          "answer": "3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Der Kegel fasst genau ein Drittel des Zylinders: {Vz} : 3 = {ergebnis} cm³.",
+          "misconceptions": [
+            {
+              "id": "drittel_vergessen",
+              "value": "Vz",
+              "feedback": "Der Kegel fasst nur ein Drittel — drei Kegel füllen den Zylinder."
+            },
+            {
+              "id": "haelfte_statt_drittel",
+              "value": "Vz / 2",
+              "feedback": "Es ist ein Drittel, nicht die Hälfte."
+            }
           ]
         }
       ]
@@ -1133,7 +2079,33 @@
               "value": "3.14 * r * r * s",
               "feedback": "M = π · r · s, ohne zweites r."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 6
+                },
+                "s": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 5,
+                  "bis": 12
+                },
+                "s": {
+                  "von": 13,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-08-2",
@@ -1159,7 +2131,33 @@
               "value": "3.14 * r * s",
               "feedback": "Der Grundkreis fehlt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 6
+                },
+                "s": {
+                  "von": 3,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 5,
+                  "bis": 12
+                },
+                "s": {
+                  "von": 13,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-08-3",
@@ -1200,6 +2198,10 @@
               "value": "3.14 * r * r + 3.14 * r * h",
               "feedback": "Für den Mantel braucht man s, nicht h."
             }
+          ],
+          "pfade": [
+            "B",
+            "C"
           ]
         },
         {
@@ -1226,7 +2228,21 @@
               "value": "3.14 * r * r + 3.14 * r * s",
               "feedback": "Die Tüte hat oben keinen Deckel."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "s": {
+                  "von": 5,
+                  "bis": 12
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-08-5",
@@ -1248,7 +2264,58 @@
           "answer": "3.14 * r * s",
           "unit_label": "cm²",
           "round": 2,
-          "solution": "M = O − Grundkreis = {O} − {3.14*r*r} = {ergebnis} cm²"
+          "solution": "M = O − Grundkreis = {O} − {3.14*r*r} = {ergebnis} cm²",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "s": {
+                  "von": 5,
+                  "bis": 12
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-SK-08-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "s": {
+              "von": 6,
+              "bis": 26
+            }
+          },
+          "berechnet": {
+            "M": "3.14 * r * s"
+          },
+          "bedingung": "s > r",
+          "template": "Ein Kegel hat den Mantel {M} cm² und die Mantellinie s = {s} cm. Wie groß ist der Radius? (π ≈ 3,14)",
+          "answer": "r",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Aus M = π·r·s folgt r = {M} : (3,14 · {s}) = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "radius_durchmesser",
+              "value": "M / (3.14 * s) * 2",
+              "feedback": "Gefragt ist der Radius, nicht der Durchmesser."
+            },
+            {
+              "id": "grundflaeche_unvollstaendig",
+              "value": "M / (3.14 * s * s)",
+              "feedback": "In der Mantelformel steht s nur einmal."
+            }
+          ]
         }
       ]
     },
@@ -1279,7 +2346,24 @@
           "answer": "3.14 * r * r",
           "unit_label": "cm²",
           "round": 2,
-          "solution": "G = 3 · {V} : {h} = {ergebnis} cm²"
+          "solution": "G = 3 · {V} : {h} = {ergebnis} cm²",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6,
+                    9
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-09-2",
@@ -1301,7 +2385,21 @@
           "answer": "s",
           "unit_label": "cm",
           "round": 2,
-          "solution": "s = {M} : (3,14 · {r}) = {ergebnis} cm"
+          "solution": "s = {M} : (3,14 · {r}) = {ergebnis} cm",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "s": {
+                  "von": 5,
+                  "bis": 12
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-09-3",
@@ -1335,7 +2433,25 @@
           "answer": "3.14 * r * r * h / 3",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "h = {h} cm. V = {ergebnis} cm³"
+          "solution": "h = {h} cm. V = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    3,
+                    4
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    4,
+                    3
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-09-4",
@@ -1363,7 +2479,11 @@
           "answer": "3.14 * (f * r) * (f * r) * (f * h) / 3",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "Neue Maße: r = {f*r} cm, h = {f*h} cm. V = {ergebnis} cm³"
+          "solution": "Neue Maße: r = {f*r} cm, h = {f*h} cm. V = {ergebnis} cm³",
+          "pfade": [
+            "B",
+            "C"
+          ]
         },
         {
           "id": "AB-SK-09-5",
@@ -1390,7 +2510,64 @@
           "unit_label": "Liter",
           "round": 3,
           "gerundet": true,
-          "solution": "V = {3.14*r*r*h/3} cm³ = {ergebnis} Liter"
+          "solution": "V = {3.14*r*r*h/3} cm³ = {ergebnis} Liter",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-SK-09-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12,
+                15
+              ]
+            }
+          },
+          "berechnet": {
+            "V": "3.14 * r * r * h / 3"
+          },
+          "template": "Ein Kegel hat das Volumen {V} cm³ und den Radius {r} cm. Wie hoch ist er? (π ≈ 3,14)",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Aus V = π·r²·h : 3 folgt h = 3 · {V} : (3,14 · {r}²) = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "drittel_vergessen",
+              "value": "V / (3.14 * r * r)",
+              "feedback": "Das Drittel muss rückgängig gemacht werden: erst mal 3."
+            },
+            {
+              "id": "quadrieren_vergessen",
+              "value": "3 * V / (3.14 * r)",
+              "feedback": "Der Radius steht im Quadrat."
+            }
+          ]
         }
       ]
     },
@@ -1421,7 +2598,30 @@
               "value": "4 * 3.14 * r * r / 3",
               "feedback": "Beim Volumen steht r hoch drei."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    9,
+                    12,
+                    15
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-10-2",
@@ -1442,7 +2642,25 @@
               "value": "3.14 * r * r",
               "feedback": "Der Faktor 4 fehlt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 1,
+                  "bis": 8
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 8,
+                  "bis": 20
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-10-3",
@@ -1468,7 +2686,30 @@
               "value": "4 * 3.14 * d * d * d / 3",
               "feedback": "Erst halbieren."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "d": {
+                  "aus": [
+                    6,
+                    12
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "d": {
+                  "aus": [
+                    18,
+                    24,
+                    30
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-10-4",
@@ -1493,7 +2734,29 @@
               "value": "4 * 3.14 * r * r * r / 3",
               "feedback": "Nur die Hälfte."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    9,
+                    12
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-10-5",
@@ -1513,6 +2776,42 @@
               "id": "grundkreis_vergessen",
               "value": "4 * 3.14 * r * r / 2",
               "feedback": "Der Bodenkreis fehlt."
+            }
+          ],
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-SK-10-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "berechnet": {
+            "O": "4 * 3.14 * r * r"
+          },
+          "template": "Eine Kugel hat die Oberfläche {O} cm². Wie groß ist ihr Radius? (π ≈ 3,14)",
+          "answer": "r",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Aus O = 4·π·r² folgt r² = {O} : (4 · 3,14) = {r*r}. Also r = √{r*r} = {ergebnis} cm.",
+          "misconceptions": [
+            {
+              "id": "quadrieren_vergessen",
+              "value": "O / (4 * 3.14)",
+              "feedback": "Das ist r². Die Wurzel fehlt noch."
+            },
+            {
+              "id": "drittel_vergessen",
+              "value": "O / (4 * 3.14 * 3)",
+              "feedback": "Das Drittel gehört zum Volumen, nicht zur Oberfläche."
             }
           ]
         }
@@ -1552,7 +2851,27 @@
               "value": "3.14 * r * r * hz + 3.14 * r * r * h",
               "feedback": "Beim Kegel fehlt der Faktor ⅓."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                },
+                "hz": {
+                  "von": 2,
+                  "bis": 8
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-11-2",
@@ -1585,7 +2904,41 @@
               "value": "3.14 * r * r * h / 3 + 4 * 3.14 * r * r * r / 3",
               "feedback": "Oben sitzt nur eine Halbkugel."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    9,
+                    12
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    9,
+                    12
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-11-3",
@@ -1612,7 +2965,28 @@
           "answer": "a * a * hq + a * a * h / 3",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "Quader {a*a*hq} + Pyramide {a*a*h/3} = {ergebnis} cm³"
+          "solution": "Quader {a*a*hq} + Pyramide {a*a*h/3} = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 4,
+                  "bis": 10,
+                  "schritt": 2
+                },
+                "hq": {
+                  "von": 3,
+                  "bis": 8
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-11-4",
@@ -1635,7 +3009,11 @@
           "answer": "2 * 3.14 * r * hz + 3.14 * r * s",
           "unit_label": "cm²",
           "round": 2,
-          "solution": "Zylindermantel {2*3.14*r*hz} + Kegelmantel {3.14*r*s} = {ergebnis} cm²"
+          "solution": "Zylindermantel {2*3.14*r*hz} + Kegelmantel {3.14*r*s} = {ergebnis} cm²",
+          "pfade": [
+            "B",
+            "C"
+          ]
         },
         {
           "id": "AB-SK-11-5",
@@ -1659,7 +3037,61 @@
           "answer": "3.14 * r * r * h - 3.14 * r * r * h / 3",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "{3.14*r*r*h} − {3.14*r*r*h/3} = {ergebnis} cm³"
+          "solution": "{3.14*r*r*h} − {3.14*r*r*h/3} = {ergebnis} cm³",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    6,
+                    9
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "AB-SK-11-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                6,
+                9
+              ]
+            },
+            "hz": {
+              "von": 3,
+              "bis": 20
+            }
+          },
+          "template": "Ein Körper besteht aus einem Zylinder (r = {r} cm, h = {hz} cm) mit einer aufgesetzten Halbkugel vom selben Radius. Berechne das Volumen. (π ≈ 3,14)",
+          "answer": "3.14 * r * r * hz + 4 * 3.14 * r * r * r / 3 / 2",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Zylinder: 3,14 · {r}² · {hz} = {3.14*r*r*hz} cm³. Halbkugel: die Hälfte von 4·3,14·{r}³ : 3, also {4*3.14*r*r*r/3/2} cm³. Zusammen {ergebnis} cm³.",
+          "misconceptions": [
+            {
+              "id": "ganze_kugel",
+              "value": "3.14 * r * r * hz + 4 * 3.14 * r * r * r / 3",
+              "feedback": "Oben sitzt nur eine HALBE Kugel — noch durch 2 teilen."
+            },
+            {
+              "id": "teilkoerper_vergessen",
+              "value": "3.14 * r * r * hz",
+              "feedback": "Die Halbkugel fehlt."
+            }
+          ]
         }
       ]
     },
@@ -1693,7 +3125,37 @@
               "value": "a * a * h",
               "feedback": "Spitzkörper: Faktor ⅓."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "a": {
+                  "von": 3,
+                  "bis": 9
+                },
+                "h": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "a": {
+                  "von": 8,
+                  "bis": 18
+                },
+                "h": {
+                  "aus": [
+                    9,
+                    12
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-12-2",
@@ -1712,7 +3174,33 @@
           "answer": "3.14 * r * s",
           "unit_label": "cm²",
           "round": 2,
-          "solution": "Nur der Mantel: 3,14 · {r} · {s} = {ergebnis} cm²"
+          "solution": "Nur der Mantel: 3,14 · {r} · {s} = {ergebnis} cm²",
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "von": 2,
+                  "bis": 6
+                },
+                "s": {
+                  "von": 6,
+                  "bis": 12
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "von": 5,
+                  "bis": 12
+                },
+                "s": {
+                  "von": 13,
+                  "bis": 25
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-12-3",
@@ -1737,7 +3225,29 @@
               "value": "4 * 3.14 * r * r",
               "feedback": "„Passt hinein“ heißt Volumen."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    3,
+                    6
+                  ]
+                }
+              }
+            },
+            "C": {
+              "vars": {
+                "r": {
+                  "aus": [
+                    9,
+                    12
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-12-4",
@@ -1778,7 +3288,25 @@
               "value": "2 * halb * 2 * halb + 4 * (2 * halb * hs / 2)",
               "feedback": "Der Boden wird nicht gedeckt."
             }
-          ]
+          ],
+          "stufen": {
+            "A": {
+              "vars": {
+                "halb": {
+                  "aus": [
+                    3,
+                    4
+                  ]
+                },
+                "h": {
+                  "aus": [
+                    4,
+                    3
+                  ]
+                }
+              }
+            }
+          }
         },
         {
           "id": "AB-SK-12-5",
@@ -1810,7 +3338,52 @@
           "answer": "3.14 * r * r * h / 3",
           "unit_label": "cm³",
           "round": 2,
-          "solution": "h = {h} cm. V = {ergebnis} cm³, O = {3.14*r*r+3.14*r*s} cm²"
+          "solution": "h = {h} cm. V = {ergebnis} cm³, O = {3.14*r*r+3.14*r*s} cm²",
+          "pfade": [
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "AB-SK-12-6",
+          "pfade": [
+            "C"
+          ],
+          "vars": {
+            "r": {
+              "aus": [
+                3,
+                6,
+                9
+              ]
+            },
+            "h": {
+              "aus": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          },
+          "bedingung": "h < 4 * r",
+          "template": "Vergleiche einen Kegel (r = {r} cm, h = {h} cm) mit einer Kugel vom selben Radius. Um wie viel cm³ ist die Kugel größer? (π ≈ 3,14)",
+          "answer": "4 * 3.14 * r * r * r / 3 - 3.14 * r * r * h / 3",
+          "unit_label": "cm³",
+          "round": 2,
+          "solution": "Kugel: 4·3,14·{r}³ : 3 = {4*3.14*r*r*r/3} cm³. Kegel: 3,14·{r}²·{h} : 3 = {3.14*r*r*h/3} cm³. Unterschied: {ergebnis} cm³.",
+          "misconceptions": [
+            {
+              "id": "drittel_vergessen",
+              "value": "4 * 3.14 * r * r * r - 3.14 * r * r * h",
+              "feedback": "Bei beiden Körpern gehört das Drittel dazu."
+            },
+            {
+              "id": "teilkoerper_vergessen",
+              "value": "4 * 3.14 * r * r * r / 3",
+              "feedback": "Das ist nur die Kugel. Der Kegel muss abgezogen werden."
+            }
+          ]
         }
       ]
     }

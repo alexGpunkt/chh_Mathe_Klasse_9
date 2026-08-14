@@ -8,7 +8,25 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v31-integration-fixes-develop';
+const VERSION = 'mathe9-v34-rechner-beamer-develop';
+
+/* ---------- Was NICHT ins Offlinepaket gehört ----------
+   Bis V34 lud jedes Schülergerät bei der Installation auch das
+   Lehrerdashboard mit: dashboard/index.html, dashboard.js, dashboard.css
+   und beamer.*. Zusammen rund 19 KB gzip, die kein Kind je öffnet.
+
+   Offline nützt das Dashboard ohnehin nichts — es ist eine Live-Ansicht
+   auf Supabase und braucht in jedem Fall Netz. Für die Lehrkraft ändert
+   sich dadurch nichts Wesentliches: Der Fetch-Handler unten legt jede
+   abgerufene Datei weiterhin im Cache ab, das Dashboard steht nach dem
+   ersten Öffnen also genauso zur Verfügung wie vorher.
+
+   Ebenso fehlt hier dev-tools.js: Das Entwicklermenü wird von
+   dev-boot.js nur bei devMode nachgeladen und hat auf einem
+   Schülergerät nichts verloren.
+
+   Maßgeblich ist die Frage, für die diese Liste da ist: Was muss auf dem
+   Gerät liegen, damit der Unterricht ohne Netz weiterläuft? */
 
 const SCHALE = [
   './',
@@ -20,30 +38,36 @@ const SCHALE = [
   'matrix.html',
   'animationen.html',
   'uebungen.html',
-  'dashboard/index.html',
-  'dashboard/dashboard.css',
-  'dashboard/dashboard.js',
   'version.json',
   'pruefung-sets.json',
   'schema/fehlvorstellungen-kategorien.json',
-  'assets/js/dev-tools.js',
+  'assets/js/dev-boot.js',
   'units/index.json',
   'spiral/plan.json',
   'assets/css/app.css',
   'assets/css/anim.css',
   'assets/css/buch.css',
+  'assets/css/rechner.css',
   'assets/js/store.js',
   'assets/js/weiterlernen.js',
   'assets/js/supabase-config.js',
   'assets/js/student-login.js',
   'assets/js/zeichnen.js',
-  'assets/js/animationen.js',
+  /* Je Lernbereich eine Datei. Offline liegen alle im Cache — eine
+     Einheitenseite lädt aber nur den Kern und ihren eigenen Bereich. */
+  'assets/js/animationen-kern.js',
+  'assets/js/animationen-laden.js',
+  'assets/js/animationen-lf.js',
+  'assets/js/animationen-pz.js',
+  'assets/js/animationen-kp.js',
+  'assets/js/animationen-sk.js',
   'assets/js/animationen-seite.js',
   'assets/js/uebungen-seite.js',
   'assets/js/tracker.js',
   'assets/js/lernmodus.js',
   'assets/js/uebungsrahmen.js',
   'assets/js/engine.js',
+  'assets/js/taschenrechner.js',
   'assets/js/buch.js',
   'assets/js/ausdruck.js',
   'assets/js/spiral.js',

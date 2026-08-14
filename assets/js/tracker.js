@@ -38,6 +38,36 @@ const Tracker = (() => {
    */
   let lastError = null;
 
+  /* ---------- Ping-Gesundheit ----------
+     Die Beameransicht soll auf einen Blick zeigen, wessen Gerät gerade
+     nicht durchkommt. Dafür zählt das Gerät seine eigenen erfolglosen
+     Sendeversuche mit und hängt den Stand an jeden Herzschlag.
+
+     Wichtig zu wissen: Diese Zahl erreicht das Dashboard erst, wenn wieder
+     etwas durchgeht. Ein Gerät ohne Netz kann nicht melden, dass es kein
+     Netz hat. Die verlässliche Größe bleibt deshalb die serverseitige:
+     wie lange der letzte angekommene Ping her ist. Der Zähler ergänzt sie
+     um die Vorgeschichte — kurze Aussetzer werden dadurch sichtbar, die
+     sonst zwischen zwei Herzschlägen verschwinden. */
+  let sendeFehler = 0;
+  let fehlerSeitLetztemErfolg = 0;
+  let letzterErfolg = null;
+
+  /* ---------- Dauersendung des Fortschritts ----------
+     Bis V33 ging eine Fortschrittszeile nur bei Pfadwahl, Wiederaufnahme
+     und richtiger Antwort raus. Wer zehn Minuten an derselben Aufgabe saß,
+     stand im Dashboard mit einem zehn Minuten alten Stand — und in der
+     Beameransicht wäre das Strichmännchen stehengeblieben, ohne dass
+     erkennbar war, ob das Kind arbeitet oder das Gerät weg ist.
+
+     Deshalb wird der zuletzt gemeldete Stand im Takt erneut gesendet.
+     Das ist bewusst ein Upsert auf dieselbe Zeile: Es entsteht kein
+     Datenberg, nur ein frisches updated_at. */
+  const FORTSCHRITT_TAKT_MS = 20000;
+  let letzterFortschritt = null;
+  let letzteFortschrittsSendung = 0;
+  let fortschrittTimer = null;
+
   let currentContext = {
     page: pageName(),
     unit: null,
@@ -393,6 +423,9 @@ const Tracker = (() => {
       );
 
       lastError = null;
+      letzterErfolg = Date.now();
+      fehlerSeitLetztemErfolg = sendeFehler;
+      sendeFehler = 0;
 
       writeJson(
         SYNC_KEY,
@@ -404,6 +437,7 @@ const Tracker = (() => {
       }
     } catch (error) {
       lastError = error.message;
+      sendeFehler++;
 
       console.warn(
         '[Mathe9 tracker] Versand fehlgeschlagen:',
@@ -427,8 +461,23 @@ const Tracker = (() => {
       wartend: queue.length,
       aeltestes: queue[0]?.ts || null,
       zuletzt_gesendet: readJson(SYNC_KEY, null),
-      letzter_fehler: lastError
+      letzter_fehler: lastError,
+      ...pingZustand(),
+      fortschritt_gemerkt: letzterFortschritt
+        ? `${letzterFortschritt.unit} ${letzterFortschritt.path} · ${letzterFortschritt.percent} %`
+        : null,
+      fortschritt_gesendet_vor_ms: letzteFortschrittsSendung
+        ? Date.now() - letzteFortschrittsSendung
+        : null
     };
+  }
+
+  /* Ob sich am gemeldeten Stand etwas geändert hat. Nur dafür lohnt ein
+     Schreibzugriff außer der Reihe; für die Frische sorgt der Takt. */
+  function fortschrittGleich(a, b) {
+    if (!a || !b) return false;
+    return ['unit', 'path', 'task', 'completed', 'total', 'percent', 'correct', 'attempts', 'status']
+      .every(feld => a[feld] === b[feld]);
   }
 
   async function progress(snapshot = {}) {
@@ -436,6 +485,22 @@ const Tracker = (() => {
       ...currentContext,
       ...snapshot
     };
+
+    /* Den Stand merken, auch wenn gerade nichts gesendet werden kann —
+       der Takt holt es nach, sobald wieder Netz da ist. */
+    if (snapshot && Object.keys(snapshot).length) {
+      letzterFortschritt = {
+        unit: snapshot.unit ?? letzterFortschritt?.unit ?? currentContext.unit ?? null,
+        path: snapshot.path ?? letzterFortschritt?.path ?? currentContext.path ?? null,
+        task: snapshot.task ?? null,
+        completed: snapshot.completed ?? letzterFortschritt?.completed ?? 0,
+        total: snapshot.total ?? letzterFortschritt?.total ?? 0,
+        percent: snapshot.percent ?? letzterFortschritt?.percent ?? 0,
+        correct: snapshot.correct ?? letzterFortschritt?.correct ?? 0,
+        attempts: snapshot.attempts ?? letzterFortschritt?.attempts ?? 0,
+        status: snapshot.status ?? letzterFortschritt?.status ?? 'active'
+      };
+    }
 
     if (!configured()) {
       console.debug(
@@ -456,51 +521,76 @@ const Tracker = (() => {
       return;
     }
 
+    /*
+     * Gesendet wird immer der gemerkte Gesamtstand, nicht der übergebene
+     * Ausschnitt. Der Takt ruft progress() ohne Argumente auf — würde die
+     * Zeile aus dem leeren Ausschnitt gebaut, schriebe er alle Zählwerte
+     * auf null und das Dashboard sähe einen Rückschritt.
+     */
+    const stand = letzterFortschritt || {};
+
     const row = {
       ...common(),
 
+      unit:
+        stand.unit ??
+        currentContext.unit ??
+        null,
+
+      path:
+        stand.path ??
+        currentContext.path ??
+        '',
+
       current_task:
-        snapshot.task ??
+        stand.task ??
         currentContext.task ??
         null,
 
       completed_tasks:
         wholeNumber(
-          snapshot.completed,
+          stand.completed,
           0
         ),
 
       total_tasks:
         wholeNumber(
-          snapshot.total,
+          stand.total,
           0
         ),
 
       progress_percent:
         percentage(
-          snapshot.percent
+          stand.percent
         ),
 
       correct_count:
         wholeNumber(
-          snapshot.correct,
+          stand.correct,
           0
         ),
 
       attempts_count:
         wholeNumber(
-          snapshot.attempts,
+          stand.attempts,
           0
         ),
 
       status:
-        snapshot.status === 'completed'
+        stand.status === 'completed'
           ? 'completed'
           : 'active',
 
       updated_at:
         new Date().toISOString()
     };
+
+    /*
+     * Ohne Einheit gibt es nichts zu melden — mathe9_progress.unit ist
+     * NOT NULL, und eine Zeile ohne Einheit wäre im Dashboard ohnehin
+     * nicht zuzuordnen.
+     */
+    if (!row.unit) return;
 
     /*
      * common() liefert das Ereignisfeld "task".
@@ -541,12 +631,59 @@ const Tracker = (() => {
           )
         );
       }
+
+      letzteFortschrittsSendung = Date.now();
+      letzterErfolg = Date.now();
+      fehlerSeitLetztemErfolg = sendeFehler;
+      sendeFehler = 0;
     } catch (error) {
+      sendeFehler++;
+
       console.warn(
         '[Mathe9 progress]',
         error.message
       );
     }
+  }
+
+  /* ---------- Fortschritt im Takt nachsenden ----------
+     Läuft nur bei sichtbarer Seite: Ein Tab im Hintergrund arbeitet nicht,
+     und ein Strichmännchen, das für ein weggelegtes Gerät weiterläuft,
+     wäre eine Falschaussage. Genau dafür ist der Ping-Status da. */
+  function fortschrittTakt() {
+    if (!letzterFortschritt) return;
+    if (document.visibilityState !== 'visible') return;
+    if (Date.now() - letzteFortschrittsSendung < FORTSCHRITT_TAKT_MS - 1000) return;
+    progress({});
+  }
+
+  /* Meldet denselben Stand sofort, wenn er sich geändert hat — sonst
+     überlässt es dem Takt. So kostet ein Aufgabenwechsel einen Schreib-
+     zugriff, ein Tastendruck aber keinen. */
+  function progressWennNeu(snapshot = {}) {
+    const vorher = letzterFortschritt;
+    const gleich = fortschrittGleich(vorher, {
+      unit: snapshot.unit ?? vorher?.unit ?? null,
+      path: snapshot.path ?? vorher?.path ?? null,
+      task: snapshot.task ?? null,
+      completed: snapshot.completed ?? vorher?.completed ?? 0,
+      total: snapshot.total ?? vorher?.total ?? 0,
+      percent: snapshot.percent ?? vorher?.percent ?? 0,
+      correct: snapshot.correct ?? vorher?.correct ?? 0,
+      attempts: snapshot.attempts ?? vorher?.attempts ?? 0,
+      status: snapshot.status ?? vorher?.status ?? 'active'
+    });
+    if (gleich) return Promise.resolve();
+    return progress(snapshot);
+  }
+
+  function pingZustand() {
+    return {
+      ping_fails: sendeFehler,
+      ping_fails_vorher: fehlerSeitLetztemErfolg,
+      queue_pending: queue.length,
+      seit_erfolg_ms: letzterErfolg ? Date.now() - letzterErfolg : null
+    };
   }
 
   function setContext(context = {}) {
@@ -581,9 +718,16 @@ const Tracker = (() => {
         reason,
         idle_seconds: idleSeconds,
         progress:
-          currentContext.progress
+          currentContext.progress,
+
+        ...pingZustand()
       }
     );
+
+    /* Der Herzschlag ist auch der Auslöser für die Dauersendung des
+       Fortschritts. Beides im selben Takt zu halten heißt: Wenn im
+       Dashboard ein Ping ankommt, ist der Fortschritt daneben genauso alt. */
+    fortschrittTakt();
   }
 
   function interaction(kind) {
@@ -668,6 +812,23 @@ const Tracker = (() => {
       seconds * 1000
     );
 
+    /* Eigener Takt neben dem Herzschlag: Der Herzschlag kann länger
+       ausfallen als der Fortschritt alt werden darf, wenn heartbeatSeconds
+       hochgesetzt wird. */
+    fortschrittTimer = setInterval(
+      fortschrittTakt,
+      FORTSCHRITT_TAKT_MS
+    );
+
+    /* Beim Verlassen der Seite den letzten Stand mitnehmen. Ohne das
+       stünde im Dashboard der Stand von vor bis zu 20 Sekunden. */
+    addEventListener(
+      'pagehide',
+      () => {
+        if (letzterFortschritt) progress({});
+      }
+    );
+
     flush();
   }
 
@@ -675,10 +836,12 @@ const Tracker = (() => {
     start,
     track: enqueue,
     progress,
+    progressWennNeu,
     setContext,
     flush,
     heartbeat,
     status,
+    pingZustand,
     studentName
   };
 })();

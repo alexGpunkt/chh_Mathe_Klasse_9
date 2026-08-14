@@ -51,7 +51,11 @@ function showApp(){ $('#loginPanel').hidden=true;$('#dashboardApp').hidden=false
   /* Der Katalog muss vor dem ersten Rendern da sein, sonst bleibt die
      bereichsübergreifende Tafel bis zur nächsten Aktualisierung leer. */
   ladeKategorien().then(loadAll);
-  loadOps();loadModus() }
+  loadOps();loadModus();
+  /* Die Reihenfolge der Einheiten ist die Gerade, auf der die
+     Strichmännchen laufen — sie muss vor dem ersten Datenpaket da sein. */
+  ladeEinheitenReihe();
+  beamerFelderFuellen();beamerKanalOeffnen() }
 function showError(text){$('#error').textContent=text;$('#error').hidden=false}
 function rosterMessage(text,error=false){const e=$('#rosterMessage');e.textContent=text;e.className='message '+(error?'bad':'good');e.hidden=false;setTimeout(()=>e.hidden=true,4000)}
 
@@ -352,7 +356,7 @@ function renderKategorien(antworten){
 }
 
 async function loadRoster(){const cls=$('#classFilter').value.trim();const q='mathe9_students?select=id,login_name,display_name,class_code,active,created_at'+(cls?'&class_code=eq.'+encodeURIComponent(cls):'')+'&order=class_code,login_name';const rows=await request(rest()+q);renderRoster(rows||[])}
-function renderRoster(rows){$('#rosterBody').innerHTML=rows.length?rows.map(r=>`<tr><td><code>${esc(r.login_name)}</code></td><td>${esc(r.display_name)}</td><td>${esc(r.class_code)}</td><td><span class="badge"><i class="dot ${r.active?'active':''}"></i>${r.active?'aktiv':'gesperrt'}</span></td><td class="actions"><button data-toggle="${r.id}" data-active="${r.active}">${r.active?'Sperren':'Freigeben'}</button><button class="danger" data-delete="${r.id}">Löschen</button></td></tr>`).join(''):'<tr><td colspan="5" class="muted">Noch keine Einträge.</td></tr>'}
+function renderRoster(rows){letzteRoster=rows||[];$('#rosterBody').innerHTML=rows.length?rows.map(r=>`<tr><td><code>${esc(r.login_name)}</code></td><td>${esc(r.display_name)}</td><td>${esc(r.class_code)}</td><td><span class="badge"><i class="dot ${r.active?'active':''}"></i>${r.active?'aktiv':'gesperrt'}</span></td><td class="actions"><button data-toggle="${r.id}" data-active="${r.active}">${r.active?'Sperren':'Freigeben'}</button><button class="danger" data-delete="${r.id}">Löschen</button></td></tr>`).join(''):'<tr><td colspan="5" class="muted">Noch keine Einträge.</td></tr>'}
 async function addStudent(event){event.preventDefault();const login=normalizeLogin($('#studentLogin').value),display=$('#studentDisplay').value.trim(),cls=$('#studentClass').value.trim();if(!validLogin(login)){rosterMessage('Benutzername muss nachname.vorname entsprechen.',true);return}try{await request(rest()+'mathe9_students',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify({login_name:login,display_name:display,class_code:cls,active:true})});event.target.reset();$('#studentClass').value=$('#classFilter').value.trim();rosterMessage('Schüler wurde freigeschaltet.');await loadRoster()}catch(e){rosterMessage('Hinzufügen fehlgeschlagen: '+e.message,true)}}
 async function rosterClick(event){const toggle=event.target.closest('[data-toggle]'),del=event.target.closest('[data-delete]');try{if(toggle){const active=toggle.dataset.active==='true';await request(rest()+'mathe9_students?id=eq.'+encodeURIComponent(toggle.dataset.toggle),{method:'PATCH',headers:{Prefer:'return=minimal'},body:JSON.stringify({active:!active})});rosterMessage(active?'Zugang wurde gesperrt.':'Zugang wurde freigegeben.')}else if(del){if(!confirm('Diesen Eintrag wirklich löschen?'))return;await request(rest()+'mathe9_students?id=eq.'+encodeURIComponent(del.dataset.delete),{method:'DELETE',headers:{Prefer:'return=minimal'}});rosterMessage('Eintrag wurde gelöscht.')}else return;await loadRoster()}catch(e){rosterMessage('Änderung fehlgeschlagen: '+e.message,true)}}
 
@@ -566,10 +570,205 @@ const mis={};
   const sorted=Object.entries(mis).sort((a,b)=>b[1]-a[1]).slice(0,10),max=sorted[0]?.[1]||1;
   $('#misconceptions').innerHTML=sorted.length?sorted.map(([k,n])=>`<div class="bar"><span>${esc(k)}</span><div class="barTrack"><i style="width:${n/max*100}%"></i></div><b>${n}</b></div>`).join(''):'<p class="muted">Noch keine diagnostizierten Denkfehler.</p>';
   renderKategorien(ans);
+
+  /* Die Beameransicht bekommt denselben Datenstand, aus dem gerade auch
+     die Tabellen oben entstanden sind. */
+  letzteBeamerZeilen=beamerZeilenBauen(progress,events);
+  beamerSenden();
+
   $('#feed').innerHTML=ans.slice(0,20).map(e=>{const p=payload(e.payload);return `<div class="feedItem"><b class="${p.correct?'ok':'no'}">${p.correct?'richtig':'noch falsch'}</b> · ${esc(e.student)} · ${esc(e.unit)} / ${esc(e.task)}<br><span class="muted">${ago(e.ts)} · ${p.attempts||1}. Versuch${p.misconception?' · '+esc(p.misconception):''}</span></div>`}).join('')||'<p class="muted">Noch keine Antworten.</p>';
 }
-function start(){stop();timer=setInterval(()=>{if(document.visibilityState==='visible')loadAll()},5000)}function stop(){if(timer){clearInterval(timer);timer=null}}
+/* ============================================================
+   Beameransicht · Versorgung und Grenzwerte
+
+   Die Beameransicht (dashboard/beamer.html) holt ihre Daten nicht selbst,
+   sondern bekommt sie von hier über einen BroadcastChannel. Das hält das
+   Sitzungstoken der Lehrkraft in genau einem Fenster und sorgt dafür, dass
+   Leinwand und Lehrerbildschirm nie zwei verschiedene Stände zeigen.
+
+   Die Grenzwerte stehen bewusst im Browser der Lehrkraft und nicht in der
+   Datenbank: Sie sind eine Einstellung dieses Arbeitsplatzes für diese
+   Stunde — im Klassenraum mit stabilem WLAN etwas anderes als im
+   Nebengebäude. Wer sie an einem anderen Gerät braucht, stellt sie dort
+   einmal ein.
+   ============================================================ */
+const BEAMER_KANAL='mathe9-beamer';
+const BEAMER_SPEICHER='mathe9.beamer.einstellungen';
+const BEAMER_STANDARD={maxFehler:3,maxSekundenOhnePing:120,frischSekunden:45,bezug:'reihe'};
+
+let beamerKanal=null;
+let beamerFenster=null;
+let beamerZuletztGehoert=0;      /* wann sich zuletzt eine Beameransicht gemeldet hat */
+let letzteRoster=[];             /* für Kinder, die noch gar nichts gesendet haben */
+let letzteBeamerZeilen=[];
+
+function beamerEinstellungenLesen(){
+  let gespeichert={};
+  try{gespeichert=JSON.parse(localStorage.getItem(BEAMER_SPEICHER)||'{}')||{}}catch{gespeichert={}}
+  return {...BEAMER_STANDARD,...gespeichert};
+}
+function beamerEinstellungenSchreiben(werte){
+  try{localStorage.setItem(BEAMER_SPEICHER,JSON.stringify(werte))}catch{/* privater Modus */}
+}
+function beamerFelderFuellen(){
+  const e=beamerEinstellungenLesen();
+  if($('#pingMaxFehler'))$('#pingMaxFehler').value=e.maxFehler;
+  if($('#pingMaxSekunden'))$('#pingMaxSekunden').value=e.maxSekundenOhnePing;
+  if($('#beamerBezug'))$('#beamerBezug').value=e.bezug;
+}
+function beamerFelderLesen(){
+  const zahl=(feld,standard,min,max)=>{
+    const n=Number($(feld)?.value);
+    if(!Number.isFinite(n))return standard;
+    return Math.max(min,Math.min(max,Math.round(n)));
+  };
+  const werte={
+    maxFehler:zahl('#pingMaxFehler',BEAMER_STANDARD.maxFehler,1,50),
+    maxSekundenOhnePing:zahl('#pingMaxSekunden',BEAMER_STANDARD.maxSekundenOhnePing,20,1800),
+    frischSekunden:BEAMER_STANDARD.frischSekunden,
+    bezug:$('#beamerBezug')?.value==='einheit'?'einheit':'reihe'
+  };
+  /* Der Grünbereich darf nie über dem Alarm liegen — sonst gäbe es einen
+     Zustand „frisch und trotzdem im Alarm", und niemand versteht die Farbe. */
+  werte.frischSekunden=Math.min(werte.frischSekunden,werte.maxSekundenOhnePing);
+  beamerEinstellungenSchreiben(werte);
+  return werte;
+}
+
+/* Eine Zeile je Kind. Bewusst auch für Kinder OHNE Fortschritt: Ein Gerät,
+   das sich nie gemeldet hat, ist genau der Fall, den die Lehrkraft auf der
+   Leinwand sehen soll — und der in einer Fortschrittstabelle fehlt. */
+function beamerZeilenBauen(progress,events){
+  const neuester=new Map();
+  (progress||[]).forEach(p=>{
+    const k=p.student_id||p.device_id;if(!k)return;
+    const alt=neuester.get(k);
+    if(!alt||zeitwert(p)>zeitwert(alt))neuester.set(k,p);
+  });
+
+  const letzterPing=new Map();
+  const fehlversuche=new Map();
+  (events||[]).forEach(e=>{
+    const k=e.student_id||e.device_id;if(!k||!e.ts)return;
+    const alt=letzterPing.get(k);
+    if(!alt||zeitwert(e)>zeitwert(alt)){
+      letzterPing.set(k,e);
+      /* Der Zähler des Geräts: wie oft ein Versand fehlschlug, bevor dieser
+         Ping durchkam. Er steht nur in Herzschlägen. */
+      if(e.event_type==='heartbeat'){
+        fehlversuche.set(k,Math.max(0,Number(payload(e.payload).ping_fails)||0));
+      }
+    }
+  });
+
+  const takt=Math.max(5,Number(C.heartbeatSeconds)||20);
+  const zeilen=[];
+  const gesehen=new Set();
+
+  neuester.forEach((p,k)=>{
+    gesehen.add(k);
+    const ping=letzterPing.get(k);
+    zeilen.push({
+      id:k,
+      name:p.student||'—',
+      unit:String(p.unit||'').toLowerCase(),
+      path:p.path||'',
+      percent:Math.max(0,Math.min(100,Number(p.progress_percent)||0)),
+      letzterPing:ping?.ts||p.updated_at||null,
+      pingFehler:fehlversuche.get(k)||0,
+      pingTaktSekunden:takt
+    });
+  });
+
+  /* Angemeldete Kinder ohne jede Fortschrittszeile. */
+  (letzteRoster||[]).filter(s=>s.active).forEach(s=>{
+    if(gesehen.has(s.id))return;
+    const ping=letzterPing.get(s.id);
+    zeilen.push({
+      id:s.id,
+      name:s.display_name||s.login_name||'—',
+      unit:'',
+      path:'',
+      percent:0,
+      letzterPing:ping?.ts||null,
+      pingFehler:fehlversuche.get(s.id)||0,
+      pingTaktSekunden:takt
+    });
+  });
+
+  return zeilen;
+}
+
+function beamerAktiv(){
+  if(beamerFenster&&!beamerFenster.closed)return true;
+  /* Eine Beameransicht, die sich in den letzten 30 Sekunden gemeldet hat,
+     zählt auch dann, wenn sie nicht von hier aus geöffnet wurde. */
+  return Date.now()-beamerZuletztGehoert<30000;
+}
+
+function beamerSenden(){
+  if(!beamerKanal)return;
+  beamerKanal.postMessage({
+    typ:'daten',
+    ts:Date.now(),
+    klasse:$('#classFilter')?.value.trim()||'',
+    einstellungen:beamerEinstellungenLesen(),
+    reihe:einheitenReihe||[],
+    zeilen:letzteBeamerZeilen
+  });
+}
+
+function beamerKanalOeffnen(){
+  if(beamerKanal||typeof BroadcastChannel!=='function')return;
+  beamerKanal=new BroadcastChannel(BEAMER_KANAL);
+  beamerKanal.addEventListener('message',e=>{
+    const n=e.data||{};
+    if(n.typ==='bereit'){
+      beamerZuletztGehoert=Date.now();
+      /* Sofort antworten statt bis zum nächsten Takt zu warten. */
+      beamerSenden();
+    }else if(n.typ==='tschuess'){
+      beamerZuletztGehoert=0;
+    }
+  });
+}
+
+function beamerOeffnen(){
+  const m=$('#beamerMeldung');
+  beamerFelderLesen();
+  beamerKanalOeffnen();
+  if(!beamerKanal){
+    m.textContent='Dieser Browser kennt BroadcastChannel nicht — die Beameransicht funktioniert hier nicht.';
+    m.className='message bad';m.hidden=false;return;
+  }
+  /* Ein benanntes Fenster: Ein zweiter Klick holt die vorhandene Ansicht
+     nach vorn, statt ein zweites Fenster zu öffnen. */
+  beamerFenster=window.open('beamer.html','mathe9-beamer');
+  if(!beamerFenster){
+    m.textContent='Das Fenster wurde vom Browser blockiert. Bitte Pop-ups für diese Seite erlauben.';
+    m.className='message bad';m.hidden=false;return;
+  }
+  beamerFenster.focus();
+  beamerSenden();
+  m.textContent='Beameransicht geöffnet. Dieses Fenster bitte offen lassen — es versorgt die Ansicht mit Daten.';
+  m.className='message good';m.hidden=false;setTimeout(()=>m.hidden=true,6000);
+}
+
+function start(){stop();timer=setInterval(()=>{
+  /* Im Hintergrund wird normalerweise pausiert. Hängt aber eine
+     Beameransicht dran, muss weitergeladen werden — sonst friert die
+     Leinwand ein, sobald die Lehrkraft in ein anderes Fenster wechselt.
+     Genau das ist der Normalfall beim Projizieren. */
+  if(document.visibilityState==='visible'||beamerAktiv())loadAll()
+},5000)}
+function stop(){if(timer){clearInterval(timer);timer=null}}
 
 $('#teacherLogin').addEventListener('submit',async e=>{e.preventDefault();const err=$('#loginError');err.hidden=true;try{await signIn($('#teacherEmail').value.trim(),$('#teacherPassword').value);await appOeffnen()}catch(x){err.textContent='Anmeldung fehlgeschlagen: '+x.message;err.hidden=false}});
 $('#logout').addEventListener('click',signOut);$('#refresh').addEventListener('click',()=>{loadAll();loadOps()});$('#range').addEventListener('change',loadAll);$('#classFilter').addEventListener('change',()=>{ $('#studentClass').value=$('#classFilter').value.trim();loadAll()});$('#studentForm').addEventListener('submit',addStudent);$('#freigabeBody').addEventListener('click',freigabeKlick);$('#modusBewertung').addEventListener('click',()=>setzeModus('bewertung'));$('#modusUebung').addEventListener('click',()=>setzeModus('uebung'));$('#rosterBody').addEventListener('click',rosterClick);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&session)loadAll()});
+/* Grenzwerte gelten sofort: Wer sie im Unterricht nachjustiert, will das
+   Ergebnis auf der Leinwand sehen und nicht erst nach dem nächsten Abruf. */
+['#pingMaxFehler','#pingMaxSekunden','#beamerBezug'].forEach(feld=>{
+  $(feld)?.addEventListener('change',()=>{beamerFelderLesen();beamerSenden()});
+});
+$('#beamerOeffnen')?.addEventListener('click',beamerOeffnen);
 if(!C.enabled||!C.url||!C.anonKey){$('#loginError').textContent='Supabase ist in assets/js/supabase-config.js noch nicht vollständig konfiguriert.';$('#loginError').hidden=false;showLogin()}else if(session?.access_token){appOeffnen()}else showLogin();

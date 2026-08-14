@@ -130,13 +130,27 @@
           "label": "Zinsen für ein ganzes Jahr",
           "answer": 24,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "zeitfaktor_zu_frueh",
+              "value": 12,
+              "feedback": "Das sind schon die Zinsen für 6 Monate. Zuerst das ganze Jahr rechnen."
+            }
+          ]
         },
         {
           "label": "Zinsen für 6 Monate",
           "answer": 12,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "zeitfaktor_vergessen",
+              "value": 24,
+              "feedback": "Das sind die Zinsen für ein ganzes Jahr. 6 Monate sind die Hälfte."
+            }
+          ]
         }
       ],
       "hints": [

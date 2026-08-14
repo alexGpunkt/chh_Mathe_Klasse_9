@@ -238,6 +238,13 @@
       ],
       "spiral": [
         "W-EINH"
+      ],
+      "misconceptions": [
+        {
+          "id": "faktor_1000",
+          "value": 200,
+          "feedback": "1 Liter sind 1000 ml, also 2 · 1000."
+        }
       ]
     },
     {
@@ -569,6 +576,20 @@
       "spiral": [
         "W-EINH"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Aufgaben zum Umrechnen von Volumeneinheiten",
+      "url": "https://de.serlo.org/mathe/24386/aufgaben-zum-umrechnen-von-volumeneinheiten",
+      "typ": "app",
+      "quelle": "Serlo"
+    },
+    {
+      "titel": "Umrechnen von Einheiten – Überblick",
+      "url": "https://de.serlo.org/mathe/1603/umrechnen-von-einheiten",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

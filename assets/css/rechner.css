@@ -1,0 +1,356 @@
+/* ============================================================
+   rechner.css · Taschenrechner-Vollbild
+
+   Der Rechner hat zwei Zustände, und nur zwei:
+
+   geschlossen  Ein Knopf am unteren Rand. Sonst ändert sich nichts.
+   offen        Der Bildschirm gehört zu 100 % der Breite und Höhe genau
+                zwei Dingen: der laufenden Aufgabe und dem Rechner.
+                Alles andere ist weg, gescrollt wird nirgends.
+
+   Die Ausblendregeln stehen bewusst als eine einzige Aussage über die
+   direkten Kinder von <body>. Jede Seite, die den Rechner einbindet, ist
+   damit automatisch abgedeckt — auch die, die es noch nicht gibt.
+   ============================================================ */
+
+/* ---------- Aufrufknopf ---------- */
+
+.tr-aufruf {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: calc(58px + max(10px, env(safe-area-inset-bottom)));
+  z-index: 60;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 48px;
+  padding: 0 16px;
+
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--kopf-text);
+
+  background: var(--pfad);
+  border: 2px solid rgba(255, 255, 255, .25);
+  border-radius: 999px;
+  box-shadow: 0 6px 20px -6px rgba(21, 35, 58, .55);
+
+  cursor: pointer;
+}
+
+.tr-aufruf:hover { filter: brightness(1.08); }
+.tr-aufruf:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.tr-aufruf-symbol { font-size: 20px; line-height: 1; }
+
+/* Auf sehr schmalen Geräten nur das Symbol — der Knopf soll das
+   Übungsblatt-Feld darunter nicht verdecken. */
+@media (max-width: 380px) {
+  .tr-aufruf-text { display: none; }
+  .tr-aufruf { padding: 0 14px; }
+}
+
+@media print { .tr-aufruf, .tr { display: none !important; } }
+
+/* ============================================================
+   Geöffnet: der ganze Bildschirm, nichts sonst
+   ============================================================ */
+
+html.rechner-offen,
+html.rechner-offen body {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  overflow: hidden;          /* die Zusage „kein Scrollen" */
+  overscroll-behavior: none;
+}
+
+html.rechner-offen body {
+  /* warmup.html trägt ein Inline-Padding. Ein Inline-Stil schlägt jede
+     Regel — außer dieser. Ohne das entstünde am unteren Rand ein Streifen,
+     und genau daran fängt eine Seite an zu scrollen. */
+  padding: 0 !important;
+  display: grid;
+  gap: 0;
+  /* Querformat: Aufgabe links, Rechner rechts. */
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 38vw, 460px);
+  grid-template-rows: 100%;
+  align-items: stretch;
+}
+
+/* Hochformat und schmale Fenster: Aufgabe oben, Rechner unten. Der
+   Rechner bekommt die untere Hälfte — dort liegen die Daumen. */
+@media (orientation: portrait), (max-width: 860px) {
+  html.rechner-offen body {
+    grid-template-columns: 100%;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 58%);
+  }
+}
+
+/* Alles außer Aufgabenbühne und Rechner verschwindet: Kopf, Fortschritts-
+   streifen, Pfadwahl, Übungsblattkarte, Videokarte, Formelkarte, der
+   Aufrufknopf selbst — und alles, was später dazukommt. */
+html.rechner-offen body > *:not(#buehne):not(#taschenrechner) {
+  display: none !important;
+}
+
+html.rechner-offen #buehne {
+  margin: 0;
+  padding: clamp(10px, 2vh, 22px) clamp(10px, 2vw, 26px);
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* In der Bühne bleibt genau die Karte stehen, an der gerade gearbeitet
+   wird — mit Aufgabentext, Eingabefeld, Prüfknopf und Rückmeldung. */
+html.rechner-offen #buehne > *:not([data-rechner-fokus]) {
+  display: none !important;
+}
+
+html.rechner-offen [data-rechner-fokus] {
+  --tr-skala: 1;
+  font-size: calc(17px * var(--tr-skala));
+  max-height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+html.rechner-offen [data-rechner-fokus] .frage {
+  font-size: calc(1.12em * 1);
+}
+
+html.rechner-offen [data-rechner-fokus] .bild,
+html.rechner-offen [data-rechner-fokus] .anim-huelle,
+html.rechner-offen [data-rechner-fokus] svg {
+  max-height: calc(34vh * var(--tr-skala));
+  height: auto;
+}
+
+/* Letzte Stufe des Einpassens: Die Abbildung weicht, der Aufgabentext
+   bleibt. Ein halb sichtbares Bild hilft niemandem. */
+html.rechner-offen [data-rechner-fokus].tr-ohne-bild .bild,
+html.rechner-offen [data-rechner-fokus].tr-ohne-bild .anim-huelle {
+  display: none;
+}
+
+/* Ohne laufende Aufgabe füllt der Rechner den Bildschirm allein. */
+html.rechner-ohne-aufgabe.rechner-offen body {
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+}
+html.rechner-ohne-aufgabe.rechner-offen #buehne { display: none !important; }
+
+/* ============================================================
+   Die Rechneroberfläche
+   ============================================================ */
+
+.tr {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: clamp(8px, 1.6vh, 16px);
+  padding-bottom: max(clamp(8px, 1.6vh, 16px), env(safe-area-inset-bottom));
+
+  background: var(--kopf-bg);
+  color: var(--kopf-text);
+  border-left: 1px solid rgba(255, 255, 255, .14);
+}
+
+@media (orientation: portrait), (max-width: 860px) {
+  .tr { border-left: 0; border-top: 1px solid rgba(255, 255, 255, .14); }
+}
+
+.tr[hidden] { display: none; }
+
+.tr-kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+}
+
+.tr-titel {
+  font-family: var(--f-display);
+  font-size: 15px;
+  letter-spacing: .02em;
+  opacity: .8;
+}
+
+.tr-schliessen {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  color: var(--kopf-text);
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.tr-schliessen:hover { background: rgba(255, 255, 255, .2); }
+.tr-schliessen:focus-visible { outline: 3px solid #FFF; outline-offset: 2px; }
+
+/* ---------- Verlauf ----------
+   Klein, aber im Unterricht der meistgenutzte Teil: „Was hatte ich denn
+   vorhin gerechnet?" Auf niedrigen Fenstern weicht er als Erstes. */
+.tr-verlauf {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 22%;
+}
+
+@media (max-height: 620px) { .tr-verlauf { display: none; } }
+
+.tr-verlauf-leer {
+  font-size: 13px;
+  opacity: .45;
+  padding: 2px 4px;
+}
+
+.tr-verlauf-zeile {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  width: 100%;
+  padding: 4px 8px;
+
+  font-family: var(--f-num);
+  font-size: 13px;
+  color: var(--kopf-text);
+  text-align: left;
+
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.tr-verlauf-zeile:hover { background: rgba(255, 255, 255, .1); }
+.tr-verlauf-ausdruck { opacity: .6; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tr-verlauf-ergebnis { font-weight: 700; white-space: nowrap; }
+
+/* ---------- Anzeige ---------- */
+
+.tr-anzeige {
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  min-height: 76px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+
+  background: rgba(0, 0, 0, .28);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 10px;
+}
+
+.tr-eingabe {
+  font-family: var(--f-num);
+  font-size: clamp(18px, 2.6vh, 26px);
+  word-break: break-all;
+  min-height: 1.2em;
+}
+
+.tr-ergebnis {
+  font-family: var(--f-num);
+  font-size: clamp(14px, 2vh, 19px);
+  min-height: 1.2em;
+  opacity: .7;
+}
+
+.tr-vorschau { opacity: .55; }
+.tr-fertig   { opacity: 1; font-weight: 700; font-size: clamp(18px, 2.4vh, 24px); }
+.tr-fehler   { color: #FFB4AE; opacity: 1; font-family: var(--f-body); font-size: 14px; }
+.tr-hinweis  { color: #A8E6C6; opacity: 1; font-family: var(--f-body); font-size: 14px; }
+
+/* ---------- Tastenfeld ----------
+   Sieben Reihen zu vier Tasten. Die Höhe wird verteilt, nicht gesetzt:
+   So passt dasselbe Feld auf ein 1024er-Tablet und auf ein schmales
+   Telefon im Hochformat, ohne dass irgendwo gescrollt werden muss. */
+
+.tr-tasten {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(0, 1fr);
+  gap: clamp(4px, .9vh, 9px);
+}
+
+.tr-taste {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 0;
+  padding: 0;
+
+  font-family: var(--f-num);
+  font-size: clamp(15px, 2.4vh, 23px);
+  font-weight: 700;
+  color: var(--kopf-text);
+
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 10px;
+
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.tr-taste:hover { background: rgba(255, 255, 255, .22); }
+.tr-taste:active { transform: translateY(1px); }
+.tr-taste:focus-visible { outline: 3px solid #FFF; outline-offset: 2px; }
+
+.tr-taste.tr-op       { background: rgba(122, 176, 255, .26); }
+.tr-taste.tr-funktion { background: rgba(255, 255, 255, .06); font-size: clamp(14px, 2vh, 19px); }
+.tr-taste.tr-wiss     { background: rgba(255, 255, 255, .06); font-size: clamp(13px, 1.9vh, 18px); }
+.tr-taste.tr-gleich   { background: var(--b); border-color: rgba(255, 255, 255, .3); }
+.tr-taste.tr-gleich:hover { filter: brightness(1.15); background: var(--b); }
+
+/* ---------- Fuß ---------- */
+
+.tr-fuss { flex: 0 0 auto; }
+
+.tr-uebernehmen {
+  width: 100%;
+  min-height: 46px;
+
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--kopf-bg);
+
+  background: #A8E6C6;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.tr-uebernehmen:hover { filter: brightness(1.06); }
+.tr-uebernehmen:focus-visible { outline: 3px solid #FFF; outline-offset: 2px; }
+
+@media (max-height: 520px) { .tr-uebernehmen { min-height: 38px; font-size: 14px; } }
+
+/* ---------- Bewegungsarme Darstellung ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tr-taste:active { transform: none; }
+}

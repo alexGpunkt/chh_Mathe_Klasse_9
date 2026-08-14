@@ -31,7 +31,8 @@
       "hinfuehrung": "Der Würfel hat 6 gleiche Quadrate.",
       "erklaerung": [
         "Ein Quadrat hat die Fläche a · a.",
-        "Nimm diese Fläche mal 6."
+        "Nimm diese Fläche mal 6.",
+        "Die Oberfläche ist eine Fläche. Die Einheit bekommt deshalb eine kleine 2 oben: cm²."
       ],
       "visual": {
         "type": "animation",
@@ -170,6 +171,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "flaechenzahl_ignoriert",
+          "value": 4,
+          "feedback": "Zu den vier Seiten kommen Deckel und Boden — zusammen 6."
+        }
       ]
     },
     {
@@ -281,7 +289,14 @@
           "label": "Seite b · c",
           "answer": 12,
           "tolerance": 0.01,
-          "unit_label": "cm²"
+          "unit_label": "cm²",
+          "misconceptions": [
+            {
+              "id": "falsche_groesse_gewaehlt",
+              "value": 15,
+              "feedback": "Das ist a · b, der Boden. Hier werden b und c malgenommen: 3 · 4."
+            }
+          ]
         }
       ],
       "hints": [
@@ -468,6 +483,18 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "ohne_zwei",
+          "value": 2600,
+          "feedback": "Jede der drei Flächen gibt es zweimal — das Ergebnis noch mal 2."
+        },
+        {
+          "id": "volumen_statt_oberflaeche",
+          "value": 24000,
+          "feedback": "Das ist der Rauminhalt. Gefragt ist die Fläche der Pappe."
+        }
       ]
     },
     {
@@ -612,6 +639,20 @@
       "spiral": [
         "W-GEO"
       ]
+    }
+  ],
+  "uebungslinks": [
+    {
+      "titel": "Würfel und Quader: Oberfläche und Volumen",
+      "url": "https://learningapps.org/2347385",
+      "typ": "app",
+      "quelle": "LearningApps"
+    },
+    {
+      "titel": "Raumgeometrie – Artikel mit Aufgabenordner",
+      "url": "https://de.serlo.org/mathe/16156/raumgeometrie",
+      "typ": "app",
+      "quelle": "Serlo"
     }
   ],
   "videos": [

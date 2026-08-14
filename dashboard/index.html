@@ -65,6 +65,27 @@
       <div class="tableWrap"><table><thead><tr><th>Name</th><th>heute</th><th>letzte 7 Tage</th><th>häufigste Einheit</th><th>zuletzt gemeldet</th></tr></thead><tbody id="lernzeitBody"></tbody></table></div>
     </section>
 
+    <section class="panel" id="beamerPanel">
+      <div class="panelHead"><div><h2>Beameransicht &amp; Ping-Überwachung</h2><span>Der Fortschritt aller Lernenden als laufende Strichmännchen — für die Leinwand</span></div></div>
+      <div class="beamerZeile">
+        <label>Alarm ab … erfolglosen Ping-Versuchen
+          <input id="pingMaxFehler" type="number" min="1" max="50" step="1" value="3">
+        </label>
+        <label>Alarm ab … Sekunden ohne erfolgreichen Ping
+          <input id="pingMaxSekunden" type="number" min="20" max="1800" step="10" value="120">
+        </label>
+        <label>Strichmännchen läuft entlang
+          <select id="beamerBezug">
+            <option value="reihe" selected>der ganzen Unterrichtsreihe</option>
+            <option value="einheit">der aktuellen Einheit</option>
+          </select>
+        </label>
+        <button id="beamerOeffnen" type="button">Beameransicht öffnen</button>
+      </div>
+      <p class="modusHinweis">Grün heißt: Der letzte Ping ist da. Rot heißt: Er fehlt. <b>Rot blinkend</b> heißt: Einer der beiden Grenzwerte ist überschritten — dann lohnt der Blick auf das Gerät. Die Beameransicht wird aus diesem Fenster versorgt; es muss geöffnet bleiben, darf aber im Hintergrund liegen.</p>
+      <p id="beamerMeldung" class="message" hidden></p>
+    </section>
+
     <section class="kpis"><article><strong id="activeNow">0</strong><span>jetzt aktiv</span></article><article><strong id="studentsToday">0</strong><span>Schüler</span></article><article><strong id="answers">0</strong><span>Antwortversuche</span></article><article><strong id="correctRate">–</strong><span>richtig</span></article><article><strong id="medianTime">–</strong><span>Zeit je Aufgabe (Median)</span></article></section>
     <section class="panel"><div class="panelHead"><h2>Schüleraktivität und Fortschritt</h2><span>aktiv: Ereignis innerhalb 60 s</span></div><div class="tableWrap"><table><thead><tr><th>Status</th><th>Name</th><th>Einheit</th><th>Pfad</th><th>Fortschritt</th><th>Aufgabe</th><th>Zeit je Aufgabe</th><th>zuletzt aktiv</th></tr></thead><tbody id="studentsBody"></tbody></table></div></section>
     <section class="panel"><div class="panelHead"><div><h2>Wer hängt gerade fest?</h2><span>Aufgabe seit über 3 Minuten offen oder deutlich über der üblichen Zeit</span></div></div><div class="tableWrap"><table><thead><tr><th>Name</th><th>Einheit</th><th>Aufgabe</th><th>Dauer</th><th>Lage</th></tr></thead><tbody id="stuckBody"></tbody></table></div></section>
@@ -80,7 +101,7 @@
   </div>
 </main>
 <script src="../assets/js/supabase-config.js"></script>
-<script src="../assets/js/dev-tools.js"></script>
+<script src="../assets/js/dev-boot.js"></script>
 <script src="dashboard.js"></script>
 </body>
 </html>

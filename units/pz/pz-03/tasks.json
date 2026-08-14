@@ -126,13 +126,28 @@
           "label": "1 Brötchen kostet",
           "answer": 0.5,
           "unit_label": "€",
-          "tolerance": 0.005
+          "tolerance": 0.005,
+          "misconceptions": [
+            {
+              "id": "einheitsschritt_uebersprungen",
+              "value": 2.5,
+              "feedback": "Das ist der Preis für 5 Brötchen. Für eines noch durch 5 teilen."
+            }
+          ]
         },
         {
           "label": "8 Brötchen kosten",
           "answer": 4,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "mal_statt_geteilt",
+              "value": 20,
+              "konzeptfehler": "mal_geteilt_vertauscht",
+              "feedback": "Malgenommen wird der Preis für EIN Brötchen, nicht die 2,50 €."
+            }
+          ]
         }
       ],
       "hints": [
@@ -159,13 +174,28 @@
           "label": "1 Heft kostet",
           "answer": 1.5,
           "unit_label": "€",
-          "tolerance": 0.005
+          "tolerance": 0.005,
+          "misconceptions": [
+            {
+              "id": "einheitsschritt_uebersprungen",
+              "value": 4.5,
+              "feedback": "Das ist der Preis für 3 Hefte. Für eines noch durch 3 teilen."
+            }
+          ]
         },
         {
           "label": "7 Hefte kosten",
           "answer": 10.5,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "mal_statt_geteilt",
+              "value": 31.5,
+              "konzeptfehler": "mal_geteilt_vertauscht",
+              "feedback": "Malgenommen wird der Preis für EIN Heft."
+            }
+          ]
         }
       ],
       "hints": [
@@ -192,13 +222,28 @@
           "label": "1 Liter reicht für",
           "answer": 5,
           "unit_label": "m²",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "einheitsschritt_uebersprungen",
+              "value": 20,
+              "feedback": "Das sind die Quadratmeter für 4 Liter. Für einen Liter noch durch 4 teilen."
+            }
+          ]
         },
         {
           "label": "6 Liter reichen für",
           "answer": 30,
           "unit_label": "m²",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "mal_statt_geteilt",
+              "value": 120,
+              "konzeptfehler": "mal_geteilt_vertauscht",
+              "feedback": "Malgenommen wird die Fläche für EINEN Liter."
+            }
+          ]
         }
       ],
       "hints": [
@@ -526,13 +571,28 @@
           "label": "Faktor k (Preis je kg)",
           "answer": 1.3,
           "unit_label": "€/kg",
-          "tolerance": 0.005
+          "tolerance": 0.005,
+          "misconceptions": [
+            {
+              "id": "einheitsschritt_uebersprungen",
+              "value": 5.2,
+              "feedback": "Das ist der Preis für 4 kg. Für ein Kilo noch durch 4 teilen."
+            }
+          ]
         },
         {
           "label": "Preis für 9 kg",
           "answer": 11.7,
           "unit_label": "€",
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "mal_statt_geteilt",
+              "value": 46.8,
+              "konzeptfehler": "mal_geteilt_vertauscht",
+              "feedback": "Malgenommen wird der Kilopreis 1,30 €."
+            }
+          ]
         }
       ],
       "hints": [

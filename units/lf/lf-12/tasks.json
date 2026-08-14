@@ -148,12 +148,28 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 3,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "3 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 2,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "2 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -203,12 +219,28 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 4,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "4 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 4,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 2,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "2 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -260,12 +292,28 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 2,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "2 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 3,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "3 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -316,12 +364,26 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "schnittpunkt_verwechselt",
+              "value": 1,
+              "feedback": "1 ist der Startwert der ersten Geraden auf der senkrechten Achse, nicht der Schnittpunkt."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "schnittpunkt_verwechselt",
+              "value": 4,
+              "feedback": "4 ist der Startwert der zweiten Geraden. Der Schnittpunkt liegt tiefer."
+            }
+          ]
         }
       ],
       "hints": [
@@ -365,12 +427,28 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 3,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "3 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 2,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "2 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -416,12 +494,28 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 5,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "5 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 5,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 3,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "3 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -465,12 +559,28 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 4,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 3,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "3 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 3,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 4,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "4 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -516,12 +626,28 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 4,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 5,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "5 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 5,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 4,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "4 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -629,12 +755,28 @@
         {
           "label": "x-Wert des Schnittpunkts",
           "answer": 2,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 5,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "5 ist der y-Wert. Der x-Wert steht im Zahlenpaar vorn und wird auf der waagerechten Achse abgelesen."
+            }
+          ]
         },
         {
           "label": "y-Wert des Schnittpunkts",
           "answer": 5,
-          "tolerance": 0.01
+          "tolerance": 0.01,
+          "misconceptions": [
+            {
+              "id": "achsen_vertauscht",
+              "value": 2,
+              "konzeptfehler": "achsen_vertauscht",
+              "feedback": "2 ist der x-Wert. Gefragt ist die Höhe des Schnittpunkts."
+            }
+          ]
         }
       ],
       "hints": [
@@ -838,7 +980,11 @@
       "titel": "Sammlung „Lineare Funktionen“ (Lehrer-Ordner)",
       "url": "https://learningapps.org/user/mbraun?displayfolder=514302&bookmark=1",
       "typ": "sammlung",
-      "quelle": "LearningApps"
+      "quelle": "LearningApps",
+      "pfade": [
+        "B",
+        "C"
+      ]
     },
     {
       "titel": "Aufgaben: Geradengleichungen, Nullstellen und Schnittpunkte",

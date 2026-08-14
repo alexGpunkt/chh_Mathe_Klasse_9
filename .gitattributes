@@ -1,0 +1,24 @@
+# ============================================================
+# Zeilenenden
+#
+# Auf diesem Projekt steht core.autocrlf = true. Git entscheidet dann
+# selbst, was Text ist — und liegt bei den erzeugten Übungsblättern
+# falsch: Die PDFs aus werkzeuge/pdf.js enthalten keine NUL-Bytes, also
+# hält Git sie für Textdateien und ersetzt beim Auschecken jedes LF durch
+# CRLF. Eine so veränderte PDF ist beschädigt.
+#
+# Deshalb steht hier ausdrücklich, was binär ist. Ohne diese Datei
+# bekäme jeder, der das Repository klont, 162 unbrauchbare Übungsblätter.
+# ============================================================
+
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.zip   binary

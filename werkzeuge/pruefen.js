@@ -30,7 +30,11 @@ function alleDateien(ordner, endung) {
   const treffer = [];
   (function gehe(o) {
     for (const e of fs.readdirSync(P(o), { withFileTypes: true })) {
-      if (e.name === '.git' || e.name === 'node_modules' || e.name === '.github') continue;
+      /* Punktordner sind Werkzeug- und Konfigurationsverzeichnisse
+         (.git, .github, .claude), keine ausgelieferte Website. Eine
+         Notiz oder ein Bericht, der dort liegt, ist keine Seite der
+         Anwendung und braucht weder CSP noch Cache-Eintrag. */
+      if (e.name.startsWith('.') || e.name === 'node_modules') continue;
       const rel = path.posix.join(o, e.name).replace(/^\.\//, '');
       if (e.isDirectory()) gehe(rel);
       else if (e.name.endsWith(endung)) treffer.push(rel);
@@ -164,22 +168,56 @@ for (const f of einheiten) {
   }
 }
 
-/* ---------- 7 · Animationsnamen existieren ---------- */
-const animQuelle = lies('assets/js/animationen.js');
-const bekannteAnim = new Set([...animQuelle.matchAll(/register\(\{\s*id:\s*'([a-z0-9]+)'/g)].map(m => m[1]));
+/* ---------- 7 · Animationsnamen existieren ----------
+   Seit V34 liegt je Lernbereich eine eigene Datei vor. Geprüft wird
+   deshalb nicht nur, OB es eine Animation gibt, sondern auch, in
+   WELCHER Datei sie steht: Eine Einheitenseite lädt nur den Kern und
+   ihren eigenen Bereich (siehe assets/js/animationen-laden.js). Ein
+   Verweis über die Bereichsgrenze hinweg würde im Browser als
+   „Animation nicht gefunden" enden — und zwar erst im Unterricht.
+   Diese Prüfung ist das Sicherheitsnetz dafür. */
+const ANIM_DATEIEN = {
+  kern: 'assets/js/animationen-kern.js',
+  lf: 'assets/js/animationen-lf.js',
+  pz: 'assets/js/animationen-pz.js',
+  kp: 'assets/js/animationen-kp.js',
+  sk: 'assets/js/animationen-sk.js'
+};
+let animQuelle = '';
+const animBereichVon = new Map();          // Animations-ID → Lernbereich (oder 'kern')
+for (const [bereich, datei] of Object.entries(ANIM_DATEIEN)) {
+  if (!fs.existsSync(P(datei))) { fehler.push(`${datei} fehlt`); continue; }
+  const text = lies(datei);
+  animQuelle += '\n' + text;
+  for (const m of text.matchAll(/register\(\{\s*id:\s*'([a-z0-9]+)'/g)) {
+    if (animBereichVon.has(m[1])) {
+      fehler.push(`Animation „${m[1]}" ist doppelt registriert (${animBereichVon.get(m[1])} und ${bereich})`);
+    }
+    animBereichVon.set(m[1], bereich);
+  }
+}
+const bekannteAnim = new Set(animBereichVon.keys());
 let animVerweise = 0;
 for (const f of einheiten) {
   const d = geladen.get(f);
+  const eigenerBereich = String(d.unit || '').slice(0, 2).toLowerCase();
   const bilder = [
     ...Object.values(d.lernkarten || {}).map(k => k.visual),
     ...(d.tasks || []).map(t => t.visual)
   ].filter(v => v && v.type === 'animation');
   for (const v of bilder) {
     animVerweise++;
-    if (!bekannteAnim.has(v.name)) fehler.push(`${f}: Animation „${v.name}" gibt es nicht`);
+    if (!bekannteAnim.has(v.name)) { fehler.push(`${f}: Animation „${v.name}" gibt es nicht`); continue; }
+    const liegtIn = animBereichVon.get(v.name);
+    if (liegtIn !== 'kern' && liegtIn !== eigenerBereich) {
+      fehler.push(`${f}: Animation „${v.name}" liegt in animationen-${liegtIn}.js, `
+        + `die Einheit lädt aber nur den Kern und animationen-${eigenerBereich}.js. `
+        + `Entweder verschieben oder in den Kern aufnehmen.`);
+    }
   }
 }
-melde(`${animVerweise} Animationsverweise auf ${bekannteAnim.size} vorhandene Animationen`);
+melde(`${animVerweise} Animationsverweise auf ${bekannteAnim.size} vorhandene Animationen `
+  + `in ${Object.keys(ANIM_DATEIEN).length} Dateien, keine über Bereichsgrenzen`);
 
 /* Jede Animation braucht eine Textfassung für A/B/C. Ein bloßer Kurztext
    bleibt als Laufzeit-Fallback erlaubt, soll aber bei den registrierten
@@ -206,8 +244,16 @@ const zuCachen = [
   ...alleDateien('assets', '.js'), ...alleDateien('assets', '.css'),
   ...alleDateien('units', '.json'), ...alleDateien('spiral', '.json')
 ].map(f => f.replace(/^\.\//, ''));
+/* Absichtlich nicht im Offlinepaket. Die Liste ist kurz zu halten: Jeder
+   Eintrag ist eine Datei, die offline fehlt, und das muss jeweils
+   ausdrücklich in Ordnung sein. */
+const NICHT_CACHEN = {
+  'supabase-config': 'gerätespezifisch — darf nicht mit ausgeliefert werden',
+  'dev-tools': 'Entwicklermenü. Wird seit V34 von dev-boot.js nur bei devMode '
+    + 'nachgeladen und hat auf einem Schülergerät nichts verloren.'
+};
 for (const f of zuCachen) {
-  if (f.includes('supabase-config')) continue;      // gerätespezifisch
+  if (Object.keys(NICHT_CACHEN).some(teil => f.includes(teil))) continue;
   if (!imCache.has(f)) fehler.push(`sw.js cached ${f} nicht`);
 }
 for (const f of imCache) {
@@ -509,18 +555,26 @@ try {
     }
   }
 
+  /* Seit V33 gibt es je Lernweg ein eigenes Blatt. Fehlt eines davon, bekäme
+     genau eine Niveaustufe einen toten Link — deshalb werden alle drei
+     geprüft, nicht nur die Einheit. */
+  let pdfs = 0;
   for (const f of einheiten) {
     const id = (f.match(/^units\/[a-z]{2}\/([a-z]{2}-\d{2})\//) || [])[1];
     if (!id) continue;
     if (!bekannt.has(id)) fehler.push(`uebungsblaetter/: kein Blatt für ${id}`);
-    const pdf = f.replace('tasks.json', 'uebungsblatt.pdf');
-    if (!fs.existsSync(P(pdf))) {
-      fehler.push(`${pdf} fehlt — node werkzeuge/uebungsblaetter.js ausführen`);
-    } else if (fs.statSync(P(pdf)).size < 1500) {
-      fehler.push(`${pdf} ist verdächtig klein (${fs.statSync(P(pdf)).size} Bytes)`);
+    for (const stufe of ['a', 'b', 'c']) {
+      const pdf = f.replace('tasks.json', `uebungsblatt-${stufe}.pdf`);
+      if (!fs.existsSync(P(pdf))) {
+        fehler.push(`${pdf} fehlt — node werkzeuge/uebungsblaetter.js ausführen`);
+      } else if (fs.statSync(P(pdf)).size < 1500) {
+        fehler.push(`${pdf} ist verdächtig klein (${fs.statSync(P(pdf)).size} Bytes)`);
+      } else {
+        pdfs++;
+      }
     }
   }
-  melde(`${blaetter} Übungsblätter mit ${generatoren} Generatoren, ${einheiten.length} PDFs vorhanden`);
+  melde(`${blaetter} Übungsblätter mit ${generatoren} Generatoren, ${pdfs} PDFs für die Lernwege A, B und C`);
 }
 
 /* ---------- 15 · Changelog zur aktuellen Fassung ----------

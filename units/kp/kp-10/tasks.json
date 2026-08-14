@@ -203,6 +203,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 28.8,
+          "feedback": "Der Mantel ist ein Rechteck: Umfang · Höhe, also 18,8 · 10."
+        }
       ]
     },
     {
@@ -346,6 +353,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "addiert_statt_mal",
+          "value": 42,
+          "feedback": "Umfang und Höhe werden malgenommen: 30 · 12."
+        }
       ]
     },
     {
@@ -402,6 +416,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "grundflaechen_vergessen",
+          "value": 251.2,
+          "feedback": "Das ist nur der Mantel. Deckel und Boden 2 · 3,14 · 2² fehlen."
+        }
       ]
     },
     {
@@ -456,6 +477,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "grundflaechen_vergessen",
+          "value": 565,
+          "feedback": "Das ist nur der Mantel. Deckel und Boden fehlen."
+        }
       ]
     },
     {
@@ -510,6 +538,13 @@
       ],
       "spiral": [
         "W-GEO"
+      ],
+      "misconceptions": [
+        {
+          "id": "grundflaechen_vergessen",
+          "value": 201,
+          "feedback": "Das ist nur der Mantel. Deckel und Boden fehlen."
+        }
       ]
     },
     {
