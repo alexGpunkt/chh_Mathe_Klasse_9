@@ -22,7 +22,7 @@
 }
 
 /* Dunkler Modus: dieselben Rollen, aufgehellte Akzente. Die Farben der
-   SVG-Zeichnungen setzt animationen.js selbst — sie folgen derselben
+   SVG-Zeichnungen setzen die Animationsmodule selbst — sie folgen derselben
    Systemeinstellung, damit Bild und Rahmen zusammenpassen. */
 @media (prefers-color-scheme: dark) {
   :root {

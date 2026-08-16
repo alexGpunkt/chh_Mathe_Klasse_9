@@ -19,6 +19,19 @@ oder ein Dashboard, das niemand mehr öffnen kann.
 | **V30:** `mathe9_unterricht`, `mathe9_freigaben`, `mathe9_lernzeit` | Ohne sie bleibt die Anwendung im Übungsmodus — alles offen. Das ist der sichere Rückfall, aber nicht der gewünschte Unterrichtsablauf |
 | **V30:** `mathe9_lernmodus()`, `mathe9_lernzeit_melden()` | Ohne sie meldet die App im Protokoll einen Fehler und arbeitet im Übungsmodus weiter; Lernzeiten gehen verloren |
 
+## 0 · Vorprüfung ohne Datenbankänderung
+
+Vor jeder Migration zuerst `supabase/abgleich-readonly.sql` im **bestehenden**
+Projekt ausführen. Die Datei enthält ausschließlich lesende Abfragen und
+zeigt Tabellen, RLS, Policies, Funktionen, Rechte und den Cron-Status. Sie
+ändert keine Daten. Das Ergebnis wird im nachfolgenden Supabase-Abgleich mit
+dem Sollstand dieser Projektfassung verglichen.
+
+Wichtig: Der SQL Editor läuft mit einer administrativen Datenbankrolle. Ein
+`SELECT` dort beweist deshalb **nicht**, dass `anon` oder ein angemeldetes
+Lehrkraftkonto dieselben Rechte hat. Rollen- und RLS-Negativtests werden nach
+der statischen Vorprüfung über REST bzw. das echte Dashboard durchgeführt.
+
 ## 1 · Testprojekt anlegen
 
 1. In Supabase ein zweites Projekt erstellen (gleiche Region wie später produktiv).
@@ -131,24 +144,24 @@ Ab V30 zusätzlich:
 
 ## 5 · Rückkehrplan
 
-Die Migration legt nur an und ersetzt Policies; sie löscht keine Daten. Wenn
-etwas nicht stimmt, ist der schnellste Weg zurück, die alten Policies wieder
-aufzumachen:
+Vor der Produktivmigration muss ein geprüfter Dump vorhanden sein. Bei einem
+Fehler wird **nicht** durch eine pauschale Funktion wie
+`mathe9_ist_lehrkraft() = true` die Zugriffskontrolle geöffnet. Das würde
+jedem angemeldeten Supabase-Konto vorübergehend Lehrkraftrechte geben.
 
-```sql
--- Notbremse: Lehrkraftprüfung vorübergehend aufheben
-create or replace function public.mathe9_ist_lehrkraft()
-returns boolean language sql stable as $$ select true $$;
-```
+Stattdessen gilt:
 
-> Das ist eine **Notbremse für Minuten, kein Zustand für Tage** — in dieser
-> Fassung sieht wieder jeder angemeldete Supabase-Nutzer alle Daten.
+1. Anwendung auf dem letzten funktionierenden Webstand belassen bzw.
+   zurücksetzen.
+2. Bei einem reinen Policy-/Funktionsfehler die zuvor gesicherte SQL-Fassung
+   gezielt wiederherstellen.
+3. Bei unklarem Zustand das vor der Migration erzeugte Datenbankbackup in
+   einem Wiederherstellungstest prüfen und anschließend kontrolliert
+   zurückspielen.
+4. Erst nach erneuter Rollen- und RLS-Prüfung den Betrieb wieder freigeben.
 
-Ist mehr kaputt, hilft nur der Abzug aus Schritt 2:
-
-```bash
-psql "$PROD_URL" -f sicherung-JJJJ-MM-TT.sql
-```
+Ein Notfall-Rollback darf die RLS- oder Lehrkraftprüfung niemals pauschal
+ausschalten.
 
 ## 6 · Protokoll
 

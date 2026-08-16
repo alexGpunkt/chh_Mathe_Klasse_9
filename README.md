@@ -1056,7 +1056,7 @@ blockiert, greifen die Fallbacks; besser ist, die Dateien nach
 `assets/fonts/` zu legen und lokal einzubinden.
 
 
-## Aktueller Develop-Stand V31
+## Aktueller Develop-Stand V35
 
 V26 ergänzt dauerhafte Zwischenstände, Aufgaben-Sitzungs-IDs, explizite
 Beispiellücken, Erklärverweise, Nachfassaufgaben, Updatehinweis, JSON-Schema,
@@ -1124,7 +1124,30 @@ V31 integriert diese Funktionen sicher in die bestehende Struktur:
 - interne Bezeichner wie `h_Dreieck` und `h_s` wurden aus den sichtbaren
   Aufgabentexten entfernt und die Generatorprüfung erkennt solche Rückfälle.
 
+V32 schließt fehlende Animationen und externe Übungen; alle 162
+Lernweg-/Einheitenkombinationen besitzen damit eine Anschauung und mindestens
+einen passenden externen Verweis. V33 differenziert die Übungsblätter nach
+Lernweg: 162 PDFs mit 324 Generatoren statt eines gemeinsamen Blatts je
+Einheit, ergänzt zahlreiche Fehlerrückmeldungen und filtert offene
+Übungsportale auf anspruchsvollere Lernwege.
+
+V34 ergänzt den Vollbild-Taschenrechner, einen laufend aktualisierten
+Dashboard-Fortschritt und eine Beameransicht. Die Animationsbibliothek ist in
+Kern plus PZ/LF/KP/SK aufgeteilt; `dev-tools.js` wird nur noch im
+Entwicklermodus nachgeladen. Damit bleibt das Smartphone-Budget trotz der
+neuen Funktionen innerhalb der gesetzten Grenzen.
+
+V35 ist die Integrations- und Vorprüffassung: Windows-Zeilenenden werden über
+`.gitattributes` stabilisiert, der Rechner folgt bei Potenzen mit negativem
+Vorzeichen der üblichen mathematischen Priorität und beginnt nach `=` bei einer
+neuen Ziffer tatsächlich eine neue Rechnung. Die Beameranzeige trennt den
+letzten erfolgreichen Kontakt vom Fehlerzähler des jüngsten Heartbeats. Die
+statische Barrierefreiheitsprüfung umfasst nun auch Rechner und Beamer. Für den
+nächsten Schritt liegt mit `supabase/abgleich-readonly.sql` ein ausschließlich
+lesender Datenbankabgleich bereit; die bestehende Datenbank wird durch diese
+Fassung noch nicht verändert.
+
 Alle Fassungen mit Änderungen, Migration, Einschränkungen und Rückkehrpunkt
 stehen in `CHANGELOG.md`.
 
-Cache-Version: `mathe9-v31-integration-fixes-develop`.
+Cache-Version: `mathe9-v35-integration-preflight-develop`.

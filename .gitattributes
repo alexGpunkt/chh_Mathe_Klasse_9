@@ -11,6 +11,11 @@
 # bekäme jeder, der das Repository klont, 162 unbrauchbare Übungsblätter.
 # ============================================================
 
+# Textdateien im Repository einheitlich mit LF speichern.
+# Das verhindert auf Windows reine CRLF-Scheinänderungen, wie sie im
+# angelieferten V34-Archiv bei zahlreichen JSON/JS/CSS-Dateien vorkamen.
+* text=auto eol=lf
+
 *.pdf   binary
 *.png   binary
 *.jpg   binary

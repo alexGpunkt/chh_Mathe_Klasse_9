@@ -17,6 +17,42 @@ dort keines: ein geschätztes Datum wäre schlechter als gar keines.
 
 ---
 
+## v35 — 2026-08-14 · Integrationskorrekturen und Supabase-Vorprüfung
+
+- V34 auf den geprüften V31-Unterbau konsolidiert; reine CRLF-Arbeitskopie-
+  Änderungen aus dem Upload nicht als fachliche Änderungen übernommen.
+- `.gitattributes` normalisiert Textdateien künftig auf LF und hält PDFs sowie
+  andere Binärdateien ausdrücklich binär.
+- Taschenrechner: `-2^2` wird mathematisch korrekt als `-(2^2) = -4`
+  ausgewertet; `2^-2` und rechtsassoziative Potenzen bleiben korrekt. Nach
+  `=` beginnt eine Ziffer eine neue Rechnung, während Operatoren mit dem
+  Ergebnis weiterrechnen.
+- Beameransicht: letzter erfolgreicher Kontakt und letzter Heartbeat werden
+  getrennt ausgewertet, damit ein späteres Antwortereignis den gemeldeten
+  Ping-Fehlerzähler nicht versehentlich auf null setzt. Zusätzlich wurde ein
+  echter Laufzeitfehler für aktive Kinder ohne Fortschrittszeile behoben
+  (`letzterPing` war nach der Aufteilung nicht mehr definiert).
+- Barrierefreiheitsprüfung umfasst jetzt auch `dashboard/beamer.html`,
+  Rechner-CSS und Dashboard-/Beamer-CSS; Vollbildknopf erhält eine explizite
+  Beschriftung. Die zuvor 34–42 px hohen Dashboard-Schaltflächen sind auf
+  mindestens 44 px Touchhöhe vereinheitlicht.
+- Didaktischer Aufbauprüfer bewahrt die Phasennummern in seiner
+  Zusammenfassung (`Phase 3` statt `Phase N`).
+- `MIGRATION.md` entfernt den riskanten Rollbackvorschlag, die
+  Lehrkraftprüfung pauschal zu öffnen, und weist ausdrücklich darauf hin,
+  dass der SQL Editor keine RLS-Rollentests ersetzt.
+- Neu: `supabase/abgleich-readonly.sql` als streng lesende, fehlertolerante
+  Bestandsaufnahme für den nächsten Supabase-Abgleich. Fehlende Tabellen oder
+  RPCs werden als solche ausgewiesen, ohne dass der Vorabgleich abbricht.
+  `werkzeuge/pruefen.js` stellt zusätzlich sicher, dass diese Datei keine
+  schreibenden/strukturändernden SQL-Anweisungen enthält.
+- Die Rechner-Smoke-Tests decken nun auch Potenz-vor-Vorzeichen, negative
+  Exponenten und den Neustart einer Eingabe nach `=` ab.
+
+Keine produktive Supabase-Migration in diesem Schritt.
+
+---
+
 ## v34 — 2026-08-14 · Taschenrechner, Dauerfortschritt und Beameransicht
 
 **Fortschritt läuft jetzt durchgehend ins Dashboard**

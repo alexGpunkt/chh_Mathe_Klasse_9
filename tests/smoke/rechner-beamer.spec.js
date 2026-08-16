@@ -40,6 +40,11 @@ test.describe('Taschenrechner', () => {
 
     await page.locator('#tr-uebernehmen').click();
     await expect(page.locator('#buehne .zahl-feld').first()).toHaveValue('60');
+
+    /* Nach '=' beginnt eine neue Ziffer wirklich eine neue Rechnung —
+       nicht 60 → 604. */
+    await page.locator('.tr-taste', { hasText: /^4$/ }).click();
+    await expect(page.locator('.tr-eingabe')).toHaveText('4');
   });
 
   test('blendet alles außer Aufgabe und Rechner aus, ohne zu scrollen', async ({ page }) => {
@@ -107,6 +112,8 @@ test.describe('Taschenrechner', () => {
         quadrat: r.rechne('5²'),
         wurzel: r.rechne('√16'),
         potenzRechts: r.rechne('2^3^2'),
+        potenzVorMinus: r.rechne('-2^2'),
+        negativerExponent: r.rechne('2^-2'),
         komma: r.rechne('0,5 + 0,25'),
         minus: r.rechne('3 − 8')
       };
@@ -118,6 +125,8 @@ test.describe('Taschenrechner', () => {
     expect(proben.quadrat).toBe(25);
     expect(proben.wurzel).toBe(4);
     expect(proben.potenzRechts).toBe(512);
+    expect(proben.potenzVorMinus).toBe(-4);
+    expect(proben.negativerExponent).toBe(0.25);
     expect(proben.komma).toBe(0.75);
     expect(proben.minus).toBe(-5);
   });

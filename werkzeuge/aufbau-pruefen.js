@@ -156,7 +156,12 @@ function main() {
      hilft niemandem, das Muster dahinter schon. */
   const proMangel = new Map();
   ergebnisse.forEach(r => r.maengel.forEach(m => {
-    const art = m.replace(/^Pfad [ABC]: /, '').replace(/\(.*\)/, '').replace(/\d+/g, 'N').trim();
+    const phase = m.match(/Phase (\d)/)?.[1] || null;
+    let art = m.replace(/^Pfad [ABC]: /, '')
+      .replace(/\(.*\)/, '')
+      .replace(/\d+/g, 'N')
+      .trim();
+    if (phase) art = art.replace('Phase N', `Phase ${phase}`);
     if (!proMangel.has(art)) proMangel.set(art, []);
     proMangel.get(art).push(r.id.toUpperCase());
   }));

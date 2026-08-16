@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v34-rechner-beamer-develop';
+const VERSION = 'mathe9-v35-integration-preflight-develop';
 
 /* ---------- Was NICHT ins Offlinepaket gehört ----------
    Bis V34 lud jedes Schülergerät bei der Installation auch das

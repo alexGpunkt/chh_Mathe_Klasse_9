@@ -1,11 +1,11 @@
 {
   "name": "Mathe 9 · Campus Hannah Höch",
-  "version": "v34",
-  "cache_version": "mathe9-v34-rechner-beamer-develop",
-  "source_commit": null,
+  "version": "v35",
+  "cache_version": "mathe9-v35-integration-preflight-develop",
+  "source_commit": "786aefd",
   "source_branch": "develop",
   "source_dirty": true,
-  "gebaut_am": "2026-08-11T13:39:35Z",
+  "gebaut_am": "2026-08-14T15:46:00Z",
   "tracking_aktiv": true,
   "einheiten": 54
 }

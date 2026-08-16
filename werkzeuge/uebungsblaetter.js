@@ -5,7 +5,8 @@
    Aufruf:  node werkzeuge/uebungsblaetter.js            (alle 54)
             node werkzeuge/uebungsblaetter.js pz-08      (nur eines)
 
-   Erzeugt je Einheit  units/<bereich>/<id>/uebungsblatt.pdf.
+   Erzeugt je Einheit und Lernweg:
+   units/<bereich>/<id>/uebungsblatt-a.pdf, -b.pdf und -c.pdf.
 
    Warum überhaupt gedruckt: Der digitale Weg prüft Ergebnisse, nicht
    Rechenwege. Wer nur tippt, übt das Aufschreiben nicht — und in der

@@ -646,19 +646,25 @@ function beamerZeilenBauen(progress,events){
     if(!alt||zeitwert(p)>zeitwert(alt))neuester.set(k,p);
   });
 
-  const letzterPing=new Map();
-  const fehlversuche=new Map();
+  /* Zwei Zeitreihen statt einer: JEDES erfolgreich angekommene Ereignis
+     beweist Netzwerkverbindung und darf deshalb den letzten Kontakt
+     aktualisieren. Der Fehlerzähler stammt aber ausschließlich aus dem
+     jüngsten Heartbeat. In V34 wurde er versehentlich auf 0 zurückgesetzt,
+     sobald nach einem Heartbeat z. B. eine Antwort neuer war. */
+  const letzterKontakt=new Map();
+  const letzterHeartbeat=new Map();
   (events||[]).forEach(e=>{
     const k=e.student_id||e.device_id;if(!k||!e.ts)return;
-    const alt=letzterPing.get(k);
-    if(!alt||zeitwert(e)>zeitwert(alt)){
-      letzterPing.set(k,e);
-      /* Der Zähler des Geräts: wie oft ein Versand fehlschlug, bevor dieser
-         Ping durchkam. Er steht nur in Herzschlägen. */
-      if(e.event_type==='heartbeat'){
-        fehlversuche.set(k,Math.max(0,Number(payload(e.payload).ping_fails)||0));
-      }
+    const alt=letzterKontakt.get(k);
+    if(!alt||zeitwert(e)>zeitwert(alt))letzterKontakt.set(k,e);
+    if(e.event_type==='heartbeat'){
+      const hb=letzterHeartbeat.get(k);
+      if(!hb||zeitwert(e)>zeitwert(hb))letzterHeartbeat.set(k,e);
     }
+  });
+  const fehlversuche=new Map();
+  letzterHeartbeat.forEach((e,k)=>{
+    fehlversuche.set(k,Math.max(0,Number(payload(e.payload).ping_fails)||0));
   });
 
   const takt=Math.max(5,Number(C.heartbeatSeconds)||20);
@@ -667,7 +673,7 @@ function beamerZeilenBauen(progress,events){
 
   neuester.forEach((p,k)=>{
     gesehen.add(k);
-    const ping=letzterPing.get(k);
+    const ping=letzterKontakt.get(k);
     zeilen.push({
       id:k,
       name:p.student||'—',
@@ -683,7 +689,7 @@ function beamerZeilenBauen(progress,events){
   /* Angemeldete Kinder ohne jede Fortschrittszeile. */
   (letzteRoster||[]).filter(s=>s.active).forEach(s=>{
     if(gesehen.has(s.id))return;
-    const ping=letzterPing.get(s.id);
+    const ping=letzterKontakt.get(s.id);
     zeilen.push({
       id:s.id,
       name:s.display_name||s.login_name||'—',

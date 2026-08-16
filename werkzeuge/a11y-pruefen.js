@@ -25,7 +25,8 @@ const hinweis = [];
 
 const htmlDateien = fs.readdirSync(WURZEL)
   .filter(f => f.endsWith('.html'))
-  .concat(fs.existsSync(path.join(WURZEL, 'dashboard', 'index.html')) ? ['dashboard/index.html'] : []);
+  .concat(['dashboard/index.html', 'dashboard/beamer.html']
+    .filter(f => fs.existsSync(path.join(WURZEL, f))));
 
 for (const rel of htmlDateien) {
   const html = fs.readFileSync(path.join(WURZEL, rel), 'utf8');
@@ -86,8 +87,17 @@ for (const rel of htmlDateien) {
 }
 
 /* 8 · Touchziele in den Stylesheets */
-const css = ['app.css', 'anim.css', 'buch.css']
-  .map(f => fs.readFileSync(path.join(WURZEL, 'assets', 'css', f), 'utf8')).join('\n');
+const cssDateien = [
+  ['assets', 'css', 'app.css'],
+  ['assets', 'css', 'anim.css'],
+  ['assets', 'css', 'buch.css'],
+  ['assets', 'css', 'rechner.css'],
+  ['dashboard', 'dashboard.css'],
+  ['dashboard', 'beamer.css']
+];
+const css = cssDateien
+  .filter(teile => fs.existsSync(path.join(WURZEL, ...teile)))
+  .map(teile => fs.readFileSync(path.join(WURZEL, ...teile), 'utf8')).join('\n');
 
 function regexEscape(text) {
   return String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

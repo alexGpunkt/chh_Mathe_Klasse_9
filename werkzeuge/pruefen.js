@@ -510,6 +510,40 @@ try {
       fehler.push(`supabase/setup.sql: ${tabelle} ohne Row Level Security`);
     }
   }
+  /* V35-Vorbereitung: Der nächste Schritt vergleicht ein bestehendes
+     Supabase-Projekt gegen den vollständigen Sollstand. Darum prüfen wir
+     jetzt nicht nur die zuletzt ergänzten Tabellen/RPCs, sondern das ganze
+     serverseitige Inventar, das der Browser voraussetzt. */
+  const sollTabellenV35 = [
+    'mathe9_students','mathe9_events','mathe9_progress','mathe9_wartung_laeufe',
+    'mathe9_teachers','mathe9_teacher_audit','mathe9_student_tokens',
+    'mathe9_unterricht','mathe9_freigaben','mathe9_lernzeit'
+  ];
+  for (const tabelle of sollTabellenV35) {
+    if (!new RegExp('create\\s+table\\s+if\\s+not\\s+exists\\s+public\\.' + tabelle + '\\b', 'i').test(sql)) {
+      fehler.push(`supabase/setup.sql: V35-Solltabelle ${tabelle} fehlt`);
+    }
+    if (!new RegExp('alter\\s+table\\s+public\\.' + tabelle + '\\s+enable\\s+row\\s+level\\s+security', 'i').test(sql)) {
+      fehler.push(`supabase/setup.sql: V35-Solltabelle ${tabelle} ohne Row Level Security`);
+    }
+  }
+  const sollFunktionenV35 = [
+    'mathe9_validate_student_login','mathe9_aufraeumen','mathe9_wartung_status',
+    'mathe9_person_export','mathe9_person_loeschen','mathe9_lehrkraft_freischalten',
+    'mathe9_lehrkraft_sperren','mathe9_ist_lehrkraft','mathe9_lehrkraft_uebersicht',
+    'mathe9_student_anmelden','mathe9_token_student','mathe9_student_sitzung',
+    'mathe9_student_abmelden','mathe9_lernmodus','mathe9_lernzeit_melden',
+    'mathe9_unterricht_setzen','mathe9_freigeben','mathe9_freigabe_zuruecknehmen'
+  ];
+  for (const name of sollFunktionenV35) {
+    if (!new RegExp('create\\s+or\\s+replace\\s+function\\s+public\\.' + name + '\\b', 'i').test(sql)) {
+      fehler.push(`supabase/setup.sql: V35-Sollfunktion ${name} fehlt`);
+    }
+  }
+  if (!/revoke\s+all\s+on\s+function\s+public\.mathe9_validate_student_login\s*\(\s*text\s*,\s*text\s*\)\s+from\s+public\s*,\s*anon\s*,\s*authenticated/i.test(sql)) {
+    fehler.push('supabase/setup.sql: alter Loginpfad mathe9_validate_student_login ist am Ende nicht für public/anon/authenticated entzogen');
+  }
+
   /* Ein abgelaufener Bewertungsmodus muss von selbst in den offenen
      Zustand zurückfallen — sonst sperrt eine vergessene Umschaltung die
      ganze Klasse bis zum nächsten Eingriff aus. */
@@ -526,6 +560,32 @@ try {
   melde('Supabase-SQL auf Transaktion, Verwaltungsrechte, Tokenpflege, Protokolle und Funktionsblöcke geprüft');
 } catch (e) {
   fehler.push('supabase/setup.sql konnte nicht geprüft werden: ' + e.message);
+}
+
+/* ---------- 14a · Supabase-Vorabgleich muss streng lesend bleiben ----------
+   Diese Datei wird vor einer Migration im bestehenden Projekt ausgeführt.
+   Gerade deshalb darf ein späterer Umbau hier nicht versehentlich CREATE,
+   UPDATE, DO oder ähnliche Anweisungen hineinziehen. */
+try {
+  const preflight = lies('supabase/abgleich-readonly.sql');
+  const ohneKommentarePreflight = preflight.replace(/--[^\n]*/g, ' ');
+  const schreibend = /(^|\n)\s*(insert|update|delete|drop|alter|create|grant|revoke|truncate|do|call|begin|commit|rollback)\b/im;
+  if (schreibend.test(ohneKommentarePreflight)) {
+    fehler.push('supabase/abgleich-readonly.sql enthält eine schreibende oder strukturell verändernde SQL-Anweisung');
+  }
+  for (const tabelle of ['mathe9_students','mathe9_events','mathe9_progress','mathe9_wartung_laeufe',
+    'mathe9_teachers','mathe9_teacher_audit','mathe9_student_tokens','mathe9_unterricht',
+    'mathe9_freigaben','mathe9_lernzeit']) {
+    if (!preflight.includes(`('${tabelle}')`)) {
+      fehler.push(`supabase/abgleich-readonly.sql: Solltabelle ${tabelle} fehlt in der Bestandsaufnahme`);
+    }
+  }
+  if (!/to_regprocedure\s*\(/i.test(preflight)) {
+    fehler.push('supabase/abgleich-readonly.sql: Funktionsrechte werden nicht fehlertolerant über to_regprocedure geprüft');
+  }
+  melde('Supabase-Vorabgleich ist streng lesend und auf fehlende Sollobjekte vorbereitet');
+} catch (e) {
+  fehler.push('supabase/abgleich-readonly.sql fehlt oder konnte nicht geprüft werden: ' + e.message);
 }
 
 /* ---------- 14b · Handschriftliche Übungsblätter ----------

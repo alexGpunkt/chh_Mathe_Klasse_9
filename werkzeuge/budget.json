@@ -1,7 +1,7 @@
 {
   "hinweis": "Performancebudget für günstige Smartphones. Die Grenzen sind bewusst knapp über dem heutigen Stand gewählt: Sie sollen Wachstum bemerkbar machen, nicht sofort brechen. Wer eine Grenze anhebt, trifft eine Entscheidung — und schreibt sie in die Begründung darunter.",
-  "geprueft_am_stand": "V34",
-  "_luft": "In Ordnung: Mit V34 liegt die Einheitenseite bei 97 von 120 KB gzip und das gesamte JavaScript bei 146 von 150. Der Weg dorthin waren drei Schritte — Lehrerdateien aus dem Schüler-Offlinepaket, dev-tools.js nur noch bei devMode, und die Aufteilung von animationen.js je Lernbereich. Beim Gesamtbudget sind nur noch 4 KB Luft: Die Aufteilung hat es wie erwartet um rund 6 KB verteuert, weil fünf Dateien schlechter komprimieren als eine. Wer als Nächstes Code hinzufügt, schaut also auf die Gesamtsumme, nicht mehr auf die Seite. Der nächste strukturelle Hebel wäre engine.js (24 KB gzip, 78 KB roh) — dort steckt Prüfungs- und Diagnoselogik, die nicht jede Einheitenseite braucht. Die Grenzen anzuheben ist keine Lösung: Sie beschreiben, was ein günstiges Schulgerät im WLAN noch schafft.",
+  "geprueft_am_stand": "V35",
+  "_luft": "In Ordnung: Mit V35 liegt die Einheitenseite bei 97 von 120 KB gzip und das gesamte JavaScript bei 146 von 150. Der Weg dorthin waren drei Schritte — Lehrerdateien aus dem Schüler-Offlinepaket, dev-tools.js nur noch bei devMode, und die Aufteilung von animationen.js je Lernbereich. Beim Gesamtbudget sind nur noch 4 KB Luft: Die Aufteilung hat es wie erwartet um rund 6 KB verteuert, weil fünf Dateien schlechter komprimieren als eine. Wer als Nächstes Code hinzufügt, schaut also auf die Gesamtsumme, nicht mehr auf die Seite. Der nächste strukturelle Hebel wäre engine.js (24 KB gzip, 78 KB roh) — dort steckt Prüfungs- und Diagnoselogik, die nicht jede Einheitenseite braucht. Die Grenzen anzuheben ist keine Lösung: Sie beschreiben, was ein günstiges Schulgerät im WLAN noch schafft.",
   "_was_gezaehlt_wird": "Seit V34 zählt budget-pruefen.js nur, was ein SCHÜLERGERÄT lädt: alles aus der Vorabliste in sw.js, alles aus einem <script src> oder <link href> der Seiten im Hauptverzeichnis, plus sw.js selbst. Damit fallen dashboard/*.js und dashboard/*.css heraus (das Lehrerdashboard steht seit V34 nicht mehr im Offlinepaket und wird von keiner Schülerseite eingebunden — es lädt weiterhin normal über das Netz und ist offline ohnehin nutzlos, weil es eine Live-Ansicht auf Supabase ist) sowie dev-tools.js (wird von dev-boot.js nur bei devMode nachgeladen; auf master fordert es niemand an). Die Regel ist mechanisch: Wer eine dieser Dateien wieder in sw.js einträgt oder in eine Seite einbindet, bekommt sie automatisch zurück in die Rechnung. Nicht gezählte Dateien werden im Bericht namentlich ausgewiesen — die Entscheidung soll sichtbar bleiben und nicht im Werkzeug verschwinden.",
   "grenzen": {
     "js_je_seite_gzip_kb": {
@@ -22,7 +22,7 @@
     "einzeldatei_kb": {
       "wert": 200,
       "gilt_fuer": "größte einzelne .js-Datei, unkomprimiert",
-      "begruendung": "animationen.js liegt bei 178 KB. Eine einzelne Datei über 200 KB lässt sich nicht mehr sinnvoll überblicken und blockiert den Hauptthread am Stück."
+      "begruendung": "Die frühere monolithische animationen.js ist seit V34 auf Lernbereiche verteilt. Die größte ausgelieferte Datei ist derzeit engine.js mit rund 78 KB roh. 200 KB bleibt eine harte Wartbarkeits- und Hauptthread-Grenze, damit kein einzelnes Skript erneut zum Monolithen wächst."
     },
     "offline_gesamt_kb": {
       "wert": 2200,

@@ -318,7 +318,7 @@ function visualBlock(v) {
     if (window.ANIM && window.ANIM.block) return window.ANIM.block(v);
     const p = document.createElement('div');
     p.className = 'bild';
-    p.textContent = '[Animation — animationen.js nicht geladen]';
+    p.textContent = '[Animation — Animationsmodul nicht geladen]';
     return p;
   }
 

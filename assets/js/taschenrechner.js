@@ -42,6 +42,7 @@ const Taschenrechner = (() => {
   let letztesErgebnis = null;
   let verlauf = [];
   let fokusVorher = null;
+  let nachAuswertung = false;   // nach '=': Zahl beginnt neu, Operator rechnet weiter
 
   /* ============================================================
      1 · Rechnen
@@ -109,25 +110,28 @@ const Taschenrechner = (() => {
       return wert;
     }
 
+    /* Potenzen binden stärker als ein führendes Vorzeichen. Damit gilt
+       die übliche mathematische Lesart -2^2 = -(2^2) = -4. Der Exponent
+       wird wiederum als Vorzeichenausdruck gelesen, damit 2^-2 und
+       2^3^2 weiterhin funktionieren. */
+    function potenz() {
+      const basis = primaer();
+      if (schau() && schau().wert === '^') { nimm(); return Math.pow(basis, vorzeichen()); }
+      return basis;
+    }
+
     function vorzeichen() {
       if (schau() && schau().wert === '-') { nimm(); return -vorzeichen(); }
       if (schau() && schau().wert === '+') { nimm(); return vorzeichen(); }
       if (schau() && schau().wert === '√') { nimm(); return Math.sqrt(vorzeichen()); }
-      return primaer();
-    }
-
-    /* Rechtsassoziativ: 2^3^2 ist 2^9, nicht 8^2. */
-    function potenz() {
-      const basis = vorzeichen();
-      if (schau() && schau().wert === '^') { nimm(); return Math.pow(basis, potenz()); }
-      return basis;
+      return potenz();
     }
 
     function produkt() {
-      let v = potenz();
+      let v = vorzeichen();
       while (schau() && (schau().wert === '*' || schau().wert === '/')) {
         const op = nimm().wert;
-        const r = potenz();
+        const r = vorzeichen();
         if (op === '/' && r === 0) throw new Error('Durch null darf man nicht teilen.');
         v = op === '*' ? v * r : v / r;
       }
@@ -250,6 +254,7 @@ const Taschenrechner = (() => {
     knopf.id = 'tr-aufruf';
     knopf.innerHTML = '<span class="tr-aufruf-symbol" aria-hidden="true">🖩</span><span class="tr-aufruf-text">Rechner</span>';
     knopf.setAttribute('aria-label', 'Taschenrechner einblenden (Taste R)');
+    knopf.setAttribute('aria-expanded', 'false');
     knopf.title = 'Taschenrechner einblenden — Taste R oder Alt + R';
     knopf.addEventListener('click', () => umschalten());
     document.body.append(knopf);
@@ -261,6 +266,19 @@ const Taschenrechner = (() => {
      ============================================================ */
 
   function taste(aktion, wert) {
+    /* Nach '=' beginnt eine Zahl bzw. Konstante eine neue Rechnung.
+       Operatoren, Quadrat, Kehrwert, Vorzeichen und Rücktaste arbeiten
+       dagegen am Ergebnis weiter. Das entspricht der Beschriftung und dem
+       Verhalten eines üblichen Schulrechners; zuvor wurde aus 2+3=, dann 4
+       fälschlich 54. */
+    if (nachAuswertung && aktion !== 'gleich') {
+      const fortsetzen =
+        (aktion === 'zeichen' && ['+', '−', '·', ':', '^', '%'].includes(wert)) ||
+        ['quadrat', 'kehrwert', 'vorzeichen', 'zurueck'].includes(aktion);
+      if (!fortsetzen) ausdruck = '';
+      nachAuswertung = false;
+    }
+
     switch (aktion) {
       case 'zeichen':
         ausdruck += wert === ',' ? ',' : wert;
@@ -273,6 +291,7 @@ const Taschenrechner = (() => {
         break;
       case 'loeschen':
         ausdruck = '';
+        nachAuswertung = false;
         anzeigeErgebnis.textContent = '';
         anzeigeErgebnis.className = 'tr-ergebnis';
         break;
@@ -342,6 +361,7 @@ const Taschenrechner = (() => {
          rechnet dagegen mit dem Ergebnis weiter. Das ist das Verhalten,
          das ein Taschenrechner aus dem Mathematikunterricht zeigt. */
       ausdruck = fuerFeld(wert).replace('-', '−');
+      nachAuswertung = true;
     } catch (fehler) {
       anzeigeErgebnis.textContent = fehler.message;
       anzeigeErgebnis.className = 'tr-ergebnis tr-fehler';
