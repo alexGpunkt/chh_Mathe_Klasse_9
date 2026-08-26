@@ -1368,7 +1368,7 @@ begin
   neues_token := encode(gen_random_bytes(32), 'hex');
 
   insert into public.mathe9_student_tokens (token_hash, student_id, gueltig_bis)
-  values (encode(digest(neues_token, 'sha256'), 'hex'), gefunden.id, frist);
+  values (encode(extensions.digest(neues_token, 'sha256'), 'hex'), gefunden.id, frist);
 
   -- Abgelaufene Token bei Gelegenheit entfernen.
   delete from public.mathe9_student_tokens where gueltig_bis < now() - interval '7 days';
@@ -1402,7 +1402,7 @@ as $fn$
   from public.mathe9_student_tokens t
   join public.mathe9_students st on st.id = t.student_id and st.active
   where t.token_hash = encode(
-          digest(
+          extensions.digest(
             coalesce(
               nullif(current_setting('request.headers', true), '')::json ->> 'x-mathe9-token',
               ''
@@ -1437,7 +1437,7 @@ as $fn$
   from public.mathe9_student_tokens tok
   join public.mathe9_students st on st.id = tok.student_id
   where tok.token_hash = encode(
-          digest(
+          extensions.digest(
             coalesce(
               nullif(current_setting('request.headers', true), '')::json ->> 'x-mathe9-token',
               ''
@@ -1467,7 +1467,7 @@ declare
 begin
   delete from public.mathe9_student_tokens
   where token_hash = encode(
-          digest(
+          extensions.digest(
             coalesce(
               nullif(current_setting('request.headers', true), '')::json ->> 'x-mathe9-token',
               ''
@@ -2287,6 +2287,60 @@ grant select on public.mathe9_quiz_ergebnisse to authenticated;
 
 
 -- ============================================================
+-- Altbestand und Funktionsrechte abschliessend haerten
+-- ============================================================
+
+-- Namen aus der ersten, noch global lesbaren Tracking-Version.
+drop policy if exists "dashboard read events" on public.mathe9_events;
+drop policy if exists "dashboard read progress" on public.mathe9_progress;
+drop policy if exists "student insert events" on public.mathe9_events;
+drop policy if exists "student insert progress" on public.mathe9_progress;
+drop policy if exists "student update progress" on public.mathe9_progress;
+
+-- PostgreSQL vergibt EXECUTE auf neue Funktionen zunaechst an PUBLIC.
+-- Erst alles fuer die Mathe9-API entziehen, dann die benoetigten Endpunkte
+-- explizit wieder freigeben.
+do $rechte$
+declare
+  f record;
+begin
+  for f in
+    select p.oid::regprocedure as signatur
+    from pg_proc p
+    join pg_namespace n on n.oid = p.pronamespace
+    where n.nspname = 'public' and p.proname like 'mathe9_%'
+  loop
+    execute format(
+      'revoke all on function %s from public, anon, authenticated',
+      f.signatur
+    );
+  end loop;
+end;
+$rechte$;
+
+grant execute on function public.mathe9_student_anmelden(text, text, integer) to anon, authenticated;
+grant execute on function public.mathe9_token_student() to anon, authenticated;
+grant execute on function public.mathe9_student_sitzung() to anon, authenticated;
+grant execute on function public.mathe9_student_abmelden() to anon, authenticated;
+grant execute on function public.mathe9_lernmodus() to anon, authenticated;
+grant execute on function public.mathe9_lernzeit_melden(text, integer) to anon, authenticated;
+grant execute on function public.mathe9_quiz_melden(text, text, integer, integer, integer, text[]) to anon, authenticated;
+
+grant execute on function public.mathe9_ist_lehrkraft() to authenticated;
+grant execute on function public.mathe9_wartung_status() to authenticated;
+grant execute on function public.mathe9_aufraeumen(integer, integer) to authenticated;
+grant execute on function public.mathe9_person_export(uuid) to authenticated;
+grant execute on function public.mathe9_person_loeschen(uuid) to authenticated;
+grant execute on function public.mathe9_lehrkraft_uebersicht() to authenticated;
+grant execute on function public.mathe9_unterricht_setzen(text, integer, text) to authenticated;
+grant execute on function public.mathe9_freigeben(uuid, text, text) to authenticated;
+grant execute on function public.mathe9_freigabe_zuruecknehmen(uuid, text) to authenticated;
+grant execute on function public.mathe9_bewertungsart_setzen(uuid, text) to authenticated;
+grant execute on function public.mathe9_quiz_uebersicht(text, integer, boolean) to authenticated;
+grant execute on function public.mathe9_quiz_einheiten(text, integer, boolean) to authenticated;
+
+
+-- ============================================================
 -- Loeschfristen planmaessig ausfuehren
 --
 -- mathe9_aufraeumen() allein loescht nichts — es muss aufgerufen werden.
@@ -2321,3 +2375,4 @@ $plan$;
 
 
 commit;
+
