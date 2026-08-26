@@ -32,8 +32,11 @@
       "titel": "Volumen des Kegels",
       "hinfuehrung": "Der Kegel fasst ein Drittel vom Zylinder.",
       "erklaerung": [
-        "Rechne die Kreisfläche mal die Höhe.",
-        "Teile das Ergebnis durch 3."
+        "Ein Zylinder und ein Kegel können gleich aussehen. Unten derselbe Kreis, oben dieselbe Höhe.",
+        "Trotzdem passt in den Kegel weniger hinein.",
+        "Genau dreimal der Kegel füllt den Zylinder.",
+        "Rechne zuerst die Kreisfläche mal die Höhe.",
+        "Teile das Ergebnis danach durch 3."
       ],
       "visual": {
         "type": "animation",
@@ -41,18 +44,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Erst wie ein Zylinder, dann durch 3",
         "aufgabe": "Ein Kegel hat r = 3 cm und h = 10 cm. Volumen mit π ≈ 3,14?",
         "schritte": [
           "π · r² = 3,14 · 9 = 28,26",
           "· h = 28,26 · 10 = 282,6",
           "V = 282,6 : 3 = 94,2 cm³"
         ],
+        "ergebnis": "V ≈ 94,2 cm³. Ein Zylinder mit denselben Maßen fasste 282,6 cm³.",
         "luecke": {
           "schritt": 2,
           "wert": 94.2,
           "einheit": "cm³"
-        },
-        "ergebnis": "V ≈ 94,2 cm³."
+        }
       },
       "merke": "Kegel: V = (π · r² · h) : 3."
     },
@@ -61,16 +65,20 @@
       "hinfuehrung": "Steht statt r der Durchmesser d da, halbierst du zuerst: r = d : 2. Dann rechnest du wie gewohnt.",
       "erklaerung": [
         "r = d : 2.",
-        "Dann V = (π · r² · h) : 3. Nicht den Durchmesser quadrieren!"
+        "Dann V = (π · r² · h) : 3. Den Durchmesser zu quadrieren wäre falsch.",
+        "Der Fehler wirkt sich vierfach aus, weil der Radius quadriert wird: Ein doppelt so großer Wert liefert das vierfache Ergebnis. Beim Kegel kommt das Vergessen des Drittels oft noch dazu, und dann liegt das Ergebnis um den Faktor 12 daneben.",
+        "Schreibe die Halbierung als eigene Zeile. Zwei getrennte Schritte lassen sich nachrechnen; eine Rechnung, in der r nur im Kopf gebildet wurde, nicht."
       ],
       "beispiel": {
+        "titel": "Erst halbieren, dann quadrieren, dann dritteln",
         "aufgabe": "Kegel mit d = 6 cm, h = 7 cm. Volumen (π ≈ 3,14)?",
         "schritte": [
-          "r = d : 2 = 3 cm",
+          "eigener Schritt: r = d : 2 = 6 : 2 = 3 cm",
           "π · r² · h = 3,14 · 9 · 7 = 197,82",
-          "V = 197,82 : 3 ≈ 65,9 cm³"
+          "V = 197,82 : 3 ≈ 65,9 cm³",
+          "Kontrolle: Beide Stolperstellen beachtet — halbiert  ✓ und gedrittelt  ✓"
         ],
-        "ergebnis": "V ≈ 65,9 cm³."
+        "ergebnis": "V ≈ 65,9 cm³. Zwei Schritte werden hier gern übersehen: das Halbieren am Anfang und das Teilen durch 3 am Ende."
       },
       "merke": "Erst r = d : 2, dann V = (π · r² · h) : 3.",
       "visual": {
@@ -83,17 +91,22 @@
       "titel": "In Litern und Vergleich mit dem Zylinder",
       "hinfuehrung": "Der Faktor ⅓ heißt anschaulich: Drei Kegel füllen genau einen Zylinder gleicher Grundfläche und Höhe.",
       "erklaerung": [
-        "Für Liter in dm rechnen: dm³ = l.",
-        "Vergleich: Zylinder V = π·r²·h, Kegel V = (π·r²·h) : 3 – der Kegel fasst ein Drittel."
+        "Für Liter in dm rechnen, denn dm³ = l.",
+        "Vergleich: Zylinder V = π·r²·h, Kegel V = (π·r²·h) : 3 – der Kegel fasst ein Drittel.",
+        "Es ist derselbe Faktor wie bei der Pyramide, und das ist kein Zufall: Er hängt nicht von der Form der Grundfläche ab, sondern nur davon, dass sich der Körper zu einer Spitze verjüngt.",
+        "Für den Überschlag ist der Vergleich mit dem Zylinder der bequemste Weg. Wer weiß, wie viel der Zylinder fasst, teilt durch drei — das lässt sich im Kopf machen und deckt Rechenfehler zuverlässig auf.",
+        "Ein anschaulicher Nebeneffekt: Eine Eiswaffel wirkt größer, als sie ist. Bei gleichem Rand fasst sie nur ein Drittel dessen, was ein Becher gleicher Höhe fassen würde."
       ],
       "beispiel": {
+        "titel": "Kegelvolumen in Litern, über den Zylinder geprüft",
         "aufgabe": "Kegel mit r = 2 dm, h = 3 dm. Volumen in Litern (π ≈ 3,14)?",
         "schritte": [
-          "π · r² · h = 3,14 · 4 · 3 = 37,68 dm³",
-          "V = 37,68 : 3 = 12,56 dm³",
-          "1 dm³ = 1 l"
+          "Zylinder zum Vergleich: π · r² · h = 3,14 · 4 · 3 = 37,68 dm³",
+          "Kegel = ein Drittel davon: V = 37,68 : 3 = 12,56 dm³",
+          "1 dm³ = 1 l, also 12,56 l",
+          "Überschlag im Kopf: rund 38 l im Zylinder, ein Drittel sind gut 12 l  ✓"
         ],
-        "ergebnis": "V ≈ 12,56 l (ein Drittel des Zylinders)."
+        "ergebnis": "V ≈ 12,56 l, genau ein Drittel des Zylinders. Der Umweg über den Zylinder macht den Überschlag im Kopf möglich."
       },
       "merke": "Drei Kegel füllen einen Zylinder gleicher Grundfläche und Höhe.",
       "visual": {

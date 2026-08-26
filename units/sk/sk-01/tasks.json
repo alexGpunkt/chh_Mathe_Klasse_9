@@ -34,8 +34,11 @@
       "titel": "Die Pyramide kennenlernen",
       "hinfuehrung": "Die Pyramide läuft oben in einer Spitze zusammen.",
       "erklaerung": [
-        "Unten liegt die Grundfläche. Eine Seite davon ist die Grundkante a.",
-        "Die Höhe h geht von der Spitze senkrecht zur Mitte."
+        "Unten liegt die Grundfläche. Oft ist sie ein Quadrat.",
+        "Eine Seite der Grundfläche ist die Grundkante a.",
+        "An jeder Grundkante hängt ein Dreieck. Diese Dreiecke laufen nach oben.",
+        "Oben treffen sich alle Dreiecke in einem Punkt. Das ist die Spitze.",
+        "Die Höhe h geht von der Spitze senkrecht nach unten zur Mitte."
       ],
       "visual": {
         "type": "animation",
@@ -43,13 +46,15 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Die vier Teile benennen",
         "aufgabe": "Benenne die vier Teile der Pyramide.",
         "schritte": [
-          "Spitze: oberster Punkt",
+          "Spitze: der oberste Punkt",
           "Grundfläche: das Quadrat unten",
-          "Grundkante a: Seite des Quadrats; Höhe h: senkrecht zur Mitte"
+          "Grundkante a: eine Seite des Quadrats",
+          "Höhe h: senkrecht von der Spitze zur Mitte"
         ],
-        "ergebnis": "Spitze, Grundfläche, Grundkante a, Höhe h."
+        "ergebnis": "Spitze, Grundfläche, Grundkante a und Höhe h."
       },
       "merke": "Die Höhe h steht senkrecht in der Mitte."
     },
@@ -58,7 +63,9 @@
       "hinfuehrung": "Zwei „Höhen“ treffen an der Spitze zusammen – die Körperhöhe h und die Seitenhöhe s. Sie zu verwechseln ist der häufigste Fehler.",
       "erklaerung": [
         "Höhe h: senkrecht durch das Innere zur Mitte der Grundfläche.",
-        "Seitenhöhe s: die Höhe eines Seitendreiecks, gemessen auf der schrägen Außenfläche. s ist immer länger als h."
+        "Seitenhöhe s: die Höhe eines Seitendreiecks, gemessen auf der schrägen Außenfläche. s ist immer länger als h.",
+        "Warum ist s länger? Weil s die schräge Verbindung ist und h die senkrechte. Beide enden an derselben Spitze, aber s legt zusätzlich den Weg von der Mitte zur Grundkante zurück — im rechtwinkligen Dreieck ist s die Hypotenuse.",
+        "Die Merkregel für die Wahl: Das Volumen misst den Rauminhalt und braucht deshalb die senkrechte Höhe h. Die Oberfläche misst die Außenhaut und braucht die Seitenhöhe s, die auf dieser Haut liegt."
       ],
       "visual": {
         "type": "animation",
@@ -66,13 +73,15 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Welche Höhe gehört in welche Formel?",
         "aufgabe": "Welche Größe brauchst du für die Fläche eines Seitendreiecks – h oder s?",
         "schritte": [
-          "Seitendreieck liegt auf der Außenfläche",
-          "seine Höhe ist die Seitenhöhe s",
-          "→ nicht die Körperhöhe h"
+          "Das Seitendreieck liegt auf der schrägen Außenfläche.",
+          "Seine Höhe muss deshalb ebenfalls auf dieser Fläche liegen.",
+          "Das ist die Seitenhöhe s, nicht die Körperhöhe h.",
+          "Kontrolle: Mit h käme eine zu kleine Fläche heraus, denn h < s."
         ],
-        "ergebnis": "Für die Seitenfläche brauchst du die Seitenhöhe s."
+        "ergebnis": "Für die Seitenfläche brauchst du die Seitenhöhe s. Die Körperhöhe h gehört ins Volumen — sie liegt im Inneren und nicht auf der Fläche, die berechnet wird."
       },
       "merke": "h innen (senkrecht), s außen auf der Seitenfläche. s > h."
     },
@@ -81,16 +90,22 @@
       "hinfuehrung": "Die Form der Grundfläche bestimmt, wie viele Seitendreiecke die Pyramide hat und wie sie aussehen.",
       "erklaerung": [
         "Jede Kante der Grundfläche trägt genau ein Seitendreieck. Ein n-Eck als Grundfläche → n Seitendreiecke.",
-        "Bei regelmäßiger Grundfläche sind alle Seitendreiecke gleich; die Gesamtzahl der Flächen ist n + 1 (Grundfläche dazu)."
+        "Bei regelmäßiger Grundfläche sind alle Seitendreiecke gleich; die Gesamtzahl der Flächen ist n + 1 (Grundfläche dazu).",
+        "Vergleiche das mit dem Prisma: Dort waren es n + 2 Flächen, weil sich die Grundfläche oben wiederholt. Bei der Pyramide zieht sich das obere Ende zu einem einzigen Punkt zusammen — deshalb eine Fläche weniger.",
+        "Auch Kanten und Ecken folgen daraus: 2n Kanten (n unten, n zur Spitze) und n + 1 Ecken (n unten, eine oben). Der Polyedersatz bestätigt es: (n + 1) − 2n + (n + 1) = 2  ✓",
+        "Die Formel O = a² + 2 · a · s gilt nur für die regelmäßige quadratische Pyramide. Ist die Grundfläche kein Quadrat oder steht die Spitze nicht über der Mitte, sind die Seitendreiecke verschieden groß und müssen einzeln berechnet werden."
       ],
       "beispiel": {
-        "aufgabe": "Wie viele Flächen hat eine Pyramide mit sechseckiger Grundfläche?",
+        "titel": "Flächenzahl herleiten und mit dem Prisma vergleichen",
+        "aufgabe": "Wie viele Flächen hat eine Pyramide mit sechseckiger Grundfläche? Vergleiche mit dem Sechseck-Prisma.",
         "schritte": [
-          "6 Grundkanten → 6 Seitendreiecke",
-          "+ 1 Grundfläche",
-          "Flächen = 6 + 1 = 7"
+          "n = 6 Grundkanten, also 6 Seitendreiecke",
+          "dazu die Grundfläche: Flächen = 6 + 1 = 7",
+          "Kanten = 2n = 12, Ecken = n + 1 = 7",
+          "Kontrolle mit dem Polyedersatz: 7 − 12 + 7 = 2  ✓",
+          "Vergleich: Das Sechseck-Prisma hat 8 Flächen. Die Pyramide hat eine weniger, weil ihr oberes Ende ein Punkt statt einer Fläche ist."
         ],
-        "ergebnis": "7 Flächen (6 Dreiecke + Grundfläche)."
+        "ergebnis": "7 Flächen, nämlich 6 Dreiecke und die Grundfläche. Der Unterschied zum Prisma ist genau die fehlende zweite Grundfläche."
       },
       "merke": "n-Eck-Pyramide: n Seitendreiecke, n + 1 Flächen.",
       "visual": {

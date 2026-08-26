@@ -29,22 +29,27 @@
       "titel": "Jahreszinsen mit der Formel",
       "hinfuehrung": "Zinsen sind das Geld für ein Jahr.",
       "erklaerung": [
-        "Das Kapital K ist der Grundwert. Der Zinssatz p ist der Prozentsatz.",
-        "Rechne Z = K · p : 100."
+        "Wer Geld auf die Bank bringt, bekommt Zinsen dafür.",
+        "Das Kapital K ist das Geld auf dem Konto. Es ist der Grundwert.",
+        "Der Zinssatz p ist der Prozentsatz.",
+        "Rechne Z = K · p : 100.",
+        "Das ist dieselbe Rechnung wie beim Prozentwert. Nur die Namen sind neu.",
+        "Die Zinsen sind viel kleiner als das Kapital. Prüfe das immer."
       ],
       "beispiel": {
+        "titel": "Zinsen für ein Jahr",
         "aufgabe": "2000 € liegen ein Jahr zu 3 %. Wie viel Zinsen gibt es?",
         "schritte": [
           "Z = K · p : 100",
           "Z = 2000 € · 3 : 100",
           "Z = 60 €"
         ],
+        "ergebnis": "Die Jahreszinsen betragen 60 €.",
         "luecke": {
           "schritt": 2,
           "wert": 60,
           "einheit": "€"
-        },
-        "ergebnis": "Die Jahreszinsen betragen 60 €."
+        }
       },
       "merke": "Z = K · p : 100.",
       "visual": {
@@ -59,14 +64,19 @@
       "hinfuehrung": "Die Zinsformel hat drei Größen. Zuerst erkennst du, welche fehlt, dann stellst du passend um.",
       "erklaerung": [
         "Zinsen gesucht: Z = K · p : 100.",
-        "Zinssatz gesucht: p = Z : K · 100. Kapital gesucht: K = Z : p · 100."
+        "Zinssatz gesucht: p = Z : K · 100. Kapital gesucht: K = Z : p · 100.",
+        "Diese drei Formeln sind nicht auswendig zu lernen. Es sind die drei Prozentformeln mit anderen Buchstaben: Kapital ist der Grundwert, Zinsen sind der Prozentwert, der Zinssatz ist der Prozentsatz.",
+        "Wer das erkennt, spart sich die Hälfte des Stoffs — und kann die Größenkontrollen mitnehmen. Die Zinsen sind bei üblichen Zinssätzen viel kleiner als das Kapital; kommt etwas Größeres heraus, ist die Division vertauscht."
       ],
       "beispiel": {
+        "titel": "Erst die gesuchte Größe, dann die Formel",
         "aufgabe": "Für 2000 € gab es 60 € Zinsen. Wie hoch war der Zinssatz?",
         "schritte": [
-          "gesucht: p",
+          "Benennen: K = 2000 € (Grundwert), Z = 60 € (Prozentwert), gesucht ist p",
           "p = Z : K · 100",
-          "p = 60 : 2000 · 100 = 3 %"
+          "p = 60 : 2000 · 100",
+          "p = 0,03 · 100 = 3 %",
+          "Probe: 2000 € · 3 : 100 = 60 €  ✓"
         ],
         "ergebnis": "Der Zinssatz betrug 3 %."
       },
@@ -83,16 +93,22 @@
       "hinfuehrung": "Wer die Formel wirklich beherrscht, stellt sie selbst um – nach K, nach p, nach Z – und muss sich nur eine merken.",
       "erklaerung": [
         "Ausgangspunkt Z = K · p : 100.",
-        "Nach K: K = Z · 100 : p. Nach p: p = Z · 100 : K. Das Umstellen folgt den Regeln der Äquivalenzumformung – dieselbe Rechenoperation auf beiden Seiten."
+        "Nach K: K = Z · 100 : p. Nach p: p = Z · 100 : K. Das Umstellen folgt den Regeln der Äquivalenzumformung – dieselbe Rechenoperation auf beiden Seiten.",
+        "Umstellen heißt: Was auf der einen Seite stört, hebst du mit der Gegenoperation auf und tust dasselbe auf der anderen Seite. Das : 100 verschwindet durch · 100, das · p durch : p.",
+        "Die Kontrolle für jede Umstellung ist eine Zahlenprobe: Setze ein Beispiel ein, das du schon gerechnet hast. Wenn 2000, 3 und 60 in der umgestellten Formel zusammenpassen, stimmt sie.",
+        "Und die Einheiten helfen ein zweites Mal: Ein Kapital kommt in Euro heraus, ein Zinssatz in Prozent. Steht am Ende ein Prozentsatz, wo Euro stehen müssten, ist die Formel falsch umgestellt."
       ],
       "beispiel": {
-        "aufgabe": "Wie viel Kapital bringt bei 4 % genau 100 € Jahreszinsen?",
+        "titel": "Formel nach dem Kapital umstellen",
+        "aufgabe": "Wie viel Kapital bringt bei 4 % genau 100 € Jahreszinsen? Stelle die Formel Schritt für Schritt um.",
         "schritte": [
-          "Z = K · p : 100   | · 100",
-          "Z · 100 = K · p   | : p",
-          "K = Z · 100 : p = 100 · 100 : 4 = 2500 €"
+          "Z = K · p : 100          | · 100",
+          "Z · 100 = K · p          | : p",
+          "K = Z · 100 : p",
+          "Einsetzen: K = 100 € · 100 : 4 = 2500 €",
+          "Zahlenprobe: 2500 € · 4 : 100 = 100 €  ✓  und die Einheit ist Euro, wie es sein muss."
         ],
-        "ergebnis": "2500 € bringen bei 4 % genau 100 € Zinsen."
+        "ergebnis": "2500 € bringen bei 4 % genau 100 € Zinsen. Eine einzige Formel und zwei Umformungsschritte ersetzen drei auswendig gelernte Formeln."
       },
       "merke": "Eine Formel genügt – der Rest ist Umstellen mit gleichen Schritten auf beiden Seiten.",
       "visual": {

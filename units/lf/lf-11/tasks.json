@@ -29,21 +29,25 @@
       "titel": "Gleichungen mit dem Waagemodell",
       "hinfuehrung": "Eine Gleichung ist wie eine Waage.",
       "erklaerung": [
-        "Rechne links und rechts immer dasselbe.",
-        "Schaffe zuerst die Zahl ohne x weg. Dann teile durch die Zahl vor dem x."
+        "Links und rechts vom Gleichheitszeichen ist gleich viel.",
+        "Rechne links und rechts immer dasselbe. Dann bleibt die Waage im Gleichgewicht.",
+        "Schaffe zuerst die Zahl ohne x weg.",
+        "Dann teile durch die Zahl vor dem x.",
+        "Schreibe jeden Schritt hinter einen senkrechten Strich."
       ],
       "beispiel": {
+        "titel": "Erst plus oder minus, dann geteilt",
         "aufgabe": "Löse 3x + 4 = 19.",
         "schritte": [
           "3x + 4 = 19     | − 4",
           "3x = 15         | : 3",
           "x = 5"
         ],
+        "ergebnis": "x = 5.",
         "luecke": {
           "schritt": 2,
           "wert": 5
-        },
-        "ergebnis": "x = 5."
+        }
       },
       "merke": "Erst + oder −. Dann : .",
       "visual": {
@@ -57,17 +61,23 @@
       "hinfuehrung": "Steht x links und rechts, sammelst du es zuerst auf einer Seite. Am Ende sichert die Probe dein Ergebnis.",
       "erklaerung": [
         "Bringe alle x auf eine Seite (z. B. − 2x auf beiden Seiten), die Zahlen auf die andere.",
-        "Probe: setze deine Lösung in die Ausgangsgleichung ein – beide Seiten müssen gleich sein."
+        "Probe: setze deine Lösung in die Ausgangsgleichung ein – beide Seiten müssen gleich sein.",
+        "Die Reihenfolge ist kein Zufall. Sie packt die Gleichung von außen nach innen aus: erst das, was addiert wird, zuletzt das, was multipliziert wird — genau umgekehrt zur Punkt-vor-Strich-Regel.",
+        "Sammle das x auf der Seite, auf der mehr davon steht. Dann bleibt die Zahl vor dem x positiv, und du sparst dir eine Division durch eine negative Zahl.",
+        "Die Probe gehört in die Ausgangsgleichung, nicht in eine Zwischenzeile. Nur so entdeckst du auch einen Fehler, der schon im ersten Schritt passiert ist."
       ],
       "beispiel": {
+        "titel": "x auf beiden Seiten, mit Probe",
         "aufgabe": "Löse 5x − 3 = 2x + 9 und mach die Probe.",
         "schritte": [
+          "Mehr x steht links, also dorthin sammeln:",
           "5x − 3 = 2x + 9   | − 2x",
           "3x − 3 = 9        | + 3",
-          "3x = 12  | : 3 → x = 4",
-          "Probe: 5·4 − 3 = 17 = 2·4 + 9  ✓"
+          "3x = 12           | : 3",
+          "x = 4",
+          "Probe in der Ausgangsgleichung: links 5 · 4 − 3 = 17, rechts 2 · 4 + 9 = 17  ✓"
         ],
-        "ergebnis": "x = 4 (durch Probe bestätigt)."
+        "ergebnis": "x = 4, durch die Probe bestätigt. Beide Seiten liefern denselben Wert 17."
       },
       "merke": "x sammeln, Zahlen trennen, am Ende Probe machen.",
       "visual": {
@@ -81,15 +91,22 @@
       "hinfuehrung": "Mit Klammern löst du zuerst diese auf. Und manchmal gibt es keine oder unendlich viele Lösungen – das erkennst du am Ergebnis.",
       "erklaerung": [
         "Klammern mit dem Distributivgesetz auflösen: 2(x + 3) = 2x + 6.",
-        "Fällt x ganz heraus und es bleibt eine wahre Aussage (z. B. 6 = 6), gibt es unendlich viele Lösungen. Bleibt eine falsche Aussage (z. B. 6 = 8), gibt es keine Lösung."
+        "Fällt x ganz heraus und es bleibt eine wahre Aussage (z. B. 6 = 6), gibt es unendlich viele Lösungen. Bleibt eine falsche Aussage (z. B. 6 = 8), gibt es keine Lösung.",
+        "Dass x herausfällt, ist kein Rechenfehler und kein Grund, von vorn anzufangen. Es ist selbst das Ergebnis und will gedeutet werden.",
+        "Anschaulich sind das dieselben beiden Fälle wie bei zwei Geraden: Eine wahre Aussage bedeutet, dass beide Seiten dieselbe Gerade beschreiben, eine falsche, dass sie parallel verlaufen und sich nie treffen.",
+        "Steht ein Minus vor der Klammer, kehren sich beim Auflösen alle Vorzeichen darin um: −2(x − 3) wird zu −2x + 6. Das ist die häufigste Fehlerquelle in dieser Einheit."
       ],
       "beispiel": {
-        "aufgabe": "Löse 2(x + 3) = 2x + 6.",
+        "titel": "Klammern auflösen und einen Sonderfall deuten",
+        "aufgabe": "Löse 2(x + 3) = 2x + 6 und deute das Ergebnis.",
         "schritte": [
+          "Klammer auflösen: 2(x + 3) = 2x + 6",
           "2x + 6 = 2x + 6   | − 2x",
-          "6 = 6   → immer wahr"
+          "6 = 6   → eine wahre Aussage, x ist verschwunden",
+          "Deutung: Beide Seiten sind derselbe Term, nur verschieden geschrieben.",
+          "Geometrisch: Es ist zweimal dieselbe Gerade — jeder Punkt ist gemeinsam."
         ],
-        "ergebnis": "Unendlich viele Lösungen (jede Zahl für x)."
+        "ergebnis": "Unendlich viele Lösungen: Jede Zahl für x macht die Gleichung wahr. Das Verschwinden von x ist hier die Antwort und nicht das Problem."
       },
       "merke": "x fällt raus: wahre Aussage → alle Lösungen; falsche Aussage → keine Lösung.",
       "visual": {

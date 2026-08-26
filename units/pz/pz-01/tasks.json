@@ -29,8 +29,11 @@
       "titel": "Anteile als Prozent lesen",
       "hinfuehrung": "Der ganze Streifen ist immer 100 %.",
       "erklaerung": [
-        "Prozent heißt: von hundert.",
-        "Zähle, wie viel vom Streifen gefärbt ist."
+        "Prozent heißt: von hundert. Ein Prozent ist ein Hundertstel.",
+        "Stell dir den Streifen in 100 gleiche Kästchen geteilt vor. Jedes Kästchen ist 1 %.",
+        "Zähle, wie viel vom Streifen gefärbt ist. So viele Kästchen sind es.",
+        "Die Hälfte sind 50 Kästchen. Also 50 %.",
+        "Ein Viertel sind 25 Kästchen. Also 25 %."
       ],
       "visual": {
         "type": "animation",
@@ -38,18 +41,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Von der Hälfte zum Prozentsatz",
         "aufgabe": "Der halbe Streifen ist gefärbt. Wie viel Prozent sind das?",
         "schritte": [
           "Der ganze Streifen  = 100 %",
           "Die Hälfte davon    = 100 % : 2",
           "                    = 50 %"
         ],
+        "ergebnis": "Die Hälfte sind 50 %.",
         "luecke": {
           "schritt": 2,
           "wert": 50,
           "einheit": "%"
-        },
-        "ergebnis": "Die Hälfte sind 50 %."
+        }
       },
       "merke": "1/2 = 50 %   1/4 = 25 %   1/10 = 10 %"
     },
@@ -57,16 +61,20 @@
       "titel": "Bruch – Dezimalzahl – Prozent",
       "hinfuehrung": "Bruch, Dezimalzahl und Prozent sind drei Schreibweisen für denselben Anteil. Mit zwei Rechenschritten wechselst du zwischen ihnen.",
       "erklaerung": [
-        "Vom Bruch zur Dezimalzahl teilst du den Zähler durch den Nenner.",
-        "Von der Dezimalzahl zum Prozentsatz nimmst du mal 100 und hängst das Prozentzeichen an. Zurück geht es geteilt durch 100."
+        "Vom Bruch zur Dezimalzahl teilst du den Zähler durch den Nenner. Der Bruchstrich ist ein Geteiltzeichen — mehr steckt nicht dahinter.",
+        "Von der Dezimalzahl zum Prozentsatz nimmst du mal 100 und hängst das Prozentzeichen an. Zurück geht es geteilt durch 100.",
+        "Warum gerade 100? Weil Prozent „von hundert“ heißt. 0,75 bedeutet 75 Hundertstel, und 75 Hundertstel schreibt man als 75 %. Die Zahl ändert sich nicht, nur die Schreibweise.",
+        "Deshalb ist das Prozentzeichen kein Schmuck: Es ersetzt das „: 100“. Wer die 100 wegnimmt und das Zeichen trotzdem stehen lässt, hat den Wert verhundertfacht."
       ],
       "beispiel": {
+        "titel": "Drei Schreibweisen, ein Anteil",
         "aufgabe": "Schreibe 3/4 als Dezimalzahl und als Prozent.",
         "schritte": [
-          "Bruch → Dezimalzahl:  3 : 4      = 0,75",
-          "Dezimalzahl → Prozent: 0,75 · 100 = 75 %"
+          "Bruch → Dezimalzahl:   3 : 4       = 0,75",
+          "Dezimalzahl → Prozent: 0,75 · 100  = 75 %",
+          "Probe rückwärts:       75 : 100    = 0,75  ✓"
         ],
-        "ergebnis": "3/4 = 0,75 = 75 %"
+        "ergebnis": "3/4 = 0,75 = 75 % — drei Schreibweisen für denselben Anteil."
       },
       "merke": "· 100 macht aus der Dezimalzahl den Prozentsatz, : 100 macht ihn wieder rückgängig.",
       "visual": {
@@ -80,16 +88,22 @@
       "hinfuehrung": "Nicht jeder Bruch ergibt eine glatte Dezimalzahl. Dann rundest du – und sagst, warum und wie weit.",
       "erklaerung": [
         "Manche Divisionen hören nicht auf (2 : 3 = 0,666…). Solche Zahlen rundest du auf so viele Stellen, wie für die Aufgabe sinnvoll sind – bei Prozent meist auf ganze oder eine Nachkommastelle.",
-        "Beim Runden schaust du auf die erste weggelassene Ziffer: 0–4 abrunden, 5–9 aufrunden. Schreibe das Rundungszeichen ≈, nicht =."
+        "Beim Runden schaust du auf die erste weggelassene Ziffer: 0–4 abrunden, 5–9 aufrunden. Schreibe das Rundungszeichen ≈, nicht =.",
+        "Die Rundung ist keine Ungenauigkeit, die man verschweigt, sondern eine Entscheidung, die man angibt. „Rund 67 %“ ist eine vollständige Antwort, „67 %“ ohne Zusatz ist eine falsche.",
+        "Wie weit gerundet wird, entscheidet der Sachzusammenhang und nicht der Taschenrechner: Bei einer Klassenumfrage mit 28 Kindern sind Nachkommastellen im Prozentsatz sinnlos, weil ein einzelnes Kind schon 3,6 % ausmacht.",
+        "Die Probe für eine Rundung ist die Summe: Drei gerundete Drittel ergeben 99 % statt 100 %. Genau an dieser Lücke erkennt man, dass gerundet wurde."
       ],
       "beispiel": {
-        "aufgabe": "Schreibe 2/3 als Prozent, gerundet auf ganze Prozent.",
+        "titel": "Runden und die Rundung begründen",
+        "aufgabe": "Schreibe 2/3 als Prozent, gerundet auf ganze Prozent. Begründe, warum hier ≈ statt = steht.",
         "schritte": [
-          "2 : 3            = 0,6666…",
-          "· 100            = 66,66… %",
-          "Runden (7. Ziffer 6 → auf)  ≈ 67 %"
+          "2 : 3                       = 0,6666…",
+          "· 100                       = 66,66… %",
+          "Runden, erste weggelassene Ziffer ist 6 → aufrunden:  ≈ 67 %",
+          "Begründung: Die Division bricht nicht ab, 67 % ist also nicht der Wert, sondern sein Näherungswert.",
+          "Probe: 3 · 67 % = 201 % statt 200 % — die Abweichung ist die Rundung selbst."
         ],
-        "ergebnis": "2/3 ≈ 67 %"
+        "ergebnis": "2/3 ≈ 67 %. Das Zeichen ≈ ist Teil der Antwort, nicht eine Nachlässigkeit beim Aufschreiben."
       },
       "merke": "Beim Runden wird = zu ≈. Gib immer an, worauf du gerundet hast.",
       "visual": {

@@ -27,22 +27,26 @@
       "titel": "Dreisatz über die Einheit",
       "hinfuehrung": "Rechne zuerst den Preis für 1 Stück aus.",
       "erklaerung": [
-        "Mehr Ware kostet mehr Geld.",
-        "Teile durch die Anzahl. Dann nimm mal die neue Anzahl."
+        "Mehr Ware kostet mehr Geld. Doppelt so viel Ware kostet doppelt so viel.",
+        "Der Preis für 1 Stück ist immer gleich. Er ist der Schlüssel.",
+        "Teile durch die Anzahl. Dann weißt du, was 1 Stück kostet.",
+        "Dann nimm mal die neue Anzahl.",
+        "Der Weg geht immer über die 1. Deshalb heißt er Dreisatz."
       ],
       "beispiel": {
+        "titel": "Der Weg über ein Stück",
         "aufgabe": "5 Brötchen kosten 2,00 €. Was kosten 8 Brötchen?",
         "schritte": [
           "5 Brötchen → 2,00 €",
           ": 5   1 Brötchen → 0,40 €",
           "· 8   8 Brötchen → 3,20 €"
         ],
+        "ergebnis": "8 Brötchen kosten 3,20 €.",
         "luecke": {
           "schritt": 2,
           "wert": 3.2,
           "einheit": "€"
-        },
-        "ergebnis": "8 Brötchen kosten 3,20 €."
+        }
       },
       "merke": "Erst : auf 1 Stück. Dann · auf die neue Anzahl.",
       "visual": {
@@ -56,16 +60,20 @@
       "hinfuehrung": "Wenn du das Schema selbst notierst und die Pfeile beschriftest, machst du keine Fehler mehr – auch bei krummen Zahlen.",
       "erklaerung": [
         "Schreibe links die eine Größe, rechts die andere. Notiere an jeden Pfeil, wodurch du teilst oder multiplizierst.",
-        "Beide Seiten bekommen denselben Pfeil. Das ist der Kern des Verfahrens."
+        "Beide Seiten bekommen denselben Pfeil. Das ist der Kern des Verfahrens: Eine Zuordnung bleibt nur dann richtig, wenn beide Spalten dieselbe Behandlung bekommen.",
+        "Der Zwischenschritt auf 1 ist nicht Vorschrift, sondern Bequemlichkeit. Von 1 aus kommst du mit einer einzigen Multiplikation zu jeder Menge, ohne über Brüche nachzudenken.",
+        "Prüfe zum Schluss die Richtung: Bei mehr Ware muss mehr herauskommen. Ein Ergebnis, das kleiner ist als der Ausgangswert, obwohl die Menge gestiegen ist, entsteht durch vertauschte Pfeile."
       ],
       "beispiel": {
+        "titel": "Das Schema mit beschrifteten Pfeilen",
         "aufgabe": "3 m Stoff kosten 7,50 €. Was kosten 7 m?",
         "schritte": [
           "3 m      → 7,50 €",
           ": 3          : 3",
           "1 m      → 2,50 €",
           "· 7          · 7",
-          "7 m      → 17,50 €"
+          "7 m      → 17,50 €",
+          "Richtungsprobe: mehr Stoff, mehr Geld — 17,50 € > 7,50 €  ✓"
         ],
         "ergebnis": "7 m Stoff kosten 17,50 €."
       },
@@ -81,15 +89,21 @@
       "hinfuehrung": "Der Umweg über die 1 ist nur eine Hilfe. Dahinter steckt ein einziger Faktor, der beide Größen verbindet.",
       "erklaerung": [
         "Bei proportionalen Zuordnungen ist das Verhältnis Preis : Menge immer gleich. Diese Konstante ist der Faktor (hier: Preis pro Einheit).",
-        "Statt zweier Schritte kannst du direkt mit dem Faktor multiplizieren: neue Menge · Faktor = neuer Preis."
+        "Statt zweier Schritte kannst du direkt mit dem Faktor multiplizieren: neue Menge · Faktor = neuer Preis. Der Dreisatz berechnet den Faktor nur nebenbei mit.",
+        "Der Faktor hat eine Einheit, und sie sagt, was er bedeutet: 1,50 €/kg ist ein Preis je Kilogramm. Wer die Einheit mitschreibt, sieht am Ergebnis sofort, ob die Rechnung sinnvoll ist — €/kg · kg ergibt €.",
+        "Der Faktor ist zugleich die Steigung der zugehörigen Geraden y = k · x. Prozentrechnung, Dreisatz und lineare Funktionen beschreiben hier dieselbe Sache in drei Sprachen.",
+        "Die Grenze des Verfahrens gehört dazu: Ein Mengenrabatt macht die Zuordnung nicht proportional. Dann ist der Preis je Einheit nicht mehr konstant, und der Dreisatz liefert ein falsches Ergebnis."
       ],
       "beispiel": {
-        "aufgabe": "4 kg Äpfel kosten 6,00 €. Bestimme den Faktor und berechne 10 kg in einem Schritt.",
+        "titel": "Faktor bestimmen und seine Aussage prüfen",
+        "aufgabe": "4 kg Äpfel kosten 6,00 €. Bestimme den Faktor, berechne 10 kg in einem Schritt und beurteile, ob das Verfahren hier zulässig ist.",
         "schritte": [
           "Faktor = 6,00 € : 4 kg = 1,50 €/kg",
-          "10 kg · 1,50 €/kg = 15,00 €"
+          "Einheitenprobe: €/kg · kg = € — das Ergebnis wird ein Preis.",
+          "10 kg · 1,50 €/kg = 15,00 €",
+          "Zulässigkeit: Der Kilopreis gilt laut Aufgabe für jede Menge, es gibt keinen Mengenrabatt. Also ist die Zuordnung proportional und der Faktor konstant."
         ],
-        "ergebnis": "10 kg kosten 15,00 € – in einem Schritt über den Faktor."
+        "ergebnis": "10 kg kosten 15,00 € – in einem Schritt über den Faktor 1,50 €/kg, und das Verfahren ist hier zulässig, weil der Kilopreis konstant bleibt."
       },
       "merke": "Der Faktor (Preis je Einheit) ersetzt die zwei Dreisatzschritte.",
       "visual": {

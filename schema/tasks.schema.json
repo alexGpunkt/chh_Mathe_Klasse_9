@@ -106,6 +106,37 @@
         }
       }
     },
+    "quiz": {
+      "type": "object",
+      "description": "Eigene Quizfragen je Pfad. Nur nötig, wenn die erzeugten Fragen für diese Einheit nicht passen — sie treten dann an deren Stelle. Alle Fragen müssen sich auf DIESE Einheit beziehen; ein Quiz, das anderswoher zieht, misst nicht die Einheit.",
+      "additionalProperties": false,
+      "properties": {
+        "A": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/quizfrage"
+          },
+          "minItems": 3,
+          "maxItems": 5
+        },
+        "B": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/quizfrage"
+          },
+          "minItems": 3,
+          "maxItems": 5
+        },
+        "C": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/quizfrage"
+          },
+          "minItems": 3,
+          "maxItems": 5
+        }
+      }
+    },
     "uebungslinks": {
       "type": "array",
       "items": {
@@ -695,6 +726,39 @@
           "enum": [
             "Lehrerschmidt"
           ]
+        }
+      }
+    },
+    "quizfrage": {
+      "type": "object",
+      "description": "Eine von Hand geschriebene Quizfrage. Optional: Ohne dieses Feld setzt quiz.js das Abschlussquiz aus dem Material der Einheit selbst zusammen — Merksatz, Erklärung, Formelkarte, Wortspeicher und zwei Aufgaben derselben Stufe.",
+      "required": [
+        "frage",
+        "optionen",
+        "antwort"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "frage": {
+          "type": "string",
+          "minLength": 8
+        },
+        "optionen": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 3,
+          "maxItems": 5,
+          "description": "Mindestens drei. Zwei Möglichkeiten wären in einer gewerteten Frage ein Münzwurf."
+        },
+        "antwort": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "aufloesung": {
+          "type": "string",
+          "description": "Was nach der Antwort erklärt wird."
         }
       }
     }

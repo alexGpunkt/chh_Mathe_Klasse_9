@@ -1,5 +1,5 @@
 -- ============================================================
--- Mathe 9 · Supabase-Abgleich V35 · STRENG LESEND
+-- Mathe 9 · Supabase-Abgleich V36 · STRENG LESEND
 --
 -- Diese Datei enthält ausschließlich SELECT-Abfragen. Sie verändert
 -- weder Tabellen noch Funktionen, Policies, Rechte oder Nutzdaten.
@@ -9,7 +9,7 @@
 -- vorzeitig abzubrechen.
 --
 -- Im nächsten Arbeitsschritt im Supabase SQL Editor ausführen und die
--- Ergebnisblöcke mit dem V35-Sollstand vergleichen.
+-- Ergebnisblöcke mit dem V36-Sollstand vergleichen.
 -- ============================================================
 
 -- A · Solltabellen, Existenz, RLS und grobe Statistik
@@ -24,7 +24,9 @@ with soll(tabelle) as (
     ('mathe9_student_tokens'),
     ('mathe9_unterricht'),
     ('mathe9_freigaben'),
-    ('mathe9_lernzeit')
+    ('mathe9_lernzeit'),
+    -- V36: Abschlussquiz als Bewertungsgrundlage
+    ('mathe9_quiz_ergebnisse')
 ), tabellen as (
   select c.relname as tabelle,
          c.relrowsecurity as rls_aktiv,
@@ -83,7 +85,16 @@ with pruefung(rolle, signatur, soll_execute) as (
     ('anon',          'public.mathe9_lernzeit_melden(text,integer)',      true),
     ('anon',          'public.mathe9_validate_student_login(text,text)',  false),
     ('authenticated', 'public.mathe9_lehrkraft_freischalten(text,text)',  false),
-    ('authenticated', 'public.mathe9_lehrkraft_sperren(text,text)',       false)
+    ('authenticated', 'public.mathe9_lehrkraft_sperren(text,text)',       false),
+    -- V36: Das Abschlussquiz meldet mit dem Schueler-Token; die Auswertung
+    -- und die Wahl der Bewertungsart bleiben der Lehrkraft vorbehalten.
+    ('anon',          'public.mathe9_quiz_melden(text,text,integer,integer,integer,text[])', true),
+    ('anon',          'public.mathe9_quiz_uebersicht(text,integer,boolean)', false),
+    ('anon',          'public.mathe9_quiz_einheiten(text,integer,boolean)',  false),
+    ('anon',          'public.mathe9_bewertungsart_setzen(uuid,text)',       false),
+    ('authenticated', 'public.mathe9_quiz_uebersicht(text,integer,boolean)', true),
+    ('authenticated', 'public.mathe9_quiz_einheiten(text,integer,boolean)',  true),
+    ('authenticated', 'public.mathe9_bewertungsart_setzen(uuid,text)',       true)
 ), aufloesung as (
   select rolle, signatur, soll_execute, to_regprocedure(signatur) as oid
   from pruefung

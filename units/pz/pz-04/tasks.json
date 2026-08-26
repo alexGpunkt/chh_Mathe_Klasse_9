@@ -31,16 +31,21 @@
       "hinfuehrung": "Manchmal führt mehr zu weniger.",
       "erklaerung": [
         "Mehr Arbeiter, mehr Lohn. Das ist proportional.",
-        "Mehr Arbeiter, weniger Zeit. Das ist antiproportional."
+        "Mehr Arbeiter, weniger Zeit. Das ist antiproportional.",
+        "Denke an die Arbeit selbst. Sie bleibt gleich groß.",
+        "Mehr Leute teilen sich dieselbe Arbeit. Jeder macht weniger.",
+        "Deshalb wird die Zeit kürzer."
       ],
       "beispiel": {
+        "titel": "Die Richtung erkennen",
         "aufgabe": "6 Maler brauchen 8 Tage. Es kommen mehr Maler. Mehr oder weniger Tage?",
         "schritte": [
+          "Die Arbeit bleibt gleich groß.",
           "Mehr Maler teilen sich die Arbeit.",
           "Jeder Einzelne muss weniger tun.",
           "→ die Zeit wird kürzer"
         ],
-        "ergebnis": "Mehr Maler → weniger Tage (antiproportional)."
+        "ergebnis": "Mehr Maler → weniger Tage. Das ist antiproportional."
       },
       "merke": "Mehr → mehr: proportional. Mehr → weniger: antiproportional.",
       "visual": {
@@ -54,14 +59,19 @@
       "hinfuehrung": "Erst entscheidest du die Art, dann rechnest du – der Weg ist bei beiden fast gleich, nur der zweite Pfeil dreht sich um.",
       "erklaerung": [
         "Proportional: auf 1 herunter (:), auf die Menge hoch (·).",
-        "Antiproportional: auf 1 zusammenrechnen bedeutet mal (·), auf die Menge dann geteilt (:). Der Gesamt­aufwand bleibt gleich (Arbeiter · Tage = konstant)."
+        "Antiproportional: auf 1 zusammenrechnen bedeutet mal (·), auf die Menge dann geteilt (:). Der Gesamtaufwand bleibt gleich (Arbeiter · Tage = konstant).",
+        "Warum dreht sich der Pfeil um? Weil bei 1 Maler die ganze Arbeit auf einer Person liegt — das ist der längste Fall, nicht der kürzeste. Der Schritt auf 1 vergrößert die Zeit, statt sie zu verkleinern.",
+        "Der handlichste Weg führt deshalb gar nicht über die 1, sondern über das Produkt: 6 Maler · 8 Tage = 48 Maler-Tage. Diese Zahl ist die Arbeit selbst und bleibt in jeder Spalte gleich.",
+        "Der häufigste Fehler ist, den proportionalen Dreisatz stur weiterzuverwenden. Die Richtungsprobe deckt ihn auf: Mehr Maler und trotzdem mehr Tage kann nicht stimmen."
       ],
       "beispiel": {
+        "titel": "Über das konstante Produkt rechnen",
         "aufgabe": "6 Maler brauchen 8 Tage. Wie lange brauchen 8 Maler?",
         "schritte": [
-          "antiproportional: Maler · Tage bleibt gleich",
-          "6 Maler · 8 Tage = 48 „Maler-Tage“",
-          "48 : 8 Maler = 6 Tage"
+          "Art bestimmen: mehr Maler → weniger Tage, also antiproportional.",
+          "Produkt bilden: 6 Maler · 8 Tage = 48 „Maler-Tage“",
+          "Dieses Produkt bleibt gleich: 48 : 8 Maler = 6 Tage",
+          "Richtungsprobe: 8 Maler > 6 Maler und 6 Tage < 8 Tage  ✓"
         ],
         "ergebnis": "8 Maler brauchen 6 Tage."
       },
@@ -77,16 +87,22 @@
       "hinfuehrung": "„Mehr führt zu weniger“ allein macht eine Zuordnung noch nicht antiproportional. Der Test ist das Produkt.",
       "erklaerung": [
         "Bei echter Antiproportionalität ist das Produkt beider Werte in jeder Spalte gleich. Das ist die Produktprobe.",
-        "Steht in einer Spalte ein anderes Produkt, ist die Zuordnung weder proportional noch antiproportional – dann darfst du nicht so rechnen."
+        "Steht in einer Spalte ein anderes Produkt, ist die Zuordnung weder proportional noch antiproportional – dann darfst du nicht so rechnen.",
+        "Der Unterschied zur Proportionalität liegt darin, was konstant bleibt: dort der Quotient y : x, hier das Produkt x · y. Eine Tabelle prüfst du, indem du beides ausrechnest und schaust, welches der beiden sich nicht ändert.",
+        "Auch die Sachlogik muss halten. Ob 100 Maler eine Wohnung in einem Zwanzigstel der Zeit streichen, ist keine Frage der Mathematik: Sie stehen sich im Weg. Das Modell gilt nur in einem sinnvollen Bereich, und den darfst du benennen.",
+        "Genau deshalb reicht die Produktprobe an drei Spalten nicht als Beweis, sondern nur als starkes Argument. Sie zeigt, dass die vorliegenden Werte zusammenpassen — nicht, dass jede weitere Spalte es auch tut."
       ],
       "beispiel": {
-        "aufgabe": "Prüfe, ob die Tabelle antiproportional ist: 2 Pumpen – 6 h, 3 Pumpen – 4 h, 4 Pumpen – 3 h.",
+        "titel": "Produktprobe durchführen und den Gültigkeitsbereich benennen",
+        "aufgabe": "Prüfe, ob die Tabelle antiproportional ist: 2 Pumpen – 6 h, 3 Pumpen – 4 h, 4 Pumpen – 3 h. Beurteile anschließend, ob 100 Pumpen 0,12 h brauchen.",
         "schritte": [
           "2 · 6 = 12",
           "3 · 4 = 12",
-          "4 · 3 = 12   → alle Produkte gleich"
+          "4 · 3 = 12   → alle Produkte gleich, die Werte sind antiproportional",
+          "Gegenprobe auf proportional: 6 : 2 = 3, aber 4 : 3 ≈ 1,3 — der Quotient ist nicht konstant, also nicht proportional.",
+          "Beurteilung: Rechnerisch ergäbe 12 : 100 = 0,12 h. Sachlich ist das unbrauchbar, weil 100 Pumpen nicht an dasselbe Becken passen. Das Modell gilt nur für wenige Pumpen."
         ],
-        "ergebnis": "Produkt konstant (12) → die Zuordnung ist antiproportional."
+        "ergebnis": "Produkt konstant (12) → die Zuordnung ist antiproportional. Die Rechnung für 100 Pumpen ist formal richtig und sachlich sinnlos — beides gehört in die Antwort."
       },
       "merke": "Antiproportional ⇔ das Produkt beider Größen ist konstant.",
       "visual": {

@@ -32,22 +32,26 @@
       "titel": "Welche Größe ist gesucht?",
       "hinfuehrung": "Frage dich zuerst: Was ist gegeben? Was ist gesucht?",
       "erklaerung": [
+        "In jeder Prozentaufgabe gibt es drei Größen.",
         "Unterstreiche im Text den Grundwert, den Prozentwert und den Prozentsatz.",
-        "Zwei Größen sind gegeben. Die dritte suchst du."
+        "Zwei Größen sind gegeben. Die dritte suchst du.",
+        "Erst dann suchst du die passende Formel.",
+        "Wer sofort rechnet, wählt oft die falsche Formel."
       ],
       "beispiel": {
+        "titel": "Gegeben und gesucht bestimmen",
         "aufgabe": "„18 € sind 30 % wovon?“ Welche Größe fehlt?",
         "schritte": [
           "gegeben: W = 18 €, p = 30 %",
-          "gesucht: G (das Ganze)",
+          "gesucht: G, also das Ganze",
           "G = W : p · 100 = 18 : 30 · 100 = 60 €"
         ],
+        "ergebnis": "Gesucht war der Grundwert: 60 €.",
         "luecke": {
           "schritt": 2,
           "wert": 60,
           "einheit": "€"
-        },
-        "ergebnis": "Gesucht war der Grundwert: 60 €."
+        }
       },
       "merke": "Erst gegeben und gesucht. Dann die Formel.",
       "visual": {
@@ -62,14 +66,19 @@
       "hinfuehrung": "Jetzt kommen die Aufgaben durcheinander – Rabatt, Zinsen, Veränderung. Du erkennst den Typ selbst und rechnest sicher.",
       "erklaerung": [
         "Achte auf Signalwörter: „Rabatt/Aufschlag“ → vermehrter/verminderter Grundwert; „pro Jahr“ → Zinsen; „von … auf …“ → prozentuale Veränderung.",
-        "Notiere gegeben/gesucht, wähle die Formel, prüfe das Ergebnis auf Plausibilität."
+        "Notiere gegeben/gesucht, wähle die Formel, prüfe das Ergebnis auf Plausibilität.",
+        "Die vier Plausibilitätsprüfungen der ganzen Reihe passen auf eine Zeile: Der Prozentwert ist kleiner als der Grundwert. Der Grundwert ist größer als der Prozentwert. Ein Rabatt macht billiger. Zinsen sind viel kleiner als das Kapital.",
+        "Wenn ein Signalwort fehlt, hilft die Frage nach dem Grundwert weiter: Wovon werden die Prozente genommen? Steht diese Zahl im Text, ist der Grundwert gegeben; wird sie gesucht, ist es eine Grundwertaufgabe."
       ],
       "beispiel": {
+        "titel": "Aufgabentyp am Signalwort erkennen",
         "aufgabe": "Ein Handy kostet 300 €, im Angebot 20 % günstiger. Endpreis?",
         "schritte": [
-          "Signal „günstiger“ → verminderter Grundwert",
+          "Signalwort „günstiger“ → verminderter Grundwert, gesucht ist der Endpreis",
+          "Grundwert prüfen: Die 20 % werden vom alten Preis 300 € genommen.",
           "Faktor = 100 % − 20 % = 80 % = 0,80",
-          "300 € · 0,80 = 240 €"
+          "300 € · 0,80 = 240 €",
+          "Plausibilität: Ein Rabatt macht billiger, 240 € < 300 €  ✓"
         ],
         "ergebnis": "Der Endpreis beträgt 240 €."
       },
@@ -86,16 +95,23 @@
       "hinfuehrung": "Reale Aufgaben brauchen mehrere Schritte und am Ende eine begründete Entscheidung – nicht nur eine Zahl.",
       "erklaerung": [
         "Zerlege die Aufgabe in Teilrechnungen und halte Zwischenergebnisse fest.",
-        "Vergleiche die Ergebnisse und formuliere eine Empfehlung mit Begründung – das ist der geforderte Modellierungsschritt."
+        "Vergleiche die Ergebnisse und formuliere eine Empfehlung mit Begründung – das ist der geforderte Modellierungsschritt.",
+        "Eine Empfehlung ohne Zahl ist eine Meinung, eine Zahl ohne Empfehlung ist eine unfertige Antwort. Verlangt ist beides: das Ergebnis und der Satz, was daraus folgt.",
+        "Zur Begründung gehört, warum die naheliegende Vermutung nicht trägt. Zwei Rabatte von 15 % und 10 % ergeben eben nicht 25 %, weil der zweite vom schon verringerten Preis genommen wird — genau das ist hier die Pointe.",
+        "Und die Grenzen des Modells gehören genannt: Der Rechenweg vergleicht Preise, nicht Versandkosten, Garantie oder Lieferzeit. Eine Empfehlung, die das verschweigt, ist mathematisch richtig und praktisch unvollständig."
       ],
       "beispiel": {
+        "titel": "Zwei Angebote vergleichen und begründet empfehlen",
         "aufgabe": "Angebot A: 100 € − 25 %. Angebot B: 100 € − 15 %, dann noch − 10 %. Welches ist günstiger?",
         "schritte": [
           "A: 100 € · 0,75 = 75 €",
-          "B: 100 € · 0,85 · 0,90 = 76,50 €",
-          "Vergleich: 75 € < 76,50 €"
+          "B: 100 € · 0,85 = 85 €, davon nochmals − 10 %:  85 € · 0,90 = 76,50 €",
+          "Kette für B: 0,85 · 0,90 = 0,765, also 76,50 €",
+          "Vergleich: 75 € < 76,50 €, Angebot A ist um 1,50 € günstiger.",
+          "Begründung: Die zweiten 10 % werden von 85 € genommen, nicht von 100 €. Deshalb ergeben 15 % und 10 % zusammen nur 23,5 % und nicht 25 %.",
+          "Grenze des Modells: Verglichen wurden allein die Preise. Versandkosten oder Lieferzeit könnten die Empfehlung umkehren."
         ],
-        "ergebnis": "Angebot A ist günstiger – zwei Rabatte nacheinander ergeben nicht 25 %."
+        "ergebnis": "Angebot A ist günstiger. Zwei Rabatte nacheinander ergeben nicht die Summe der Prozentsätze — sie werden von verschiedenen Grundwerten genommen."
       },
       "merke": "Zwischenergebnisse festhalten, dann begründet empfehlen.",
       "visual": {

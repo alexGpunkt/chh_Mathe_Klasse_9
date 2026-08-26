@@ -32,21 +32,25 @@
       "titel": "Einheiten für Fläche und Volumen lesen",
       "hinfuehrung": "Die kleine Zahl oben zeigt dir die Art der Einheit.",
       "erklaerung": [
-        "cm² ist eine Fläche. cm³ ist ein Volumen.",
+        "cm² ist eine Fläche. Die kleine 2 zeigt zwei Richtungen.",
+        "cm³ ist ein Volumen. Die kleine 3 zeigt drei Richtungen.",
+        "Eine Fläche hat Länge und Breite.",
+        "Ein Volumen hat Länge, Breite und Höhe.",
         "In einen Würfel mit 1 dm Kante passt genau 1 Liter."
       ],
       "beispiel": {
+        "titel": "Ein Liter ist ein Kubikdezimeter",
         "aufgabe": "Ein Würfel hat 1 dm Kantenlänge. Wie viel Liter fasst er?",
         "schritte": [
           "Volumen = 1 dm · 1 dm · 1 dm = 1 dm³",
           "1 dm³ = 1 l"
         ],
+        "ergebnis": "Er fasst 1 Liter, denn 1 dm³ = 1 l.",
         "luecke": {
           "schritt": 1,
           "wert": 1,
           "einheit": "l"
-        },
-        "ergebnis": "Er fasst 1 Liter (1 dm³ = 1 l)."
+        }
       },
       "merke": "² = Fläche, ³ = Volumen. 1 l = 1 dm³.",
       "visual": {
@@ -60,16 +64,20 @@
       "hinfuehrung": "Bei Längen ist der Sprung 10. Bei Flächen wird er 100, bei Volumen 1000 – weil das kleine Zeichen die Richtungen mitzählt.",
       "erklaerung": [
         "Von einer Längeneinheit zur nächstkleineren mal 10. Fläche: 10 · 10 = 100 je Stufe. Volumen: 10 · 10 · 10 = 1000 je Stufe.",
-        "Nach unten (größer → kleiner) mal, nach oben (kleiner → größer) geteilt."
+        "Nach unten (größer → kleiner) mal, nach oben (kleiner → größer) geteilt.",
+        "Der Grund steht in der Hochzahl. Eine Fläche wird aus zwei Längen gebildet, also wirkt der Faktor 10 zweimal; ein Volumen aus drei Längen, also dreimal. Die Hochzahl der Einheit ist zugleich die Anzahl der Zehner im Umrechnungsfaktor.",
+        "Deshalb ist der häufigste Fehler auch immer derselbe: mit 10 statt mit 100 oder 1000 umzurechnen. Das Ergebnis ist dann um den Faktor 10 oder 100 daneben — eine Größenordnung, die im Sachzusammenhang meistens auffällt."
       ],
       "beispiel": {
+        "titel": "Volumen um eine Stufe umrechnen",
         "aufgabe": "Rechne 2 dm³ in cm³ um.",
         "schritte": [
-          "dm³ → cm³ ist eine Stufe kleiner",
-          "Volumen: · 1000",
-          "2 dm³ · 1000 = 2000 cm³"
+          "Richtung: dm³ → cm³ ist eine Stufe kleiner, also wird multipliziert",
+          "Faktor: Volumen, also 10³ = 1000 je Stufe",
+          "2 dm³ · 1000 = 2000 cm³",
+          "Probe im Bild: In einen Würfel von 1 dm Kante passen 10 · 10 · 10 = 1000 Würfelchen von 1 cm  ✓"
         ],
-        "ergebnis": "2 dm³ = 2000 cm³."
+        "ergebnis": "2 dm³ = 2000 cm³. Der Faktor 1000 ist keine Setzung, sondern 10 · 10 · 10 — einmal je Richtung."
       },
       "merke": "Längen ·10, Flächen ·100, Volumen ·1000 je Stufe.",
       "visual": {
@@ -83,15 +91,21 @@
       "hinfuehrung": "In Sachaufgaben stehen die Einheiten bunt gemischt. Wer den Faktor begründen kann, wechselt sicher zwischen allen.",
       "erklaerung": [
         "Nützliche Brücken: 1 l = 1 dm³, 1 m³ = 1000 l, 1 dm³ = 1000 cm³.",
-        "Begründung des Faktors 1000: Ein Meter sind 10 dm; ein Kubikmeter ist 10 · 10 · 10 = 1000 dm³ – deshalb 1000 l."
+        "Begründung des Faktors 1000: Ein Meter sind 10 dm; ein Kubikmeter ist 10 · 10 · 10 = 1000 dm³ – deshalb 1000 l.",
+        "Die Brücke zwischen Rauminhalt und Hohlmaß ist 1 l = 1 dm³. Sie ist keine Näherung, sondern die Definition des Liters — und die einzige Stelle, an der die beiden Einheitensysteme aufeinandertreffen.",
+        "Daraus folgt sofort 1 ml = 1 cm³, weil beide Seiten durch 1000 geteilt werden. Ein Teelöffel von 5 ml ist also ein Würfelchen von etwa 1,7 cm Kante.",
+        "Bei Sachaufgaben lohnt der Zwischenschritt über dm: Wer alle Längen zuerst in Dezimeter umrechnet, bekommt das Volumen unmittelbar in Litern und spart sich jede weitere Umrechnung."
       ],
       "beispiel": {
-        "aufgabe": "Ein Becken fasst 1,5 m³. Wie viele Liter sind das?",
+        "titel": "Kubikmeter in Liter — mit Begründung des Faktors",
+        "aufgabe": "Ein Becken fasst 1,5 m³. Wie viele Liter sind das? Begründe den Faktor.",
         "schritte": [
-          "1 m³ = 1000 dm³ = 1000 l",
-          "1,5 m³ · 1000 = 1500 l"
+          "Begründung: 1 m = 10 dm, also 1 m³ = 10 · 10 · 10 dm³ = 1000 dm³",
+          "Brücke: 1 dm³ = 1 l, also 1 m³ = 1000 l",
+          "1,5 m³ · 1000 = 1500 l",
+          "Plausibilität: Eine Badewanne fasst etwa 150 l, das Becken also rund zehn Badewannen  ✓"
         ],
-        "ergebnis": "1,5 m³ = 1500 l."
+        "ergebnis": "1,5 m³ = 1500 l. Der Faktor 1000 kommt aus 10³ — einmal 10 für jede der drei Richtungen."
       },
       "merke": "1 l = 1 dm³, 1 m³ = 1000 l. Der Faktor 1000 kommt von 10³.",
       "visual": {

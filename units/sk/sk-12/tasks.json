@@ -33,14 +33,19 @@
       "titel": "Die richtige Formel wählen",
       "hinfuehrung": "Erkenne zuerst den Körper.",
       "erklaerung": [
-        "Eckig unten mit Spitze: Pyramide. Rund unten mit Spitze: Kegel.",
-        "Überall rund: Kugel. Dann nimmst du die Formel von der Formelkarte."
+        "Schau dir an, was unten liegt und was oben ist.",
+        "Eckig unten mit Spitze: Pyramide.",
+        "Rund unten mit Spitze: Kegel.",
+        "Überall rund und ohne Spitze: Kugel.",
+        "Dann nimmst du die passende Formel von der Formelkarte.",
+        "Bei Pyramide und Kegel teilst du am Ende immer durch 3."
       ],
       "beispiel": {
+        "titel": "Körper am Bild erkennen",
         "aufgabe": "Ein Körper hat einen Grundkreis und eine Spitze. Welche Volumenformel?",
         "schritte": [
-          "Grundkreis + Spitze → Kegel",
-          "Volumen des Kegels"
+          "unten rund, oben eine Spitze",
+          "→ das ist ein Kegel"
         ],
         "ergebnis": "V = (π · r² · h) : 3."
       },
@@ -56,17 +61,21 @@
       "titel": "Gemischte Prüfungsaufgaben",
       "hinfuehrung": "Jetzt stehen die Spitzkörper bunt gemischt und ohne Ansage, was gefragt ist. Du erkennst Typ und Größe selbst.",
       "erklaerung": [
-        "Bestimme Körper und gesuchte Größe (Volumen/Oberfläche), sammle die gegebenen Werte.",
-        "Fehlt s oder h, hole es mit Pythagoras, bevor du die Hauptformel anwendest."
+        "Bestimme Körper und gesuchte Größe (Volumen oder Oberfläche) und sammle die gegebenen Werte.",
+        "Fehlt s oder h, hole es mit Pythagoras, bevor du die Hauptformel anwendest.",
+        "Drei Kontrollen decken fast jeden Fehler dieser Reihe ab: Wurde bei Pyramide und Kegel durch 3 geteilt? Wurde ein gegebener Durchmesser halbiert? Und passt die verwendete Höhe zur Frage — h beim Volumen, s bei der Oberfläche?",
+        "Die Einheit ist die vierte Kontrolle und die schnellste: Ein Volumen endet auf hoch 3, eine Oberfläche auf hoch 2. Steht die falsche Hochzahl da, wurde die falsche Formel genommen."
       ],
       "beispiel": {
+        "titel": "Körper und Größe selbst bestimmen",
         "aufgabe": "Kugel mit r = 6 cm. Oberfläche (π ≈ 3,14)?",
         "schritte": [
-          "Körper: Kugel, gesucht: Oberfläche",
+          "Körper: überall rund, keine Spitze → Kugel. Gesucht: Oberfläche.",
           "O = 4 · π · r² = 4 · 3,14 · 36",
-          "O = 452,16 cm²"
+          "O = 452,16 cm²",
+          "Kontrollen: kein Drittel nötig (keine Spitze)  ✓, r war gegeben  ✓, Einheit cm² für eine Fläche  ✓"
         ],
-        "ergebnis": "O ≈ 452,16 cm²."
+        "ergebnis": "O ≈ 452,16 cm². Die Einheit cm² bestätigt, dass die Oberflächen- und nicht die Volumenformel verwendet wurde."
       },
       "merke": "Körper und Größe erkennen, fehlende Stücke per Pythagoras.",
       "visual": {
@@ -80,17 +89,23 @@
       "titel": "Begründen und Plausibilität prüfen",
       "hinfuehrung": "Auf MSA-Niveau begründest du deinen Weg schriftlich und prüfst, ob dein Ergebnis sinnvoll ist.",
       "erklaerung": [
-        "Schreibe zu jedem Schritt die verwendete Formel und die Begründung; führe Einheiten mit.",
-        "Plausibilität: Vergleiche z. B. mit einem bekannten Körper (ein Kegel fasst ein Drittel des Zylinders) oder prüfe die Größenordnung."
+        "Schreibe zu jedem Schritt die verwendete Formel und die Begründung; führe die Einheiten mit.",
+        "Plausibilität: Vergleiche mit einem bekannten Körper — ein Kegel fasst ein Drittel des Zylinders — oder prüfe die Größenordnung.",
+        "Die Operatoren geben vor, was verlangt ist. „Berechne“ will den Rechenweg, „Begründe“ will einen Grund, „Beurteile“ will ein Urteil mit Zahl. Bei einer Entscheidungsfrage ist eine Zahl allein keine vollständige Antwort.",
+        "Zur Begründung gehört auch die Umrechnung, sichtbar aufgeschrieben. Von cm³ zu Litern führt der Weg über dm³, und übersprungen wird er mit dem Faktor 1000 als Folge.",
+        "Als Vergleichsgrößen für die Plausibilität dienen bekannte Gefäße: ein Glas 0,2 l, eine Flasche 1 l, ein Eimer 10 l. An ihnen erkennst du eine verrutschte Zehnerpotenz sofort."
       ],
       "beispiel": {
-        "aufgabe": "Passt in einen Kegel (r = 5 cm, h = 12 cm) mehr als ein halber Liter? (π ≈ 3,14)",
+        "titel": "Rechnen, umrechnen, beurteilen",
+        "aufgabe": "Passt in einen Kegel mit r = 5 cm und h = 12 cm mehr als ein halber Liter? (π ≈ 3,14)",
         "schritte": [
+          "Formel begründen: Kegel, gesucht ist der Rauminhalt → V = (π · r² · h) : 3",
           "V = (3,14 · 25 · 12) : 3 = 942 : 3 = 314 cm³",
-          "314 cm³ = 0,314 dm³ = 0,314 l",
-          "0,314 l < 0,5 l"
+          "umrechnen, sichtbar: 314 cm³ : 1000 = 0,314 dm³ = 0,314 l",
+          "vergleichen: 0,314 l < 0,5 l",
+          "Plausibilität: gut anderthalb Trinkgläser — für einen Kegel dieser Größe stimmig  ✓"
         ],
-        "ergebnis": "Nein, nur ≈ 0,31 l – weniger als ein halber Liter."
+        "ergebnis": "Nein, es passen nur rund 0,31 l hinein — weniger als ein halber Liter. Verlangt war ein Urteil, nicht nur die Zahl."
       },
       "merke": "Formel + Begründung + Einheiten, dann Größenordnung prüfen.",
       "visual": {

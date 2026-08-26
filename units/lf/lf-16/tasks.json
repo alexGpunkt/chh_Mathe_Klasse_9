@@ -33,20 +33,24 @@
       "titel": "Die vier Grundaufgaben mit der Formelkarte",
       "hinfuehrung": "Vier Aufgaben kommen immer wieder.",
       "erklaerung": [
-        "Ablesen: b an der y-Achse, m am Steigungsdreieck. Zeichnen: b, Dreieck, Linie.",
-        "Punktprobe: x einsetzen und mit y vergleichen. Nullstelle: y = 0 setzen."
+        "Ablesen: b an der y-Achse, m am Steigungsdreieck.",
+        "Zeichnen: erst b, dann das Dreieck, dann die Linie.",
+        "Punktprobe: x einsetzen und mit y vergleichen.",
+        "Nullstelle: y = 0 setzen und nach x auflösen.",
+        "Die Formelkarte liegt daneben. Du musst nichts auswendig können."
       ],
       "beispiel": {
+        "titel": "Nullstelle als Grundaufgabe",
         "aufgabe": "Bestimme die Nullstelle von y = 2x − 4.",
         "schritte": [
-          "0 = 2x − 4   | + 4",
+          "y = 0 setzen:  0 = 2x − 4   | + 4",
           "4 = 2x  | : 2 → x = 2"
         ],
+        "ergebnis": "Nullstelle bei x = 2.",
         "luecke": {
           "schritt": 1,
           "wert": 2
-        },
-        "ergebnis": "Nullstelle bei x = 2."
+        }
       },
       "merke": "Vier Typen: ablesen · zeichnen · Punktprobe · Nullstelle.",
       "visual": {
@@ -61,16 +65,20 @@
       "hinfuehrung": "Jetzt steht nicht dabei, welcher Aufgabentyp gefragt ist. Du erkennst ihn an der Fragestellung und wählst den Weg selbst.",
       "erklaerung": [
         "Signalwörter: „schneidet die x-Achse“ → Nullstelle; „liegt auf“ → Punktprobe; „stelle die Gleichung auf“ → m und b bestimmen.",
-        "Erst Typ erkennen, dann Verfahren anwenden, dann Antwortsatz."
+        "Erst Typ erkennen, dann Verfahren anwenden, dann Antwortsatz.",
+        "Wenn kein Signalwort greift, hilft die Frage nach dem Gesuchten: Wird ein x gesucht, ist meistens eine Gleichung zu lösen; wird ein y gesucht, wird meistens nur eingesetzt.",
+        "Vier Aufgabentypen und vier Kontrollen gehören zusammen: Die Punktprobe sichert eine Gleichung, die Probe durch Einsetzen sichert eine Nullstelle, die Gegenprobe in der anderen Gleichung sichert einen Schnittpunkt."
       ],
       "beispiel": {
+        "titel": "Typ erkennen und rechnen",
         "aufgabe": "„Liegt P(2 | 5) auf y = 3x − 1?“ Welcher Typ, welche Rechnung?",
         "schritte": [
-          "Signal „liegt auf“ → Punktprobe",
-          "x = 2: y = 3·2 − 1 = 5",
-          "berechnet 5 = Punkt 5  ✓"
+          "Signalwort „liegt auf“ → Punktprobe",
+          "x-Wert des Punktes einsetzen: x = 2",
+          "y = 3 · 2 − 1 = 5",
+          "berechnet 5, Punkt hat 5  ✓"
         ],
-        "ergebnis": "Punktprobe: P(2 | 5) liegt auf der Geraden."
+        "ergebnis": "Punktprobe: P(2 | 5) liegt auf der Geraden, denn 3 · 2 − 1 = 5."
       },
       "merke": "Erst am Signalwort den Typ erkennen, dann rechnen.",
       "visual": {
@@ -85,16 +93,22 @@
       "hinfuehrung": "Auf MSA-Niveau reicht die Zahl nicht – du begründest den Lösungsweg schriftlich und deutest das Ergebnis im Kontext.",
       "erklaerung": [
         "Kombiniere mehrere Schritte (z. B. Gleichung aufstellen, Schnittpunkt berechnen, im Sachzusammenhang deuten).",
-        "Schreibe zu jedem Schritt eine kurze Begründung und einen Antwortsatz – so wie es die Prüfung verlangt."
+        "Schreibe zu jedem Schritt eine kurze Begründung und einen Antwortsatz – so wie es die Prüfung verlangt.",
+        "Die Operatoren sagen, was verlangt ist: „Berechne“ will den Rechenweg, „Begründe“ will einen Grund, „Interpretiere“ will die Bedeutung im Sachzusammenhang. Wer nur rechnet, verschenkt bei den letzten beiden alle Punkte.",
+        "Eine Begründung ist kein zweites Aufschreiben der Rechnung. Sie beantwortet die Frage, warum der gewählte Weg zur Antwort führt — etwa: „Im Schnittpunkt kosten beide Anbieter gleich viel, deshalb wird gleichgesetzt.“",
+        "Und zur Deutung gehört die Einheit. „x = 5“ ist eine Zahl, „ab 5 Einheiten“ ist eine Aussage über die Sache — nur die zweite ist eine Antwort auf die gestellte Frage."
       ],
       "beispiel": {
+        "titel": "Rechnen, begründen, im Kontext deuten",
         "aufgabe": "Zwei Anbieter: A y = 2x + 10, B y = 4x. Ab wann lohnt A? Begründe.",
         "schritte": [
-          "Schnittpunkt: 2x + 10 = 4x → x = 5",
-          "Begründung: links vom Schnitt ist B billiger, rechts A",
-          "Deutung: ab 5 Einheiten lohnt Anbieter A"
+          "Ansatz begründen: Gesucht ist die Menge, bei der beide gleich viel kosten. Also werden die Terme gleichgesetzt.",
+          "2x + 10 = 4x   | − 2x   →   10 = 2x   | : 2   →   x = 5",
+          "Kontrolle: A kostet 2 · 5 + 10 = 20 €, B kostet 4 · 5 = 20 €  ✓",
+          "Begründung der Bereiche: A hat die kleinere Steigung, jede weitere Einheit kostet dort nur 2 € statt 4 €. Rechts vom Schnittpunkt ist A deshalb günstiger.",
+          "Deutung mit Einheit: Ab 5 Einheiten lohnt sich Anbieter A, darunter Anbieter B."
         ],
-        "ergebnis": "Ab 5 Einheiten ist A günstiger – mit Rechnung und Begründung belegt."
+        "ergebnis": "Ab 5 Einheiten ist A günstiger. Verlangt waren drei Dinge: die Rechnung, die Begründung über die Steigungen und die Deutung im Sachzusammenhang."
       },
       "merke": "MSA: rechnen + begründen + im Sachkontext deuten.",
       "visual": {

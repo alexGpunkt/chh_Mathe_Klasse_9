@@ -32,8 +32,11 @@
       "titel": "Das rechtwinklige Dreieck in der Pyramide",
       "hinfuehrung": "In der Pyramide steckt ein rechtwinkliges Dreieck.",
       "erklaerung": [
-        "Die Höhe h steht senkrecht in der Mitte. Daneben liegt die halbe Grundkante a : 2.",
-        "Die Seitenhöhe s ist die schräge Seite."
+        "Schneide die Pyramide in der Mitte auf.",
+        "Die Höhe h steht senkrecht in der Mitte.",
+        "Daneben liegt die halbe Grundkante a : 2.",
+        "Zwischen h und a : 2 ist ein rechter Winkel.",
+        "Die Seitenhöhe s ist die schräge Seite. Sie ist die längste."
       ],
       "visual": {
         "type": "animation",
@@ -41,13 +44,14 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Das Dreieck in der Pyramide finden",
         "aufgabe": "Welche drei Größen bilden das rechtwinklige Dreieck?",
         "schritte": [
-          "eine Kathete: Höhe h",
-          "andere Kathete: halbe Grundkante a : 2",
-          "Hypotenuse: Seitenhöhe s"
+          "eine Kathete: die Höhe h",
+          "andere Kathete: die halbe Grundkante a : 2",
+          "Hypotenuse: die Seitenhöhe s"
         ],
-        "ergebnis": "h, a : 2 und s – mit dem rechten Winkel zwischen h und a : 2."
+        "ergebnis": "h, a : 2 und s. Der rechte Winkel liegt zwischen h und a : 2."
       },
       "merke": "Katheten: h und a : 2. Hypotenuse: s."
     },
@@ -56,16 +60,21 @@
       "hinfuehrung": "Kennst du Höhe und Grundkante, berechnest du die Seitenhöhe s mit dem Satz des Pythagoras.",
       "erklaerung": [
         "Im rechtwinkligen Dreieck gilt s² = h² + (a : 2)².",
-        "Also s = √( h² + (a : 2)² ). Zuerst quadrieren und addieren, dann die Wurzel ziehen."
+        "Also s = √( h² + (a : 2)² ). Zuerst quadrieren und addieren, dann die Wurzel ziehen.",
+        "Der häufigste Fehler ist, die ganze Grundkante einzusetzen statt der halben. Die Höhe trifft die Grundfläche in ihrer Mitte, also reicht das Dreieck nur bis zur Mitte der Grundkante — deshalb a : 2.",
+        "Beachte auch die Reihenfolge der Rechenarten: Erst wird quadriert, dann addiert, zuletzt die Wurzel gezogen. √(16 + 9) ist 5, nicht 4 + 3 = 7 — eine Wurzel darf nicht auf die Summanden einzeln angewendet werden."
       ],
       "beispiel": {
+        "titel": "Seitenhöhe aus Höhe und Grundkante",
         "aufgabe": "Pyramide mit h = 4 cm, a = 6 cm. Berechne die Seitenhöhe s.",
         "schritte": [
-          "a : 2 = 3",
+          "zuerst halbieren: a : 2 = 6 : 2 = 3 cm",
           "s² = h² + (a:2)² = 4² + 3² = 16 + 9 = 25",
-          "s = √25 = 5 cm"
+          "s = √25 = 5 cm",
+          "Plausibilität: s = 5 cm ist länger als h = 4 cm  ✓ — die Hypotenuse ist immer die längste Seite.",
+          "Gegenprobe zum Fehlweg: Mit a = 6 statt 3 käme √52 ≈ 7,2 cm heraus."
         ],
-        "ergebnis": "s = 5 cm."
+        "ergebnis": "s = 5 cm. Eingesetzt wird die halbe Grundkante, weil die Höhe die Grundfläche in der Mitte trifft."
       },
       "merke": "s = √( h² + (a:2)² ).",
       "visual": {
@@ -79,16 +88,23 @@
       "hinfuehrung": "Der Pythagoras lässt sich umstellen: Aus s und a bekommst du h, aus s und h die halbe Grundkante.",
       "erklaerung": [
         "Nach h umgestellt: h = √( s² − (a : 2)² ).",
-        "Nach der halben Grundkante: (a : 2) = √( s² − h² ), dann mal 2 für a. Die längere Größe ist immer s (Hypotenuse)."
+        "Nach der halben Grundkante: (a : 2) = √( s² − h² ), dann mal 2 für a. Die längere Größe ist immer s (Hypotenuse).",
+        "Ob addiert oder subtrahiert wird, entscheidet allein, ob die Hypotenuse gesucht oder gegeben ist. Suchst du s, wird addiert; suchst du eine Kathete, wird das Quadrat der Kathete vom Quadrat der Hypotenuse abgezogen.",
+        "Steht unter der Wurzel eine negative Zahl, sind die Angaben widersprüchlich: Eine Kathete kann nicht länger sein als die Hypotenuse. Das ist keine Rechenpanne, sondern ein Hinweis, dass s und h vertauscht wurden.",
+        "Beim Weg zur ganzen Grundkante folgt am Schluss noch ein Schritt: Die Wurzel liefert a : 2, gefragt ist aber meist a. Das Verdoppeln wird ebenso oft vergessen wie das Halbieren zu Beginn."
       ],
       "beispiel": {
+        "titel": "Nach der Höhe umstellen und das Vorzeichen begründen",
         "aufgabe": "Pyramide mit s = 13 cm, a = 10 cm. Berechne die Höhe h.",
         "schritte": [
-          "a : 2 = 5",
+          "gesucht ist eine Kathete, also wird subtrahiert",
+          "a : 2 = 10 : 2 = 5 cm",
           "h² = s² − (a:2)² = 13² − 5² = 169 − 25 = 144",
-          "h = √144 = 12 cm"
+          "h = √144 = 12 cm",
+          "Plausibilität: h = 12 cm ist kürzer als s = 13 cm  ✓",
+          "Probe vorwärts: √(12² + 5²) = √169 = 13 cm  ✓"
         ],
-        "ergebnis": "h = 12 cm."
+        "ergebnis": "h = 12 cm. Subtrahiert wird, weil eine Kathete gesucht ist — die Hypotenuse s ist gegeben und stets die längste Seite."
       },
       "merke": "h = √( s² − (a:2)² ). s ist stets die längste Seite.",
       "visual": {

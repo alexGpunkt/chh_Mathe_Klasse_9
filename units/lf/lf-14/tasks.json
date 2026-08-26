@@ -29,22 +29,26 @@
       "titel": "Tarife ausrechnen und vergleichen",
       "hinfuehrung": "Rechne beide Tarife aus.",
       "erklaerung": [
+        "Ein Tarif hat oft zwei Teile.",
+        "Der feste Teil ist die Grundgebühr. Sie fällt immer an.",
+        "Der zweite Teil hängt von der Menge ab.",
         "Setze die Menge in Tarif A ein und rechne die Kosten aus.",
         "Mache das Gleiche mit Tarif B. Der kleinere Preis gewinnt."
       ],
       "beispiel": {
+        "titel": "Beide Tarife ausrechnen und vergleichen",
         "aufgabe": "Tarif A: 10 € + 2 € pro Stunde. Tarif B: 4 € pro Stunde. Was ist bei 8 Stunden günstiger?",
         "schritte": [
           "A: 10 + 2·8 = 26 €",
           "B: 4·8 = 32 €",
           "26 € < 32 €"
         ],
+        "ergebnis": "Bei 8 Stunden ist Tarif A günstiger.",
         "luecke": {
           "schritt": 1,
           "wert": 32,
           "einheit": "€"
-        },
-        "ergebnis": "Bei 8 Stunden ist Tarif A günstiger."
+        }
       },
       "merke": "Beide Preise ausrechnen. Dann vergleichen.",
       "visual": {
@@ -58,7 +62,9 @@
       "hinfuehrung": "Ab welcher Nutzung lohnt welcher Tarif? Der Schnittpunkt der beiden Kostengeraden ist die Grenze.",
       "erklaerung": [
         "Schreibe beide Tarife als y = mx + b (b = Grundgebühr, m = Preis je Einheit).",
-        "Der Schnittpunkt zeigt, bei welcher Menge beide gleich viel kosten. Darüber und darunter kehrt sich der Vorteil um – daraus formst du eine Empfehlung."
+        "Der Schnittpunkt zeigt, bei welcher Menge beide gleich viel kosten. Darüber und darunter kehrt sich der Vorteil um – daraus formst du eine Empfehlung.",
+        "Welcher Tarif auf welcher Seite gewinnt, sagt dir die Grundgebühr: Vor dem Schnittpunkt liegt der mit der kleineren Grundgebühr vorn, danach der mit dem kleineren Preis je Einheit.",
+        "Die Grenzmenge allein ist noch keine Antwort. Verlangt ist der Satz, was sie für die Entscheidung bedeutet — und der braucht beide Bereiche, nicht nur die Zahl."
       ],
       "visual": {
         "type": "animation",
@@ -66,13 +72,16 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Grenzmenge berechnen und Empfehlung geben",
         "aufgabe": "Ab wann lohnt Tarif A (10 + 2x) gegenüber B (4x)?",
         "schritte": [
-          "10 + 2x = 4x   | − 2x",
-          "10 = 2x  | :2 → x = 5",
-          "unter 5 Std: B günstiger, über 5 Std: A"
+          "Gleichsetzen: 10 + 2x = 4x   | − 2x",
+          "10 = 2x   | : 2   →   x = 5",
+          "Kosten an der Grenze: A = 10 + 10 = 20 €, B = 20 €  ✓ gleich teuer",
+          "Unter 5 Stunden: B hat keine Grundgebühr und ist günstiger.",
+          "Über 5 Stunden: A hat den kleineren Preis je Stunde und ist günstiger."
         ],
-        "ergebnis": "Ab 5 Stunden lohnt Tarif A, darunter Tarif B."
+        "ergebnis": "Ab 5 Stunden lohnt Tarif A, darunter Tarif B. Bei genau 5 Stunden kosten beide 20 €."
       },
       "merke": "Schnittpunkt = Grenzmenge, ab der der andere Tarif günstiger ist."
     },
@@ -81,16 +90,23 @@
       "hinfuehrung": "Mit drei Tarifen gibt es nicht mehr den einen Sieger, sondern Bereiche. Du empfiehlst je nach Nutzungsprofil.",
       "erklaerung": [
         "Berechne die Schnittpunkte paarweise und finde heraus, welcher Tarif in welchem Bereich am tiefsten liegt.",
-        "Die Empfehlung nennt Bereiche: „Bis … Tarif X, zwischen … Tarif Y, ab … Tarif Z.“"
+        "Die Empfehlung nennt Bereiche: „Bis … Tarif X, zwischen … Tarif Y, ab … Tarif Z.“",
+        "Eine Flatrate ist dabei ein Sonderfall mit der Steigung null: Ihre Kostengerade verläuft waagerecht. Sie gewinnt deshalb immer irgendwann, sobald die Nutzung groß genug ist.",
+        "Nicht jeder berechnete Schnittpunkt ist auch eine Bereichsgrenze. Liegt an dieser Stelle bereits ein dritter Tarif darunter, ist der Schnittpunkt für die Empfehlung ohne Bedeutung — prüfe deshalb jeden Bereich mit einer Beispielmenge.",
+        "Und die Grenzen des Modells gehören genannt: Verglichen werden reine Kosten, nicht Vertragslaufzeit, Datenvolumen oder Kündigungsfristen."
       ],
       "beispiel": {
+        "titel": "Dritte Option prüfen und Bereiche empfehlen",
         "aufgabe": "C ist eine Flatrate für 22 €. Wann ist C besser als A (10 + 2x)?",
         "schritte": [
-          "22 = 10 + 2x   | − 10",
-          "12 = 2x  | :2 → x = 6",
-          "ab 6 Std ist die Flatrate C günstiger als A"
+          "Gleichsetzen: 22 = 10 + 2x   | − 10",
+          "12 = 2x   | : 2   →   x = 6",
+          "Steigung von C ist null — die Kosten bleiben bei 22 €, egal wie lange genutzt wird.",
+          "Bereich prüfen mit x = 10: A kostet 30 €, C kostet 22 € → C liegt darunter.",
+          "Bereich prüfen mit x = 4: A kostet 18 €, C kostet 22 € → A liegt darunter.",
+          "Grenze des Modells: Verglichen wurden nur die Preise, nicht Vertragslaufzeit oder Leistungsumfang."
         ],
-        "ergebnis": "Bei viel Nutzung (ab 6 Std) lohnt die Flatrate C; bei wenig die anderen."
+        "ergebnis": "Ab 6 Stunden ist die Flatrate C günstiger als A, darunter A. Weil C die Steigung null hat, gewinnt sie bei ausreichend großer Nutzung zwangsläufig."
       },
       "merke": "Mehrere Tarife → Bereiche statt eines Siegers; nach Profil empfehlen.",
       "visual": {

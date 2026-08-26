@@ -30,21 +30,26 @@
       "hinfuehrung": "Der Grundwert ist das Ganze.",
       "erklaerung": [
         "Der Grundwert G sind 100 %.",
-        "Frage dich: Wovon werden die Prozente genommen?"
+        "Frage dich: Wovon werden die Prozente genommen?",
+        "Die Antwort auf diese Frage ist der Grundwert.",
+        "Bei einem Rabatt ist der Grundwert der volle Preis.",
+        "Der Grundwert steht oft vor dem Wort „von“.",
+        "Er ist meistens die größte Zahl in der Aufgabe."
       ],
       "beispiel": {
+        "titel": "Die Frage „wovon?“ stellen",
         "aufgabe": "„20 % von 60 € Rabatt.“ Was ist der Grundwert?",
         "schritte": [
           "Wovon werden die 20 % genommen?",
-          "Von den 60 € (dem vollen Preis).",
+          "Von den 60 €, also vom vollen Preis.",
           "→ 100 % = 60 €"
         ],
+        "ergebnis": "Grundwert G = 60 €. Das Ganze ist 100 %.",
         "luecke": {
           "schritt": 2,
           "wert": 60,
           "einheit": "€"
-        },
-        "ergebnis": "Grundwert G = 60 € (das Ganze = 100 %)."
+        }
       },
       "merke": "Der Grundwert ist das, was 100 % ist.",
       "visual": {
@@ -58,16 +63,20 @@
       "hinfuehrung": "Drei Größen, drei Namen: Grundwert, Prozentwert, Prozentsatz. Wer sie sicher benennt, wählt danach mühelos die richtige Rechnung.",
       "erklaerung": [
         "Grundwert G = das Ganze (100 %). Prozentwert W = der Teil davon (in € oder Stück). Prozentsatz p % = wie viel Prozent der Teil ausmacht.",
-        "Der Prozentsatz trägt das %-Zeichen, der Prozentwert die Sacheinheit (€, kg, …)."
+        "Der Prozentsatz trägt das %-Zeichen, der Prozentwert die Sacheinheit (€, kg, …). An den Einheiten erkennst du die Rollen, ohne den Text zu deuten.",
+        "Das Benennen ist der eigentliche Rechenschritt. Alle drei Formeln der Prozentrechnung sind dieselbe Gleichung, umgestellt — welche du brauchst, entscheidet allein, welche der drei Größen fehlt.",
+        "Verlass dich nicht auf die Reihenfolge im Satz. In „12 von 30 Schülern“ steht der Prozentwert vorn, in „20 % von 60 €“ der Prozentsatz. Das Wort „von“ zeigt auf den Grundwert, nicht auf den Teil."
       ],
       "beispiel": {
+        "titel": "Drei Größen im Satz markieren",
         "aufgabe": "„12 von 30 Schülern, also 40 %, tragen eine Brille.“ Benenne G, W und p %.",
         "schritte": [
-          "das Ganze:      30 Schüler   → G",
-          "der Teil:       12 Schüler   → W",
-          "der Prozentsatz: 40 %        → p %"
+          "das Ganze:       30 Schüler   → G    (steht hinter „von“)",
+          "der Teil:        12 Schüler   → W    (trägt die Sacheinheit)",
+          "der Prozentsatz: 40 %         → p %  (trägt das Prozentzeichen)",
+          "Plausibilität: 12 ist deutlich weniger als die Hälfte von 30, und 40 % ist weniger als 50 %  ✓"
         ],
-        "ergebnis": "G = 30, W = 12, p % = 40 %."
+        "ergebnis": "G = 30, W = 12, p % = 40 %. Alle drei sind gegeben, also ist hier nichts zu rechnen — nur zu benennen."
       },
       "merke": "% hängt am Prozentsatz, die Sacheinheit am Prozentwert.",
       "visual": {
@@ -81,16 +90,21 @@
       "hinfuehrung": "Manche Texte nennen den Grundwert gar nicht – und trotzdem lässt sich sagen, was er ist und ob man rechnen kann.",
       "erklaerung": [
         "Steht „der Preis steigt um 8 %“, ohne einen Betrag, ist der Grundwert der alte Preis – auch wenn keine Zahl dasteht.",
-        "Prozentangaben ohne Grundwert („20 % mehr Leistung“) sind oft Werbung: ohne das Ganze ist der Zuwachs nicht bezifferbar. Das darfst du benennen."
+        "Prozentangaben ohne Grundwert („20 % mehr Leistung“) sind oft Werbung: ohne das Ganze ist der Zuwachs nicht bezifferbar. Das darfst du benennen.",
+        "Gefährlicher als der fehlende Grundwert ist der gewechselte. Wenn zwei Prozentsätze in einem Text stehen, gehören sie oft zu verschiedenen Ganzen — „30 % der Schüler, davon 20 %“ meint 20 % von den 30 %, also 6 % aller Schüler.",
+        "Deshalb lohnt eine feste Rückfrage bei jedem Prozentsatz: Wovon genau? Wer sie stellt, erkennt auch die Fälle, in denen ein Vergleich zweier Prozentsätze gar nicht zulässig ist, weil ihre Grundwerte verschieden sind.",
+        "Bei Prozentpunkten ist derselbe Unterschied gemeint: Von 4 % auf 6 % sind zwei Prozentpunkte, aber 50 % Steigerung. Beides ist richtig, und beide Aussagen wirken völlig verschieden."
       ],
       "beispiel": {
+        "titel": "Eine Werbeaussage auf ihren Grundwert prüfen",
         "aufgabe": "„Neu: 25 % mehr Inhalt!“ Warum ist der Grundwert wichtig – und wo steckt er?",
         "schritte": [
-          "25 % – wovon?",
-          "Vom alten Inhalt (= 100 %), der nicht genannt ist.",
-          "Ohne diese Menge ist „mehr“ nicht in Gramm sagbar."
+          "Rückfrage stellen: 25 % – wovon?",
+          "Vom alten Inhalt, der 100 % ist und in der Anzeige nicht genannt wird.",
+          "Folge: Ohne diese Menge ist „mehr“ nicht in Gramm sagbar. 25 % von 40 g sind 10 g, 25 % von 400 g sind 100 g.",
+          "Beurteilung: Die Aussage ist nicht falsch, aber unvollständig. Prüfbar wird sie erst mit der Angabe der alten Füllmenge."
         ],
-        "ergebnis": "Grundwert = alter Inhalt (100 %); fehlt er, bleibt der Zuwachs unbestimmt."
+        "ergebnis": "Grundwert = alter Inhalt (100 %); fehlt er, bleibt der Zuwachs unbestimmt. Genau das macht solche Angaben in der Werbung so beliebt."
       },
       "merke": "Kein Grundwert genannt? Dann ist er der alte/ursprüngliche Wert – oder die Angabe ist unvollständig.",
       "visual": {

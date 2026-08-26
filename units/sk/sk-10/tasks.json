@@ -32,9 +32,13 @@
       "titel": "Oberfläche der Kugel",
       "hinfuehrung": "Bei der Kugel brauchst du nur den Radius.",
       "erklaerung": [
+        "Eine Kugel hat keine Ecken und keine Kanten.",
+        "Sie hat auch keine Höhe. Der Radius genügt.",
         "Rechne zuerst r · r.",
-        "Nimm das Ergebnis mal 4 und mal π.",
-        "r² heißt r · r. Es heißt nicht r · 2."
+        "r² heißt r · r. Es heißt nicht r · 2.",
+        "Nimm das Ergebnis dann mal 4 und mal π.",
+        "Die Oberfläche ist eine Fläche. Die Einheit ist deshalb cm².",
+        "Ist nur der Durchmesser gegeben, halbiere ihn zuerst."
       ],
       "visual": {
         "type": "animation",
@@ -42,18 +46,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Oberfläche der Kugel",
         "aufgabe": "Eine Kugel hat r = 5 cm. Oberfläche mit π ≈ 3,14?",
         "schritte": [
           "O = 4 · π · r²",
           "= 4 · 3,14 · 25",
           "= 314 cm²"
         ],
+        "ergebnis": "O = 314 cm².",
         "luecke": {
           "schritt": 2,
           "wert": 314,
           "einheit": "cm²"
-        },
-        "ergebnis": "O = 314 cm²."
+        }
       },
       "merke": "Kugel: O = 4 · π · r²."
     },
@@ -62,7 +67,9 @@
       "hinfuehrung": "Beim Volumen kommt der Radius sogar dreimal vor: r hoch drei. Davor steht der Faktor 4/3.",
       "erklaerung": [
         "Volumen: V = 4/3 · π · r³ = (4 · π · r³) : 3.",
-        "Erst r³ (r · r · r), dann mit π multiplizieren, dann · 4 : 3."
+        "Erst r³ (r · r · r), dann mit π multiplizieren, dann · 4 : 3.",
+        "Die Hochzahlen sagen, was gemeint ist: In der Oberfläche steht r², denn eine Fläche entsteht aus zwei Längen; im Volumen steht r³, denn ein Rauminhalt entsteht aus drei. Wer die Formeln verwechselt, merkt es an der Einheit.",
+        "Der Faktor 4/3 ist keine Zahl, die man herleiten kann wie das Drittel beim Kegel; er muss von der Formelkarte kommen. Wichtig ist nur, ihn vollständig zu nehmen — die 4 gehört ebenso dazu wie das Teilen durch 3."
       ],
       "visual": {
         "type": "animation",
@@ -70,13 +77,15 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Kugelvolumen mit r hoch drei",
         "aufgabe": "Kugel mit r = 3 cm. Volumen (π ≈ 3,14)?",
         "schritte": [
-          "r³ = 3 · 3 · 3 = 27",
+          "r³ = 3 · 3 · 3 = 27     (dreimal r, nicht r · 3)",
           "4 · π · r³ = 4 · 3,14 · 27 = 339,12",
-          "V = 339,12 : 3 = 113,04 cm³"
+          "V = 339,12 : 3 = 113,04 cm³",
+          "Einheitenprobe: r³ ergibt cm³, also ein Rauminhalt  ✓"
         ],
-        "ergebnis": "V ≈ 113,04 cm³."
+        "ergebnis": "V ≈ 113,04 cm³. Die Hochzahl 3 macht aus der Rechnung ein Volumen — daran unterscheidest du sie von der Oberflächenformel mit r²."
       },
       "merke": "Kugel: V = (4 · π · r³) : 3."
     },
@@ -85,16 +94,23 @@
       "hinfuehrung": "Ob Ball, Murmel oder Tank: Ist nur der Durchmesser gegeben, halbiere zuerst; für Liter rechne in dm.",
       "erklaerung": [
         "r = d : 2 zuerst bestimmen.",
-        "Für Liter in dm rechnen (dm³ = l) und am Ende sinnvoll runden."
+        "Für Liter in dm rechnen, denn dm³ = l, und am Ende sinnvoll runden.",
+        "Bei der Kugel wirkt sich ein verwechselter Durchmesser noch stärker aus als beim Zylinder: Weil r hoch drei eingeht, liefert der doppelte Wert das achtfache Volumen. Der Halbierungsschritt gehört deshalb als eigene Zeile aufs Blatt.",
+        "Umgekehrt bedeutet das auch: Eine Kugel mit doppeltem Radius fasst das Achtfache. Ein Ball von 20 cm Durchmesser hat achtmal so viel Volumen wie einer von 10 cm — das widerspricht der ersten Vermutung und lohnt es, gemerkt zu werden.",
+        "Zur Plausibilität hilft der Vergleich mit dem umschließenden Würfel: Eine Kugel füllt gut die Hälfte davon aus. Bei d = 4 dm wären das rund die Hälfte von 64 l, also etwa 33 l."
       ],
       "beispiel": {
+        "titel": "Kugeltank in Litern, mit Überschlag",
         "aufgabe": "Kugeltank mit d = 4 dm. Volumen in Litern (π ≈ 3,14)?",
         "schritte": [
-          "r = 4 : 2 = 2 dm",
-          "r³ = 8;  4 · 3,14 · 8 = 100,48",
-          "V = 100,48 : 3 ≈ 33,5 dm³ = 33,5 l"
+          "eigener Schritt: r = d : 2 = 2 dm",
+          "Überschlag: umschließender Würfel 4 · 4 · 4 = 64 l, die Kugel gut die Hälfte ≈ 33 l",
+          "r³ = 2 · 2 · 2 = 8",
+          "4 · π · r³ = 4 · 3,14 · 8 = 100,48",
+          "V = 100,48 : 3 ≈ 33,5 dm³ = 33,5 l",
+          "Abgleich mit dem Überschlag  ✓"
         ],
-        "ergebnis": "V ≈ 33,5 l."
+        "ergebnis": "V ≈ 33,5 l. Der Überschlag über den umschließenden Würfel bestätigt die Größenordnung und deckt einen verwechselten Durchmesser sofort auf."
       },
       "merke": "Erst r = d : 2; in dm gerechnet ergibt dm³ = Liter.",
       "visual": {

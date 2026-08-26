@@ -31,8 +31,11 @@
       "titel": "y-Wert zum x-Wert ablesen",
       "hinfuehrung": "Zu jedem x-Wert gehört ein y-Wert.",
       "erklaerung": [
+        "Ein Graph ist eine Linie in einem Koordinatensystem.",
+        "Die waagerechte Achse ist die x-Achse. Die senkrechte Achse ist die y-Achse.",
         "Suche den x-Wert unten. Gehe von dort nach oben bis zur Linie.",
-        "Gehe dann nach links. Lies den y-Wert ab."
+        "Gehe dann nach links. Lies den y-Wert ab.",
+        "Gehe immer im rechten Winkel. So verrutschst du nicht."
       ],
       "visual": {
         "type": "animation",
@@ -40,17 +43,18 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Erst hoch, dann nach links",
         "aufgabe": "Welcher y-Wert gehört zu x = 3?",
         "schritte": [
           "bei x = 3 senkrecht nach oben",
           "Graph getroffen bei Höhe 4",
           "nach links zur y-Achse: y = 4"
         ],
+        "ergebnis": "Zu x = 3 gehört y = 4.",
         "luecke": {
           "schritt": 2,
           "wert": 4
-        },
-        "ergebnis": "Zu x = 3 gehört y = 4."
+        }
       },
       "merke": "Erst nach rechts (x), dann hoch, dann links ablesen (y)."
     },
@@ -59,16 +63,20 @@
       "hinfuehrung": "Ein Graph lässt sich in Worte fassen – steigt er, fällt er, bleibt er gleich? Und du kannst auch rückwärts lesen: von y zu x.",
       "erklaerung": [
         "Beschreibe abschnittsweise: steigend (geht nach oben), fallend (nach unten), konstant (waagerecht).",
-        "Rückwärts ablesen: Suche den y-Wert links, gehe waagerecht zum Graphen und dann senkrecht nach unten zum x-Wert."
+        "Rückwärts ablesen: Suche den y-Wert links, gehe waagerecht zum Graphen und dann senkrecht nach unten zum x-Wert.",
+        "Beide Richtungen beantworten verschiedene Fragen. Vorwärts fragst du „Wie hoch ist es nach 3 Stunden?“, rückwärts „Wann war die Höhe 4 erreicht?“. Im Sachzusammenhang entscheidet die Frage, in welche Richtung du liest.",
+        "Wichtig ist, was auf den Achsen steht. Erst die Beschriftung macht aus der Linie eine Aussage über Zeit und Weg, über Menge und Preis oder über Zeit und Temperatur."
       ],
       "beispiel": {
+        "titel": "Rückwärts lesen: von der Höhe zur Zeit",
         "aufgabe": "Ein Wanderweg-Graph steigt gleichmäßig. Bei welcher Zeit x ist die Höhe y = 4 erreicht?",
         "schritte": [
-          "Höhe y = 4 links suchen",
-          "waagerecht bis zum Graphen",
-          "senkrecht nach unten: x = 3"
+          "Frage deuten: gesucht ist die Zeit, gegeben ist die Höhe → rückwärts lesen",
+          "Höhe y = 4 auf der senkrechten Achse suchen",
+          "waagerecht bis zum Graphen gehen",
+          "senkrecht nach unten zur x-Achse: x = 3"
         ],
-        "ergebnis": "Die Höhe 4 ist bei x = 3 erreicht."
+        "ergebnis": "Die Höhe 4 ist bei x = 3 erreicht, also nach 3 Zeiteinheiten."
       },
       "merke": "Vorwärts: x → y. Rückwärts: y → x. Immer im rechten Winkel.",
       "visual": {
@@ -81,8 +89,11 @@
       "titel": "Knickstellen und fallende Abschnitte deuten",
       "hinfuehrung": "Wo ein Graph knickt oder fällt, passiert in der Geschichte etwas Besonderes. Das erkennst du – und kannst es begründen.",
       "erklaerung": [
-        "Ein Knick bedeutet: Die Änderungsrate wechselt (z. B. schnelleres Steigen, Pause, Umkehr).",
-        "Ein fallender Abschnitt heißt: Während x wächst, wird y kleiner – etwa Rückweg, Abkühlung, Entladung."
+        "Ein Knick bedeutet: Die Änderungsrate wechselt. Der Graph wird steiler, flacher oder kehrt die Richtung um.",
+        "Ein fallender Abschnitt heißt: Während x wächst, wird y kleiner – etwa Rückweg, Abkühlung, Entladung.",
+        "Steilheit und Höhe sind zwei verschiedene Aussagen. Ein Graph kann hoch verlaufen und trotzdem flach sein: Dann ist der Wert groß, ändert sich aber kaum. Wer beides verwechselt, deutet einen Wanderweg als Tempo statt als Höhe.",
+        "Ein waagerechter Abschnitt bedeutet deshalb nicht Stillstand des Geschehens, sondern Stillstand der Größe auf der senkrechten Achse. Bei einem Höhenprofil ist das ein ebener Weg — gelaufen wird weiter.",
+        "Achte auf die Beschriftung, bevor du deutest. Ein fallender Graph ist beim Wasserstand ein Leerlaufen, bei der Entfernung zum Ziel dagegen ein Fortschritt."
       ],
       "visual": {
         "type": "animation",
@@ -90,13 +101,15 @@
         "stufe": "C"
       },
       "beispiel": {
-        "aufgabe": "Deute den Graphen: erst steil hoch, dann flach, dann abwärts.",
+        "titel": "Einen Graphen abschnittsweise deuten",
+        "aufgabe": "Deute den Graphen: erst steil hoch, dann flach, dann abwärts. Auf der y-Achse steht die Höhe über dem Meeresspiegel.",
         "schritte": [
-          "0–2: steigt → z. B. Hinweg bergauf",
-          "2–4: waagerecht → Pause, Höhe bleibt",
-          "4–6: fällt → Rückweg bergab"
+          "0–2: steigt steil → Aufstieg, die Höhe nimmt schnell zu",
+          "2–4: waagerecht → die Höhe bleibt gleich, der Weg verläuft eben. Es wird weiter gegangen, nur nicht mehr aufwärts.",
+          "4–6: fällt → Abstieg, y wird kleiner, obwohl x weiter wächst",
+          "Knick bei x = 2: Hier wechselt die Änderungsrate von steil auf null."
         ],
-        "ergebnis": "Steigen–Pause–Fallen: der fallende Teil bedeutet abnehmendes y bei wachsendem x."
+        "ergebnis": "Steigen–Ebene–Fallen. Der waagerechte Teil ist kein Halt, sondern ebener Weg — das sagt die Beschriftung der y-Achse."
       },
       "merke": "Fallend = y wird kleiner, obwohl x größer wird. Knick = die Rate ändert sich."
     }

@@ -32,22 +32,27 @@
       "titel": "Zusammengesetzte Körper zerlegen",
       "hinfuehrung": "Viele Körper bestehen aus einfachen Teilen.",
       "erklaerung": [
+        "Schau dir den Körper genau an.",
         "Suche die einfachen Teile: Quader, Würfel, Zylinder.",
-        "Rechne jedes Volumen einzeln aus. Zähle alles zusammen."
+        "Zeichne eine Trennlinie zwischen den Teilen.",
+        "Rechne jedes Volumen einzeln aus.",
+        "Zähle am Ende alles zusammen.",
+        "Alle Teile brauchen dabei dieselbe Einheit."
       ],
       "beispiel": {
+        "titel": "Zerlegen, einzeln rechnen, addieren",
         "aufgabe": "Ein Quader 4 · 4 · 2 hat einen Würfel mit a = 2 darauf. Wie groß ist das Volumen?",
         "schritte": [
           "Quader = 4 · 4 · 2 = 32 cm³",
           "Würfel = 2³ = 8 cm³",
           "V = 32 + 8 = 40 cm³"
         ],
+        "ergebnis": "V = 40 cm³.",
         "luecke": {
           "schritt": 2,
           "wert": 40,
           "einheit": "cm³"
-        },
-        "ergebnis": "V = 40 cm³."
+        }
       },
       "merke": "Zerlegen. Einzeln rechnen. Addieren.",
       "visual": {
@@ -60,17 +65,21 @@
       "titel": "Masse über Volumen mal Dichte",
       "hinfuehrung": "Aus dem Volumen und dem Material (Dichte) lässt sich die Masse berechnen – so schwer ist der Körper.",
       "erklaerung": [
-        "Masse = Volumen · Dichte. Die Dichte steht oft in g/cm³ (z. B. Eisen ≈ 7,8 g/cm³).",
-        "Achte darauf, dass Volumen und Dichte zusammenpassen (cm³ zu g/cm³)."
+        "Masse = Volumen · Dichte. Die Dichte steht oft in g/cm³, bei Eisen etwa 7,8 g/cm³.",
+        "Achte darauf, dass Volumen und Dichte zusammenpassen (cm³ zu g/cm³).",
+        "Die Dichte sagt, wie schwer ein Kubikzentimeter des Stoffes ist. Deshalb ist sie der Umrechnungsfaktor zwischen Rauminhalt und Gewicht — genau wie der Preis je Kilogramm zwischen Menge und Kosten.",
+        "Die Einheiten führen die Rechnung: cm³ · g/cm³ ergibt g, weil sich cm³ herauskürzt. Wer die Einheiten mitschreibt, erkennt sofort, ob multipliziert oder dividiert werden muss."
       ],
       "beispiel": {
+        "titel": "Masse aus Volumen und Dichte",
         "aufgabe": "Ein Eisenquader hat V = 50 cm³, Dichte 7,8 g/cm³. Masse?",
         "schritte": [
-          "Masse = V · Dichte",
-          "= 50 · 7,8",
+          "Masse = Volumen · Dichte",
+          "= 50 cm³ · 7,8 g/cm³",
+          "Einheiten: cm³ kürzt sich heraus, übrig bleibt g",
           "= 390 g"
         ],
-        "ergebnis": "Die Masse beträgt 390 g."
+        "ergebnis": "Die Masse beträgt 390 g. Die Dichte ist der Umrechnungsfaktor zwischen Rauminhalt und Gewicht."
       },
       "merke": "Masse = Volumen · Dichte (cm³ · g/cm³ = g).",
       "visual": {
@@ -84,16 +93,23 @@
       "hinfuehrung": "Bei Rohren und Bechern zählt nur das Material zwischen außen und innen. Du rechnest Außenvolumen minus Innenvolumen.",
       "erklaerung": [
         "Hohlkörper: V = V_außen − V_innen.",
-        "Bei mehrschrittigen Sachaufgaben zwischendurch die Einheiten sauber wechseln (z. B. cm³ → l) und Zwischenergebnisse notieren."
+        "Bei mehrschrittigen Sachaufgaben zwischendurch die Einheiten sauber wechseln und Zwischenergebnisse notieren.",
+        "Der Trick ist, sich den Hohlkörper als Differenz zweier voller Körper zu denken. Man rechnet also nicht die Wand, sondern zweimal einen Zylinder — und zieht ab.",
+        "Der häufigste Fehler ist, die Wanddicke für den inneren Radius zu halten. Bei außen 5 cm und 1 cm Wand ist der innere Radius 4 cm, nicht 1 cm.",
+        "Ein weiterer Fehler ist, die Differenz der Radien zu quadrieren statt die Differenz der Quadrate zu bilden: 5² − 4² = 9, aber (5 − 4)² = 1. Beide Male steht eine 1 im Spiel, und die Ergebnisse liegen um den Faktor 9 auseinander."
       ],
       "beispiel": {
+        "titel": "Rohr als Differenz zweier Zylinder",
         "aufgabe": "Ein Rohr: außen r = 5 cm, innen r = 4 cm, Länge 10 cm. Materialvolumen (π ≈ 3,14)?",
         "schritte": [
-          "außen = 3,14 · 5² · 10 = 785 cm³",
-          "innen = 3,14 · 4² · 10 = 502,4 cm³",
-          "V = 785 − 502,4 = 282,6 cm³"
+          "als Differenz zweier voller Zylinder denken:",
+          "außen = 3,14 · 5² · 10 = 3,14 · 25 · 10 = 785 cm³",
+          "innen = 3,14 · 4² · 10 = 3,14 · 16 · 10 = 502,4 cm³",
+          "V = 785 − 502,4 = 282,6 cm³",
+          "Gegenprobe mit ausgeklammertem π: 3,14 · (25 − 16) · 10 = 3,14 · 9 · 10 = 282,6  ✓",
+          "Achtung: (5 − 4)² = 1 wäre falsch — gebildet wird die Differenz der Quadrate, nicht das Quadrat der Differenz."
         ],
-        "ergebnis": "Materialvolumen ≈ 282,6 cm³."
+        "ergebnis": "Materialvolumen ≈ 282,6 cm³. Die Gegenprobe zeigt die richtige Reihenfolge: erst quadrieren, dann subtrahieren."
       },
       "merke": "Hohlkörper: außen minus innen.",
       "visual": {

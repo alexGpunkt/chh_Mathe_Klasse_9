@@ -30,8 +30,11 @@
       "titel": "Fehlende Quaderkante finden",
       "hinfuehrung": "Du kennst das Volumen und suchst eine Kante.",
       "erklaerung": [
-        "Nimm die zwei bekannten Kanten mal.",
-        "Teile das Volumen durch dieses Ergebnis."
+        "Vorwärts hast du drei Kanten mal genommen.",
+        "Rückwärts teilst du deshalb.",
+        "Nimm zuerst die zwei bekannten Kanten mal.",
+        "Teile dann das Volumen durch dieses Ergebnis.",
+        "Das Ergebnis ist eine Länge. Die Einheit ist cm, nicht cm³."
       ],
       "visual": {
         "type": "animation",
@@ -39,18 +42,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Rückwärts durch Teilen",
         "aufgabe": "V = 60 cm³, a = 5 cm, b = 4 cm. Wie lang ist c?",
         "schritte": [
           "a · b = 5 · 4 = 20",
           "c = V : (a·b) = 60 : 20",
           "c = 3 cm"
         ],
+        "ergebnis": "Die fehlende Kante c = 3 cm.",
         "luecke": {
           "schritt": 2,
           "wert": 3,
           "einheit": "cm"
-        },
-        "ergebnis": "Die fehlende Kante c = 3 cm."
+        }
       },
       "merke": "Fehlende Kante = V : (die anderen beiden Kanten mal)."
     },
@@ -59,16 +63,21 @@
       "hinfuehrung": "Beim Würfel führt der Rückweg über eine Wurzel: aus dem Volumen die dritte Wurzel, aus der Oberfläche die Quadratwurzel.",
       "erklaerung": [
         "Aus V = a³ folgt a = ∛V (dritte Wurzel).",
-        "Aus O = 6 · a² folgt zuerst eine Fläche = O : 6, dann a = √(Fläche)."
+        "Aus O = 6 · a² folgt zuerst eine Fläche = O : 6, dann a = √(Fläche).",
+        "Welche Wurzel du brauchst, verrät die Hochzahl: Was hoch drei genommen wurde, wird mit der dritten Wurzel zurückgeholt; was quadriert wurde, mit der Quadratwurzel. Wurzelziehen ist nichts anderes als die Umkehrung des Potenzierens.",
+        "Bei der Oberfläche kommt ein Schritt davor, und er wird gern vergessen: Die 96 cm² sind sechs Flächen, nicht eine. Erst nach dem Teilen durch 6 steht die Zahl da, aus der die Wurzel gezogen werden darf."
       ],
       "beispiel": {
+        "titel": "Würfelkante aus dem Volumen",
         "aufgabe": "Ein Würfel hat V = 64 cm³. Wie lang ist die Kante?",
         "schritte": [
-          "a = ∛V = ∛64",
+          "V = a³, also wird die dritte Wurzel gezogen: a = ∛V = ∛64",
+          "Suchen statt rechnen: welche Zahl dreimal mit sich selbst?",
           "4 · 4 · 4 = 64",
-          "a = 4 cm"
+          "a = 4 cm",
+          "Probe: 4³ = 64 cm³  ✓  und die Einheit ist cm, eine Länge  ✓"
         ],
-        "ergebnis": "Die Kante ist a = 4 cm."
+        "ergebnis": "Die Kante ist a = 4 cm. Die dritte Wurzel macht genau das rückgängig, was das Hochdrei getan hat."
       },
       "merke": "Würfel: a = ∛V. Aus O: erst O : 6, dann √.",
       "visual": {
@@ -82,16 +91,23 @@
       "hinfuehrung": "Bei rückwärts gestellten Aufgaben zeigst du nicht nur das Ergebnis, sondern auch, welche Formel du wie umgestellt hast.",
       "erklaerung": [
         "Notiere die Ausgangsformel, stelle sie Schritt für Schritt nach der gesuchten Größe um und setze dann ein.",
-        "Eine Probe (Ergebnis wieder einsetzen) sichert den Weg ab."
+        "Eine Probe (Ergebnis wieder einsetzen) sichert den Weg ab.",
+        "Umstellen heißt auch hier: dieselbe Rechenoperation auf beiden Seiten. Das · 6 wird durch : 6 aufgehoben, das Quadrat durch die Wurzel — es sind dieselben Äquivalenzumformungen wie bei jeder Gleichung.",
+        "Bei Rückwärtsaufgaben ist die Probe nicht Beiwerk, sondern die eigentliche Absicherung. Ein Umstellungsfehler liefert fast immer eine plausibel aussehende Zahl, und nur das Wiedereinsetzen deckt ihn auf.",
+        "Die Einheit ist die zweite Kontrolle: Gesucht ist eine Länge, also muss cm herauskommen. Steht am Ende cm² oder cm³ da, wurde eine Wurzel vergessen."
       ],
       "beispiel": {
+        "titel": "Formel umstellen, einsetzen, Probe machen",
         "aufgabe": "Ein Würfel hat O = 96 cm². Bestimme a und mach die Probe.",
         "schritte": [
-          "O = 6·a²  →  a² = O : 6 = 96 : 6 = 16",
-          "a = √16 = 4 cm",
-          "Probe: 6 · 4² = 6 · 16 = 96 cm²  ✓"
+          "Ausgangsformel notieren: O = 6 · a²",
+          "umstellen, Schritt 1:  a² = O : 6",
+          "einsetzen: a² = 96 : 6 = 16",
+          "umstellen, Schritt 2:  a = √(a²) = √16 = 4 cm",
+          "Probe: 6 · 4² = 6 · 16 = 96 cm²  ✓",
+          "Einheitenkontrolle: gesucht war eine Länge, das Ergebnis steht in cm  ✓"
         ],
-        "ergebnis": "a = 4 cm (durch Probe bestätigt)."
+        "ergebnis": "a = 4 cm, durch die Probe bestätigt. Zwei Umformungen, in dieser Reihenfolge: erst durch 6 teilen, dann die Wurzel ziehen."
       },
       "merke": "Formel notieren, umstellen, einsetzen, Probe machen.",
       "visual": {

@@ -17,6 +17,153 @@ dort keines: ein geschätztes Datum wäre schlechter als gar keines.
 
 ---
 
+## v36 — 2026-08-26 · Abschlussquiz, Notengebung und eigenständige Erarbeitung
+
+Zwei Lücken, die zusammengehören: Bis V35 konnte die Anwendung nicht messen,
+was in einer Einheit angekommen ist, und die Lernkarten reichten für eine
+wirklich selbstständige Erarbeitung nicht aus. Das eine ohne das andere zu
+beheben hätte wenig gebracht — ein Quiz über Material, das man allein nicht
+versteht, misst die Erklärung und nicht das Kind.
+
+**Abschlussquiz am Ende jeder Einheit (`assets/js/quiz.js`)**
+
+- Fünf Fragen, ausschließlich aus der eben bearbeiteten Einheit und dem
+  gewählten Pfad. Kein eigener Aufgabenbestand: Der Satz wird im Browser aus
+  der `tasks.json` der Einheit zusammengesetzt — Merksatz und Erklärung der
+  Stufe, Formelkarte, Wortspeicher und zwei Aufgaben aus dem Pool derselben
+  Stufe. Eine zweite Fassung derselben Aussage wäre ab der ersten Änderung an
+  der Lernkarte falsch, ohne dass es jemand merkt.
+- Falsche Antwortmöglichkeiten werden nie erfunden. Bei Auswahlaufgaben sind
+  es die Ablenker der Aufgabe samt hinterlegter Fehlvorstellung, bei
+  Rechenaufgaben bleibt das Feld frei.
+- Auswahlaufgaben mit nur zwei Möglichkeiten bleiben draußen. In der Einheit
+  sind sie richtig, in einer gewerteten Frage wären sie ein Münzwurf — im Pool
+  betrifft das 13 Aufgaben, fast alle auf Pfad A.
+- Wer eigene Fragen schreiben will, trägt sie unter `quiz` in die
+  `tasks.json` ein; das Schema kennt das Feld und verlangt mindestens drei
+  Antwortmöglichkeiten.
+- Die Einladung steht im Abschlusskasten und sagt **vor** dem Start, ob dieser
+  Lauf der gewertete ist. Eine Prüfung, deren Bedingungen man erst hinterher
+  erfährt, ist keine faire Prüfung.
+
+**Was gewertet wird**
+
+- Der **erste Lauf je Kind und Einheit** — nicht je Tag. Eine Einheit wird
+  einmal erarbeitet; der Lauf unmittelbar danach ist der aussagekräftige.
+  Wiederholungen zählen als Übung und verändern die Bewertung nicht.
+- Die Regel steht als eindeutiger Index in der Datenbank
+  (`mathe9_quiz_ein_gewerteter_pro_einheit`), nicht nur in der Anwendung: Zwei
+  Geräte, die gleichzeitig melden, dürfen nicht zwei gewertete Läufe erzeugen.
+- Läufe **außerhalb** der Unterrichtszeit werden ebenfalls aufgezeichnet — die
+  selbstständige Erarbeitung zu Hause ist in diesem Projekt der Regelfall. Ob
+  sie eine Note begründen dürfen, entscheidet die Fachkonferenz über den
+  Dashboard-Schalter „nur Läufe aus dem Unterricht", nicht das Gerät.
+- Notenskala und die Wahl zwischen **Einzelnoten** und **Lernfortschritt**
+  liegen in der Datenbank, nicht im Client. Eine Notenskala gehört an eine
+  Stelle, sonst steht in einem halben Jahr in zwei Dateien eine andere.
+
+**Im Dashboard: „Einheitenquiz und Notengebung"**
+
+- Zwei Tabellen, weil zwei verschiedene Fragen dahinterstehen: *je Kind*
+  (Läufe, Einheiten, Quote, Entwicklung, Note, wackelige Einheiten) und
+  *je Einheit* (Kinder, Quote, wie viele unter 50 %, häufigster Denkfehler).
+- Die zweite bewertet nicht Kinder, sondern das Material. Wenn zweiundzwanzig
+  von fünfundzwanzig Kindern in einer Einheit unter der Hälfte bleiben, war
+  nicht die Klasse schwach, sondern die Einheit unklar. Diese Rückmeldung über
+  das eigene Material hat dem Projekt bisher gefehlt.
+- Die Bewertungsart ist je Kind umstellbar und gilt für jede Auswertung, die
+  dieses Kind betrifft.
+
+**Eigenständige Erarbeitung auf allen drei Niveaustufen**
+
+Die Leitfrage: Kann sich ein Kind eine Einheit **allein** erarbeiten — auf
+seiner Stufe? Der Bestand von V35 war dafür zu dünn, und die Kürze war richtig
+gedacht: Wer danebensitzt, ergänzt den fehlenden Schritt mündlich. Wer allein
+davorsitzt, bekommt ihn nirgends. Es fehlte nicht die Ausführlichkeit, sondern
+der Schritt **dazwischen** — das Warum zwischen „so ist es" und „merke".
+
+| | v35 | v36 |
+|---|---:|---:|
+| Pfad A, Zeichen je Lernkarte (Mittel) | 174 | 337 |
+| Pfad B | 300 | 726 |
+| Pfad C | 362 | 932 |
+| Musterbeispiele mit Überschrift | 0 von 162 | **162 von 162** |
+
+- Die Sprache der Stufen bleibt unangetastet: Pfad A behält kurze Hauptsätze
+  ohne Nebensätze, Einschübe und Abkürzungen. Mehr Text heißt hier mehr
+  Schritte, nicht längere Sätze — `erarbeitung_bauen.py` prüft das.
+- Auf Pfad C zeigen die Musterbeispiele jetzt, wie eine **Antwort** aussieht,
+  nicht nur, dass sie verlangt wird: begründen, vergleichen, beurteilen,
+  Gültigkeitsbereich benennen.
+- Der Fachinhalt liegt in `werkzeuge/erarbeitung_<bereich>.py`, eingetragen von
+  `werkzeuge/erarbeitung_bauen.py`. Der Lauf ist wiederholbar — er setzt
+  Felder, er hängt nichts an.
+
+**Behoben**
+
+- `quiz.js`: Der Schlüssel zum Aussortieren doppelter Fragen bestand aus
+  Herkunft und Fragetext. Beide sind bei den erzeugten Fragen identisch — jede
+  Lückenfrage heißt „Welches Wort gehört in die Lücke?". Dadurch galt jede
+  zweite Frage derselben Art als Wiederholung, und das Quiz blieb still bei
+  drei Fragen stehen. Unterschieden wird jetzt an Satz und Lösung. Betroffen
+  waren LF-09 und LF-15, wo der Bestand ohnehin knapp war.
+- `abschluss()` meldet Selbstcheck-Fazit und Pfadempfehlung nicht mehr ein
+  zweites Mal, wenn die Seite nach dem Quiz erneut aufgebaut wird. Ein zweiter
+  Eintrag hätte die spätere Kalibrierung der Schwellen verfälscht.
+- `standSpeichern()` schreibt ein vollständiges Objekt und hätte damit das
+  Feld `quiz` beim nächsten Speichern stillschweigend gelöscht — und das
+  nächste Speichern kommt sofort, nämlich im Abschluss direkt nach dem Lauf.
+  Offline ist dieser Eintrag die einzige Spur des Quiz; er wird jetzt
+  mitgeführt. Der Datensatz hat seit V36 zwei Schreiber, und das war die
+  Stelle, an der das auffiel.
+
+**Getestet**
+
+`tests/smoke/quiz.spec.js` prüft im Browser, was `quiz-pruefen.js` nicht kann:
+dass die Einladung im Abschluss erscheint und vorher sagt, ob der Lauf zählt;
+dass sich fünf Fragen bedienen lassen und ein Ergebnis dasteht; dass der Stand
+des ersten Laufs die Rückkehr in den Abschluss übersteht; und dass jede Frage
+aus dieser Einheit stammt.
+
+**Datenbank**
+
+`supabase/setup.sql` erneut ausführen. Neu sind:
+
+- Spalte `bewertungsart` in `mathe9_students` (Standard `note`) samt
+  Prüfbedingung und `mathe9_bewertungsart_setzen()`.
+- Tabelle `mathe9_quiz_ergebnisse` mit RLS, drei Indizes und dem eindeutigen
+  Teilindex für den gewerteten Lauf.
+- Funktionen `mathe9_quiz_melden()` (Schüler-Token), `mathe9_quiz_uebersicht()`
+  und `mathe9_quiz_einheiten()` (beide nur für Lehrkräfte).
+- `mathe9_aufraeumen()` löscht Quizergebnisse nach derselben Frist wie den
+  Fortschritt; `mathe9_person_export()` und `mathe9_person_loeschen()` führen
+  sie mit. Eine Bewertungsgrundlage, die in keiner Auskunft auftaucht, wäre
+  die einzige personenbezogene Sammlung im Projekt ohne Ende.
+
+Das Skript ist für erneute Ausführung vorbereitet; vorhandene Daten bleiben
+erhalten. Ohne Migration läuft die Lernanwendung weiter — das Quiz zeigt dann
+„auf diesem Gerät gespeichert" und meldet nichts.
+
+**Bekannte Einschränkung**
+
+Das Performancebudget für JavaScript wurde von 150 auf 160 KB gzip angehoben;
+der Stand liegt bei 157. `quiz.js` wiegt 9,5 KB gzip und muss ins
+Offlinepaket, sonst fällt das Quiz genau dann aus, wenn das WLAN fällt.
+Geprüft und verworfen: Kommentare streichen (3,7 KB, immer noch über der alten
+Grenze), Lehrerdateien aus der Rechnung nehmen (5,7 KB, geht nicht ohne die
+dokumentierten Deep-Links zu brechen). Der nächste strukturelle Hebel bleibt
+`engine.js`. Begründung und Alternativen stehen in `werkzeuge/budget.json`
+unter `_luft`.
+
+**Weg zurück**
+
+`sw.js` auf die vorige `VERSION` zurücksetzen und `quiz.js` aus `SCHALE` sowie
+aus `einheit.html` entfernen; die Einheitenseiten laufen dann wie in V35. Die
+Datenbankobjekte können stehen bleiben — sie stören nichts. Die erweiterten
+Lernkarten bleiben ebenfalls gültig; sie sind reine Inhaltsdaten.
+
+---
+
 ## v35 — 2026-08-14 · Integrationskorrekturen und Supabase-Vorprüfung
 
 - V34 auf den geprüften V31-Unterbau konsolidiert; reine CRLF-Arbeitskopie-

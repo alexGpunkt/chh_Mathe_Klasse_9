@@ -28,7 +28,11 @@
       "hinfuehrung": "b ist die Starthöhe der Geraden.",
       "erklaerung": [
         "Suche die senkrechte Achse. Das ist die y-Achse.",
-        "Lies ab, in welcher Höhe die Gerade sie schneidet."
+        "Lies ab, in welcher Höhe die Gerade sie schneidet.",
+        "Diese Höhe ist b.",
+        "An dieser Stelle ist x = 0.",
+        "Liegt der Schnitt unter null, ist b negativ.",
+        "Geht die Gerade durch den Nullpunkt, ist b = 0."
       ],
       "visual": {
         "type": "animation",
@@ -36,16 +40,17 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "b an der y-Achse ablesen",
         "aufgabe": "Wo schneidet die Gerade die senkrechte Achse?",
         "schritte": [
           "Blick auf die y-Achse (x = 0)",
           "Gerade kreuzt bei Höhe 2"
         ],
+        "ergebnis": "b = 2.",
         "luecke": {
           "schritt": 1,
           "wert": 2
-        },
-        "ergebnis": "b = 2."
+        }
       },
       "merke": "b = Höhe am Schnitt mit der y-Achse."
     },
@@ -54,16 +59,20 @@
       "hinfuehrung": "b findest du überall: im Graphen die Starthöhe, in der Tabelle der Wert bei x = 0, im Text die Grundgebühr.",
       "erklaerung": [
         "Tabelle: b ist der y-Wert zu x = 0.",
-        "Sachkontext: b ist der feste Betrag, der auch ohne Verbrauch anfällt – die Grundgebühr."
+        "Sachkontext: b ist der feste Betrag, der auch ohne Verbrauch anfällt – die Grundgebühr.",
+        "Alle drei Zugänge beschreiben dieselbe Zahl. Wer im Text die Grundgebühr findet, hat damit auch die Starthöhe des Graphen und die Zeile x = 0 der Tabelle gefunden.",
+        "Verwechsle b nicht mit m. Der y-Achsenabschnitt ist ein einmaliger Betrag, die Steigung ein Betrag je Einheit. Im Text erkennst du sie am Wort: „pro“, „je“ und „pro Stunde“ gehören zu m, „Grundgebühr“ und „Startguthaben“ zu b."
       ],
       "beispiel": {
+        "titel": "b im Sachtext finden",
         "aufgabe": "Ein Tarif kostet 5 € Grundgebühr plus 2 € je Stunde. Was ist b?",
         "schritte": [
-          "„auch ohne Nutzung“ → fester Betrag",
-          "Grundgebühr = 5 €",
-          "→ b = 5"
+          "Signalwort suchen: „Grundgebühr“ → fester Betrag, fällt auch ohne Nutzung an",
+          "Grundgebühr = 5 €  →  b = 5",
+          "Abgrenzung: „je Stunde“ gehört zu m, also m = 2",
+          "Gleichung: y = 2x + 5"
         ],
-        "ergebnis": "b = 5 (die Grundgebühr)."
+        "ergebnis": "b = 5, die Grundgebühr. Bei null Stunden sind 5 € fällig — das ist der Punkt (0 | 5)."
       },
       "merke": "b = Wert bei x = 0 = fester Grundbetrag im Sachtext.",
       "visual": {
@@ -77,16 +86,22 @@
       "hinfuehrung": "Ist die Gerade nicht bis zur y-Achse gezeichnet, rechnest du b aus: Setze einen bekannten Punkt und m in die Gleichung ein.",
       "erklaerung": [
         "Aus y = m · x + b folgt b = y − m · x.",
-        "Setze die Koordinaten eines Punktes und die bekannte Steigung ein."
+        "Setze die Koordinaten eines Punktes und die bekannte Steigung ein.",
+        "Die Umstellung entsteht durch eine einzige Äquivalenzumformung: Von y = mx + b subtrahierst du auf beiden Seiten mx. Auswendig lernen musst du sie deshalb nicht.",
+        "Der Punkt darf jeder beliebige Punkt der Geraden sein. Nimm einen, der auf einem Gitterpunkt liegt und möglichst kleine Zahlen hat — das Ergebnis für b ist immer dasselbe.",
+        "Kontrolliere danach mit einem zweiten Punkt: Setzt du ihn in die fertige Gleichung ein, muss sein y-Wert herauskommen. Diese Punktprobe deckt Vorzeichenfehler bei negativem m zuverlässig auf."
       ],
       "beispiel": {
-        "aufgabe": "Eine Gerade hat m = 3 und geht durch P(2 | 5). Bestimme b.",
+        "titel": "b aus Punkt und Steigung berechnen",
+        "aufgabe": "Eine Gerade hat m = 3 und geht durch P(2 | 5). Bestimme b und kontrolliere das Ergebnis.",
         "schritte": [
-          "b = y − m · x",
-          "b = 5 − 3 · 2",
-          "b = 5 − 6 = −1"
+          "Umstellen: aus y = m · x + b folgt b = y − m · x",
+          "Einsetzen: b = 5 − 3 · 2",
+          "b = 5 − 6 = −1",
+          "Gleichung: y = 3x − 1",
+          "Kontrolle mit P: 3 · 2 − 1 = 5  ✓ — der Punkt liegt auf der Geraden."
         ],
-        "ergebnis": "b = −1, also y = 3x − 1."
+        "ergebnis": "b = −1, also y = 3x − 1. Die Gerade schneidet die y-Achse unterhalb des Ursprungs."
       },
       "merke": "b = y − m · x (Punkt und Steigung einsetzen).",
       "visual": {

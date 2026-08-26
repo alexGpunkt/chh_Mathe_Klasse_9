@@ -29,19 +29,24 @@
       "hinfuehrung": "Im Schnittpunkt ist y bei beiden Geraden gleich.",
       "erklaerung": [
         "Beide Gleichungen fangen mit y = an.",
-        "Schreibe die beiden rechten Seiten gleich. Löse dann nach x auf."
+        "Schreibe die beiden rechten Seiten gleich.",
+        "Jetzt steht nur noch x in der Gleichung.",
+        "Löse die Gleichung nach x auf.",
+        "Danach setzt du x ein und rechnest y aus.",
+        "Beide Zahlen zusammen sind der Schnittpunkt."
       ],
       "beispiel": {
+        "titel": "Gleichsetzen und nach x lösen",
         "aufgabe": "Setze gleich und bestimme x: y = 2x und y = x + 3.",
         "schritte": [
           "2x = x + 3      | − x",
           "x = 3"
         ],
+        "ergebnis": "x = 3. Der y-Wert folgt im nächsten Schritt.",
         "luecke": {
           "schritt": 1,
           "wert": 3
-        },
-        "ergebnis": "x = 3 (der y-Wert folgt im nächsten Schritt)."
+        }
       },
       "merke": "Gleichsetzen. Dann nach x lösen.",
       "visual": {
@@ -56,16 +61,20 @@
       "hinfuehrung": "Nach dem x brauchst du noch das y. Einsetzen in eine der Gleichungen liefert es – fertig ist der Schnittpunkt.",
       "erklaerung": [
         "1. Terme gleichsetzen, x berechnen. 2. x in eine Gleichung einsetzen, y berechnen.",
-        "3. Ergebnis als Paar S(x | y) angeben."
+        "3. Ergebnis als Paar S(x | y) angeben.",
+        "Der zweite Schritt wird oft vergessen, und dann steht als Antwort eine Zahl statt eines Punktes. Ein Schnittpunkt hat immer zwei Koordinaten.",
+        "In welche der beiden Gleichungen du x einsetzt, ist gleichgültig — beide müssen dasselbe y liefern. Genau darum setze x in die eine ein und prüfe mit der anderen: Die Probe kostet eine Zeile."
       ],
       "beispiel": {
+        "titel": "Das Gleichsetzungsverfahren vollständig",
         "aufgabe": "Schnittpunkt von y = 2x und y = x + 3.",
         "schritte": [
-          "2x = x + 3 → x = 3",
-          "y = 2 · 3 = 6",
-          "S(3 | 6)"
+          "2x = x + 3   | − x   →   x = 3",
+          "x in die erste Gleichung: y = 2 · 3 = 6",
+          "Probe mit der zweiten: y = 3 + 3 = 6  ✓",
+          "als Paar schreiben: S(3 | 6)"
         ],
-        "ergebnis": "S(3 | 6)."
+        "ergebnis": "S(3 | 6). Beide Gleichungen liefern für x = 3 denselben y-Wert — das ist die Bestätigung."
       },
       "merke": "x berechnen, x einsetzen → y, dann S(x | y) schreiben.",
       "visual": {
@@ -79,15 +88,22 @@
       "hinfuehrung": "Fällt beim Gleichsetzen das x weg, bist du bei den Sonderfällen: parallel oder identisch. Du deutest das Ergebnis.",
       "erklaerung": [
         "Bleibt eine falsche Aussage (z. B. 2 = 5), sind die Geraden parallel – kein Schnittpunkt.",
-        "Bleibt eine wahre Aussage (z. B. 3 = 3), sind sie identisch – unendlich viele gemeinsame Punkte. Es ist dieselbe Logik wie beim grafischen Fall."
+        "Bleibt eine wahre Aussage (z. B. 3 = 3), sind sie identisch – unendlich viele gemeinsame Punkte. Es ist dieselbe Logik wie beim grafischen Fall.",
+        "Beide Male ist das Verschwinden von x kein Zeichen für einen Fehler. Es sagt: Der Vergleich hängt gar nicht von x ab — entweder stimmen die Geraden überall überein oder nirgends.",
+        "Für die Antwort reicht die Aussage „x fällt weg“ nicht aus. Verlangt ist die Deutung: kein Schnittpunkt oder unendlich viele, und dazu die Begründung über m und b.",
+        "Die Probe machst du an den Steigungen: Gleiche Steigung erklärt beide Sonderfälle, verschiedene Steigung schließt sie aus."
       ],
       "beispiel": {
+        "titel": "Wenn x herausfällt — das Ergebnis deuten",
         "aufgabe": "Setze gleich: y = 2x + 1 und y = 2x + 5. Deute das Ergebnis.",
         "schritte": [
           "2x + 1 = 2x + 5   | − 2x",
-          "1 = 5  → falsch"
+          "1 = 5  → falsch, und x ist verschwunden",
+          "Deutung: Es gibt kein x, das beide Gleichungen erfüllt.",
+          "Begründung über die Kennzahlen: gleiches m = 2, aber b = 1 gegen b = 5.",
+          "Also verlaufen die Geraden parallel im senkrechten Abstand 4."
         ],
-        "ergebnis": "x fällt heraus, Aussage falsch → parallel, kein Schnittpunkt."
+        "ergebnis": "Kein Schnittpunkt: Die Geraden sind parallel. Die falsche Aussage ist das Ergebnis, die Begründung liefert der Vergleich von m und b."
       },
       "merke": "x weg + falsch → parallel; x weg + wahr → identisch.",
       "visual": {

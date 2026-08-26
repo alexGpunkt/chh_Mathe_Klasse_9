@@ -32,8 +32,12 @@
       "titel": "Der Zylindermantel ist ein Rechteck",
       "hinfuehrung": "Rolle den Mantel aus. Es entsteht ein Rechteck.",
       "erklaerung": [
+        "Denke an das Etikett einer Dose.",
+        "Nimm es ab und lege es flach hin. Es ist ein Rechteck.",
         "Die eine Seite ist der Kreisumfang: U = 2 · π · r.",
-        "Die andere Seite ist die Höhe h."
+        "Die andere Seite ist die Höhe h.",
+        "Der Mantel ist also 2 · π · r · h.",
+        "Deckel und Boden gehören nicht zum Mantel."
       ],
       "visual": {
         "type": "animation",
@@ -41,18 +45,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Das Etikett als Rechteck",
         "aufgabe": "Ein Zylinder hat r = 4 cm und h = 10 cm. Mantelfläche mit π ≈ 3,14?",
         "schritte": [
           "U = 2 · 3,14 · 4 = 25,12 cm",
           "Mantel = U · h = 25,12 · 10",
           "Mantel = 251,2 cm²"
         ],
+        "ergebnis": "Mantel ≈ 251,2 cm².",
         "luecke": {
           "schritt": 2,
           "wert": 251.2,
           "einheit": "cm²"
-        },
-        "ergebnis": "Mantel ≈ 251,2 cm²."
+        }
       },
       "merke": "Zylindermantel = 2 · π · r · h."
     },
@@ -61,16 +66,20 @@
       "hinfuehrung": "Die volle Oberfläche eines Zylinders sind Deckel und Boden (zwei Kreise) plus der Mantel rundherum.",
       "erklaerung": [
         "O = 2 · π · r² + 2 · π · r · h.",
-        "Berechne die Kreisfläche, verdopple sie, addiere den Mantel."
+        "Berechne die Kreisfläche, verdopple sie, addiere den Mantel.",
+        "Die beiden Summanden sehen ähnlich aus und meinen Verschiedenes: Im ersten steht r², im zweiten r · h. Merke sie an ihrer Bedeutung — zwei Kreise und ein Rechteck — statt an ihrer Gestalt.",
+        "Der Kreisumfang enthält r einfach, die Kreisfläche r im Quadrat. Wer das verwechselt, addiert eine Länge zu einer Fläche; die Einheitenprobe deckt das sofort auf, denn cm und cm² lassen sich nicht addieren."
       ],
       "beispiel": {
+        "titel": "Zwei Kreise plus Mantel",
         "aufgabe": "Zylinder r = 4 cm, h = 10 cm. Oberfläche (π ≈ 3,14)?",
         "schritte": [
-          "2 Kreise = 2 · 3,14 · 16 = 100,48 cm²",
-          "Mantel = 2 · 3,14 · 4 · 10 = 251,2 cm²",
-          "O = 100,48 + 251,2 = 351,68 cm²"
+          "2 Kreise: 2 · π · r² = 2 · 3,14 · 16 = 100,48 cm²",
+          "Mantel: 2 · π · r · h = 2 · 3,14 · 4 · 10 = 251,2 cm²",
+          "O = 100,48 + 251,2 = 351,68 cm²",
+          "Einheitenprobe: beide Summanden stehen in cm², dürfen also addiert werden  ✓"
         ],
-        "ergebnis": "O ≈ 351,7 cm²."
+        "ergebnis": "O ≈ 351,7 cm². Der erste Summand trägt r², der zweite r · h — beide ergeben eine Fläche, und nur deshalb darf addiert werden."
       },
       "merke": "Zylinder: O = 2 · π · r² + 2 · π · r · h.",
       "visual": {
@@ -84,16 +93,22 @@
       "hinfuehrung": "Ein Eimer oder eine offene Dose hat keinen Deckel. Dann fehlt ein Kreis in der Oberfläche – das musst du erkennen.",
       "erklaerung": [
         "Offen oben: O = 1 Kreis (Boden) + Mantel. Ganz offen (Rohr): nur der Mantel.",
-        "Lies im Text genau, welche Flächen wirklich vorhanden sind, bevor du addierst."
+        "Lies im Text genau, welche Flächen wirklich vorhanden sind, bevor du addierst.",
+        "Die Formel der Formelkarte gilt für den geschlossenen Zylinder. Sie ist deshalb kein Ersatz für das Nachdenken, sondern der Ausgangspunkt: Erst klärst du, welche Flächen der Körper wirklich hat, dann streichst du die fehlenden.",
+        "Signalwörter im Text sind „offen“, „ohne Deckel“, „Rohr“ und „Rinne“. Auch die gesuchte Größe verrät etwas: Nach „Materialbedarf“ oder „lackieren“ zählen nur die tatsächlich vorhandenen Flächen.",
+        "Eine grobe Kontrolle: Bei einem hohen, schmalen Gefäß macht der Mantel den weitaus größten Teil aus. Fällt ein Deckel weg, ändert sich das Ergebnis nur wenig; bei einer flachen Dose dagegen sehr deutlich."
       ],
       "beispiel": {
+        "titel": "Offener Becher — den fehlenden Deckel erkennen",
         "aufgabe": "Ein oben offener Becher: r = 3 cm, h = 8 cm. Materialfläche (π ≈ 3,14)?",
         "schritte": [
+          "Signalwort „oben offen“ → nur ein Kreis, nämlich der Boden",
           "Boden = π · r² = 3,14 · 9 = 28,26 cm²",
-          "Mantel = 2 · 3,14 · 3 · 8 = 150,72 cm²",
-          "O = 28,26 + 150,72 = 178,98 cm²"
+          "Mantel = 2 · π · r · h = 2 · 3,14 · 3 · 8 = 150,72 cm²",
+          "O = 28,26 + 150,72 = 178,98 cm²",
+          "Zum Vergleich mit Deckel: 178,98 + 28,26 = 207,24 cm² — der Deckel macht hier rund ein Siebtel aus."
         ],
-        "ergebnis": "O ≈ 179 cm² (nur 1 Kreis, weil oben offen)."
+        "ergebnis": "O ≈ 179 cm², weil oben kein Deckel vorhanden ist. Die Formelkarte gilt für den geschlossenen Zylinder — was fehlt, entscheidet der Text."
       },
       "merke": "Offener Behälter: fehlenden Deckel nicht mitrechnen.",
       "visual": {

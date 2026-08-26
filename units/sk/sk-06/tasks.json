@@ -34,8 +34,11 @@
       "titel": "Der Kegel: Radius, Höhe, Mantellinie",
       "hinfuehrung": "Der Kegel hat unten einen Kreis und oben eine Spitze.",
       "erklaerung": [
-        "Der Radius r geht von der Mitte zum Rand. Die Höhe h steht senkrecht.",
-        "Die Mantellinie s läuft schräg zur Spitze."
+        "Unten liegt der Grundkreis.",
+        "Der Radius r geht von der Mitte zum Rand.",
+        "Die Höhe h steht senkrecht von der Spitze zur Mitte.",
+        "Die Mantellinie s läuft schräg von der Spitze zum Kreisrand.",
+        "Zwischen r und h ist ein rechter Winkel. Die Mantellinie s ist die längste."
       ],
       "visual": {
         "type": "animation",
@@ -43,13 +46,14 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Das Dreieck im Kegel finden",
         "aufgabe": "Welche drei Größen bilden beim Kegel das rechtwinklige Dreieck?",
         "schritte": [
-          "eine Kathete: Radius r",
-          "andere Kathete: Höhe h",
-          "Hypotenuse: Mantellinie s"
+          "eine Kathete: der Radius r",
+          "andere Kathete: die Höhe h",
+          "Hypotenuse: die Mantellinie s"
         ],
-        "ergebnis": "r, h und s, mit dem rechten Winkel zwischen r und h."
+        "ergebnis": "r, h und s. Der rechte Winkel liegt zwischen r und h."
       },
       "merke": "Katheten: r und h. Hypotenuse: s."
     },
@@ -58,7 +62,10 @@
       "hinfuehrung": "Wie bei der Pyramide steckt im Kegel ein rechtwinkliges Dreieck. Aus r und h berechnest du die Mantellinie s.",
       "erklaerung": [
         "Es gilt s² = r² + h².",
-        "Also s = √( r² + h² ). Erst quadrieren und addieren, dann die Wurzel."
+        "Also s = √( r² + h² ). Erst quadrieren und addieren, dann die Wurzel.",
+        "Der Unterschied zur Pyramide ist nur eine Bezeichnung: Dort stand die halbe Grundkante a : 2, hier steht der Radius r. Beide messen dasselbe — den Weg von der Mitte der Grundfläche zu ihrem Rand.",
+        "Halbiert wird deshalb auch hier, sobald statt des Radius der Durchmesser gegeben ist. Mit d statt r wäre die Mantellinie erheblich zu groß.",
+        "Auch die Reihenfolge der Rechenarten gilt unverändert: erst quadrieren, dann addieren, zuletzt die Wurzel. √(9 + 16) ist 5 und nicht 3 + 4 = 7."
       ],
       "visual": {
         "type": "animation",
@@ -66,13 +73,15 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Mantellinie aus Radius und Höhe",
         "aufgabe": "Kegel mit r = 3 cm, h = 4 cm. Berechne die Mantellinie s.",
         "schritte": [
           "s² = r² + h² = 3² + 4² = 9 + 16 = 25",
           "s = √25",
-          "s = 5 cm"
+          "s = 5 cm",
+          "Plausibilität: s = 5 cm ist länger als r = 3 cm und länger als h = 4 cm  ✓"
         ],
-        "ergebnis": "s = 5 cm."
+        "ergebnis": "s = 5 cm. Der Radius spielt hier dieselbe Rolle wie die halbe Grundkante bei der Pyramide."
       },
       "merke": "Kegel: s = √( r² + h² )."
     },
@@ -81,16 +90,23 @@
       "hinfuehrung": "Die Beziehung s² = r² + h² lässt sich nach jeder Größe umstellen – so findest du auch r oder h.",
       "erklaerung": [
         "Nach der Höhe: h = √( s² − r² ). Nach dem Radius: r = √( s² − h² ).",
-        "s ist immer die längste Größe (Hypotenuse); unter der Wurzel steht das Große minus das Kleine."
+        "s ist immer die längste Größe (Hypotenuse); unter der Wurzel steht das Große minus das Kleine.",
+        "Damit gilt für den Kegel wörtlich dieselbe Regel wie für die Pyramide: Ist die Hypotenuse gesucht, wird addiert; ist eine Kathete gesucht, wird subtrahiert. Nur die Buchstaben unterscheiden sich.",
+        "Ein negativer Radikand ist auch hier ein Hinweis und kein Rechenfehler: Er bedeutet, dass die angegebene Mantellinie kürzer wäre als der Radius — ein Kegel, den es nicht gibt.",
+        "Und der Grenzfall lohnt einen Gedanken: Wird h immer kleiner, nähert sich s dem Radius r an, und der Kegel wird flach. Wird h sehr groß, ist s kaum noch länger als h, und der Kegel wird spitz und schlank."
       ],
       "beispiel": {
+        "titel": "Höhe aus Mantellinie und Radius",
         "aufgabe": "Kegel mit s = 13 cm, r = 5 cm. Berechne die Höhe h.",
         "schritte": [
+          "gesucht ist eine Kathete, also wird subtrahiert",
           "h² = s² − r² = 13² − 5² = 169 − 25 = 144",
           "h = √144",
-          "h = 12 cm"
+          "h = 12 cm",
+          "Plausibilität: h = 12 cm ist kürzer als s = 13 cm  ✓",
+          "Probe vorwärts: √(5² + 12²) = √169 = 13 cm  ✓"
         ],
-        "ergebnis": "h = 12 cm."
+        "ergebnis": "h = 12 cm. Es ist dieselbe Regel wie bei der Pyramide — nur heißt die zweite Kathete hier r statt a : 2."
       },
       "merke": "h = √( s² − r² ),   r = √( s² − h² ).",
       "visual": {

@@ -27,8 +27,11 @@
       "titel": "Gerade durch zwei Punkte zeichnen",
       "hinfuehrung": "Zwei Punkte geben genau eine Gerade.",
       "erklaerung": [
-        "Trage beide Punkte ein. Ziehe eine Linie durch.",
-        "Lies dann b und m ab."
+        "Trage beide Punkte in das Koordinatensystem ein.",
+        "Ziehe eine Linie durch beide Punkte. Nimm ein Lineal.",
+        "Verlängere die Linie bis zur senkrechten Achse.",
+        "Dort liest du den y-Achsenabschnitt ab.",
+        "Zwischen den beiden Punkten liest du die Steigung ab."
       ],
       "visual": {
         "type": "koordinaten",
@@ -55,17 +58,18 @@
         "alt": "Zwei Punkte P und Q, durch die eine Gerade verläuft."
       },
       "beispiel": {
+        "titel": "Zeichnen, dann ablesen",
         "aufgabe": "Zeichne die Gerade durch P(1 | 2) und Q(3 | 4). Lies m und b ab.",
         "schritte": [
-          "P und Q eintragen, Linie ziehen",
-          "b (y-Achse): 1",
-          "Dreieck P→Q: 2 rechts, 2 hoch → m = 1"
+          "P und Q eintragen, Linie mit dem Lineal ziehen",
+          "Linie bis zur y-Achse verlängern: b = 1",
+          "Dreieck von P nach Q: 2 nach rechts, 2 nach oben → m = 1"
         ],
+        "ergebnis": "y = x + 1.",
         "luecke": {
           "schritt": 2,
           "wert": 1
-        },
-        "ergebnis": "y = x + 1."
+        }
       },
       "merke": "Zwei Punkte → eine Gerade → m und b ablesen."
     },
@@ -73,16 +77,23 @@
       "titel": "m berechnen, b durch Einsetzen",
       "hinfuehrung": "Ohne Zeichnung geht es schneller: m aus der Formel, b durch Einsetzen eines Punktes.",
       "erklaerung": [
-        "m = (y2 − y1) : (x2 − x1).",
-        "Setze m und einen der Punkte in y = mx + b ein und löse nach b auf."
+        "Die Steigung berechnest du aus den beiden Punkten mit m = (y2 − y1) : (x2 − x1).",
+        "Danach setzt du die gefundene Steigung und einen der beiden Punkte in y = mx + b ein und löst nach b auf.",
+        "Warum genügt ein einziger Punkt für den zweiten Schritt? Weil die Steigung bereits feststeht. Eine Gerade mit bekannter Richtung ist durch einen Punkt vollständig festgelegt.",
+        "Welchen der beiden Punkte du zum Einsetzen nimmst, ist gleichgültig — beide liefern denselben y-Achsenabschnitt. Nimm den mit den kleineren Zahlen.",
+        "Der andere Punkt ist damit frei für die Probe. Setze ihn in die fertige Gleichung ein; kommt sein y-Wert heraus, stimmt die Rechnung."
       ],
       "beispiel": {
-        "aufgabe": "Gleichung durch P(1 | 3) und Q(3 | 7).",
+        "titel": "Erst die Steigung, dann der y-Achsenabschnitt",
+        "aufgabe": "Bestimme die Gleichung der Geraden durch P(1 | 3) und Q(3 | 7).",
         "schritte": [
           "m = (7 − 3) : (3 − 1) = 4 : 2 = 2",
-          "Punkt P: 3 = 2·1 + b → b = 1"
+          "Punkt P einsetzen: 3 = 2 · 1 + b",
+          "3 = 2 + b   | − 2   →   b = 1",
+          "Gleichung: y = 2x + 1",
+          "Probe mit dem anderen Punkt Q: 2 · 3 + 1 = 7  ✓"
         ],
-        "ergebnis": "y = 2x + 1."
+        "ergebnis": "y = 2x + 1. Der zweite Punkt wurde für die Probe aufgehoben — deshalb ist das Ergebnis abgesichert."
       },
       "merke": "Erst m mit der Formel, dann b durch Einsetzen.",
       "visual": {
@@ -95,16 +106,24 @@
       "titel": "Der allgemeine Weg – auch mit Brüchen",
       "hinfuehrung": "Der Zweipunkte-Weg funktioniert immer, sogar mit negativen Werten und Brüchen. Beschreibe ihn allgemein und wende ihn an.",
       "erklaerung": [
-        "Allgemein: 1. m = (y2 − y1)/(x2 − x1). 2. b = y1 − m · x1. 3. Gleichung y = mx + b aufschreiben.",
-        "Bei Brüchen sorgfältig kürzen und Vorzeichen prüfen."
+        "Der allgemeine Weg hat drei Schritte: erst m = (y2 − y1) : (x2 − x1), dann b = y1 − m · x1, zuletzt die Gleichung y = mx + b aufschreiben.",
+        "Bei Brüchen musst du sorgfältig kürzen und die Vorzeichen prüfen, besonders wenn eine Koordinate negativ ist.",
+        "Die gefährlichste Stelle ist die Differenz zweier negativer Zahlen. In 2 − (−2) stehen zwei Minuszeichen nebeneinander, und aus ihnen wird ein Plus: Der Nenner ist 4 und nicht 0.",
+        "Ebenso beim Einsetzen: Ein negativer Wert für die Steigung, multipliziert mit einer negativen Koordinate, ergibt einen positiven Beitrag. Schreibe deshalb jede eingesetzte Zahl in Klammern.",
+        "Es gibt genau einen Fall, in dem das Verfahren scheitert: Haben beide Punkte denselben x-Wert, wird der Nenner null. Dann ist die Gerade senkrecht und gar keine Funktion."
       ],
       "beispiel": {
-        "aufgabe": "Gleichung durch P(−2 | 4) und Q(2 | 1).",
+        "titel": "Zwei Punkte mit negativen Koordinaten",
+        "aufgabe": "Bestimme die Gleichung der Geraden durch P(−2 | 4) und Q(2 | 1).",
         "schritte": [
-          "m = (1 − 4) : (2 − (−2)) = −3 : 4 = −3/4",
-          "b = y1 − m·x1 = 4 − (−3/4)·(−2) = 4 − 3/2 = 2,5"
+          "m = (1 − 4) : (2 − (−2))",
+          "Nenner sorgfältig: 2 − (−2) = 2 + 2 = 4",
+          "m = (−3) : 4 = −3/4",
+          "b = y1 − m · x1 = 4 − (−3/4) · (−2)",
+          "minus mal minus ergibt plus: (−3/4) · (−2) = 3/2, also b = 4 − 1,5 = 2,5",
+          "Probe mit Q: (−3/4) · 2 + 2,5 = −1,5 + 2,5 = 1  ✓"
         ],
-        "ergebnis": "y = −3/4 x + 2,5."
+        "ergebnis": "y = −3/4 x + 2,5. Beide Vorzeichenfallen — die Differenz und das Produkt — treten in dieser einen Aufgabe gemeinsam auf."
       },
       "merke": "1) m = Δy/Δx  2) b = y1 − m·x1  3) y = mx + b.",
       "visual": {

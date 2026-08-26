@@ -32,8 +32,12 @@
       "titel": "Der Mantel: Umfang mal Höhe",
       "hinfuehrung": "Rolle den Mantel ab. Es entsteht ein Rechteck.",
       "erklaerung": [
-        "Rechne den Umfang der Grundfläche aus.",
-        "Nimm den Umfang mal die Höhe."
+        "Der Mantel ist die Fläche rundherum.",
+        "Rolle ihn auf dem Tisch aus. Er wird ein Rechteck.",
+        "Die eine Seite ist der Umfang der Grundfläche.",
+        "Die andere Seite ist die Höhe.",
+        "Nimm den Umfang mal die Höhe.",
+        "Der Mantel ist eine Fläche. Die Einheit ist deshalb cm²."
       ],
       "visual": {
         "type": "animation",
@@ -41,18 +45,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Umfang mal Höhe",
         "aufgabe": "Die Grundfläche ist ein Dreieck mit 3, 4 und 5 cm. Die Höhe ist 10 cm. Wie groß ist der Mantel?",
         "schritte": [
           "Umfang = 3 + 4 + 5 = 12 cm",
           "Mantel = Umfang · h = 12 · 10",
           "Mantel = 120 cm²"
         ],
+        "ergebnis": "Mantel = 120 cm².",
         "luecke": {
           "schritt": 2,
           "wert": 120,
           "einheit": "cm²"
-        },
-        "ergebnis": "Mantel = 120 cm²."
+        }
       },
       "merke": "Mantel = Umfang der Grundfläche · Höhe."
     },
@@ -61,16 +66,21 @@
       "hinfuehrung": "Die ganze Oberfläche eines Prismas sind die beiden Grundflächen plus der Mantel rundherum.",
       "erklaerung": [
         "O = 2 · Grundfläche + Mantel.",
-        "Berechne die Grundfläche, verdopple sie, addiere den Mantel (Umfang · Höhe)."
+        "Berechne die Grundfläche, verdopple sie, addiere den Mantel (Umfang · Höhe).",
+        "Der Faktor 2 zählt Boden und Deckel. Bei einem oben offenen Behälter fällt einer davon weg — die Formel gilt für den geschlossenen Körper und ist im Sachzusammenhang jedes Mal zu prüfen.",
+        "Achte darauf, dass in der Grundfläche und im Umfang zwei verschiedene Größen desselben Dreiecks stecken: Für die Fläche brauchst du Grundseite und Dreieckshöhe, für den Umfang alle drei Seiten. Beides kommt in derselben Aufgabe vor und wird gern vertauscht."
       ],
       "beispiel": {
+        "titel": "Zwei Grundflächen plus Mantel",
         "aufgabe": "Dreieck: g = 4, h_d = 3, Seiten 3/4/5, Länge h = 10 cm. Oberfläche?",
         "schritte": [
-          "G = (4 · 3) : 2 = 6 cm²  →  2·G = 12 cm²",
-          "Mantel = (3+4+5) · 10 = 120 cm²",
-          "O = 12 + 120 = 132 cm²"
+          "Grundfläche mit g und h_d: G = (4 · 3) : 2 = 6 cm²  →  2 · G = 12 cm²",
+          "Umfang mit allen drei Seiten: U = 3 + 4 + 5 = 12 cm",
+          "Mantel = U · h = 12 · 10 = 120 cm²",
+          "O = 12 + 120 = 132 cm²",
+          "Beachte: Für die Fläche zählten g und h_d, für den Umfang die drei Seitenlängen."
         ],
-        "ergebnis": "O = 132 cm²."
+        "ergebnis": "O = 132 cm². Dieselbe Aufgabe braucht vom Dreieck zweierlei — Fläche und Umfang."
       },
       "merke": "Prisma: O = 2 · Grundfläche + Mantel.",
       "visual": {
@@ -84,15 +94,22 @@
       "hinfuehrung": "Manchmal fehlt eine Dreiecksseite für den Umfang. Im rechtwinkligen Dreieck hilft der Satz des Pythagoras.",
       "erklaerung": [
         "Im rechtwinkligen Dreieck gilt a² + b² = c² (c = längste Seite, Hypotenuse).",
-        "Fehlt die Hypotenuse: c = √(a² + b²). Fehlt eine Kathete: a = √(c² − b²). Danach den Umfang bilden."
+        "Fehlt die Hypotenuse: c = √(a² + b²). Fehlt eine Kathete: a = √(c² − b²). Danach den Umfang bilden.",
+        "Die beiden Fälle unterscheiden sich im Vorzeichen unter der Wurzel, und die Regel dafür ist einfach: Die Hypotenuse ist immer die längste Seite. Suchst du sie, wird addiert; suchst du eine Kathete, wird das Kleinere vom Größeren abgezogen.",
+        "Der Satz gilt ausschließlich im rechtwinkligen Dreieck. Steht kein rechter Winkel in der Zeichnung oder im Text, darf er nicht angewendet werden — auch dann nicht, wenn es passen würde.",
+        "Prüfe das Ergebnis auf Plausibilität: Die berechnete Hypotenuse muss länger sein als jede Kathete, aber kürzer als beide zusammen. Bei 6 und 8 muss sie also zwischen 8 und 14 liegen."
       ],
       "beispiel": {
+        "titel": "Fehlende Seite mit Pythagoras, dann der Umfang",
         "aufgabe": "Rechtwinkliges Dreieck mit Katheten 6 und 8 cm. Wie lang ist die dritte Seite?",
         "schritte": [
+          "Gesucht ist die Hypotenuse, also wird addiert:",
           "c² = 6² + 8² = 36 + 64 = 100",
-          "c = √100 = 10 cm"
+          "c = √100 = 10 cm",
+          "Plausibilität: 10 cm ist länger als 8 cm und kürzer als 6 + 8 = 14 cm  ✓",
+          "Für den Umfang stünden nun alle drei Seiten bereit: 6 + 8 + 10 = 24 cm"
         ],
-        "ergebnis": "Die dritte Seite (Hypotenuse) ist 10 cm."
+        "ergebnis": "Die dritte Seite ist 10 cm lang. Erst mit ihr lässt sich der Umfang bilden und daraus der Mantel berechnen."
       },
       "merke": "Rechtwinklig: c = √(a² + b²) für die Hypotenuse.",
       "visual": {

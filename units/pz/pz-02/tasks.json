@@ -29,7 +29,10 @@
       "hinfuehrung": "Du musst nicht rechnen. Du schaust.",
       "erklaerung": [
         "Die Hälfte sind 50 %. In der Mitte steht eine Marke.",
-        "Endet die Farbe vor der Mitte, sind es weniger als 50 %."
+        "Endet die Farbe vor der Mitte, sind es weniger als 50 %.",
+        "Endet die Farbe hinter der Mitte, sind es mehr als 50 %.",
+        "Schätzen ist kein Raten. Du vergleichst mit einer Stelle, die du kennst.",
+        "Diese Stellen kennst du schon: die Mitte ist 50 %, die Hälfte davon ist 25 %."
       ],
       "visual": {
         "type": "animation",
@@ -37,12 +40,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Am Mittelstrich vergleichen",
         "aufgabe": "Der Streifen ist bis kurz vor die Mitte gefärbt. Mehr oder weniger als 50 %?",
         "schritte": [
           "Mitte des Streifens  = 50 %",
-          "Färbung endet davor  → kleiner"
+          "Färbung endet davor  → kleiner",
+          "geschätzt            = 45 %"
         ],
-        "ergebnis": "Weniger als 50 %."
+        "ergebnis": "Weniger als 50 %. Geschätzt sind es etwa 45 %.",
+        "luecke": {
+          "schritt": 2,
+          "wert": 45,
+          "einheit": "%"
+        }
       },
       "merke": "Bis zur Mitte sind 50 %. Davor weniger, danach mehr."
     },
@@ -51,16 +61,20 @@
       "hinfuehrung": "Du musst nicht raten. Nimm einen bekannten Ankerwert (25 %, 50 %, 75 %) und schätze von dort aus.",
       "erklaerung": [
         "Ankerwerte sind Prozentsätze, die du sofort siehst: 25 %, 50 %, 75 %, 10 %.",
-        "Suche den nächsten Anker und schätze, ob dein Anteil etwas darüber oder darunter liegt – auf 5 % genau reicht."
+        "Suche den nächsten Anker und schätze, ob dein Anteil etwas darüber oder darunter liegt – auf 5 % genau reicht.",
+        "Der 10-%-Anker ist der nützlichste, weil er ohne Rechnung entsteht: Komma eine Stelle nach links. 10 % von 480 € sind 48 €. Aus ihm baust du jeden anderen Wert: 30 % sind dreimal so viel, 5 % die Hälfte davon.",
+        "Wozu schätzen, wenn der Taschenrechner rechnet? Weil eine Schätzung Tippfehler aufdeckt. Wer vorher weiß, dass ungefähr 50 € herauskommen müssen, erkennt die 500 € auf dem Display sofort als Kommafehler."
       ],
       "beispiel": {
+        "titel": "Zwischen zwei Ankern einordnen",
         "aufgabe": "Ein Glas ist etwas mehr als zur Hälfte, aber noch nicht zu drei Vierteln voll. Schätze den Prozentsatz.",
         "schritte": [
-          "Anker Hälfte     = 50 %",
-          "Anker drei Viertel = 75 %",
-          "dazwischen, näher an der Hälfte → etwa 60 %"
+          "Anker Hälfte        = 50 %",
+          "Anker drei Viertel  = 75 %",
+          "Der Füllstand liegt dazwischen, näher an der Hälfte.",
+          "Also etwas über 50 %, aber deutlich unter 75 %  →  etwa 60 %"
         ],
-        "ergebnis": "Schätzung: ungefähr 60 %."
+        "ergebnis": "Schätzung: ungefähr 60 %. Zwei Anker grenzen den Wert ein, das Auge entscheidet nur noch dazwischen."
       },
       "merke": "Erst den nächsten Ankerwert suchen, dann darüber/darunter abschätzen.",
       "visual": {
@@ -73,18 +87,23 @@
       "titel": "Schätzstrategie bewusst wählen",
       "hinfuehrung": "Es gibt mehrere Wege zu schätzen. Der Profi wählt den, der zur Aufgabe passt, und kann seine Wahl begründen.",
       "erklaerung": [
-        "Ankerstrategie: am nächsten bekannten Prozentsatz orientieren. Gut bei Bildern.",
-        "Zerlegen: 30 % = 3 · 10 %. Gut, wenn 10 % leicht zu bestimmen ist.",
-        "Vergleichen: „etwa jeder Fünfte“ → 20 %. Gut bei Anzahlen."
+        "Ankerstrategie: am nächsten bekannten Prozentsatz orientieren. Gut bei Bildern und Füllständen, weil das Auge Hälften und Viertel zuverlässig trifft.",
+        "Zerlegen: 30 % = 3 · 10 %. Gut, wenn 10 % leicht zu bestimmen ist, also bei glatten Grundwerten. Auch 5 % und 1 % entstehen so ohne Rechnung.",
+        "Vergleichen: „etwa jeder Fünfte“ → 20 %. Gut bei Anzahlen, weil der Grundwert dann keine runde Zahl ist und Anker nicht greifen.",
+        "Runden gehört zur Strategie dazu: 28 Kinder werden zu 30, weil sich mit 30 zehnteln lässt. Diese Vereinfachung musst du benennen — sie ist der Grund, warum das Ergebnis eine Schätzung bleibt.",
+        "Und du solltest sagen können, in welche Richtung du dich vermutlich irrst: Wer 28 auf 30 aufrundet, macht den Grundwert größer und den geschätzten Prozentsatz damit kleiner als den echten."
       ],
       "beispiel": {
-        "aufgabe": "In einer Klasse von 28 sind 6 krank. Schätze den Prozentsatz und begründe deine Strategie.",
+        "titel": "Strategie wählen und die Abweichung einschätzen",
+        "aufgabe": "In einer Klasse von 28 sind 6 krank. Schätze den Prozentsatz, begründe deine Strategie und sage, in welche Richtung du dich irrst.",
         "schritte": [
-          "6 von 28 ≈ 6 von 30",
+          "Strategiewahl: Anker greifen nicht, 6 von 28 ist kein Viertel und keine Hälfte. Also zerlegen.",
+          "Runden für den 10-%-Schritt: 28 ≈ 30",
           "10 % von 30 = 3   →   6 sind etwa 2 · 10 %",
-          "also ungefähr 20 %"
+          "Schätzung: ungefähr 20 %",
+          "Richtung der Abweichung: Der Grundwert wurde vergrößert, der echte Prozentsatz liegt also etwas höher. Kontrolle: 6 : 28 ≈ 21,4 %."
         ],
-        "ergebnis": "Etwa 20 % – über die Strategie „10 % zerlegen“."
+        "ergebnis": "Etwa 20 %, über die Strategie „10 % zerlegen“ — und mit der Angabe, dass der wahre Wert leicht darüber liegt."
       },
       "merke": "Nenne die Strategie, nicht nur die Zahl: Anker, Zerlegen oder Vergleichen.",
       "visual": {

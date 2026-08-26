@@ -164,9 +164,18 @@ function standSpeichern() {
         leichter: t.nachfass_leichter === true
       };
     });
+    /* Seit V36 schreibt nicht mehr nur die Engine in diesen Datensatz:
+       quiz.js legt unter `quiz` das Ergebnis des Abschlussquiz ab. Diese
+       Funktion schreibt aber ein vollständiges Objekt und würde ein Feld,
+       das sie nicht kennt, beim nächsten Speichern stillschweigend
+       löschen — und das nächste Speichern kommt sofort, nämlich im
+       Abschluss direkt nach dem Quiz. Offline ist dieser Eintrag die
+       einzige Spur des Laufs; er muss die Runde überstehen. */
+    const bisher = Stand.lies(S.daten.unit) || {};
     Stand.schreib(S.daten.unit, {
       version: 2,
       unit: S.daten.unit,
+      ...(bisher.quiz ? { quiz: bisher.quiz } : {}),
       titel: S.daten.title || '',
       pfad: S.pfad,
       index: speicherIndex,
@@ -1527,7 +1536,12 @@ function einstufungStarten(pfad) {
 }
 
 /* ---------- Abschluss ---------- */
-function abschluss() {
+/* `wieder` ist wahr, wenn der Abschluss nach dem Abschlussquiz erneut
+   aufgebaut wird. Angezeigt wird dann dasselbe, gemeldet aber nichts:
+   Selbstcheck-Fazit und Pfadempfehlung sind Ereignisse der Auswertung,
+   keine der Anzeige — ein zweiter Eintrag würde die spätere Kalibrierung
+   der Schwellen verfälschen. */
+function abschluss(wieder = false) {
   const b = $('#buehne');
   const karte = el('div', 'karte');
 
@@ -1613,8 +1627,14 @@ function abschluss() {
     else text = 'Deine Einschätzung vorher und dein Ergebnis (<b>' + aufAnhieb + ' von ' + gesamt + '</b> auf Anhieb) passen zusammen.';
     kasten.innerHTML = text;
     karte.append(kasten);
-    Tracker.track('selbstcheck_nachher', { path: S.pfad, vorher: S.selbst, auf_anhieb: aufAnhieb, gesamt });
+    if (!wieder) Tracker.track('selbstcheck_nachher', { path: S.pfad, vorher: S.selbst, auf_anhieb: aufAnhieb, gesamt });
   }
+
+  /* Das Abschlussquiz steht vor der Empfehlung: Es ist der einzige Teil
+     des Abschlusses, dessen Ergebnis die Lehrkraft erreicht — und es
+     prüft, was in dieser Einheit stand, nicht wie gut der Weg dorthin
+     lief. */
+  quizEinladung(karte);
 
   /* Empfehlung statt bloßer Wahlmöglichkeit: Die App weiß, wie es lief.
      Sie weiß es aber nicht immer gut genug — bei wenigen Kernaufgaben oder
@@ -1628,7 +1648,7 @@ function abschluss() {
   const sicherheit = empfehlungSicherheit(gesamt);
   /* Mitschreiben, was empfohlen wurde und auf welcher Grundlage — nur so
      lassen sich die Schwellen später an echten Ergebnissen kalibrieren. */
-  Tracker.track('pfadempfehlung', {
+  if (!wieder) Tracker.track('pfadempfehlung', {
     von: S.pfad,
     empfohlen: hoch ? naechster : (runter ? vorheriger : null),
     quote: Math.round(quote * 100) / 100,
@@ -1688,6 +1708,56 @@ function abschluss() {
 
   karte.append(akt);
   b.append(karte);
+}
+
+/* ---------- Abschlussquiz zur Einheit ----------
+   Fünf Fragen, ausschließlich zum Inhalt dieser Einheit und dieses
+   Pfades. Der Bestand dafür ist die `tasks.json` selbst; zusammengesetzt
+   wird er in `quiz.js`.
+
+   Der erste Lauf je Einheit ist der gewertete. Deshalb steht hier, bevor
+   das Kind auf „Starten" drückt, ob es der erste ist — eine Prüfung,
+   deren Bedingungen man erst hinterher erfährt, ist keine faire
+   Prüfung. */
+function quizEinladung(karte) {
+  if (S.daten.pruefung || typeof Quiz === 'undefined') return;
+
+  const satz = Quiz.bauen(S.daten, S.pfad);
+  if (!satz || satz.fragen.length < 3) return;
+
+  const bisher = Quiz.stand(S.daten.unit, S.pfad);
+  const kasten = el('div', 'quizeinladung' + (bisher ? ' quizeinladung-erledigt' : ''));
+
+  kasten.append(el('strong', null, bisher
+    ? `Abschlussquiz: ${bisher.richtig} von ${bisher.gesamt} richtig.`
+    : `Abschlussquiz zu dieser Einheit · ${satz.fragen.length} Fragen`));
+
+  const p = el('p');
+  p.innerHTML = bisher
+    ? `Gewertet ist dein <b>erster</b> Lauf (${bisher.erster ? bisher.erster.richtig : bisher.richtig} `
+      + `von ${bisher.erster ? bisher.erster.gesamt : bisher.gesamt}). Üben kannst du weiter, `
+      + 'so oft du willst — an der Bewertung ändert sich dadurch nichts.'
+    : 'Gefragt wird nur, was in <b>dieser</b> Einheit stand: der Merksatz deines Pfades, '
+      + 'die Formelkarte, der Wortspeicher und zwei Aufgaben von vorhin. '
+      + '<b>Dein erster Lauf zählt</b> und geht an deine Lehrkraft — die weiteren sind Übung.';
+  kasten.append(p);
+
+  const knopf = el('button', 'btn ' + (bisher ? 'btn-neben' : 'btn-haupt'),
+    bisher ? 'Quiz noch einmal üben' : `Quiz starten (${satz.fragen.length} Fragen)`);
+  knopf.type = 'button';
+  knopf.addEventListener('click', () => {
+    Tracker.track('quiz_start', {
+      unit: S.daten.unit, path: S.pfad,
+      fragen: satz.fragen.length, quelle: satz.quelle, wiederholung: Boolean(bisher)
+    });
+    const b = $('#buehne');
+    buehneLeeren(b);
+    const lauf = Quiz.starten(S.daten, S.pfad, b, () => { buehneLeeren(b); abschluss(true); });
+    if (!lauf) { buehneLeeren(b); abschluss(true); }
+  });
+  kasten.append(knopf);
+
+  karte.append(kasten);
 }
 
 /* ---------- Formelkarte ---------- */

@@ -32,8 +32,12 @@
       "titel": "Volumen des Zylinders",
       "hinfuehrung": "Der Zylinder hat einen Kreis als Grundfläche.",
       "erklaerung": [
-        "Rechne zuerst die Kreisfläche: A = π · r².",
-        "Nimm die Kreisfläche dann mal die Höhe."
+        "Ein Zylinder ist ein Stapel aus gleichen Kreisen.",
+        "Deshalb rechnest du auch hier Grundfläche mal Höhe.",
+        "Die Kreisfläche ist A = π · r².",
+        "π ist eine feste Zahl. Sie ist ungefähr 3,14.",
+        "Nimm die Kreisfläche dann mal die Höhe.",
+        "Der Radius r geht von der Mitte bis zum Rand."
       ],
       "visual": {
         "type": "animation",
@@ -41,18 +45,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Kreisfläche mal Höhe",
         "aufgabe": "Ein Zylinder hat r = 5 cm und h = 10 cm. Volumen mit π ≈ 3,14?",
         "schritte": [
           "A = π · r² = 3,14 · 25 = 78,5 cm²",
           "V = A · h = 78,5 · 10",
           "V = 785 cm³"
         ],
+        "ergebnis": "V ≈ 785 cm³.",
         "luecke": {
           "schritt": 2,
           "wert": 785,
           "einheit": "cm³"
-        },
-        "ergebnis": "V ≈ 785 cm³."
+        }
       },
       "merke": "Zylinder: V = π · r² · h."
     },
@@ -61,7 +66,9 @@
       "hinfuehrung": "In der Formel steht der Radius. Ist nur der Durchmesser d angegeben, halbierst du ihn zuerst.",
       "erklaerung": [
         "d = 2 · r, also r = d : 2.",
-        "Erst r bestimmen, dann V = π · r² · h. Häufiger Fehler: den Durchmesser statt des Radius quadrieren."
+        "Erst r bestimmen, dann V = π · r² · h. Häufiger Fehler: den Durchmesser statt des Radius quadrieren.",
+        "Der Fehler ist deshalb so folgenreich, weil der Radius quadriert wird: Ein doppelt so großer Wert liefert nicht das doppelte, sondern das vierfache Ergebnis. Aus 602,9 cm³ würden so 2411,5 cm³.",
+        "Schreibe den Halbierungsschritt als eigene Zeile auf. Wer r im Kopf bildet und gleich einsetzt, hat keine Stelle, an der der Fehler beim Nachrechnen auffallen könnte."
       ],
       "visual": {
         "type": "animation",
@@ -69,13 +76,15 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Erst halbieren, dann quadrieren",
         "aufgabe": "Dose mit d = 8 cm, h = 12 cm. Volumen (π ≈ 3,14)?",
         "schritte": [
-          "r = d : 2 = 8 : 2 = 4 cm",
+          "eigener Schritt für den Radius: r = d : 2 = 8 : 2 = 4 cm",
           "A = 3,14 · 4² = 3,14 · 16 = 50,24 cm²",
-          "V = 50,24 · 12 ≈ 602,9 cm³"
+          "V = A · h = 50,24 · 12 ≈ 602,9 cm³",
+          "Zum Vergleich der Fehlweg: mit d² = 64 käme 2411,5 cm³ heraus — das Vierfache."
         ],
-        "ergebnis": "V ≈ 602,9 cm³."
+        "ergebnis": "V ≈ 602,9 cm³. Weil der Radius quadriert wird, vervierfacht ein verwechselter Durchmesser das Ergebnis."
       },
       "merke": "Erst r = d : 2, dann rechnen – nie den Durchmesser quadrieren."
     },
@@ -84,16 +93,22 @@
       "hinfuehrung": "Bei Tanks und Behältern ist die Antwort oft in Litern gefragt. Rechne in dm, dann ist das Ergebnis direkt in Litern.",
       "erklaerung": [
         "Wandle Radius und Höhe in dm um. Das Volumen in dm³ ist gleich der Literzahl.",
-        "Runde sinnvoll und prüfe die Größenordnung am Sachzusammenhang."
+        "Runde sinnvoll und prüfe die Größenordnung am Sachzusammenhang.",
+        "Runde erst am Schluss. π ist eine unendliche Dezimalzahl, und wer schon die Kreisfläche stark rundet, trägt den Fehler mit der Höhe multipliziert weiter — bei großen Höhen wird daraus ein sichtbarer Betrag.",
+        "Wie genau gerundet wird, entscheidet die Sache. Bei einer Regentonne sind ganze Liter angemessen; Nachkommastellen täuschen eine Genauigkeit vor, die weder die Tonne noch der Wert 3,14 hergibt.",
+        "Für die Plausibilität hilft eine grobe Näherung im Kopf: Ein Zylinder fasst etwa drei Viertel des umschließenden Quaders. Bei r = 3 dm und h = 8 dm wären das rund 0,75 · 6 · 6 · 8 = 216 l — nahe am Ergebnis."
       ],
       "beispiel": {
+        "titel": "Regentonne in Litern, mit Überschlag",
         "aufgabe": "Regentonne: r = 3 dm, h = 8 dm. Wie viele Liter (π ≈ 3,14)?",
         "schritte": [
+          "Überschlag zuerst: umschließender Quader 6 · 6 · 8 = 288, davon rund drei Viertel ≈ 216 l",
           "A = 3,14 · 3² = 3,14 · 9 = 28,26 dm²",
-          "V = 28,26 · 8 = 226,08 dm³",
-          "1 dm³ = 1 l"
+          "V = A · h = 28,26 · 8 = 226,08 dm³",
+          "1 dm³ = 1 l, also 226,08 l",
+          "sinnvoll runden: rund 226 l — Nachkommastellen wären bei einer Regentonne vorgetäuschte Genauigkeit"
         ],
-        "ergebnis": "V ≈ 226 l."
+        "ergebnis": "V ≈ 226 l. Der Überschlag von 216 l bestätigt die Größenordnung, und gerundet wird erst am Schluss."
       },
       "merke": "In dm rechnen → dm³ = Liter.",
       "visual": {

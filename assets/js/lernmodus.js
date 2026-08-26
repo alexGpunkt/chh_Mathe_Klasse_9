@@ -195,6 +195,21 @@ const Lernmodus = (() => {
     return { erlaubt: false, grund: 'gesperrt' };
   }
 
+  /* Ergebnis eines Abschlussquiz melden. Die Wertung hängt nicht am Tag,
+     sondern an der Einheit: Eine Einheit wird einmal erarbeitet, und der
+     erste Lauf danach ist der aussagekräftige. Entschieden wird das in
+     der Datenbank, nicht hier — ein Client, der sich selbst für
+     ungewertet erklärt, hätte die Note in der Hand.
+
+     Der Zustand wird danach bewusst NICHT neu geholt: Am Lernmodus
+     ändert ein Quizlauf nichts, und ein zusätzlicher Abruf mitten in der
+     Ergebnisanzeige kostet nur Zeit auf schwachen Geräten. */
+  async function quizMelden(nutzlast) {
+    profilAbgleichen();
+    if (!student() || !konfiguriert() || entwicklerfrei()) return null;
+    return await rpc('mathe9_quiz_melden', nutzlast);
+  }
+
   /* Seit V33 gibt es je Lernweg ein eigenes Blatt. Hier ist die Einheit
      bereits bearbeitet — der Lernweg steht also im gespeicherten Stand.
      Fehlt er (anderes Gerät, gelöschter Speicher), ist der Standardweg B
@@ -328,6 +343,7 @@ const Lernmodus = (() => {
     aktualisieren,
     darfOeffnen,
     sperreAnzeigen,
+    quizMelden,
     uebungsblattPfad,
     aktivitaet,
     vorAbmelden: melden,

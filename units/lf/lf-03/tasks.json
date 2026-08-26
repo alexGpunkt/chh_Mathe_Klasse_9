@@ -29,9 +29,11 @@
       "titel": "Ursprungsgerade y = m · x",
       "hinfuehrung": "Die Gerade geht durch den Punkt (0 | 0).",
       "erklaerung": [
-        "Doppeltes x gibt doppeltes y.",
+        "Proportional heißt: Doppeltes x gibt doppeltes y.",
+        "Dreifaches x gibt dreifaches y.",
         "Du rechnest y = m · x.",
-        "Bei x = 0 ist auch y = 0. Genau deshalb geht die Gerade durch den Punkt (0 | 0)."
+        "Bei x = 0 ist auch y = 0. Genau deshalb geht die Gerade durch den Punkt (0 | 0).",
+        "Keine Ware kostet kein Geld. So kannst du es dir merken."
       ],
       "visual": {
         "type": "animation",
@@ -39,17 +41,18 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "y = m · x anwenden",
         "aufgabe": "y = 2x. Welcher y-Wert gehört zu x = 3?",
         "schritte": [
           "y = 2 · x",
           "y = 2 · 3",
           "y = 6"
         ],
+        "ergebnis": "Zu x = 3 gehört y = 6.",
         "luecke": {
           "schritt": 2,
           "wert": 6
-        },
-        "ergebnis": "Zu x = 3 gehört y = 6."
+        }
       },
       "merke": "Proportional: Gerade durch (0 | 0). y = m · x."
     },
@@ -58,15 +61,20 @@
       "hinfuehrung": "Den Faktor m findest du in jeder Zeile der Tabelle: Er ist y geteilt durch x – und bei einer Ursprungsgeraden überall gleich.",
       "erklaerung": [
         "Bei y = m · x gilt m = y : x. Nimm ein Wertepaar und teile.",
-        "Zur Kontrolle: In jeder Zeile muss derselbe Wert herauskommen."
+        "Zur Kontrolle: In jeder Zeile muss derselbe Wert herauskommen.",
+        "Diese Kontrolle ist zugleich der Test auf Proportionalität. Kommt in zwei Zeilen ein verschiedener Quotient heraus, ist die Zuordnung nicht proportional — dann gehört ein b in die Gleichung.",
+        "Die Zeile x = 0 ist für diese Rechnung unbrauchbar, weil durch null nicht geteilt werden darf. Nimm irgendein anderes Wertepaar; bei einer Ursprungsgeraden liefern alle dasselbe m."
       ],
       "beispiel": {
+        "titel": "m aus der Tabelle und die Kontrollzeile",
         "aufgabe": "Tabelle: x = 2 → y = 5, x = 4 → y = 10. Bestimme m und die Gleichung.",
         "schritte": [
           "m = y : x = 5 : 2 = 2,5",
-          "Kontrolle: 10 : 4 = 2,5  ✓"
+          "Kontrolle mit der zweiten Zeile: 10 : 4 = 2,5  ✓",
+          "Beide Zeilen liefern denselben Wert → die Zuordnung ist proportional.",
+          "Gleichung aufschreiben: y = 2,5 · x"
         ],
-        "ergebnis": "m = 2,5, also y = 2,5 · x."
+        "ergebnis": "m = 2,5, also y = 2,5 · x. Die übereinstimmende Kontrollzeile belegt die Proportionalität."
       },
       "merke": "Ursprungsgerade: m = y : x (in jeder Zeile gleich).",
       "visual": {
@@ -80,16 +88,22 @@
       "hinfuehrung": "Hinter der Ursprungsgeraden steckt der Dreisatz-Faktor. Wer das sieht, versteht, warum (0 | 0) immer dabei ist.",
       "erklaerung": [
         "Proportional bedeutet konstantes Verhältnis y : x = m. Für x = 0 muss dann auch y = 0 sein – null Ware, null Preis.",
-        "Der Faktor m ist genau der Dreisatz-Faktor (Preis je Einheit) aus der Prozentrechnung – dieselbe Idee, neue Schreibweise."
+        "Der Faktor m ist genau der Dreisatz-Faktor (Preis je Einheit) aus der Prozentrechnung – dieselbe Idee, neue Schreibweise.",
+        "Damit ist die Ursprungsgerade der grafische Dreisatz. Was dort der Weg über die Einheit war, ist hier die Steigung: der Zuwachs von y je einem Schritt in x.",
+        "Eine Grundgebühr zerstört die Proportionalität sofort. y = 2,5x + 5 ist noch linear, aber nicht mehr proportional: Doppelte Menge kostet dann nicht doppelt so viel, weil die 5 € nur einmal anfallen.",
+        "Deshalb ist die Probe im Sachzusammenhang so einfach: Frag, was bei null Einheiten zu zahlen ist. Kommt ein Betrag heraus, ist die Zuordnung nicht proportional."
       ],
       "beispiel": {
-        "aufgabe": "Begründe, warum y = 2,5x durch den Ursprung geht, und nenne den Faktor.",
+        "titel": "Proportionalität begründen und gegen einen Tarif abgrenzen",
+        "aufgabe": "Begründe, warum y = 2,5x durch den Ursprung geht, und nenne den Faktor. Vergleiche mit y = 2,5x + 5.",
         "schritte": [
-          "Faktor m = 2,5 (y je x)",
-          "x = 0 → y = 2,5 · 0 = 0",
-          "→ Punkt (0 | 0) liegt auf der Geraden"
+          "Faktor m = 2,5, also der Preis je Einheit (y je x)",
+          "x = 0 → y = 2,5 · 0 = 0, der Punkt (0 | 0) liegt auf der Geraden",
+          "Probe auf konstantes Verhältnis: 5 : 2 = 2,5 und 10 : 4 = 2,5  ✓",
+          "Vergleich: Bei y = 2,5x + 5 ist y(0) = 5, der Ursprung liegt nicht auf der Geraden.",
+          "Folge: Doppelte Menge ergibt dort nicht den doppelten Preis — 4 Einheiten kosten 15 €, 8 Einheiten aber 25 € statt 30 €."
         ],
-        "ergebnis": "Weil bei x = 0 auch y = 0 ist; m = 2,5 ist der Dreisatzfaktor."
+        "ergebnis": "y = 2,5x ist proportional, weil bei x = 0 auch y = 0 ist; m = 2,5 ist der Dreisatzfaktor. Eine Grundgebühr macht daraus eine lineare, aber nicht proportionale Zuordnung."
       },
       "merke": "Kein x, kein y: Proportionalität zwingt die Gerade durch (0 | 0).",
       "visual": {

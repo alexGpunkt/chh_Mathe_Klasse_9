@@ -83,6 +83,50 @@ will, misst etwas anderes, als er glaubt.
 Beide Tabellen stehen in `mathe9_person_export` und verschwinden mit
 `mathe9_person_loeschen`.
 
+Seit V36 kommt eine weitere personenbezogene Tabelle dazu — und es ist die
+einzige, aus der eine **Note** entstehen kann:
+
+| Tabelle | Inhalt | Frist |
+|---|---|---|
+| `mathe9_quiz_ergebnisse` | je Lauf des Abschlussquiz: Einheit, Lernbereich, Pfad, Anzahl Fragen, Anzahl richtig, Dauer in Sekunden, Kennungen der Denkfehler, ob im Unterricht geschrieben, ob gewertet | wie der Fortschritt: **ein Schuljahr** |
+
+Gespeichert werden **Zählwerte und Fehlvorstellungs-IDs, keine Antworttexte**
+und keine eingegebenen Zahlen. Wer wissen will, was ein Kind geantwortet hat,
+findet es hier nicht — nur, wie viele Fragen saßen und welche Denkfehler
+dahinterstanden.
+
+Drei Punkte, die zu einer Bewertungsgrundlage gehören:
+
+- **Gewertet wird der erste Lauf je Kind und Einheit.** Weitere Läufe werden
+  gespeichert, aber als Übung geführt; sie verändern die Bewertung nicht. Vor
+  dem Start steht auf dem Schirm, ob dieser Lauf der gewertete ist.
+- **Auch Läufe von zu Hause werden aufgezeichnet.** Das Feld `pflicht` hält
+  fest, ob zum Zeitpunkt des Laufs der Bewertungsmodus lief. Ob häusliche
+  Läufe eine Note begründen dürfen, entscheidet die Fachkonferenz über den
+  Dashboard-Schalter „nur Läufe aus dem Unterricht" — nicht das Gerät und
+  nicht diese Anwendung.
+- **Die Note ist eine Rechnung, keine Zeugnisnote.** Sie entsteht in
+  `mathe9_quiz_uebersicht()` aus der Quote und der gewählten Bewertungsart und
+  liefert eine von mehreren Grundlagen. Fünf Fragen je Einheit tragen keine
+  Zeugnisnote allein, und die Anwendung behauptet das auch nicht.
+
+Ebenfalls neu ist die Spalte `bewertungsart` in `mathe9_students`
+(`note` oder `fortschritt`). Sie hält fest, nach welchem Verfahren ein Kind
+bewertet wird; geändert wird sie ausschließlich über
+`mathe9_bewertungsart_setzen()` durch eine freigeschaltete Lehrkraft.
+
+Die Quizergebnisse stehen in `mathe9_person_export`, werden von
+`mathe9_person_loeschen` einzeln gezählt und gelöscht und unterliegen in
+`mathe9_aufraeumen()` derselben Frist wie der Fortschritt. Eine
+Bewertungsgrundlage, die in keiner Auskunft auftaucht und nie verfällt, wäre
+die einzige personenbezogene Sammlung im Projekt ohne Ende — und ausgerechnet
+die folgenreichste.
+
+Auf dem Gerät selbst liegt zusätzlich der eigene Stand unter
+`mathe9.stand.<Einheit>` im Feld `quiz`: Anzahl richtig, Anzahl Fragen, Dauer
+und der erste Lauf. Er dient der Anzeige im Abschluss und verlässt das Gerät
+nicht; ohne Serververbindung ist er die einzige Spur des Laufs.
+
 ### 1.2b Verweise auf fremde Seiten (Übungen und Erklärvideos)
 
 Jede Einheit kann auf externe Übungen und auf Erklärvideos der YouTube-Kanäle

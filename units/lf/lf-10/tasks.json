@@ -28,7 +28,10 @@
       "hinfuehrung": "An der Nullstelle ist y = 0.",
       "erklaerung": [
         "Suche den Schnittpunkt mit der waagerechten Achse.",
-        "Der x-Wert an dieser Stelle ist die Nullstelle."
+        "Auf der waagerechten Achse ist die Höhe überall null.",
+        "Der x-Wert an dieser Stelle ist die Nullstelle.",
+        "Die Nullstelle ist ein x-Wert. Sie ist kein y-Wert.",
+        "Eine Gerade hat höchstens eine Nullstelle."
       ],
       "visual": {
         "type": "animation",
@@ -36,16 +39,17 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Die Nullstelle ablesen",
         "aufgabe": "Wo schneidet die Gerade die waagerechte Achse?",
         "schritte": [
           "Blick auf die x-Achse (y = 0)",
           "Gerade kreuzt bei x = 2"
         ],
+        "ergebnis": "Die Nullstelle ist bei x = 2.",
         "luecke": {
           "schritt": 1,
           "wert": 2
-        },
-        "ergebnis": "Die Nullstelle ist bei x = 2."
+        }
       },
       "merke": "Nullstelle = Schnitt mit der x-Achse."
     },
@@ -54,16 +58,22 @@
       "hinfuehrung": "An der Nullstelle ist y = 0. Setzt du das in die Gleichung ein, kannst du x ausrechnen.",
       "erklaerung": [
         "Setze y = 0: 0 = m · x + b.",
-        "Löse nach x auf: erst b auf die andere Seite, dann durch m teilen."
+        "Löse nach x auf: erst b auf die andere Seite, dann durch m teilen.",
+        "Das Einsetzen von null ist der ganze Trick. Aus der Funktionsgleichung mit zwei Unbekannten wird dadurch eine lineare Gleichung mit nur noch einer — und die kannst du längst lösen.",
+        "Der häufigste Fehler ist, b statt y gleich null zu setzen oder am Ende den y-Wert anzugeben. Die Antwort auf die Frage nach der Nullstelle ist immer eine x-Koordinate.",
+        "Eine Gerade hat höchstens eine Nullstelle, und sie hat gar keine, wenn m = 0 und b ungleich null ist: Eine waagerechte Gerade oberhalb der x-Achse trifft diese nie."
       ],
       "beispiel": {
+        "titel": "Nullstelle berechnen",
         "aufgabe": "Berechne die Nullstelle von y = 2x − 6.",
         "schritte": [
+          "y = 0 setzen:  0 = 2x − 6",
           "0 = 2x − 6      | + 6",
           "6 = 2x          | : 2",
-          "x = 3"
+          "x = 3",
+          "Probe: 2 · 3 − 6 = 0  ✓"
         ],
-        "ergebnis": "Die Nullstelle ist bei x = 3."
+        "ergebnis": "Die Nullstelle ist bei x = 3. Der zugehörige Punkt ist (3 | 0)."
       },
       "merke": "Nullstelle: y = 0 setzen und 0 = mx + b nach x lösen.",
       "visual": {
@@ -77,16 +87,23 @@
       "hinfuehrung": "In Anwendungen bedeutet die Nullstelle oft etwas Konkretes – und manchmal endet das Modell genau dort.",
       "erklaerung": [
         "Beispiel Guthaben: Die Nullstelle ist der Zeitpunkt, zu dem das Konto leer ist.",
-        "Grenze des Modells: Danach würde die Gerade negative Werte liefern, die real nicht mehr passen (kein negatives Wasser im Tank)."
+        "Grenze des Modells: Danach würde die Gerade negative Werte liefern, die real nicht mehr passen (kein negatives Wasser im Tank).",
+        "Ein mathematisch korrektes Ergebnis kann also sachlich unbrauchbar sein. Beides gehört in die Antwort: die Zahl und der Gültigkeitsbereich, in dem sie etwas bedeutet.",
+        "Manchmal ist der negative Bereich auch sinnvoll — bei einem Konto heißt er Dispo, bei einer Temperatur Frost. Ob das Modell weitergilt, entscheidet die Sache und nicht die Gleichung.",
+        "Ebenso ist der Bereich vor dem Start zu prüfen: Negative x bedeuten hier eine Zeit vor Beobachtungsbeginn, über die das Modell nichts aussagt."
       ],
       "beispiel": {
-        "aufgabe": "Ein Tank leert sich: y = 100 − 20x (Liter nach x Stunden). Wann ist er leer?",
+        "titel": "Nullstelle deuten und den Gültigkeitsbereich angeben",
+        "aufgabe": "Ein Tank leert sich: y = 100 − 20x (Liter nach x Stunden). Wann ist er leer? Beurteile den Wert y(7).",
         "schritte": [
           "0 = 100 − 20x     | − 100",
           "−100 = −20x       | : (−20)",
-          "x = 5"
+          "x = 5",
+          "Deutung: Nach 5 Stunden ist der Tank leer.",
+          "Beurteilung von y(7): 100 − 20 · 7 = −40. Ein Tank kann keine −40 Liter enthalten.",
+          "Folge: Das Modell gilt nur für 0 ≤ x ≤ 5. Danach bleibt der Tank leer, der Graph verliefe waagerecht bei null."
         ],
-        "ergebnis": "Nach 5 Stunden ist der Tank leer; danach gilt das Modell nicht mehr."
+        "ergebnis": "Nach 5 Stunden ist der Tank leer. Der Gültigkeitsbereich des Modells endet genau an der Nullstelle — die Rechnung für 7 Stunden ist formal richtig und sachlich sinnlos."
       },
       "merke": "Nullstelle deuten: „wann = 0?“ – und prüfen, ob das Modell danach noch gilt.",
       "visual": {

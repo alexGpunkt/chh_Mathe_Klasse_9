@@ -30,8 +30,12 @@
       "titel": "Volumen des Würfels",
       "hinfuehrung": "Das Volumen sagt, wie viel hineinpasst.",
       "erklaerung": [
+        "Stell dir den Körper mit kleinen Würfeln gefüllt vor.",
+        "Das Volumen zählt, wie viele Würfel hineinpassen.",
         "Volumen = Länge · Breite · Höhe.",
-        "Beim Würfel sind alle drei Kanten gleich lang."
+        "Beim Würfel sind alle drei Kanten gleich lang.",
+        "Die Einheit bekommt eine kleine 3 oben: cm³.",
+        "Beim Quader sind die drei Kanten verschieden lang."
       ],
       "visual": {
         "type": "animation",
@@ -39,18 +43,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Drei gleiche Kanten",
         "aufgabe": "Berechne das Volumen von einem Würfel mit a = 3 cm.",
         "schritte": [
           "V = a · a · a",
           "V = 3 · 3 · 3",
           "V = 27 cm³"
         ],
+        "ergebnis": "V = 27 cm³. In den Würfel passen 27 Würfelchen von 1 cm Kante.",
         "luecke": {
           "schritt": 2,
           "wert": 27,
           "einheit": "cm³"
-        },
-        "ergebnis": "V = 27 cm³."
+        }
       },
       "merke": "Würfel: V = a · a · a."
     },
@@ -59,7 +64,9 @@
       "hinfuehrung": "Beim Quader multiplizierst du die drei verschiedenen Kanten. Rauminhalte lassen sich dann in Liter angeben.",
       "erklaerung": [
         "V = a · b · c – das ist Grundfläche (a·b) mal Höhe (c).",
-        "Für Liter: In dm rechnen, dann ist das Ergebnis in dm³ = l."
+        "Für Liter: In dm rechnen, dann ist das Ergebnis in dm³ = l.",
+        "Die Lesart „Grundfläche mal Höhe“ ist die wichtigere von beiden. Sie gilt nämlich auch für Prisma und Zylinder, während a · b · c nur beim Quader funktioniert — dort ist sie derselbe Gedanke im einfachsten Fall.",
+        "Anschaulich: Die Grundfläche ist eine Schicht von einer Einheit Dicke, und die Höhe zählt, wie viele solche Schichten übereinanderliegen. Genau das misst ein Volumen."
       ],
       "visual": {
         "type": "animation",
@@ -67,12 +74,15 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Quadervolumen direkt in Litern",
         "aufgabe": "Aquarium: 5 dm · 3 dm · 4 dm. Volumen in Litern?",
         "schritte": [
-          "V = 5 · 3 · 4 = 60 dm³",
-          "1 dm³ = 1 l"
+          "als Grundfläche mal Höhe gelesen: G = 5 · 3 = 15 dm²",
+          "V = G · h = 15 · 4 = 60 dm³",
+          "1 dm³ = 1 l",
+          "Weil in dm gerechnet wurde, steht die Literzahl direkt da — ohne Umrechnung."
         ],
-        "ergebnis": "V = 60 dm³ = 60 l."
+        "ergebnis": "V = 60 dm³ = 60 l. Der Weg über die Grundfläche funktioniert später bei Prisma und Zylinder unverändert weiter."
       },
       "merke": "Quader: V = a · b · c. In dm gerechnet ergibt sich direkt Liter."
     },
@@ -81,15 +91,22 @@
       "hinfuehrung": "Auch beim Volumen gilt: erst alle Kanten in dieselbe Einheit, dann multiplizieren – sonst ist das Ergebnis um Zehnerpotenzen daneben.",
       "erklaerung": [
         "Wähle eine sinnvolle gemeinsame Einheit (oft cm oder dm) und rechne alle Längen um.",
-        "Prüfe das Ergebnis: Ein Körper von wenigen dm Kantenlänge fasst nur wenige Liter, nicht Hunderte."
+        "Prüfe das Ergebnis: Ein Körper von wenigen dm Kantenlänge fasst nur wenige Liter, nicht Hunderte.",
+        "Beim Volumen ist ein Einheitenfehler dreimal so folgenreich wie bei einer Länge. Verwechselst du cm mit dm, ist das Ergebnis nicht um 10, sondern um 10³ = 1000 daneben — deshalb sind Volumenaufgaben die anfälligste Stelle der ganzen Reihe.",
+        "Rechne in Dezimetern, wenn nach Litern gefragt ist. Das ist keine Bequemlichkeit, sondern die Vermeidung des riskantesten Schritts: der Umrechnung am Schluss.",
+        "Zur Plausibilität hilft ein bekannter Vergleich: Ein Getränkekasten fasst etwa 12 l, eine Badewanne etwa 150 l, ein kleines Auto etwa 3 m³. An diesen Größen erkennst du sofort, ob eine Zehnerpotenz verrutscht ist."
       ],
       "beispiel": {
+        "titel": "Gemischte Einheiten beim Volumen",
         "aufgabe": "Ein Kasten: 40 cm · 30 cm · 2 dm. Volumen in dm³?",
         "schritte": [
-          "gleichnamig in dm: 4 dm · 3 dm · 2 dm",
-          "V = 4 · 3 · 2 = 24 dm³"
+          "Zieleinheit dm³, also alle Kanten in dm:",
+          "40 cm = 4 dm,   30 cm = 3 dm,   2 dm bleibt",
+          "V = 4 · 3 · 2 = 24 dm³",
+          "Gegenprobe in cm: 40 · 30 · 20 = 24 000 cm³, und 24 000 : 1000 = 24 dm³  ✓",
+          "Plausibilität: 24 l ist etwa doppelt so viel wie ein Getränkekasten  ✓"
         ],
-        "ergebnis": "V = 24 dm³ = 24 l."
+        "ergebnis": "V = 24 dm³ = 24 l. Die Gegenprobe in Zentimetern zeigt den Faktor 1000 — genau um diesen Betrag läge man daneben, wenn man die Einheiten mischte."
       },
       "merke": "Vor dem Multiplizieren alle Kanten gleichnamig machen.",
       "visual": {

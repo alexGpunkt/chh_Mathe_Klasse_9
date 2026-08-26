@@ -60,6 +60,46 @@
       <div class="tableWrap"><table><thead><tr><th>Name</th><th>zuletzt bearbeitet</th><th>Übungsblatt</th><th>freigegeben</th><th>nächste Einheit freigeben</th></tr></thead><tbody id="freigabeBody"></tbody></table></div>
     </section>
 
+    <!-- Abschlussquiz: die einzige regelmäßige Messung zum GERADE
+         erarbeiteten Stoff. Fortschritt und Lernzeit daneben messen den
+         Weg, nicht das Ergebnis. -->
+    <section class="panel" id="quizPanel">
+      <div class="panelHead"><div><h2>Einheitenquiz und Notengebung</h2><span>Fünf Fragen am Ende jeder Einheit — gewertet wird der erste Lauf je Kind und Einheit</span></div></div>
+      <div class="modusZeile">
+        <label>Zeitraum
+          <select id="quizTage">
+            <option value="30">letzte 30 Tage</option>
+            <option value="90">letztes Quartal</option>
+            <option value="180" selected>letztes Halbjahr</option>
+            <option value="365">Schuljahr</option>
+          </select>
+        </label>
+        <label>Zählt
+          <select id="quizHerkunft">
+            <option value="alle" selected>alle Läufe</option>
+            <option value="unterricht">nur Läufe aus dem Unterricht</option>
+          </select>
+        </label>
+        <span class="modusAnzeige" id="quizAnzeige">Wird geladen …</span>
+      </div>
+      <p class="modusHinweis">
+        Die Fragen stammen ausschließlich aus der jeweiligen Einheit: Merksatz und
+        Erklärung des gewählten Pfades, Formelkarte, Wortspeicher und zwei Aufgaben
+        aus dem Pool derselben Stufe. <b>Einzelnoten</b> mitteln alle gewerteten
+        Läufe; <b>Lernfortschritt</b> bewertet die zweite Hälfte des Zeitraums und
+        rechnet die Verbesserung gegenüber der ersten hinzu — wer schwach anfängt
+        und stark endet, wird nach dem Ende bewertet. Die Umrechnung in Noten folgt
+        der Berliner Sekundarstufenskala und steht in der Datenbank, nicht hier. Sie
+        ersetzt keine Zeugnisnote, sondern liefert eine von mehreren Grundlagen dafür.
+        Ob ein zu Hause bearbeitetes Quiz eine Note begründen darf, entscheidet die
+        Fachkonferenz; dafür ist der Schalter <b>„nur Läufe aus dem Unterricht"</b> da.
+      </p>
+      <p id="quizMeldung" class="message" hidden></p>
+      <div class="tableWrap"><table><thead><tr><th>Name</th><th>Bewertung nach</th><th>Quizze</th><th>Einheiten</th><th>Quote</th><th>Entwicklung</th><th>Note</th><th>zuletzt</th><th>wackelige Einheiten</th></tr></thead><tbody id="quizBody"></tbody></table></div>
+      <h3 class="quizUnterkopf">Je Einheit — lag es am Kind oder an der Stunde?</h3>
+      <div class="tableWrap"><table><thead><tr><th>Einheit</th><th>Bereich</th><th>Kinder</th><th>Läufe</th><th>Quote</th><th>unter 50 %</th><th>häufigster Denkfehler</th></tr></thead><tbody id="quizEinheitenBody"></tbody></table></div>
+    </section>
+
     <section class="panel">
       <div class="panelHead"><div><h2>Aktive Lernzeit</h2><span>Nur Zeit mit tatsächlicher Aktivität und angekommenem Ping — Leerlauf zählt nicht</span></div></div>
       <div class="tableWrap"><table><thead><tr><th>Name</th><th>heute</th><th>letzte 7 Tage</th><th>häufigste Einheit</th><th>zuletzt gemeldet</th></tr></thead><tbody id="lernzeitBody"></tbody></table></div>

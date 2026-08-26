@@ -27,8 +27,11 @@
       "titel": "Eine Gerade nach Anleitung zeichnen",
       "hinfuehrung": "Zeichne in drei Schritten.",
       "erklaerung": [
-        "1. Markiere b auf der senkrechten Achse.",
-        "2. Gehe 1 nach rechts und m nach oben. 3. Ziehe die Linie durch beide Punkte."
+        "1. Markiere b auf der senkrechten Achse. Das ist dein erster Punkt.",
+        "2. Gehe von dort 1 nach rechts und m nach oben.",
+        "3. Markiere den zweiten Punkt. Ziehe die Linie durch beide Punkte.",
+        "Ist m negativ, gehst du nach unten.",
+        "Nimm ein Lineal. Die Linie geht über beide Punkte hinaus."
       ],
       "visual": {
         "type": "animation",
@@ -36,11 +39,12 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Drei Schritte zur Geraden",
         "aufgabe": "Zeichne y = 2x + 1.",
         "schritte": [
-          "1. b = 1 auf der y-Achse markieren",
+          "1. b = 1 auf der y-Achse markieren  →  Punkt (0 | 1)",
           "2. Dreieck: 1 nach rechts, 2 nach oben",
-          "3. zweiten Punkt (1 | 3), Linie ziehen"
+          "3. zweiter Punkt (1 | 3), Linie durch beide ziehen"
         ],
         "ergebnis": "Gerade durch (0 | 1) und (1 | 3)."
       },
@@ -51,7 +55,10 @@
       "hinfuehrung": "Mit Bruchsteigung oder negativem m ändert sich nur das Dreieck – der Ablauf bleibt gleich.",
       "erklaerung": [
         "m als Bruch, z. B. 3/4: 4 nach rechts, 3 nach oben. Der Nenner ist der Weg nach rechts, der Zähler der Weg nach oben.",
-        "m negativ: von b aus nach rechts und nach unten."
+        "m negativ: von b aus nach rechts und nach unten.",
+        "Der Bruch ist hier ein Vorteil und kein Hindernis. Er nennt dir direkt zwei ganze Zahlen, und damit landet der zweite Punkt genau auf einem Gitterpunkt — bei 0,75 müsstest du dreiviertel Kästchen schätzen.",
+        "Bei einer ganzen Zahl funktioniert derselbe Trick: m = 2 ist 2/1, also eins nach rechts und zwei nach oben. Jede Steigung lässt sich als Bruch lesen.",
+        "Zeichne zur Sicherheit einen dritten Punkt, indem du das Dreieck noch einmal anlegst. Liegt er nicht auf der Linie, hast du dich beim Abzählen vertan."
       ],
       "visual": {
         "type": "animation",
@@ -59,13 +66,15 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Gerade mit Bruchsteigung zeichnen",
         "aufgabe": "Zeichne y = 3/4 x + 1.",
         "schritte": [
-          "b = 1 markieren",
-          "Dreieck: 4 nach rechts, 3 nach oben",
-          "zweiter Punkt (4 | 4), Linie ziehen"
+          "b = 1 markieren  →  Punkt (0 | 1)",
+          "Bruch lesen: Nenner 4 nach rechts, Zähler 3 nach oben",
+          "zweiter Punkt (4 | 4), Linie ziehen",
+          "Kontrollpunkt: Dreieck noch einmal anlegen  →  (8 | 7) muss auf der Linie liegen  ✓"
         ],
-        "ergebnis": "Gerade durch (0 | 1) und (4 | 4)."
+        "ergebnis": "Gerade durch (0 | 1) und (4 | 4). Der Bruch liefert beide Schritte als ganze Kästchen."
       },
       "merke": "Bruch m = Zähler/Nenner: Nenner nach rechts, Zähler nach oben."
     },
@@ -74,7 +83,10 @@
       "hinfuehrung": "Manche Geraden sind besonders: waagerecht, senkrecht. Eine davon ist gar keine Funktion – und dafür gibt es einen Grund.",
       "erklaerung": [
         "y = c ist waagerecht (Steigung 0). x = c ist senkrecht.",
-        "Bei x = c gehören zu einem einzigen x unendlich viele y-Werte. Eine Funktion darf zu jedem x aber nur genau ein y haben – deshalb ist x = c keine Funktion."
+        "Bei x = c gehören zu einem einzigen x unendlich viele y-Werte. Eine Funktion darf zu jedem x aber nur genau ein y haben – deshalb ist x = c keine Funktion.",
+        "Die senkrechte Gerade hat auch keine Steigung. Δx wäre null, und durch null darf nicht geteilt werden. Man sagt deshalb nicht „Steigung unendlich“, sondern: Die Steigung ist nicht definiert.",
+        "Bei y = c ist die Steigung dagegen sehr wohl definiert und beträgt null: Ein Schritt nach rechts ändert die Höhe um nichts. Steigung null und keine Steigung sind zwei verschiedene Aussagen.",
+        "Prüfen lässt sich das mit einem Blick, dem senkrechten Strich: Trifft eine senkrechte Linie den Graphen mehr als einmal, ist es keine Funktion."
       ],
       "visual": {
         "type": "animation",
@@ -82,13 +94,16 @@
         "stufe": "C"
       },
       "beispiel": {
-        "aufgabe": "Begründe, warum x = 3 keine Funktion ist.",
+        "titel": "Begründen, warum x = 3 keine Funktion ist",
+        "aufgabe": "Begründe, warum x = 3 keine Funktion ist, und vergleiche mit y = 3.",
         "schritte": [
-          "bei x = 3 liegen alle Punkte (3 | 0), (3 | 1), (3 | 2), …",
-          "zu einem x gehören viele y",
-          "Funktion erlaubt aber nur ein y je x"
+          "bei x = 3 liegen alle Punkte (3 | 0), (3 | 1), (3 | 2), … auf der Geraden",
+          "zu einem einzigen x gehören also unendlich viele y",
+          "Eine Funktion erlaubt aber nur ein y je x  →  x = 3 ist keine Funktion",
+          "Steigung: Δx = 0, also ist m nicht definiert — nicht etwa unendlich.",
+          "Vergleich y = 3: Zu jedem x gehört genau ein y, nämlich 3. Das ist eine Funktion mit m = 0."
         ],
-        "ergebnis": "x = 3 ist keine Funktion – ein x, viele y."
+        "ergebnis": "x = 3 ist keine Funktion (ein x, viele y) und hat keine definierte Steigung. y = 3 ist eine Funktion mit der Steigung null."
       },
       "merke": "y = c waagerecht (m = 0). x = c senkrecht – keine Funktion."
     }

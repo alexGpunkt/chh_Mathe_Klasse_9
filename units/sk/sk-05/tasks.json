@@ -32,16 +32,21 @@
       "titel": "Volumen oder Oberfläche der Pyramide?",
       "hinfuehrung": "Lies zuerst, was gesucht ist.",
       "erklaerung": [
+        "Es gibt wieder zwei Fragen: Wie viel passt hinein? Oder wie viel Material braucht man?",
         "„passt hinein“ oder „Liter“ → Volumen: V = (a² · h) : 3.",
-        "„Material“ oder „anstreichen“ → Oberfläche: O = a² + 2 · a · s."
+        "„Material“ oder „anstreichen“ → Oberfläche: O = a² + 2 · a · s.",
+        "Das Volumen braucht die Höhe h. Die Oberfläche braucht die Seitenhöhe s.",
+        "Deshalb sagt dir die Frage auch, welche Höhe du brauchst."
       ],
       "beispiel": {
+        "titel": "Signalwort und Höhe zugleich bestimmen",
         "aufgabe": "„Wie viel Sand passt in die Pyramide?“ Welche Formel?",
         "schritte": [
-          "Signal „passt hinein“ → Rauminhalt",
-          "→ Volumen"
+          "Signalwort „passt hinein“ → Rauminhalt",
+          "also Volumen",
+          "Volumen braucht die Höhe h"
         ],
-        "ergebnis": "Volumen: V = (a² · h) : 3."
+        "ergebnis": "Volumen: V = (a² · h) : 3. Gebraucht wird die Höhe h, nicht die Seitenhöhe s."
       },
       "merke": "Erst entscheiden. Dann die Formel wählen.",
       "visual": {
@@ -56,16 +61,22 @@
       "hinfuehrung": "Ist das Volumen gegeben und eine Kante gesucht, stellst du die Formel um.",
       "erklaerung": [
         "Aus V = (a² · h) : 3 folgt h = 3 · V : a² oder a = √(3 · V : h).",
-        "Setze die bekannten Werte ein und ziehe – falls nötig – die Wurzel."
+        "Setze die bekannten Werte ein und ziehe – falls nötig – die Wurzel.",
+        "Die 3 wandert beim Umstellen auf die andere Seite und wird dort zum Faktor. Das ist die Umkehrung des Teilens durch 3, und wer sie vergisst, bekommt ein Ergebnis, das um den Faktor 3 danebenliegt.",
+        "Bei der Grundkante kommt eine Wurzel dazu, weil a in der Formel quadriert vorkommt. Erst 3 · V : h ausrechnen, dann die Wurzel ziehen — die Reihenfolge ist nicht vertauschbar.",
+        "Die Probe ist hier besonders billig: Setze das Ergebnis in die Ausgangsformel ein. Kommt das gegebene Volumen heraus, war die Umstellung richtig."
       ],
       "beispiel": {
+        "titel": "Volumenformel nach der Höhe umstellen",
         "aufgabe": "Pyramide mit V = 100 cm³, a = 5 cm. Berechne die Höhe h.",
         "schritte": [
+          "Ausgangsformel: V = (a² · h) : 3     | · 3",
+          "3 · V = a² · h                       | : a²",
           "h = 3 · V : a²",
-          "h = 3 · 100 : 25 = 300 : 25",
-          "h = 12 cm"
+          "einsetzen: h = 3 · 100 : 25 = 300 : 25 = 12 cm",
+          "Probe: (5² · 12) : 3 = 300 : 3 = 100 cm³  ✓"
         ],
-        "ergebnis": "h = 12 cm."
+        "ergebnis": "h = 12 cm. Die 3 wird beim Umstellen zum Faktor — ohne sie käme 4 cm heraus, ein Drittel des richtigen Werts."
       },
       "merke": "h = 3·V : a²,   a = √(3·V : h).",
       "visual": {
@@ -79,17 +90,24 @@
       "titel": "Mehrschrittige gemischte Aufgaben",
       "hinfuehrung": "Anspruchsvolle Aufgaben verketten mehrere Schritte: erst Pythagoras, dann Fläche, dann Volumen oder Oberfläche.",
       "erklaerung": [
-        "Plane die Reihenfolge: Welche Größe brauche ich zuerst? Häufig s aus h und a, dann O.",
-        "Halte Zwischenergebnisse mit Einheit fest und schreibe zu jedem Schritt eine kurze Begründung."
+        "Plane die Reihenfolge: Welche Größe brauche ich zuerst? Häufig s aus h und a, danach die Oberfläche.",
+        "Halte Zwischenergebnisse mit Einheit fest und schreibe zu jedem Schritt eine kurze Begründung.",
+        "Die Planung beginnt am Ziel und arbeitet rückwärts: Gesucht ist die Oberfläche, dafür braucht es s, dafür h und a — und beide sind gegeben. So findest du die Reihenfolge, ohne zu probieren.",
+        "Ein häufiger Umweg entsteht, wenn man mitten in der Rechnung merkt, dass eine Größe fehlt. Wer vorher plant, bemerkt das, solange das Blatt noch leer ist.",
+        "Zwischenergebnisse ohne Einheit sind der zweite Stolperstein. In einer Aufgabe stehen Längen in cm, Flächen in cm² und Rauminhalte in cm³ nebeneinander — die Einheit unterscheidet sie zuverlässiger als die Zahl."
       ],
       "beispiel": {
+        "titel": "Vom Ziel rückwärts planen",
         "aufgabe": "Pyramide: a = 10 cm, h = 12 cm. Berechne die Oberfläche.",
         "schritte": [
-          "s = √(12² + 5²) = √(144 + 25) = √169 = 13 cm",
-          "Mantel = 2 · 10 · 13 = 260 cm²",
-          "O = 10² + 260 = 100 + 260 = 360 cm²"
+          "Planung rückwärts: O braucht a und s. s braucht h und a : 2. Beide gegeben → Reihenfolge steht.",
+          "a : 2 = 5 cm",
+          "s = √(12² + 5²) = √(144 + 25) = √169 = 13 cm     ← Länge in cm",
+          "Mantel = 2 · a · s = 2 · 10 · 13 = 260 cm²        ← Fläche in cm²",
+          "O = a² + Mantel = 100 + 260 = 360 cm²",
+          "Kontrolle: Mantel größer als Grundfläche  ✓, alle Zwischenergebnisse mit passender Einheit  ✓"
         ],
-        "ergebnis": "O = 360 cm²."
+        "ergebnis": "O = 360 cm². Die Planung vom Ziel her legt die Reihenfolge fest, bevor die erste Zahl geschrieben wird."
       },
       "merke": "Reihenfolge planen: s zuerst, dann Fläche/Oberfläche.",
       "visual": {

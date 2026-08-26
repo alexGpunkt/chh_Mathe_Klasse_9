@@ -30,22 +30,27 @@
       "titel": "Grundwert über den 1-%-Schritt",
       "hinfuehrung": "Jetzt ist das Ganze gesucht.",
       "erklaerung": [
+        "Du kennst den Teil. Du kennst den Prozentsatz.",
         "Teile den Prozentwert durch den Prozentsatz. Das ist 1 %.",
-        "Dann nimm mal 100. Das ist das Ganze."
+        "Dann nimm mal 100. Das ist das Ganze.",
+        "Wieder geht der Weg über 1 %. Nur die Richtung ist neu.",
+        "Das Ganze ist größer als der Teil. Prüfe das immer."
       ],
       "beispiel": {
+        "titel": "Vom Teil zurück zum Ganzen",
         "aufgabe": "12 € sind 20 % eines Preises. Wie hoch ist der ganze Preis?",
         "schritte": [
           "20 %  = 12 €",
           "1 %   = 12 € : 20 = 0,60 €",
-          "100 % = 0,60 € · 100 = 60 €"
+          "100 % = 0,60 € · 100 = 60 €",
+          "Probe: 60 € ist größer als 12 €  ✓"
         ],
+        "ergebnis": "Der ganze Preis beträgt 60 €.",
         "luecke": {
           "schritt": 2,
           "wert": 60,
           "einheit": "€"
-        },
-        "ergebnis": "Der ganze Preis beträgt 60 €."
+        }
       },
       "merke": "Erst : p auf 1 %. Dann · 100.",
       "visual": {
@@ -59,15 +64,19 @@
       "hinfuehrung": "Der Grundwert ist das Ganze – er muss größer sein als ein Teil davon. Diese Kontrolle bewahrt dich vor dem häufigsten Fehler.",
       "erklaerung": [
         "Mit Formel: G = W : p · 100.",
-        "Prüfe danach: Ist p kleiner als 100 %, muss G größer sein als W. Kommt etwas Kleineres heraus, hast du mal und geteilt vertauscht."
+        "Prüfe danach: Ist p kleiner als 100 %, muss G größer sein als W. Kommt etwas Kleineres heraus, hast du mal und geteilt vertauscht.",
+        "Der Unterschied zur Prozentwertaufgabe steckt allein in der Richtung: Dort war das Ganze bekannt und wurde verkleinert, hier ist der Teil bekannt und wird vergrößert. Deshalb wird geteilt, wo vorher multipliziert wurde.",
+        "Das erklärt auch den häufigsten Fehler: 12 € · 20 : 100 = 2,40 € ist die Rechnung für den Prozentwert, angewandt auf eine Grundwertaufgabe. Das Ergebnis ist kleiner als der gegebene Teil — und daran erkennst du es sofort."
       ],
       "beispiel": {
+        "titel": "Grundwert bestimmen und die Größenkontrolle nutzen",
         "aufgabe": "35 € entsprechen 70 % des Preises. Wie hoch ist der Grundwert?",
         "schritte": [
+          "Benennen: W = 35 €, p = 70 %, gesucht ist G",
           "G = W : p · 100",
           "G = 35 : 70 · 100",
           "G = 0,5 · 100 = 50 €",
-          "Probe: 50 € > 35 €  ✓"
+          "Größenkontrolle: 50 € > 35 €, und p = 70 % < 100 %  ✓"
         ],
         "ergebnis": "Der Grundwert beträgt 50 €."
       },
@@ -83,16 +92,22 @@
       "hinfuehrung": "Nach einem Rabatt zurückzurechnen ist eine echte Stolperfalle: Abziehen ist hier falsch. Du musst durch den Restanteil teilen.",
       "erklaerung": [
         "Steht der Preis NACH −20 % fest, entspricht er nicht 100 %, sondern nur 80 % des alten Preises.",
-        "Deshalb: alten Preis = neuer Preis : 80 · 100. Wer stattdessen 20 % addiert, rechnet vom falschen Grundwert."
+        "Deshalb: alten Preis = neuer Preis : 80 · 100. Wer stattdessen 20 % addiert, rechnet vom falschen Grundwert.",
+        "Der Kern ist der Wechsel des Grundwerts. Die 20 % wurden vom alten Preis genommen, den du suchst. Rechnest du 20 % auf den neuen Preis auf, nimmst du sie von einer kleineren Zahl — und landest zu tief.",
+        "Der Fehler bleibt unauffällig, weil das Ergebnis plausibel aussieht: 48 € + 20 % = 57,60 € statt 60 €. Nur eine Probe deckt ihn auf, und die ist billig: 60 € · 0,80 = 48 €  ✓, 57,60 € · 0,80 = 46,08 €  ✗.",
+        "Als Regel: Vorwärts wird multipliziert, rückwärts wird durch denselben Faktor geteilt. Ein Prozentsatz lässt sich nie einfach in die Gegenrichtung anwenden."
       ],
       "beispiel": {
-        "aufgabe": "Nach 20 % Rabatt kostet eine Jacke 48 €. Wie war der Originalpreis?",
+        "titel": "Vom rabattierten Preis zurückrechnen — und die Falle zeigen",
+        "aufgabe": "Nach 20 % Rabatt kostet eine Jacke 48 €. Wie war der Originalpreis? Zeige, warum „48 € + 20 %“ falsch ist.",
         "schritte": [
-          "nach −20 %  → 48 € = 80 %",
-          "1 %  = 48 € : 80 = 0,60 €",
-          "100 % = 0,60 € · 100 = 60 €"
+          "Anteil bestimmen: nach −20 % sind 80 % übrig, also 48 € = 80 %",
+          "1 %   = 48 € : 80 = 0,60 €",
+          "100 % = 0,60 € · 100 = 60 €",
+          "Probe: 60 € · 0,80 = 48 €  ✓",
+          "Der falsche Weg: 48 € + 20 % = 57,60 €. Probe: 57,60 € · 0,80 = 46,08 € ≠ 48 €  ✗ — die 20 % wurden vom falschen Grundwert genommen."
         ],
-        "ergebnis": "Der Originalpreis war 60 € (nicht 48 € + 20 %!)."
+        "ergebnis": "Der Originalpreis war 60 €. Die Probe ist hier nicht Zierde, sondern der einzige Weg, den Fehler überhaupt zu bemerken."
       },
       "merke": "Vom rabattierten Preis NICHT einfach zurück­addieren – durch den Restanteil teilen.",
       "visual": {

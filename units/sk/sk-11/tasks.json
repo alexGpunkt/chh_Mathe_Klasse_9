@@ -32,17 +32,21 @@
       "titel": "Zusammengesetzte Körper zerlegen",
       "hinfuehrung": "Eine Eistüte besteht aus zwei Teilen.",
       "erklaerung": [
+        "Schau dir den Körper genau an.",
         "Suche die einfachen Körper: Kegel, Halbkugel, Zylinder.",
-        "Schreibe zu jedem Teil die passende Formel auf."
+        "Zeichne eine Trennlinie zwischen den Teilen.",
+        "Schreibe zu jedem Teil die passende Formel auf.",
+        "Rechne jedes Teil einzeln und zähle am Ende alles zusammen."
       ],
       "beispiel": {
+        "titel": "Eine Eistüte zerlegen",
         "aufgabe": "Eine Eistüte ist ein Kegel mit einer Halbkugel oben. In welche Teile zerlegst du sie?",
         "schritte": [
-          "unten: Kegel → V = (π·r²·h):3",
-          "oben: Halbkugel → halbes Kugelvolumen",
+          "unten: Kegel → V = (π · r² · h) : 3",
+          "oben: Halbkugel → die Hälfte vom Kugelvolumen",
           "Gesamt = Kegel + Halbkugel"
         ],
-        "ergebnis": "Kegel plus Halbkugel – beide Volumen addieren."
+        "ergebnis": "Kegel plus Halbkugel. Beide Volumen werden einzeln berechnet und dann addiert."
       },
       "merke": "Zerlegen. Formeln zuordnen. Addieren.",
       "visual": {
@@ -56,16 +60,21 @@
       "hinfuehrung": "Nach dem Zerlegen berechnest du jedes Teilvolumen und addierst alles zum Gesamtvolumen.",
       "erklaerung": [
         "Halbkugel = halbes Kugelvolumen = (4 · π · r³) : 3 : 2 = (2 · π · r³) : 3.",
-        "Rechne die Teile getrennt und achte auf gemeinsame Einheiten."
+        "Rechne die Teile getrennt und achte auf gemeinsame Einheiten.",
+        "Die Kurzform entsteht durch Kürzen: Die 4 halbiert sich zu 2, der Rest bleibt stehen. Beide Wege liefern dasselbe, und wer unsicher ist, rechnet erst die ganze Kugel und halbiert danach.",
+        "Häufig teilen sich die Teilkörper eine Größe — hier haben Kegel und Halbkugel denselben Radius, weil sie an derselben Kreisfläche aneinanderstoßen. Diese gemeinsame Größe steht meist nur einmal in der Aufgabe."
       ],
       "beispiel": {
+        "titel": "Zwei Teilvolumen addieren",
         "aufgabe": "Kegel (r = 3, h = 8) mit Halbkugel (r = 3) oben. Gesamtvolumen (π ≈ 3,14)?",
         "schritte": [
+          "gemeinsamer Radius r = 3 cm an der Nahtstelle",
           "Kegel = (3,14 · 9 · 8) : 3 = 226,08 : 3 = 75,36 cm³",
           "Halbkugel = (2 · 3,14 · 27) : 3 = 169,56 : 3 = 56,52 cm³",
+          "Gegenprobe zur Halbkugel: ganze Kugel (4 · 3,14 · 27) : 3 = 113,04, davon die Hälfte = 56,52  ✓",
           "V = 75,36 + 56,52 = 131,88 cm³"
         ],
-        "ergebnis": "V ≈ 131,88 cm³."
+        "ergebnis": "V ≈ 131,88 cm³. Beide Teile teilen sich den Radius, weil sie an derselben Kreisfläche aneinanderstoßen."
       },
       "merke": "Halbkugel = halbes Kugelvolumen; Teile addieren.",
       "visual": {
@@ -78,17 +87,24 @@
       "titel": "Mehrschrittige Anwendungsaufgaben",
       "hinfuehrung": "Bei komplexen Aufgaben kommen Pythagoras, mehrere Körper und Einheitenwechsel zusammen. Struktur ist alles.",
       "erklaerung": [
-        "Plane: Welche fehlenden Größen brauche ich (oft s oder h mit Pythagoras)? Welche Teilkörper?",
-        "Rechne Schritt für Schritt, halte Zwischenergebnisse fest und prüfe die Größenordnung am Ende."
+        "Plane zuerst: Welche fehlenden Größen brauche ich, oft s oder h mit Pythagoras? Welche Teilkörper?",
+        "Rechne Schritt für Schritt, halte Zwischenergebnisse fest und prüfe am Ende die Größenordnung.",
+        "Bei Oberflächen zusammengesetzter Körper gilt eine zusätzliche Regel, die beim Volumen fehlt: Die Berührflächen zählen nicht mit. Wo Kegel und Halbkugel aneinanderstoßen, liegt keine Außenhaut, und der Kreis dort gehört nicht in die Oberfläche.",
+        "Beim Volumen gibt es dieses Problem nicht — Rauminhalte addieren sich ohne Abzug. Genau deshalb ist die Frage „Volumen oder Oberfläche?“ bei zusammengesetzten Körpern noch wichtiger als bei einfachen.",
+        "Eine Skizze mit eingetragenen Maßen ist hier keine Kür. Sie zeigt, welche Größe zu welchem Teilkörper gehört, und verhindert, dass eine Höhe versehentlich zweimal verwendet wird."
       ],
       "beispiel": {
+        "titel": "Silo aus Zylinder und Kegeldach",
         "aufgabe": "Silo: Zylinder (r = 2 m, h = 5 m) mit Kegeldach (r = 2 m, h = 1,5 m). Volumen (π ≈ 3,14)?",
         "schritte": [
-          "Zylinder = 3,14 · 4 · 5 = 62,8 m³",
-          "Kegel = (3,14 · 4 · 1,5) : 3 = 18,84 : 3 = 6,28 m³",
-          "V = 62,8 + 6,28 = 69,08 m³"
+          "Zerlegung: unten Zylinder, oben Kegel, gemeinsamer Radius r = 2 m",
+          "Zylinder = π · r² · h = 3,14 · 4 · 5 = 62,8 m³",
+          "Kegel = (π · r² · h) : 3 = (3,14 · 4 · 1,5) : 3 = 18,84 : 3 = 6,28 m³",
+          "V = 62,8 + 6,28 = 69,08 m³",
+          "Beachte: Die beiden Höhen 5 m und 1,5 m gehören zu verschiedenen Teilkörpern und dürfen nicht addiert werden.",
+          "Plausibilität: Das Dach steuert wenig bei — es ist niedrig und läuft spitz zu  ✓"
         ],
-        "ergebnis": "V ≈ 69,08 m³."
+        "ergebnis": "V ≈ 69,08 m³. Beim Volumen werden die Teile schlicht addiert; bei einer Oberfläche müsste die Berührfläche abgezogen werden."
       },
       "merke": "Erst fehlende Größen, dann Teilkörper, dann addieren.",
       "visual": {

@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v35-integration-preflight-develop';
+const VERSION = 'mathe9-v36-abschlussquiz-develop';
 
 /* ---------- Was NICHT ins Offlinepaket gehört ----------
    Bis V34 lud jedes Schülergerät bei der Installation auch das
@@ -66,6 +66,7 @@ const SCHALE = [
   'assets/js/tracker.js',
   'assets/js/lernmodus.js',
   'assets/js/uebungsrahmen.js',
+  'assets/js/quiz.js',
   'assets/js/engine.js',
   'assets/js/taschenrechner.js',
   'assets/js/buch.js',

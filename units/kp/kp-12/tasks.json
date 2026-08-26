@@ -33,16 +33,20 @@
       "titel": "Volumen oder Oberfläche?",
       "hinfuehrung": "Lies zuerst, was gesucht ist.",
       "erklaerung": [
+        "Es gibt zwei Fragen: Wie viel passt hinein? Oder wie viel Material braucht man?",
         "„fasst“, „Liter“, „passt hinein“ → Volumen.",
-        "„anstreichen“, „Material“, „einwickeln“ → Oberfläche."
+        "„anstreichen“, „Material“, „einwickeln“ → Oberfläche.",
+        "Das Volumen bekommt eine kleine 3. Die Oberfläche bekommt eine kleine 2.",
+        "An der Einheit siehst du am Ende, ob du das Richtige gerechnet hast."
       ],
       "beispiel": {
+        "titel": "Am Signalwort entscheiden",
         "aufgabe": "„Wie viel Liter fasst der Tank?“ Volumen oder Oberfläche?",
         "schritte": [
-          "Signal „fasst“ / „Liter“",
+          "Signalwort „fasst“ und die Einheit „Liter“",
           "→ es geht um den Rauminhalt"
         ],
-        "ergebnis": "Gesucht ist das Volumen."
+        "ergebnis": "Gesucht ist das Volumen. Die Antwort wird in Litern oder in cm³ stehen."
       },
       "merke": "„Liter“ → Volumen. „Material“ → Oberfläche.",
       "visual": {
@@ -56,17 +60,22 @@
       "titel": "Gemischte Aufgaben zu Prismen und Zylindern",
       "hinfuehrung": "Jetzt kommen Prismen und Zylinder durcheinander. Du erkennst den Körper, wählst die Formel und rechnest sicher.",
       "erklaerung": [
-        "Bestimme zuerst den Körper (Grundfläche!) und ob Volumen oder Oberfläche gefragt ist.",
-        "Formeln von der Formelkarte: Prisma V = G·h, O = 2G + U·h; Zylinder V = π·r²·h, O = 2πr² + 2πrh."
+        "Bestimme zuerst den Körper an seiner Grundfläche und dann, ob Volumen oder Oberfläche gefragt ist.",
+        "Formeln von der Formelkarte: Prisma V = G·h, O = 2G + U·h; Zylinder V = π·r²·h, O = 2πr² + 2πrh.",
+        "Prisma und Zylinder folgen demselben Bauplan. Volumen ist immer Grundfläche mal Höhe, Oberfläche immer zwei Grundflächen plus Umfang mal Höhe — beim Zylinder ist die Grundfläche eben ein Kreis.",
+        "Wer das sieht, muss nicht vier Formeln behalten, sondern zwei Sätze und die Kreisformeln. Die Formelkarte liegt ohnehin daneben; entscheidend ist, die richtige Zeile zu finden."
       ],
       "beispiel": {
+        "titel": "Körper erkennen, Formel wählen",
         "aufgabe": "Zylinder r = 2 cm, h = 5 cm. Volumen (π ≈ 3,14)?",
         "schritte": [
-          "Körper: Zylinder, gesucht: Volumen",
-          "V = π · r² · h = 3,14 · 4 · 5",
-          "V = 62,8 cm³"
+          "Körper: runde Grundfläche → Zylinder. Gesucht: Volumen.",
+          "Bauplan: Volumen = Grundfläche · Höhe",
+          "Grundfläche: π · r² = 3,14 · 4 = 12,56 cm²",
+          "V = 12,56 · 5 = 62,8 cm³",
+          "Einheitenprobe: cm² · cm = cm³, ein Rauminhalt  ✓"
         ],
-        "ergebnis": "V = 62,8 cm³."
+        "ergebnis": "V = 62,8 cm³. Derselbe Bauplan „Grundfläche mal Höhe“ gilt für Prisma und Zylinder."
       },
       "merke": "Erst Körper und Größe erkennen, dann passende Formel.",
       "visual": {
@@ -80,17 +89,24 @@
       "titel": "Rechenweg begründen und prüfen",
       "hinfuehrung": "Auf höchstem Niveau schreibst du den Weg begründet auf und prüfst, ob das Ergebnis überhaupt plausibel ist.",
       "erklaerung": [
-        "Begründe jeden Schritt kurz (welche Formel, warum) und gib Einheiten an.",
-        "Plausibilitätsprüfung: Passt die Größenordnung? Ein Getränkekasten fasst Liter, kein Kubikmeter."
+        "Begründe jeden Schritt kurz — welche Formel und warum — und gib die Einheiten an.",
+        "Plausibilitätsprüfung: Passt die Größenordnung? Ein Getränkekasten fasst Liter, keinen Kubikmeter.",
+        "Bei einer Entscheidungsfrage („mehr oder weniger als 5 Liter?“) gehört die Antwort in Worten dazu. Eine Zahl allein beantwortet die gestellte Frage nicht.",
+        "Zur Plausibilität braucht es Vergleichsgrößen im Kopf: ein Glas 0,2 l, eine Flasche 1 l, ein Eimer 10 l, eine Badewanne 150 l. An ihnen erkennst du eine verrutschte Zehnerpotenz sofort.",
+        "Und die Umrechnung gehört sichtbar in den Weg. Von cm³ zu Litern sind es zwei Schritte über dm³, und beide werden gern übersprungen — mit dem Faktor 1000 als Folge."
       ],
       "beispiel": {
+        "titel": "Rechnen, umrechnen, entscheiden",
         "aufgabe": "Fasst ein Zylinder mit r = 10 cm, h = 20 cm mehr oder weniger als 5 Liter? (π ≈ 3,14)",
         "schritte": [
-          "V = 3,14 · 10² · 20 = 6280 cm³",
-          "6280 cm³ = 6,28 dm³ = 6,28 l",
-          "6,28 l > 5 l"
+          "Formel begründen: Zylinder, gesucht ist der Rauminhalt → V = π · r² · h",
+          "V = 3,14 · 10² · 20 = 3,14 · 100 · 20 = 6280 cm³",
+          "umrechnen, sichtbar: 6280 cm³ : 1000 = 6,28 dm³",
+          "1 dm³ = 1 l, also 6,28 l",
+          "vergleichen: 6,28 l > 5 l",
+          "Plausibilität: ein Eimer fasst rund 10 l, dieser Zylinder etwas weniger  ✓"
         ],
-        "ergebnis": "Er fasst mehr als 5 Liter (≈ 6,3 l) – plausibel für einen Eimer."
+        "ergebnis": "Er fasst mehr als 5 Liter, nämlich rund 6,3 l. Verlangt war eine Entscheidung — die Zahl allein wäre keine Antwort auf die Frage."
       },
       "merke": "Begründen, Einheiten mitführen, Größenordnung prüfen.",
       "visual": {

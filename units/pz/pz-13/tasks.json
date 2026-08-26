@@ -29,21 +29,25 @@
       "titel": "Zinstabelle Jahr für Jahr",
       "hinfuehrung": "Auch die Zinsen bekommen im nächsten Jahr Zinsen.",
       "erklaerung": [
-        "Jede Zeile: Kapital + Zinsen = neues Kapital.",
+        "Die Zinsen bleiben am Ende des Jahres auf dem Konto.",
+        "Im nächsten Jahr ist das Kapital deshalb größer.",
+        "Von einem größeren Kapital gibt es mehr Zinsen.",
+        "Jede Zeile: Kapital plus Zinsen ist das neue Kapital.",
         "Das neue Kapital startet die nächste Zeile."
       ],
       "beispiel": {
+        "titel": "Zwei Jahre in einer Tabelle",
         "aufgabe": "1000 € liegen 2 Jahre zu 2 %. Fülle die Tabelle aus.",
         "schritte": [
           "Jahr 1: 1000 € + 2 % = 1000 + 20 = 1020 €",
           "Jahr 2: 1020 € + 2 % = 1020 + 20,40 = 1040,40 €"
         ],
+        "ergebnis": "Nach 2 Jahren: 1040,40 €. Im zweiten Jahr gab es 40 Cent mehr Zinsen als im ersten.",
         "luecke": {
           "schritt": 1,
           "wert": 1040.4,
           "einheit": "€"
-        },
-        "ergebnis": "Nach 2 Jahren: 1040,40 €."
+        }
       },
       "merke": "Neues Kapital = altes Kapital + Zinsen.",
       "visual": {
@@ -58,16 +62,21 @@
       "hinfuehrung": "Statt jede Zeile einzeln zu rechnen, fasst der Zinseszins alles in einer Formel zusammen: Kapital mal Wachstumsfaktor hoch Jahre.",
       "erklaerung": [
         "Der Wachstumsfaktor ist q = 1 + p/100. Bei 2 % ist q = 1,02.",
-        "Endkapital = K · q^n (n = Anzahl der Jahre). Das Ergebnis muss mit der Tabelle übereinstimmen."
+        "Endkapital = K · q^n (n = Anzahl der Jahre). Das Ergebnis muss mit der Tabelle übereinstimmen.",
+        "Woher kommt die Potenz? Jedes Jahr wird mit demselben Faktor multipliziert. Zwei Jahre sind also · 1,02 · 1,02, und das ist 1,02². Die Hochzahl zählt schlicht die Jahre.",
+        "Damit ist der Zinseszins dieselbe Faktorkette wie bei mehrfachen Rabatten — nur mit lauter gleichen Faktoren. Runde deshalb erst am Schluss: Wer jedes Jahr auf Cent rundet, sammelt Rundungsfehler auf."
       ],
       "beispiel": {
+        "titel": "Tabelle und Formel liefern dasselbe",
         "aufgabe": "1000 € zu 2 % über 2 Jahre – mit der Formel.",
         "schritte": [
           "q = 1 + 2/100 = 1,02",
-          "K · q^n = 1000 € · 1,02^2",
-          "= 1000 € · 1,0404 = 1040,40 €"
+          "K · q^n = 1000 € · 1,02²",
+          "1,02² = 1,0404",
+          "= 1000 € · 1,0404 = 1040,40 €",
+          "Abgleich mit der Tabelle aus Pfad A: 1040,40 €  ✓"
         ],
-        "ergebnis": "1040,40 € – gleiches Ergebnis wie die Tabelle."
+        "ergebnis": "1040,40 € – gleiches Ergebnis wie die Tabelle, aber in einer Zeile statt in zweien."
       },
       "merke": "Endkapital = K · q^n mit q = 1 + p/100.",
       "visual": {
@@ -82,15 +91,22 @@
       "hinfuehrung": "Wie lange dauert es, bis sich das Kapital lohnt? Und wie viel bringt der Zinseszins gegenüber dem einfachen Zins? Beides lässt sich zeigen.",
       "erklaerung": [
         "Die Laufzeit bei gegebenem Zielkapital findest du durch systematisches Probieren mit q^n (n hochzählen, bis das Ziel erreicht ist).",
-        "Einfacher Zins wächst linear (jedes Jahr gleich viel), Zinseszins wächst schneller, weil die Zinsen mitverzinst werden – der Abstand wird mit den Jahren größer."
+        "Einfacher Zins wächst linear (jedes Jahr gleich viel), Zinseszins wächst schneller, weil die Zinsen mitverzinst werden – der Abstand wird mit den Jahren größer.",
+        "Der Unterschied ist der zwischen einer Geraden und einer Kurve. Beim einfachen Zins ist der Zuwachs jedes Jahr derselbe Betrag; beim Zinseszins ist er jedes Jahr derselbe Anteil, und ein gleicher Anteil von einer wachsenden Zahl ist ein wachsender Betrag.",
+        "Über kurze Zeiträume ist der Unterschied klein und wird deshalb leicht unterschätzt: Nach 2 Jahren trennen die beiden Verfahren bei 1000 € und 2 % nur 40 Cent. Nach 30 Jahren sind es über 200 €.",
+        "Das systematische Probieren ist hier keine Notlösung, sondern das angemessene Verfahren: Die Gleichung nach n aufzulösen bräuchte den Logarithmus, und der kommt erst später."
       ],
       "beispiel": {
-        "aufgabe": "Ab wann sind aus 1000 € bei 2 % mehr als 1060 € geworden?",
+        "titel": "Laufzeit durch systematisches Probieren",
+        "aufgabe": "Ab wann sind aus 1000 € bei 2 % mehr als 1060 € geworden? Vergleiche danach mit dem einfachen Zins.",
         "schritte": [
-          "n = 2: 1000 · 1,02^2 = 1040,40 €",
-          "n = 3: 1000 · 1,02^3 = 1061,21 €  > 1060 €"
+          "q = 1,02, gesucht ist das kleinste n mit 1000 · q^n > 1060",
+          "n = 2: 1000 · 1,02² = 1040,40 €   — noch zu wenig",
+          "n = 3: 1000 · 1,02³ = 1061,21 €   > 1060 €  ✓",
+          "Einfacher Zins zum Vergleich: 3 · 20 € = 60 €, also 1060,00 € — knapp unter der Marke.",
+          "Deutung: Der Zinseszins bringt nach drei Jahren 1,21 € mehr. Der Vorsprung ist klein, aber er wächst in jedem weiteren Jahr."
         ],
-        "ergebnis": "Nach 3 Jahren übersteigt das Kapital 1060 €."
+        "ergebnis": "Nach 3 Jahren übersteigt das Kapital 1060 €. Der einfache Zins schafft es im selben Zeitraum nicht — daran sieht man den Zinseszins in Zahlen."
       },
       "merke": "Zinseszins wächst schneller als einfacher Zins – der Vorsprung wächst mit den Jahren.",
       "visual": {

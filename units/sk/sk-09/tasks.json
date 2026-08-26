@@ -32,16 +32,21 @@
       "titel": "Volumen oder Oberfläche des Kegels?",
       "hinfuehrung": "Lies zuerst, was gesucht ist.",
       "erklaerung": [
+        "Auch beim Kegel gibt es die zwei Fragen.",
         "„passt hinein“ oder „Liter“ → Volumen: V = (π · r² · h) : 3.",
-        "„Material“ oder „anstreichen“ → Oberfläche: O = π · r · (r + s)."
+        "„Material“ oder „anstreichen“ → Oberfläche: O = π · r · (r + s).",
+        "Das Volumen braucht die Höhe h. Die Oberfläche braucht die Mantellinie s.",
+        "Die Frage sagt dir also auch, welche der beiden Größen du brauchst."
       ],
       "beispiel": {
+        "titel": "Signalwort und benötigte Größe",
         "aufgabe": "„Wie viel Eis passt in die Waffel?“ Welche Formel?",
         "schritte": [
-          "Signal „passt hinein“ → Rauminhalt",
-          "→ Volumen"
+          "Signalwort „passt hinein“ → Rauminhalt",
+          "also Volumen",
+          "Volumen braucht die Höhe h"
         ],
-        "ergebnis": "Volumen: V = (π · r² · h) : 3."
+        "ergebnis": "Volumen: V = (π · r² · h) : 3. Gebraucht wird h, nicht die Mantellinie s."
       },
       "merke": "Erst entscheiden. Dann rechnen.",
       "visual": {
@@ -56,16 +61,22 @@
       "hinfuehrung": "Ist das Volumen gegeben und die Höhe gesucht, stellst du die Volumenformel nach h um.",
       "erklaerung": [
         "Aus V = (π · r² · h) : 3 folgt h = 3 · V : (π · r²).",
-        "Erst π · r² ausrechnen, dann 3 · V dadurch teilen."
+        "Erst π · r² ausrechnen, dann 3 · V dadurch teilen.",
+        "Die Klammer im Nenner ist wichtig: Geteilt wird durch das ganze Produkt π · r², nicht nur durch π. Wer sie im Taschenrechner vergisst, multipliziert am Ende versehentlich mit r² statt zu teilen.",
+        "Der Zwischenwert π · r² hat eine Bedeutung — er ist die Grundkreisfläche. Ihn getrennt auszurechnen macht die Rechnung nicht nur sicherer, sondern auch nachvollziehbar.",
+        "Die Probe kostet eine Zeile: Setze die gefundene Höhe in die Volumenformel ein und prüfe, ob das gegebene Volumen herauskommt."
       ],
       "beispiel": {
+        "titel": "Volumenformel des Kegels nach h umstellen",
         "aufgabe": "Kegel mit V = 94,2 cm³, r = 3 cm. Höhe h (π ≈ 3,14)?",
         "schritte": [
-          "π · r² = 3,14 · 9 = 28,26",
-          "h = 3 · V : (π·r²) = 3 · 94,2 : 28,26",
-          "h = 282,6 : 28,26 = 10 cm"
+          "Grundkreisfläche zuerst: π · r² = 3,14 · 9 = 28,26 cm²",
+          "umgestellt: h = 3 · V : (π · r²)",
+          "Zähler: 3 · 94,2 = 282,6",
+          "h = 282,6 : 28,26 = 10 cm",
+          "Probe: (3,14 · 9 · 10) : 3 = 282,6 : 3 = 94,2 cm³  ✓"
         ],
-        "ergebnis": "h = 10 cm."
+        "ergebnis": "h = 10 cm. Der getrennt berechnete Zwischenwert 28,26 cm² ist die Grundkreisfläche — und die sichere Klammer im Nenner."
       },
       "merke": "h = 3 · V : (π · r²).",
       "visual": {
@@ -80,16 +91,22 @@
       "hinfuehrung": "Anspruchsvolle Aufgaben verlangen mehrere verkettete Schritte – etwa erst s, dann Oberfläche, oder erst r, dann Volumen.",
       "erklaerung": [
         "Plane die Reihenfolge und notiere Zwischenergebnisse mit Einheit.",
-        "Prüfe am Ende die Plausibilität (Größenordnung im Sachzusammenhang)."
+        "Prüfe am Ende die Plausibilität, also die Größenordnung im Sachzusammenhang.",
+        "Bei drei verketteten Schritten hilft die Rückwärtsplanung: Gesucht ist das Volumen, dafür braucht es h, dafür s und r, und r folgt aus d. So steht die Reihenfolge fest, bevor gerechnet wird.",
+        "Achte darauf, welche Größe der Pythagoras liefert. Ist s gegeben und h gesucht, wird subtrahiert; die häufigste Verwechslung an dieser Stelle ist, stattdessen zu addieren und ein zu großes h zu erhalten.",
+        "Behalte am Ende die Genauigkeit im Blick: Wer zwischendurch stark rundet, trägt den Fehler durch alle folgenden Schritte. Runde erst im Ergebnis und gib an, worauf."
       ],
       "beispiel": {
+        "titel": "Drei verkettete Schritte planen",
         "aufgabe": "Kegel mit d = 6 cm, s = 5 cm. Berechne Höhe und Volumen (π ≈ 3,14).",
         "schritte": [
-          "r = d : 2 = 3 cm",
-          "h = √(s² − r²) = √(25 − 9) = √16 = 4 cm",
-          "V = (3,14 · 9 · 4) : 3 = 113,04 : 3 ≈ 37,7 cm³"
+          "Planung rückwärts: V braucht r und h. h braucht s und r. r folgt aus d.",
+          "Schritt 1: r = d : 2 = 3 cm",
+          "Schritt 2: h gesucht, s gegeben → subtrahieren: h = √(s² − r²) = √(25 − 9) = √16 = 4 cm",
+          "Schritt 3: V = (π · r² · h) : 3 = (3,14 · 9 · 4) : 3 = 113,04 : 3 ≈ 37,7 cm³",
+          "Kontrolle: h = 4 cm ist kürzer als s = 5 cm  ✓, und das Drittel wurde gerechnet  ✓"
         ],
-        "ergebnis": "h = 4 cm, V ≈ 37,7 cm³."
+        "ergebnis": "h = 4 cm, V ≈ 37,7 cm³. Die Rückwärtsplanung legt die Reihenfolge der drei Schritte fest, bevor die erste Zahl notiert wird."
       },
       "merke": "Reihenfolge planen, Zwischenergebnisse festhalten, Plausibilität prüfen.",
       "visual": {

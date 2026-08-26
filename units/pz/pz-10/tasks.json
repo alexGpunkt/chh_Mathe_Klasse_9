@@ -30,20 +30,24 @@
       "hinfuehrung": "Vergleiche zuerst den alten und den neuen Wert.",
       "erklaerung": [
         "Neu ist größer: gestiegen. Neu ist kleiner: gefallen.",
-        "Die Differenz ist neu minus alt."
+        "Die Differenz ist neu minus alt.",
+        "Bei einer Zunahme ist die Differenz positiv.",
+        "Bei einer Abnahme ist die Differenz negativ.",
+        "Erst die Richtung, dann die Zahl. So machst du keinen Vorzeichenfehler."
       ],
       "beispiel": {
+        "titel": "Richtung und Differenz",
         "aufgabe": "Ein Preis war 50 €. Jetzt sind es 58 €. Gestiegen oder gefallen?",
         "schritte": [
           "58 € > 50 €  → gestiegen",
           "Differenz = 58 € − 50 € = 8 €"
         ],
+        "ergebnis": "Gestiegen um 8 €.",
         "luecke": {
           "schritt": 1,
           "wert": 8,
           "einheit": "€"
-        },
-        "ergebnis": "Gestiegen um 8 €."
+        }
       },
       "merke": "Erst die Richtung. Dann die Differenz.",
       "visual": {
@@ -58,13 +62,18 @@
       "hinfuehrung": "Die Veränderung in Prozent bezieht sich immer auf den alten Wert. Aus ihr wird ein Faktor, mit dem du weiterrechnest.",
       "erklaerung": [
         "p = (neu − alt) : alt · 100.",
-        "Der Wachstumsfaktor fasst die Veränderung zusammen: +16 % → q = 1,16; −16 % → q = 0,84."
+        "Der Wachstumsfaktor fasst die Veränderung zusammen: +16 % → q = 1,16; −16 % → q = 0,84.",
+        "Faktor und Prozentsatz sind zwei Schreibweisen derselben Sache. Der Prozentsatz beschreibt die Änderung, der Faktor beschreibt den neuen Wert im Verhältnis zum alten — deshalb ist im Faktor die 1 für den Ausgangswert schon enthalten.",
+        "Genau deshalb ist der Faktor beim Weiterrechnen überlegen: Aus q = 1,16 folgt der neue Wert mit einer Multiplikation, und aus dem neuen Wert der alte mit einer Division. Der Prozentsatz allein kann das nicht."
       ],
       "beispiel": {
+        "titel": "Von zwei Werten zum Wachstumsfaktor",
         "aufgabe": "Von 50 € auf 58 €: Wie viel Prozent, und wie lautet der Faktor?",
         "schritte": [
-          "p = (58 − 50) : 50 · 100 = 16 %",
-          "Faktor q = 1 + 16/100 = 1,16"
+          "Differenz und Grundwert: (58 − 50) = 8, geteilt wird durch den ALTEN Wert 50",
+          "p = 8 : 50 · 100 = 16 %",
+          "Faktor q = 1 + 16/100 = 1,16",
+          "Probe: 50 € · 1,16 = 58 €  ✓"
         ],
         "ergebnis": "+16 %, Wachstumsfaktor q = 1,16."
       },
@@ -81,16 +90,22 @@
       "hinfuehrung": "Mehrere Veränderungen hintereinander multiplizierst du als Faktoren. Dabei zeigt sich: Rauf und wieder runter landet nicht beim Start.",
       "erklaerung": [
         "Nacheinander wirkende Änderungen: Faktoren multiplizieren, nicht Prozente addieren.",
-        "+10 % dann −10 % → 1,10 · 0,90 = 0,99. Der zweite Prozentsatz wird vom bereits größeren Wert genommen – deshalb bleibt ein Verlust von 1 %."
+        "+10 % dann −10 % → 1,10 · 0,90 = 0,99. Der zweite Prozentsatz wird vom bereits größeren Wert genommen – deshalb bleibt ein Verlust von 1 %.",
+        "Der Grund ist wieder der Grundwert: Die 10 % Zuwachs beziehen sich auf 100 €, die 10 % Abschlag auf 110 €. Zehn Prozent von einer größeren Zahl sind mehr, also überwiegt der Abschlag.",
+        "Das gilt in beide Richtungen und ist unabhängig von der Reihenfolge: 0,90 · 1,10 ergibt ebenfalls 0,99. Multiplikation ist vertauschbar, und deshalb verliert man in jedem Fall.",
+        "Der Effekt wächst mit dem Prozentsatz: Bei ±10 % bleiben 99 %, bei ±50 % nur noch 75 %. Wer eine Halbierung durch eine Verdopplung ausgleichen will, braucht +100 %, nicht +50 %."
       ],
       "beispiel": {
-        "aufgabe": "100 € werden erst um 10 % erhöht, dann um 10 % gesenkt. Endwert?",
+        "titel": "Faktorkette und warum sie nicht bei 1 landet",
+        "aufgabe": "100 € werden erst um 10 % erhöht, dann um 10 % gesenkt. Endwert? Erkläre, warum nicht 100 € herauskommen.",
         "schritte": [
-          "· 1,10 → 110 €",
-          "· 0,90 → 99 €",
-          "Kette: 1,10 · 0,90 = 0,99"
+          "· 1,10 → 110 €   (10 % von 100 € sind 10 €)",
+          "· 0,90 → 99 €    (10 % von 110 € sind 11 €, nicht 10 €)",
+          "Kette: 1,10 · 0,90 = 0,99, also 99 % des Ausgangswerts",
+          "Begründung: Die beiden Prozentsätze haben verschiedene Grundwerte — 100 € und 110 €.",
+          "Gegenprobe zur Reihenfolge: 0,90 · 1,10 = 0,99 ebenfalls. Es liegt nicht an der Reihenfolge, sondern am Wechsel des Grundwerts."
         ],
-        "ergebnis": "99 € – nicht 100 €. +10 % und −10 % heben sich nicht auf."
+        "ergebnis": "99 € – nicht 100 €. +10 % und −10 % heben sich nie auf, weil der zweite Prozentsatz von der größeren Zahl genommen wird."
       },
       "merke": "Änderungen hintereinander → Faktoren MAL nehmen, nicht Prozente addieren.",
       "visual": {

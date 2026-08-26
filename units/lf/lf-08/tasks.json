@@ -30,21 +30,26 @@
       "titel": "Einen x-Wert einsetzen",
       "hinfuehrung": "Setze den x-Wert in die Gleichung ein.",
       "erklaerung": [
-        "Schreibe die Gleichung ab. Ersetze x durch die Zahl.",
-        "Rechne aus. Das Ergebnis ist der y-Wert."
+        "Schreibe die Gleichung ab.",
+        "Ersetze x durch die Zahl. Schreibe die Zahl in Klammern.",
+        "Rechne aus. Punkt vor Strich.",
+        "Das Ergebnis ist der y-Wert.",
+        "So findest du zu jedem x den passenden y-Wert.",
+        "Der y-Wert des Punktes wird nie eingesetzt. Er ist der Vergleichswert."
       ],
       "beispiel": {
+        "titel": "Einsetzen und ausrechnen",
         "aufgabe": "Die Gleichung ist y = 2x + 1. Welchen y-Wert gibt x = 3?",
         "schritte": [
           "y = 2 · x + 1",
           "y = 2 · 3 + 1",
           "y = 7"
         ],
+        "ergebnis": "Bei x = 3 liefert die Gerade y = 7.",
         "luecke": {
           "schritt": 2,
           "wert": 7
-        },
-        "ergebnis": "Bei x = 3 liefert die Gerade y = 7."
+        }
       },
       "merke": "x einsetzen, y ausrechnen.",
       "visual": {
@@ -58,15 +63,19 @@
       "hinfuehrung": "Jetzt vergleichst du: Passt der ausgerechnete y-Wert zum Punkt? Das Ergebnis schreibst du als vollständigen Satz.",
       "erklaerung": [
         "Setze x ein und rechne y aus. Vergleiche mit dem y-Wert des Punktes.",
-        "Stimmt beides überein, liegt der Punkt auf der Geraden – sonst nicht. Schreibe einen Antwortsatz."
+        "Stimmt beides überein, liegt der Punkt auf der Geraden – sonst nicht. Schreibe einen Antwortsatz.",
+        "Die Punktprobe beantwortet eine Ja-Nein-Frage. Deshalb gehört in die Antwort nicht nur das Ergebnis, sondern die Rechnung als Begründung: „…, denn 2 · 3 + 1 = 7.“",
+        "Wichtig ist, welche Zahl eingesetzt wird. Eingesetzt wird immer der x-Wert; der y-Wert des Punktes ist der Vergleichswert und wird nie in die Gleichung eingesetzt."
       ],
       "beispiel": {
+        "titel": "Punktprobe mit Antwortsatz",
         "aufgabe": "Liegt P(3 | 7) auf y = 2x + 1?",
         "schritte": [
-          "x = 3 einsetzen: y = 2·3 + 1 = 7",
-          "berechnet 7, Punkt hat 7 → gleich"
+          "x-Wert des Punktes einsetzen: x = 3",
+          "y = 2 · 3 + 1 = 7",
+          "Vergleich: berechnet 7, der Punkt hat 7 → gleich"
         ],
-        "ergebnis": "P(3 | 7) liegt auf der Geraden, denn 2·3 + 1 = 7."
+        "ergebnis": "P(3 | 7) liegt auf der Geraden, denn 2 · 3 + 1 = 7. Die Begründung gehört in den Antwortsatz."
       },
       "merke": "Einsetzen, vergleichen, als Satz antworten.",
       "visual": {
@@ -80,16 +89,22 @@
       "hinfuehrung": "Wenn ein Punkt auf der Geraden liegen SOLL, aber eine Koordinate fehlt, rechnest du sie aus – rückwärts oder durch Einsetzen.",
       "erklaerung": [
         "Fehlt y, setzt du x ein und rechnest y aus.",
-        "Fehlt x, setzt du den bekannten y-Wert ein und löst die Gleichung nach x auf."
+        "Fehlt x, setzt du den bekannten y-Wert ein und löst die Gleichung nach x auf.",
+        "Die beiden Fälle sind verschieden schwer, und das hat einen Grund: Bei fehlendem y steht die Unbekannte allein auf einer Seite und ist nur auszurechnen. Bei fehlendem x steckt sie im Term, und es ist eine Gleichung zu lösen.",
+        "Diese Unterscheidung ist dieselbe wie zwischen Wertetabelle und Nullstelle. Die Nullstelle ist genau der Fall „y ist bekannt und gleich null, x wird gesucht“.",
+        "Kontrolliere am Ende immer mit der Punktprobe. Sie kostet eine Zeile und deckt jeden Umformungsfehler auf."
       ],
       "beispiel": {
+        "titel": "Fehlende x-Koordinate durch Auflösen bestimmen",
         "aufgabe": "Für welches x liegt (x | 9) auf y = 2x + 1?",
         "schritte": [
+          "Bekannt ist y = 9, gesucht ist x → einsetzen und nach x auflösen",
           "9 = 2x + 1        | − 1",
           "8 = 2x            | : 2",
-          "x = 4"
+          "x = 4",
+          "Punktprobe: 2 · 4 + 1 = 9  ✓"
         ],
-        "ergebnis": "Für x = 4 liegt der Punkt (4 | 9) auf der Geraden."
+        "ergebnis": "Für x = 4 liegt der Punkt (4 | 9) auf der Geraden. Weil y gegeben war, musste hier eine Gleichung gelöst und nicht nur eingesetzt werden."
       },
       "merke": "Fehlt x: y einsetzen und die Gleichung nach x auflösen.",
       "visual": {

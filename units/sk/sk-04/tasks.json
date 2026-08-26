@@ -33,7 +33,10 @@
       "hinfuehrung": "Jede Seitenfläche der Pyramide ist ein Dreieck.",
       "erklaerung": [
         "Die Grundseite des Dreiecks ist die Grundkante a.",
-        "Die Höhe im Dreieck ist die Seitenhöhe s. Rechne (a · s) : 2."
+        "Die Höhe in diesem Dreieck ist die Seitenhöhe s.",
+        "Ein Dreieck ist ein halbes Rechteck.",
+        "Deshalb rechnest du (a · s) : 2.",
+        "Bei einer quadratischen Pyramide gibt es vier solche Dreiecke."
       ],
       "visual": {
         "type": "animation",
@@ -41,18 +44,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Ein Seitendreieck berechnen",
         "aufgabe": "Ein Seitendreieck hat a = 6 cm und s = 5 cm. Wie groß ist die Fläche?",
         "schritte": [
           "Fläche = (a · s) : 2",
           "= (6 · 5) : 2 = 30 : 2",
           "= 15 cm²"
         ],
+        "ergebnis": "Ein Seitendreieck hat 15 cm². Alle vier zusammen sind 60 cm².",
         "luecke": {
           "schritt": 2,
           "wert": 15,
           "einheit": "cm²"
-        },
-        "ergebnis": "Ein Seitendreieck hat 15 cm²."
+        }
       },
       "merke": "Seitendreieck = (a · s) : 2."
     },
@@ -61,16 +65,20 @@
       "hinfuehrung": "Die Oberfläche der quadratischen Pyramide sind das Grundquadrat und die vier gleichen Seitendreiecke.",
       "erklaerung": [
         "Mantel = 4 · (a · s) : 2 = 2 · a · s.",
-        "Oberfläche O = a² + 2 · a · s (Grundfläche plus Mantel)."
+        "Oberfläche O = a² + 2 · a · s (Grundfläche plus Mantel).",
+        "Die Kurzform 2 · a · s entsteht durch Kürzen: vier Dreiecke, jedes halb so groß wie a · s, ergeben zusammen zweimal a · s. Beide Schreibweisen liefern dasselbe — die kurze spart einen Rechenschritt.",
+        "Anders als beim Prisma steht hier nur EINE Grundfläche in der Formel. Eine Pyramide hat keinen Deckel, sondern eine Spitze; ein Faktor 2 vor dem a² wäre der zweithäufigste Fehler dieser Einheit."
       ],
       "beispiel": {
+        "titel": "Grundfläche plus vier Dreiecke",
         "aufgabe": "Quadratische Pyramide: a = 6 cm, s = 5 cm. Oberfläche?",
         "schritte": [
-          "Grundfläche = a² = 36 cm²",
-          "Mantel = 2 · a · s = 2 · 6 · 5 = 60 cm²",
+          "Grundfläche: a² = 6² = 36 cm²   (nur einmal, die Pyramide hat keinen Deckel)",
+          "ein Dreieck: (6 · 5) : 2 = 15 cm²",
+          "Mantel: 4 · 15 = 60 cm², kurz 2 · a · s = 2 · 6 · 5 = 60 cm²  ✓",
           "O = 36 + 60 = 96 cm²"
         ],
-        "ergebnis": "O = 96 cm²."
+        "ergebnis": "O = 96 cm². Beide Wege zum Mantel — vier Dreiecke einzeln oder 2 · a · s — führen zur selben Zahl."
       },
       "merke": "Quadratische Pyramide: O = a² + 2 · a · s.",
       "visual": {
@@ -84,16 +92,23 @@
       "hinfuehrung": "Oft ist s nicht gegeben, sondern nur h und a. Dann berechnest du zuerst s mit Pythagoras und danach die Oberfläche.",
       "erklaerung": [
         "Seitenhöhe: s = √( h² + (a : 2)² ).",
-        "Dann O = a² + 2 · a · s. Zwei Schritte, sauber getrennt."
+        "Dann O = a² + 2 · a · s. Zwei Schritte, sauber getrennt.",
+        "Die Reihenfolge ist zwingend und nicht bloß bequem: Ohne s lässt sich der Mantel nicht berechnen, und h darf an dieser Stelle nicht ersatzweise eingesetzt werden. Weil h kleiner ist als s, käme eine zu kleine Oberfläche heraus.",
+        "Schreibe s als eigenes Zwischenergebnis mit Einheit auf. Bei Aufgaben mit zwei Schritten ist das die Stelle, an der sich beim Nachrechnen zeigt, ob der Fehler im Pythagoras oder in der Oberflächenformel steckt.",
+        "Zur Kontrolle taugt die Größenordnung: Der Mantel einer flachen Pyramide ist nur wenig größer als die Grundfläche, bei einer spitzen deutlich größer. Ist der Mantel kleiner als die Grundfläche, wurde h statt s eingesetzt."
       ],
       "beispiel": {
+        "titel": "Erst Pythagoras, dann Oberfläche",
         "aufgabe": "Pyramide mit a = 6 cm, h = 4 cm. Berechne die Oberfläche.",
         "schritte": [
-          "s = √(4² + 3²) = √(16 + 9) = √25 = 5 cm",
-          "Mantel = 2 · 6 · 5 = 60 cm²",
-          "O = 6² + 60 = 36 + 60 = 96 cm²"
+          "Schritt 1, Seitenhöhe: a : 2 = 3 cm",
+          "s = √(4² + 3²) = √(16 + 9) = √25 = 5 cm     ← Zwischenergebnis mit Einheit",
+          "Schritt 2, Oberfläche mit s:",
+          "Mantel = 2 · a · s = 2 · 6 · 5 = 60 cm²",
+          "O = a² + Mantel = 36 + 60 = 96 cm²",
+          "Kontrolle: Der Mantel (60) ist größer als die Grundfläche (36)  ✓ — mit h = 4 statt s = 5 wären es nur 48 gewesen."
         ],
-        "ergebnis": "O = 96 cm²."
+        "ergebnis": "O = 96 cm². Das Zwischenergebnis s = 5 cm gehört sichtbar in den Rechenweg — dort entscheidet sich, ob die Oberfläche stimmt."
       },
       "merke": "Erst s = √( h² + (a:2)² ), dann O = a² + 2·a·s.",
       "visual": {

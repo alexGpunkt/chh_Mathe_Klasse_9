@@ -32,8 +32,12 @@
       "titel": "Die Mantelfläche des Kegels",
       "hinfuehrung": "Für den Mantel brauchst du r und s.",
       "erklaerung": [
+        "Der Mantel ist die schräge Fläche außen herum.",
         "Rechne M = π · r · s.",
-        "Nimm die Mantellinie s. Die Höhe h ist hier falsch."
+        "Nimm dafür die Mantellinie s.",
+        "Die Höhe h ist hier falsch. Sie liegt im Inneren.",
+        "Der Mantel ist eine Fläche. Die Einheit ist deshalb cm².",
+        "Der Grundkreis gehört nicht zum Mantel. Er kommt erst bei der Oberfläche dazu."
       ],
       "visual": {
         "type": "animation",
@@ -41,18 +45,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Mantelfläche des Kegels",
         "aufgabe": "Ein Kegel hat r = 3 cm und s = 5 cm. Mantelfläche mit π ≈ 3,14?",
         "schritte": [
           "M = π · r · s",
           "= 3,14 · 3 · 5",
           "= 47,1 cm²"
         ],
+        "ergebnis": "M ≈ 47,1 cm². Gerechnet wurde mit s, nicht mit h.",
         "luecke": {
           "schritt": 2,
           "wert": 47.1,
           "einheit": "cm²"
-        },
-        "ergebnis": "M ≈ 47,1 cm²."
+        }
       },
       "merke": "Kegelmantel: M = π · r · s."
     },
@@ -61,16 +66,21 @@
       "hinfuehrung": "Die ganze Oberfläche des Kegels sind der Grundkreis und der Mantel zusammen.",
       "erklaerung": [
         "O = π · r² + π · r · s. Ausklammern ergibt O = π · r · (r + s).",
-        "Erst Grundkreis, dann Mantel, dann addieren."
+        "Erst Grundkreis, dann Mantel, dann addieren.",
+        "Wie bei der Pyramide steht nur EIN Kreis in der Formel. Ein Kegel hat keinen Deckel, sondern eine Spitze — der Faktor 2 aus der Zylinderformel gehört hier nicht hin.",
+        "Die ausgeklammerte Form π · r · (r + s) ist dieselbe Rechnung mit einer Multiplikation weniger. Beide Schreibweisen sind richtig; die ausführliche zeigt deutlicher, welcher Summand welche Fläche ist.",
+        "Im ersten Summanden steht r², im zweiten r · s. Beide ergeben eine Fläche, und nur deshalb dürfen sie addiert werden — die Einheitenprobe bestätigt es."
       ],
       "beispiel": {
+        "titel": "Grundkreis plus Mantel",
         "aufgabe": "Kegel mit r = 3 cm, s = 5 cm. Oberfläche (π ≈ 3,14)?",
         "schritte": [
-          "Grundkreis = 3,14 · 3² = 28,26 cm²",
-          "Mantel = 3,14 · 3 · 5 = 47,1 cm²",
-          "O = 28,26 + 47,1 = 75,36 cm²"
+          "Grundkreis: π · r² = 3,14 · 3² = 28,26 cm²   (nur einer, der Kegel hat keinen Deckel)",
+          "Mantel: π · r · s = 3,14 · 3 · 5 = 47,1 cm²",
+          "O = 28,26 + 47,1 = 75,36 cm²",
+          "Gegenprobe mit der Kurzform: π · r · (r + s) = 3,14 · 3 · 8 = 75,36 cm²  ✓"
         ],
-        "ergebnis": "O ≈ 75,36 cm²."
+        "ergebnis": "O ≈ 75,36 cm². Beide Schreibweisen liefern dasselbe — die Kurzform spart eine Multiplikation."
       },
       "merke": "Kegel: O = π · r² + π · r · s = π · r · (r + s).",
       "visual": {
@@ -84,16 +94,23 @@
       "hinfuehrung": "Ist nur r und h gegeben, berechnest du zuerst die Mantellinie s und danach die Oberfläche.",
       "erklaerung": [
         "s = √( r² + h² ).",
-        "Dann O = π · r · (r + s). Wieder zwei saubere Schritte."
+        "Dann O = π · r · (r + s). Wieder zwei saubere Schritte.",
+        "Es ist derselbe Ablauf wie bei der Pyramide: erst die schräge Größe mit Pythagoras, dann die Oberfläche mit dieser Größe. Wer den Ablauf einmal kann, kann ihn für beide Körper.",
+        "Die Höhe h taucht in der Oberflächenformel überhaupt nicht auf. Sie wird ausschließlich gebraucht, um s zu bestimmen — danach wird sie nicht mehr benötigt, und das ist die beste Kontrolle gegen ein Vertauschen.",
+        "Umgekehrt kommt s im Volumen nicht vor. Volumen und Oberfläche brauchen jeweils genau eine der beiden Größen, und welche das ist, entscheidet die Frage der Aufgabe."
       ],
       "beispiel": {
+        "titel": "Erst Mantellinie, dann Oberfläche",
         "aufgabe": "Kegel mit r = 6 cm, h = 8 cm. Oberfläche (π ≈ 3,14)?",
         "schritte": [
-          "s = √(6² + 8²) = √(36 + 64) = √100 = 10 cm",
+          "Schritt 1, Mantellinie mit Pythagoras:",
+          "s = √(6² + 8²) = √(36 + 64) = √100 = 10 cm     ← Zwischenergebnis",
+          "Schritt 2, Oberfläche mit s — h wird jetzt nicht mehr gebraucht:",
           "O = π · r · (r + s) = 3,14 · 6 · (6 + 10)",
-          "O = 3,14 · 6 · 16 = 301,44 cm²"
+          "O = 3,14 · 6 · 16 = 301,44 cm²",
+          "Kontrolle: In der Oberflächenformel steht kein h  ✓"
         ],
-        "ergebnis": "O ≈ 301,44 cm²."
+        "ergebnis": "O ≈ 301,44 cm². Die Höhe h diente nur der Berechnung von s und kommt in der Oberflächenformel nicht mehr vor."
       },
       "merke": "Erst s = √( r² + h² ), dann O = π · r · (r + s).",
       "visual": {

@@ -8,3 +8,6 @@ tests/playwright-report/
 .DS_Store
 Thumbs.db
 *.log
+
+# Python-Bytecode der Inhaltswerkzeuge
+werkzeuge/__pycache__/

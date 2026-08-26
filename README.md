@@ -596,9 +596,16 @@ Hürde der Satzbau, bevor die Aufgabe überhaupt beginnt. Für Stufe A gilt:
 - **Fachwörter bleiben** — sie stehen im Wortspeicher und sind das Lernziel.
   Alles andere ist Alltagssprache.
 
-Richtwert: rund **170 Zeichen** für Hinführung, Erklärung und Merksatz
-zusammen, im Mittel **6 Wörter je Satz**. B liegt bei etwa 300 Zeichen,
-C bei etwa 360. Wenn A so lang ist wie B, ist A noch nicht Stufe A.
+Richtwert seit V36: rund **330 Zeichen** für Hinführung, Erklärung und
+Merksatz zusammen, im Mittel **6 Wörter je Satz**. B liegt bei etwa 730
+Zeichen, C bei etwa 930. Wenn A so lang ist wie B, ist A noch nicht Stufe A.
+
+Bis V35 lagen die Werte bei 170 · 300 · 360. Das war für den begleiteten
+Unterricht richtig und für die eigenständige Erarbeitung zu wenig — siehe
+„Eigenständige Erarbeitung" weiter unten. **Auf Pfad A heißt mehr Text mehr
+Schritte, nicht längere Sätze**: fünf kurze Hauptsätze statt zwei, keine
+Nebensätze und keine Einschübe. `werkzeuge/erarbeitung_bauen.py` meldet
+beides — zu kurze Karten und Sätze, die die Stufe verlassen haben.
 
 **Auf Pfad A wird ein Schritt der Beispielrechnung zur Lücke.** Ein fertig
 vorgerechnetes Beispiel liest man, ein Beispiel mit einer Lücke rechnet man
@@ -813,6 +820,140 @@ Fehlt eine Datei, überspringt `spiral.js` sie kommentarlos.
 **Gleiche Anzahl auf allen Pfaden.** Ein Kind auf Pfad A bekommt fünf
 A-Aufgaben, nicht drei. Gleiche Zeit, gleiche Würde.
 
+
+## Eigenständige Erarbeitung (seit V36)
+
+Die Leitfrage: Kann sich ein Kind eine Einheit **allein** erarbeiten — auf
+seiner Niveaustufe? Bis V35 nicht zuverlässig, und die Kürze war richtig
+gedacht: Wer danebensitzt, ergänzt den fehlenden Schritt mündlich. Wer allein
+davorsitzt, bekommt ihn nirgends. Es fehlte nicht die Ausführlichkeit, sondern
+der Schritt **dazwischen** — das Warum zwischen „so ist es" und „merke".
+
+| | v35 | v36 |
+|---|---:|---:|
+| Pfad A, Zeichen je Lernkarte (Mittel) | 174 | 337 |
+| Pfad B | 300 | 726 |
+| Pfad C | 362 | 932 |
+| Musterbeispiele mit Überschrift | 0 von 162 | **162 von 162** |
+
+**Was dazugekommen ist, ist nicht mehr vom Gleichen.** Auf Pfad A steht jetzt
+der Grund für den Rechenschritt und eine Kontrolle, an der man selbst merkt,
+ob das Ergebnis stimmen kann. Auf B kommt die typische Fehlerquelle dazu und
+warum das Verfahren funktioniert. Auf C stehen Grenzfälle, Gültigkeitsbereiche
+und der Vergleich mit dem Nachbarverfahren — die Operatoren dieser Stufe sind
+*begründe*, *vergleiche*, *beurteile*, und ein Musterbeispiel muss zeigen, wie
+eine solche **Antwort** aussieht, nicht nur, dass sie verlangt wird.
+
+Der Fachinhalt liegt je Lernbereich in `werkzeuge/erarbeitung_<bereich>.py`,
+eingetragen von `werkzeuge/erarbeitung_bauen.py`. Der Lauf ist wiederholbar:
+Er setzt Felder, er hängt nichts an. Geändert werden ausschließlich
+`hinfuehrung`, `erklaerung` und `beispiel` — Aufgaben, Videos, Übungslinks,
+Formelkarte und Wortspeicher bleiben unberührt.
+
+```bash
+python werkzeuge/erarbeitung_bauen.py            # alle vier Bereiche
+python werkzeuge/erarbeitung_bauen.py pz lf      # nur diese
+python werkzeuge/erarbeitung_bauen.py --pruefen  # nur berichten, nichts schreiben
+```
+
+Der Lauf meldet außerdem, was die Stufe verlässt: Karten unter dem Richtwert,
+Karten weit darüber, und auf Pfad A Abkürzungen und Einschübe in Klammern.
+Koordinatenschreibweise wie `P(4 | 2)` bleibt dabei erlaubt — unterschieden
+wird am Inhalt der Klammer, nicht an der Klammer selbst.
+
+## Abschlussquiz am Ende der Einheit (seit V36)
+
+Fortschritt, Lernzeit und Denkfehler beschreiben den **Weg**. Für eine Note
+fehlte die Messung des **Ergebnisses** — und zwar eine, bei der dabeisteht,
+worauf sie sich bezieht.
+
+**Fünf Fragen, ausschließlich aus dieser Einheit und diesem Pfad.** Kein
+eigener Aufgabenbestand: `quiz.js` setzt den Satz im Browser aus der
+`tasks.json` der Einheit zusammen.
+
+| Frageart | Quelle in der Einheit |
+|---|---|
+| Lücke im Merksatz | `lernkarten[pfad].merke` |
+| Lücke in einem Erklärungssatz | `lernkarten[pfad].erklaerung` |
+| Lücke in einem Satz der Formelkarte | `formelkarte.saetze` |
+| Worterklärung → Fachwort | `worterklaerungen`, Ablenker aus dem `wortspeicher` |
+| zwei Aufgaben aus dem Pool | `tasks` derselben Stufe, Vorrang für Transfer |
+
+Warum kein geschriebener Fragenbestand? Eine zweite Fassung derselben Aussage
+ist ab der ersten Änderung an der Lernkarte falsch, ohne dass es jemand merkt.
+Ein Quiz, das aus der Einheit selbst entsteht, kann nicht abweichen — und es
+kann auch nichts abfragen, was in der Einheit nicht vorkam. Genau das war die
+Bedingung. Wer für eine Einheit dennoch eigene Fragen schreiben will, trägt
+sie unter `quiz` in die `tasks.json` ein; das Schema kennt das Feld.
+
+**Falsche Antwortmöglichkeiten werden nie erfunden.** Bei Auswahlaufgaben sind
+es die Ablenker der Aufgabe samt hinterlegter Fehlvorstellung; bei
+Rechenaufgaben bleibt das Feld frei. Eine ausgedachte falsche Zahl trüge keine
+Fehlvorstellung und sagte der Lehrkraft nichts darüber, woran es lag.
+
+**Zwei Antwortmöglichkeiten reichen nicht.** Aufgaben mit nur zwei Optionen
+bleiben draußen — in der Einheit sind sie richtig, in einer gewerteten Frage
+wären sie ein Münzwurf. Im Pool betrifft das 13 Aufgaben, fast alle auf Pfad A.
+
+Sprechsätze der Formelkarte wie „Der Anteil ist … , das sind … Prozent." haben
+bereits Auslassungen und bleiben ebenfalls draußen: Sie sind Sprachhilfen,
+keine Prüfsätze.
+
+### Was gewertet wird
+
+**Der erste Lauf je Kind und Einheit** — nicht je Tag. Eine Einheit wird einmal
+erarbeitet; der Lauf unmittelbar danach ist der aussagekräftige.
+Wiederholungen zählen als Übung. Die Regel steht als eindeutiger Index in der
+Datenbank, nicht nur in der Anwendung: Zwei Geräte, die gleichzeitig melden,
+dürfen nicht zwei gewertete Läufe erzeugen. Vor dem Start steht auf dem
+Schirm, ob dieser Lauf der gewertete ist — eine Prüfung, deren Bedingungen man
+erst hinterher erfährt, ist keine faire Prüfung.
+
+Zwei Wege zur Note, die Wahl trifft die Lehrkraft je Kind:
+
+| | rechnet |
+|---|---|
+| **Einzelnoten** | Mittel aller gewerteten Läufe. Das übliche Verfahren. |
+| **Lernfortschritt** | Der Stand am Ende, zuzüglich der Verbesserung gegenüber dem Anfang. Für Kinder, bei denen der Mittelwert die Entwicklung verdeckt statt sie zu zeigen. |
+
+Gerechnet wird beides in der Datenbank, nicht im Client. Eine Notenskala
+gehört an eine Stelle, sonst steht in einem halben Jahr in zwei Dateien eine
+andere. Sie folgt der Berliner Sekundarstufenskala und ersetzt keine
+Zeugnisnote, sondern liefert eine von mehreren Grundlagen dafür.
+
+Anders als beim Bewertungsmodus werden auch Läufe **außerhalb** der
+Unterrichtszeit aufgezeichnet: Die selbstständige Erarbeitung zu Hause ist in
+diesem Projekt der Regelfall. Ob sie eine Note begründen dürfen, entscheidet
+die Fachkonferenz — dafür steht im Dashboard der Schalter „nur Läufe aus dem
+Unterricht". Siehe `DATENSCHUTZ.md`.
+
+### Im Dashboard
+
+Die Tafel „Einheitenquiz und Notengebung" trägt zwei Tabellen, weil dahinter
+zwei verschiedene Fragen stehen:
+
+| Tabelle | Frage |
+|---|---|
+| je Kind | Wie steht dieses Kind? Läufe, Einheiten, Quote, Entwicklung, Note, wackelige Einheiten |
+| je Einheit | Ist diese Einheit angekommen? Kinder, Quote, wie viele unter 50 %, häufigster Denkfehler |
+
+Die zweite bewertet nicht Kinder, sondern das Material. Wenn zweiundzwanzig
+von fünfundzwanzig Kindern in einer Einheit unter der Hälfte bleiben, war
+nicht die Klasse schwach, sondern die Einheit unklar.
+
+Serverseitig: Tabelle `mathe9_quiz_ergebnisse`, Funktionen
+`mathe9_quiz_melden()`, `mathe9_quiz_uebersicht()` und
+`mathe9_quiz_einheiten()`. Die Schüler-App bekommt keinen direkten
+Tabellenzugriff — sonst wären die Ergebnisse der ganzen Klasse mit dem
+anon-Key lesbar.
+
+### Prüfen
+
+`node werkzeuge/quiz-pruefen.js` baut für alle 54 Einheiten × 3 Pfade je 40
+Quizsätze mit derselben Datei, die im Browser läuft, und prüft Anzahl,
+Antwortindex, doppelte Optionen und ob die Lösung versehentlich im Satz
+stehen bleibt. Eine zweite Umsetzung wäre eine zweite Gelegenheit, sich zu
+vertun.
 
 ## Prüfungstrainer (`pruefung.html`)
 

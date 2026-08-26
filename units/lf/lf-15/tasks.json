@@ -27,21 +27,26 @@
       "titel": "Gleichsetzungsverfahren – die Grundlage",
       "hinfuehrung": "Zwei Gleichungen, eine Lösung.",
       "erklaerung": [
-        "Beide Gleichungen fangen mit y = an. Setze die rechten Seiten gleich.",
-        "Rechne x aus. Setze x ein und rechne y aus."
+        "Beide Gleichungen fangen mit y = an.",
+        "Setze die rechten Seiten gleich. Dann steht nur noch x da.",
+        "Rechne x aus.",
+        "Setze x in eine der beiden Gleichungen ein.",
+        "Rechne y aus. Schreibe beide Zahlen als Paar auf.",
+        "Prüfe zum Schluss beide Gleichungen mit deinen Zahlen."
       ],
       "beispiel": {
+        "titel": "Gleichsetzen, x, dann y",
         "aufgabe": "Löse: y = x + 2 und y = 3x − 4.",
         "schritte": [
           "x + 2 = 3x − 4   | − x",
-          "2 = 2x − 4  | +4  | :2 → x = 3",
+          "2 = 2x − 4  | + 4  | : 2 → x = 3",
           "y = 3 + 2 = 5"
         ],
+        "ergebnis": "L = (3 | 5).",
         "luecke": {
           "schritt": 2,
           "wert": 5
-        },
-        "ergebnis": "L = (3 | 5)."
+        }
       },
       "merke": "x ausrechnen, x einsetzen, y ausrechnen.",
       "visual": {
@@ -55,17 +60,23 @@
       "titel": "Das Einsetzungsverfahren",
       "hinfuehrung": "Ist nur eine Gleichung nach y aufgelöst, setzt du diesen Term in die andere ein. So bleibt nur eine Unbekannte übrig.",
       "erklaerung": [
-        "Nimm den y-Term der aufgelösten Gleichung und setze ihn in die andere Gleichung an die Stelle von y ein.",
-        "Löse die entstehende Gleichung nach x, dann y bestimmen."
+        "Beim Einsetzungsverfahren nimmst du den y-Term der aufgelösten Gleichung und setzt ihn in die andere Gleichung an die Stelle von y ein.",
+        "Danach löst du die entstandene Gleichung nach x auf und bestimmst zum Schluss den zugehörigen Wert für y.",
+        "Der Sinn des Verfahrens ist immer derselbe: Aus zwei Gleichungen mit zwei Unbekannten wird eine Gleichung mit einer Unbekannten, und die kannst du längst lösen.",
+        "Setze den eingesetzten Term in Klammern. Ohne sie geht bei einem Minus davor das Vorzeichen verloren, und das ist hier der häufigste Fehler überhaupt.",
+        "Die Probe gehört in beide Ausgangsgleichungen. Ein Zahlenpaar, das nur eine davon erfüllt, ist keine Lösung des Gleichungssystems."
       ],
       "beispiel": {
+        "titel": "Einsetzungsverfahren mit Klammer",
         "aufgabe": "Löse: y = 2x − 1 und 3x + y = 9.",
         "schritte": [
+          "y-Term aus der ersten Gleichung in die zweite einsetzen, mit Klammer:",
           "3x + (2x − 1) = 9",
-          "5x − 1 = 9  | +1  | :5 → x = 2",
-          "y = 2·2 − 1 = 3"
+          "5x − 1 = 9   | + 1   | : 5   →   x = 2",
+          "y bestimmen: y = 2 · 2 − 1 = 3",
+          "Probe in beiden Gleichungen: 2 · 2 − 1 = 3  ✓  und  3 · 2 + 3 = 9  ✓"
         ],
-        "ergebnis": "L = (2 | 3)."
+        "ergebnis": "L = (2 | 3). Erst die Probe in beiden Gleichungen macht das Paar zur Lösung des Systems."
       },
       "merke": "y-Term in die andere Gleichung einsetzen → nur noch x.",
       "visual": {
@@ -79,16 +90,22 @@
       "hinfuehrung": "Beim Additionsverfahren addierst du die Gleichungen so, dass eine Variable wegfällt. Der Profi wählt je nach Aufgabe das günstigste Verfahren.",
       "erklaerung": [
         "Bringe beide Gleichungen in die Form ax + by = c. Multipliziere so, dass bei einer Variablen entgegengesetzte Koeffizienten stehen, und addiere – eine Variable verschwindet.",
-        "Faustregel: nach y aufgelöst → Gleichsetzen/Einsetzen; in Standardform mit passenden Koeffizienten → Additionsverfahren."
+        "Als Faustregel gilt: Ist eine Gleichung nach y aufgelöst, nimmst du Gleichsetzen oder Einsetzen; stehen beide in Standardform mit passenden Koeffizienten, ist das Additionsverfahren am kürzesten.",
+        "Warum darf man zwei Gleichungen überhaupt addieren? Weil links und rechts jeweils dasselbe steht. Addiert man zu einer wahren Gleichung auf beiden Seiten gleich viel, bleibt sie wahr.",
+        "Alle drei Verfahren führen zum selben Ergebnis, und alle drei sind derselbe Gedanke: eine Unbekannte beseitigen. Die Wahl ist eine Frage des Aufwands, nicht der Richtigkeit.",
+        "Die Sonderfälle sehen hier genauso aus wie sonst: Fallen beide Variablen weg und bleibt eine falsche Aussage, hat das Gleichungssystem keine Lösung; bleibt eine wahre, hat es unendlich viele."
       ],
       "beispiel": {
-        "aufgabe": "Löse mit Addition: 2x + y = 7 und x − y = 2.",
+        "titel": "Additionsverfahren und die Wahl begründen",
+        "aufgabe": "Löse mit Addition: 2x + y = 7 und x − y = 2. Begründe die Wahl des Verfahrens.",
         "schritte": [
+          "Wahl begründen: Beide Gleichungen stehen in Standardform, und y hat die Koeffizienten +1 und −1. Also fällt y schon beim bloßen Addieren weg.",
           "beide addieren: (2x + y) + (x − y) = 7 + 2",
-          "3x = 9 → x = 3",
-          "einsetzen: 3 − y = 2 → y = 1"
+          "3x = 9   →   x = 3",
+          "einsetzen in die zweite Gleichung: 3 − y = 2   →   y = 1",
+          "Probe in beiden: 2 · 3 + 1 = 7  ✓  und  3 − 1 = 2  ✓"
         ],
-        "ergebnis": "L = (3 | 1)."
+        "ergebnis": "L = (3 | 1). Das Additionsverfahren war hier das kürzeste, weil die Koeffizienten von y bereits entgegengesetzt waren — umformen musste man nichts."
       },
       "merke": "Additionsverfahren: eine Variable durch Addieren eliminieren; Verfahren nach Form wählen.",
       "visual": {

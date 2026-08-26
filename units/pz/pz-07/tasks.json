@@ -28,21 +28,25 @@
       "hinfuehrung": "Bei glatten Zahlen siehst du den Prozentsatz sofort.",
       "erklaerung": [
         "Schreibe den Teil als Bruch vom Ganzen.",
-        "Kürze den Bruch. Dann liest du den Prozentsatz ab."
+        "Der Teil steht oben. Das Ganze steht unten.",
+        "Kürze den Bruch so weit wie möglich.",
+        "Dann liest du den Prozentsatz ab.",
+        "Diese vier Brüche kennst du: 1/2, 1/4, 1/5 und 1/10."
       ],
       "beispiel": {
+        "titel": "Kürzen und ablesen",
         "aufgabe": "15 von 60 Plätzen sind besetzt. Wie viel Prozent sind das?",
         "schritte": [
           "15 von 60 = 15/60",
           "kürzen: 15/60 = 1/4",
           "1/4 = 25 %"
         ],
+        "ergebnis": "25 % der Plätze sind besetzt.",
         "luecke": {
           "schritt": 2,
           "wert": 25,
           "einheit": "%"
-        },
-        "ergebnis": "25 % der Plätze sind besetzt."
+        }
       },
       "merke": "1/2 = 50 %, 1/4 = 25 %, 1/5 = 20 %, 1/10 = 10 %.",
       "visual": {
@@ -56,14 +60,19 @@
       "hinfuehrung": "Auch bei krummen Zahlen gibt es einen sicheren Weg: p = W : G · 100.",
       "erklaerung": [
         "Teile den Prozentwert durch den Grundwert und nimm mal 100.",
-        "Mit dem Taschenrechner ergibt sich oft eine lange Zahl – runde sinnvoll und schreibe das %-Zeichen dazu."
+        "Mit dem Taschenrechner ergibt sich oft eine lange Zahl – runde sinnvoll und schreibe das %-Zeichen dazu.",
+        "Die Reihenfolge Teil : Ganzes ist entscheidend und nicht vertauschbar. Der Zwischenwert 0,85 ist der Anteil als Dezimalzahl; das · 100 macht daraus die Prozentschreibweise.",
+        "Dreht man die Division um, kommt 40 : 34 ≈ 1,18 heraus, also 118 %. Ein Prozentsatz über 100 % bei einem Teil, der kleiner ist als das Ganze, ist immer ein Zeichen für die vertauschte Division."
       ],
       "beispiel": {
+        "titel": "Prozentsatz mit der Formel — Punkte im Test",
         "aufgabe": "In einem Test wurden 34 von 40 Punkten erreicht. Wie viel Prozent sind das?",
         "schritte": [
+          "Benennen: W = 34 Punkte (Teil), G = 40 Punkte (Ganzes), gesucht ist p",
           "p = W : G · 100",
           "p = 34 : 40 · 100",
-          "p = 0,85 · 100 = 85 %"
+          "p = 0,85 · 100 = 85 %",
+          "Probe: 34 liegt nahe bei 40, also muss p deutlich über 50 % und unter 100 % liegen  ✓"
         ],
         "ergebnis": "85 % der Punkte wurden erreicht."
       },
@@ -79,16 +88,22 @@
       "hinfuehrung": "Wie viel Prozent hat sich etwas verändert? Und ist die Zahl überhaupt aussagekräftig? Beides gehört zusammen.",
       "erklaerung": [
         "Die prozentuale Veränderung berechnest du aus der Differenz geteilt durch den alten Wert: p = (neu − alt) : alt · 100.",
-        "Ein hoher Prozentwert bei winzigem Grundwert (2 → 3 Fälle = +50 %) klingt dramatisch, sagt aber wenig. Das darfst du einordnen."
+        "Ein hoher Prozentwert bei winzigem Grundwert (2 → 3 Fälle = +50 %) klingt dramatisch, sagt aber wenig. Das darfst du einordnen.",
+        "Warum immer durch den alten Wert? Weil die Veränderung angibt, um welchen Anteil ihrer selbst die Ausgangsgröße gewachsen ist. Der neue Wert ist das Ergebnis und kann nicht zugleich der Maßstab sein.",
+        "Daraus folgt eine Unsymmetrie, die viele überrascht: Von 40 auf 50 sind +25 %, von 50 zurück auf 40 sind −20 %. Dieselbe Differenz, verschiedene Prozentsätze — weil der Grundwert wechselt.",
+        "Für die Beurteilung einer Prozentangabe brauchst du deshalb beides: den Prozentsatz und die absoluten Zahlen. Wer nur eines nennt, kann jede Entwicklung dramatisch oder harmlos aussehen lassen."
       ],
       "beispiel": {
-        "aufgabe": "Ein Preis steigt von 40 € auf 46 €. Um wie viel Prozent?",
+        "titel": "Veränderung berechnen und die Aussagekraft beurteilen",
+        "aufgabe": "Ein Preis steigt von 40 € auf 46 €. Um wie viel Prozent? Beurteile anschließend die Schlagzeile „Preisexplosion: plus 50 %!“ bei einem Anstieg von 2 auf 3 Cent.",
         "schritte": [
           "Differenz = 46 € − 40 € = 6 €",
-          "p = 6 : 40 · 100",
-          "p = 0,15 · 100 = 15 %"
+          "p = 6 : 40 · 100 = 15 %   (geteilt wird durch den ALTEN Wert)",
+          "Gegenprobe: 40 € · 1,15 = 46 €  ✓",
+          "Beurteilung der Schlagzeile: 1 Cent von 2 Cent sind rechnerisch tatsächlich +50 %.",
+          "Einordnung: Der Grundwert ist winzig. Der Prozentsatz ist richtig, aber ohne die absoluten Zahlen irreführend — ein Cent ist keine Explosion."
         ],
-        "ergebnis": "Der Preis ist um 15 % gestiegen."
+        "ergebnis": "Der Preis ist um 15 % gestiegen. Bei der Schlagzeile stimmt die Rechnung und trotzdem nicht die Aussage: Prozentsätze brauchen ihren Grundwert daneben."
       },
       "merke": "Prozentuale Veränderung: immer durch den ALTEN Wert teilen.",
       "visual": {

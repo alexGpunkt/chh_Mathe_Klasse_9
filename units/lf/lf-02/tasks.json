@@ -31,7 +31,10 @@
       "hinfuehrung": "Ein Punkt hat zwei Zahlen.",
       "erklaerung": [
         "Die erste Zahl ist der x-Wert. Er geht nach rechts.",
-        "Die zweite Zahl ist der y-Wert. Er geht nach oben."
+        "Die zweite Zahl ist der y-Wert. Er geht nach oben.",
+        "Man schreibt sie in Klammern: P(4 | 2).",
+        "Die Reihenfolge ist fest. Erst x, dann y.",
+        "P(4 | 2) und P(2 | 4) sind zwei verschiedene Punkte."
       ],
       "visual": {
         "type": "animation",
@@ -39,16 +42,17 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Koordinaten in der richtigen Reihenfolge",
         "aufgabe": "Lies die Koordinaten von P ab.",
         "schritte": [
           "nach rechts: 4  → x = 4",
           "nach oben:   2  → y = 2"
         ],
+        "ergebnis": "P(4 | 2).",
         "luecke": {
           "schritt": 1,
           "wert": 2
-        },
-        "ergebnis": "P(4 | 2)."
+        }
       },
       "merke": "Erst rechts (x), dann hoch (y): P(x | y)."
     },
@@ -57,16 +61,20 @@
       "hinfuehrung": "Aus der Gleichung machst du eine Tabelle: Du setzt x-Werte ein und rechnest y aus – auch mit negativen Zahlen.",
       "erklaerung": [
         "Für jeden x-Wert der Tabelle setzt du in y = mx + b ein und berechnest y.",
-        "Achte auf Vorzeichen: −2 mal eine negative Steigung wird positiv."
+        "Achte auf Vorzeichen: −2 mal eine negative Steigung wird positiv.",
+        "Die Wertetabelle ist die Brücke zwischen Gleichung und Bild. Jede Zeile liefert einen Punkt, und die Punkte zusammen ergeben die Gerade. Drei Zeilen reichen: zwei bestimmen die Gerade, die dritte ist die Kontrolle.",
+        "Wähle die x-Werte selbst, wenn du darfst. x = 0 ist immer nützlich, weil dort sofort b herauskommt, und kleine ganze Zahlen ersparen dir Brüche."
       ],
       "beispiel": {
+        "titel": "Wertetabelle mit negativen x-Werten",
         "aufgabe": "Fülle die Tabelle für y = 2x − 1 bei x = −1, 0, 2.",
         "schritte": [
-          "x = −1: y = 2·(−1) − 1 = −3",
-          "x =  0: y = 2·0 − 1 = −1",
-          "x =  2: y = 2·2 − 1 = 3"
+          "x = −1: y = 2·(−1) − 1 = −2 − 1 = −3",
+          "x =  0: y = 2·0 − 1 = −1        (das ist b)",
+          "x =  2: y = 2·2 − 1 = 4 − 1 = 3",
+          "Kontrolle: x steigt um 1, y steigt jedes Mal um 2 — das ist die Steigung  ✓"
         ],
-        "ergebnis": "(−1 | −3), (0 | −1), (2 | 3)."
+        "ergebnis": "(−1 | −3), (0 | −1), (2 | 3). Die Zeile x = 0 verrät nebenbei den y-Achsenabschnitt b = −1."
       },
       "merke": "x einsetzen, y ausrechnen – Vorzeichen genau beachten.",
       "visual": {
@@ -80,16 +88,23 @@
       "hinfuehrung": "Ob eine Zuordnung linear ist, siehst du an der Tabelle: Bei gleichen x-Schritten müssen sich die y-Werte immer gleich verändern.",
       "erklaerung": [
         "Steigt x um immer 1, muss y um einen festen Betrag steigen oder fallen. Diese konstante Differenz ist die Steigung m.",
-        "Ist die Differenz nicht konstant, ist die Zuordnung nicht linear."
+        "Ist die Differenz nicht konstant, ist die Zuordnung nicht linear.",
+        "Die x-Schritte müssen dafür selbst gleich groß sein. Bei x = 0, 1, 3 vergleichst du sonst einen Einerschritt mit einem Zweierschritt und hältst eine lineare Zuordnung für nicht linear.",
+        "Ungleiche x-Schritte prüfst du deshalb über den Quotienten: Δy geteilt durch Δx muss zwischen je zwei Zeilen denselben Wert ergeben. Das ist die allgemeine Fassung derselben Regel.",
+        "Verwechsle diesen Test nicht mit dem auf Proportionalität. Konstante Differenz heißt linear, konstanter Quotient y : x heißt proportional. Proportional ist der Sonderfall mit b = 0."
       ],
       "beispiel": {
-        "aufgabe": "Ist diese Zuordnung linear? x: 0,1,2,3  →  y: 5,8,11,14",
+        "titel": "Auf linear prüfen — und von proportional unterscheiden",
+        "aufgabe": "Ist diese Zuordnung linear? x: 0, 1, 2, 3 → y: 5, 8, 11, 14. Ist sie auch proportional?",
         "schritte": [
+          "x-Schritte prüfen: immer +1  ✓ — die Differenzen sind vergleichbar",
           "8 − 5 = 3",
           "11 − 8 = 3",
-          "14 − 11 = 3   → immer +3"
+          "14 − 11 = 3   → konstante Differenz, also linear mit m = 3",
+          "Auf proportional prüfen: 8 : 1 = 8, aber 11 : 2 = 5,5 — der Quotient ist nicht konstant.",
+          "Grund: Bei x = 0 ist y = 5 und nicht 0, also b = 5."
         ],
-        "ergebnis": "Ja, linear: konstante Differenz 3 = Steigung m."
+        "ergebnis": "Linear mit m = 3 und b = 5, aber nicht proportional — die Gerade geht nicht durch den Ursprung."
       },
       "merke": "Gleiche x-Schritte → gleiche y-Sprünge ⇒ linear. Der Sprung ist m.",
       "visual": {

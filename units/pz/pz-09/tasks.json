@@ -29,21 +29,25 @@
       "titel": "Endpreis in zwei Schritten",
       "hinfuehrung": "Rechne den Rabatt zuerst in Euro aus.",
       "erklaerung": [
+        "Ein Rabatt ist ein Nachlass. Der Preis wird kleiner.",
         "Schritt 1: Rabatt = G · p : 100.",
-        "Schritt 2: Rabatt abziehen. Einen Aufschlag addierst du."
+        "Jetzt weißt du, wie viel Euro du sparst.",
+        "Schritt 2: Ziehe diese Euro vom Preis ab.",
+        "Bei einem Aufschlag rechnest du genauso. Nur addierst du am Ende."
       ],
       "beispiel": {
+        "titel": "Rabatt ausrechnen, dann abziehen",
         "aufgabe": "Ein Rad kostet 200 €. Es gibt 15 % Rabatt. Was ist der Endpreis?",
         "schritte": [
           "Rabatt = 200 € · 15 : 100 = 30 €",
           "Endpreis = 200 € − 30 € = 170 €"
         ],
+        "ergebnis": "Der Endpreis beträgt 170 €.",
         "luecke": {
           "schritt": 1,
           "wert": 170,
           "einheit": "€"
-        },
-        "ergebnis": "Der Endpreis beträgt 170 €."
+        }
       },
       "merke": "Erst den Rabatt in Euro. Dann abziehen.",
       "visual": {
@@ -58,15 +62,21 @@
       "hinfuehrung": "Statt zweier Schritte reicht ein Faktor: 100 % minus/plus p % ergibt sofort den Endpreis.",
       "erklaerung": [
         "Bei −15 % bleiben 85 % übrig → Faktor 0,85. Endpreis = G · 0,85.",
-        "Bei +19 % sind es 119 % → Faktor 1,19. Endpreis = G · 1,19."
+        "Bei +19 % sind es 119 % → Faktor 1,19. Endpreis = G · 1,19.",
+        "Der Faktor spart nicht nur einen Schritt, er verhindert auch einen Fehler: Wer in zwei Schritten rechnet, kann das Abziehen vergessen und gibt den Rabatt als Preis an. Mit dem Faktor steht am Ende zwangsläufig der Endpreis da.",
+        "Am Faktor liest du außerdem sofort die Richtung ab: kleiner als 1 heißt billiger, größer als 1 heißt teurer. Ein Faktor von 1,15 für einen Rabatt fällt beim Hinsehen auf.",
+        "Und der Faktor ist die Brücke zu allem, was folgt: Mehrfache Änderungen, Zinseszins und Wachstum rechnest du mit genau derselben Zahl."
       ],
       "beispiel": {
+        "titel": "Endpreis in einem Schritt über den Faktor",
         "aufgabe": "Ein Rad kostet 200 €, 15 % Rabatt. Endpreis in einem Schritt.",
         "schritte": [
-          "100 % − 15 % = 85 %  → Faktor 0,85",
-          "Endpreis = 200 € · 0,85 = 170 €"
+          "Restanteil: 100 % − 15 % = 85 %",
+          "Faktor: 85 % = 0,85   (kleiner als 1, also wird es billiger  ✓)",
+          "Endpreis = 200 € · 0,85 = 170 €",
+          "Abgleich mit dem Zweischrittweg: 200 € − 30 € = 170 €  ✓"
         ],
-        "ergebnis": "Endpreis 170 € – in einem Schritt über Faktor 0,85."
+        "ergebnis": "Endpreis 170 € – in einem Schritt über den Faktor 0,85."
       },
       "merke": "Rabatt: · (1 − p/100). Aufschlag: · (1 + p/100).",
       "visual": {
@@ -81,16 +91,22 @@
       "hinfuehrung": "Vom Endpreis auf den Startpreis kommst du nur, wenn du durch den Faktor teilst. Abziehen führt in die Irre.",
       "erklaerung": [
         "Ist der Endpreis nach +19 % bekannt, entspricht er 119 % des Nettopreises. Also: Netto = Endpreis : 1,19.",
-        "Warum kein Abziehen? Die 19 % wurden vom kleineren Nettopreis genommen, nicht vom größeren Endpreis – die Grundwerte sind verschieden."
+        "Warum kein Abziehen? Die 19 % wurden vom kleineren Nettopreis genommen, nicht vom größeren Endpreis – die Grundwerte sind verschieden.",
+        "Man kann den Unterschied beziffern: 19 % von 100 € sind 19 €, 19 % von 119 € sind 22,61 €. Wer vom Bruttopreis abzieht, zieht 3,61 € zu viel ab und landet bei 96,39 € statt bei 100 €.",
+        "Die saubere Denkweise ist die Faktorkette: Vorwärts · 1,19, rückwärts : 1,19. Multiplizieren und Dividieren heben sich auf, Addieren und Subtrahieren eines Prozentsatzes nicht.",
+        "Diese eine Regel deckt die ganze Reihe ab — Rabatt, Mehrwertsteuer, Zinsen und Wachstum. Wo ein Faktor hinführt, führt derselbe Faktor auch zurück."
       ],
       "beispiel": {
-        "aufgabe": "Ein Preis enthält 19 % Mehrwertsteuer und beträgt 119 €. Wie hoch war der Nettopreis?",
+        "titel": "Nettopreis aus dem Bruttopreis — mit Gegenrechnung",
+        "aufgabe": "Ein Preis enthält 19 % Mehrwertsteuer und beträgt 119 €. Wie hoch war der Nettopreis? Beziffere den Fehler des Abziehens.",
         "schritte": [
-          "Endpreis = 119 % = 119 €",
-          "Faktor 1,19",
-          "Netto = 119 € : 1,19 = 100 €"
+          "Anteil bestimmen: Endpreis = 100 % + 19 % = 119 %, also 119 € = 119 %",
+          "Faktor 1,19, rückwärts wird geteilt:  Netto = 119 € : 1,19 = 100 €",
+          "Probe: 100 € · 1,19 = 119 €  ✓",
+          "Der falsche Weg: 19 % von 119 € = 22,61 €, also 119 € − 22,61 € = 96,39 €",
+          "Fehlerbetrag: 100 € − 96,39 € = 3,61 €. Er entsteht, weil die 19 % vom Brutto- statt vom Nettopreis genommen wurden."
         ],
-        "ergebnis": "Der Nettopreis war 100 € (nicht 119 € − 19 %!)."
+        "ergebnis": "Der Nettopreis war 100 €. Das Abziehen liegt um 3,61 € daneben — der Fehler wächst mit dem Preis und ist deshalb keine Kleinigkeit."
       },
       "merke": "Zurück heißt : Faktor, niemals denselben Prozentsatz abziehen.",
       "visual": {

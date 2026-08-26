@@ -28,7 +28,11 @@
       "hinfuehrung": "Zwei Blicke reichen: Starthöhe und Richtung.",
       "erklaerung": [
         "Lies b ab. Wo schneidet die Gerade die y-Achse?",
-        "Steigt die Gerade, ist m positiv. Fällt sie, ist m negativ."
+        "Steigt die Gerade, ist m positiv.",
+        "Fällt die Gerade, ist m negativ.",
+        "So kannst du falsche Gleichungen ausschließen.",
+        "Zwei Blicke genügen oft schon für die richtige Wahl.",
+        "Prüfe zum Schluss mit einem Punkt der Geraden."
       ],
       "visual": {
         "type": "koordinaten",
@@ -43,10 +47,11 @@
         "alt": "Steigende Gerade, die die y-Achse bei 2 schneidet."
       },
       "beispiel": {
+        "titel": "Falsche Gleichungen ausschließen",
         "aufgabe": "Welche Gleichung passt: y = x + 2, y = x − 2 oder y = −x + 2?",
         "schritte": [
-          "b ablesen: schneidet bei +2 → b = 2 (nicht −2)",
-          "Richtung: steigt → m positiv (nicht −x)"
+          "b ablesen: schneidet bei +2 → b = 2, also nicht y = x − 2",
+          "Richtung: die Gerade steigt → m positiv, also nicht y = −x + 2"
         ],
         "ergebnis": "Es passt y = x + 2."
       },
@@ -57,7 +62,9 @@
       "hinfuehrung": "Du brauchst keine Auswahl mehr: Lies m und b direkt ab und schreibe die Gleichung y = mx + b selbst.",
       "erklaerung": [
         "b: Schnittpunkt mit der y-Achse. m: Steigungsdreieck ablesen (Δy : Δx).",
-        "Setze beide in y = m · x + b ein."
+        "Setze beide in y = m · x + b ein.",
+        "Lies immer b zuerst ab. Der Schnittpunkt mit der y-Achse ist ein einzelner Punkt und schnell gefunden; für m brauchst du danach nur noch einen zweiten Gitterpunkt.",
+        "Kontrolliere die fertige Gleichung mit einem dritten Punkt der Zeichnung. Setzt du dessen x ein, muss sein y herauskommen — das ist die Punktprobe und die einzige echte Absicherung gegen Ablesefehler."
       ],
       "visual": {
         "type": "koordinaten",
@@ -78,13 +85,15 @@
         "alt": "Gerade mit b = −1 und Steigung 2."
       },
       "beispiel": {
+        "titel": "m und b ablesen, Gleichung aufstellen",
         "aufgabe": "Lies m und b ab und stelle die Gleichung auf.",
         "schritte": [
-          "b = −1 (Schnitt y-Achse)",
+          "b = −1 (Schnitt mit der y-Achse)",
           "Dreieck: 1 nach rechts, 2 nach oben → m = 2",
-          "y = 2x − 1"
+          "Einsetzen: y = 2x − 1",
+          "Punktprobe mit (2 | 3): 2 · 2 − 1 = 3  ✓"
         ],
-        "ergebnis": "y = 2x − 1."
+        "ergebnis": "y = 2x − 1, durch die Punktprobe bestätigt."
       },
       "merke": "b ablesen, m am Dreieck, in y = mx + b einsetzen."
     },
@@ -93,16 +102,22 @@
       "hinfuehrung": "Manchmal ist m ein Bruch und b liegt nicht auf einem Gitterpunkt. Dann liest du sorgfältig ab oder rechnest b aus.",
       "erklaerung": [
         "Bruchsteigung: wähle ein großes Dreieck, das auf Gitterpunkten endet, und bilde Δy : Δx.",
-        "Ist b nicht ablesbar, nimm einen klaren Gitterpunkt und rechne b = y − m · x."
+        "Ist b nicht ablesbar, nimm einen klaren Gitterpunkt und rechne b = y − m · x.",
+        "Die Reihenfolge kehrt sich dabei um: Sonst liest du erst b und dann m, hier erst m und dann b. Der Grund ist, dass die Formel für b die Steigung schon voraussetzt.",
+        "Ein großes Dreieck ist hier nicht Bequemlichkeit, sondern Genauigkeit. Verschätzt du dich beim Ablesen um ein halbes Kästchen, wirkt sich das bei Δx = 8 nur halb so stark aus wie bei Δx = 4.",
+        "Kommt für b eine krumme Zahl heraus, prüfe zuerst die Steigung. Ein falsch abgelesenes m verschiebt b immer mit — die beiden Fehler treten fast nie einzeln auf."
       ],
       "beispiel": {
-        "aufgabe": "Eine Gerade geht durch (0 | ?) und (4 | 3), Steigung 3/4. Bestimme die Gleichung.",
+        "titel": "b berechnen, wenn es nicht ablesbar ist",
+        "aufgabe": "Eine Gerade geht durch (4 | 3) und hat die Steigung 3/4. Bestimme die Gleichung.",
         "schritte": [
-          "m = 3/4 (aus dem Dreieck)",
-          "Punkt (4 | 3): b = y − m·x = 3 − 3/4·4",
-          "b = 3 − 3 = 0"
+          "m = 3/4 (aus dem großen Dreieck abgelesen)",
+          "Gitterpunkt wählen: (4 | 3)",
+          "b = y − m · x = 3 − 3/4 · 4",
+          "b = 3 − 3 = 0",
+          "Deutung: b = 0 heißt, die Gerade geht durch den Ursprung — sie ist proportional."
         ],
-        "ergebnis": "y = 3/4 x."
+        "ergebnis": "y = 3/4 x. Dass b genau null herauskommt, ist hier kein Zufall, sondern die Aussage: Die Gerade läuft durch (0 | 0)."
       },
       "merke": "Bruch-m am großen Dreieck; b notfalls mit b = y − m·x rechnen.",
       "visual": {

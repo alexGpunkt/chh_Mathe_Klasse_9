@@ -1038,3 +1038,72 @@ input.zahl-feld.lk-luecke-feld { flex: 1 1 120px; height: 46px; font-size: 18px;
   .blattkarte { margin-left: 16px; margin-right: 16px; }
   .blattkarte .btn { width: 100%; }
 }
+
+
+/* ============================================================
+   Abschlussquiz am Ende der Einheit  (V36)
+
+   Die Einladung steht im Abschlusskasten und sagt vorher, was gilt:
+   Der erste Lauf zählt. Das Quiz selbst übernimmt die Bühne — fünf
+   Fragen sind kein Anhängsel unter einer Ergebniskarte.
+   ============================================================ */
+.quizeinladung {
+  margin: 16px 0 4px; padding: 13px 15px;
+  background: var(--pfad-bg); border-left: 4px solid var(--pfad);
+  border-radius: 0 8px 8px 0;
+}
+.quizeinladung-erledigt { background: var(--ok-bg); border-left-color: var(--ok); }
+.quizeinladung strong {
+  display: block; font-family: var(--f-display); font-size: 16px;
+}
+.quizeinladung p { margin: 6px 0 11px; font-size: 14px; line-height: 1.55; }
+
+.quizkarte { border-top: 4px solid var(--pfad); }
+.quiz-kopf {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 9px;
+}
+.quiz-zaehler {
+  margin-left: auto; font-family: var(--f-num); font-size: 12px; color: var(--ink-faint);
+}
+.quiz-balken {
+  height: 5px; margin-bottom: 14px;
+  background: var(--flaeche-2); border-radius: 999px; overflow: hidden;
+}
+.quiz-balken-fuell {
+  height: 100%; background: var(--pfad); border-radius: 999px;
+  transition: width .25s ease;
+}
+.quiz-satz {
+  margin: 4px 0 14px; padding: 11px 13px;
+  font-size: 16px; line-height: 1.7;
+  background: var(--flaeche); border-radius: 8px;
+}
+/* Die Lücke ist eine sichtbare Strecke, kein Unterstrichsalat: Wie viele
+   Zeichen fehlen, soll das Bild gerade nicht verraten. */
+.quiz-luecke {
+  display: inline-block; min-width: 92px; margin: 0 3px;
+  border-bottom: 2px solid var(--pfad); vertical-align: baseline;
+}
+.quiz-zahlzeile { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.quiz-herkunft {
+  margin: 10px 0 0; font-size: 12px; color: var(--ink-faint);
+}
+.quiz-rueck { margin-top: 4px; }
+.quiz-hinweis { margin-top: 6px; font-size: 14px; line-height: 1.55; }
+.quiz-nachlesen {
+  margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--ink-soft);
+}
+.quiz-meldung {
+  margin: 12px 0 0; padding: 9px 12px;
+  font-size: 14px; line-height: 1.5; color: var(--ink-soft);
+  background: var(--flaeche); border-radius: 8px;
+}
+.quiz-gewertet {
+  background: var(--merk-bg); color: var(--merk-text); font-weight: 700;
+}
+
+@media print {
+  /* Ein Quiz auf Papier wäre ein Lösungsblatt. */
+  .quizeinladung, .quizkarte { display: none !important; }
+}

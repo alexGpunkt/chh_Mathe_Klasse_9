@@ -29,21 +29,26 @@
       "titel": "Zinsen für einen Teil des Jahres",
       "hinfuehrung": "Kürzere Zeit heißt weniger Zinsen.",
       "erklaerung": [
-        "Rechne zuerst die Zinsen für ein ganzes Jahr.",
-        "Ein halbes Jahr: teile durch 2. Ein viertel Jahr: teile durch 4."
+        "Zinsen gibt es normalerweise für ein ganzes Jahr.",
+        "Rechne deshalb zuerst die Zinsen für ein ganzes Jahr aus.",
+        "Ein halbes Jahr: teile durch 2.",
+        "Ein viertel Jahr: teile durch 4. Das sind 3 Monate.",
+        "Das Ergebnis muss kleiner sein als die Jahreszinsen."
       ],
       "beispiel": {
+        "titel": "Halbes Jahr, halbe Zinsen",
         "aufgabe": "1200 € liegen ein halbes Jahr zu 5 %. Wie viel Zinsen?",
         "schritte": [
           "Jahreszinsen = 1200 € · 5 : 100 = 60 €",
-          "halbes Jahr = 60 € : 2 = 30 €"
+          "halbes Jahr = 60 € : 2 = 30 €",
+          "Probe: 30 € ist kleiner als 60 €  ✓"
         ],
+        "ergebnis": "Für ein halbes Jahr gibt es 30 € Zinsen.",
         "luecke": {
           "schritt": 1,
           "wert": 30,
           "einheit": "€"
-        },
-        "ergebnis": "Für ein halbes Jahr gibt es 30 € Zinsen."
+        }
       },
       "merke": "Halbes Jahr → : 2. Viertel Jahr → : 4.",
       "visual": {
@@ -58,14 +63,19 @@
       "hinfuehrung": "Für beliebige Laufzeiten multiplizierst du die Jahreszinsen mit einem Zeitfaktor – Monate über 12, Tage über 360.",
       "erklaerung": [
         "Monate: Z = K · p : 100 · m/12.",
-        "Tage: Z = K · p : 100 · t/360 (im Bankjahr hat jeder Monat 30 Tage, das Jahr 360)."
+        "Tage: Z = K · p : 100 · t/360 (im Bankjahr hat jeder Monat 30 Tage, das Jahr 360).",
+        "Der Zeitfaktor ist immer ein Bruchteil eines Jahres und deshalb kleiner als 1. Genau daran erkennst du, dass die Teilzinsen kleiner sein müssen als die Jahreszinsen.",
+        "Das Bankjahr mit 360 Tagen ist eine Vereinbarung, keine Naturkonstante. Sie macht jeden Monat gleich lang und die Rechnung damit einfach; Banken rechnen heute teilweise anders. Für diesen Kurs gilt 30/360.",
+        "Rechne immer erst die Jahreszinsen und dann den Zeitanteil. Wer beides zugleich in den Taschenrechner tippt, verliert leicht eine Klammer — und der Fehler fällt nicht auf."
       ],
       "beispiel": {
+        "titel": "Zinsen für drei Monate",
         "aufgabe": "1200 € zu 5 % für 3 Monate. Wie viel Zinsen?",
         "schritte": [
           "Jahreszinsen = 1200 € · 5 : 100 = 60 €",
-          "Zeitfaktor = 3/12 = 1/4",
-          "Z = 60 € · 1/4 = 15 €"
+          "Zeitfaktor = 3/12 = 1/4     (kleiner als 1  ✓)",
+          "Z = 60 € · 1/4 = 15 €",
+          "Probe: 15 € ist ein Viertel von 60 €, wie 3 Monate ein Viertel des Jahres sind  ✓"
         ],
         "ergebnis": "Für 3 Monate gibt es 15 € Zinsen."
       },
@@ -82,16 +92,21 @@
       "hinfuehrung": "Sind Zinsen, Kapital und Zinssatz bekannt, lässt sich die Laufzeit bestimmen – du stellst die Formel nach der Zeit um.",
       "erklaerung": [
         "Aus Z = K · p : 100 · t/360 folgt: t = Z · 360 · 100 : (K · p).",
-        "Rechne zuerst die Jahreszinsen aus, dann vergleiche, welcher Bruchteil eines Jahres deine Zinsen ergibt."
+        "Rechne zuerst die Jahreszinsen aus, dann vergleiche, welcher Bruchteil eines Jahres deine Zinsen ergibt.",
+        "Der zweite Weg ist der anschaulichere und weniger fehleranfällige: Teilzinsen geteilt durch Jahreszinsen ergibt unmittelbar den Anteil des Jahres. Mal 12 macht daraus Monate, mal 360 Tage.",
+        "Er hat außerdem den Vorteil, dass er ohne die große Formel auskommt und sich selbst kontrolliert: Der Anteil muss zwischen 0 und 1 liegen. Kommt mehr als 1 heraus, war die Laufzeit länger als ein Jahr — oder die Division ist vertauscht.",
+        "Beim Umrechnen in Monate gilt weiter das Bankjahr: 1/6 Jahr sind 2 Monate, 1/8 Jahr sind 45 Tage. Ein krummer Anteil ergibt oft eine glatte Tageszahl."
       ],
       "beispiel": {
+        "titel": "Laufzeit über den Anteil am Jahr",
         "aufgabe": "1200 € zu 5 % bringen 15 € Zinsen. Über wie viele Monate?",
         "schritte": [
-          "Jahreszinsen = 60 €",
-          "Anteil = 15 € : 60 € = 1/4 Jahr",
-          "1/4 Jahr = 12 · 1/4 = 3 Monate"
+          "Jahreszinsen = 1200 € · 5 : 100 = 60 €",
+          "Anteil = 15 € : 60 € = 0,25 = 1/4 Jahr     (zwischen 0 und 1  ✓)",
+          "In Monate: 12 · 1/4 = 3 Monate",
+          "In Tagen zur Gegenprobe: 360 · 1/4 = 90 Tage = 3 Monate im Bankjahr  ✓"
         ],
-        "ergebnis": "Die Laufzeit betrug 3 Monate."
+        "ergebnis": "Die Laufzeit betrug 3 Monate. Der Umweg über den Anteil am Jahr ersetzt die umgestellte Formel und kontrolliert sich selbst."
       },
       "merke": "Teil-Zinsen : Jahreszinsen = Anteil des Jahres.",
       "visual": {

@@ -34,8 +34,11 @@
       "titel": "Körper erkennen und benennen",
       "hinfuehrung": "Jeder Körper hat Flächen, Kanten und Ecken.",
       "erklaerung": [
-        "Eine Fläche ist eine Seite. Eine Kante ist eine Linie zwischen zwei Flächen.",
-        "Eine Ecke ist ein Punkt. Zähle immer in der gleichen Reihenfolge."
+        "Eine Fläche ist eine Seite. Du kannst mit der Hand darüberstreichen.",
+        "Eine Kante ist eine Linie zwischen zwei Flächen.",
+        "Eine Ecke ist ein Punkt. Dort treffen sich mehrere Kanten.",
+        "Zähle immer in der gleichen Reihenfolge: erst oben, dann unten, dann die Mitte.",
+        "So vergisst du nichts und zählst nichts doppelt."
       ],
       "visual": {
         "type": "animation",
@@ -43,17 +46,18 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Ordentlich zählen am Würfel",
         "aufgabe": "Wie viele Flächen, Kanten und Ecken hat ein Würfel?",
         "schritte": [
           "Flächen: oben, unten, 4 Seiten = 6",
           "Kanten: 4 oben, 4 unten, 4 senkrecht = 12",
           "Ecken: 4 oben, 4 unten = 8"
         ],
+        "ergebnis": "Würfel: 6 Flächen, 12 Kanten, 8 Ecken.",
         "luecke": {
           "schritt": 2,
           "wert": 8
-        },
-        "ergebnis": "Würfel: 6 Flächen, 12 Kanten, 8 Ecken."
+        }
       },
       "merke": "Würfel und Quader: 6 Flächen, 12 Kanten, 8 Ecken."
     },
@@ -62,7 +66,9 @@
       "hinfuehrung": "Jeder Säulenkörper hat eine Grundfläche, die sich unten und oben wiederholt. Faltet man den Körper auf, entsteht sein Netz.",
       "erklaerung": [
         "Die Grundfläche bestimmt den Körpernamen: Dreieck → Dreiecksprisma, Kreis → Zylinder.",
-        "Der Mantel ist die Fläche rundherum zwischen den beiden Grundflächen. Im Netz liegt er als zusammenhängendes Rechteck (bzw. gebogenes Rechteck beim Zylinder) neben den Grundflächen."
+        "Der Mantel ist die Fläche rundherum zwischen den beiden Grundflächen. Im Netz liegt er als zusammenhängendes Rechteck neben den Grundflächen; beim Zylinder ist es ein gebogenes Rechteck.",
+        "Das Netz ist mehr als eine Bastelvorlage. Es ist die Oberfläche, flach ausgebreitet — und deshalb der beste Weg, um zu sehen, welche Flächen man beim Berechnen mitzählen muss.",
+        "Woran erkennst du die Grundfläche? Sie ist die Form, die sich beim Durchschneiden quer zur Länge immer wieder ergibt. Bei einer Salamischeibe ist es der Kreis, bei einem Dachfirst das Dreieck."
       ],
       "visual": {
         "type": "animation",
@@ -70,13 +76,15 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Grundfläche und Mantel im Netz wiederfinden",
         "aufgabe": "Beschreibe Grundfläche und Mantel eines Dreiecksprismas.",
         "schritte": [
-          "Grundfläche: das Dreieck (vorn und hinten gleich)",
-          "Mantel: 3 Rechtecke an den Dreiecksseiten",
-          "Netz: 2 Dreiecke + 3 Rechtecke"
+          "Grundfläche: das Dreieck, vorn und hinten deckungsgleich",
+          "Mantel: 3 Rechtecke, je eines an einer Dreiecksseite",
+          "Netz: 2 Dreiecke + 3 Rechtecke, insgesamt 5 Flächen",
+          "Probe mit der Regel: n = 3 Ecken der Grundfläche → n + 2 = 5 Flächen  ✓"
         ],
-        "ergebnis": "Grundfläche = Dreieck, Mantel = 3 Rechtecke; das Netz zeigt beides nebeneinander."
+        "ergebnis": "Grundfläche = Dreieck, Mantel = 3 Rechtecke. Das Netz zeigt beides nebeneinander und damit genau die Flächen, die in die Oberfläche eingehen."
       },
       "merke": "Die Grundfläche gibt dem Prisma seinen Namen; der Mantel ist die Fläche rundherum."
     },
@@ -85,16 +93,22 @@
       "hinfuehrung": "Bei einem Prisma musst du nicht jede Kante zählen. Aus der Eckenzahl der Grundfläche folgt alles mit einer festen Regel.",
       "erklaerung": [
         "Hat die Grundfläche n Ecken, so hat das Prisma: n + 2 Flächen (Mantel + 2 Grundflächen), 3 · n Kanten und 2 · n Ecken.",
-        "Diese Regel gilt, weil sich die Grundfläche oben und unten wiederholt und der Mantel n Seitenflächen bildet."
+        "Diese Regel gilt, weil sich die Grundfläche oben und unten wiederholt und der Mantel n Seitenflächen bildet.",
+        "Die Kantenzahl 3n zerfällt in drei Gruppen: n Kanten unten, n Kanten oben und n senkrechte Kanten, die beide verbinden. So lässt sich die Formel herleiten statt auswendig lernen.",
+        "Die Eckenzahl 2n folgt genauso: Jede Ecke der Grundfläche kommt zweimal vor, einmal unten und einmal oben. Senkrechte Verbindungen erzeugen keine neuen Ecken.",
+        "Eine Kontrolle für jede Herleitung ist der Eulersche Polyedersatz: Ecken minus Kanten plus Flächen ergibt bei jedem solchen Körper 2. Für das Prisma: 2n − 3n + (n + 2) = 2  ✓"
       ],
       "beispiel": {
-        "aufgabe": "Wie viele Flächen, Kanten und Ecken hat ein Sechseck-Prisma (n = 6)?",
+        "titel": "Regel anwenden und mit dem Polyedersatz prüfen",
+        "aufgabe": "Wie viele Flächen, Kanten und Ecken hat ein Sechseck-Prisma? Prüfe das Ergebnis.",
         "schritte": [
-          "Flächen = n + 2 = 6 + 2 = 8",
-          "Kanten  = 3 · n = 3 · 6 = 18",
-          "Ecken   = 2 · n = 2 · 6 = 12"
+          "n = 6, denn die Grundfläche ist ein Sechseck",
+          "Flächen = n + 2 = 6 + 2 = 8   (Mantel mit 6 Rechtecken plus 2 Sechsecke)",
+          "Kanten  = 3 · n = 3 · 6 = 18  (6 unten, 6 oben, 6 senkrecht)",
+          "Ecken   = 2 · n = 2 · 6 = 12  (jede Grundflächenecke zweimal)",
+          "Kontrolle mit dem Polyedersatz: 12 − 18 + 8 = 2  ✓"
         ],
-        "ergebnis": "8 Flächen, 18 Kanten, 12 Ecken."
+        "ergebnis": "8 Flächen, 18 Kanten, 12 Ecken. Die Zerlegung in drei Kantengruppen macht aus der Formel eine Herleitung, und der Polyedersatz bestätigt sie unabhängig."
       },
       "merke": "n-Eck-Prisma: n + 2 Flächen, 3n Kanten, 2n Ecken.",
       "visual": {

@@ -31,8 +31,11 @@
       "hinfuehrung": "Der Würfel hat 6 gleiche Quadrate.",
       "erklaerung": [
         "Ein Quadrat hat die Fläche a · a.",
-        "Nimm diese Fläche mal 6.",
-        "Die Oberfläche ist eine Fläche. Die Einheit bekommt deshalb eine kleine 2 oben: cm²."
+        "Man schreibt dafür kurz a².",
+        "Alle 6 Flächen sind gleich groß.",
+        "Nimm die Fläche von einem Quadrat mal 6.",
+        "Die Oberfläche ist eine Fläche. Die Einheit bekommt deshalb eine kleine 2 oben: cm².",
+        "Die Oberfläche ist das ganze Papier, das den Würfel einwickelt."
       ],
       "visual": {
         "type": "animation",
@@ -40,17 +43,18 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Sechs gleiche Quadrate",
         "aufgabe": "Berechne die Oberfläche von einem Würfel mit a = 5 cm.",
         "schritte": [
           "eine Fläche = a² = 5 cm · 5 cm = 25 cm²",
           "O = 6 · 25 cm² = 150 cm²"
         ],
+        "ergebnis": "O = 150 cm².",
         "luecke": {
           "schritt": 1,
           "wert": 150,
           "einheit": "cm²"
-        },
-        "ergebnis": "O = 150 cm²."
+        }
       },
       "merke": "Würfel: O = 6 · a²."
     },
@@ -59,7 +63,9 @@
       "hinfuehrung": "Der Quader hat drei verschiedene Flächenpaare. Du rechnest jedes Paar einmal aus und addierst.",
       "erklaerung": [
         "Gegenüberliegende Flächen sind gleich groß: vorn/hinten, links/rechts, oben/unten.",
-        "O = 2 · (a·b + a·c + b·c) – die drei Rechtecke einmal berechnen, verdoppeln, addieren."
+        "O = 2 · (a·b + a·c + b·c) – die drei Rechtecke einmal berechnen, verdoppeln, addieren.",
+        "Die drei Produkte entstehen dadurch, dass jede Fläche von zwei der drei Kanten aufgespannt wird. Aus drei Kanten lassen sich genau drei Paare bilden — mehr Flächenarten kann ein Quader nicht haben.",
+        "Der Würfel ist darin enthalten: Sind alle Kanten gleich lang, werden alle drei Produkte zu a², und aus 2 · 3 · a² wird 6 · a². Es ist also nicht eine zweite Formel, sondern derselbe Gedanke im Sonderfall."
       ],
       "visual": {
         "type": "animation",
@@ -67,13 +73,16 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Drei Flächenpaare des Quaders",
         "aufgabe": "Quader mit a = 4 cm, b = 3 cm, c = 2 cm. Berechne O.",
         "schritte": [
+          "die drei verschiedenen Rechtecke:",
           "a·b = 4·3 = 12,  a·c = 4·2 = 8,  b·c = 3·2 = 6",
-          "Summe = 12 + 8 + 6 = 26",
-          "O = 2 · 26 = 52 cm²"
+          "Summe der drei = 12 + 8 + 6 = 26",
+          "jede kommt doppelt vor: O = 2 · 26 = 52 cm²",
+          "Einheit prüfen: cm · cm = cm², eine Fläche  ✓"
         ],
-        "ergebnis": "O = 52 cm²."
+        "ergebnis": "O = 52 cm². Die drei Produkte sind die drei Flächenarten, der Faktor 2 zählt die jeweils gegenüberliegende mit."
       },
       "merke": "Quader: O = 2 · (a·b + a·c + b·c)."
     },
@@ -82,16 +91,23 @@
       "hinfuehrung": "In Sachaufgaben stehen die Kanten manchmal in verschiedenen Einheiten. Erst gleichnamig machen, dann rechnen.",
       "erklaerung": [
         "Wandle alle Längen in dieselbe Einheit um, bevor du multiplizierst – sonst stimmt das Ergebnis nicht.",
-        "Gib am Ende die passende Flächeneinheit an und prüfe die Größenordnung."
+        "Gib am Ende die passende Flächeneinheit an und prüfe die Größenordnung.",
+        "Warum funktioniert Rechnen mit gemischten Einheiten nicht? Weil ein Produkt wie 1 m · 80 cm keine sinnvolle Einheit hat. Erst wenn beide Faktoren dieselbe Einheit tragen, ergibt das Produkt eine Fläche in m² oder cm².",
+        "Welche gemeinsame Einheit du wählst, ist frei, aber nicht gleichgültig. Nimm die, in der das Ergebnis gefragt ist — dann entfällt jede Umrechnung am Schluss, und genau dort passieren die Fehler.",
+        "Die Plausibilitätsprobe zum Schluss ist billig: Ein Karton von etwa einem Meter Kantenlänge hat wenige Quadratmeter Oberfläche. Kommt 34 000 heraus, ist irgendwo cm mit m verwechselt worden."
       ],
       "beispiel": {
+        "titel": "Gemischte Einheiten gleichnamig machen",
         "aufgabe": "Eine Kiste: a = 1 m, b = 80 cm, c = 50 cm. Oberfläche in m²?",
         "schritte": [
-          "gleichnamig: b = 0,8 m, c = 0,5 m",
-          "a·b + a·c + b·c = 0,8 + 0,5 + 0,4 = 1,7",
-          "O = 2 · 1,7 = 3,4 m²"
+          "Zieleinheit ist m², also alles in Meter umrechnen:",
+          "b = 80 cm = 0,8 m,   c = 50 cm = 0,5 m",
+          "a·b = 1 · 0,8 = 0,8;  a·c = 1 · 0,5 = 0,5;  b·c = 0,8 · 0,5 = 0,4",
+          "Summe = 0,8 + 0,5 + 0,4 = 1,7",
+          "O = 2 · 1,7 = 3,4 m²",
+          "Plausibilität: eine Kiste von rund einem Meter — wenige Quadratmeter Karton  ✓"
         ],
-        "ergebnis": "O = 3,4 m²."
+        "ergebnis": "O = 3,4 m². Weil die Antwort in m² verlangt war, wurde gleich in Meter gerechnet — so entfällt jede Umrechnung am Schluss."
       },
       "merke": "Erst alle Längen gleichnamig, dann die Oberfläche berechnen.",
       "visual": {

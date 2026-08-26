@@ -245,6 +245,115 @@ async function loadLernzeit(){
   }).join(''):'<tr><td colspan="5" class="muted">Noch keine Lernzeit erfasst.</td></tr>';
 }
 
+/* ---------- Abschlussquiz und Notengebung  (V36) ----------
+   Fortschritt, Lernzeit und Denkfehler beschreiben den Weg. Für eine Note
+   fehlte bis V35 die Messung des Ergebnisses — und zwar eine, bei der
+   dabeisteht, WORAUF sie sich bezieht. Genau das leistet das
+   Abschlussquiz: fünf Fragen, ausschließlich aus der eben bearbeiteten
+   Einheit, gewertet wird der erste Lauf je Kind und Einheit. Sonst
+   entschiede die Zahl der Versuche über die Note.
+
+   Zwei Wege zur Note, und die Wahl trifft die Lehrkraft je Kind:
+
+     Einzelnoten     Mittel aller gewerteten Läufe. Das übliche Verfahren.
+     Lernfortschritt Der Stand am Ende, zuzüglich der Verbesserung
+                     gegenüber dem Anfang. Für Kinder, bei denen der
+                     Mittelwert die Entwicklung verdeckt statt sie zu zeigen.
+
+   Gerechnet wird beides in der Datenbank (mathe9_quiz_uebersicht). Eine
+   Notenskala gehört an eine Stelle und nicht in jeden Client — sonst steht
+   in einem halben Jahr in zwei Dateien eine andere.
+
+   Zwei Tabellen, weil zwei verschiedene Fragen dahinterstehen: „Wie steht
+   dieses Kind?" und „Ist diese Einheit angekommen?". Die zweite ist keine
+   Bewertung von Kindern, sondern eine des Materials. */
+async function loadQuiz(){
+  const koerper=$('#quizBody');
+  if(!koerper)return;
+  const cls=$('#classFilter').value.trim();
+  const tage=Number($('#quizTage')?.value)||180;
+  const nurUnterricht=$('#quizHerkunft')?.value==='unterricht';
+  const argumente={p_klasse:cls||null,p_tage:tage,p_nur_unterricht:nurUnterricht};
+
+  let zeilen=[],einheiten=[];
+  try{
+    [zeilen,einheiten]=await Promise.all([
+      request(rest()+'rpc/mathe9_quiz_uebersicht',{method:'POST',body:JSON.stringify(argumente)}),
+      request(rest()+'rpc/mathe9_quiz_einheiten',{method:'POST',body:JSON.stringify(argumente)})
+    ]);
+    zeilen=zeilen||[];einheiten=einheiten||[];
+  }catch(e){
+    koerper.innerHTML='<tr><td colspan="9" class="muted">Quizübersicht nicht abrufbar — supabase/setup.sql erneut ausführen.</td></tr>';
+    if($('#quizAnzeige'))$('#quizAnzeige').textContent='nicht verfügbar';
+    return;
+  }
+
+  const mitLauf=zeilen.filter(z=>(z.laeufe||0)>0);
+  if($('#quizAnzeige')){
+    $('#quizAnzeige').textContent=mitLauf.length
+      ? `${mitLauf.length} von ${zeilen.length} mit gewerteten Quizzen`
+      : 'noch keine gewerteten Quizze';
+  }
+
+  const prozent=v=>v==null?'–':Math.round(Number(v)*100)+' %';
+  /* Die Entwicklung als Zahl, nicht als Pfeil: „von 48 auf 71 %" sagt mehr
+     als ein grüner Haken, und es lässt sich in einer Konferenz vorlesen. */
+  const entwicklung=z=>{
+    if(z.quote_frueh==null||z.quote_spaet==null)return '–';
+    const d=Math.round((z.quote_spaet-z.quote_frueh)*100);
+    return `${prozent(z.quote_frueh)} → ${prozent(z.quote_spaet)} <span class="${d>0?'good':(d<0?'bad':'')}">(${d>0?'+':''}${d})</span>`;
+  };
+
+  koerper.innerHTML=zeilen.length?zeilen.map(z=>{
+    const art=z.bewertungsart==='fortschritt'?'fortschritt':'note';
+    const wahl=`<select data-bewertung="${esc(z.student_id)}">
+        <option value="note"${art==='note'?' selected':''}>Einzelnoten</option>
+        <option value="fortschritt"${art==='fortschritt'?' selected':''}>Lernfortschritt</option>
+      </select>`;
+    const note=z.note==null?'–':`<b class="note note-${z.note}">${z.note}</b>`;
+    /* Nicht die Quote, sondern die Einheit: „PZ-08" sagt der Lehrkraft,
+       was zu wiederholen ist. „61 %" sagt ihr gar nichts. */
+    const schwach=(z.schwache_einheiten||[]).length
+      ? (z.schwache_einheiten||[]).map(u=>`<span class="badge">${esc(String(u).toUpperCase())}</span>`).join(' ')
+      : '–';
+    return `<tr><td>${esc(z.name)}</td><td>${wahl}</td><td>${z.laeufe||0}</td><td>${z.einheiten||0}</td>
+      <td>${prozent(z.quote_gesamt)}</td><td>${entwicklung(z)}</td>
+      <td>${note}</td><td>${z.letzter_lauf?esc(z.letzter_lauf):'–'}</td><td>${schwach}</td></tr>`;
+  }).join(''):'<tr><td colspan="9" class="muted">Keine Lernenden in dieser Lerngruppe.</td></tr>';
+
+  const eKoerper=$('#quizEinheitenBody');
+  if(eKoerper){
+    eKoerper.innerHTML=einheiten.length?einheiten.map(e=>{
+      const kritisch=e.quote!=null&&Number(e.quote)<0.6;
+      return `<tr class="${kritisch?'warnZeile':''}"><td><b>${esc(String(e.unit).toUpperCase())}</b></td>
+        <td>${e.bereich?esc(String(e.bereich).toUpperCase()):'–'}</td>
+        <td>${e.kinder||0}</td><td>${e.laeufe||0}</td>
+        <td>${prozent(e.quote)}</td><td>${e.unter_der_haelfte||0}</td>
+        <td>${e.haeufigste_schwaeche?`<span class="badge">${esc(e.haeufigste_schwaeche)}</span>`:'–'}</td></tr>`;
+    }).join(''):'<tr><td colspan="7" class="muted">Noch keine gewerteten Quizläufe im Zeitraum.</td></tr>';
+  }
+}
+
+/* Die Bewertungsart gehört zum Kind, nicht zum Zeitraum: Sie steht in
+   mathe9_students und gilt für jede Auswertung, die dieses Kind betrifft. */
+async function bewertungsartAendern(event){
+  const feld=event.target.closest('[data-bewertung]');
+  if(!feld)return;
+  const m=$('#quizMeldung');
+  try{
+    await request(rest()+'rpc/mathe9_bewertungsart_setzen',{method:'POST',
+      body:JSON.stringify({p_student:feld.dataset.bewertung,p_art:feld.value})});
+    m.textContent=feld.value==='fortschritt'
+      ? 'Bewertung erfolgt jetzt nach dem individuellen Lernfortschritt.'
+      : 'Bewertung erfolgt jetzt nach den Einzelnoten.';
+    m.className='message good';m.hidden=false;setTimeout(()=>m.hidden=true,4000);
+    await loadQuiz();
+  }catch(e){
+    m.textContent='Änderung fehlgeschlagen: '+e.message;m.className='message bad';m.hidden=false;
+    await loadQuiz();
+  }
+}
+
 /* ---------- Betrieb und Datenpflege ----------
    Zwei Fragen, die im Unterrichtsalltag untergehen und dann im falschen
    Moment auffallen: Welche Fassung läuft auf den Geräten? Und löscht der
@@ -360,7 +469,7 @@ function renderRoster(rows){letzteRoster=rows||[];$('#rosterBody').innerHTML=row
 async function addStudent(event){event.preventDefault();const login=normalizeLogin($('#studentLogin').value),display=$('#studentDisplay').value.trim(),cls=$('#studentClass').value.trim();if(!validLogin(login)){rosterMessage('Benutzername muss nachname.vorname entsprechen.',true);return}try{await request(rest()+'mathe9_students',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify({login_name:login,display_name:display,class_code:cls,active:true})});event.target.reset();$('#studentClass').value=$('#classFilter').value.trim();rosterMessage('Schüler wurde freigeschaltet.');await loadRoster()}catch(e){rosterMessage('Hinzufügen fehlgeschlagen: '+e.message,true)}}
 async function rosterClick(event){const toggle=event.target.closest('[data-toggle]'),del=event.target.closest('[data-delete]');try{if(toggle){const active=toggle.dataset.active==='true';await request(rest()+'mathe9_students?id=eq.'+encodeURIComponent(toggle.dataset.toggle),{method:'PATCH',headers:{Prefer:'return=minimal'},body:JSON.stringify({active:!active})});rosterMessage(active?'Zugang wurde gesperrt.':'Zugang wurde freigegeben.')}else if(del){if(!confirm('Diesen Eintrag wirklich löschen?'))return;await request(rest()+'mathe9_students?id=eq.'+encodeURIComponent(del.dataset.delete),{method:'DELETE',headers:{Prefer:'return=minimal'}});rosterMessage('Eintrag wurde gelöscht.')}else return;await loadRoster()}catch(e){rosterMessage('Änderung fehlgeschlagen: '+e.message,true)}}
 
-async function loadDashboard(){const mins=Number($('#range').value),since=new Date(Date.now()-mins*60000).toISOString(),cls=$('#classFilter').value.trim(),cq=cls?'&class_code=eq.'+encodeURIComponent(cls):'';const [progress,events]=await Promise.all([request(rest()+'mathe9_progress?select=*&updated_at=gte.'+encodeURIComponent(since)+cq+'&order=updated_at.desc&limit=500'),request(rest()+'mathe9_events?select=*&ts=gte.'+encodeURIComponent(since)+cq+'&order=ts.desc&limit=2000')]);render(progress||[],events||[]);loadFreigaben(progress||[],events||[]);loadLernzeit()}
+async function loadDashboard(){const mins=Number($('#range').value),since=new Date(Date.now()-mins*60000).toISOString(),cls=$('#classFilter').value.trim(),cq=cls?'&class_code=eq.'+encodeURIComponent(cls):'';const [progress,events]=await Promise.all([request(rest()+'mathe9_progress?select=*&updated_at=gte.'+encodeURIComponent(since)+cq+'&order=updated_at.desc&limit=500'),request(rest()+'mathe9_events?select=*&ts=gte.'+encodeURIComponent(since)+cq+'&order=ts.desc&limit=2000')]);render(progress||[],events||[]);loadFreigaben(progress||[],events||[]);loadLernzeit();loadQuiz()}
 function zeitwert(e){const t=new Date(e?.ts||e?.updated_at||0).getTime();return Number.isFinite(t)?t:0}
 function sichereDauer(v){const n=Number(v);return Number.isFinite(n)&&n>0?Math.min(n,12*60*60*1000):null}
 
@@ -770,7 +879,7 @@ function start(){stop();timer=setInterval(()=>{
 function stop(){if(timer){clearInterval(timer);timer=null}}
 
 $('#teacherLogin').addEventListener('submit',async e=>{e.preventDefault();const err=$('#loginError');err.hidden=true;try{await signIn($('#teacherEmail').value.trim(),$('#teacherPassword').value);await appOeffnen()}catch(x){err.textContent='Anmeldung fehlgeschlagen: '+x.message;err.hidden=false}});
-$('#logout').addEventListener('click',signOut);$('#refresh').addEventListener('click',()=>{loadAll();loadOps()});$('#range').addEventListener('change',loadAll);$('#classFilter').addEventListener('change',()=>{ $('#studentClass').value=$('#classFilter').value.trim();loadAll()});$('#studentForm').addEventListener('submit',addStudent);$('#freigabeBody').addEventListener('click',freigabeKlick);$('#modusBewertung').addEventListener('click',()=>setzeModus('bewertung'));$('#modusUebung').addEventListener('click',()=>setzeModus('uebung'));$('#rosterBody').addEventListener('click',rosterClick);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&session)loadAll()});
+$('#logout').addEventListener('click',signOut);$('#refresh').addEventListener('click',()=>{loadAll();loadOps()});$('#range').addEventListener('change',loadAll);$('#classFilter').addEventListener('change',()=>{ $('#studentClass').value=$('#classFilter').value.trim();loadAll()});$('#studentForm').addEventListener('submit',addStudent);$('#freigabeBody').addEventListener('click',freigabeKlick);$('#modusBewertung').addEventListener('click',()=>setzeModus('bewertung'));$('#modusUebung').addEventListener('click',()=>setzeModus('uebung'));$('#rosterBody').addEventListener('click',rosterClick);$('#quizBody')?.addEventListener('change',bewertungsartAendern);$('#quizTage')?.addEventListener('change',loadQuiz);$('#quizHerkunft')?.addEventListener('change',loadQuiz);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&session)loadAll()});
 /* Grenzwerte gelten sofort: Wer sie im Unterricht nachjustiert, will das
    Ergebnis auf der Leinwand sehen und nicht erst nach dem nächsten Abruf. */
 ['#pingMaxFehler','#pingMaxSekunden','#beamerBezug'].forEach(feld=>{

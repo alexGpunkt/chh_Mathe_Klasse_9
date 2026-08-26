@@ -33,7 +33,11 @@
       "hinfuehrung": "Ein Prisma ist ein Stapel aus gleichen Flächen.",
       "erklaerung": [
         "Die Grundfläche G sieht unten und oben gleich aus.",
-        "Rechne V = G · h."
+        "Stell dir viele gleiche Scheiben übereinander vor.",
+        "Die Grundfläche ist eine Scheibe.",
+        "Die Höhe h sagt, wie hoch der Stapel ist.",
+        "Rechne V = G · h.",
+        "Das gilt für jedes Prisma. Die Grundfläche darf jede Form haben."
       ],
       "visual": {
         "type": "animation",
@@ -41,18 +45,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Grundfläche mal Höhe",
         "aufgabe": "Ein Prisma hat G = 12 cm² und h = 5 cm. Wie groß ist das Volumen?",
         "schritte": [
           "V = G · h",
           "V = 12 cm² · 5 cm",
           "V = 60 cm³"
         ],
+        "ergebnis": "V = 60 cm³. Aus cm² mal cm wird cm³.",
         "luecke": {
           "schritt": 2,
           "wert": 60,
           "einheit": "cm³"
-        },
-        "ergebnis": "V = 60 cm³."
+        }
       },
       "merke": "Prisma: V = G · h."
     },
@@ -61,7 +66,9 @@
       "hinfuehrung": "Oft ist die Grundfläche nicht gegeben, sondern ein Dreieck oder Trapez. Erst berechnest du G, dann V = G · h.",
       "erklaerung": [
         "Dreieck: G = (g · h_d) : 2 (Grundseite mal Dreieckshöhe, geteilt durch 2).",
-        "Trapez: G = (a + c) : 2 · h_d. Danach immer V = G · h."
+        "Trapez: G = (a + c) : 2 · h_d. Danach immer V = G · h.",
+        "Zwei Höhen treten hier auf, und sie zu verwechseln ist der Hauptfehler dieser Einheit: h_d ist die Höhe innerhalb der Grundfläche, h die Länge des Prismas. Nur h_d gehört in die Flächenformel.",
+        "Die Volumenformel selbst ändert sich dabei nie. Was sich ändert, ist allein der erste Schritt — welche Formel die Grundfläche liefert. Deshalb lohnt es, die Rechnung sichtbar in zwei Teile zu trennen."
       ],
       "visual": {
         "type": "animation",
@@ -69,13 +76,17 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Erst die Dreiecksfläche, dann das Volumen",
         "aufgabe": "Dreiecksprisma: g = 6 cm, h_d = 4 cm, Länge h = 10 cm. Volumen?",
         "schritte": [
+          "Schritt 1, die Grundfläche mit der Dreiecksformel:",
           "G = (g · h_d) : 2 = (6 · 4) : 2 = 12 cm²",
+          "Schritt 2, das Volumen mit der Prismenformel:",
           "V = G · h = 12 · 10",
-          "V = 120 cm³"
+          "V = 120 cm³",
+          "Höhen prüfen: h_d = 4 stand in der Fläche, h = 10 im Volumen  ✓"
         ],
-        "ergebnis": "V = 120 cm³."
+        "ergebnis": "V = 120 cm³. Die beiden Höhen h_d und h haben verschiedene Aufgaben — sie zu tauschen ist der häufigste Fehler."
       },
       "merke": "Erst G (Dreieck/Trapez) berechnen, dann V = G · h."
     },
@@ -84,16 +95,22 @@
       "hinfuehrung": "Ist die Grundfläche eine ungewöhnliche Form, zerlegst du sie in Rechtecke und Dreiecke, deren Flächen du addierst.",
       "erklaerung": [
         "Teile die Grundfläche in einfache Teilflächen, berechne jede und addiere sie zu G.",
-        "Dann wie immer V = G · h. Achte darauf, dass alle Teilflächen dieselbe Einheit haben."
+        "Dann wie immer V = G · h. Achte darauf, dass alle Teilflächen dieselbe Einheit haben.",
+        "Zerlegt wird nur die Grundfläche, nicht der Körper. Das ist der Vorteil des Prismas: Eine einzige Zerlegung in der Ebene erledigt die ganze Rechnung, weil die Höhe für alle Teile dieselbe ist.",
+        "Rechnerisch steckt dahinter das Distributivgesetz: G₁ · h + G₂ · h ist dasselbe wie (G₁ + G₂) · h. Deshalb darfst du die Teilflächen addieren und erst danach mit der Höhe multiplizieren.",
+        "Manchmal ist Abziehen kürzer als Zerlegen. Bei einer Grundfläche mit Aussparung rechnest du das umschließende Rechteck und ziehst das Loch ab — dasselbe Prinzip mit umgekehrtem Vorzeichen."
       ],
       "beispiel": {
+        "titel": "Grundfläche zerlegen und einmal mit der Höhe rechnen",
         "aufgabe": "Die Grundfläche ist ein Rechteck (5 · 4) mit aufgesetztem Dreieck (g = 5, h_d = 2). Höhe h = 8. Volumen?",
         "schritte": [
-          "Rechteck = 5 · 4 = 20 cm²",
-          "Dreieck = (5 · 2) : 2 = 5 cm²",
-          "G = 20 + 5 = 25 cm²  →  V = 25 · 8 = 200 cm³"
+          "Teilfläche 1, Rechteck: 5 · 4 = 20 cm²",
+          "Teilfläche 2, Dreieck: (5 · 2) : 2 = 5 cm²",
+          "G = 20 + 5 = 25 cm²",
+          "V = G · h = 25 · 8 = 200 cm³",
+          "Gegenprobe einzeln: 20 · 8 + 5 · 8 = 160 + 40 = 200 cm³  ✓ — dasselbe Ergebnis."
         ],
-        "ergebnis": "V = 200 cm³."
+        "ergebnis": "V = 200 cm³. Die Gegenprobe zeigt, warum das Zerlegen erlaubt ist: Erst addieren und dann mal h ist dasselbe wie einzeln mal h und dann addieren."
       },
       "merke": "Grundfläche in Teilflächen zerlegen, addieren, dann V = G · h.",
       "visual": {

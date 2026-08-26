@@ -29,8 +29,12 @@
       "titel": "Die Steigung am Dreieck ablesen",
       "hinfuehrung": "Die Steigung sagt, wie steil die Gerade ist.",
       "erklaerung": [
-        "Gehe vom Punkt 1 Kästchen nach rechts.",
-        "Zähle, wie viele Kästchen es nach oben geht. Das ist m."
+        "Suche einen Punkt auf der Geraden.",
+        "Gehe von dort 1 Kästchen nach rechts.",
+        "Zähle, wie viele Kästchen es nach oben geht. Das ist m.",
+        "Geht es nach unten, ist m negativ.",
+        "Eine große Zahl bedeutet eine steile Gerade.",
+        "Bei m = 0 ist die Gerade waagerecht."
       ],
       "visual": {
         "type": "animation",
@@ -38,18 +42,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Ein Kästchen nach rechts",
         "aufgabe": "1 nach rechts, 2 nach oben. Wie groß ist m?",
         "schritte": [
           "Δx = 1 (nach rechts)",
           "Δy = 2 (nach oben)",
           "m = 2 nach oben je 1 nach rechts"
         ],
+        "ergebnis": "Die Steigung ist m = 2.",
         "luecke": {
           "schritt": 2,
           "wert": 1,
           "einheit": "nach rechts"
-        },
-        "ergebnis": "Die Steigung ist m = 2."
+        }
       },
       "merke": "m = Kästchen nach oben je 1 nach rechts."
     },
@@ -58,7 +63,9 @@
       "hinfuehrung": "Steigung ist Höhenunterschied geteilt durch waagerechten Weg. Als Formel: m = Δy geteilt durch Δx – auch negativ und als Bruch.",
       "erklaerung": [
         "Δy ist der Unterschied nach oben (positiv) oder unten (negativ), Δx der Weg nach rechts.",
-        "Fällt die Gerade, ist Δy negativ, also m negativ. Passt es nicht glatt, bleibt m ein Bruch."
+        "Fällt die Gerade, ist Δy negativ, also m negativ. Passt es nicht glatt, bleibt m ein Bruch.",
+        "Δx wird immer nach rechts gezählt und ist deshalb positiv. Das Vorzeichen der Steigung kommt allein aus Δy — so kann es nicht zweimal auftreten und sich versehentlich aufheben.",
+        "Ein Bruch als Steigung ist kein unfertiges Ergebnis. m = 3/4 heißt: vier nach rechts, drei nach oben. Als Dezimalzahl 0,75 stimmt das ebenso, nur zeichnen lässt sich der Bruch leichter."
       ],
       "visual": {
         "type": "animation",
@@ -66,13 +73,16 @@
         "stufe": "B"
       },
       "beispiel": {
+        "titel": "Negative Steigung berechnen",
         "aufgabe": "Eine Gerade fällt um 2 auf 2 nach rechts. Bestimme m.",
         "schritte": [
-          "Δx = 2, Δy = −2",
+          "Δx = 2 (nach rechts, immer positiv)",
+          "Δy = −2 (nach unten, deshalb negativ)",
           "m = Δy : Δx = −2 : 2",
-          "m = −1"
+          "m = −1",
+          "Probe: m ist negativ, und die Gerade fällt  ✓"
         ],
-        "ergebnis": "m = −1 (fallende Gerade)."
+        "ergebnis": "m = −1. Die Gerade fällt um genau ein Kästchen je Schritt nach rechts."
       },
       "merke": "m = Δy : Δx. Fällt die Gerade, ist m negativ."
     },
@@ -81,7 +91,10 @@
       "hinfuehrung": "Egal wie groß du das Steigungsdreieck zeichnest – m bleibt gleich. Und aus zwei Punkten rechnest du m ganz ohne Bild.",
       "erklaerung": [
         "Verdoppelst du Δx, verdoppelt sich auch Δy – der Quotient m ändert sich nicht. Das ist der Kern des Steigungsbegriffs.",
-        "Aus zwei Punkten P(x1|y1), Q(x2|y2): m = (y2 − y1) : (x2 − x1)."
+        "Aus zwei Punkten P(x1|y1), Q(x2|y2): m = (y2 − y1) : (x2 − x1).",
+        "Praktisch heißt das: Zeichne das Dreieck möglichst groß und so, dass beide Ecken auf Gitterpunkten liegen. Ein kleines Dreieck vergrößert jeden Ablesefehler, ein großes verkleinert ihn.",
+        "In der Formel darfst du die beiden Punkte vertauschen, solange du oben und unten dieselbe Reihenfolge verwendest. Beide Differenzen wechseln dann das Vorzeichen, und der Quotient bleibt gleich.",
+        "Genau das ist der häufigste Fehler: oben y2 − y1 und unten x1 − x2. Dann steht das Vorzeichen falsch, und aus einer steigenden Geraden wird eine fallende."
       ],
       "visual": {
         "type": "animation",
@@ -89,13 +102,16 @@
         "stufe": "C"
       },
       "beispiel": {
-        "aufgabe": "Berechne m aus P(1 | 2) und Q(4 | 8).",
+        "titel": "m aus zwei Punkten — und die Reihenfolge prüfen",
+        "aufgabe": "Berechne m aus P(1 | 2) und Q(4 | 8). Rechne zur Kontrolle mit vertauschten Punkten.",
         "schritte": [
           "m = (y2 − y1) : (x2 − x1)",
           "m = (8 − 2) : (4 − 1)",
-          "m = 6 : 3 = 2"
+          "m = 6 : 3 = 2",
+          "Vertauscht gerechnet: (2 − 8) : (1 − 4) = (−6) : (−3) = 2  ✓ — gleiches Ergebnis",
+          "Falsch gemischt: (2 − 8) : (4 − 1) = −2 — hier wurde oben und unten verschieden herum gerechnet."
         ],
-        "ergebnis": "m = 2 – unabhängig von der Größe des Dreiecks."
+        "ergebnis": "m = 2, unabhängig von der Größe des Dreiecks und von der Reihenfolge der Punkte — solange oben und unten dieselbe Reihenfolge gilt."
       },
       "merke": "m = (y2 − y1) : (x2 − x1). Größeres Dreieck, gleiche Steigung."
     }

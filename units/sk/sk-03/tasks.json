@@ -30,8 +30,11 @@
       "titel": "Volumen der Pyramide",
       "hinfuehrung": "Die Pyramide fasst ein Drittel vom Prisma.",
       "erklaerung": [
-        "Rechne die Grundfläche mal die Höhe.",
-        "Teile das Ergebnis durch 3."
+        "Ein Prisma und eine Pyramide können gleich aussehen. Unten dieselbe Fläche, oben dieselbe Höhe.",
+        "Trotzdem passt in die Pyramide weniger hinein.",
+        "Genau dreimal die Pyramide füllt das Prisma.",
+        "Rechne deshalb erst die Grundfläche mal die Höhe.",
+        "Teile das Ergebnis danach durch 3."
       ],
       "visual": {
         "type": "animation",
@@ -39,18 +42,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Erst wie ein Prisma, dann durch 3",
         "aufgabe": "Eine Pyramide hat G = 30 cm² und h = 6 cm. Wie groß ist das Volumen?",
         "schritte": [
           "V = (G · h) : 3",
           "V = (30 · 6) : 3 = 180 : 3",
           "V = 60 cm³"
         ],
+        "ergebnis": "V = 60 cm³. Ein Prisma mit denselben Maßen fasste 180 cm³.",
         "luecke": {
           "schritt": 2,
           "wert": 60,
           "einheit": "cm³"
-        },
-        "ergebnis": "V = 60 cm³."
+        }
       },
       "merke": "Pyramide: V = (G · h) : 3."
     },
@@ -60,16 +64,21 @@
       "erklaerung": [
         "Grundfläche: G = a · a = a².",
         "Volumen: V = (a² · h) : 3.",
-        "Teile zum Schluss durch 3. Dieser Schritt wird am häufigsten vergessen."
+        "Teile zum Schluss durch 3. Dieser Schritt wird am häufigsten vergessen, weil die Rechnung auch ohne ihn fertig aussieht — im Aufgabenpool ist das mit Abstand der häufigste Fehler.",
+        "Eingesetzt wird die Körperhöhe h, nie die Seitenhöhe s. Steht in der Aufgabe nur s, musst du h erst mit dem Satz des Pythagoras bestimmen; s einzusetzen liefert ein zu großes Volumen.",
+        "Eine schnelle Kontrolle: Das Ergebnis muss deutlich kleiner sein als a² · h, nämlich genau ein Drittel davon. Wer im Kopf durch drei teilt, merkt einen vergessenen Schritt sofort."
       ],
       "beispiel": {
+        "titel": "Grundfläche, Volumen, Drittel",
         "aufgabe": "Quadratische Pyramide: a = 6 cm, h = 10 cm. Volumen?",
         "schritte": [
-          "G = a² = 6² = 36 cm²",
-          "V = (36 · 10) : 3 = 360 : 3",
-          "V = 120 cm³"
+          "Grundfläche: G = a² = 6² = 36 cm²",
+          "wie ein Prisma: 36 · 10 = 360 cm³",
+          "der entscheidende Schritt: V = 360 : 3",
+          "V = 120 cm³",
+          "Kontrolle: Eingesetzt wurde h = 10, die Körperhöhe — nicht die Seitenhöhe  ✓"
         ],
-        "ergebnis": "V = 120 cm³."
+        "ergebnis": "V = 120 cm³. Ohne das Teilen durch 3 stünde hier 360 cm³ — dreimal zu viel."
       },
       "merke": "Quadratische Pyramide: V = (a² · h) : 3.",
       "visual": {
@@ -82,17 +91,23 @@
       "titel": "Sachaufgaben und Vergleich mit dem Prisma",
       "hinfuehrung": "Der Faktor ⅓ hat eine anschauliche Bedeutung: Drei gleiche Pyramiden füllen genau ein Prisma.",
       "erklaerung": [
-        "Bei Sachaufgaben (Zelt, Dach, Spitze) zuerst Grundfläche und Höhe klären, dann V = (G · h) : 3.",
-        "Vergleich: Prisma V = G · h, Pyramide V = (G · h) : 3 – die Pyramide fasst genau ein Drittel."
+        "Bei Sachaufgaben zu Zelt, Dach oder Spitze zuerst Grundfläche und Höhe klären, dann V = (G · h) : 3.",
+        "Vergleich: Prisma V = G · h, Pyramide V = (G · h) : 3 – die Pyramide fasst genau ein Drittel.",
+        "Das Drittel ist kein Näherungswert und keine Faustregel, sondern exakt. Ein Würfel lässt sich in genau drei deckungsgleiche Pyramiden zerlegen, deren gemeinsame Spitze in einer Würfelecke liegt — daher der Faktor.",
+        "Er gilt für jede Grundflächenform, also auch für Kegel und Zylinder. Wer das einmal verstanden hat, muss sich nicht zwei Formeln merken, sondern eine Regel: Spitzkörper fassen ein Drittel des Säulenkörpers mit gleicher Grundfläche und Höhe.",
+        "Für Überschläge ist der Faktor nützlich: Ein Zelt mit einer Grundfläche von 4 m² und 3 m Höhe fasst rund 4 m³ — deutlich weniger, als die 12 m³ des umschließenden Quaders vermuten lassen."
       ],
       "beispiel": {
+        "titel": "Prisma und Pyramide im Verhältnis 3 : 1",
         "aufgabe": "Ein Prisma und eine Pyramide haben G = 24 cm², h = 9 cm. Wie viel fasst jede?",
         "schritte": [
-          "Prisma: V = 24 · 9 = 216 cm³",
-          "Pyramide: V = 216 : 3 = 72 cm³",
-          "Verhältnis 3 : 1"
+          "Prisma: V = G · h = 24 · 9 = 216 cm³",
+          "Pyramide: V = (G · h) : 3 = 216 : 3 = 72 cm³",
+          "Verhältnis: 216 : 72 = 3 : 1",
+          "Deutung: Drei solche Pyramiden füllen dieses Prisma restlos aus.",
+          "Dieselbe Regel gilt für Kegel und Zylinder — nur die Grundflächenform wechselt."
         ],
-        "ergebnis": "Prisma 216 cm³, Pyramide 72 cm³ – ein Drittel."
+        "ergebnis": "Prisma 216 cm³, Pyramide 72 cm³ — genau ein Drittel. Der Faktor ist exakt und gilt für jede Grundflächenform."
       },
       "merke": "Drei Pyramiden füllen ein Prisma gleicher Grundfläche und Höhe.",
       "visual": {

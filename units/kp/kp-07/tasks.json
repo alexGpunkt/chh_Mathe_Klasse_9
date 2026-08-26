@@ -32,8 +32,12 @@
       "titel": "Volumen des Dreiecksprismas",
       "hinfuehrung": "Hier ist die Grundfläche ein Dreieck.",
       "erklaerung": [
+        "Ein Dreieck ist ein halbes Rechteck.",
+        "Deshalb teilst du bei der Dreiecksfläche durch 2.",
         "Rechne zuerst die Dreiecksfläche: G = (g · h_d) : 2.",
-        "Nimm G dann mal die Länge h."
+        "Nimm G dann mal die Länge h.",
+        "Die Länge h ist nicht die Höhe im Dreieck.",
+        "Es gibt hier zwei Höhen. Schreibe dazu, welche du meinst."
       ],
       "visual": {
         "type": "animation",
@@ -41,18 +45,19 @@
         "stufe": "A"
       },
       "beispiel": {
+        "titel": "Dreiecksfläche, dann Länge",
         "aufgabe": "g = 8 cm, h_d = 3 cm, Länge h = 12 cm. Wie groß ist das Volumen?",
         "schritte": [
           "G = (8 · 3) : 2 = 12 cm²",
           "V = G · h = 12 · 12",
           "V = 144 cm³"
         ],
+        "ergebnis": "V = 144 cm³.",
         "luecke": {
           "schritt": 2,
           "wert": 144,
           "einheit": "cm³"
-        },
-        "ergebnis": "V = 144 cm³."
+        }
       },
       "merke": "Erst G = (g · h_d) : 2. Dann V = G · h."
     },
@@ -61,16 +66,21 @@
       "hinfuehrung": "Ob Dreieck oder Trapez – der zweite Schritt bleibt gleich. Nur die Grundfläche wird anders berechnet.",
       "erklaerung": [
         "Trapez: G = (a + c) : 2 · h_d, mit den parallelen Seiten a und c.",
-        "Anschließend V = G · h."
+        "Anschließend V = G · h.",
+        "Die Trapezformel ist gut zu merken, wenn man sie liest als: mittlere Länge mal Höhe. Der Ausdruck (a + c) : 2 ist der Durchschnitt der beiden parallelen Seiten — das Trapez wird damit zu einem Rechteck derselben Fläche.",
+        "Der Sonderfall bestätigt das: Sind a und c gleich lang, ist der Durchschnitt genau diese Länge, und die Formel wird zur Rechteckformel. Ein Trapez mit gleich langen Parallelseiten ist ein Rechteck."
       ],
       "beispiel": {
+        "titel": "Trapez als mittlere Länge mal Höhe",
         "aufgabe": "Trapez-Prisma: a = 6 cm, c = 4 cm, h_d = 3 cm, Länge h = 10 cm. Volumen?",
         "schritte": [
-          "G = (6 + 4) : 2 · 3 = 5 · 3 = 15 cm²",
-          "V = 15 · 10",
-          "V = 150 cm³"
+          "mittlere Länge: (a + c) : 2 = (6 + 4) : 2 = 5 cm",
+          "G = 5 · h_d = 5 · 3 = 15 cm²",
+          "V = G · h = 15 · 10",
+          "V = 150 cm³",
+          "Plausibilität: Ein Rechteck von 5 · 3 hätte dieselbe Fläche — das Trapez liegt genau dazwischen  ✓"
         ],
-        "ergebnis": "V = 150 cm³."
+        "ergebnis": "V = 150 cm³. Gelesen als „mittlere Länge mal Höhe“ ist die Trapezformel nichts weiter als die Rechteckformel."
       },
       "merke": "Trapez: G = (a + c) : 2 · h_d, dann V = G · h.",
       "visual": {
@@ -84,16 +94,23 @@
       "hinfuehrung": "Reale Körper wie ein Dachfirst oder eine Rinne bestehen aus mehreren Prismen. Du rechnest die Teile und addierst.",
       "erklaerung": [
         "Zerlege den Körper in einfache Prismen, berechne jedes Volumen und addiere.",
-        "Bei Sachaufgaben zuerst die Einheiten prüfen und am Ende in eine sinnvolle Einheit (oft Liter) umrechnen."
+        "Bei Sachaufgaben zuerst die Einheiten prüfen und am Ende in eine sinnvolle Einheit (oft Liter) umrechnen.",
+        "Suche die Schnittlinie dort, wo sich die Querschnittsform ändert. Beim Haus ist das die Traufe: darunter ein Rechteck, darüber ein Dreieck — zwei Prismen mit derselben Länge.",
+        "Weil beide Teile dieselbe Länge haben, kannst du auch hier zuerst die Querschnittsflächen addieren und erst dann mit der Länge multiplizieren. Das spart eine Multiplikation und eine Fehlerquelle.",
+        "Prüfe am Schluss die Größenordnung im Sachzusammenhang. Ein Wohnhaus hat einige hundert Kubikmeter Rauminhalt; kommen mehrere tausend heraus, stimmt eine Einheit nicht."
       ],
       "beispiel": {
+        "titel": "Haus als zwei Prismen mit gemeinsamer Länge",
         "aufgabe": "Ein Haus-Querschnitt: Rechteck (6 · 3) plus Dachdreieck (g = 6, h_d = 2), Länge 10 m. Volumen?",
         "schritte": [
-          "Rechteckprisma: (6 · 3) · 10 = 180 m³",
-          "Dachprisma: ((6·2):2) · 10 = 6 · 10 = 60 m³",
-          "V = 180 + 60 = 240 m³"
+          "Schnittlinie an der Traufe: unten Rechteck, oben Dreieck",
+          "Rechteckprisma: (6 · 3) · 10 = 18 · 10 = 180 m³",
+          "Dachprisma: ((6 · 2) : 2) · 10 = 6 · 10 = 60 m³",
+          "V = 180 + 60 = 240 m³",
+          "Kürzer über die Querschnittsfläche: (18 + 6) · 10 = 24 · 10 = 240 m³  ✓",
+          "Plausibilität: ein kleines Wohnhaus, einige hundert Kubikmeter  ✓"
         ],
-        "ergebnis": "V = 240 m³."
+        "ergebnis": "V = 240 m³. Weil beide Teile dieselbe Länge haben, genügt eine einzige Multiplikation mit der Länge."
       },
       "merke": "In Teilprismen zerlegen, Volumen addieren.",
       "visual": {

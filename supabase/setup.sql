@@ -817,6 +817,16 @@ begin
     exception when undefined_table then
       null; -- ältere Installation ohne Lernzeittabelle
     end;
+
+    -- Quizergebnisse sind Bewertungsgrundlage und unterliegen derselben
+    -- Frist. Sie ohne Frist stehen zu lassen, wäre die einzige
+    -- personenbezogene Sammlung im Projekt, die nie endet.
+    begin
+      delete from public.mathe9_quiz_ergebnisse
+      where datum < (now() - make_interval(days => fortschritt_tage))::date;
+    exception when undefined_table then
+      null; -- ältere Installation ohne Quiztabelle
+    end;
   exception when others then
     update public.mathe9_wartung_laeufe
        set beendet_at = now(), erfolg = false, fehler = left(sqlerrm, 500)
@@ -944,7 +954,12 @@ begin
     'freigaben',   (select coalesce(jsonb_agg(to_jsonb(fr) order by fr.freigegeben_at), '[]'::jsonb)
                       from public.mathe9_freigaben fr where fr.student_id = kennung),
     'lernzeit',    (select coalesce(jsonb_agg(to_jsonb(lz) order by lz.datum), '[]'::jsonb)
-                      from public.mathe9_lernzeit lz where lz.student_id = kennung)
+                      from public.mathe9_lernzeit lz where lz.student_id = kennung),
+    -- Die Quizergebnisse begründen eine Note. Gerade sie gehören in eine
+    -- Auskunft: Wer wissen will, worauf seine Bewertung beruht, findet es
+    -- sonst nirgends.
+    'quiz',        (select coalesce(jsonb_agg(to_jsonb(qz) order by qz.datum, qz.id), '[]'::jsonb)
+                      from public.mathe9_quiz_ergebnisse qz where qz.student_id = kennung)
   ) into ergebnis;
   return ergebnis;
 end;
@@ -961,6 +976,7 @@ as $$
 declare
   n_ereignisse bigint;
   n_fortschritt bigint;
+  n_quiz bigint;
   n_schueler bigint;
   erlaubt boolean := false;
 begin
@@ -981,6 +997,17 @@ begin
   delete from public.mathe9_progress where student_id = kennung;
   get diagnostics n_fortschritt = row_count;
 
+  -- Der Fremdschluessel loescht die Quizergebnisse ohnehin mit dem
+  -- Schuelersatz. Hier stehen sie trotzdem einzeln: Eine Loeschauskunft,
+  -- die die Bewertungsgrundlage nicht nennt, beantwortet die Frage nicht,
+  -- die gestellt wurde.
+  begin
+    delete from public.mathe9_quiz_ergebnisse where student_id = kennung;
+    get diagnostics n_quiz = row_count;
+  exception when undefined_table then
+    n_quiz := 0; -- aeltere Installation ohne Quiztabelle
+  end;
+
   delete from public.mathe9_students where id = kennung;
   get diagnostics n_schueler = row_count;
 
@@ -988,6 +1015,8 @@ begin
     select 'mathe9_events'::text, n_ereignisse
     union all
     select 'mathe9_progress'::text, n_fortschritt
+    union all
+    select 'mathe9_quiz_ergebnisse'::text, n_quiz
     union all
     select 'mathe9_students'::text, n_schueler;
 end;
@@ -1812,6 +1841,449 @@ using (public.mathe9_ist_lehrkraft());
 grant select on public.mathe9_freigaben to authenticated;
 grant select on public.mathe9_lernzeit to authenticated;
 grant select on public.mathe9_unterricht to authenticated;
+
+
+-- ============================================================
+-- V36 · Abschlussquiz am Ende einer Lerneinheit
+--
+-- Bis V35 lieferte die Anwendung Fortschritt, Lernzeit und Denkfehler —
+-- alles Beobachtungen des Weges, keine Messung des Ergebnisses. Als
+-- Grundlage fuer eine Note taugt das nicht: Wer lange braucht und viele
+-- Tipps nutzt, kann am Ende trotzdem alles koennen, und umgekehrt.
+--
+-- Das Abschlussquiz schliesst die Luecke: fuenf Fragen ausschliesslich
+-- zum Inhalt der eben bearbeiteten Einheit und des gewaehlten Pfades.
+--
+-- Zwei Festlegungen, beide mit Grund:
+--
+--   1. Gewertet wird der erste Lauf je Kind und EINHEIT, nicht je Tag.
+--      Eine Einheit wird einmal erarbeitet; der Lauf unmittelbar danach
+--      ist der aussagekraeftige. Wer sie in einer Woche wiederholt, uebt.
+--
+--   2. Der Lauf wird auch ausserhalb des Bewertungsmodus aufgezeichnet.
+--      Eine Einheit, die zu Hause selbstaendig erarbeitet wird, ist der
+--      Regelfall dieses Projekts und nicht die Ausnahme. Ob solche
+--      Laeufe in die Note eingehen, entscheidet die Lehrkraft im
+--      Dashboard (Schalter "nur Laeufe aus dem Unterricht") - nicht das
+--      Geraet und nicht diese Datei. Festgehalten wird beides: das
+--      Ergebnis und die Frage, ob es im Unterricht entstanden ist.
+--
+-- Gespeichert werden Zaehlwerte und die Kennungen der Denkfehler, keine
+-- Antworttexte. Siehe DATENSCHUTZ.md.
+-- ============================================================
+
+-- Wonach wird dieses Kind bewertet? Die Entscheidung trifft die Lehrkraft
+-- je Person, nicht die Anwendung fuer alle:
+--
+--   note         Der Durchschnitt der einzelnen Ergebnisse.
+--   fortschritt  Die Entwicklung ueber die Zeit. Wer schwach anfaengt und
+--                besser wird, soll dafuer nicht mit dem Mittelwert der
+--                schwachen Anfaenge bezahlen.
+alter table public.mathe9_students
+  add column if not exists bewertungsart text not null default 'note';
+
+do $bwa$
+begin
+  if not exists (
+    select 1 from pg_constraint where conname = 'mathe9_students_bewertungsart'
+  ) then
+    alter table public.mathe9_students
+      add constraint mathe9_students_bewertungsart
+      check (bewertungsart in ('note', 'fortschritt'));
+  end if;
+end;
+$bwa$;
+
+
+create table if not exists public.mathe9_quiz_ergebnisse (
+  id bigint generated by default as identity primary key,
+
+  student_id uuid not null
+    references public.mathe9_students(id) on delete cascade,
+
+  datum date not null default (now() at time zone 'Europe/Berlin')::date,
+
+  -- Zu welcher Einheit? Kleingeschrieben wie ueberall sonst ("pz-08").
+  unit text not null,
+  -- Der Lernbereich, aus der Einheitenkennung abgeleitet ("pz"). Redundant,
+  -- aber die Auswertung je Bereich ist die haeufigste Frage der Lehrkraft;
+  -- ein like-Vergleich waere bei jedem Aufruf ein Tabellenscan.
+  bereich text,
+  pfad text,
+
+  aufgaben smallint not null,
+  richtig smallint not null,
+  dauer_s integer not null default 0,
+
+  -- Woran es lag: die IDs der getroffenen Fehlvorstellungen, bei
+  -- erzeugten Fragen die Art ("quiz_merksatz", "quiz_fachwort").
+  schwaechen text[] not null default array[]::text[],
+
+  -- Lief zu diesem Zeitpunkt der Bewertungsmodus? Also: im Unterricht
+  -- geschrieben oder zu Hause geuebt.
+  pflicht boolean not null default false,
+
+  -- Erster Lauf zu dieser Einheit - der, der zaehlt.
+  gewertet boolean not null default false,
+
+  erstellt_at timestamptz not null default now(),
+
+  constraint mathe9_quiz_anzahl check (aufgaben between 1 and 20),
+  constraint mathe9_quiz_richtig check (richtig between 0 and aufgaben),
+  constraint mathe9_quiz_pfad check (pfad is null or pfad in ('A', 'B', 'C'))
+);
+
+alter table public.mathe9_quiz_ergebnisse enable row level security;
+
+create index if not exists
+  mathe9_quiz_person_idx
+  on public.mathe9_quiz_ergebnisse (student_id, datum desc);
+
+create index if not exists
+  mathe9_quiz_einheit_idx
+  on public.mathe9_quiz_ergebnisse (unit, datum desc);
+
+create index if not exists
+  mathe9_quiz_gewertet_idx
+  on public.mathe9_quiz_ergebnisse (gewertet, datum desc)
+  where gewertet;
+
+-- Hoechstens ein gewerteter Lauf je Kind und Einheit. Die Regel steht als
+-- Index in der Datenbank und nicht nur in der Funktion: Zwei Geraete, die
+-- gleichzeitig melden, duerfen nicht zwei gewertete Laeufe erzeugen.
+create unique index if not exists
+  mathe9_quiz_ein_gewerteter_pro_einheit
+  on public.mathe9_quiz_ergebnisse (student_id, unit)
+  where gewertet;
+
+
+-- ------------------------------------------------------------
+-- Lehrkraftseite: Bewertungsart je Person festlegen
+-- ------------------------------------------------------------
+create or replace function public.mathe9_bewertungsart_setzen(
+  p_student uuid,
+  p_art text
+)
+returns text
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  gesetzt text;
+begin
+  if not public.mathe9_ist_lehrkraft() then
+    raise exception 'Nur freigeschaltete Lehrkraefte duerfen die Bewertungsart aendern.'
+      using errcode = '42501';
+  end if;
+  if p_art not in ('note', 'fortschritt') then
+    raise exception 'Unbekannte Bewertungsart: %', p_art;
+  end if;
+
+  update public.mathe9_students
+     set bewertungsart = p_art, updated_at = now()
+   where id = p_student
+  returning bewertungsart into gesetzt;
+
+  if gesetzt is null then
+    raise exception 'Unbekannte Person.';
+  end if;
+  return gesetzt;
+end;
+$fn$;
+
+revoke all on function public.mathe9_bewertungsart_setzen(uuid, text) from public, anon;
+grant execute on function public.mathe9_bewertungsart_setzen(uuid, text) to authenticated;
+
+
+-- ------------------------------------------------------------
+-- Quizergebnis melden  (Aufruf mit Schueler-Token)
+-- ------------------------------------------------------------
+create or replace function public.mathe9_quiz_melden(
+  p_unit text,
+  p_pfad text,
+  p_aufgaben integer,
+  p_richtig integer,
+  p_dauer_s integer default 0,
+  p_schwaechen text[] default array[]::text[]
+)
+returns table (gewertet boolean, quote numeric, pflicht boolean)
+language plpgsql
+security definer
+set search_path = public
+as $fn$
+declare
+  kind uuid;
+  aktuell public.mathe9_unterricht%rowtype;
+  ist_pflicht boolean;
+  wird_gewertet boolean;
+  n_aufgaben smallint;
+  n_richtig smallint;
+  einheit text;
+  reihe text;
+begin
+  kind := public.mathe9_token_student();
+  if kind is null then
+    raise exception 'Kein gueltiges Schueler-Sitzungstoken.' using errcode = '42501';
+  end if;
+
+  einheit := nullif(lower(trim(coalesce(p_unit, ''))), '');
+  if einheit is null then
+    raise exception 'Ohne Einheit gibt es kein Quizergebnis.' using errcode = '22023';
+  end if;
+  reihe := nullif(split_part(einheit, '-', 1), '');
+
+  -- Werte werden gedeckelt, nicht geglaubt. Ein Aufruf mit 500 richtigen
+  -- von 5 Fragen ist kein Ergebnis, sondern ein Angriff.
+  n_aufgaben := least(greatest(coalesce(p_aufgaben, 0), 1), 20);
+  n_richtig := least(greatest(coalesce(p_richtig, 0), 0), n_aufgaben);
+
+  select * into aktuell from public.mathe9_unterricht where id = 1;
+  ist_pflicht := aktuell.modus = 'bewertung'
+    and (aktuell.gilt_bis is null or aktuell.gilt_bis > now());
+
+  -- Gewertet wird der erste Lauf zu dieser Einheit.
+  wird_gewertet := not exists (
+    select 1 from public.mathe9_quiz_ergebnisse q
+    where q.student_id = kind
+      and q.unit = einheit
+      and q.gewertet
+  );
+
+  begin
+    insert into public.mathe9_quiz_ergebnisse
+      (student_id, unit, bereich, pfad, aufgaben, richtig, dauer_s,
+       schwaechen, pflicht, gewertet)
+    values
+      (kind, einheit, reihe,
+       nullif(upper(trim(coalesce(p_pfad, ''))), ''),
+       n_aufgaben, n_richtig,
+       least(greatest(coalesce(p_dauer_s, 0), 0), 3600),
+       coalesce(p_schwaechen, array[]::text[]),
+       ist_pflicht, wird_gewertet);
+  exception when unique_violation then
+    -- Zwei Geraete gleichzeitig. Der zweite Lauf wird als Uebung gefuehrt,
+    -- nicht verworfen - er ist ja trotzdem passiert.
+    wird_gewertet := false;
+    insert into public.mathe9_quiz_ergebnisse
+      (student_id, unit, bereich, pfad, aufgaben, richtig, dauer_s,
+       schwaechen, pflicht, gewertet)
+    values
+      (kind, einheit, reihe,
+       nullif(upper(trim(coalesce(p_pfad, ''))), ''),
+       n_aufgaben, n_richtig,
+       least(greatest(coalesce(p_dauer_s, 0), 0), 3600),
+       coalesce(p_schwaechen, array[]::text[]),
+       ist_pflicht, false);
+  end;
+
+  return query select
+    wird_gewertet,
+    round(n_richtig::numeric / n_aufgaben, 3),
+    ist_pflicht;
+end;
+$fn$;
+
+revoke all on function public.mathe9_quiz_melden(text, text, integer, integer, integer, text[]) from public;
+grant execute on function public.mathe9_quiz_melden(text, text, integer, integer, integer, text[]) to anon, authenticated;
+
+
+-- ------------------------------------------------------------
+-- Bewertungsuebersicht je Kind
+--
+-- Zwei Wege zur Note, und die Wahl trifft die Lehrkraft je Kind:
+--
+--   Einzelnoten     Mittel aller gewerteten Laeufe. Das uebliche Verfahren.
+--   Lernfortschritt Der Stand am Ende, zuzueglich der Verbesserung
+--                   gegenueber dem Anfang. Fuer Kinder, bei denen der
+--                   Mittelwert die Entwicklung verdeckt statt sie zu zeigen.
+--
+-- Gerechnet wird beides hier und nicht im Client: Eine Notenskala gehoert
+-- an eine Stelle, sonst steht in einem halben Jahr in zwei Dateien eine
+-- andere. Die Umrechnung folgt der Berliner Sekundarstufenskala.
+--
+-- p_nur_unterricht: Zaehlt nur, was im Bewertungsmodus geschrieben wurde.
+-- Ob ein zu Hause bearbeitetes Quiz eine Note begruenden darf, ist eine
+-- Frage der Fachkonferenz und keine der Datenbank - deshalb ein Schalter
+-- und keine feste Regel.
+-- ------------------------------------------------------------
+create or replace function public.mathe9_quiz_uebersicht(
+  p_klasse text default null,
+  p_tage integer default 180,
+  p_nur_unterricht boolean default false
+)
+returns table (
+  student_id uuid,
+  name text,
+  klasse text,
+  bewertungsart text,
+  laeufe integer,
+  einheiten integer,
+  aufgaben integer,
+  richtig integer,
+  quote_gesamt numeric,
+  quote_frueh numeric,
+  quote_spaet numeric,
+  punktwert numeric,
+  note smallint,
+  letzter_lauf date,
+  schwache_einheiten text[]
+)
+language sql
+stable
+security definer
+set search_path = public
+as $fn$
+  with fenster as (
+    select q.*,
+           row_number() over (partition by q.student_id order by q.datum, q.id) as lfd,
+           count(*) over (partition by q.student_id) as gesamt
+      from public.mathe9_quiz_ergebnisse q
+     where q.gewertet
+       and (not coalesce(p_nur_unterricht, false) or q.pflicht)
+       and q.datum >= (now() - make_interval(days => greatest(coalesce(p_tage, 180), 1)))::date
+  ),
+  je_person as (
+    select f.student_id,
+           count(*)::integer as laeufe,
+           count(distinct f.unit)::integer as einheiten,
+           sum(f.aufgaben)::integer as aufgaben,
+           sum(f.richtig)::integer as richtig,
+           round(sum(f.richtig)::numeric / nullif(sum(f.aufgaben), 0), 3) as quote_gesamt,
+           round(sum(f.richtig) filter (where f.lfd <= ceil(f.gesamt / 2.0))::numeric
+                 / nullif(sum(f.aufgaben) filter (where f.lfd <= ceil(f.gesamt / 2.0)), 0), 3)
+             as quote_frueh,
+           round(sum(f.richtig) filter (where f.lfd > ceil(f.gesamt / 2.0))::numeric
+                 / nullif(sum(f.aufgaben) filter (where f.lfd > ceil(f.gesamt / 2.0)), 0), 3)
+             as quote_spaet,
+           max(f.datum) as letzter_lauf,
+           -- Nicht "63 Prozent", sondern welche Einheit nicht sass.
+           (select array_agg(distinct g.unit)
+              from fenster g
+             where g.student_id = f.student_id
+               and g.richtig::numeric / g.aufgaben < 0.6) as schwache_einheiten
+      from fenster f
+     group by f.student_id
+  ),
+  bewertet as (
+    select s.id as student_id,
+           s.display_name as name,
+           s.class_code as klasse,
+           s.bewertungsart,
+           coalesce(p.laeufe, 0) as laeufe,
+           coalesce(p.einheiten, 0) as einheiten,
+           coalesce(p.aufgaben, 0) as aufgaben,
+           coalesce(p.richtig, 0) as richtig,
+           p.quote_gesamt,
+           p.quote_frueh,
+           p.quote_spaet,
+           case
+             when p.laeufe is null then null
+             when s.bewertungsart = 'fortschritt' then
+               least(1.0, coalesce(p.quote_spaet, p.quote_gesamt)
+                          + greatest(0, coalesce(p.quote_spaet, 0) - coalesce(p.quote_frueh, 0)))
+             else p.quote_gesamt
+           end as punktwert,
+           p.letzter_lauf,
+           coalesce(p.schwache_einheiten, array[]::text[]) as schwache_einheiten
+      from public.mathe9_students s
+      left join je_person p on p.student_id = s.id
+     where s.active
+       and (p_klasse is null or s.class_code = p_klasse)
+  )
+  select b.student_id, b.name, b.klasse, b.bewertungsart,
+         b.laeufe, b.einheiten, b.aufgaben, b.richtig,
+         b.quote_gesamt, b.quote_frueh, b.quote_spaet,
+         round(b.punktwert, 3),
+         case
+           when b.punktwert is null then null
+           when b.punktwert >= 0.92 then 1
+           when b.punktwert >= 0.81 then 2
+           when b.punktwert >= 0.67 then 3
+           when b.punktwert >= 0.50 then 4
+           when b.punktwert >= 0.30 then 5
+           else 6
+         end::smallint,
+         b.letzter_lauf,
+         b.schwache_einheiten
+    from bewertet b
+   order by b.name;
+$fn$;
+
+revoke all on function public.mathe9_quiz_uebersicht(text, integer, boolean) from public, anon;
+grant execute on function public.mathe9_quiz_uebersicht(text, integer, boolean) to authenticated;
+
+
+-- ------------------------------------------------------------
+-- Uebersicht je Einheit
+--
+-- Die Frage, die eine Bewertungstabelle nicht beantwortet: Lag es am
+-- Kind oder an der Stunde? Wenn zweiundzwanzig von fuenfundzwanzig
+-- Kindern in PZ-08 unter der Haelfte bleiben, war nicht die Klasse
+-- schwach, sondern die Einheit unklar.
+-- ------------------------------------------------------------
+create or replace function public.mathe9_quiz_einheiten(
+  p_klasse text default null,
+  p_tage integer default 180,
+  p_nur_unterricht boolean default false
+)
+returns table (
+  unit text,
+  bereich text,
+  kinder integer,
+  laeufe integer,
+  quote numeric,
+  unter_der_haelfte integer,
+  haeufigste_schwaeche text
+)
+language sql
+stable
+security definer
+set search_path = public
+as $fn$
+  with laeufe as (
+    select q.*
+      from public.mathe9_quiz_ergebnisse q
+      join public.mathe9_students s on s.id = q.student_id
+     where q.gewertet
+       and s.active
+       and (not coalesce(p_nur_unterricht, false) or q.pflicht)
+       and (p_klasse is null or s.class_code = p_klasse)
+       and q.datum >= (now() - make_interval(days => greatest(coalesce(p_tage, 180), 1)))::date
+  )
+  select l.unit,
+         max(l.bereich) as bereich,
+         count(distinct l.student_id)::integer as kinder,
+         count(*)::integer as laeufe,
+         round(sum(l.richtig)::numeric / nullif(sum(l.aufgaben), 0), 3) as quote,
+         count(*) filter (where l.richtig::numeric / l.aufgaben < 0.5)::integer as unter_der_haelfte,
+         (select oben.k from (
+            select unnest(g.schwaechen) as k, count(*) as n
+              from laeufe g
+             where g.unit = l.unit
+             group by 1
+             order by n desc, k
+             limit 1
+          ) oben) as haeufigste_schwaeche
+    from laeufe l
+   group by l.unit
+   order by quote nulls last, l.unit;
+$fn$;
+
+revoke all on function public.mathe9_quiz_einheiten(text, integer, boolean) from public, anon;
+grant execute on function public.mathe9_quiz_einheiten(text, integer, boolean) to authenticated;
+
+
+-- Die Schueler-App schreibt ausschliesslich ueber mathe9_quiz_melden().
+-- Direkten Tabellenzugriff bekommt sie nicht - sonst waeren die
+-- Ergebnisse der ganzen Klasse mit dem anon-Key lesbar.
+drop policy if exists "teachers read quiz" on public.mathe9_quiz_ergebnisse;
+
+create policy "teachers read quiz"
+on public.mathe9_quiz_ergebnisse for select to authenticated
+using (public.mathe9_ist_lehrkraft());
+
+grant select on public.mathe9_quiz_ergebnisse to authenticated;
 
 
 -- ============================================================

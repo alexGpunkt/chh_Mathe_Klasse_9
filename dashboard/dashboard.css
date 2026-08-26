@@ -16,3 +16,22 @@
 .beamerZeile select{min-width:210px}
 .beamerZeile button{background:#15233a;color:#fff;border:0;font-weight:700;min-height:44px}
 .beamerZeile button:hover{background:#26374f}
+
+/* ---------- Abschlussquiz und Notengebung (V36) ----------
+   Die Note steht als Ziffer da, nicht als Balken: Sie ist eine Ziffer, und
+   jede grafische Aufhuebschung wuerde eine Genauigkeit vortaeuschen, die
+   fuenf Fragen je Einheit nicht hergeben.
+
+   Die zweite Tabelle bewertet nicht Kinder, sondern Einheiten. Eine Zeile,
+   die dort rot steht, ist eine Aufgabe fuer die Unterrichtsvorbereitung und
+   keine fuer die Sprechstunde. */
+#quizPanel select{min-height:40px;border:1px solid #bdc8d3;border-radius:9px;padding:6px 10px;background:#fff}
+#quizPanel td span.good{color:#15834a;font-weight:700}
+#quizPanel td span.bad{color:#b44a31;font-weight:700}
+#quizPanel .badge{background:#eef2f7;border-radius:99px;padding:2px 9px;font-size:.78rem;margin-right:3px}
+#quizPanel .warnZeile td{background:#fff6f4}
+.quizUnterkopf{margin:22px 0 10px;font-size:.95rem;color:#667487}
+.note{display:inline-block;min-width:26px;text-align:center;border-radius:7px;padding:2px 6px}
+.note-1,.note-2{background:#eaf8ef;color:#116b3b}
+.note-3,.note-4{background:#fdf4e3;color:#8a5b00}
+.note-5,.note-6{background:#fff1ef;color:#982f23}
