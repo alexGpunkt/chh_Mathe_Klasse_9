@@ -1,0 +1,406 @@
+{
+  "unit": "EF-05",
+  "title": "Dreiecke: Umfang und Flächeninhalt",
+  "leitidee": "L2",
+  "standards": [
+    "K2",
+    "K4"
+  ],
+  "wortspeicher": [
+    "das Dreieck",
+    "die Grundseite",
+    "die zugehörige Höhe",
+    "der rechte Winkel",
+    "der Flächeninhalt"
+  ],
+  "worterklaerungen": {
+    "Dreieck": "Wichtiger Begriff für dreiecke: umfang und flächeninhalt.",
+    "Grundseite": "Wichtiger Begriff für dreiecke: umfang und flächeninhalt.",
+    "Zugehörige Höhe": "Wichtiger Begriff für dreiecke: umfang und flächeninhalt.",
+    "Rechte Winkel": "Wichtiger Begriff für dreiecke: umfang und flächeninhalt.",
+    "Flächeninhalt": "Wichtiger Begriff für dreiecke: umfang und flächeninhalt."
+  },
+  "can_do": {
+    "A": "Du bestimmst den Umfang eines Dreiecks.",
+    "B": "Du erkennst Grundseite und zugehörige senkrechte Höhe.",
+    "C": "Du berechnest und begründest A = g·h:2."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Dreiecke: Umfang und Flächeninhalt",
+      "hinfuehrung": "Der Umfang ist die Summe der drei Seiten.",
+      "erklaerung": [
+        "Der Umfang ist die Summe der drei Seiten.",
+        "Zu jeder Grundseite gehört eine Höhe, die senkrecht auf ihr steht.",
+        "Zwei gleiche Dreiecke ergeben ein Parallelogramm: deshalb wird g·h halbiert.",
+        "Arbeite mit einer Skizze und markiere jede gegebene Größe."
+      ],
+      "merke": "U = a + b + c",
+      "visual": {
+        "type": "animation",
+        "name": "dreieck-flaeche",
+        "stufe": "A"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Dreieckseiten 4 cm, 5 cm, 6 cm. Umfang?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "B": {
+      "titel": "Dreiecke: Umfang und Flächeninhalt",
+      "hinfuehrung": "Der Umfang ist die Summe der drei Seiten.",
+      "erklaerung": [
+        "Der Umfang ist die Summe der drei Seiten.",
+        "Zu jeder Grundseite gehört eine Höhe, die senkrecht auf ihr steht.",
+        "Zwei gleiche Dreiecke ergeben ein Parallelogramm: deshalb wird g·h halbiert.",
+        "Begründe jeden Rechenschritt mit Formel und Einheit."
+      ],
+      "merke": "A = g · h : 2",
+      "visual": {
+        "type": "animation",
+        "name": "dreieck-flaeche",
+        "stufe": "B"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Dreieckseiten 4 cm, 5 cm, 6 cm. Umfang?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "C": {
+      "titel": "Dreiecke: Umfang und Flächeninhalt",
+      "hinfuehrung": "Der Umfang ist die Summe der drei Seiten.",
+      "erklaerung": [
+        "Der Umfang ist die Summe der drei Seiten.",
+        "Zu jeder Grundseite gehört eine Höhe, die senkrecht auf ihr steht.",
+        "Zwei gleiche Dreiecke ergeben ein Parallelogramm: deshalb wird g·h halbiert.",
+        "Vergleiche auch einen zweiten Lösungsweg und prüfe die Größenordnung."
+      ],
+      "merke": "h = 2A : g",
+      "visual": {
+        "type": "animation",
+        "name": "dreieck-flaeche",
+        "stufe": "C"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Dreieckseiten 4 cm, 5 cm, 6 cm. Umfang?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "U = a + b + c",
+      "A = g · h : 2",
+      "h = 2A : g"
+    ],
+    "saetze": [
+      "Ich suche den Umfang / die Fläche, weil …",
+      "Ich verwende die Formel …",
+      "Das Ergebnis ist plausibel, weil …"
+    ]
+  },
+  "videos": [
+    {
+      "titel": "Dreiecksfläche verständlich berechnen",
+      "url": "https://www.youtube.com/watch?v=KkAS3yWQAGk",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Umfang eines Dreiecks",
+      "url": "https://www.youtube.com/watch?v=5TpNWOmPoc0",
+      "quelle": "Lehrerschmidt"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "EF05-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Dreieckseiten 4 cm, 5 cm, 6 cm. Umfang?",
+      "answer": 15,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 15 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "g=8 cm, h=5 cm. Fläche?",
+      "answer": 20,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 20 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Die Höhe steht zur Grundseite ...",
+      "options": [
+        "parallel",
+        "senkrecht",
+        "beliebig"
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: senkrecht",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "g=10 m, h=6 m. Fläche?",
+      "answer": 30,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 30 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-B5-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "A=36 cm², g=9 cm. Höhe?",
+      "answer": 8,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 8 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-B6-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "A=45 cm², h=5 cm. Grundseite?",
+      "answer": 18,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 18 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-B7-007",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Warum wird durch 2 geteilt?",
+      "options": [
+        "Das Dreieck ist halb so groß wie das passende Parallelogramm.",
+        "Es hat zwei Seiten.",
+        "Die Höhe wird halbiert."
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Das Dreieck ist halb so groß wie das passende Parallelogramm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-B8-008",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Rechtwinkliges Dreieck mit Katheten 7 cm und 4 cm. Fläche?",
+      "answer": 14,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 14 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-B9-009",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Dreieck a=8 cm, b=9 cm, c=11 cm. Umfang?",
+      "answer": 28,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 28 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-B10-010",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "g=3,5 m, h=2,4 m. Fläche?",
+      "answer": 4.2,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 4,2 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-C11-011",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Dreieck und ein Rechteck haben g=12 cm und h=7 cm. Um wie viel cm² ist das Rechteck größer?",
+      "answer": 42,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 42 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-C12-012",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "A=63 cm², g=14 cm. h?",
+      "answer": 9,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 9 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-C13-013",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Welche Höhe gehört zur gewählten Grundseite?",
+      "options": [
+        "Eine senkrechte Strecke zur gegenüberliegenden Ecke.",
+        "Immer die längste Seite.",
+        "Jede schräge Strecke."
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Eine senkrechte Strecke zur gegenüberliegenden Ecke.",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    },
+    {
+      "id": "EF05-C14-014",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein dreieckiges Schild hat g=1,2 m und h=0,8 m. Fläche?",
+      "answer": 0.48,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 0,48 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-05"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,406 @@
+{
+  "unit": "EF-04",
+  "title": "Flächeninhalt von Rechteck und Quadrat",
+  "leitidee": "L2",
+  "standards": [
+    "K2",
+    "K4"
+  ],
+  "wortspeicher": [
+    "der Flächeninhalt",
+    "die Grundseite",
+    "die Höhe",
+    "die Flächeneinheit",
+    "das Quadrat"
+  ],
+  "worterklaerungen": {
+    "Flächeninhalt": "Wichtiger Begriff für flächeninhalt von rechteck und quadrat.",
+    "Grundseite": "Wichtiger Begriff für flächeninhalt von rechteck und quadrat.",
+    "Höhe": "Wichtiger Begriff für flächeninhalt von rechteck und quadrat.",
+    "Flächeneinheit": "Wichtiger Begriff für flächeninhalt von rechteck und quadrat.",
+    "Quadrat": "Wichtiger Begriff für flächeninhalt von rechteck und quadrat."
+  },
+  "can_do": {
+    "A": "Du legst Flächen mit Einheitsquadraten aus.",
+    "B": "Du berechnest A = a·b und A = a².",
+    "C": "Du bestimmst fehlende Seiten aus einer Fläche."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Flächeninhalt von Rechteck und Quadrat",
+      "hinfuehrung": "Der Flächeninhalt sagt, wie viele Einheitsquadrate eine Figur bedecken.",
+      "erklaerung": [
+        "Der Flächeninhalt sagt, wie viele Einheitsquadrate eine Figur bedecken.",
+        "Beim Rechteck rechnest du Länge mal Breite.",
+        "Flächen werden in mm², cm², dm², m² oder km² angegeben.",
+        "Arbeite mit einer Skizze und markiere jede gegebene Größe."
+      ],
+      "merke": "Rechteck: A = a · b",
+      "visual": {
+        "type": "animation",
+        "name": "umfang-flaeche",
+        "stufe": "A"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Rechteck: a=8 cm, b=5 cm. Fläche?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "B": {
+      "titel": "Flächeninhalt von Rechteck und Quadrat",
+      "hinfuehrung": "Der Flächeninhalt sagt, wie viele Einheitsquadrate eine Figur bedecken.",
+      "erklaerung": [
+        "Der Flächeninhalt sagt, wie viele Einheitsquadrate eine Figur bedecken.",
+        "Beim Rechteck rechnest du Länge mal Breite.",
+        "Flächen werden in mm², cm², dm², m² oder km² angegeben.",
+        "Begründe jeden Rechenschritt mit Formel und Einheit."
+      ],
+      "merke": "Quadrat: A = a²",
+      "visual": {
+        "type": "animation",
+        "name": "umfang-flaeche",
+        "stufe": "B"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Rechteck: a=8 cm, b=5 cm. Fläche?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "C": {
+      "titel": "Flächeninhalt von Rechteck und Quadrat",
+      "hinfuehrung": "Der Flächeninhalt sagt, wie viele Einheitsquadrate eine Figur bedecken.",
+      "erklaerung": [
+        "Der Flächeninhalt sagt, wie viele Einheitsquadrate eine Figur bedecken.",
+        "Beim Rechteck rechnest du Länge mal Breite.",
+        "Flächen werden in mm², cm², dm², m² oder km² angegeben.",
+        "Vergleiche auch einen zweiten Lösungsweg und prüfe die Größenordnung."
+      ],
+      "merke": "fehlende Seite im Rechteck: b = A : a",
+      "visual": {
+        "type": "animation",
+        "name": "umfang-flaeche",
+        "stufe": "C"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Rechteck: a=8 cm, b=5 cm. Fläche?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Rechteck: A = a · b",
+      "Quadrat: A = a²",
+      "fehlende Seite im Rechteck: b = A : a"
+    ],
+    "saetze": [
+      "Ich suche den Umfang / die Fläche, weil …",
+      "Ich verwende die Formel …",
+      "Das Ergebnis ist plausibel, weil …"
+    ]
+  },
+  "videos": [
+    {
+      "titel": "Fläche und Umfang beim Rechteck",
+      "url": "https://www.youtube.com/watch?v=aWWf6E9-jmQ",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Flächeninhalt des Quadrats",
+      "url": "https://www.youtube.com/watch?v=DYa-KjzzqaA",
+      "quelle": "Lehrerschmidt"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "EF04-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Rechteck: a=8 cm, b=5 cm. Fläche?",
+      "answer": 40,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 40 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Quadrat: a=7 cm. Fläche?",
+      "answer": 49,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 49 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welche Einheit hat ein Flächeninhalt?",
+      "options": [
+        "cm",
+        "cm²",
+        "cm³"
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: cm²",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Rechteck: A=54 cm², a=9 cm. b?",
+      "answer": 6,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 6 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-B5-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Rechteck: 12 m mal 4 m. Fläche?",
+      "answer": 48,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 48 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-B6-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Quadrat: A=81 cm². Seitenlänge?",
+      "answer": 9,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 9 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-B7-007",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welche Formel ist richtig?",
+      "options": [
+        "A=2a+2b",
+        "A=a·b",
+        "A=4a"
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: A=a·b",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-B8-008",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine Wand ist 5 m breit und 2,6 m hoch. Fläche?",
+      "answer": 13,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 13 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-B9-009",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Rechteck: a=2,5 m, b=1,6 m. Fläche?",
+      "answer": 4,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 4 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-B10-010",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Quadrat hat a=0,4 m. Fläche?",
+      "answer": 0.16,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 0,16 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-C11-011",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "A=96 cm² und b=8 cm. Bestimme a.",
+      "answer": 12,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 12 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-C12-012",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Rechteck wird in der Länge verdoppelt: 6 cm·4 cm wird zu 12 cm·4 cm. Neue Fläche?",
+      "answer": 48,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 48 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-C13-013",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Werden beide Quadratseiten verdoppelt, wird die Fläche ...",
+      "options": [
+        "doppelt",
+        "viermal so groß",
+        "achtmal so groß"
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: viermal so groß",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    },
+    {
+      "id": "EF04-C14-014",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Boden 4,5 m mal 3,2 m kostet 20 € je m². Gesamtkosten?",
+      "answer": 288,
+      "unit_label": "€",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 288 €.",
+      "tags": [
+        "ebene-figuren",
+        "ef-04"
+      ]
+    }
+  ]
+}

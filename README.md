@@ -3,16 +3,16 @@
 Differenzierte Lernwege fÃ¼r Jahrgang 9, Campus Hannah HÃ¶ch.
 Statische Website, keine AbhÃ¤ngigkeiten, kein Build-Step.
 
-**30 Einheiten Ã  60 Minuten Â· 420 Aufgaben.**
-**Spiral-Pool: 105 Generatoren in 7 Kategorien fÃ¼r das Warm-up â€Altes Wissen".**
+**64 Einheiten Ã  60 Minuten Â· 896 Aufgaben.**
+**Spiral-Pool: 120 Generatoren in 8 Kategorien fÃ¼r das Warm-up â€Altes Wissen".**
 **PrÃ¼fungstrainer, Arbeitsblatt-Druck, Kompetenzmatrix, Offline-Betrieb.**
 
 | Bereich | Einheiten | Stand |
 |---|---|---|
 | **PZ** Prozent & Zinsrechnung | 14 | vollstÃ¤ndig |
 | **LF** Lineare Funktionen | 16 | vollstÃ¤ndig |
-| **KP** WÃ¼rfel, Quader, Prisma, Zylinder | 0 von 12 | offen |
-| **SK** SpitzkÃ¶rper | 0 von 12 | offen |
+| **KP** WÃ¼rfel, Quader, Prisma, Zylinder | 12 | vollstÃ¤ndig |
+| **SK** SpitzkÃ¶rper | 12 | vollstÃ¤ndig |
 
 ## Einheiten Â· PZ
 
@@ -69,6 +69,56 @@ B: 0,25 â‚¬/min, Flat: 30 â‚¬). Die Schnittpunkte liegen bei 80, 120 und
 ist kein Zufall, sondern so gewÃ¤hlt: Ein Vergleich, bei dem eine Option nie
 sinnvoll ist, lehrt nichts.
 
+
+## Einheiten Â· KP (WÃ¼rfel, Quader, Prisma, Zylinder)
+
+| | Einheit | Schwerpunkt |
+|---|---|---|
+| **Grundlagen** | KP-01 | KÃ¶rper erkennen: Ecken, Kanten, FlÃ¤chen, Netze |
+| | KP-02 | Einheiten: Â·100 (FlÃ¤che) und Â·1000 (Volumen), Liter |
+| **WÃ¼rfel & Quader** | KP-03 | OberflÃ¤che: 6 Rechtecke |
+| | KP-04 | Volumen: aÂ·bÂ·c |
+| | KP-05 | RÃ¼ckwÃ¤rts: fehlende Kante aus V oder O |
+| **Prisma** | KP-06 | GrundflÃ¤che Â· HÃ¶he verstehen |
+| | KP-07 | Volumen (Dreieck, Trapez, L-Form) |
+| | KP-08 | OberflÃ¤che = 2Â·G + Mantel, mit Pythagoras |
+| **Zylinder** | KP-09 | Volumen V = Ï€Â·rÂ²Â·h |
+| | KP-10 | OberflÃ¤che: 2 Kreise + abgewickelter Mantel |
+| **Anwenden** | KP-11 | Zusammengesetzte KÃ¶rper, HohlkÃ¶rper, Dichte |
+| **PrÃ¼fung** | KP-12 | Volumen oder OberflÃ¤che selbst erkennen |
+
+**KP-08 und KP-09 sind mit W-GEO verzahnt** (Pythagoras fÃ¼r Dreiecksseiten,
+KreisflÃ¤che) â€” vgl. `spiral/plan.json`. KP-02 zieht W-EINH hoch.
+
+## Einheiten Â· SK (SpitzkÃ¶rper)
+
+| | Einheit | Schwerpunkt |
+|---|---|---|
+| **Pyramide** | SK-01 | Spitze, Grundkante, HÃ¶he, SeitenhÃ¶he |
+| | SK-02 | HÃ¶he, SeitenhÃ¶he, Grundkante mit Pythagoras |
+| | SK-03 | Volumen V = â…“Â·GÂ·h |
+| | SK-04 | OberflÃ¤che = GrundflÃ¤che + 4 Dreiecke |
+| | SK-05 | RÃ¼ckwÃ¤rts & gemischt |
+| **Kegel** | SK-06 | Mantellinie s = âˆš(rÂ²+hÂ²) |
+| | SK-07 | Volumen V = â…“Â·Ï€Â·rÂ²Â·h |
+| | SK-08 | OberflÃ¤che = Grundkreis + Mantelsektor |
+| | SK-09 | RÃ¼ckwÃ¤rts & gemischt |
+| **Kugel** | SK-10 | V = 4/3Â·Ï€Â·rÂ³, O = 4Â·Ï€Â·rÂ² |
+| **Anwenden** | SK-11 | EistÃ¼te, Silo, Turm â€” zusammengesetzt |
+| **PrÃ¼fung** | SK-12 | Pyramide, Kegel, Kugel unterscheiden |
+
+**Der Faktor â…“ ist der rote Faden der SpitzkÃ¶rper:** SK-03 und SK-07 machen
+sichtbar, dass Pyramide bzw. Kegel je genau ein Drittel des Prismas bzw.
+Zylinders gleicher GrundflÃ¤che und HÃ¶he sind. SK-04, SK-06 und SK-08 sind mit
+W-GEO verzahnt (Pythagoras). **Wichtig: Volumen braucht die senkrechte HÃ¶he h,
+die OberflÃ¤che die SeitenhÃ¶he/Mantellinie s** â€” dieser Unterschied ist die
+hÃ¤ufigste Fehlerquelle und in jeder Einheit als Fehlvorstellung hinterlegt.
+
+Jede KÃ¶rper-Einheit hat wie Ã¼berall 4 Basis Â· 6 Standard Â· 4 Vertiefung Ã¼ber
+die Stufen Einstieg â†’ GefÃ¼hrt â†’ Frei â†’ Transfer, mit gestuften Tipps,
+Rechenweg und Fehlvorstellungen. Aufgaben mit Ï€ geben Ï€ â‰ˆ 3,14 vor; die
+Toleranz akzeptiert auch das Rechnen mit der Ï€-Taste.
+
 ## Aufgabenbilder (`zeichnen.js`)
 
 Drei Typen, alle Ã¼ber das Feld `visual` an jeder Aufgabe:
@@ -90,7 +140,13 @@ Drei Typen, alle Ã¼ber das Feld `visual` an jeder Aufgabe:
 }
 
 "visual": { "type": "geogebra", "material_id": "abc123" }
+
+"visual": { "type": "koerper", "form": "quader",
+            "labels": { "a": "5 cm", "b": "3 cm", "c": "4 cm" },
+            "alt": "Ein Quader 5 Ã— 3 Ã— 4 cm." }
 ```
+
+Der Typ `koerper` zeichnet schematische SchrÃ¤gbilder als Inline-SVG (wie das Koordinatensystem: sofort geladen, offline, druckt in Graustufen). Formen: `wuerfel`, `quader`, `prisma`, `zylinder`, `pyramide`, `kegel`, `kugel`. Die Zeichnung ist bewusst **nicht maÃŸstÃ¤blich** â€” die Zahlen tragen die Beschriftungen (`labels`), genau wie im Schulbuch, damit dasselbe Bild fÃ¼r 4 cm und 40 cm passt. `alt` ist Pflicht.
 
 ### Warum kein GeoGebra fÃ¼r die Aufgabenbilder?
 
@@ -114,10 +170,331 @@ einen Geradenbaukasten zum freien Erkunden. Ohne `material_id` erscheint ein
 ehrlicher Platzhalter statt eines leeren Kastens; ist GeoGebra nicht
 erreichbar, sagt die Seite das, statt stumm zu bleiben.
 
+
+## Interaktive Animationen
+
+Die Anwendung enthÃ¤lt jetzt **41 interaktive Animationen** in jeweils drei
+Niveaustufen:
+
+- 10 zu Prozent- und Zinsrechnung (`PZ-01` bis `PZ-13`, thematisch gebÃ¼ndelt)
+- 10 zu linearen Funktionen
+- 10 zu KÃ¶rpern, Prismen und Zylindern (`KP-01` bis `KP-11`, thematisch gebÃ¼ndelt)
+- 10 zu SpitzkÃ¶rpern (`SK-01` bis `SK-11`, thematisch gebÃ¼ndelt)
+- 1 bereichsÃ¼bergreifende Signalwort-Animation fÃ¼r PZ-14, KP-12 und SK-12
+
+Die Lernkarten verwenden insgesamt **147 Animationsverweise**:
+
+- 39 in `PZ-01` bis `PZ-13`
+- 33 in den Einheiten zu linearen Funktionen
+- 33 in `KP-01` bis `KP-11`
+- 33 in `SK-01` bis `SK-11`
+- 9 in den drei PrÃ¼fungseinheiten PZ-14, KP-12 und SK-12
+
+`PZ-14`, `KP-12` und `SK-12` sind keine Themeneinheiten, sondern gemischte
+Trainings- und PrÃ¼fungsstunden. Ihr erster Schritt ist deshalb immer derselbe:
+Was ist Ã¼berhaupt gesucht? Genau das zeigt die Animation `signalwoerter` â€” ein
+Signalwort erscheint, der passende Kasten leuchtet auf. Die Galerie
+kann Ã¼ber `animationen.html?bereich=PZ`, `animationen.html?bereich=LF`,
+`animationen.html?bereich=KP` oder `animationen.html?bereich=SK` gefiltert
+geÃ¶ffnet werden.
+
+### Wenn mehrere Einheiten sich eine Animation teilen
+
+Dann trennt ein **eigenes Feld** die Themen â€” nicht die Niveaustufe. `stufe`
+meint immer die Niveaustufe, nie den Inhalt:
+
+```jsonc
+"visual": { "type": "animation", "name": "zinsen", "stufe": "A", "thema": "zeit" }
+```
+
+| Animation | Feld | Werte |
+|---|---|---|
+| `zinsen` | `thema` | `jahr` (PZ-11) Â· `zeit` (PZ-12) Â· `eszins` (PZ-13) |
+| `veraenderung` | `thema` | `rabatt` (PZ-09) Â· `richtung` (PZ-10) |
+| `rueckwaerts` | `form` | `pyramide` (SK-05) Â· `kegel` (SK-09) |
+| `signalwoerter` | `bereich` | `pz` (PZ-14) Â· `kp` (KP-12) Â· `sk` (SK-12) |
+| `schnittpunkt` | `rechnung` | `true` blendet die Rechenzeile auch auf Stufe A ein (LF-13) |
+
+`ANIM.block()` reicht das ganze `visual`-Objekt durch; fehlt eine Option, bleibt
+es beim Standardverhalten.
+
+### Vorhersage vor dem Start
+
+18 Animationen tragen eine kurze Frage Ã¼ber dem Bild (â€Was passiert mit der
+Geraden, wenn m grÃ¶ÃŸer wird?â€œ). **Das Bild startet erst nach der Antwort** â€”
+wer nur zusieht, prÃ¼ft nichts. Die Fragen stehen zentral in der Tabelle `FRAGEN`
+in `animationen.js`; eine Animation ohne Eintrag startet wie bisher sofort.
+
+### Bewegung nur im Blickfeld
+
+Ein `IntersectionObserver` startet jede Animation beim Einscrollen und pausiert
+sie beim Verlassen â€” sonst laufen auf einer Einheitenseite mehrere Endlos-
+schleifen gleichzeitig, auch weit auÃŸerhalb des Bildschirms. Wer selbst auf
+Pause drÃ¼ckt, behÃ¤lt die Pause. `prefers-reduced-motion` gilt vorrangig: dann
+gibt es keinen Autostart, nur ein Standbild.
+
+### Koordinatenfelder auf dem Handy
+
+`Feld()` hÃ¤lt die KÃ¤stchen quadratisch, solange HÃ¶he zu Breite unter 1,6 bleibt â€”
+das braucht das Steigungsdreieck. Erst darÃ¼ber skalieren die Achsen getrennt, wie
+im Schulbuch bei Sachkontexten mit Stunden und Euro. Ohne diese Grenze ergÃ¤be
+ein Tankgraph Ã¼ber 0â€¦100 Liter ein Bild im VerhÃ¤ltnis 1 : 18. Gitter und
+Achsenbeschriftung laufen in Schritten von 1, 2, 5, 10, 20 â€¦, damit aus 140
+Gitterlinien keine graue FlÃ¤che wird.
+
+
+## Externe Ãœbungen auf mehreren Plattformen
+
+Zu passenden Einheiten kÃ¶nnen zusÃ¤tzliche Ãœbungsangebote Ã¼ber den
+Top-Level-SchlÃ¼ssel `uebungslinks` in der jeweiligen `tasks.json` hinterlegt
+werden:
+
+```json
+"uebungslinks": [
+  {
+    "titel": "Aufgaben zur Prozentrechnung",
+    "url": "https://de.serlo.org/mathe/23869/aufgaben-zur-prozentrechnung",
+    "typ": "app",
+    "quelle": "Serlo"
+  },
+  {
+    "titel": "Sammlung â€Lineare Funktionenâ€œ",
+    "url": "https://learningapps.org/user/â€¦?displayfolder=â€¦",
+    "typ": "sammlung",
+    "quelle": "LearningApps"
+  }
+]
+```
+
+Die Einheitsseite zeigt daraus automatisch die aufklappbare Karte
+**â€Ãœben & Wiederholen Â· externe Ãœbungenâ€œ**. UnterstÃ¼tzt werden ausschlieÃŸlich
+HTTPS-Adressen der freigegebenen Plattformen:
+
+- LearningApps
+- Serlo
+- H5P beziehungsweise der Landesbildungsserver Baden-WÃ¼rttemberg
+- Learningsnacks
+- Quizlet
+- ZUM
+
+Die Plattform wird aus der tatsÃ¤chlichen Zieladresse bestimmt und als
+farbiger Quellenchip angezeigt. Unbekannte Hosts, unvollstÃ¤ndige EintrÃ¤ge und
+unsichere Protokolle werden nicht gerendert. Alle Links Ã¶ffnen mit
+`target="_blank"` und `rel="noopener noreferrer"`; das Ã–ffnen wird als
+`external_practice_open` protokolliert.
+
+Aktuell sind **88 Verweise in 39 Einheiten** hinterlegt:
+43 LearningApps, 29 Serlo,
+6 ZUM, 4 H5P,
+3 Learningsnacks und 3 Quizlet.
+
+Die Ãœbersichtsseite `uebungen.html` gruppiert die Angebote nach PZ, LF, KP und
+SK und zeigt eine Quellenlegende. Auf der Startseite sowie im EntwicklermenÃ¼
+kann direkt zum gewÃ¤hlten Lernbereich gesprungen werden. Die externen Inhalte
+selbst werden nicht offline gespeichert; die Verweise, Einheitsdaten und die
+Ãœbersichtsseite liegen dagegen im Offlinecache.
+
+
+## Handschriftliche ÃœbungsblÃ¤tter
+
+Der digitale Weg prÃ¼ft Ergebnisse, nicht Rechenwege. Wer nur tippt, Ã¼bt das
+Aufschreiben nicht â€” und in der Klassenarbeit wird aufgeschrieben. Deshalb
+steht am Ende jeder Einheit ein Blatt zum Ausdrucken: **gleiches Thema,
+andere Zahlen, andere Einkleidung.**
+
+```bash
+node werkzeuge/uebungsblatt-pruefen.js   # 270 Generatoren Ã— 300 Proben
+node werkzeuge/uebungsblaetter.js        # erzeugt die 192 PDFs
+node werkzeuge/uebungsblaetter.js pz-08  # nur eines
+```
+
+Die Aufgaben stehen als **Generatoren** in `uebungsblaetter/{ef,pz,lf,kp,sk}.json`
+â€” dasselbe Format wie die Warm-up-Generatoren in `spiral/`:
+
+```jsonc
+{
+  "id": "AB-PZ-08-3",
+  "vars": { "rest": { "von": 30, "bis": 600, "schritt": 30 }, "p": { "aus": [10, 20, 25, 40] } },
+  "bedingung": "ganz(rest * 100000 / (100 - p))",   // muss glatt aufgehen
+  "template": "Nach {p} % Rabatt kostet eine Jacke noch {rest} â‚¬. Was hat sie vorher gekostet?",
+  "answer": "rest * 100 / (100 - p)",
+  "unit_label": "â‚¬", "round": 2,
+  "solution": "{rest} â‚¬ sind {100-p} %. G = {rest} : {100-p} Â· 100 = {ergebnis} â‚¬",
+  "misconceptions": [ { "id": "endpreis_statt_teil", "value": "rest * 100 / p", "feedback": "â€¦" } ]
+}
+```
+
+**Die LÃ¶sung wird gerechnet, nicht geschrieben.** `assets/js/ausdruck.js`
+wertet `answer` aus â€” dieselbe Datei, die im Browser das Warm-up prÃ¼ft. Zwei
+Implementierungen wÃ¤ren zwei Gelegenheiten, sich zu verrechnen, und ein
+gedrucktes Blatt lÃ¤sst sich nicht nachtrÃ¤glich korrigieren.
+
+`uebungsblatt-pruefen.js` rechnet jeden Generator 300-mal durch und besteht
+darauf, dass das Ergebnis bei der angegebenen Rundung **exakt** ist. 33,333â€¦
+auf einem Blatt wÃ¤re nicht kontrollierbar. Wo sachlich gerundet wird (Zinsen
+auf Cent), verlangt `"gerundet": true`, dass der Aufgabentext das sagt â€” und
+lehnt Werte ab, die genau auf der Rundungsgrenze liegen.
+
+Was der PrÃ¼fer **nicht** kann: erkennen, ob die Formel fachlich die richtige
+ist. Ein Generator, der konsequent falsch rechnet, lÃ¤uft grÃ¼n durch. Dagegen
+hilft nur, den Rechenweg in `solution` zu lesen â€” er steht auf dem Blatt und
+muss zum Ergebnis passen.
+
+### Der Selbstkontrollkasten
+
+Unten auf jedem Blatt stehen **alle richtigen LÃ¶sungen, gemischt mit ebenso
+vielen falschen.** Die falschen sind keine Zufallszahlen, sondern die im Pool
+hinterlegten Fehlvorstellungen: Wer â€das kommt hin" denkt, findet dort genau
+sein Ergebnis wieder und muss noch einmal hinsehen. Reichen die hinterlegten
+Fehler nicht, kommen plausible Abweichungen dazu (Faktor 10, halbiert,
+Vorzeichen) â€” nie eine Zufallszahl, die sofort auffiele.
+
+Darunter stehen die Rechenwege in Grau, ausdrÃ¼cklich als â€erst nach dem
+Rechnen ansehen".
+
+### PDF ohne AbhÃ¤ngigkeiten
+
+`werkzeuge/pdf.js` schreibt PDF 1.4 mit den Standardschriften (Helvetica),
+WinAnsiEncoding und eigenem Zeilenumbruch. Kein `node_modules`, kein
+Build-Step â€” die Regel des Projekts gilt auch hier. Zeichen, die WinAnsi
+nicht kennt (Ï€, â‰ˆ, â†’, â…“), werden lesbar ersetzt statt als leeres KÃ¤stchen
+gedruckt.
+
+Die BlÃ¤tter sind **reproduzierbar**: Die Zufallszahlen hÃ¤ngen an einer Saat
+aus der Einheiten-ID. Gleicher Stand, gleiche Datei â€” sonst unterschiede sich
+das ausgeteilte Papier von dem im Repository.
+
+Die PDFs liegen **nicht** im Offlinecache. 54 Dateien Ã  rund 8 KB wÃ¼rden die
+Erstinstallation im Schul-WLAN verlÃ¤ngern, und gedruckt wird ohnehin dort, wo
+es Netz gibt.
+
+
+## Ãœbungsmodus und Bewertungsmodus
+
+Zwei Betriebsarten, umgeschaltet im Dashboard:
+
+| | Ãœbungsmodus | Bewertungsmodus |
+|---|---|---|
+| wann | auÃŸerhalb der Unterrichtszeit | wÃ¤hrend des Unterrichts |
+| Einheitenwahl | frei | nur freigegebene |
+| Freigabe durch | â€” | Lehrkraft, nach Sicht des Ãœbungsblattes |
+
+**Der Ablauf:** Ein Kind arbeitet eine Einheit digital durch, rechnet das
+Ãœbungsblatt von Hand und legt es vor. Die Lehrkraft sieht hin â€” nur, **ob**
+gerechnet wurde, nicht ob richtig â€” und gibt im Dashboard die nÃ¤chste Einheit
+frei. Die Richtigkeit klÃ¤rt der Selbstkontrollkasten. Eine Lehrkraft, die 28
+BlÃ¤tter nachrechnen muss, gibt nichts mehr frei, und dann steht der
+Unterricht.
+
+Zwei Dinge, die bewusst so sind:
+
+1. **Der Modus steht in der Datenbank, nicht im Browser.** Eine Sperre, die
+   das GerÃ¤t selbst setzt, wÃ¤re keine. `mathe9_lernmodus()` entscheidet.
+2. **Ein abgelaufener Bewertungsmodus fÃ¤llt von selbst in den offenen
+   Zustand.** `gilt_bis` begrenzt ihn; eine vergessene Umschaltung darf nicht
+   die ganze Klasse aussperren.
+
+Ehrlich gesagt: Wer die Entwicklerwerkzeuge des Browsers bedienen kann, kommt
+an der Sperre vorbei. Sie ist eine Absprache mit sichtbarer Form, kein Schutz
+gegen Angriffe â€” und hÃ¤lt genau das, was ein Unterrichtsablauf braucht.
+Bereits begonnene Einheiten bleiben immer offen, sonst sÃ¤ÃŸe jemand mitten in
+einer Aufgabe plÃ¶tzlich vor einer Sperre.
+
+Im Entwicklermodus (`devMode: true` mit Ã¼bersprungenem Login) ist alles frei
+wÃ¤hlbar â€” sonst lieÃŸe sich der Ablauf nicht testen.
+
+### Aktive Lernzeit
+
+GezÃ¤hlt wird eine Sekunde nur, wenn **alles drei** stimmt: Seite im
+Vordergrund, AktivitÃ¤t in den letzten 90 Sekunden (Tippen, Scrollen,
+Animation bedienen, externe Ãœbung offen), und die Meldung ist beim Server
+angekommen. Was nicht ankommt, bleibt lokal liegen und wird nachgemeldet â€”
+angerechnet wird also nur, was den Server erreicht hat.
+
+`mathe9_lernzeit_melden()` deckelt jede Meldung bei 15 Minuten. Ein grÃ¶ÃŸerer
+Wert kÃ¤me entweder von einer sehr langen Offlinephase oder von einem
+manipulierten Aufruf; in beiden FÃ¤llen ist Deckeln richtiger als Glauben.
+
+### Externe Ãœbungen laufen im Rahmen
+
+Bis V29 Ã¶ffnete jeder Ãœbungsverweis einen neuen Tab â€” damit war die Anwendung
+weg: kein Ping, keine Lernzeit, kein ZurÃ¼ckweg auÃŸer der Tableiste. Seit V30
+Ã¶ffnet `assets/js/uebungsrahmen.js` die Ãœbung **innerhalb** der Seite.
+
+Der Rahmen entsteht erst beim Klick. Bis dahin gibt es keine Verbindung zum
+Anbieter â€” genau wie bei einem Link. Was **nicht** geht, ist ein `<iframe>` im
+HTML, das schon beim Ã–ffnen der Einheit lÃ¤dt; deshalb steht im Markup keiner.
+
+`frame-src` in der CSP erlaubt ausschlieÃŸlich die sieben Ãœbungsplattformen.
+YouTube gehÃ¶rt bewusst nicht dazu (siehe unten).
+
+> **Vor dem Unterricht prÃ¼fen:** Manche Plattformen verbieten das Einbetten
+> (`X-Frame-Options`). Von auÃŸen lÃ¤sst sich das nicht sicher erkennen. Deshalb
+> steht der Hinweis samt â€In neuem Tab Ã¶ffnen" dauerhaft neben dem Rahmen;
+> eine vermeintliche automatische Erkennung wÃ¼rde hier falsche Sicherheit
+> erzeugen. Welche Plattform sich einbetten lÃ¤sst, zeigt nur der Versuch am
+> echten GerÃ¤t.
+
+
+## ErklÃ¤rvideos
+
+Die Lernkarte erklÃ¤rt eine Sache genau einmal. Kommt genau diese ErklÃ¤rung
+nicht an, hilft es wenig, sie noch einmal zu lesen â€” dann hilft eine andere
+Stimme. DafÃ¼r steht Ã¼ber der Ãœbungskarte die Karte **â€ErklÃ¤rvideos Â· noch
+einmal von jemand anderem erklÃ¤rt"**, gespeist aus dem Top-Level-SchlÃ¼ssel
+`videos`:
+
+```json
+"videos": [
+  {
+    "titel": "Grundwert berechnen â€” Prozentrechnung mit Formel",
+    "url": "https://www.youtube.com/watch?v=gtEAmp8-K-8",
+    "quelle": "Lehrerschmidt"
+  },
+  {
+    "titel": "Grundwert berechnen â€” schwierige Ãœbungen",
+    "url": "https://www.youtube.com/watch?v=xVtp8ZmR9Xk",
+    "quelle": "Lehrerschmidt",
+    "pfad": "C"
+  }
+]
+```
+
+**Lernvideos und ErklÃ¤rmaterialien in allen 64 Einheiten**, zwei bis drei je Einheit. Mit `pfad`
+lÃ¤sst sich ein Video an einen Lernweg binden â€” ein Video fÃ¼r die Vertiefung
+gehÃ¶rt nicht auf den Basispfad, dort verunsichert es nur. Ohne `pfad`
+erscheint es Ã¼berall.
+
+Drei Festlegungen, die bewusst so sind:
+
+1. **Verlinkt, nicht eingebettet.** Ein eingebettetes YouTube-Fenster lÃ¤dt
+   beim Ã–ffnen der Einheit Skripte und setzt Kennungen â€” auch bei Kindern,
+   die das Video gar nicht ansehen. Die Content-Security-Policy verbietet es
+   deshalb (`frame-src 'none'`), und `pruefen.js` setzt das durch. Siehe
+   `DATENSCHUTZ.md` Abschnitt 1.2b.
+2. **Nur die kanonische Watch-Adresse.** Keine Playlists, keine Zeitmarken,
+   keine Kurzlinks â€” sonst lÃ¤sst sich weder prÃ¼fen noch nachvollziehen,
+   worauf verwiesen wird.
+3. **Der `titel` beschreibt den Inhalt, er ist nicht der Originaltitel.** Die
+   Titel auf YouTube sind teilweise automatisch Ã¼bersetzt (â€Calculating base
+   valueâ€¦") und passen dann weder zur Sprache der Einheit noch zum Begriff,
+   der hier verwendet wird.
+
+Die Auswahl stammt aus `youtube_videos_lehrerschmitt.csv` (1949 Videos des
+Kanals Lehrerschmidt). `pruefen.js` stellt sicher, dass jeder verwendete
+Verweis dort steht, dass keine Einheit dasselbe Video zweimal fÃ¼hrt und dass
+ein pfadgebundenes Video zu einem Pfad gehÃ¶rt, den es in dieser Einheit gibt.
+Ein Video in mehr als drei Einheiten ergibt einen Hinweis â€” dann erklÃ¤rt es
+vermutlich keine davon genau.
+
+Offline funktioniert das nicht; die Karte sagt das auch. Die Videos sind ein
+Angebot fÃ¼r zu Hause.
+
+
 ## Starten
 
 **Auf GitHub Pages:** Repo pushen, unter *Settings â†’ Pages* die Quelle auf
-`main / (root)` stellen. Fertig.
+`master / (root)` stellen. Fertig.
 
 **Lokal:** Doppelklick funktioniert nicht â€” der Browser blockiert dann das
 Laden der JSON-Dateien. Stattdessen im Projektordner:
@@ -144,13 +521,13 @@ FÃ¼r die Lehrkraft
 Code
   assets/css/app.css        ein Stylesheet, inkl. Druckansicht
   assets/js/store.js        Speicher, Zahlenparser, Fehlerprofil, SW-Registrierung
-  assets/js/zeichnen.js     Aufgabenbilder: Streifen, Koordinatensystem, GeoGebra
+  assets/js/zeichnen.js     Aufgabenbilder: Streifen, Koordinaten, KÃ¶rper, GeoGebra
   assets/js/engine.js       Aufgabenlogik der Einheiten
   assets/js/spiral.js       Warm-up: Generatoren, Leitner-Kartei, Auswahl
   assets/js/pruefung.js     stellt PrÃ¼fungssets zusammen (nutzt engine.js)
   assets/js/arbeitsblatt.js Druckfassung
   assets/js/matrix.js       Kompetenzmatrix
-  assets/js/tracker.js      Supabase-Anbindung (aus)
+  assets/js/tracker.js      Supabase-Anbindung
   sw.js                     Service Worker (Offline)
 
 Inhalt
@@ -187,14 +564,82 @@ funktioniert sofort, weil der Bereich aus dem PrÃ¤fix der ID abgeleitet wird.
   "leitidee": "L1",
   "standards": ["K2", "K5"],
   "wortspeicher": ["der Grundwert", "der Prozentwert"],
+  "worterklaerungen": {             // ein Satz je Begriff, Alltagssprache
+    "Grundwert": "Das Ganze. Der Grundwert sind 100 %."
+  },
   "can_do": {                       // erscheint am Ende jedes Pfades
     "A": "Du berechnest den Grundwert Ã¼ber den 1-%-Schritt.",
     "B": "â€¦", "C": "â€¦"
   },
+  "lernkarten": { "A": { â€¦ }, "B": { â€¦ }, "C": { â€¦ } },   // siehe unten
   "formelkarte": { "formeln": ["â€¦"], "saetze": ["â€¦"] },
   "tasks": [ /* siehe unten */ ]
 }
 ```
+
+### Lernkarten Â· was die Niveaustufe sprachlich bedeutet
+
+Jede Einheit hat drei Lernkarten (`lernkarten.A/B/C`) mit `titel`,
+`hinfuehrung`, `erklaerung[]`, `beispiel`, `merke` und optional `visual`. Die
+Karte erscheint vor der ersten Aufgabe und spÃ¤ter jederzeit Ã¼ber â€ğŸ“– ErklÃ¤rungâ€œ.
+
+**Pfad A liegt auf Niveaustufe Dâ€“E, mit hohem DaZ-Anteil.** Die Stufe muss
+sich deshalb in der Sprache zeigen, nicht nur in der Mathematik â€” sonst ist die
+HÃ¼rde der Satzbau, bevor die Aufgabe Ã¼berhaupt beginnt. FÃ¼r Stufe A gilt:
+
+- **HinfÃ¼hrung: genau ein kurzer Hauptsatz.** Keine Metapher, kein Bild.
+  â€Rechne zuerst 1 % aus.â€œ statt â€Wenn du erst weiÃŸt, was 1 % ist, ist jeder
+  Prozentwert nur noch ein Malnehmen entfernt.â€œ
+- **ErklÃ¤rung: zwei EintrÃ¤ge, je ein bis zwei kurze HauptsÃ¤tze.**
+- keine NebensÃ¤tze, keine EinschÃ¼be in Klammern, keine Gedankenstriche
+- keine AbkÃ¼rzungen (â€bzw.â€œ, â€z. B.â€œ, â€ca.â€œ)
+- **FachwÃ¶rter bleiben** â€” sie stehen im Wortspeicher und sind das Lernziel.
+  Alles andere ist Alltagssprache.
+
+Richtwert seit V36: rund **330 Zeichen** fÃ¼r HinfÃ¼hrung, ErklÃ¤rung und
+Merksatz zusammen, im Mittel **6 WÃ¶rter je Satz**. B liegt bei etwa 730
+Zeichen, C bei etwa 930. Wenn A so lang ist wie B, ist A noch nicht Stufe A.
+
+Bis V35 lagen die Werte bei 170 Â· 300 Â· 360. Das war fÃ¼r den begleiteten
+Unterricht richtig und fÃ¼r die eigenstÃ¤ndige Erarbeitung zu wenig â€” siehe
+â€EigenstÃ¤ndige Erarbeitung" weiter unten. **Auf Pfad A heiÃŸt mehr Text mehr
+Schritte, nicht lÃ¤ngere SÃ¤tze**: fÃ¼nf kurze HauptsÃ¤tze statt zwei, keine
+NebensÃ¤tze und keine EinschÃ¼be. `werkzeuge/erarbeitung_bauen.py` meldet
+beides â€” zu kurze Karten und SÃ¤tze, die die Stufe verlassen haben.
+
+**Auf Pfad A wird ein Schritt der Beispielrechnung zur LÃ¼cke.** Ein fertig
+vorgerechnetes Beispiel liest man, ein Beispiel mit einer LÃ¼cke rechnet man
+mit. **Welcher** Schritt das ist, entscheidet die fachliche Autorenschaft:
+
+```jsonc
+"beispiel": {
+  "schritte": ["FlÃ¤che = (a Â· s) : 2", "= (6 Â· 5) : 2 = 30 : 2", "= 15 cmÂ²"],
+  "luecke": { "schritt": 2, "wert": 15, "einheit": "cmÂ²" }
+}
+```
+
+Fehlt das Feld, greift eine Heuristik auf den letzten Schritt â€” so
+funktionieren neue Einheiten sofort. Wo weder das eine noch das andere etwas
+liefert (Benennungs- und Zuordnungsbeispiele ohne Rechenergebnis), gibt es
+bewusst keine LÃ¼cke: derzeit bei 12 der 64 Einheiten. â€Schritt zeigen" lÃ¶st
+jederzeit auf â€” die LÃ¼cke darf niemanden aussperren. B und C bleiben
+unverÃ¤ndert vollstÃ¤ndig.
+
+### Wenn eine Antwort falsch ist
+
+Drei Dinge geschehen, sobald eine **Fehlvorstellung** erkannt wird:
+
+1. Sie wird lokal notiert â€” daraus zieht das Warm-up der nÃ¤chsten Stunde.
+2. Die RÃ¼ckmeldung bekommt den Knopf **â€ğŸ“– Dazu die ErklÃ¤rungâ€œ** und springt an
+   die passende Stelle der Lernkarte (steuerbar Ã¼ber `verweis`).
+3. Direkt hinter die aktuelle Aufgabe rÃ¼ckt eine **Nachfassaufgabe**: dieselbe
+   Fehlvorstellungs-ID, andere Zahlen. Gesucht wird zuerst im eigenen Pfad, dann
+   eine Stufe darunter. Je Fehlvorstellung genau eine pro Durchlauf.
+
+Ob eine Nachfassaufgabe gefunden wird, hÃ¤ngt allein am Pool: Es braucht eine
+zweite Aufgabe mit derselben ID. Derzeit ist das fÃ¼r **33 % (A) Â· 47 % (B) Â·
+38 % (C)** aller Fehlvorstellungen der Fall. Wer die Quote heben will, taggt
+weitere Aufgaben mit bereits vorhandenen IDs â€” Code ist dafÃ¼r nicht nÃ¶tig.
 
 ### Aufgabentypen
 
@@ -214,7 +659,8 @@ funktioniert sofort, weil der Bereich aus dem PrÃ¤fix der ID abgeleitet wird.
   "solution": "1 % = 68 : 17 = 4 â‚¬\n100 % = 4 Â· 100 = 400 â‚¬",
   "misconceptions": [
     { "id": "mal_statt_geteilt", "value": 11.56,
-      "feedback": "Du hast 17 % von 68 â‚¬ gerechnet â€¦" }
+      "feedback": "Du hast 17 % von 68 â‚¬ gerechnet â€¦",
+      "verweis": { "absatz": 1 } }    // optional: Sprungziel in der Lernkarte
   ],
   "tags": ["grundwert", "bbr"],
   "spiral": ["W-PROZ"]
@@ -274,7 +720,7 @@ nach FÃ¤lligkeit.
 ### Generatoren statt Einzelaufgaben
 
 Warm-ups leben von Variation. Statt 60 Aufgaben pro Kategorie zu schreiben,
-stehen dort **105 Generatoren** (15 je Kategorie, 5 je Pfad), die jeweils
+stehen dort **120 Generatoren** (15 je Kategorie, 5 je Pfad), die jeweils
 hunderte Varianten erzeugen:
 
 ```jsonc
@@ -334,8 +780,8 @@ zurÃ¼ck auf Box 1, kommt morgen wieder.
 **2. Fehlerprofil.** Jede Fehlvorstellung aus den Einheiten wird lokal
 notiert (`mathe9.fehler`, nur IDs â€” keine Namen, keine Aufgabentexte). Wer
 gestern `komma_verschoben` produziert hat, bekommt heute W-BRUCH.
-Die Zuordnung steht in `plan.json` unter `fehlerprofil` â€” alle 162 IDs aus
-dem Pool sind zugeordnet.
+Die Zuordnung steht in `plan.json` unter `fehlerprofil` â€” alle 253 in den
+Aufgaben verwendeten IDs sind zugeordnet.
 
 Dazu kommt die **Verzahnung**: `plan.json` â†’ `verzahnung` sagt, welche
 Kategorien eine Einheit braucht. Vor `pz-12` (Monats-/Tageszinsen) lÃ¤uft
@@ -355,9 +801,9 @@ einseitig.
 | `W-SACH` | Sachrechnen (Dreisatz, MaÃŸstab) | 15 Generatoren |
 | `W-FKT` | Funktionen | 15 Generatoren |
 | `W-TERM` | Terme & Gleichungen | 15 Generatoren |
-| `W-GEO` | Grundgeometrie, Pythagoras | geplant (trÃ¤gt KP-08, SK-04) |
+| `W-GEO` | Grundgeometrie, Pythagoras & KÃ¶rper | 15 Generatoren |
 
-Alle **162 Fehlvorstellungs-IDs** aus dem Pool zeigen auf eine gebaute
+Alle **253 in Aufgaben verwendeten Fehlvorstellungs-IDs** zeigen auf eine aktive
 Kategorie â€” es lÃ¤uft keine ins Leere.
 
 Nicht jeder Generator hat Fehlvorstellungen. Ein Rechenfehler im Einmaleins
@@ -367,14 +813,147 @@ gelogen. Wo ein systematischer Fehler existiert, steht er drin â€”
 Differenz addieren statt Ã¼ber die Einheit zu rechnen), `rest_abgeschnitten`
 (23 : 2 = 11).
 
-Neue Kategorie: Datei `spiral/w-geo.json` anlegen, Code in `plan.json` unter
-`kategorien` eintragen. Fehlt eine Datei, Ã¼berspringt `spiral.js` sie
-kommentarlos â€” der Plan darf also schon auf Kategorien zeigen, die es noch
-nicht gibt.
+Neue Kategorie: eine Datei `spiral/w-<code>.json` anlegen, den Code in
+`plan.json` unter `kategorien` eintragen und die Datei in `sw.js` cachen.
+Fehlt eine Datei, Ã¼berspringt `spiral.js` sie kommentarlos.
 
 **Gleiche Anzahl auf allen Pfaden.** Ein Kind auf Pfad A bekommt fÃ¼nf
 A-Aufgaben, nicht drei. Gleiche Zeit, gleiche WÃ¼rde.
 
+
+## EigenstÃ¤ndige Erarbeitung (seit V36)
+
+Die Leitfrage: Kann sich ein Kind eine Einheit **allein** erarbeiten â€” auf
+seiner Niveaustufe? Bis V35 nicht zuverlÃ¤ssig, und die KÃ¼rze war richtig
+gedacht: Wer danebensitzt, ergÃ¤nzt den fehlenden Schritt mÃ¼ndlich. Wer allein
+davorsitzt, bekommt ihn nirgends. Es fehlte nicht die AusfÃ¼hrlichkeit, sondern
+der Schritt **dazwischen** â€” das Warum zwischen â€so ist es" und â€merke".
+
+| | v35 | v36 |
+|---|---:|---:|
+| Pfad A, Zeichen je Lernkarte (Mittel) | 174 | 337 |
+| Pfad B | 300 | 726 |
+| Pfad C | 362 | 932 |
+| Musterbeispiele mit Ãœberschrift | 0 von 162 | **162 von 162** |
+
+**Was dazugekommen ist, ist nicht mehr vom Gleichen.** Auf Pfad A steht jetzt
+der Grund fÃ¼r den Rechenschritt und eine Kontrolle, an der man selbst merkt,
+ob das Ergebnis stimmen kann. Auf B kommt die typische Fehlerquelle dazu und
+warum das Verfahren funktioniert. Auf C stehen GrenzfÃ¤lle, GÃ¼ltigkeitsbereiche
+und der Vergleich mit dem Nachbarverfahren â€” die Operatoren dieser Stufe sind
+*begrÃ¼nde*, *vergleiche*, *beurteile*, und ein Musterbeispiel muss zeigen, wie
+eine solche **Antwort** aussieht, nicht nur, dass sie verlangt wird.
+
+Der Fachinhalt liegt je Lernbereich in `werkzeuge/erarbeitung_<bereich>.py`,
+eingetragen von `werkzeuge/erarbeitung_bauen.py`. Der Lauf ist wiederholbar:
+Er setzt Felder, er hÃ¤ngt nichts an. GeÃ¤ndert werden ausschlieÃŸlich
+`hinfuehrung`, `erklaerung` und `beispiel` â€” Aufgaben, Videos, Ãœbungslinks,
+Formelkarte und Wortspeicher bleiben unberÃ¼hrt.
+
+```bash
+python werkzeuge/erarbeitung_bauen.py            # alle vier Bereiche
+python werkzeuge/erarbeitung_bauen.py pz lf      # nur diese
+python werkzeuge/erarbeitung_bauen.py --pruefen  # nur berichten, nichts schreiben
+```
+
+Der Lauf meldet auÃŸerdem, was die Stufe verlÃ¤sst: Karten unter dem Richtwert,
+Karten weit darÃ¼ber, und auf Pfad A AbkÃ¼rzungen und EinschÃ¼be in Klammern.
+Koordinatenschreibweise wie `P(4 | 2)` bleibt dabei erlaubt â€” unterschieden
+wird am Inhalt der Klammer, nicht an der Klammer selbst.
+
+## Abschlussquiz am Ende der Einheit (seit V36)
+
+Fortschritt, Lernzeit und Denkfehler beschreiben den **Weg**. FÃ¼r eine Note
+fehlte die Messung des **Ergebnisses** â€” und zwar eine, bei der dabeisteht,
+worauf sie sich bezieht.
+
+**FÃ¼nf Fragen, ausschlieÃŸlich aus dieser Einheit und diesem Pfad.** Kein
+eigener Aufgabenbestand: `quiz.js` setzt den Satz im Browser aus der
+`tasks.json` der Einheit zusammen.
+
+| Frageart | Quelle in der Einheit |
+|---|---|
+| LÃ¼cke im Merksatz | `lernkarten[pfad].merke` |
+| LÃ¼cke in einem ErklÃ¤rungssatz | `lernkarten[pfad].erklaerung` |
+| LÃ¼cke in einem Satz der Formelkarte | `formelkarte.saetze` |
+| WorterklÃ¤rung â†’ Fachwort | `worterklaerungen`, Ablenker aus dem `wortspeicher` |
+| zwei Aufgaben aus dem Pool | `tasks` derselben Stufe, Vorrang fÃ¼r Transfer |
+
+Warum kein geschriebener Fragenbestand? Eine zweite Fassung derselben Aussage
+ist ab der ersten Ã„nderung an der Lernkarte falsch, ohne dass es jemand merkt.
+Ein Quiz, das aus der Einheit selbst entsteht, kann nicht abweichen â€” und es
+kann auch nichts abfragen, was in der Einheit nicht vorkam. Genau das war die
+Bedingung. Wer fÃ¼r eine Einheit dennoch eigene Fragen schreiben will, trÃ¤gt
+sie unter `quiz` in die `tasks.json` ein; das Schema kennt das Feld.
+
+**Falsche AntwortmÃ¶glichkeiten werden nie erfunden.** Bei Auswahlaufgaben sind
+es die Ablenker der Aufgabe samt hinterlegter Fehlvorstellung; bei
+Rechenaufgaben bleibt das Feld frei. Eine ausgedachte falsche Zahl trÃ¼ge keine
+Fehlvorstellung und sagte der Lehrkraft nichts darÃ¼ber, woran es lag.
+
+**Zwei AntwortmÃ¶glichkeiten reichen nicht.** Aufgaben mit nur zwei Optionen
+bleiben drauÃŸen â€” in der Einheit sind sie richtig, in einer gewerteten Frage
+wÃ¤ren sie ein MÃ¼nzwurf. Im Pool betrifft das 13 Aufgaben, fast alle auf Pfad A.
+
+SprechsÃ¤tze der Formelkarte wie â€Der Anteil ist â€¦ , das sind â€¦ Prozent." haben
+bereits Auslassungen und bleiben ebenfalls drauÃŸen: Sie sind Sprachhilfen,
+keine PrÃ¼fsÃ¤tze.
+
+### Was gewertet wird
+
+**Der erste Lauf je Kind und Einheit** â€” nicht je Tag. Eine Einheit wird einmal
+erarbeitet; der Lauf unmittelbar danach ist der aussagekrÃ¤ftige.
+Wiederholungen zÃ¤hlen als Ãœbung. Die Regel steht als eindeutiger Index in der
+Datenbank, nicht nur in der Anwendung: Zwei GerÃ¤te, die gleichzeitig melden,
+dÃ¼rfen nicht zwei gewertete LÃ¤ufe erzeugen. Vor dem Start steht auf dem
+Schirm, ob dieser Lauf der gewertete ist â€” eine PrÃ¼fung, deren Bedingungen man
+erst hinterher erfÃ¤hrt, ist keine faire PrÃ¼fung.
+
+Zwei Wege zur Note, die Wahl trifft die Lehrkraft je Kind:
+
+| | rechnet |
+|---|---|
+| **Einzelnoten** | Mittel aller gewerteten LÃ¤ufe. Das Ã¼bliche Verfahren. |
+| **Lernfortschritt** | Der Stand am Ende, zuzÃ¼glich der Verbesserung gegenÃ¼ber dem Anfang. FÃ¼r Kinder, bei denen der Mittelwert die Entwicklung verdeckt statt sie zu zeigen. |
+
+Gerechnet wird beides in der Datenbank, nicht im Client. Eine Notenskala
+gehÃ¶rt an eine Stelle, sonst steht in einem halben Jahr in zwei Dateien eine
+andere. Sie folgt der Berliner Sekundarstufenskala und ersetzt keine
+Zeugnisnote, sondern liefert eine von mehreren Grundlagen dafÃ¼r.
+
+Anders als beim Bewertungsmodus werden auch LÃ¤ufe **auÃŸerhalb** der
+Unterrichtszeit aufgezeichnet: Die selbststÃ¤ndige Erarbeitung zu Hause ist in
+diesem Projekt der Regelfall. Ob sie eine Note begrÃ¼nden dÃ¼rfen, entscheidet
+die Fachkonferenz â€” dafÃ¼r steht im Dashboard der Schalter â€nur LÃ¤ufe aus dem
+Unterricht". Siehe `DATENSCHUTZ.md`.
+
+### Im Dashboard
+
+Die Tafel â€Einheitenquiz und Notengebung" trÃ¤gt zwei Tabellen, weil dahinter
+zwei verschiedene Fragen stehen:
+
+| Tabelle | Frage |
+|---|---|
+| je Kind | Wie steht dieses Kind? LÃ¤ufe, Einheiten, Quote, Entwicklung, Note, wackelige Einheiten |
+| je Einheit | Ist diese Einheit angekommen? Kinder, Quote, wie viele unter 50 %, hÃ¤ufigster Denkfehler |
+
+Die zweite bewertet nicht Kinder, sondern das Material. Wenn zweiundzwanzig
+von fÃ¼nfundzwanzig Kindern in einer Einheit unter der HÃ¤lfte bleiben, war
+nicht die Klasse schwach, sondern die Einheit unklar.
+
+Serverseitig: Tabelle `mathe9_quiz_ergebnisse`, Funktionen
+`mathe9_quiz_melden()`, `mathe9_quiz_uebersicht()` und
+`mathe9_quiz_einheiten()`. Die SchÃ¼ler-App bekommt keinen direkten
+Tabellenzugriff â€” sonst wÃ¤ren die Ergebnisse der ganzen Klasse mit dem
+anon-Key lesbar.
+
+### PrÃ¼fen
+
+`node werkzeuge/quiz-pruefen.js` baut fÃ¼r alle 64 Einheiten Ã— 3 Pfade je 40
+QuizsÃ¤tze mit derselben Datei, die im Browser lÃ¤uft, und prÃ¼ft Anzahl,
+Antwortindex, doppelte Optionen und ob die LÃ¶sung versehentlich im Satz
+stehen bleibt. Eine zweite Umsetzung wÃ¤re eine zweite Gelegenheit, sich zu
+vertun.
 
 ## PrÃ¼fungstrainer (`pruefung.html`)
 
@@ -417,7 +996,7 @@ auch auf Papier Streifen (`print-color-adjust`).
 
 ## Kompetenzmatrix (`matrix.html`)
 
-Die â€Ich kann"-SÃ¤tze stehen lÃ¤ngst in jeder `tasks.json` unter `can_do` â€” 42
+Die â€Ich kann"-SÃ¤tze stehen in jeder `tasks.json` unter `can_do` â€” 54
 StÃ¼ck. Diese Seite macht sie pro Kind abhakbar und gibt sie als Text aus, der
 direkt in ein Zeugnis oder einen FÃ¶rderplan wandern kann. Die A-Spalte ist
 bereits als FÃ¶rderplanziel formuliert.
@@ -433,11 +1012,11 @@ Rechner, an dem mehrere arbeiten, besser KÃ¼rzel als Klarnamen.
 ## Offline (`sw.js`)
 
 Das Schul-WLAN fÃ¤llt aus, der Unterricht nicht. Der Service Worker cached alle
-56 Dateien â€” der ganze Pool ist unter 100 KB.
+91 lokalen Ressourcen. Das vollstÃ¤ndige Projekt liegt bei rund 1 MB.
 
-- **JSON:** erst Netz, dann Cache. Korrekturen kommen an; fÃ¤llt das Netz aus,
-  merkt niemand etwas.
-- **Schale (HTML/CSS/JS):** erst Cache (schnell), Auffrischung im Hintergrund.
+- **HTML/CSS/JS/JSON:** bei bestehender Verbindung zuerst die aktuelle Netzfassung,
+  offline RÃ¼ckfall auf den vollstÃ¤ndigen Cache. Dadurch werden keine alten und neuen
+  Skriptversionen gemischt.
 - Fremde Hosts (Google Fonts, Supabase) werden nie aus dem Cache bedient.
 
 **Nach jeder inhaltlichen Ã„nderung `VERSION` in `sw.js` hochzÃ¤hlen.** Sonst
@@ -451,65 +1030,40 @@ hilft niemandem. Mit dem Feld sagt sie, **welcher Denkfehler** passiert ist,
 und das Dashboard kann auszÃ¤hlen, welcher Fehler in der Klasse gehÃ¤uft
 auftritt.
 
-Im Pool: **162 IDs.** Die hÃ¤ufigsten aus den Einheiten:
+Im Pool werden **253 verschiedene Fehlvorstellungs-IDs** in Aufgaben verwendet.
+In den Warm-up-Pools kommen 63 verschiedene IDs vor; Ã¼ber Aufgaben und Warm-up
+zusammen werden 269 unterschiedliche IDs verwendet. Die hÃ¤ufigsten Aufgaben-IDs:
 
-| | ID | Bedeutung |
-|---|---|---|
+| HÃ¤ufigkeit | ID | Bedeutung |
+|---:|---|---|
 | 30Ã— | `bei_1prozent_gestoppt` | 1 % gerechnet, letzten Schritt vergessen |
-| 17Ã— | `mal_statt_geteilt` | Grundwertaufgabe wie Prozentwertaufgabe gerechnet |
-| 15Ã— | `mal_100_vergessen` | Dezimalzahl statt Prozent angegeben |
-| 15Ã— | `nur_teil_berechnet` | Rabatt statt Endpreis angegeben |
-| 14Ã— | `geteilt_vertauscht` | Ganzes : Teil statt Teil : Ganzes |
-| 14Ã— | `bei_einheit_gestoppt` | Dreisatz nach Schritt 1 abgebrochen |
-| 11Ã— | `komma_verschoben` | Faktor 10 daneben (2,5 % als 25 % gerechnet) |
-| 9Ã— | `rest_statt_teil` | Gegenanteil angegeben |
-| 9Ã— | `zeitfaktor_vergessen` | Jahreszinsen statt Monatszinsen |
-| 8Ã— | `neuer_als_grundwert` | bei VerÃ¤nderungen durch den neuen Wert geteilt |
-| 7Ã— | `proportional_gerechnet` | Zuordnungsart nicht geprÃ¼ft |
-| 7Ã— | `einfacher_zins` | Zinseszins Ã¼bersehen |
+| 30Ã— | `faktor_drittel_vergessen` | Pyramide oder Kegel wie ein Prisma bzw. Zylinder berechnet |
+| 29Ã— | `geteilt_vertauscht` | Division in der falschen Richtung ausgefÃ¼hrt |
+| 22Ã— | `mal_statt_geteilt` | Grundwertaufgabe wie Prozentwertaufgabe gerechnet |
+| 21Ã— | `vorzeichen_fehlt` | negatives Vorzeichen beim Funktionsterm Ã¼bersehen |
+| 16Ã— | `grundflaeche_vergessen` | bei der OberflÃ¤che eine GrundflÃ¤che ausgelassen |
+| 15Ã— | `mal_100_vergessen` | Dezimalzahl nicht in Prozent umgerechnet |
+| 15Ã— | `nur_teil_berechnet` | nur einen benÃ¶tigten Teilwert berechnet |
+| 14Ã— | `bei_einheit_gestoppt` | beim Dreisatz nach dem Wert fÃ¼r eine Einheit aufgehÃ¶rt |
+| 12Ã— | `komma_verschoben` | Dezimalkomma um die falsche Stellenzahl verschoben |
+| 12Ã— | `dreieck_halbe_vergessen` | Faktor 1/2 bei der DreiecksflÃ¤che vergessen |
+| 12Ã— | `radius_nicht_quadriert` | Radius in einer Kreisformel nicht quadriert |
 
-28 IDs kommen nur einmal vor. Das ist Absicht: Sie gehÃ¶ren zu einzelnen
-BegrÃ¼ndungsaufgaben, wo der Denkfehler wirklich einmalig ist
-(`bank_zahlt_mehr`, `monotonie_reicht`, `name_missverstanden`). FÃ¼r alles,
-was mehrfach vorkommt, gilt: **dieselbe ID verwenden** â€” sonst lÃ¤sst sich
-nichts auszÃ¤hlen.
+**128 IDs kommen nur einmal vor.** Das ist bei stark spezialisierten
+BegrÃ¼ndungs- und Diagnoseaufgaben erwartbar. Wiederkehrende Denkfehler sollten
+dagegen stets dieselbe ID verwenden, damit das Dashboard sie zuverlÃ¤ssig
+bÃ¼ndeln kann.
 
 ## Tracking einschalten
 
-In `assets/js/tracker.js` oben `url`, `key` und `aktiv: true` setzen. Ohne
-Konfiguration lÃ¤uft alles normal weiter, die Ereignisse landen nur in der
-Konsole. Ereignisse werden 3 Sekunden gesammelt und dann gebÃ¼ndelt gesendet â€”
-sonst erzeugt eine Klasse mit 28 GerÃ¤ten zu viele Einzelrequests.
+Die Verbindung wird zentral in `assets/js/supabase-config.js` konfiguriert:
+`url`, `anonKey` und `enabled: true`. `tracker.js` Ã¼bernimmt diese Werte
+automatisch. Ohne aktive Konfiguration lÃ¤uft die Lernanwendung weiter; Ereignisse
+werden dann nicht an Supabase gesendet. Netzfehler landen zunÃ¤chst in einer
+lokalen Warteschlange und werden spÃ¤ter erneut Ã¼bertragen.
 
 Gesendet wird pro Antwort:
 
 ```json
 { "unit": "PZ-08", "task": "PZ08-B1-005", "path": "B", "step": 1,
-  "correct": false, "misconception": "mal_statt_geteilt",
-  "hints_used": 2, "attempts": 1, "duration_ms": 47000,
-  "student": "â€¦", "ts": "â€¦" }
-```
-
-Der SchÃ¼lername wird aus `localStorage['mathe9.name']` gelesen â€” setze ihn
-Ã¼ber dein vorhandenes Namens-Modal, nicht Ã¼ber `prompt()`.
-
-## Mobile
-
-- Touchziele â‰¥ 44 px, Zahlenfeld ist `inputmode="decimal"`, nie `type="number"`
-- Eingaben werden mit Komma **und** Punkt akzeptiert. Ohne Komma ist `1.250`
-  mehrdeutig (1250 oder 1,25?) â€” die Engine prÃ¼ft beide Lesarten, statt eine
-  zu raten. Die Lesarten unterscheiden sich um Faktor 1000, ein Fehltreffer
-  kommt nicht vor.
-- Formelkarte ist eine Schublade am unteren Rand â€” immer erreichbar, ohne die
-  Aufgabe zu verlassen
-- `prefers-reduced-motion` wird respektiert
-- Druckansicht (`@media print`) zeigt die Aufgaben ohne Tipps
-
-## Fonts
-
-Bricolage Grotesque, Atkinson Hyperlegible und JetBrains Mono kommen von
-Google Fonts. Atkinson Hyperlegible ist bewusst gewÃ¤hlt: fÃ¼r Lesende mit
-Schwierigkeiten entwickelt, unterscheidet klar zwischen 0/O und 1/l/I â€” das
-ist bei Zahlenaufgaben und DaZ kein Luxus. Falls das Schulnetz Google Fonts
-blockiert, greifen die Fallbacks; besser ist, die Dateien nach
-`assets/fonts/` zu legen und lokal einzubinden.
+  "correct": false, "misconceptioQ1¥ÍÑ•¹•È …Ñ¥Ù…Ñ”œ°”€ôøì(€”¹İ…¥ÑU¹Ñ¥° ¡…Íå¹Œ€ ¤€ôøì(€€€½¹ÍĞ¹…µ•¸€ô…İ…¥Ğ…¡•Ì¹­•åÌ ¤ì(€€€…İ…¥ĞAÉ½µ¥Í”¹…±°¡¹…µ•¸¹™¥±Ñ•È¡¸€ôø¸¹ÍÑ…ÉÑÍ]¥Ñ  µ…Ñ¡”ä´œ¤€˜˜¸€„ôôYIM%=8¤¹µ…À¡¸€ôø…¡•Ì¹‘•±•Ñ”¡¸¤¤¤ì(€€€…İ…¥ĞÍ•±˜¹±¥•¹ÑÌ¹±…¥´ ¤ì(€ô¤ ¤¤ì)ô¤ì()Í•±˜¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ™•Ñ œ°”€ôøì(€½¹ÍĞÕÉ°€ô¹•ÜUI0¡”¹É•ÅÕ•ÍĞ¹ÕÉ°¤ì(€¥˜€¡”¹É•ÅÕ•ÍĞ¹µ•Ñ¡½€„ôô€Pœ¤É•ÑÕÉ¸ì(€€¼¨É•µ‘”!½ÍÑÌ€¡½¹ÑÌ°MÕÁ…‰…Í”¤¹¥”…ÕÌ‘•´…¡”‰•‘¥•¹•¸¸€¨¼(€¥˜€¡ÕÉ°¹½É¥¥¸€„ôô±½…Ñ¥½¸¹½É¥¥¸¤É•ÑÕÉ¸ì((€”¹É•ÍÁ½¹‘]¥Ñ  ¡…Íå¹Œ€ ¤€ôøì(€€€½¹ÍĞ…¡”€ô…İ…¥Ğ…¡•Ì¹½Á•¸¡YIM%=8¤ì(€€€€¼¨EÕ•ÉåÁ…É…µ•Ñ•Èİ¥”€ıÔõÁè´ÀÔ•£ÙÉ•¸éÕÈ9…Ù¥…Ñ¥½¸°¹¥¡ĞéÔ•¥¹•È(€€€€€€•¥•¹•¸…Ñ•¤¸=™™±¥¹”µÕÍÌ‘•Í¡…±ˆ•¥¹¡•¥Ğ¹¡Ñµ°…ÕÌ‘•´Ù½É…ˆ(€€€€€€•›ñ±±Ñ•¸…¡”•™Õ¹‘•¸İ•É‘•¸°…Õ İ•¹¸‘¥”­½¹­É•Ñ”UI0¹½ ¹¥”(€€€€€€½¹±¥¹”—Ù™™¹•ĞİÕÉ‘”¸€¨¼(€€€½¹ÍĞ…¡•-•ä€ô¹•ÜI•ÅÕ•ÍĞ¡ÕÉ°¹½É¥¥¸€¬ÕÉ°¹Á…Ñ¡¹…µ”°ìµ•Ñ¡½è€Pœô¤ì((€€€€¼¨AÉ½É…µµ½‘”Õ¹%¹¡…±Ñ”è½¹±¥¹”¥µµ•È‘¥”…­ÑÕ•±±”…ÍÍÕ¹œ±…‘•¸°(€€€€€€½™™±¥¹”…Õ˜‘•¸Ù½±±ÍÓ‘¹‘¥•¸…¡”éÕËñ­™…±±•¸¸…ÌÙ•É¡¥¹‘•ÉĞ¹… (€€€€€€ËÛ}•É•¸UÁ‘…Ñ•Ì•µ¥Í¡Ñ”Y•ÉÍ¥½¹•¸Ù½¸•¹¥¹”¹©ÌÕ¹é•¥¡¹•¸¹©Ì¸€¨¼(€€€½¹ÍĞ¥ÍÑ­ÑÕ…±¥Ñ…•ÑÍ­É¥Ñ¥Í €ô(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¹©Í½¸œ¤ñğ(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¹¡Ñµ°œ¤ñğ(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¹©Ìœ¤ñğ(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¹ÍÌœ¤ñğ(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¼œ¤ì((€€€¥˜€¡¥ÍÑ­ÑÕ…±¥Ñ…•ÑÍ­É¥Ñ¥Í ¤ì(€€€€€ÑÉäì(€€€€€€€½¹ÍĞ¹•Ñè€ô…İ…¥Ğ™•Ñ ¡”¹É•ÅÕ•ÍĞ°ì…¡”è€¹¼µÍÑ½É”œô¤ì(€€€€€€€¥˜€¡¹•Ñè¹½¬¤…¡”¹ÁÕĞ¡…¡•-•ä°¹•Ñè¹±½¹” ¤¤ì(€€€€€€€É•ÑÕÉ¸¹•Ñèì(€€€€€ô…Ñ ì(€€€€€€€½¹ÍĞŒ€ô…İ…¥Ğ…¡”¹µ…Ñ ¡…¡•-•ä°ì¥¹½É•M•…É èÑÉÕ”ô¤ì(€€€€€€€¥˜€¡Œ¤É•ÑÕÉ¸Œì(€€€€€€€É•ÑÕÉ¸¹•ÜI•ÍÁ½¹Í” =™™±¥¹”Õ¹¹¥¡Ğ¥´…¡”œ°ìÍÑ…ÑÕÌè€ÔÀÌô¤ì(€€€€€ô(€€€ô((€€€€¼¨M½¹ÍÑ¥”±½­…±”I•ÍÍ½ÕÉ•¸è…¡”éÕ•ÉÍĞ°9•Ñè…±ÌKñ­™…±°¸€¨¼(€€€½¹ÍĞŒ€ô…İ…¥Ğ…¡”¹µ…Ñ ¡…¡•-•ä°ì¥¹½É•M•…É èÑÉÕ”ô¤ì(€€€¥˜€¡Œ¤É•ÑÕÉ¸Œì((€€€ÑÉäì(€€€€€½¹ÍĞ¹•Ñè€ô…İ…¥Ğ™•Ñ ¡”¹É•ÅÕ•ÍĞ¤ì(€€€€€¥˜€¡¹•Ñè¹½¬¤…¡”¹ÁÕĞ¡…¡•-•ä°¹•Ñè¹±½¹” ¤¤ì(€€€€€É•ÑÕÉ¸¹•Ñèì(€€€ô…Ñ ì(€€€€€É•ÑÕÉ¸¹•ÜI•ÍÁ½¹Í” =™™±¥¹”œ°ìÍÑ…ÑÕÌè€ÔÀÌô¤ì(€€€ô(€ô¤ ¤¤ì)ô¤ì(

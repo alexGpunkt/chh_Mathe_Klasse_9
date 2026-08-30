@@ -2,13 +2,31 @@
    sw.js · Offline-Betrieb
 
    Das Schul-WLAN fällt aus, der Unterricht nicht.
-   Der ganze Pool ist unter 100 KB — er passt komplett in den Cache.
+   Der vollständige Offline-Pool liegt bei rund 1,8 MB und passt komplett in den Cache.
 
    WICHTIG: Nach jeder inhaltlichen Änderung VERSION hochzählen.
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v11-devtools';
+const VERSION = 'mathe9-v37-ebene-figuren';
+
+/* ---------- Was NICHT ins Offlinepaket gehört ----------
+   Bis V34 lud jedes Schülergerät bei der Installation auch das
+   Lehrerdashboard mit: dashboard/index.html, dashboard.js, dashboard.css
+   und beamer.*. Zusammen rund 19 KB gzip, die kein Kind je öffnet.
+
+   Offline nützt das Dashboard ohnehin nichts — es ist eine Live-Ansicht
+   auf Supabase und braucht in jedem Fall Netz. Für die Lehrkraft ändert
+   sich dadurch nichts Wesentliches: Der Fetch-Handler unten legt jede
+   abgerufene Datei weiterhin im Cache ab, das Dashboard steht nach dem
+   ersten Öffnen also genauso zur Verfügung wie vorher.
+
+   Ebenso fehlt hier dev-tools.js: Das Entwicklermenü wird von
+   dev-boot.js nur bei devMode nachgeladen und hat auf einem
+   Schülergerät nichts verloren.
+
+   Maßgeblich ist die Frage, für die diese Liste da ist: Was muss auf dem
+   Gerät liegen, damit der Unterricht ohne Netz weiterläuft? */
 
 const SCHALE = [
   './',
@@ -18,17 +36,42 @@ const SCHALE = [
   'pruefung.html',
   'arbeitsblatt.html',
   'matrix.html',
+  'animationen.html',
+  'uebungen.html',
+  'version.json',
   'pruefung-sets.json',
-  'assets/js/dev-tools.js',
+  'schema/fehlvorstellungen-kategorien.json',
+  'assets/js/dev-boot.js',
   'units/index.json',
   'spiral/plan.json',
   'assets/css/app.css',
+  'assets/css/anim.css',
+  'assets/css/buch.css',
+  'assets/css/rechner.css',
   'assets/js/store.js',
+  'assets/js/weiterlernen.js',
   'assets/js/supabase-config.js',
   'assets/js/student-login.js',
   'assets/js/zeichnen.js',
+  /* Je Lernbereich eine Datei. Offline liegen alle im Cache — eine
+     Einheitenseite lädt aber nur den Kern und ihren eigenen Bereich. */
+  'assets/js/animationen-kern.js',
+  'assets/js/animationen-laden.js',
+  'assets/js/animationen-ef.js',
+  'assets/js/animationen-lf.js',
+  'assets/js/animationen-pz.js',
+  'assets/js/animationen-kp.js',
+  'assets/js/animationen-sk.js',
+  'assets/js/animationen-seite.js',
+  'assets/js/uebungen-seite.js',
   'assets/js/tracker.js',
+  'assets/js/lernmodus.js',
+  'assets/js/uebungsrahmen.js',
+  'assets/js/quiz.js',
   'assets/js/engine.js',
+  'assets/js/taschenrechner.js',
+  'assets/js/buch.js',
+  'assets/js/ausdruck.js',
   'assets/js/spiral.js',
   'assets/js/pruefung.js',
   'assets/js/arbeitsblatt.js',
@@ -36,6 +79,16 @@ const SCHALE = [
 ];
 
 const EINHEITEN = [
+  'units/ef/ef-01/tasks.json',
+  'units/ef/ef-02/tasks.json',
+  'units/ef/ef-03/tasks.json',
+  'units/ef/ef-04/tasks.json',
+  'units/ef/ef-05/tasks.json',
+  'units/ef/ef-06/tasks.json',
+  'units/ef/ef-07/tasks.json',
+  'units/ef/ef-08/tasks.json',
+  'units/ef/ef-09/tasks.json',
+  'units/ef/ef-10/tasks.json',
   'units/pz/pz-01/tasks.json',
   'units/pz/pz-02/tasks.json',
   'units/pz/pz-03/tasks.json',
@@ -65,7 +118,31 @@ const EINHEITEN = [
   'units/lf/lf-13/tasks.json',
   'units/lf/lf-14/tasks.json',
   'units/lf/lf-15/tasks.json',
-  'units/lf/lf-16/tasks.json'
+  'units/lf/lf-16/tasks.json',
+  'units/kp/kp-01/tasks.json',
+  'units/kp/kp-02/tasks.json',
+  'units/kp/kp-03/tasks.json',
+  'units/kp/kp-04/tasks.json',
+  'units/kp/kp-05/tasks.json',
+  'units/kp/kp-06/tasks.json',
+  'units/kp/kp-07/tasks.json',
+  'units/kp/kp-08/tasks.json',
+  'units/kp/kp-09/tasks.json',
+  'units/kp/kp-10/tasks.json',
+  'units/kp/kp-11/tasks.json',
+  'units/kp/kp-12/tasks.json',
+  'units/sk/sk-01/tasks.json',
+  'units/sk/sk-02/tasks.json',
+  'units/sk/sk-03/tasks.json',
+  'units/sk/sk-04/tasks.json',
+  'units/sk/sk-05/tasks.json',
+  'units/sk/sk-06/tasks.json',
+  'units/sk/sk-07/tasks.json',
+  'units/sk/sk-08/tasks.json',
+  'units/sk/sk-09/tasks.json',
+  'units/sk/sk-10/tasks.json',
+  'units/sk/sk-11/tasks.json',
+  'units/sk/sk-12/tasks.json'
 ];
 
 const SPIRAL = [
@@ -75,7 +152,8 @@ const SPIRAL = [
   'spiral/w-kopf.json',
   'spiral/w-sach.json',
   'spiral/w-fkt.json',
-  'spiral/w-term.json'
+  'spiral/w-term.json',
+  'spiral/w-geo.json'
 ];
 
 const ALLES = [...SCHALE, ...EINHEITEN, ...SPIRAL];
@@ -83,18 +161,27 @@ const ALLES = [...SCHALE, ...EINHEITEN, ...SPIRAL];
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
     const c = await caches.open(VERSION);
-    /* Einzeln, damit eine fehlende Datei nicht die ganze Installation kippt. */
-    await Promise.all(ALLES.map(u =>
-      c.add(new Request(u, { cache: 'reload' })).catch(err =>
-        console.warn('[sw] nicht gecacht:', u, err.message))));
-    self.skipWaiting();
+    try {
+      await Promise.all(ALLES.map(u => c.add(new Request(u, { cache: 'reload' }))));
+    } catch (error) {
+      await caches.delete(VERSION);
+      throw error;
+    }
+    /* Bewusst KEIN skipWaiting: Eine neue Fassung, die mitten in einer
+       Aufgabe übernimmt, kann alte und neue Dateien mischen. Die Seite
+       fragt stattdessen nach (siehe aktualisierungBeobachten in store.js)
+       und schickt dann die Nachricht „uebernehmen". */
   })());
+});
+
+self.addEventListener('message', e => {
+  if (e.data && e.data.typ === 'uebernehmen') self.skipWaiting();
 });
 
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {
     const namen = await caches.keys();
-    await Promise.all(namen.filter(n => n !== VERSION).map(n => caches.delete(n)));
+    await Promise.all(namen.filter(n => n.startsWith('mathe9-') && n !== VERSION).map(n => caches.delete(n)));
     await self.clients.claim();
   })());
 });
@@ -107,27 +194,44 @@ self.addEventListener('fetch', e => {
 
   e.respondWith((async () => {
     const cache = await caches.open(VERSION);
+    /* Queryparameter wie ?u=pz-05 gehören zur Navigation, nicht zu einer
+       eigenen Datei. Offline muss deshalb einheit.html aus dem vorab
+       gefüllten Cache gefunden werden, auch wenn die konkrete URL noch nie
+       online geöffnet wurde. */
+    const cacheKey = new Request(url.origin + url.pathname, { method: 'GET' });
 
-    /* Inhalte: erst Netz (damit Korrekturen ankommen), dann Cache.
-       Fällt das WLAN aus, merkt niemand etwas. */
-    if (url.pathname.endsWith('.json')) {
+    /* Programmcode und Inhalte: online immer die aktuelle Fassung laden,
+       offline auf den vollständigen Cache zurückfallen. Das verhindert nach
+       größeren Updates gemischte Versionen von engine.js und zeichnen.js. */
+    const istAktualitaetskritisch =
+      url.pathname.endsWith('.json') ||
+      url.pathname.endsWith('.html') ||
+      url.pathname.endsWith('.js') ||
+      url.pathname.endsWith('.css') ||
+      url.pathname.endsWith('/');
+
+    if (istAktualitaetskritisch) {
       try {
-        const netz = await fetch(e.request);
-        if (netz.ok) cache.put(e.request, netz.clone());
+        const netz = await fetch(e.request, { cache: 'no-store' });
+        if (netz.ok) cache.put(cacheKey, netz.clone());
         return netz;
       } catch {
-        const c = await cache.match(e.request);
+        const c = await cache.match(cacheKey, { ignoreSearch: true });
         if (c) return c;
-        throw new Error('offline und nicht im Cache');
+        return new Response('Offline und nicht im Cache', { status: 503 });
       }
     }
 
-    /* Schale: erst Cache (schnell), im Hintergrund auffrischen. */
-    const c = await cache.match(e.request);
-    const netz = fetch(e.request).then(r => {
-      if (r.ok) cache.put(e.request, r.clone());
-      return r;
-    }).catch(() => null);
-    return c || (await netz) || new Response('Offline', { status: 503 });
+    /* Sonstige lokale Ressourcen: Cache zuerst, Netz als Rückfall. */
+    const c = await cache.match(cacheKey, { ignoreSearch: true });
+    if (c) return c;
+
+    try {
+      const netz = await fetch(e.request);
+      if (netz.ok) cache.put(cacheKey, netz.clone());
+      return netz;
+    } catch {
+      return new Response('Offline', { status: 503 });
+    }
   })());
 });
