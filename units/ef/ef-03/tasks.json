@@ -1,0 +1,406 @@
+{
+  "unit": "EF-03",
+  "title": "Umfang von Rechteck und Quadrat",
+  "leitidee": "L2",
+  "standards": [
+    "K2",
+    "K4"
+  ],
+  "wortspeicher": [
+    "der Umfang",
+    "die Seitenlänge",
+    "das Rechteck",
+    "das Quadrat",
+    "die Maßeinheit"
+  ],
+  "worterklaerungen": {
+    "Umfang": "Wichtiger Begriff für umfang von rechteck und quadrat.",
+    "Seitenlänge": "Wichtiger Begriff für umfang von rechteck und quadrat.",
+    "Rechteck": "Wichtiger Begriff für umfang von rechteck und quadrat.",
+    "Quadrat": "Wichtiger Begriff für umfang von rechteck und quadrat.",
+    "Maßeinheit": "Wichtiger Begriff für umfang von rechteck und quadrat."
+  },
+  "can_do": {
+    "A": "Du addierst alle Seiten eines Rechtecks oder Quadrats.",
+    "B": "Du verwendest U = 2a + 2b und U = 4a.",
+    "C": "Du bestimmst fehlende Seitenlängen aus dem Umfang."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Umfang von Rechteck und Quadrat",
+      "hinfuehrung": "Der Umfang ist die Länge des Randes. Er wird in Längeneinheiten angegeben.",
+      "erklaerung": [
+        "Der Umfang ist die Länge des Randes. Er wird in Längeneinheiten angegeben.",
+        "Beim Rechteck sind gegenüberliegende Seiten gleich lang.",
+        "Beim Quadrat sind alle vier Seiten gleich lang.",
+        "Arbeite mit einer Skizze und markiere jede gegebene Größe."
+      ],
+      "merke": "Rechteck: U = 2a + 2b = 2(a+b)",
+      "visual": {
+        "type": "animation",
+        "name": "umfang-flaeche",
+        "stufe": "A"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Rechteck: a=7 cm, b=3 cm. Umfang?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "B": {
+      "titel": "Umfang von Rechteck und Quadrat",
+      "hinfuehrung": "Der Umfang ist die Länge des Randes. Er wird in Längeneinheiten angegeben.",
+      "erklaerung": [
+        "Der Umfang ist die Länge des Randes. Er wird in Längeneinheiten angegeben.",
+        "Beim Rechteck sind gegenüberliegende Seiten gleich lang.",
+        "Beim Quadrat sind alle vier Seiten gleich lang.",
+        "Begründe jeden Rechenschritt mit Formel und Einheit."
+      ],
+      "merke": "Quadrat: U = 4a",
+      "visual": {
+        "type": "animation",
+        "name": "umfang-flaeche",
+        "stufe": "B"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Rechteck: a=7 cm, b=3 cm. Umfang?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "C": {
+      "titel": "Umfang von Rechteck und Quadrat",
+      "hinfuehrung": "Der Umfang ist die Länge des Randes. Er wird in Längeneinheiten angegeben.",
+      "erklaerung": [
+        "Der Umfang ist die Länge des Randes. Er wird in Längeneinheiten angegeben.",
+        "Beim Rechteck sind gegenüberliegende Seiten gleich lang.",
+        "Beim Quadrat sind alle vier Seiten gleich lang.",
+        "Vergleiche auch einen zweiten Lösungsweg und prüfe die Größenordnung."
+      ],
+      "merke": "fehlende Quadratseite: a = U : 4",
+      "visual": {
+        "type": "animation",
+        "name": "umfang-flaeche",
+        "stufe": "C"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Rechteck: a=7 cm, b=3 cm. Umfang?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Rechteck: U = 2a + 2b = 2(a+b)",
+      "Quadrat: U = 4a",
+      "fehlende Quadratseite: a = U : 4"
+    ],
+    "saetze": [
+      "Ich suche den Umfang / die Fläche, weil …",
+      "Ich verwende die Formel …",
+      "Das Ergebnis ist plausibel, weil …"
+    ]
+  },
+  "videos": [
+    {
+      "titel": "Umfang beim Rechteck",
+      "url": "https://www.youtube.com/watch?v=aWWf6E9-jmQ",
+      "quelle": "Lehrerschmidt"
+    },
+    {
+      "titel": "Umfang beim Quadrat",
+      "url": "https://www.youtube.com/watch?v=RmSbeYrOfCM",
+      "quelle": "Lehrerschmidt"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "EF03-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Rechteck: a=7 cm, b=3 cm. Umfang?",
+      "answer": 20,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 20 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Quadrat: a=6 cm. Umfang?",
+      "answer": 24,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 24 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welche Einheit hat ein Umfang?",
+      "options": [
+        "cm",
+        "cm²",
+        "cm³"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: cm",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Quadrat hat U=36 cm. Seitenlänge?",
+      "answer": 9,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 9 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-B5-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Rechteck: a=12 m, b=5 m. Umfang?",
+      "answer": 34,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 34 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-B6-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Rechteck: U=50 cm, a=15 cm. Wie lang ist b?",
+      "answer": 10,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 10 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-B7-007",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welche Formel gehört zum Rechteckumfang?",
+      "options": [
+        "a·b",
+        "2a+2b",
+        "a²"
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: 2a+2b",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-B8-008",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Bilderrahmen ist 80 cm mal 60 cm. Leistenlänge?",
+      "answer": 280,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 280 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-B9-009",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Ein quadratischer Garten hat U=52 m. Seitenlänge?",
+      "answer": 13,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 13 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-B10-010",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Rechteck: a=2,5 m, b=1,2 m. Umfang?",
+      "answer": 7.4,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 7,4 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-C11-011",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Ein Rechteck hat U=84 m und b=17 m. Bestimme a.",
+      "answer": 25,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 25 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-C12-012",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Ein Quadrat wird mit 3 Runden Draht umspannt, a=8 m. Drahtlänge?",
+      "answer": 96,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 96 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-C13-013",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Wird jede Seite eines Rechtecks verdoppelt, dann ...",
+      "options": [
+        "verdoppelt sich U",
+        "vervierfacht sich U",
+        "bleibt U gleich"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: verdoppelt sich U",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    },
+    {
+      "id": "EF03-C14-014",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Rechteck ist 4 cm länger als breit. b=9 cm. Umfang?",
+      "answer": 44,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 44 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-03"
+      ]
+    }
+  ]
+}

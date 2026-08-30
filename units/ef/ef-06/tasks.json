@@ -1,0 +1,425 @@
+{
+  "unit": "EF-06",
+  "title": "Das Haus der Vierecke",
+  "leitidee": "L3",
+  "standards": [
+    "K2",
+    "K4"
+  ],
+  "wortspeicher": [
+    "das Viereck",
+    "das Trapez",
+    "das Parallelogramm",
+    "die Raute",
+    "das Drachenviereck",
+    "das Rechteck"
+  ],
+  "worterklaerungen": {
+    "Viereck": "Wichtiger Begriff für das haus der vierecke.",
+    "Trapez": "Wichtiger Begriff für das haus der vierecke.",
+    "Parallelogramm": "Wichtiger Begriff für das haus der vierecke.",
+    "Raute": "Wichtiger Begriff für das haus der vierecke.",
+    "Drachenviereck": "Wichtiger Begriff für das haus der vierecke.",
+    "Rechteck": "Wichtiger Begriff für das haus der vierecke."
+  },
+  "can_do": {
+    "A": "Du erkennst Vierecke an ihren Eigenschaften.",
+    "B": "Du ordnest Quadrat, Rechteck, Raute, Parallelogramm und Trapez hierarchisch.",
+    "C": "Du begründest Mehrfachzugehörigkeiten im Haus der Vierecke."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Das Haus der Vierecke",
+      "hinfuehrung": "Im Haus der Vierecke gelten Eigenschaften nach unten weiter.",
+      "erklaerung": [
+        "Im Haus der Vierecke gelten Eigenschaften nach unten weiter.",
+        "Ein Quadrat ist zugleich Rechteck, Raute, Parallelogramm und Trapez.",
+        "Ein Drachenviereck hat zwei Paare gleich langer Nachbarseiten.",
+        "Arbeite mit einer Skizze und markiere jede gegebene Größe."
+      ],
+      "merke": "Trapez: mindestens ein Paar paralleler Seiten",
+      "visual": {
+        "type": "animation",
+        "name": "viereck-haus",
+        "stufe": "A"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Welches Viereck hat vier gleich lange Seiten und vier rechte Winkel?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "B": {
+      "titel": "Das Haus der Vierecke",
+      "hinfuehrung": "Im Haus der Vierecke gelten Eigenschaften nach unten weiter.",
+      "erklaerung": [
+        "Im Haus der Vierecke gelten Eigenschaften nach unten weiter.",
+        "Ein Quadrat ist zugleich Rechteck, Raute, Parallelogramm und Trapez.",
+        "Ein Drachenviereck hat zwei Paare gleich langer Nachbarseiten.",
+        "Begründe jeden Rechenschritt mit Formel und Einheit."
+      ],
+      "merke": "Parallelogramm: zwei Paare paralleler Seiten",
+      "visual": {
+        "type": "animation",
+        "name": "viereck-haus",
+        "stufe": "B"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Welches Viereck hat vier gleich lange Seiten und vier rechte Winkel?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "C": {
+      "titel": "Das Haus der Vierecke",
+      "hinfuehrung": "Im Haus der Vierecke gelten Eigenschaften nach unten weiter.",
+      "erklaerung": [
+        "Im Haus der Vierecke gelten Eigenschaften nach unten weiter.",
+        "Ein Quadrat ist zugleich Rechteck, Raute, Parallelogramm und Trapez.",
+        "Ein Drachenviereck hat zwei Paare gleich langer Nachbarseiten.",
+        "Vergleiche auch einen zweiten Lösungsweg und prüfe die Größenordnung."
+      ],
+      "merke": "Quadrat: vier gleich lange Seiten und vier rechte Winkel",
+      "visual": {
+        "type": "animation",
+        "name": "viereck-haus",
+        "stufe": "C"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Welches Viereck hat vier gleich lange Seiten und vier rechte Winkel?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Trapez: mindestens ein Paar paralleler Seiten",
+      "Parallelogramm: zwei Paare paralleler Seiten",
+      "Quadrat: vier gleich lange Seiten und vier rechte Winkel"
+    ],
+    "saetze": [
+      "Ich suche den Umfang / die Fläche, weil …",
+      "Ich verwende die Formel …",
+      "Das Ergebnis ist plausibel, weil …"
+    ]
+  },
+  "videos": [
+    {
+      "titel": "Das Haus der Vierecke im Überblick",
+      "url": "https://www.youtube.com/watch?v=qpHap8ZJSK0",
+      "quelle": "Lehrerschmidt"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "EF06-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Welches Viereck hat vier gleich lange Seiten und vier rechte Winkel?",
+      "options": [
+        "Rechteck",
+        "Quadrat",
+        "Trapez"
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Quadrat",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Ein Rechteck ist immer auch ...",
+      "options": [
+        "ein Parallelogramm",
+        "eine Raute",
+        "ein Drachen ohne weitere Eigenschaft"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: ein Parallelogramm",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Eine Raute hat ...",
+      "options": [
+        "vier gleich lange Seiten",
+        "vier rechte Winkel",
+        "nur ein Seitenpaar"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: vier gleich lange Seiten",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Ein Drachenviereck hat ...",
+      "options": [
+        "zwei Paare gleich langer Nachbarseiten",
+        "vier parallele Seiten",
+        "keine Symmetrie"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: zwei Paare gleich langer Nachbarseiten",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-B5-005",
+      "path": "B",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Welches Viereck hat zwei Paare paralleler Gegenseiten?",
+      "options": [
+        "Parallelogramm",
+        "Drachen",
+        "allgemeines Viereck"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Parallelogramm",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-B6-006",
+      "path": "B",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Ist jedes Quadrat ein Rechteck?",
+      "options": [
+        "Ja",
+        "Nein",
+        "Nur bei Seitenlänge 1"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Ja",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-B7-007",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Ist jedes Rechteck ein Quadrat?",
+      "options": [
+        "Ja",
+        "Nein",
+        "Nur im Koordinatensystem"
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Nein",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-B8-008",
+      "path": "B",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Ist jede Raute ein Parallelogramm?",
+      "options": [
+        "Ja",
+        "Nein",
+        "Nur mit rechtem Winkel"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Ja",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-B9-009",
+      "path": "B",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Welche Aussage zum Trapez gilt in diesem Projekt?",
+      "options": [
+        "Mindestens ein Paar Gegenseiten ist parallel.",
+        "Alle Seiten sind gleich.",
+        "Alle Winkel sind recht."
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Mindestens ein Paar Gegenseiten ist parallel.",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-B10-010",
+      "path": "B",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Ein Parallelogramm mit vier rechten Winkeln ist ein ...",
+      "options": [
+        "Rechteck",
+        "Drachen",
+        "beliebiges Trapez, aber kein Rechteck"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Rechteck",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-C11-011",
+      "path": "C",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Eine Raute mit einem rechten Winkel ist ein ...",
+      "options": [
+        "Quadrat",
+        "nur ein Trapez",
+        "Drachen, aber kein Quadrat"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Quadrat",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-C12-012",
+      "path": "C",
+      "step": 4,
+      "type": "choice",
+      "prompt": "Welches Viereck liegt im Haus am weitesten unten, weil es die meisten Eigenschaften besitzt?",
+      "options": [
+        "Quadrat",
+        "Trapez",
+        "allgemeines Viereck"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Quadrat",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-C13-013",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Warum kann eine Figur mehrere Namen haben?",
+      "options": [
+        "Weil sie mehrere Eigenschaftsmengen erfüllt.",
+        "Weil Namen beliebig sind.",
+        "Nur wegen der Farbe."
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Weil sie mehrere Eigenschaftsmengen erfüllt.",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    },
+    {
+      "id": "EF06-C14-014",
+      "path": "C",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Welche Eigenschaft unterscheidet ein Rechteck sicher von einem schiefen Parallelogramm?",
+      "options": [
+        "vier rechte Winkel",
+        "parallele Gegenseiten",
+        "vier Ecken"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: vier rechte Winkel",
+      "tags": [
+        "ebene-figuren",
+        "ef-06"
+      ]
+    }
+  ]
+}

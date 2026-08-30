@@ -1,0 +1,1244 @@
+{
+  "bereich": "EF",
+  "title": "Ebene Figuren",
+  "_hinweis": "Generatoren für Längen, Flächen, Koordinaten, Vierecke und zusammengesetzte Figuren.",
+  "einheiten": {
+    "ef-01": {
+      "auftrag": "Längen und Flächen richtig umrechnen: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-01-1",
+          "vars": {
+            "a": {
+              "von": 1,
+              "bis": 20
+            }
+          },
+          "template": "{a} m sind wie viele Zentimeter?",
+          "answer": "a*100",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-01-2",
+          "vars": {
+            "a": {
+              "von": 5,
+              "bis": 90,
+              "schritt": 5
+            }
+          },
+          "template": "{a} cm sind wie viele Millimeter?",
+          "answer": "a*10",
+          "unit_label": "mm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} mm."
+        },
+        {
+          "id": "AB-EF-01-3",
+          "vars": {
+            "a": {
+              "von": 1,
+              "bis": 15
+            }
+          },
+          "template": "{a} m² sind wie viele dm²?",
+          "answer": "a*100",
+          "unit_label": "dm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} dm²."
+        },
+        {
+          "id": "AB-EF-01-4",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 25
+            }
+          },
+          "template": "{a} dm² sind wie viele cm²?",
+          "answer": "a*100",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-01-5",
+          "vars": {
+            "a": {
+              "von": 1,
+              "bis": 12
+            }
+          },
+          "template": "{a}0000 cm² sind wie viele m²?",
+          "answer": "a",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-01-6",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 8
+            },
+            "b": {
+              "aus": [
+                40,
+                50,
+                60,
+                80
+              ]
+            }
+          },
+          "template": "Ein Rechteck ist {a} m lang und {b} cm breit. Gib die Breite in m an.",
+          "answer": "b/100",
+          "unit_label": "m",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m."
+        }
+      ]
+    },
+    "ef-02": {
+      "auftrag": "Figuren im Koordinatensystem: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-02-1",
+          "vars": {
+            "x": {
+              "von": 2,
+              "bis": 12
+            },
+            "y": {
+              "von": 0,
+              "bis": 8
+            }
+          },
+          "template": "A(0|{y}) und B({x}|{y}). Wie lang ist AB?",
+          "answer": "x",
+          "unit_label": "LE",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} LE."
+        },
+        {
+          "id": "AB-EF-02-2",
+          "vars": {
+            "x": {
+              "von": 0,
+              "bis": 8
+            },
+            "y": {
+              "von": 2,
+              "bis": 12
+            }
+          },
+          "template": "A({x}|0) und D({x}|{y}). Wie lang ist AD?",
+          "answer": "y",
+          "unit_label": "LE",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} LE."
+        },
+        {
+          "id": "AB-EF-02-3",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 12
+            },
+            "b": {
+              "von": 2,
+              "bis": 10
+            }
+          },
+          "template": "Ein achsenparalleles Rechteck ist {a} LE breit und {b} LE hoch. Umfang?",
+          "answer": "2*(a+b)",
+          "unit_label": "LE",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} LE."
+        },
+        {
+          "id": "AB-EF-02-4",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 12
+            },
+            "b": {
+              "von": 2,
+              "bis": 10
+            }
+          },
+          "template": "Ein achsenparalleles Rechteck ist {a} LE breit und {b} LE hoch. Fläche?",
+          "answer": "a*b",
+          "unit_label": "FE",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} FE."
+        },
+        {
+          "id": "AB-EF-02-5",
+          "vars": {
+            "x1": {
+              "von": -8,
+              "bis": -1
+            },
+            "x2": {
+              "von": 1,
+              "bis": 9
+            }
+          },
+          "template": "Von x={x1} bis x={x2}: Breite?",
+          "answer": "x2-x1",
+          "unit_label": "LE",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} LE."
+        },
+        {
+          "id": "AB-EF-02-6",
+          "vars": {
+            "g": {
+              "von": 2,
+              "bis": 14,
+              "schritt": 2
+            },
+            "h": {
+              "von": 2,
+              "bis": 12,
+              "schritt": 2
+            }
+          },
+          "template": "Rechtwinkliges Dreieck im Koordinatensystem mit g={g} LE und h={h} LE. Fläche?",
+          "answer": "g*h/2",
+          "unit_label": "FE",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} FE."
+        }
+      ]
+    },
+    "ef-03": {
+      "auftrag": "Umfang von Rechteck und Quadrat: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-03-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 20
+            },
+            "b": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "template": "Rechteck a={a} cm, b={b} cm: Umfang?",
+          "answer": "2*(a+b)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-03-2",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Quadrat a={a} cm: Umfang?",
+          "answer": "4*a",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-03-3",
+          "vars": {
+            "u": {
+              "aus": [
+                30,
+                40,
+                50,
+                60,
+                80
+              ]
+            },
+            "a": {
+              "von": 5,
+              "bis": 12
+            }
+          },
+          "template": "Rechteck U={u} cm, a={a} cm: b?",
+          "answer": "u/2-a",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-03-4",
+          "vars": {
+            "u": {
+              "aus": [
+                20,
+                28,
+                36,
+                44,
+                52
+              ]
+            }
+          },
+          "template": "Quadrat U={u} m: Seitenlänge?",
+          "answer": "u/4",
+          "unit_label": "m",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m."
+        },
+        {
+          "id": "AB-EF-03-5",
+          "vars": {
+            "a": {
+              "von": 30,
+              "bis": 90,
+              "schritt": 10
+            },
+            "b": {
+              "von": 20,
+              "bis": 70,
+              "schritt": 10
+            }
+          },
+          "template": "Ein Rahmen misst {a} cm mal {b} cm. Benötigte Leiste?",
+          "answer": "2*(a+b)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-03-6",
+          "vars": {
+            "d": {
+              "von": 2,
+              "bis": 8
+            },
+            "b": {
+              "von": 4,
+              "bis": 15
+            }
+          },
+          "template": "Ein Rechteck ist {d} cm länger als breit; b={b} cm. Umfang?",
+          "answer": "2*((b+d)+b)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        }
+      ]
+    },
+    "ef-04": {
+      "auftrag": "Flächeninhalt von Rechteck und Quadrat: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-04-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 20
+            },
+            "b": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "template": "Rechteck a={a} cm, b={b} cm: Fläche?",
+          "answer": "a*b",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-04-2",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 20
+            }
+          },
+          "template": "Quadrat a={a} cm: Fläche?",
+          "answer": "a*a",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-04-3",
+          "vars": {
+            "A": {
+              "aus": [
+                48,
+                60,
+                72,
+                84,
+                96
+              ]
+            },
+            "a": {
+              "aus": [
+                4,
+                6,
+                8,
+                12
+              ]
+            }
+          },
+          "template": "Rechteck A={A} cm², a={a} cm: b?",
+          "answer": "A/a",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-04-4",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 15
+            }
+          },
+          "template": "Quadratfläche bei a={a} m?",
+          "answer": "a*a",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-04-5",
+          "vars": {
+            "a": {
+              "von": 2,
+              "bis": 9
+            },
+            "b": {
+              "von": 2,
+              "bis": 5
+            }
+          },
+          "template": "Wand {a} m breit und {b} m hoch: Fläche?",
+          "answer": "a*b",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-04-6",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 8
+            },
+            "b": {
+              "von": 2,
+              "bis": 6
+            },
+            "p": {
+              "aus": [
+                15,
+                20,
+                25
+              ]
+            }
+          },
+          "template": "Boden {a} m mal {b} m, {p} € je m²: Kosten?",
+          "answer": "a*b*p",
+          "unit_label": "€",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} €."
+        }
+      ]
+    },
+    "ef-05": {
+      "auftrag": "Dreiecke: Umfang und Flächeninhalt: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-05-1",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 12
+            },
+            "b": {
+              "von": 3,
+              "bis": 12
+            },
+            "c": {
+              "von": 3,
+              "bis": 12
+            }
+          },
+          "template": "Dreieckseiten {a}, {b}, {c} cm: Umfang?",
+          "answer": "a+b+c",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-05-2",
+          "vars": {
+            "g": {
+              "von": 4,
+              "bis": 18,
+              "schritt": 2
+            },
+            "h": {
+              "von": 2,
+              "bis": 14,
+              "schritt": 2
+            }
+          },
+          "template": "Dreieck g={g} cm, h={h} cm: Fläche?",
+          "answer": "g*h/2",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-05-3",
+          "vars": {
+            "A": {
+              "aus": [
+                24,
+                36,
+                48,
+                60,
+                72
+              ]
+            },
+            "g": {
+              "aus": [
+                6,
+                8,
+                12
+              ]
+            }
+          },
+          "template": "Dreieck A={A} cm², g={g} cm: h?",
+          "answer": "2*A/g",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-05-4",
+          "vars": {
+            "A": {
+              "aus": [
+                30,
+                40,
+                50,
+                60
+              ]
+            },
+            "h": {
+              "aus": [
+                4,
+                5,
+                10
+              ]
+            }
+          },
+          "template": "Dreieck A={A} cm², h={h} cm: g?",
+          "answer": "2*A/h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-05-5",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 15
+            },
+            "b": {
+              "von": 2,
+              "bis": 12
+            }
+          },
+          "template": "Rechtwinkliges Dreieck mit Katheten {a} cm und {b} cm: Fläche?",
+          "answer": "a*b/2",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-05-6",
+          "vars": {
+            "g": {
+              "von": 2,
+              "bis": 12
+            },
+            "h": {
+              "von": 2,
+              "bis": 10
+            }
+          },
+          "template": "Dreieckiges Schild g={g} m, h={h} m: Fläche?",
+          "answer": "g*h/2",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        }
+      ]
+    },
+    "ef-06": {
+      "auftrag": "Das Haus der Vierecke: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-06-1",
+          "vars": {
+            "n": {
+              "von": 1,
+              "bis": 3
+            }
+          },
+          "template": "Wie viele rechte Winkel hat ein Rechteck?",
+          "answer": "4",
+          "unit_label": "Winkel",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} Winkel."
+        },
+        {
+          "id": "AB-EF-06-2",
+          "vars": {
+            "n": {
+              "von": 1,
+              "bis": 3
+            }
+          },
+          "template": "Wie viele gleich lange Seiten hat ein Quadrat?",
+          "answer": "4",
+          "unit_label": "Seiten",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} Seiten."
+        },
+        {
+          "id": "AB-EF-06-3",
+          "vars": {
+            "n": {
+              "von": 1,
+              "bis": 3
+            }
+          },
+          "template": "Wie viele Paare paralleler Gegenseiten hat ein Parallelogramm?",
+          "answer": "2",
+          "unit_label": "Paare",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} Paare."
+        },
+        {
+          "id": "AB-EF-06-4",
+          "vars": {
+            "n": {
+              "von": 1,
+              "bis": 3
+            }
+          },
+          "template": "Wie viele Ecken hat jedes Viereck?",
+          "answer": "4",
+          "unit_label": "Ecken",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} Ecken."
+        },
+        {
+          "id": "AB-EF-06-5",
+          "vars": {
+            "n": {
+              "von": 1,
+              "bis": 3
+            }
+          },
+          "template": "Wie viele Symmetrieachsen hat ein nicht quadratisches Rechteck?",
+          "answer": "2",
+          "unit_label": "Achsen",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} Achsen."
+        },
+        {
+          "id": "AB-EF-06-6",
+          "vars": {
+            "n": {
+              "von": 1,
+              "bis": 3
+            }
+          },
+          "template": "Wie viele Symmetrieachsen hat ein Quadrat?",
+          "answer": "4",
+          "unit_label": "Achsen",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} Achsen."
+        }
+      ]
+    },
+    "ef-07": {
+      "auftrag": "Parallelogramm, Raute und Drachen: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-07-1",
+          "vars": {
+            "g": {
+              "von": 4,
+              "bis": 18
+            },
+            "h": {
+              "von": 2,
+              "bis": 12
+            }
+          },
+          "template": "Parallelogramm g={g} cm, h={h} cm: Fläche?",
+          "answer": "g*h",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-07-2",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 18
+            },
+            "b": {
+              "von": 3,
+              "bis": 14
+            }
+          },
+          "template": "Parallelogramm a={a} cm, b={b} cm: Umfang?",
+          "answer": "2*(a+b)",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-07-3",
+          "vars": {
+            "e": {
+              "von": 4,
+              "bis": 18,
+              "schritt": 2
+            },
+            "f": {
+              "von": 4,
+              "bis": 16,
+              "schritt": 2
+            }
+          },
+          "template": "Raute e={e} cm, f={f} cm: Fläche?",
+          "answer": "e*f/2",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-07-4",
+          "vars": {
+            "e": {
+              "von": 5,
+              "bis": 17
+            },
+            "f": {
+              "von": 4,
+              "bis": 14,
+              "schritt": 2
+            }
+          },
+          "template": "Drachen e={e} cm, f={f} cm: Fläche?",
+          "answer": "e*f/2",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-07-5",
+          "vars": {
+            "A": {
+              "aus": [
+                36,
+                48,
+                60,
+                72,
+                84
+              ]
+            },
+            "g": {
+              "aus": [
+                6,
+                8,
+                12
+              ]
+            }
+          },
+          "template": "Parallelogramm A={A} cm², g={g} cm: Höhe?",
+          "answer": "A/g",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-07-6",
+          "vars": {
+            "A": {
+              "aus": [
+                24,
+                36,
+                48,
+                60,
+                72
+              ]
+            },
+            "e": {
+              "aus": [
+                6,
+                8,
+                12
+              ]
+            }
+          },
+          "template": "Raute A={A} cm², e={e} cm: f?",
+          "answer": "2*A/e",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        }
+      ]
+    },
+    "ef-08": {
+      "auftrag": "Trapeze sicher berechnen: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-08-1",
+          "vars": {
+            "a": {
+              "von": 6,
+              "bis": 20,
+              "schritt": 2
+            },
+            "c": {
+              "von": 2,
+              "bis": 12,
+              "schritt": 2
+            },
+            "h": {
+              "von": 2,
+              "bis": 12
+            }
+          },
+          "template": "Trapez a={a} cm, c={c} cm, h={h} cm: Fläche?",
+          "answer": "(a+c)*h/2",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-08-2",
+          "vars": {
+            "a": {
+              "von": 5,
+              "bis": 15
+            },
+            "b": {
+              "von": 3,
+              "bis": 10
+            },
+            "c": {
+              "von": 3,
+              "bis": 12
+            },
+            "d": {
+              "von": 3,
+              "bis": 10
+            }
+          },
+          "template": "Trapezseiten {a}, {b}, {c}, {d} cm: Umfang?",
+          "answer": "a+b+c+d",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-08-3",
+          "vars": {
+            "a": {
+              "von": 6,
+              "bis": 18,
+              "schritt": 2
+            },
+            "c": {
+              "von": 2,
+              "bis": 12,
+              "schritt": 2
+            }
+          },
+          "template": "Trapez a={a} cm, c={c} cm: Mittellinie?",
+          "answer": "(a+c)/2",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-08-4",
+          "vars": {
+            "a": {
+              "aus": [
+                8,
+                10,
+                12
+              ]
+            },
+            "c": {
+              "aus": [
+                4,
+                6,
+                8
+              ]
+            },
+            "h": {
+              "von": 3,
+              "bis": 10
+            }
+          },
+          "berechnet": {
+            "A": "(a+c)*h/2"
+          },
+          "template": "Trapez A={A} cm², a={a} cm, c={c} cm: Höhe?",
+          "answer": "h",
+          "unit_label": "cm",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm."
+        },
+        {
+          "id": "AB-EF-08-5",
+          "vars": {
+            "m": {
+              "von": 3,
+              "bis": 12
+            },
+            "h": {
+              "von": 2,
+              "bis": 9
+            }
+          },
+          "template": "Trapez mit Mittellinie m={m} m und h={h} m: Fläche?",
+          "answer": "m*h",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-08-6",
+          "vars": {
+            "a": {
+              "von": 6,
+              "bis": 16
+            },
+            "c": {
+              "von": 3,
+              "bis": 10
+            },
+            "h": {
+              "von": 2,
+              "bis": 8
+            }
+          },
+          "template": "Beet: parallele Seiten {a} m und {c} m, Höhe {h} m. Fläche?",
+          "answer": "(a+c)*h/2",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        }
+      ]
+    },
+    "ef-09": {
+      "auftrag": "Zusammengesetzte Figuren zerlegen: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-09-1",
+          "vars": {
+            "a": {
+              "von": 8,
+              "bis": 18
+            },
+            "b": {
+              "von": 7,
+              "bis": 15
+            },
+            "c": {
+              "von": 2,
+              "bis": 6
+            },
+            "d": {
+              "von": 2,
+              "bis": 5
+            }
+          },
+          "template": "Großes Rechteck {a}·{b} cm, Aussparung {c}·{d} cm: Restfläche?",
+          "answer": "a*b-c*d",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-09-2",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 12
+            },
+            "b": {
+              "von": 3,
+              "bis": 9
+            },
+            "c": {
+              "von": 2,
+              "bis": 8
+            },
+            "d": {
+              "von": 2,
+              "bis": 7
+            }
+          },
+          "template": "Zwei Rechtecke {a}·{b} cm und {c}·{d} cm: Summe?",
+          "answer": "a*b+c*d",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-09-3",
+          "vars": {
+            "a": {
+              "von": 6,
+              "bis": 14,
+              "schritt": 2
+            },
+            "b": {
+              "von": 3,
+              "bis": 8
+            },
+            "h": {
+              "von": 2,
+              "bis": 6
+            }
+          },
+          "template": "Hausform: Rechteck {a}·{b} m plus Dreieck g={a} m, h={h} m: Fläche?",
+          "answer": "a*b+a*h/2",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-09-4",
+          "vars": {
+            "a": {
+              "von": 10,
+              "bis": 18
+            },
+            "b": {
+              "von": 8,
+              "bis": 15
+            },
+            "c": {
+              "von": 4,
+              "bis": 8
+            },
+            "d": {
+              "von": 3,
+              "bis": 7
+            }
+          },
+          "template": "Rahmen außen {a}·{b} cm, innen {c}·{d} cm: Fläche?",
+          "answer": "a*b-c*d",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-09-5",
+          "vars": {
+            "a": {
+              "von": 6,
+              "bis": 14
+            },
+            "b": {
+              "von": 2,
+              "bis": 5
+            },
+            "c": {
+              "von": 2,
+              "bis": 6
+            },
+            "d": {
+              "von": 3,
+              "bis": 9
+            }
+          },
+          "template": "T-Form aus {a}·{b} cm und {c}·{d} cm: Fläche?",
+          "answer": "a*b+c*d",
+          "unit_label": "cm²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} cm²."
+        },
+        {
+          "id": "AB-EF-09-6",
+          "vars": {
+            "a": {
+              "von": 12,
+              "bis": 20
+            },
+            "b": {
+              "von": 8,
+              "bis": 15
+            },
+            "c": {
+              "von": 2,
+              "bis": 5
+            },
+            "d": {
+              "von": 2,
+              "bis": 4
+            }
+          },
+          "template": "Fläche {a}·{b} m minus zwei Aussparungen {c}·{d} m: Rest?",
+          "answer": "a*b-2*c*d",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        }
+      ]
+    },
+    "ef-10": {
+      "auftrag": "Ebene Figuren: Anwendungen und Prüfungstraining: Fertige eine Skizze an, notiere die Formel und schreibe die Einheit zum Ergebnis.",
+      "aufgaben": [
+        {
+          "id": "AB-EF-10-1",
+          "vars": {
+            "a": {
+              "von": 4,
+              "bis": 15
+            },
+            "b": {
+              "von": 3,
+              "bis": 10
+            }
+          },
+          "template": "Beet {a} m mal {b} m: Zaunlänge?",
+          "answer": "2*(a+b)",
+          "unit_label": "m",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m."
+        },
+        {
+          "id": "AB-EF-10-2",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 10
+            },
+            "b": {
+              "von": 2,
+              "bis": 5
+            }
+          },
+          "template": "Wand {a} m mal {b} m: zu streichende Fläche?",
+          "answer": "a*b",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-10-3",
+          "vars": {
+            "g": {
+              "von": 4,
+              "bis": 16,
+              "schritt": 2
+            },
+            "h": {
+              "von": 2,
+              "bis": 10
+            }
+          },
+          "template": "Dreieck g={g} m, h={h} m: Fläche?",
+          "answer": "g*h/2",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-10-4",
+          "vars": {
+            "a": {
+              "von": 8,
+              "bis": 18
+            },
+            "c": {
+              "von": 3,
+              "bis": 10
+            },
+            "h": {
+              "von": 2,
+              "bis": 8
+            }
+          },
+          "template": "Trapez a={a} m, c={c} m, h={h} m: Fläche?",
+          "answer": "(a+c)*h/2",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-10-5",
+          "vars": {
+            "a": {
+              "von": 3,
+              "bis": 10
+            },
+            "b": {
+              "von": 2,
+              "bis": 8
+            },
+            "p": {
+              "aus": [
+                5,
+                10,
+                15
+              ]
+            }
+          },
+          "template": "Rechteck {a} m mal {b} m plus {p}% Verschnitt: Material?",
+          "answer": "a*b*(100+p)/100",
+          "unit_label": "m²",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m²."
+        },
+        {
+          "id": "AB-EF-10-6",
+          "vars": {
+            "q": {
+              "aus": [
+                5,
+                7,
+                8,
+                9,
+                10,
+                12
+              ]
+            }
+          },
+          "template": "Quadrat mit Seitenlänge {q} m. Umfang?",
+          "answer": "4*q",
+          "unit_label": "m",
+          "round": 2,
+          "solution": "Formel einsetzen und berechnen: {ergebnis} m."
+        }
+      ]
+    }
+  }
+}

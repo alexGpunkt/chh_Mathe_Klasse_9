@@ -17,6 +17,13 @@ dort keines: ein geschätztes Datum wäre schlechter als gar keines.
 
 ---
 
+## v37 · Ebene Figuren (2026-08-30)
+
+- Neuer erster Lernbereich **Ebene Figuren** mit zehn Unterrichtseinheiten zu Einheiten, Koordinatensystem, Umfang und Flächeninhalt, Dreiecken, dem Haus der Vierecke, Trapezen und zusammengesetzten Figuren.
+- 140 differenzierte Aufgaben auf den Lernwegen A, B und C sowie Lernvideos, Merkkarten und Erklärtexte ergänzt.
+- Acht interaktive SVG-Animationen und 30 druckbare Arbeitsblätter mit Lösungsteil ergänzt.
+- Offline-Cache, Inhaltsverzeichnis, Prüfwerkzeuge und Metadaten auf 64 Einheiten erweitert.
+
 ## v36 — 2026-08-26 · Abschlussquiz, Notengebung und eigenständige Erarbeitung
 
 Zwei Lücken, die zusammengehören: Bis V35 konnte die Anwendung nicht messen,

@@ -1,0 +1,401 @@
+{
+  "unit": "EF-07",
+  "title": "Parallelogramm, Raute und Drachen",
+  "leitidee": "L2",
+  "standards": [
+    "K2",
+    "K4"
+  ],
+  "wortspeicher": [
+    "das Parallelogramm",
+    "die Raute",
+    "das Drachenviereck",
+    "die Diagonale",
+    "die Höhe"
+  ],
+  "worterklaerungen": {
+    "Parallelogramm": "Wichtiger Begriff für parallelogramm, raute und drachen.",
+    "Raute": "Wichtiger Begriff für parallelogramm, raute und drachen.",
+    "Drachenviereck": "Wichtiger Begriff für parallelogramm, raute und drachen.",
+    "Diagonale": "Wichtiger Begriff für parallelogramm, raute und drachen.",
+    "Höhe": "Wichtiger Begriff für parallelogramm, raute und drachen."
+  },
+  "can_do": {
+    "A": "Du berechnest Parallelogrammflächen.",
+    "B": "Du berechnest Rauten- und Drachenflächen über die Diagonalen.",
+    "C": "Du wählst zur gegebenen Figur die passende Formel."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Parallelogramm, Raute und Drachen",
+      "hinfuehrung": "Ein Parallelogramm lässt sich zu einem Rechteck umlegen: A=g·h.",
+      "erklaerung": [
+        "Ein Parallelogramm lässt sich zu einem Rechteck umlegen: A=g·h.",
+        "Bei Raute und Drachen stehen die Diagonalen senkrecht; ihr Produkt wird halbiert.",
+        "Die Höhe ist immer der senkrechte Abstand paralleler Seiten.",
+        "Arbeite mit einer Skizze und markiere jede gegebene Größe."
+      ],
+      "merke": "Parallelogramm: A = g · h",
+      "visual": {
+        "type": "animation",
+        "name": "viereck-flaeche",
+        "stufe": "A"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Parallelogramm g=8 cm, h=5 cm. Fläche?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "B": {
+      "titel": "Parallelogramm, Raute und Drachen",
+      "hinfuehrung": "Ein Parallelogramm lässt sich zu einem Rechteck umlegen: A=g·h.",
+      "erklaerung": [
+        "Ein Parallelogramm lässt sich zu einem Rechteck umlegen: A=g·h.",
+        "Bei Raute und Drachen stehen die Diagonalen senkrecht; ihr Produkt wird halbiert.",
+        "Die Höhe ist immer der senkrechte Abstand paralleler Seiten.",
+        "Begründe jeden Rechenschritt mit Formel und Einheit."
+      ],
+      "merke": "Raute/Drachen: A = e · f : 2",
+      "visual": {
+        "type": "animation",
+        "name": "viereck-flaeche",
+        "stufe": "B"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Parallelogramm g=8 cm, h=5 cm. Fläche?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "C": {
+      "titel": "Parallelogramm, Raute und Drachen",
+      "hinfuehrung": "Ein Parallelogramm lässt sich zu einem Rechteck umlegen: A=g·h.",
+      "erklaerung": [
+        "Ein Parallelogramm lässt sich zu einem Rechteck umlegen: A=g·h.",
+        "Bei Raute und Drachen stehen die Diagonalen senkrecht; ihr Produkt wird halbiert.",
+        "Die Höhe ist immer der senkrechte Abstand paralleler Seiten.",
+        "Vergleiche auch einen zweiten Lösungsweg und prüfe die Größenordnung."
+      ],
+      "merke": "Parallelogramm: U = 2a + 2b",
+      "visual": {
+        "type": "animation",
+        "name": "viereck-flaeche",
+        "stufe": "C"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Parallelogramm g=8 cm, h=5 cm. Fläche?",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "Parallelogramm: A = g · h",
+      "Raute/Drachen: A = e · f : 2",
+      "Parallelogramm: U = 2a + 2b"
+    ],
+    "saetze": [
+      "Ich suche den Umfang / die Fläche, weil …",
+      "Ich verwende die Formel …",
+      "Das Ergebnis ist plausibel, weil …"
+    ]
+  },
+  "videos": [
+    {
+      "titel": "Vierecke unterscheiden und passende Größen erkennen",
+      "url": "https://www.youtube.com/watch?v=qpHap8ZJSK0",
+      "quelle": "Lehrerschmidt"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "EF07-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Parallelogramm g=8 cm, h=5 cm. Fläche?",
+      "answer": 40,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 40 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Raute e=6 cm, f=8 cm. Fläche?",
+      "answer": 24,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 24 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welche Strecke ist für A=g·h nötig?",
+      "options": [
+        "senkrechte Höhe",
+        "schräge Seite",
+        "Diagonale"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: senkrechte Höhe",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Parallelogramm a=7 cm, b=4 cm. Umfang?",
+      "answer": 22,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 22 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-B5-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Drachen e=10 cm, f=6 cm. Fläche?",
+      "answer": 30,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 30 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-B6-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Parallelogramm A=54 cm², g=9 cm. h?",
+      "answer": 6,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 6 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-B7-007",
+      "path": "B",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welche Formel gehört zur Raute über Diagonalen?",
+      "options": [
+        "e·f:2",
+        "e+f",
+        "2e+2f"
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: e·f:2",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-B8-008",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Raute A=48 cm², e=12 cm. f?",
+      "answer": 8,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 8 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-B9-009",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Parallelogramm g=3,5 m, h=2 m. Fläche?",
+      "answer": 7,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 7 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-B10-010",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Drachen e=7 m, f=4 m. Fläche?",
+      "answer": 14,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 14 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-C11-011",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Parallelogramm A=72 cm², h=8 cm. g?",
+      "answer": 9,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 9 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-C12-012",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Eine Raute hat e=15 cm und f=12 cm. Fläche?",
+      "answer": 90,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 90 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-C13-013",
+      "path": "C",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Warum ist die schräge Seitenlänge nicht die Höhe?",
+      "options": [
+        "Sie steht meist nicht senkrecht auf der Grundseite.",
+        "Sie ist immer kürzer.",
+        "Sie gehört nur zum Umfang."
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Sie steht meist nicht senkrecht auf der Grundseite.",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    },
+    {
+      "id": "EF07-C14-014",
+      "path": "C",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Parallelogramm a=12 cm, b=7 cm, h zu a=5 cm: Fläche?",
+      "answer": 60,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 60 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-07"
+      ]
+    }
+  ]
+}

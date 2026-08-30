@@ -1,0 +1,401 @@
+{
+  "unit": "EF-01",
+  "title": "Längen und Flächen richtig umrechnen",
+  "leitidee": "L2",
+  "standards": [
+    "K2",
+    "K4"
+  ],
+  "wortspeicher": [
+    "die Länge",
+    "die Fläche",
+    "die Längeneinheit",
+    "die Flächeneinheit",
+    "der Umrechnungsfaktor"
+  ],
+  "worterklaerungen": {
+    "Länge": "Wichtiger Begriff für längen und flächen richtig umrechnen.",
+    "Fläche": "Wichtiger Begriff für längen und flächen richtig umrechnen.",
+    "Längeneinheit": "Wichtiger Begriff für längen und flächen richtig umrechnen.",
+    "Flächeneinheit": "Wichtiger Begriff für längen und flächen richtig umrechnen.",
+    "Umrechnungsfaktor": "Wichtiger Begriff für längen und flächen richtig umrechnen."
+  },
+  "can_do": {
+    "A": "Du wandelst mm, cm und m mit einer Stufentabelle um.",
+    "B": "Du wandelst Flächeneinheiten mit dem Faktor 100 je Stufe um.",
+    "C": "Du begründest den Unterschied zwischen Längen- und Flächenumrechnung und löst Sachaufgaben."
+  },
+  "lernkarten": {
+    "A": {
+      "titel": "Längen und Flächen richtig umrechnen",
+      "hinfuehrung": "Bei Längen ist jede Nachbareinheit zehnmal so groß oder klein.",
+      "erklaerung": [
+        "Bei Längen ist jede Nachbareinheit zehnmal so groß oder klein.",
+        "Bei Flächen werden zwei Richtungen umgerechnet: 1 m² = 100 dm² = 10 000 cm².",
+        "Schreibe zuerst die Einheit hin und entscheide dann, ob die Zahl größer oder kleiner werden muss.",
+        "Arbeite mit einer Skizze und markiere jede gegebene Größe."
+      ],
+      "merke": "1 m = 10 dm = 100 cm = 1000 mm",
+      "visual": {
+        "type": "animation",
+        "name": "einheiten-flaeche",
+        "stufe": "A"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Wandle 4 m in cm um.",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "B": {
+      "titel": "Längen und Flächen richtig umrechnen",
+      "hinfuehrung": "Bei Längen ist jede Nachbareinheit zehnmal so groß oder klein.",
+      "erklaerung": [
+        "Bei Längen ist jede Nachbareinheit zehnmal so groß oder klein.",
+        "Bei Flächen werden zwei Richtungen umgerechnet: 1 m² = 100 dm² = 10 000 cm².",
+        "Schreibe zuerst die Einheit hin und entscheide dann, ob die Zahl größer oder kleiner werden muss.",
+        "Begründe jeden Rechenschritt mit Formel und Einheit."
+      ],
+      "merke": "1 m² = 100 dm² = 10 000 cm²",
+      "visual": {
+        "type": "animation",
+        "name": "einheiten-flaeche",
+        "stufe": "B"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Wandle 4 m in cm um.",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    },
+    "C": {
+      "titel": "Längen und Flächen richtig umrechnen",
+      "hinfuehrung": "Bei Längen ist jede Nachbareinheit zehnmal so groß oder klein.",
+      "erklaerung": [
+        "Bei Längen ist jede Nachbareinheit zehnmal so groß oder klein.",
+        "Bei Flächen werden zwei Richtungen umgerechnet: 1 m² = 100 dm² = 10 000 cm².",
+        "Schreibe zuerst die Einheit hin und entscheide dann, ob die Zahl größer oder kleiner werden muss.",
+        "Vergleiche auch einen zweiten Lösungsweg und prüfe die Größenordnung."
+      ],
+      "merke": "Länge: je Stufe ·10 oder :10; Fläche: je Stufe ·100 oder :100",
+      "visual": {
+        "type": "animation",
+        "name": "einheiten-flaeche",
+        "stufe": "C"
+      },
+      "beispiel": {
+        "titel": "Vorgehen",
+        "aufgabe": "Wandle 4 m in cm um.",
+        "schritte": [
+          "Skizze und gesuchte Größe notieren.",
+          "Passende Formel auswählen.",
+          "Werte einsetzen, rechnen und Einheit prüfen."
+        ],
+        "ergebnis": "Ein vollständiger Lösungsweg enthält Formel, Rechnung, Einheit und Antwortsatz."
+      }
+    }
+  },
+  "formelkarte": {
+    "formeln": [
+      "1 m = 10 dm = 100 cm = 1000 mm",
+      "1 m² = 100 dm² = 10 000 cm²",
+      "Länge: je Stufe ·10 oder :10; Fläche: je Stufe ·100 oder :100"
+    ],
+    "saetze": [
+      "Ich suche den Umfang / die Fläche, weil …",
+      "Ich verwende die Formel …",
+      "Das Ergebnis ist plausibel, weil …"
+    ]
+  },
+  "videos": [
+    {
+      "titel": "Längeneinheiten und Flächeneinheiten unterscheiden",
+      "url": "https://www.youtube.com/watch?v=aWWf6E9-jmQ",
+      "quelle": "Lehrerschmidt"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "EF01-A1-001",
+      "path": "A",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Wandle 4 m in cm um.",
+      "answer": 400,
+      "unit_label": "cm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 400 cm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-A2-002",
+      "path": "A",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Wandle 350 cm in m um.",
+      "answer": 3.5,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 3,5 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-A3-003",
+      "path": "A",
+      "step": 3,
+      "type": "choice",
+      "prompt": "Welche Gleichung stimmt?",
+      "options": [
+        "1 m² = 100 cm²",
+        "1 m² = 10 000 cm²",
+        "1 m² = 1000 cm²"
+      ],
+      "answer": 1,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: 1 m² = 10 000 cm²",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-A4-004",
+      "path": "A",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Wandle 7 dm² in cm² um.",
+      "answer": 700,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 700 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-B5-005",
+      "path": "B",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Wandle 2,4 m in mm um.",
+      "answer": 2400,
+      "unit_label": "mm",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 2400 mm.",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-B6-006",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Wandle 8600 mm in m um.",
+      "answer": 8.6,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 8,6 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-B7-007",
+      "path": "B",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Wandle 3,2 m² in dm² um.",
+      "answer": 320,
+      "unit_label": "dm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 320 dm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-B8-008",
+      "path": "B",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Wandle 45 000 cm² in m² um.",
+      "answer": 4.5,
+      "unit_label": "m²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 4,5 m².",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-B9-009",
+      "path": "B",
+      "step": 1,
+      "type": "choice",
+      "prompt": "Warum gilt bei Flächen je Stufe der Faktor 100?",
+      "options": [
+        "Weil Länge und Breite jeweils den Faktor 10 erhalten.",
+        "Weil jede Fläche 100 Seiten hat.",
+        "Weil das Komma zwei Stellen hat."
+      ],
+      "answer": 0,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: Weil Länge und Breite jeweils den Faktor 10 erhalten.",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-B10-010",
+      "path": "B",
+      "step": 2,
+      "type": "numeric",
+      "prompt": "Ein Rechteck ist 2 m lang und 80 cm breit. Gib die Breite in m an.",
+      "answer": 0.8,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 0,8 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-C11-011",
+      "path": "C",
+      "step": 3,
+      "type": "numeric",
+      "prompt": "Wandle 0,035 km in m um.",
+      "answer": 35,
+      "unit_label": "m",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 35 m.",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-C12-012",
+      "path": "C",
+      "step": 4,
+      "type": "numeric",
+      "prompt": "Wandle 0,72 m² in cm² um.",
+      "answer": 7200,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 7200 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-C13-013",
+      "path": "C",
+      "step": 1,
+      "type": "numeric",
+      "prompt": "Eine Fläche misst 250 000 mm². Wie viele cm² sind das?",
+      "answer": 2500,
+      "unit_label": "cm²",
+      "tolerance": 0.01,
+      "hints": [
+        "Notiere zuerst die passende Formel.",
+        "Setze die gegebenen Werte mit gleicher Einheit ein."
+      ],
+      "solution": "Ergebnis: 2500 cm².",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    },
+    {
+      "id": "EF01-C14-014",
+      "path": "C",
+      "step": 2,
+      "type": "choice",
+      "prompt": "Welche Angabe ist am sinnvollsten für eine Klassenzimmerfläche?",
+      "options": [
+        "60 mm²",
+        "60 cm²",
+        "60 m²"
+      ],
+      "answer": 2,
+      "hints": [
+        "Prüfe die Begriffe und Eigenschaften."
+      ],
+      "solution": "Richtig: 60 m²",
+      "tags": [
+        "ebene-figuren",
+        "ef-01"
+      ]
+    }
+  ]
+}

@@ -10,6 +10,7 @@
 (() => {
   const bereich = new URLSearchParams(location.search).get('bereich');
   const namen = {
+    EF: 'Ebene Figuren in Bewegung',
     PZ: 'Prozent & Zinsrechnung in Bewegung',
     LF: 'Lineare Funktionen in Bewegung',
     KP: 'Körper, Prismen & Zylinder in Bewegung',
@@ -21,6 +22,6 @@
   }
   ANIM.galerie(document.getElementById('galerie'), {
     breite: 360,
-    bereich: ['PZ', 'LF', 'KP', 'SK'].includes(bereich) ? bereich : null
+    bereich: ['EF', 'PZ', 'LF', 'KP', 'SK'].includes(bereich) ? bereich : null
   });
 })();

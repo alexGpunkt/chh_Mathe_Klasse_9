@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v36-abschlussquiz-develop';
+const VERSION = 'mathe9-v37-ebene-figuren';
 
 /* ---------- Was NICHT ins Offlinepaket gehört ----------
    Bis V34 lud jedes Schülergerät bei der Installation auch das
@@ -57,6 +57,7 @@ const SCHALE = [
      Einheitenseite lädt aber nur den Kern und ihren eigenen Bereich. */
   'assets/js/animationen-kern.js',
   'assets/js/animationen-laden.js',
+  'assets/js/animationen-ef.js',
   'assets/js/animationen-lf.js',
   'assets/js/animationen-pz.js',
   'assets/js/animationen-kp.js',
@@ -78,6 +79,16 @@ const SCHALE = [
 ];
 
 const EINHEITEN = [
+  'units/ef/ef-01/tasks.json',
+  'units/ef/ef-02/tasks.json',
+  'units/ef/ef-03/tasks.json',
+  'units/ef/ef-04/tasks.json',
+  'units/ef/ef-05/tasks.json',
+  'units/ef/ef-06/tasks.json',
+  'units/ef/ef-07/tasks.json',
+  'units/ef/ef-08/tasks.json',
+  'units/ef/ef-09/tasks.json',
+  'units/ef/ef-10/tasks.json',
   'units/pz/pz-01/tasks.json',
   'units/pz/pz-02/tasks.json',
   'units/pz/pz-03/tasks.json',

@@ -22,7 +22,7 @@
 (function () {
   'use strict';
 
-  const BEREICHE = ['pz', 'lf', 'kp', 'sk'];
+  const BEREICHE = ['ef', 'pz', 'lf', 'kp', 'sk'];
 
   /* Dieselbe Vorgabe wie in engine.js: Ohne ?u= wird pz-05 geöffnet. */
   const einheit = new URLSearchParams(location.search).get('u') || 'pz-05';

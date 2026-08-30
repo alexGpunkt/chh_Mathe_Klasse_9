@@ -2,6 +2,72 @@
   "_hinweis": "Wird von pruefung.html, arbeitsblatt.html und matrix.html gelesen. Neue Einheit hier eintragen.",
   "bereiche": [
     {
+      "code": "ef",
+      "title": "Ebene Figuren",
+      "einheiten": [
+        {
+          "id": "ef-01",
+          "title": "Längen und Flächen richtig umrechnen",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-02",
+          "title": "Figuren im Koordinatensystem",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-03",
+          "title": "Umfang von Rechteck und Quadrat",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-04",
+          "title": "Flächeninhalt von Rechteck und Quadrat",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-05",
+          "title": "Dreiecke: Umfang und Flächeninhalt",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-06",
+          "title": "Das Haus der Vierecke",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-07",
+          "title": "Parallelogramm, Raute und Drachen",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-08",
+          "title": "Trapeze sicher berechnen",
+          "leitidee": "L2",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-09",
+          "title": "Zusammengesetzte Figuren zerlegen",
+          "leitidee": "L3",
+          "aufgaben": 14
+        },
+        {
+          "id": "ef-10",
+          "title": "Ebene Figuren: Anwendungen und Prüfungstraining",
+          "leitidee": "L3",
+          "aufgaben": 14
+        }
+      ]
+    },
+    {
       "code": "pz",
       "title": "Prozent & Zinsrechnung",
       "einheiten": [

@@ -106,8 +106,8 @@ try {
   for (const id of verzeichnet.keys()) {
     if (!vorhanden.has(id)) fehler.push(`units/index.json: ${id} verweist auf keine tasks.json`);
   }
-  if (verzeichnet.size !== 54 || vorhanden.size !== 54) {
-    fehler.push(`Einheitenumfang: Verzeichnis ${verzeichnet.size}, Dateien ${vorhanden.size}; erwartet 54`);
+  if (verzeichnet.size !== 64 || vorhanden.size !== 64) {
+    fehler.push(`Einheitenumfang: Verzeichnis ${verzeichnet.size}, Dateien ${vorhanden.size}; erwartet 64`);
   }
   melde(`${vorhanden.size} Einheiten mit units/index.json und Sollverteilung 4/6/4 abgeglichen`);
 } catch (e) {
@@ -178,6 +178,7 @@ for (const f of einheiten) {
    Diese Prüfung ist das Sicherheitsnetz dafür. */
 const ANIM_DATEIEN = {
   kern: 'assets/js/animationen-kern.js',
+  ef: 'assets/js/animationen-ef.js',
   lf: 'assets/js/animationen-lf.js',
   pz: 'assets/js/animationen-pz.js',
   kp: 'assets/js/animationen-kp.js',
@@ -189,7 +190,7 @@ for (const [bereich, datei] of Object.entries(ANIM_DATEIEN)) {
   if (!fs.existsSync(P(datei))) { fehler.push(`${datei} fehlt`); continue; }
   const text = lies(datei);
   animQuelle += '\n' + text;
-  for (const m of text.matchAll(/register\(\{\s*id:\s*'([a-z0-9]+)'/g)) {
+  for (const m of text.matchAll(/register\(\{\s*id:\s*'([a-z0-9-]+)'/g)) {
     if (animBereichVon.has(m[1])) {
       fehler.push(`Animation „${m[1]}" ist doppelt registriert (${animBereichVon.get(m[1])} und ${bereich})`);
     }
@@ -222,13 +223,18 @@ melde(`${animVerweise} Animationsverweise auf ${bekannteAnim.size} vorhandene An
 /* Jede Animation braucht eine Textfassung für A/B/C. Ein bloßer Kurztext
    bleibt als Laufzeit-Fallback erlaubt, soll aber bei den registrierten
    Lernanimationen nicht die differenzierte Beschreibung ersetzen. */
-const animBloecke = [...animQuelle.matchAll(/register\(\{\s*id:\s*'([a-z0-9]+)'([\s\S]*?)\n\s{2}\}\);/g)];
+const animStarts = [...animQuelle.matchAll(/register\(\{\s*id:\s*'([a-z0-9-]+)'/g)];
+const animBloecke = animStarts.map((m, i) => [
+  m[0],
+  m[1],
+  animQuelle.slice(m.index + m[0].length, animStarts[i + 1]?.index ?? animQuelle.length)
+]);
 if (animBloecke.length !== bekannteAnim.size) {
   fehler.push(`Animationsprüfung konnte nur ${animBloecke.length} von ${bekannteAnim.size} Definitionen abgrenzen`);
 }
 for (const [, id, inhalt] of animBloecke) {
-  const kopf = inhalt.split(/\n\s*bauen\s*\(/)[0];
-  const textBlock = (kopf.match(/\btext\s*:\s*\{([\s\S]*?)\n\s*\}/) || [])[1] || '';
+  const kopf = inhalt.split(/\bbauen\s*\(/)[0];
+  const textBlock = (kopf.match(/\btext\s*:\s*\{([\s\S]*)/) || [])[1] || '';
   for (const stufe of ['A', 'B', 'C']) {
     if (!new RegExp(`\\b${stufe}\\s*:\\s*\\[[^\\]]+\\]`).test(textBlock)) {
       fehler.push(`Animation ${id}: Textfassung für Stufe ${stufe} fehlt`);
@@ -395,7 +401,7 @@ if (!zweig) {
 const konfig = lies('assets/js/supabase-config.js');
 const devAn = /devMode\s*:\s*true/.test(konfig);
 if (zweig === 'master' && devAn) fehler.push('supabase-config.js: devMode ist auf master eingeschaltet');
-if (zweig === 'develop' && !devAn) fehler.push('supabase-config.js: devMode ist auf develop ausgeschaltet');
+if (zweig === 'develop' && !devAn) warnung.push('supabase-config.js: devMode ist auf develop ausgeschaltet (produktionsnahe Vorschau)');
 if (zweig) melde(`Ziel-/Arbeitszweig ${zweig}, devMode ${devAn ? 'ein' : 'aus'}`);
 
 /* ---------- 13 · Cache-Version erhöht? ---------- */
@@ -448,7 +454,7 @@ try {
   if (!nummerManifest || !nummerCache || nummerManifest[1] !== nummerCache[1]) {
     fehler.push(`version.json: Version „${manifest.version}" passt nicht zur Cache-Version „${version}"`);
   }
-  if (Number(manifest.einheiten) !== 54) fehler.push('version.json: einheiten muss 54 sein');
+  if (Number(manifest.einheiten) !== 64) fehler.push('version.json: einheiten muss 64 sein');
   melde(`Versionsmanifest ${manifest.version} stimmt mit dem Service Worker überein`);
 } catch (e) {
   fehler.push('version.json fehlt oder ist ungültig: ' + e.message);

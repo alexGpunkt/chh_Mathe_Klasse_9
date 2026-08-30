@@ -18,7 +18,7 @@
   "properties": {
     "unit": {
       "type": "string",
-      "pattern": "^(PZ|LF|KP|SK)-\\d{2}$"
+      "pattern": "^(EF|PZ|LF|KP|SK)-\\d{2}$"
     },
     "title": {
       "type": "string",
@@ -305,6 +305,7 @@
               },
               "bereich": {
                 "enum": [
+                  "ef",
                   "pz",
                   "lf",
                   "kp",

@@ -3,7 +3,7 @@
 Differenzierte Lernwege fÃ¼r Jahrgang 9, Campus Hannah HÃ¶ch.
 Statische Website, keine AbhÃ¤ngigkeiten, kein Build-Step.
 
-**54 Einheiten Ã  60 Minuten Â· 756 Aufgaben.**
+**64 Einheiten Ã  60 Minuten Â· 896 Aufgaben.**
 **Spiral-Pool: 120 Generatoren in 8 Kategorien fÃ¼r das Warm-up â€Altes Wissen".**
 **PrÃ¼fungstrainer, Arbeitsblatt-Druck, Kompetenzmatrix, Offline-Betrieb.**
 
@@ -304,11 +304,11 @@ andere Zahlen, andere Einkleidung.**
 
 ```bash
 node werkzeuge/uebungsblatt-pruefen.js   # 270 Generatoren Ã— 300 Proben
-node werkzeuge/uebungsblaetter.js        # erzeugt die 54 PDFs
+node werkzeuge/uebungsblaetter.js        # erzeugt die 192 PDFs
 node werkzeuge/uebungsblaetter.js pz-08  # nur eines
 ```
 
-Die Aufgaben stehen als **Generatoren** in `uebungsblaetter/{pz,lf,kp,sk}.json`
+Die Aufgaben stehen als **Generatoren** in `uebungsblaetter/{ef,pz,lf,kp,sk}.json`
 â€” dasselbe Format wie die Warm-up-Generatoren in `spiral/`:
 
 ```jsonc
@@ -460,7 +460,7 @@ einmal von jemand anderem erklÃ¤rt"**, gespeist aus dem Top-Level-SchlÃ¼ssel
 ]
 ```
 
-**135 Verweise in allen 54 Einheiten**, zwei bis drei je Einheit. Mit `pfad`
+**Lernvideos und ErklÃ¤rmaterialien in allen 64 Einheiten**, zwei bis drei je Einheit. Mit `pfad`
 lÃ¤sst sich ein Video an einen Lernweg binden â€” ein Video fÃ¼r die Vertiefung
 gehÃ¶rt nicht auf den Basispfad, dort verunsichert es nur. Ohne `pfad`
 erscheint es Ã¼berall.
@@ -621,7 +621,7 @@ mit. **Welcher** Schritt das ist, entscheidet die fachliche Autorenschaft:
 Fehlt das Feld, greift eine Heuristik auf den letzten Schritt â€” so
 funktionieren neue Einheiten sofort. Wo weder das eine noch das andere etwas
 liefert (Benennungs- und Zuordnungsbeispiele ohne Rechenergebnis), gibt es
-bewusst keine LÃ¼cke: derzeit bei 12 der 54 Einheiten. â€Schritt zeigen" lÃ¶st
+bewusst keine LÃ¼cke: derzeit bei 12 der 64 Einheiten. â€Schritt zeigen" lÃ¶st
 jederzeit auf â€” die LÃ¼cke darf niemanden aussperren. B und C bleiben
 unverÃ¤ndert vollstÃ¤ndig.
 
@@ -949,7 +949,7 @@ anon-Key lesbar.
 
 ### PrÃ¼fen
 
-`node werkzeuge/quiz-pruefen.js` baut fÃ¼r alle 54 Einheiten Ã— 3 Pfade je 40
+`node werkzeuge/quiz-pruefen.js` baut fÃ¼r alle 64 Einheiten Ã— 3 Pfade je 40
 QuizsÃ¤tze mit derselben Datei, die im Browser lÃ¤uft, und prÃ¼ft Anzahl,
 Antwortindex, doppelte Optionen und ob die LÃ¶sung versehentlich im Satz
 stehen bleibt. Eine zweite Umsetzung wÃ¤re eine zweite Gelegenheit, sich zu
@@ -1066,229 +1066,4 @@ Gesendet wird pro Antwort:
 
 ```json
 { "unit": "PZ-08", "task": "PZ08-B1-005", "path": "B", "step": 1,
-  "correct": false, "misconception": "mal_statt_geteilt",
-  "hints_used": 2, "attempts": 1, "duration_ms": 47000,
-  "student": "â€¦", "ts": "â€¦" }
-```
-
-Die SchÃ¼leridentitÃ¤t wird aus `localStorage['mathe9.student']` gelesen. Der
-Datensatz enthÃ¤lt insbesondere `student_id`, Anzeigename und Klassencode und wird
-vom SchÃ¼lerlogin beziehungsweise im Develop-Modus vom TestschÃ¼ler-Bypass gesetzt.
-
-## Bearbeitungsstand
-
-Pro SchÃ¼ler und Einheit liegt im localStorage, was zum Weitermachen nÃ¶tig ist:
-Pfad, Position, gelÃ¶ste Aufgaben, genutzte Tipps, SelbsteinschÃ¤tzung, die
-abgeschlossenen Pfade und **die bereits getippten, noch nicht geprÃ¼ften
-Eingaben**. Beim Ã–ffnen fragt die Seite: â€Du warst zuletzt bei Aufgabe 2 von 4
-â€” dort weiterlernen?" Wer von vorn beginnen will, kann das.
-
-Der Stand verfÃ¤llt nach 45 Tagen. PrÃ¼fungssets speichern nichts â€” dort wÃ¤re ein
-Zwischenstand eine Einladung zum Nachbessern. Auf geteilten GerÃ¤ten hÃ¤ngt der
-Stand an der SchÃ¼lerkennung; siehe `DATENSCHUTZ.md`.
-
-Aus demselben Speicher lebt die Kachel **â€Weiterlernen"** auf der Startseite und
-der Lernstatus im Inhaltsverzeichnis (â—‹ offen Â· â— begonnen Â· âœ“ fertig Â·
-â†» Wiederholung fÃ¤llig).
-
-## Lehrer-Deep-Links
-
-```
-einheit.html?u=lf-04&p=B                        Pfad vorwÃ¤hlen
-einheit.html?u=lf-04&p=B&aufgabe=LF04-B2-003    direkt zu einer Aufgabe
-einheit.html?u=pz-05&p=A&abschnitt=beispiel     direkt zu einer Stelle der ErklÃ¤rung
-```
-
-`abschnitt` kennt `erklaerung`, `beispiel`, `animation` und `merke`. Ein
-Deep-Link schlÃ¤gt den gespeicherten Bearbeitungsstand â€” wer per Link geschickt
-wird, soll dort landen.
-
-## PrÃ¼fen vor dem Push
-
-```bash
-node werkzeuge/pruefen.js        # Schema, IDs, Animationen, Cache, CSP, Links, Syntax, SQL
-node werkzeuge/a11y-pruefen.js   # statisch prÃ¼fbare Barrierefreiheit
-node werkzeuge/budget-pruefen.js # Performancebudget fÃ¼r gÃ¼nstige Smartphones
-node werkzeuge/nachfass-luecken.js [PZ|LF|KP|SK]   # Arbeitsliste Nachfassaufgaben
-node werkzeuge/verweise-pruefen.js [PZ|LF|KP|SK]   # Absatzverweise zur Durchsicht
-node werkzeuge/fehlvorstellungen-sichten.js --offen # Denkfehler ohne Kategorie
-node werkzeuge/links-pruefen.js  # externe Ãœbungen anfragen (braucht Netz)
-```
-
-Die ersten drei laufen bei jedem Push Ã¼ber GitHub Actions
-(`.github/workflows/pruefen.yml`), dazu die Playwright-Smoke-Tests in
-`tests/`. Das Schema steht in `schema/tasks.schema.json`; geprÃ¼ft wird es von
-einem abhÃ¤ngigkeitsfreien Mini-PrÃ¼fer, damit das Projekt ohne Build-Step
-bleibt.
-
-Der wÃ¶chentliche Linkcheck schreibt seinen Befund nicht nur ins Protokoll: Er
-fÃ¼hrt ein Sammel-Issue, aktualisiert es bei neuen Fehlern und schlieÃŸt es,
-sobald wieder alles erreichbar ist.
-
-Damit nichts ungeprÃ¼ft nach `master` gelangt, muss der Branchschutz einmalig
-gesetzt werden â€” er liegt auÃŸerhalb des Repositorys. Die genauen Einstellungen
-stehen in `.github/BRANCHSCHUTZ.md`.
-
-### Sicherheitsrichtlinie
-
-Jede Seite trÃ¤gt dieselbe Content-Security-Policy als `<meta>`-Tag;
-`pruefen.js` besteht darauf. `script-src 'self'` bedeutet: **kein**
-Inline-`<script>`. Wer eine Seite um ein paar Zeilen JavaScript ergÃ¤nzt, legt
-sie in `assets/js/` ab und trÃ¤gt sie in `sw.js` nach â€” sonst fÃ¼hrt der Browser
-sie stillschweigend nicht aus.
-
-Zwei Dinge lassen sich per `<meta>` nicht setzen und fehlen deshalb auf GitHub
-Pages: `frame-ancestors` und `X-Frame-Options`. Bei eigenem Hosting gehÃ¶ren
-beide als HTTP-Kopfzeilen dazu. FÃ¼r die Google-Fonts-Datei gibt es keine
-Subresource Integrity â€” ihre Antwort unterscheidet sich je nach Browser, ein
-fester Hash wÃ¼rde die Schrift zufÃ¤llig blockieren.
-
-## Neue Fassung ausrollen
-
-Der Service Worker Ã¼bernimmt **nicht mehr von selbst**. Eine neue Fassung wartet,
-meldet sich unten als Leiste (â€Eine neue Fassung ist da") und Ã¼bernimmt erst nach
-Zustimmung â€” dann in allen offenen Tabs gleichzeitig. Damit kÃ¶nnen alte und neue
-Dateien nicht mehr mitten in einer Aufgabe aufeinandertreffen.
-
-
-## Mobile
-
-- Touchziele â‰¥ 44 px, Zahlenfeld ist `inputmode="decimal"`, nie `type="number"`
-- Grafiken sind auf **46 svh** begrenzt (Tablet 52, Querformat 62), damit
-  Aufgabe und Eingabefeld sichtbar bleiben; eigene Regeln fÃ¼r
-  `(orientation: landscape) and (max-height: 560px)`
-- Sobald ein Zahlenfeld den Fokus hat, weichen Formelkarte und Buchnavigation
-  nach unten aus â€” sonst konkurrieren sie mit der Tastatur um denselben Rand
-- **Dunkler Modus:** Alle Farben liegen als Token in `:root`; ein
-  `prefers-color-scheme`-Zweig tauscht sie. Kopf, Hero und Formelkarte haben
-  eigene Token (`--kopf-bg`, `--kopf-text`), weil sie immer dunkel sind.
-  `animationen.js` fÃ¼hrt zwei Paletten und baut die Bilder bei einem Wechsel
-  wÃ¤hrend der Sitzung neu auf. Der Druck setzt alles auf hell zurÃ¼ck.
-- Eingaben werden mit Komma **und** Punkt akzeptiert. Ohne Komma ist `1.250`
-  mehrdeutig (1250 oder 1,25?) â€” die Engine prÃ¼ft beide Lesarten, statt eine
-  zu raten. Die Lesarten unterscheiden sich um Faktor 1000, ein Fehltreffer
-  kommt nicht vor.
-- Formelkarte ist eine Schublade am unteren Rand â€” immer erreichbar, ohne die
-  Aufgabe zu verlassen
-- `prefers-reduced-motion` wird respektiert
-- Druckansicht (`@media print`) zeigt die Aufgaben ohne Tipps
-
-### BuchÃ¤hnliche Navigation auf Einheitenseiten
-
-`einheit.html` lÃ¤dt zusÃ¤tzlich `assets/css/buch.css` und
-`assets/js/buch.js`. Der Modus zeigt immer nur eine Einheit als vertikal
-scrollbare Lernseite und ergÃ¤nzt groÃŸe ZurÃ¼ck-/Weiter-SchaltflÃ¤chen, eine
-Buchpositionsanzeige, ein Inhaltsverzeichnis, Seitensprung und lokale
-Lesezeichen. Auf Smartphones wird nur eine dezente SeitwÃ¤rtsbewegung verwendet;
-der angedeutete 3-D-BlÃ¤ttereffekt beginnt erst ab 820 px.
-
-Die Buchnavigation greift nicht in die Aufgaben-Engine ein. Die beiden
-Buchdateien sind im Service Worker vorab gecacht. Layoutverschiebungen werden
-erst aktiviert, nachdem `units/index.json` erfolgreich geladen und die aktuelle
-Einheit darin gefunden wurde.
-
-## Fonts
-
-Bricolage Grotesque, Atkinson Hyperlegible und JetBrains Mono kommen von
-Google Fonts. Atkinson Hyperlegible ist bewusst gewÃ¤hlt: fÃ¼r Lesende mit
-Schwierigkeiten entwickelt, unterscheidet klar zwischen 0/O und 1/l/I â€” das
-ist bei Zahlenaufgaben und DaZ kein Luxus. Falls das Schulnetz Google Fonts
-blockiert, greifen die Fallbacks; besser ist, die Dateien nach
-`assets/fonts/` zu legen und lokal einzubinden.
-
-
-## Aktueller Develop-Stand V35
-
-V26 ergÃ¤nzt dauerhafte ZwischenstÃ¤nde, Aufgaben-Sitzungs-IDs, explizite
-BeispiellÃ¼cken, ErklÃ¤rverweise, Nachfassaufgaben, Updatehinweis, JSON-Schema,
-GitHub-Actions-PrÃ¼fung, Deep-Links, Diagnoseexport, Lernstatus,
-Weiterlernen-Kachel, Vorhersageauswertung und Datenschutzwerkzeuge.
-
-V27 integrierte diese Erweiterungen in die bestehende V25-Struktur und hÃ¤rtete
-insbesondere folgende Punkte:
-
-- vollstÃ¤ndige Wiederaufnahme derselben Aufgabe mit Eingaben, Fehlversuchen,
-  Tipps, Zeit, Nachfassreihenfolge und derselben `task_session_id`,
-- getrennte lokale ZwischenstÃ¤nde, Lesezeichen und Fehlerprofile je SchÃ¼ler,
-- Deep-Links, die gespeicherte StÃ¤nde sicher Ã¼berstimmen und den Pfad aus der
-  Aufgaben-ID ableiten,
-- atomare Service-Worker-Installation und LÃ¶schen ausschlieÃŸlich eigener
-  `mathe9-*`-Caches,
-- datensparsamer Diagnoseexport ohne vollstÃ¤ndigen internen Zustand oder
-  SchÃ¼lerkennung,
-- prÃ¤zisere Dashboard-Zuordnung von Animation und Folgeantwort,
-- strengere ProjektprÃ¼fung einschlieÃŸlich Einheitenverzeichnis,
-  Sollverteilung 4/6/4, echter Animationsdefinitionen und SQL-Struktur,
-- Wiederherstellung fehlender Integrationsdokumente und Entfernung lokaler
-  `.git`-, `.claude`- und Planungsdateien aus dem Verteilerpaket.
-
-V28 ergÃ¤nzt darauf aufbauend eine wiederverwendete und serverseitig prÃ¼fbare SchÃ¼ler-Sitzung, ausdrÃ¼ckliche RechteprÃ¼fungen in allen SECURITY-DEFINER-Verwaltungsfunktionen, bereinigte Konzeptfehler-Kategorien, stÃ¤rkere Farbkontraste und verbindliche Browser-Smoke-Tests in GitHub Actions. Der vollstÃ¤ndige interne Aufgabenstatus wird nicht mehr Ã¼ber `window.S` verÃ¶ffentlicht.
-
-V29 kÃ¼mmert sich um den Betrieb: Content-Security-Policy auf allen Seiten,
-zentrale Migration der lokalen DatenstÃ¤nde, Betriebsanzeige im
-EntwicklermenÃ¼, protokollierte AufrÃ¤umlÃ¤ufe und Lehrkraftfreigaben,
-Performancebudget, bereichsÃ¼bergreifende Denkfehler-Kategorien und ein
-Linkcheck, der ein Issue fÃ¼hrt statt eines Protokolls. Dabei kamen drei
-Fehler ans Licht, die nur im echten Betrieb auffallen:
-
-- Der Service Worker lieÃŸ die Seite beim **ersten** Besuch grundlos neu laden
-  (`clients.claim()` lÃ¶ste denselben Reload aus wie ein Update) â€” wer gerade
-  tippte, verlor die Eingabe.
-- Der Benutzer-Chip lag Ã¼ber â€Weiter" in der Buchnavigation und Ã¼ber
-  â€Jetzt aktualisieren" in der Update-Leiste. Beide waren sichtbar, aber auf
-  dem Handy nicht bedienbar.
-- â€Abmelden und LernstÃ¤nde lÃ¶schen" lieÃŸ eine Kopie zurÃ¼ck: Ein noch
-  laufender, entprellter Speichervorgang schrieb den Stand danach erneut â€”
-  unter der Kennung `lokal`, also sichtbar fÃ¼r das nÃ¤chste Kind am GerÃ¤t.
-
-V30 ergÃ¤nzt 54 druckfertige ÃœbungsblÃ¤tter mit 270 Generatoren, einen
-servergestÃ¼tzten Ãœbungs- und Bewertungsmodus, aktive Lernzeit, Freigaben im
-Dashboard sowie externe Ãœbungen in einem innerhalb der Anwendung geÃ¶ffneten
-Rahmen. Die zugehÃ¶rige Datenbankmigration ist in `MIGRATION.md` beschrieben
-und muss vor einer produktiven Nutzung weiterhin in einem Supabase-Testprojekt
-geprÃ¼ft werden.
-
-V31 integriert diese Funktionen sicher in die bestehende Struktur:
-
-- Freigaben und offene Lernzeit werden je SchÃ¼lerprofil statt gerÃ¤teweit
-  gespeichert; noch nicht Ã¼bertragene Zeit bleibt der richtigen Einheit
-  zugeordnet,
-- ein lokal zwischengespeicherter Bewertungsmodus lÃ¤uft auch offline korrekt
-  ab und kann das GerÃ¤t nicht dauerhaft sperren,
-- beim Abmelden wird offene Lernzeit nach MÃ¶glichkeit zuerst Ã¼bertragen und
-  bei gewÃ¼nschter DatenlÃ¶schung zusammen mit den Ã¼brigen Profildaten entfernt,
-- externe Ãœbungen werden genau einmal protokolliert; der Rahmen ist ein
-  zugÃ¤nglicher modaler Dialog mit FokusfÃ¼hrung, Escape-Taste und ehrlichem
-  Hinweis bei nicht einbettbaren Plattformen,
-- Ãœbungsblatt-PDFs Ã¶ffnen auf Smartphones im Browser statt zwangsweise einen
-  Download auszulÃ¶sen,
-- interne Bezeichner wie `h_Dreieck` und `h_s` wurden aus den sichtbaren
-  Aufgabentexten entfernt und die GeneratorprÃ¼fung erkennt solche RÃ¼ckfÃ¤lle.
-
-V32 schlieÃŸt fehlende Animationen und externe Ãœbungen; alle 162
-Lernweg-/Einheitenkombinationen besitzen damit eine Anschauung und mindestens
-einen passenden externen Verweis. V33 differenziert die ÃœbungsblÃ¤tter nach
-Lernweg: 162 PDFs mit 324 Generatoren statt eines gemeinsamen Blatts je
-Einheit, ergÃ¤nzt zahlreiche FehlerrÃ¼ckmeldungen und filtert offene
-Ãœbungsportale auf anspruchsvollere Lernwege.
-
-V34 ergÃ¤nzt den Vollbild-Taschenrechner, einen laufend aktualisierten
-Dashboard-Fortschritt und eine Beameransicht. Die Animationsbibliothek ist in
-Kern plus PZ/LF/KP/SK aufgeteilt; `dev-tools.js` wird nur noch im
-Entwicklermodus nachgeladen. Damit bleibt das Smartphone-Budget trotz der
-neuen Funktionen innerhalb der gesetzten Grenzen.
-
-V35 ist die Integrations- und VorprÃ¼ffassung: Windows-Zeilenenden werden Ã¼ber
-`.gitattributes` stabilisiert, der Rechner folgt bei Potenzen mit negativem
-Vorzeichen der Ã¼blichen mathematischen PrioritÃ¤t und beginnt nach `=` bei einer
-neuen Ziffer tatsÃ¤chlich eine neue Rechnung. Die Beameranzeige trennt den
-letzten erfolgreichen Kontakt vom FehlerzÃ¤hler des jÃ¼ngsten Heartbeats. Die
-statische BarrierefreiheitsprÃ¼fung umfasst nun auch Rechner und Beamer. FÃ¼r den
-nÃ¤chsten Schritt liegt mit `supabase/abgleich-readonly.sql` ein ausschlieÃŸlich
-lesender Datenbankabgleich bereit; die bestehende Datenbank wird durch diese
-Fassung noch nicht verÃ¤ndert.
-
-Alle Fassungen mit Ã„nderungen, Migration, EinschrÃ¤nkungen und RÃ¼ckkehrpunkt
-stehen in `CHANGELOG.md`.
-
-Cache-Version: `mathe9-v35-integration-preflight-develop`.
+  "correct": false, "misconceptioQ1¥ÍÑ•¹•È …Ñ¥Ù…Ñ”œ°”€ôøì(€”¹İ…¥ÑU¹Ñ¥° ¡…Íå¹Œ€ ¤€ôøì(€€€½¹ÍĞ¹…µ•¸€ô…İ…¥Ğ…¡•Ì¹­•åÌ ¤ì(€€€…İ…¥ĞAÉ½µ¥Í”¹…±°¡¹…µ•¸¹™¥±Ñ•È¡¸€ôø¸¹ÍÑ…ÉÑÍ]¥Ñ  µ…Ñ¡”ä´œ¤€˜˜¸€„ôôYIM%=8¤¹µ…À¡¸€ôø…¡•Ì¹‘•±•Ñ”¡¸¤¤¤ì(€€€…İ…¥ĞÍ•±˜¹±¥•¹ÑÌ¹±…¥´ ¤ì(€ô¤ ¤¤ì)ô¤ì()Í•±˜¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ™•Ñ œ°”€ôøì(€½¹ÍĞÕÉ°€ô¹•ÜUI0¡”¹É•ÅÕ•ÍĞ¹ÕÉ°¤ì(€¥˜€¡”¹É•ÅÕ•ÍĞ¹µ•Ñ¡½€„ôô€Pœ¤É•ÑÕÉ¸ì(€€¼¨É•µ‘”!½ÍÑÌ€¡½¹ÑÌ°MÕÁ…‰…Í”¤¹¥”…ÕÌ‘•´…¡”‰•‘¥•¹•¸¸€¨¼(€¥˜€¡ÕÉ°¹½É¥¥¸€„ôô±½…Ñ¥½¸¹½É¥¥¸¤É•ÑÕÉ¸ì((€”¹É•ÍÁ½¹‘]¥Ñ  ¡…Íå¹Œ€ ¤€ôøì(€€€½¹ÍĞ…¡”€ô…İ…¥Ğ…¡•Ì¹½Á•¸¡YIM%=8¤ì(€€€€¼¨EÕ•ÉåÁ…É…µ•Ñ•Èİ¥”€ıÔõÁè´ÀÔ•£ÙÉ•¸éÕÈ9…Ù¥…Ñ¥½¸°¹¥¡ĞéÔ•¥¹•È(€€€€€€•¥•¹•¸…Ñ•¤¸=™™±¥¹”µÕÍÌ‘•Í¡…±ˆ•¥¹¡•¥Ğ¹¡Ñµ°…ÕÌ‘•´Ù½É…ˆ(€€€€€€•›ñ±±Ñ•¸…¡”•™Õ¹‘•¸İ•É‘•¸°…Õ İ•¹¸‘¥”­½¹­É•Ñ”UI0¹½ ¹¥”(€€€€€€½¹±¥¹”—Ù™™¹•ĞİÕÉ‘”¸€¨¼(€€€½¹ÍĞ…¡•-•ä€ô¹•ÜI•ÅÕ•ÍĞ¡ÕÉ°¹½É¥¥¸€¬ÕÉ°¹Á…Ñ¡¹…µ”°ìµ•Ñ¡½è€Pœô¤ì((€€€€¼¨AÉ½É…µµ½‘”Õ¹%¹¡…±Ñ”è½¹±¥¹”¥µµ•È‘¥”…­ÑÕ•±±”…ÍÍÕ¹œ±…‘•¸°(€€€€€€½™™±¥¹”…Õ˜‘•¸Ù½±±ÍÓ‘¹‘¥•¸…¡”éÕËñ­™…±±•¸¸…ÌÙ•É¡¥¹‘•ÉĞ¹… (€€€€€€ËÛ}•É•¸UÁ‘…Ñ•Ì•µ¥Í¡Ñ”Y•ÉÍ¥½¹•¸Ù½¸•¹¥¹”¹©ÌÕ¹é•¥¡¹•¸¹©Ì¸€¨¼(€€€½¹ÍĞ¥ÍÑ­ÑÕ…±¥Ñ…•ÑÍ­É¥Ñ¥Í €ô(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¹©Í½¸œ¤ñğ(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¹¡Ñµ°œ¤ñğ(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¹©Ìœ¤ñğ(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¹ÍÌœ¤ñğ(€€€€€ÕÉ°¹Á…Ñ¡¹…µ”¹•¹‘Í]¥Ñ  œ¼œ¤ì((€€€¥˜€¡¥ÍÑ­ÑÕ…±¥Ñ…•ÑÍ­É¥Ñ¥Í ¤ì(€€€€€ÑÉäì(€€€€€€€½¹ÍĞ¹•Ñè€ô…İ…¥Ğ™•Ñ ¡”¹É•ÅÕ•ÍĞ°ì…¡”è€¹¼µÍÑ½É”œô¤ì(€€€€€€€¥˜€¡¹•Ñè¹½¬¤…¡”¹ÁÕĞ¡…¡•-•ä°¹•Ñè¹±½¹” ¤¤ì(€€€€€€€É•ÑÕÉ¸¹•Ñèì(€€€€€ô…Ñ ì(€€€€€€€½¹ÍĞŒ€ô…İ…¥Ğ…¡”¹µ…Ñ ¡…¡•-•ä°ì¥¹½É•M•…É èÑÉÕ”ô¤ì(€€€€€€€¥˜€¡Œ¤É•ÑÕÉ¸Œì(€€€€€€€É•ÑÕÉ¸¹•ÜI•ÍÁ½¹Í” =™™±¥¹”Õ¹¹¥¡Ğ¥´…¡”œ°ìÍÑ…ÑÕÌè€ÔÀÌô¤ì(€€€€€ô(€€€ô((€€€€¼¨M½¹ÍÑ¥”±½­…±”I•ÍÍ½ÕÉ•¸è…¡”éÕ•ÉÍĞ°9•Ñè…±ÌKñ­™…±°¸€¨¼(€€€½¹ÍĞŒ€ô…İ…¥Ğ…¡”¹µ…Ñ ¡…¡•-•ä°ì¥¹½É•M•…É èÑÉÕ”ô¤ì(€€€¥˜€¡Œ¤É•ÑÕÉ¸Œì((€€€ÑÉäì(€€€€€½¹ÍĞ¹•Ñè€ô…İ…¥Ğ™•Ñ ¡”¹É•ÅÕ•ÍĞ¤ì(€€€€€¥˜€¡¹•Ñè¹½¬¤…¡”¹ÁÕĞ¡…¡•-•ä°¹•Ñè¹±½¹” ¤¤ì(€€€€€É•ÑÕÉ¸¹•Ñèì(€€€ô…Ñ ì(€€€€€É•ÑÕÉ¸¹•ÜI•ÍÁ½¹Í” =™™±¥¹”œ°ìÍÑ…ÑÕÌè€ÔÀÌô¤ì(€€€ô(€ô¤ ¤¤ì)ô¤ì(
