@@ -1,11 +1,12 @@
 {
   "name": "Mathe 9 · Campus Hannah Höch",
-  "version": "v36",
-  "cache_version": "mathe9-v36-abschlussquiz-develop",
+  "version": "v37",
+  "cache_version": "mathe9-v37-ebene-figuren",
   "source_commit": "786aefd",
   "source_branch": "develop",
   "source_dirty": true,
-  "gebaut_am": "2026-08-26T00:00:00Z",
+  "gebaut_am": "2026-08-30T12:00:00Z",
   "tracking_aktiv": true,
-  "einheiten": 54
+  "einheiten": 64
 }
+
