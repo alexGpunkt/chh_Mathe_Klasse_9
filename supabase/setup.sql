@@ -1365,13 +1365,13 @@ begin
   -- Ein Schultag plus Puffer. Laenger als noetig waere ein unnoetiges
   -- Risiko auf einem Geraet, das die naechste Klasse benutzt.
   frist := now() + make_interval(hours => greatest(1, least(24, coalesce(p_stunden, 12))));
-  neues_token := encode(gen_random_bytes(32), 'hex');
+  neues_token := encode(extensions.gen_random_bytes(32), 'hex');
 
   insert into public.mathe9_student_tokens (token_hash, student_id, gueltig_bis)
   values (encode(extensions.digest(neues_token, 'sha256'), 'hex'), gefunden.id, frist);
 
   -- Abgelaufene Token bei Gelegenheit entfernen.
-  delete from public.mathe9_student_tokens where gueltig_bis < now() - interval '7 days';
+  delete from public.mathe9_student_tokens as tok\n  where tok.gueltig_bis < now() - interval '7 days';
 
   return query
     select gefunden.id, gefunden.login_name, gefunden.display_name,
