@@ -22,6 +22,7 @@
   const navigation = document.querySelector('#themen-navigation');
   if (!main || !drawer || !navigation) return;
 
+  const legacyAbgeschlossen = Speicher.lies('mathe9.abgeschlossen', {});
   const alleEintraege = [...main.querySelectorAll('a.eintrag[href*="einheit.html?u="]')];
 
   const gruppen = themen.map(thema => ({
@@ -47,7 +48,10 @@
 
   function istAbgeschlossen(code) {
     const stand = typeof Stand !== 'undefined' ? Stand.lies(code) : null;
-    return Boolean(stand && Array.isArray(stand.fertig) && stand.fertig.length);
+    return Boolean(
+      (stand && Array.isArray(stand.fertig) && stand.fertig.length) ||
+      legacyAbgeschlossen[code] || legacyAbgeschlossen[code.toLowerCase()]
+    );
   }
 
   function drawerSetzen(offen) {
