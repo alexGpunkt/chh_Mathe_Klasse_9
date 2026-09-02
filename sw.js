@@ -8,7 +8,7 @@
    Sonst sehen die Geräte weiter die alte Fassung.
    ============================================================ */
 
-const VERSION = 'mathe9-v37-ebene-figuren';
+const VERSION = 'mathe9-v38-themen-drawer';
 
 /* ---------- Was NICHT ins Offlinepaket gehört ----------
    Bis V34 lud jedes Schülergerät bei der Installation auch das
@@ -49,6 +49,7 @@ const SCHALE = [
   'assets/css/buch.css',
   'assets/css/rechner.css',
   'assets/js/store.js',
+  'assets/js/start-navigation.js',
   'assets/js/weiterlernen.js',
   'assets/js/supabase-config.js',
   'assets/js/student-login.js',
