@@ -11,7 +11,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body style="padding-bottom:24px">
+<body class="startseite" style="padding-bottom:24px">
+
+<button class="drawer-oeffnen" id="drawer-oeffnen" type="button" aria-controls="themen-drawer" aria-expanded="false">
+  <span aria-hidden="true">☰</span><span>Thema wählen</span>
+</button>
+<div class="drawer-schatten" id="drawer-schatten" hidden></div>
+<aside class="themen-drawer" id="themen-drawer" aria-label="Themenauswahl" aria-hidden="true">
+  <div class="drawer-kopf">
+    <div><span class="drawer-uebertitel">Mathematik 9</span><strong>Themen</strong></div>
+    <button class="drawer-schliessen" id="drawer-schliessen" type="button" aria-label="Themenauswahl schließen">×</button>
+  </div>
+  <nav id="themen-navigation"></nav>
+</aside>
 
 <header class="hero">
   <div class="schule">Campus Hannah Höch · Jahrgang 9</div>
@@ -467,5 +479,6 @@
 <script src="assets/js/tracker.js"></script>
 <script src="assets/js/lernmodus.js"></script>
 <script src="assets/js/weiterlernen.js"></script>
+<script src="assets/js/start-navigation.js"></script>
 </body>
 </html>
