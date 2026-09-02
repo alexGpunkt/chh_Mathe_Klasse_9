@@ -95,6 +95,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 html { -webkit-text-size-adjust: 100%; }
 
@@ -729,6 +730,44 @@ body.tastatur-aktiv .formelkarte { transform: translateY(105%); }
   padding: 12px 14px; border-radius: var(--r); margin-top: 18px;
 }
 
+/* ---------- Startseite: Themen-Drawer ---------- */
+.drawer-oeffnen { position: fixed; z-index: 40; top: 16px; left: max(16px, env(safe-area-inset-left)); display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 9px 14px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; background: rgba(21,35,58,.92); color: white; font: 700 15px var(--f-body); box-shadow: var(--shadow); cursor: pointer; }
+.drawer-oeffnen span:first-child { font-size: 20px; line-height: 1; }
+.startseite .hero { padding-top: 76px; }
+.drawer-schatten { position: fixed; z-index: 49; inset: 0; background: rgba(8,18,33,.52); }
+.themen-drawer { position: fixed; z-index: 50; inset: 0 auto 0 0; width: min(88vw, 360px); padding: max(22px, env(safe-area-inset-top)) 18px 24px; background: var(--paper-hi); box-shadow: 18px 0 45px rgba(8,18,33,.28); transform: translateX(-105%); transition: transform .25s ease; overflow-y: auto; }
+.themen-drawer.offen { transform: translateX(0); }
+.drawer-offen { overflow: hidden; }
+.drawer-kopf { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; }
+.drawer-kopf strong { display: block; font: 800 28px/1.1 var(--f-display); }
+.drawer-uebertitel { display: block; color: var(--ink-soft); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+.drawer-schliessen { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 30px; cursor: pointer; }
+#themen-navigation { display: grid; gap: 8px; }
+.thema-option { display: grid; grid-template-columns: 38px 1fr; gap: 10px; align-items: center; width: 100%; padding: 13px 12px; text-align: left; border: 1px solid #E1E6E9; border-radius: var(--r); background: white; color: var(--ink); font: inherit; cursor: pointer; }
+.thema-option.aktiv { border-color: var(--b); background: var(--b-bg); }
+.thema-option strong, .thema-option small { display: block; }
+.thema-option small { margin-top: 2px; color: var(--ink-soft); font-size: 12px; }
+.thema-nummer { color: var(--ink-faint); font: 700 12px var(--f-num); }
+.themen-ansicht { max-width: 760px; margin-inline: auto; }
+.themen-kopf { margin: 8px 0 22px; }
+.themen-label, .stunden-status { color: var(--b); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.themen-kopf h2 { margin: 3px 0 2px; font: 800 clamp(27px, 7vw, 42px)/1.05 var(--f-display); }
+.themen-kopf p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+.stunden-block { margin-top: 18px; }
+.stunden-block h3 { margin: 4px 0 9px; font: 700 17px var(--f-display); }
+.aktuelle-stunde { padding: 16px; border: 1px solid #BFD3EA; border-radius: 14px; background: rgba(226,235,246,.78); }
+.aktuelle-stunde .eintrag { border: 0; box-shadow: 0 7px 24px -15px rgba(21,35,58,.7); }
+.vergangene-stunden { margin-top: 20px; border-top: 1px solid #D9E2E6; padding-top: 14px; }
+.vergangene-stunden summary { cursor: pointer; font-weight: 700; list-style: none; padding: 10px 0; }
+.vergangene-stunden summary::-webkit-details-marker { display: none; }
+.vergangene-stunden summary::after { content: '＋'; float: right; }
+.vergangene-stunden[open] summary::after { content: '−'; }
+.vergangene-stunden summary span { color: var(--ink-faint); font: 700 12px var(--f-num); }
+.vergangene-stunden .liste { margin-top: 8px; }
+.freischalt-hinweis { margin: 18px 0 0; padding: 11px 13px; color: var(--ink-soft); background: rgba(255,255,255,.72); border-radius: var(--r); font-size: 14px; }
+@media (min-width: 980px) { .drawer-oeffnen { left: 28px; } .startseite .hero { padding-top: 44px; padding-left: max(16px, calc((100vw - 920px) / 2)); } }
+@media (prefers-reduced-motion: reduce) { .themen-drawer { transition: none; } }
+
 .lade, .fehler { padding: 24px 16px; color: var(--ink-soft); }
 .fehler { background: var(--korr-bg); border-left: 4px solid var(--korr); border-radius: var(--r); }
 .fehler code {
@@ -1037,73 +1076,4 @@ input.zahl-feld.lk-luecke-feld { flex: 1 1 120px; height: 46px; font-size: 18px;
 @media (max-width: 720px) {
   .blattkarte { margin-left: 16px; margin-right: 16px; }
   .blattkarte .btn { width: 100%; }
-}
-
-
-/* ============================================================
-   Abschlussquiz am Ende der Einheit  (V36)
-
-   Die Einladung steht im Abschlusskasten und sagt vorher, was gilt:
-   Der erste Lauf zählt. Das Quiz selbst übernimmt die Bühne — fünf
-   Fragen sind kein Anhängsel unter einer Ergebniskarte.
-   ============================================================ */
-.quizeinladung {
-  margin: 16px 0 4px; padding: 13px 15px;
-  background: var(--pfad-bg); border-left: 4px solid var(--pfad);
-  border-radius: 0 8px 8px 0;
-}
-.quizeinladung-erledigt { background: var(--ok-bg); border-left-color: var(--ok); }
-.quizeinladung strong {
-  display: block; font-family: var(--f-display); font-size: 16px;
-}
-.quizeinladung p { margin: 6px 0 11px; font-size: 14px; line-height: 1.55; }
-
-.quizkarte { border-top: 4px solid var(--pfad); }
-.quiz-kopf {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  margin-bottom: 9px;
-}
-.quiz-zaehler {
-  margin-left: auto; font-family: var(--f-num); font-size: 12px; color: var(--ink-faint);
-}
-.quiz-balken {
-  height: 5px; margin-bottom: 14px;
-  background: var(--flaeche-2); border-radius: 999px; overflow: hidden;
-}
-.quiz-balken-fuell {
-  height: 100%; background: var(--pfad); border-radius: 999px;
-  transition: width .25s ease;
-}
-.quiz-satz {
-  margin: 4px 0 14px; padding: 11px 13px;
-  font-size: 16px; line-height: 1.7;
-  background: var(--flaeche); border-radius: 8px;
-}
-/* Die Lücke ist eine sichtbare Strecke, kein Unterstrichsalat: Wie viele
-   Zeichen fehlen, soll das Bild gerade nicht verraten. */
-.quiz-luecke {
-  display: inline-block; min-width: 92px; margin: 0 3px;
-  border-bottom: 2px solid var(--pfad); vertical-align: baseline;
-}
-.quiz-zahlzeile { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
-.quiz-herkunft {
-  margin: 10px 0 0; font-size: 12px; color: var(--ink-faint);
-}
-.quiz-rueck { margin-top: 4px; }
-.quiz-hinweis { margin-top: 6px; font-size: 14px; line-height: 1.55; }
-.quiz-nachlesen {
-  margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--ink-soft);
-}
-.quiz-meldung {
-  margin: 12px 0 0; padding: 9px 12px;
-  font-size: 14px; line-height: 1.5; color: var(--ink-soft);
-  background: var(--flaeche); border-radius: 8px;
-}
-.quiz-gewertet {
-  background: var(--merk-bg); color: var(--merk-text); font-weight: 700;
-}
-
-@media print {
-  /* Ein Quiz auf Papier wäre ein Lösungsblatt. */
-  .quizeinladung, .quizkarte { display: none !important; }
 }
