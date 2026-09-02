@@ -502,6 +502,11 @@ function abschluss() {
 
   karte.append(el('h2', 'frage', `Pfad ${S.pfad} geschafft.`));
 
+  /* Die Folgestunde wird erst nach einem echten Abschluss sichtbar. */
+  const abgeschlossen = Speicher.lies('mathe9.abgeschlossen', {});
+  abgeschlossen[S.daten.unit] = { zeit: Date.now(), pfad: S.pfad };
+  Speicher.schreib('mathe9.abgeschlossen', abgeschlossen);
+
   const satz = S.daten.can_do[S.pfad];
   const p = el('p');
   p.innerHTML = `Das kannst du jetzt:<br><b>${satz}</b>`;
